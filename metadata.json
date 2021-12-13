@@ -1,0 +1,13 @@
+{
+    "uuid": "burn-my-windows@schneegans.github.com",
+    "description": "Close your apps the old-school way.",
+    "name": "Burn My Windows",
+    "gettext-domain": "burn-my-windows",
+    "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
+    "shell-version": [
+        "40",
+        "41"
+    ],
+    "url": "https://github.com/Schneegans/Burn-My-Windows",
+    "version": 1
+}

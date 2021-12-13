@@ -1,0 +1,4 @@
+BasedOnStyle: Google
+AlignConsecutiveAssignments: true
+KeepEmptyLinesAtTheStartOfBlocks: true
+ColumnLimit: 90

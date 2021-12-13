@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  source_code:
+    name: Extension Bundle
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update -q
+        sudo apt-get install gettext
+    - name: Create Release
+      run: |
+        make zip
+    - name: Upload Release
+      uses: svenstaro/upload-release-action@v1-release
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: burn-my-windows@schneegans.github.com.zip
+        asset_name: burn-my-windows@schneegans.github.com.zip
+        tag: ${{ github.ref }}
+        overwrite: true

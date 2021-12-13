@@ -1,0 +1,82 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  clang_format:
+    name: Check Clang-Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download Clang-Format
+        run: |
+          sudo apt update -qq
+          sudo apt install clang-format -qq
+      - name: Run Clang-Format
+        run: scripts/clang-format.sh
+      - name: Compare Results
+        run: |
+          DIFF=$(git diff)
+          if [ ! -z "$DIFF" ]; then echo $DIFF && exit 1; fi
+
+  comment_percentage:
+    name: Check Comment Percentage
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout Current Repository
+        uses: actions/checkout@v2
+        with:
+          path: current
+          ref: ${{ github.ref }}
+      - name: Checkout Base Repository
+        uses: actions/checkout@v2
+        with:
+          path: base
+          ref: ${{ github.base_ref }}
+      - name: Download Cloc
+        run: |
+          sudo apt update -qq
+          sudo apt install cloc -qq
+      - name: Run Cloc
+        run: |
+          BASE="$(base/scripts/cloc.sh --percentage-only)"
+          CURRENT="$(current/scripts/cloc.sh --percentage-only)"
+          echo "Percentage of Comments in Base Repository: $BASE"
+          echo "Percentage of Comments after Merge: $CURRENT"
+          if (( $(echo "$BASE > $CURRENT" |bc -l) ))
+          then
+            awk -v a=$CURRENT -v b=$BASE 'BEGIN {printf "Percentage decreased! (%3.4f%)\n", (a-b)}'
+            exit 1
+          else
+            awk -v a=$CURRENT -v b=$BASE 'BEGIN {printf "Percentage increased! (%3.4f%)\n", (a-b)}'
+          fi
+
+  shellcheck:
+    name: Run ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run ShellCheck
+        run: |
+          find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
+
+  build:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name == 'pull_request' ||
+      ( contains(github.ref, 'main') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
+      ( contains(github.ref, 'develop') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
+      contains(github.event.head_commit.message, '[run-ci]')
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build Burn-My-Windows
+      run: make
