@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="desktop-cube">
+  <requires lib="gtk" version="4.0" />
+
+  <object class="GtkScrolledWindow" id="settings-widget">
+    <property name="hscrollbar-policy">never</property>
+    <property name="min-content-height">200</property>
+    <property name="hexpand">0</property>
+    <property name="vexpand">1</property>
+    <child>
+      <object class="GtkViewport">
+        <property name="scroll-to-focus">1</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="margin-start">60</property>
+            <property name="margin-end">60</property>
+            <property name="margin-top">30</property>
+            <property name="margin-bottom">30</property>
+
+            <child>
+              <object class="GtkLabel">
+                <property name="margin-top">30</property>
+                <property name="margin-bottom">10</property>
+                <property name="label">Fire Options</property>
+                <property name="xalign">0</property>
+                <style>
+                  <class name="title-4" />
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <child>
+                  <object class="GtkListBox">
+                    <property name="selection-mode">none</property>
+                    <property name="show-separators">1</property>
+                    <style>
+                      <class name="rich-list" />
+                    </style>
+
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Animation Time [ms]</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkScale">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="draw-value">1</property>
+                                <property name="digits">0</property>
+                                <property name="value-pos">left</property>
+                                <property name="width-request">250</property>
+                                <property name="adjustment">
+                                  <object class="GtkAdjustment" id="destroy-animation-time">
+                                    <property name="upper">10000</property>
+                                    <property name="lower">500</property>
+                                    <property name="step-increment">10</property>
+                                    <property name="page-increment">100</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-destroy-animation-time">
+                                <property name="icon-name">edit-clear-symbolic</property>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+                  </object>
+                </child>
+              </object>
+            </child>
+
+
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+
+
+</interface>

@@ -34,15 +34,24 @@ class Extension {
   // from GNOME Tweaks, when you log in or when the screen is unlocked.
   enable() {
 
-    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME = 2000;
-
     // Store a reference to the settings object.
-    // this._settings = ExtensionUtils.getSettings();
+    this._settings = ExtensionUtils.getSettings();
 
     // We will monkey-patch these three methods. Let's store the original ones.
     this._origWindowRemoved      = Workspace.prototype._windowRemoved;
     this._origDoRemoveWindow     = Workspace.prototype._doRemoveWindow;
     this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
+
+    // We may also override these animation times.
+    this._origDestroyTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
+
+    const loadAnimationTimes = () => {
+      imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
+          this._settings.get_int('destroy-animation-time');
+    };
+
+    this._settings.connect('changed::destroy-animation-time', loadAnimationTimes);
+    loadAnimationTimes();
 
     // We will use extensionThis to refer to the extension inside the patched methods of
     // the WorkspacesView.
@@ -210,7 +219,9 @@ class Extension {
     Workspace.prototype._doRemoveWindow         = this._origDoRemoveWindow;
     WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
 
-    // this._settings = null;
+    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME = this._origDestroyTime;
+
+    this._settings = null;
   }
 
   // ----------------------------------------------------------------------- private stuff
