@@ -24,6 +24,10 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// This extensions modifies the window-close animation to look like the window was set  //
+// on fire. While this is definitely a homage to the good old Compiz plugin, it is      //
+// implemented differently. While Compiz used a particle system, this extension uses a  //
+// perlin noise shader.                                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 class Extension {
@@ -57,18 +61,35 @@ class Extension {
     // the WorkspacesView.
     const extensionThis = this;
 
+    // These three method overrides are mega-hacky! They are only required to make the
+    // fire animation work in the overview. Usually, windows are not faded when closed
+    // from the overview (why?). With these overrides we make sure that they are actually
+    // faded out. To do this, _windowRemoved and _doRemoveWindow now check whether there
+    // is a transition ongoing (via extensionThis._shouldDestroy). If that's the case,
+    // they methods do nothing. Are the actors removed in the end? I hope so. The
+    // _destroyWindow of the WindowManager sets the transitions up and should take care of
+    // removing the actors at the end of the transitions.
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1299
     Workspace.prototype._windowRemoved = function(ws, metaWin) {
       if (extensionThis._shouldDestroy(this, metaWin)) {
         extensionThis._origWindowRemoved.apply(this, [ws, metaWin]);
       }
     };
 
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1178
     Workspace.prototype._doRemoveWindow = function(metaWin) {
       if (extensionThis._shouldDestroy(this, metaWin)) {
         extensionThis._origDoRemoveWindow.apply(this, [metaWin]);
       }
     };
 
+    // Here comes the ULTRA-HACK: The method below is called (amongst others) by the
+    // _destroyWindow method of the WindowManager. Usually, it returns false when we are
+    // in the overview. This prevents the window-close animation. As we cannot
+    // monkey-patch the _destroyWindow method itself, we check inside the method below
+    // whether it was called by _destroyWindow. If so, we return true. Let's see if this
+    // breaks stuff left and right...
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1125
     WindowManager.prototype._shouldAnimateActor = function(actor, types) {
       if ((new Error()).stack.split('\n')[1].includes('_destroyWindow@')) {
         return true;
@@ -76,8 +97,22 @@ class Extension {
       return extensionThis._origShouldAnimateActor.apply(this, [actor, types]);
     };
 
-
+    // The close animation is set up in WindowManager's _destroyWindow:
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1549
+    // As we cannot monkey-patch the _destroyWindow itself, we connect to the 'destroy'
+    // signal of the window manager and tweak the animation to our needs.
     this._destroyConnection = global.window_manager.connect('destroy', (wm, actor) => {
+      // The _destroyWindow method of WindowManager, which was called right before this
+      // one, set up the window close animation. This usually fades-out the window and
+      // scales it a bit down. If no transition is in progress, something unexpected
+      // happened. We rather try not to burn the window!
+      const transition = actor.get_transition('opacity');
+      if (!transition) {
+        return;
+      }
+
+      // If there's a transition in progress, we re-target these transitions so that the
+      // window is neither scaled nor faded.
       const tweakTransition = (property, value) => {
         const transition = actor.get_transition(property);
         if (transition) {
@@ -90,11 +125,12 @@ class Extension {
       tweakTransition('scale-x', 1);
       tweakTransition('scale-y', 1);
 
+      // Instead, we add a cool fire shader to our window actor! The noise implementation
+      // is from https://www.shadertoy.com/view/3tcBzH (CC-BY-NC-SA).
       const shader = new Clutter.ShaderEffect({
         shader_type: Clutter.ShaderType.FRAGMENT_SHADER,
       });
 
-      // https://www.shadertoy.com/view/3tcBzH
       shader.set_shader_source(`
         uniform sampler2D texture;
         uniform float     progress;
@@ -102,6 +138,7 @@ class Extension {
         uniform int       sizeX;
         uniform int       sizeY;
 
+        // These may be configurable in the future.
         const float EDGE_BLEND = 70;
         const float BURN_RANGE = 0.1;
         const float BURN_TIME  = 0.2;
@@ -167,16 +204,24 @@ class Extension {
           float burnProgress      = clamp(progress/BURN_TIME, 0, 1);
           float afterBurnProgress = clamp((progress-BURN_TIME)/(1-BURN_TIME), 0, 1);
 
+          // Gradient from top to bottom.
           float t = cogl_tex_coord_in[0].t * (1 - BURN_RANGE);
+
+          // Visible part of the window. Gradually dissolves towards the bottom.
           float alpha = 1 - clamp((burnProgress - t) / BURN_RANGE, 0, 1);
+
+          // Get window texture.
           cogl_color_out = texture2D(texture, cogl_tex_coord_in[0].st) * alpha;
 
+          // Gradient from top burning window.
           float mask = clamp(t*(1-alpha)/burnProgress, 0, 1);
 
+          // Fade-out when the window burned down.
           if (progress > BURN_TIME) {
             mask *= mix(1, 1-t, afterBurnProgress) * pow(1-afterBurnProgress, 2);
           }
 
+          // Fade at window borders.
           vec2 pos = cogl_tex_coord_in[0].st * vec2(sizeX, sizeY);
           mask *= clamp(pos.x / EDGE_BLEND, 0, 1);
           mask *= clamp(pos.y / EDGE_BLEND, 0, 1);
@@ -185,9 +230,9 @@ class Extension {
 
           vec2 firePos = pos / FIRE_SCALE;
           firePos.y += time * FIRE_SPEED;
-
           float noise = pNoise(firePos, 10.0, 5, 0.5);
           
+          // Modulate noise by mask and map to color.
           vec4 color = getFireColor(noise*mask);
           color.rgb *= color.a;
 
@@ -198,7 +243,7 @@ class Extension {
 
       actor.add_effect(shader);
 
-      const transition = actor.get_transition('opacity');
+      // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
         shader.set_uniform_value('progress', t.get_progress());
         shader.set_uniform_value('time', 0.001 * t.get_elapsed_time());
