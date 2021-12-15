@@ -9,6 +9,12 @@
       <description>The time it takes to burn the windows.</description>
     </key>
 
+    <key name="flame-movement-speed" type="d">
+      <default>0.5</default>
+      <summary>Flame Movement Speed</summary>
+      <description>The speed at which the flames move.</description>
+    </key>
+
     <key name="fire-color-1" type="s">
       <default>"rgba(76, 51, 25, 0.0)"</default>
       <summary>Fire Color 1</summary>

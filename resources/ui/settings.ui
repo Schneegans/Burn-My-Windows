@@ -93,6 +93,52 @@
                           <object class="GtkBox">
                             <child>
                               <object class="GtkLabel">
+                                <property name="label" translatable="yes">Flame Movement Speed</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkScale">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="draw-value">1</property>
+                                <property name="digits">2</property>
+                                <property name="value-pos">left</property>
+                                <property name="width-request">300</property>
+                                <property name="adjustment">
+                                  <object class="GtkAdjustment" id="flame-movement-speed">
+                                    <property name="upper">2.0</property>
+                                    <property name="lower">-2.0</property>
+                                    <property name="step-increment">0.01</property>
+                                    <property name="page-increment">0.1</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-flame-movement-speed">
+                                <property name="icon-name">edit-clear-symbolic</property>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <child>
+                              <object class="GtkLabel">
                                 <property name="label" translatable="yes">Fire Gradient</property>
                                 <property name="xalign">0</property>
                                 <property name="halign">start</property>

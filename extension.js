@@ -155,7 +155,7 @@ class Extension {
         const float BURN_RANGE = 0.1;
         const float BURN_TIME  = 0.2;
         const vec2  FIRE_SCALE = vec2(400, 600);
-        const float FIRE_SPEED = 0.5;
+        const float FIRE_SPEED = ${this._settings.get_double('flame-movement-speed')};
 
         float rand(vec2 co) {
           return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
