@@ -8,9 +8,9 @@
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg?labelColor=303030" /></a>
 <a href="https://extensions.gnome.org/extension/4679/burn-my-windows/"><img src="https://img.shields.io/badge/Download-extensions.gnome.org-e67f4d.svg?logo=gnome&logoColor=lightgrey&labelColor=303030" /></a>
 
-When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive the most useless feature of Linux desktops: Setting windows on fire! For mysterious reasons, it feels so good... 
+When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive the one of the most useless features of Linux desktop history: Setting windows on fire!
 
-This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's extinguish them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
+This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
 
 
 ## Installation
