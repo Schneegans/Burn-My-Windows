@@ -154,7 +154,8 @@ class Extension {
         const float EDGE_BLEND = 70;
         const float BURN_RANGE = 0.1;
         const float BURN_TIME  = 0.2;
-        const vec2  FIRE_SCALE = vec2(400, 600);
+        const vec2  FIRE_SCALE = vec2(400, 600) * ${
+          this._settings.get_double('flame-scale')};
         const float FIRE_SPEED = ${this._settings.get_double('flame-movement-speed')};
 
         float rand(vec2 co) {

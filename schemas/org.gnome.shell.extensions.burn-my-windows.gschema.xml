@@ -15,6 +15,12 @@
       <description>The speed at which the flames move.</description>
     </key>
 
+    <key name="flame-scale" type="d">
+      <default>1.0</default>
+      <summary>Flame Scale</summary>
+      <description>The size of the flames.</description>
+    </key>
+
     <key name="fire-color-1" type="s">
       <default>"rgba(76, 51, 25, 0.0)"</default>
       <summary>Fire Color 1</summary>

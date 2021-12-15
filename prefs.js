@@ -45,6 +45,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Bind all properties.
     this._bindAdjustment('destroy-animation-time');
     this._bindAdjustment('flame-movement-speed');
+    this._bindAdjustment('flame-scale');
     this._bindColorButton('fire-color-1');
     this._bindColorButton('fire-color-2');
     this._bindColorButton('fire-color-3');
