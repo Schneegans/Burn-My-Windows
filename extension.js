@@ -131,6 +131,18 @@ class Extension {
         shader_type: Clutter.ShaderType.FRAGMENT_SHADER,
       });
 
+      // Load the gradient values from the settings. We directly inject the values in the
+      // GLSL code below. The shader is compiled once for each window-closing anyways. In
+      // the future, we my want to prevent this frequent recompilations of shaders,
+      // though.
+      const gradient = [];
+      for (let i = 1; i <= 5; i++) {
+        const color =
+            Clutter.Color.from_string(this._settings.get_string('fire-color-' + i))[1];
+        gradient.push(`vec4(${color.red / 255}, ${color.green / 255}, ${
+            color.blue / 255}, ${color.alpha / 255})`);
+      }
+
       shader.set_shader_source(`
         uniform sampler2D texture;
         uniform float     progress;
@@ -184,20 +196,26 @@ class Extension {
         }
 
         vec4 getFireColor(float v) {
-          const float steps[5] = float[](0.0, 0.2, 0.3, 0.5, 1.0);
+          const float steps[5] = float[](0.0, 0.2, 0.35, 0.5, 0.8);
           const vec4 colors[5] = vec4[](
-            vec4(0.3, 0.2, 0.1,  0.0),
-            vec4(1.0, 0.3, 0.15, 0.7),
-            vec4(1.0, 0.3, 0.15, 0.9),
-            vec4(1.0, 0.65, 0.1, 1.0),
-            vec4(1, 1, 1, 1.0)
+            ${gradient[0]},
+            ${gradient[1]},
+            ${gradient[2]},
+            ${gradient[3]},
+            ${gradient[4]}
           );
+
+          if (v < steps[0]) {
+            return colors[0];
+          }
 
           for (int i=0; i<4; ++i) {
             if (v <= steps[i+1]) {
               return mix(colors[i], colors[i+1], vec4(v - steps[i])/(steps[i+1]-steps[i]));
             }
           }
+
+          return colors[4];
         }
 
         void main(void) {

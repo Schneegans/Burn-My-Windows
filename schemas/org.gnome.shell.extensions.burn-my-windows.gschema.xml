@@ -9,6 +9,36 @@
       <description>The time it takes to burn the windows.</description>
     </key>
 
+    <key name="fire-color-1" type="s">
+      <default>"rgba(76, 51, 25, 0.0)"</default>
+      <summary>Fire Color 1</summary>
+      <description>The first color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-2" type="s">
+      <default>"rgba(180, 55, 30, 0.7)"</default>
+      <summary>Fire Color 2</summary>
+      <description>The second color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-3" type="s">
+      <default>"rgba(255, 76, 38, 0.9)"</default>
+      <summary>Fire Color 3</summary>
+      <description>The third color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-4" type="s">
+      <default>"rgba(255, 166, 25, 1)"</default>
+      <summary>Fire Color 4</summary>
+      <description>The fourth color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-5" type="s">
+      <default>"rgba(255, 255, 255, 1)"</default>
+      <summary>Fire Color 5</summary>
+      <description>The fifth color of the fire gradient.</description>
+    </key>
+
   </schema>
 
 </schemalist>
