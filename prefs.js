@@ -132,6 +132,16 @@ var PreferencesDialog = class PreferencesDialog {
     this._widget.connect('realize', (widget) => {
       const presets = [
         {
+          name: 'Default Fire',
+          scale: 1.0,
+          speed: 0.5,
+          color1: 'rgba(76, 51, 25, 0.0)',
+          color2: 'rgba(180, 55, 30, 0.7)',
+          color3: 'rgba(255, 76, 38, 0.9)',
+          color4: 'rgba(255, 166, 25, 1)',
+          color5: 'rgba(255, 255, 255, 1)'
+        },
+        {
           name: 'Hell Fire',
           scale: 1.5,
           speed: 0.2,
