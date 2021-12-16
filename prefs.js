@@ -61,6 +61,8 @@ var PreferencesDialog = class PreferencesDialog {
       this._settings.reset('fire-color-5');
     });
 
+    this._createFirePresets();
+
     // As we do not have something like a destructor, we just listen for the destroy
     // signal of our main widget.
     this._widget.connect('destroy', () => {
@@ -123,6 +125,75 @@ var PreferencesDialog = class PreferencesDialog {
 
     this._builder.get_object('reset-' + settingsKey)?.connect('clicked', () => {
       this._settings.reset(settingsKey);
+    });
+  }
+
+  _createFirePresets() {
+    this._widget.connect('realize', (widget) => {
+      const presets = [
+        {
+          name: 'Hell Fire',
+          scale: 1.5,
+          speed: 0.2,
+          color1: 'rgba(0,0,0,0)',
+          color2: 'rgba(103,7,80,0.5)',
+          color3: 'rgba(150,0,24,0.9)',
+          color4: 'rgb(255,200,0)',
+          color5: 'rgba(255, 255, 255, 1)'
+        },
+        {
+          name: 'Dark and Smutty',
+          scale: 1.0,
+          speed: 0.5,
+          color1: 'rgba(0,0,0,0)',
+          color2: 'rgba(36,3,0,0.5)',
+          color3: 'rgba(150,0,24,0.9)',
+          color4: 'rgb(255,177,21)',
+          color5: 'rgb(255,238,166)'
+        },
+        {
+          name: 'Cold Breeze',
+          scale: 1.5,
+          speed: -0.1,
+          color1: 'rgba(0,110,255,0)',
+          color2: 'rgba(30,111,180,0.24)',
+          color3: 'rgba(38,181,255,0.54)',
+          color4: 'rgba(34,162,255,0.84)',
+          color5: 'rgb(97,189,255)'
+        },
+        {
+          name: 'Santa is Coming',
+          scale: 0.4,
+          speed: -0.5,
+          color1: 'rgba(0,110,255,0)',
+          color2: 'rgba(208,233,255,0.24)',
+          color3: 'rgba(207,235,255,0.84)',
+          color4: 'rgb(208,243,255)',
+          color5: 'rgb(255,255,255)'
+        }
+      ];
+
+      const menu  = Gio.Menu.new();
+      const group = Gio.SimpleActionGroup.new();
+
+      presets.forEach((preset, i) => {
+        const actionName = 'fire' + i;
+        menu.append(preset.name, 'presets.' + actionName);
+        let action = Gio.SimpleAction.new(actionName, null);
+        action.connect('activate', () => {
+          this._settings.set_double('flame-movement-speed', preset.speed);
+          this._settings.set_double('flame-scale', preset.scale);
+          this._settings.set_string('fire-color-1', preset.color1);
+          this._settings.set_string('fire-color-2', preset.color2);
+          this._settings.set_string('fire-color-3', preset.color3);
+          this._settings.set_string('fire-color-4', preset.color4);
+          this._settings.set_string('fire-color-5', preset.color5);
+        });
+        group.add_action(action);
+      });
+
+      this._builder.get_object('fire-preset-button').set_menu_model(menu);
+      widget.get_root().insert_action_group('presets', group);
     });
   }
 }
