@@ -61,6 +61,7 @@ var PreferencesDialog = class PreferencesDialog {
       this._settings.reset('fire-color-5');
     });
 
+    // Initialize the fire-preset dropdown.
     this._createFirePresets();
 
     // As we do not have something like a destructor, we just listen for the destroy
@@ -128,6 +129,7 @@ var PreferencesDialog = class PreferencesDialog {
     });
   }
 
+  // This populates the preset dropdown menu for the fire options.
   _createFirePresets() {
     this._widget.connect('realize', (widget) => {
       const presets = [
@@ -183,13 +185,17 @@ var PreferencesDialog = class PreferencesDialog {
         }
       ];
 
-      const menu  = Gio.Menu.new();
-      const group = Gio.SimpleActionGroup.new();
+      const menu      = Gio.Menu.new();
+      const group     = Gio.SimpleActionGroup.new();
+      const groupName = 'presets';
 
+      // Add all presets.
       presets.forEach((preset, i) => {
         const actionName = 'fire' + i;
-        menu.append(preset.name, 'presets.' + actionName);
+        menu.append(preset.name, groupName + '.' + actionName);
         let action = Gio.SimpleAction.new(actionName, null);
+
+        // Load the preset on activation.
         action.connect('activate', () => {
           this._settings.set_double('flame-movement-speed', preset.speed);
           this._settings.set_double('flame-scale', preset.scale);
@@ -199,11 +205,12 @@ var PreferencesDialog = class PreferencesDialog {
           this._settings.set_string('fire-color-4', preset.color4);
           this._settings.set_string('fire-color-5', preset.color5);
         });
+
         group.add_action(action);
       });
 
       this._builder.get_object('fire-preset-button').set_menu_model(menu);
-      widget.get_root().insert_action_group('presets', group);
+      widget.get_root().insert_action_group(groupName, group);
     });
   }
 }
