@@ -34,7 +34,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the user interface file.
     this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/${utils.gtk4() ? "gtk4" : "gtk3"}.ui`);
+    this._builder.add_from_resource(`/ui/${utils.gtk4() ? 'gtk4' : 'gtk3'}.ui`);
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
@@ -129,9 +129,12 @@ var PreferencesDialog = class PreferencesDialog {
         settingsKey, this._builder.get_object(settingsKey), property,
         Gio.SettingsBindFlags.DEFAULT);
 
-    this._builder.get_object('reset-' + settingsKey)?.connect('clicked', () => {
-      this._settings.reset(settingsKey);
-    });
+    const resetButton = this._builder.get_object('reset-' + settingsKey);
+    if (resetButton) {
+      resetButton.connect('clicked', () => {
+        this._settings.reset(settingsKey);
+      });
+    }
   }
 
   // This populates the preset dropdown menu for the fire options.
