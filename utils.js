@@ -13,6 +13,8 @@
 
 'use strict';
 
+const {Gtk} = imports.gi;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 
@@ -34,4 +36,9 @@ function debug(message) {
   const extensionRoot = stack[0].indexOf(Me.metadata.uuid);
 
   log('[' + stack[0].slice(extensionRoot) + '] ' + message);
+}
+
+// This method simply returns true if we are currently using GTK4.
+function gtk4() {
+  return Gtk.get_major_version() == 4;
 }

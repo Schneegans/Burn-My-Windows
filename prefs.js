@@ -34,7 +34,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the user interface file.
     this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/settings.ui`);
+    this._builder.add_from_resource(`/ui/${utils.gtk4() ? "gtk4" : "gtk3"}.ui`);
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
@@ -70,6 +70,11 @@ var PreferencesDialog = class PreferencesDialog {
       // Unregister our resources.
       Gio.resources_unregister(this._resources);
     });
+
+    // Show the widgets on GTK3.
+    if (!utils.gtk4()) {
+      this._widget.show_all();
+    }
   }
 
   // -------------------------------------------------------------------- public interface
@@ -210,7 +215,9 @@ var PreferencesDialog = class PreferencesDialog {
       });
 
       this._builder.get_object('fire-preset-button').set_menu_model(menu);
-      widget.get_root().insert_action_group(groupName, group);
+
+      const root = utils.gtk4() ? widget.get_root() : widget.get_toplevel();
+      root.insert_action_group(groupName, group);
     });
   }
 }

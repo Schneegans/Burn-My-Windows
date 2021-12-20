@@ -5,6 +5,8 @@
     "gettext-domain": "burn-my-windows",
     "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
     "shell-version": [
+        "3.36",
+        "3.38",
         "40",
         "41"
     ],
