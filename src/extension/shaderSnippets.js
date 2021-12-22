@@ -13,6 +13,16 @@
 
 'use strict';
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// These functions return strings which can be injected to GLSL shader code.            //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// These should be included in every shader.
+// uTexture:    Contains the texture of the window.
+// uProgress:   A value which transitions from 0 to 1 during the entire animation.
+// uTime:       A steadily increasing value in seconds.
+// uSizeX:      The horizontal size of uTexture in pixels.
+// uSizeY:      The vertical size of uTexture in pixels.
 function standardUniforms() {
   return `
   uniform sampler2D uTexture;
@@ -23,12 +33,15 @@ function standardUniforms() {
   `;
 }
 
-// The noise implementation is from https://www.shadertoy.com/view/3tcBzH
-// (CC-BY-NC-SA).
+// The noise implementation is from https://www.shadertoy.com/view/3tcBzH (CC-BY-NC-SA).
 function noise() {
   return `
   float rand(vec2 co) {
     return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+  }
+
+  vec2 rand2(vec2 co) {
+    return vec2(rand(co), rand(co + vec2(12.9898,78.233)));
   }
 
   float hermite(float t) {
@@ -69,6 +82,16 @@ function noise() {
   `;
 }
 
+// This method requires the uniforms from standardUniforms() to be available.
+// It returns two values: The first is an alpha value which can be used for the window
+// texture. This gradually dissolves the window from top to bottom. The second can be used
+// to mask any effect, it will be most opaque where the window is currently fading and
+// gradually dissolve to zero over time.
+// hideTime:      A value in [0..1]. It determines the percentage of the animation which
+//                is spent for hiding the window. 1-hideTime will be spent thereafter for
+//                dissolving the effect mask.
+// fadeWidth:     The relative size of the window-hiding gradient in [0..1].
+// edgeFadeWidth: The pixel width of the effect fading range at the edges of the window.
 function effectMask() {
   return `
   vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {

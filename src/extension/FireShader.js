@@ -29,7 +29,7 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
 
     // Load the gradient values from the settings. We directly inject the values in the
     // GLSL code below. The shader is compiled once for each window-closing anyways. In
-    // the future, we my want to prevent this frequent recompilations of shaders,
+    // the future, we may want to prevent this frequent recompilations of shaders,
     // though.
     const gradient = [];
     for (let i = 1; i <= 5; i++) {
@@ -40,6 +40,8 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
 
 
     this.set_shader_source(`
+
+      // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
       ${shaderSnippets.noise()}
       ${shaderSnippets.effectMask()}
@@ -51,6 +53,7 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       const vec2  FIRE_SCALE = vec2(400, 600) * ${settings.get_double('flame-scale')};
       const float FIRE_SPEED = ${settings.get_double('flame-movement-speed')};
 
+      // This maps the input value from [0..1] to a color from the gradient.
       vec4 getFireColor(float v) {
         const float steps[5] = float[](0.0, 0.2, 0.35, 0.5, 0.8);
         const vec4 colors[5] = vec4[](
@@ -77,12 +80,12 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
 
       void main(void) {
 
-        // Get a noise value.
+        // Get a noise value which moves vertically in time.
         vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / FIRE_SCALE;
         uv.y += uTime * FIRE_SPEED;
         float noise = perlinNoise(uv, 10.0, 5, 0.5);
 
-        // Modulate noise by mask.
+        // Modulate noise by effect mask.
         vec2 effectMask = effectMask(HIDE_TIME, FADE_WIDTH, EDGE_FADE);
         noise *= effectMask.y;
 
@@ -90,10 +93,10 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
         vec4 fire = getFireColor(noise);
         fire.rgb *= fire.a;
 
-        // Get window texture.
+        // Get the window texture and fade it according to the effect mask.
         cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * effectMask.x;
 
-        // Add fire.
+        // Add the fire to the window.
         cogl_color_out += fire;
       }
     `);
