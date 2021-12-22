@@ -44,7 +44,6 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
       ${shaderSnippets.noise()}
-      ${shaderSnippets.effectMask()}
 
       // These may be configurable in the future.
       const float EDGE_FADE  = 70;
@@ -78,7 +77,45 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
         return colors[4];
       }
 
-      void main(void) {
+      // This method requires the uniforms from standardUniforms() to be available.
+      // It returns two values: The first is an alpha value which can be used for the window
+      // texture. This gradually dissolves the window from top to bottom. The second can be used
+      // to mask any effect, it will be most opaque where the window is currently fading and
+      // gradually dissolve to zero over time.
+      // hideTime:      A value in [0..1]. It determines the percentage of the animation which
+      //                is spent for hiding the window. 1-hideTime will be spent thereafter for
+      //                dissolving the effect mask.
+      // fadeWidth:     The relative size of the window-hiding gradient in [0..1].
+      // edgeFadeWidth: The pixel width of the effect fading range at the edges of the window.
+      vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
+        float burnProgress      = clamp(uProgress/hideTime, 0, 1);
+        float afterBurnProgress = clamp((uProgress-hideTime)/(1-hideTime), 0, 1);
+    
+        // Gradient from top to bottom.
+        float t = cogl_tex_coord_in[0].t * (1 - fadeWidth);
+    
+        // Visible part of the window. Gradually dissolves towards the bottom.
+        float windowMask = 1 - clamp((burnProgress - t) / fadeWidth, 0, 1);
+    
+        // Gradient from top burning window.
+        float effectMask = clamp(t*(1-windowMask)/burnProgress, 0, 1);
+    
+        // Fade-out when the window burned down.
+        if (uProgress > hideTime) {
+          effectMask *= mix(1, 1-t, afterBurnProgress) * pow(1-afterBurnProgress, 2);
+        }
+    
+        // Fade at window borders.
+        vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
+        effectMask *= clamp(pos.x / edgeFadeWidth, 0, 1);
+        effectMask *= clamp(pos.y / edgeFadeWidth, 0, 1);
+        effectMask *= clamp((uSizeX - pos.x) / edgeFadeWidth, 0, 1);
+        effectMask *= clamp((uSizeY - pos.y) / edgeFadeWidth, 0, 1);
+    
+        return vec2(windowMask, effectMask);
+      }
+
+      void main() {
 
         // Get a noise value which moves vertically in time.
         vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / FIRE_SCALE;
