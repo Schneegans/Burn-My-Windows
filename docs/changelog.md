@@ -1,5 +1,14 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
+
+**Release Date:** TBD
+
+#### New Features
+#### Other Enhancements
+
+* Refactored the code a lot to make it easier to add new shader effects in the future.
+
 ## [Burn My Window 3](https://github.com/schneegans/Burn-My-Windows/releases/tag/v3)
 
 **Release Date:** 2021-12-20
