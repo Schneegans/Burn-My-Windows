@@ -17,7 +17,7 @@ const {Gio, Gtk, Gdk} = imports.gi;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.utils;
+const utils          = Me.imports.src.common.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // For now, the preferences dialog of this extension is very simple. In the future, if  //
