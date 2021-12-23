@@ -37,7 +37,7 @@ function standardUniforms() {
 function noise() {
   return `
   float rand(vec2 co) {
-    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+    return fract(sin(dot(co.xy, vec2(12.9898,78.233))) * 43758.5453);
   }
 
   vec2 rand2(vec2 co) {
