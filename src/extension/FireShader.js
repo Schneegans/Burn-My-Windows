@@ -51,7 +51,7 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       // These may be configurable in the future.
       const float EDGE_FADE  = 70;
       const float FADE_WIDTH = 0.1;
-      const float HIDE_TIME  = 0.2;
+      const float HIDE_TIME  = 0.3;
       const vec2  FIRE_SCALE = vec2(400, 600) * ${settings.get_double('flame-scale')};
       const float FIRE_SPEED = ${settings.get_double('flame-movement-speed')};
 
@@ -105,7 +105,8 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
     
         // Fade-out when the window burned down.
         if (uProgress > hideTime) {
-          effectMask *= mix(1, 1-t, afterBurnProgress) * pow(1-afterBurnProgress, 2);
+          float fade = cos(afterBurnProgress*3.14159*0.5);
+          effectMask *= mix(1-t, 1, fade) * fade;
         }
     
         // Fade at window borders.
