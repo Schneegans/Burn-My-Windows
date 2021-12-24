@@ -20,6 +20,10 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const shaderSnippets = Me.imports.src.extension.shaderSnippets;
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// The FireShader uses a procedural gray-scale noise texture. This texture is moved     //
+// vertically over time and mapped to a configurable color gradient. It is faded to     //
+// transparency towards the edges of the window. In addition, there are a couple of     //
+// moving gradients which fade-in or fade-out the fire effect.                          //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
@@ -37,7 +41,6 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       gradient.push(`vec4(${color.red / 255}, ${color.green / 255}, ${
           color.blue / 255}, ${color.alpha / 255})`);
     }
-
 
     this.set_shader_source(`
 

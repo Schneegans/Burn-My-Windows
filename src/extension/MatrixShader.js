@@ -20,6 +20,9 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const shaderSnippets = Me.imports.src.extension.shaderSnippets;
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// The MatrixShader multiplies a grid of random letters with some gradients which are   //
+// moving from top to bottom. The speed of the moving gradients is chosen randomly.     //
+// Also, there is a random delay making the gradients not drop all at the same time.    //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
