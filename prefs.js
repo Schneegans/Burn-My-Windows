@@ -51,6 +51,10 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindColorButton('fire-color-3');
     this._bindColorButton('fire-color-4');
     this._bindColorButton('fire-color-5');
+    this._bindAdjustment('matrix-scale');
+    this._bindAdjustment('matrix-randomness');
+    this._bindColorButton('matrix-trail-color');
+    this._bindColorButton('matrix-tip-color');
 
     // The fire-gradient-reset button needs to by bound explicitly.
     this._builder.get_object('reset-fire-colors').connect('clicked', () => {
@@ -99,7 +103,8 @@ var PreferencesDialog = class PreferencesDialog {
   }
 
   // Colors are stored as strings like 'rgb(1, 0.5, 0)'. As Gio.Settings.bind_with_mapping
-  // is not available yet, we need to do the color conversion manually.
+  // is not available yet, we need to do the color conversion manually. It also binds the
+  // corresponding reset button.
   _bindColorButton(settingsKey) {
 
     const button = this._builder.get_object(settingsKey);
@@ -120,6 +125,8 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Initialize the button with the state in the settings.
     settingSignalHandler();
+
+    this._bindResetButton(settingsKey);
   }
 
   // Connects any widget's property to a settings key. The widget must have the same ID as
@@ -129,6 +136,12 @@ var PreferencesDialog = class PreferencesDialog {
         settingsKey, this._builder.get_object(settingsKey), property,
         Gio.SettingsBindFlags.DEFAULT);
 
+    this._bindResetButton(settingsKey);
+  }
+
+  // Searches for a reset button for the given settings key and make it reset the settings
+  // key when clicked.
+  _bindResetButton(settingsKey) {
     const resetButton = this._builder.get_object('reset-' + settingsKey);
     if (resetButton) {
       resetButton.connect('clicked', () => {

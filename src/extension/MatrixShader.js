@@ -36,6 +36,11 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
         fontData.has_alpha ? Cogl.PixelFormat.RGBA_8888 : Cogl.PixelFormat.RGB_888,
         fontData.width, fontData.height, fontData.rowstride);
 
+    const trailColor =
+        Clutter.Color.from_string(settings.get_string('matrix-trail-color'))[1];
+    const tipColor =
+        Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
+
     // This is partially based on https://www.shadertoy.com/view/ldccW4 (CC-BY-NC-SA).
     this.set_shader_source(`
 
@@ -51,9 +56,9 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
       const float TRAIL_LENGTH  = 0.2;
       const float FINAL_FADE_START_TIME  = 0.8;
       const float LETTER_TILES  = 16.0;
-      const float LETTER_SIZE  = 20.0;
+      const float LETTER_SIZE  = ${settings.get_int('matrix-scale')};
       const float LETTER_FLICKER_SPEED  = 2.0;
-      const float RANDOMNESS  = 1.0;
+      const float RANDOMNESS  = ${settings.get_double('matrix-randomness')};
 
       // This returns a flickering grid of random letters.
       float getText(vec2 fragCoord) {
@@ -106,8 +111,12 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
         rainAlpha *= clamp((uSizeY - pos.y) / EDGE_FADE, 0, 1);
 
         // Add the matrix effect to the window.
-        vec3 trailColor = vec3(0.1,1,0.35);
-        vec3 tipColor   = vec3(1,1,1);
+        vec3 trailColor = vec3(${trailColor.red / 255}, 
+                               ${trailColor.green / 255}, 
+                               ${trailColor.blue / 255});
+        vec3 tipColor =   vec3(${tipColor.red / 255}, 
+                               ${tipColor.green / 255}, 
+                               ${tipColor.blue / 255});
         cogl_color_out.rgb += mix(trailColor, tipColor, pow(rainAlpha, 5)) * rainAlpha * text;
 
         // These are pretty useful for understanding how this works.
