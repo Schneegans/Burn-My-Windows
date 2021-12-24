@@ -16,7 +16,7 @@
 
 
     <key name="destroy-animation-time" type="i">
-      <default>2000</default>
+      <default>1500</default>
       <summary>Destroy Animation Time</summary>
       <description>The time it takes to burn the windows.</description>
     </key>
