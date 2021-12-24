@@ -5,9 +5,13 @@
 **Release Date:** TBD
 
 #### New Features
+
+* Added a new Matrix shader which dissolves your windows in a shower of green letters. You can switch between the fire and the matrix shader in the settings.
+
 #### Other Enhancements
 
 * Refactored the code a lot to make it easier to add new shader effects in the future.
+* Tweaked timing of the fire shader. Previously, the fire became invisible quite quickly. Due to this new animation timing, the default animation time has been reduced to 1500 ms.
 
 ## [Burn My Window 3](https://github.com/schneegans/Burn-My-Windows/releases/tag/v3)
 
