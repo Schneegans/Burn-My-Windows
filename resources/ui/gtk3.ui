@@ -2,6 +2,23 @@
 <interface domain="desktop-cube">
   <requires lib="gtk" version="3.0" />
 
+  <object class="GtkListStore" id="animation-mode-list">
+    <columns>
+      <column type="gchararray" />
+      <column type="gchararray" />
+    </columns>
+    <data>
+      <row>
+        <col id="0">Fire</col>
+        <col id="1">fire</col>
+      </row>
+      <row>
+        <col id="0">Matrix</col>
+        <col id="1">matrix</col>
+      </row>
+    </data>
+  </object>
+
   <object class="GtkAdjustment" id="destroy-animation-time">
     <property name="upper">10000</property>
     <property name="lower">500</property>
@@ -19,6 +36,20 @@
   <object class="GtkAdjustment" id="flame-movement-speed">
     <property name="upper">2.0</property>
     <property name="lower">-2.0</property>
+    <property name="step-increment">0.01</property>
+    <property name="page-increment">0.1</property>
+  </object>
+
+  <object class="GtkAdjustment" id="matrix-scale">
+    <property name="upper">50</property>
+    <property name="lower">5</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">5</property>
+  </object>
+
+  <object class="GtkAdjustment" id="matrix-randomness">
+    <property name="upper">1</property>
+    <property name="lower">0</property>
     <property name="step-increment">0.01</property>
     <property name="page-increment">0.1</property>
   </object>
@@ -56,6 +87,48 @@
                 <child>
                   <object class="GtkListBox">
                     <property name="selection-mode">none</property>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Close Window Animation</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkComboBox" id="close-animation">
+                                <property name="valign">center</property>
+                                <property name="model">animation-mode-list</property>
+                                <property name="id_column">1</property>
+                                <property name="active_id">fire</property>
+                                <child>
+                                  <object class="GtkCellRendererText" />
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-close-animation">
+                                <property name="icon-name">edit-clear-symbolic</property>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
 
                     <child>
                       <object class="GtkListBoxRow">
@@ -171,7 +244,7 @@
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="yes">Flame Scale</property>
+                                <property name="label" translatable="yes">Scale</property>
                                 <property name="xalign">0</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -220,7 +293,7 @@
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="yes">Flame Movement Speed</property>
+                                <property name="label" translatable="yes">Speed</property>
                                 <property name="xalign">0</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -270,7 +343,7 @@
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="yes">Fire Gradient</property>
+                                <property name="label" translatable="yes">Gradient</property>
                                 <property name="xalign">0</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
@@ -309,6 +382,226 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="reset-fire-colors">
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">edit-clear-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkBox">
+                <property name="margin-top">30</property>
+                <property name="margin-bottom">10</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">Matrix Options</property>
+                    <property name="xalign">0</property>
+                    <property name="hexpand">1</property>
+                    <style>
+                      <class name="title-4" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkFrame">
+                <child>
+                  <object class="GtkListBox">
+                    <property name="selection-mode">none</property>
+                    <style>
+                      <class name="rich-list" />
+                    </style>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="margin-start">10</property>
+                        <property name="margin-end">10</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Scale</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkScale">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="draw-value">1</property>
+                                <property name="digits">0</property>
+                                <property name="value-pos">left</property>
+                                <property name="width-request">300</property>
+                                <property name="adjustment">matrix-scale</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-matrix-scale">
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">edit-clear-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="margin-start">10</property>
+                        <property name="margin-end">10</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Randomness</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkScale">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="draw-value">1</property>
+                                <property name="digits">2</property>
+                                <property name="value-pos">left</property>
+                                <property name="width-request">300</property>
+                                <property name="adjustment">matrix-randomness</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-matrix-randomness">
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">edit-clear-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="margin-start">10</property>
+                        <property name="margin-end">10</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="activatable">0</property>
+                        <child>
+
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Trail Color</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="matrix-trail-color">
+                                <property name="use_alpha">1</property>
+                                <property name="show_editor">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-matrix-trail-color">
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">edit-clear-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="margin-start">10</property>
+                        <property name="margin-end">10</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="activatable">0</property>
+                        <child>
+
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Tip Color</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="matrix-tip-color">
+                                <property name="use_alpha">1</property>
+                                <property name="show_editor">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-matrix-tip-color">
                                 <child>
                                   <object class="GtkImage">
                                     <property name="icon-name">edit-clear-symbolic</property>
