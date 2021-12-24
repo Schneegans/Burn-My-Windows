@@ -51,14 +51,14 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
       uniform sampler2D uFontTexture;
 
       // These may be configurable in the future.
-      const float EDGE_FADE  = 30;
-      const float FADE_WIDTH = 150;
-      const float TRAIL_LENGTH  = 0.2;
-      const float FINAL_FADE_START_TIME  = 0.8;
-      const float LETTER_TILES  = 16.0;
-      const float LETTER_SIZE  = ${settings.get_int('matrix-scale')};
+      const float EDGE_FADE             = 30;
+      const float FADE_WIDTH            = 150;
+      const float TRAIL_LENGTH          = 0.2;
+      const float FINAL_FADE_START_TIME = 0.8;
+      const float LETTER_TILES          = 16.0;
+      const float LETTER_SIZE           = ${settings.get_int('matrix-scale')};
       const float LETTER_FLICKER_SPEED  = 2.0;
-      const float RANDOMNESS  = ${settings.get_double('matrix-randomness')};
+      const float RANDOMNESS            = ${settings.get_double('matrix-randomness')};
 
       // This returns a flickering grid of random letters.
       float getText(vec2 fragCoord) {
@@ -117,7 +117,7 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
         vec3 tipColor =   vec3(${tipColor.red / 255}, 
                                ${tipColor.green / 255}, 
                                ${tipColor.blue / 255});
-        cogl_color_out.rgb += mix(trailColor, tipColor, pow(rainAlpha, 5)) * rainAlpha * text;
+        cogl_color_out.rgb += mix(trailColor, tipColor, min(1, pow(rainAlpha+0.1, 4))) * rainAlpha * text;
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(vec3(text), 1);
@@ -127,6 +127,7 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
     `);
   };
 
+  // This is overridden to bind the font texture for drawing.
   vfunc_paint_target(node, paint_context) {
     const pipeline = this.get_pipeline();
     pipeline.set_layer_texture(1, this._fontTexture.get_texture());

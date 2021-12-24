@@ -2,6 +2,23 @@
 <interface domain="desktop-cube">
   <requires lib="gtk" version="4.0" />
 
+  <object class="GtkListStore" id="animation-mode-list">
+    <columns>
+      <column type="gchararray" />
+      <column type="gchararray" />
+    </columns>
+    <data>
+      <row>
+        <col id="0">Fire</col>
+        <col id="1">fire</col>
+      </row>
+      <row>
+        <col id="0">Matrix</col>
+        <col id="1">matrix</col>
+      </row>
+    </data>
+  </object>
+
   <object class="GtkScrolledWindow" id="settings-widget">
     <property name="hscrollbar-policy">never</property>
     <property name="min-content-height">200</property>
@@ -41,6 +58,48 @@
                       <class name="rich-list" />
                     </style>
 
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Close Window Animation</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkComboBox" id="close-animation">
+                                <property name="valign">center</property>
+                                <property name="model">animation-mode-list</property>
+                                <property name="id_column">1</property>
+                                <property name="active_id">fire</property>
+                                <child>
+                                  <object class="GtkCellRendererText" />
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-close-animation">
+                                <property name="icon-name">edit-clear-symbolic</property>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
 
                     <child>
                       <object class="GtkListBoxRow">

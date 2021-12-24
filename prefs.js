@@ -44,6 +44,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Bind all properties.
     this._bindAdjustment('destroy-animation-time');
+    this._bindCombobox('close-animation');
     this._bindAdjustment('flame-movement-speed');
     this._bindAdjustment('flame-scale');
     this._bindColorButton('fire-color-1');
@@ -89,6 +90,12 @@ var PreferencesDialog = class PreferencesDialog {
   }
 
   // ----------------------------------------------------------------------- private stuff
+
+  // Connects a Gtk.ComboBox (or anything else which has an 'active-id' property) to a
+  // settings key. It also binds the corresponding reset button.
+  _bindCombobox(settingsKey) {
+    this._bind(settingsKey, 'active-id');
+  }
 
   // Connects a Gtk.Adjustment (or anything else which has a 'value' property) to a
   // settings key. It also binds the corresponding reset button.

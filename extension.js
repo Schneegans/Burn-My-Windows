@@ -131,17 +131,27 @@ class Extension {
       tweakTransition('scale-x', 1);
       tweakTransition('scale-y', 1);
 
-      // Instead, we add a cool shader to our window actor!
-      const shader = new MatrixShader(this._settings);
-      actor.add_effect(shader);
+      let shader = null;
 
-      // Update uniforms at each frame.
-      transition.connect('new-frame', (t) => {
-        shader.set_uniform_value('uProgress', t.get_progress());
-        shader.set_uniform_value('uTime', 0.001 * t.get_elapsed_time());
-        shader.set_uniform_value('uSizeX', actor.width);
-        shader.set_uniform_value('uSizeY', actor.height);
-      });
+      // Add a cool shader to our window actor!
+      const mode = this._settings.get_enum('close-animation');
+      if (mode == 1) {
+        shader = new FireShader(this._settings);
+      } else if (mode == 2) {
+        shader = new MatrixShader(this._settings);
+      }
+
+      if (shader) {
+        actor.add_effect(shader);
+
+        // Update uniforms at each frame.
+        transition.connect('new-frame', (t) => {
+          shader.set_uniform_value('uProgress', t.get_progress());
+          shader.set_uniform_value('uTime', 0.001 * t.get_elapsed_time());
+          shader.set_uniform_value('uSizeX', actor.width);
+          shader.set_uniform_value('uSizeY', actor.height);
+        });
+      }
     });
   }
 

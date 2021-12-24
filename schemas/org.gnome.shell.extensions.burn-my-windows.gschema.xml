@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
 
+  <enum id='org.gnome.shell.extensions.burn-my-windows.AnimationType'>
+    <value value='1' nick='fire' />
+    <value value='2' nick='matrix' />
+  </enum>
+
   <schema path="/org/gnome/shell/extensions/burn-my-windows/" id="org.gnome.shell.extensions.burn-my-windows">
+
+    <key name="close-animation" enum="org.gnome.shell.extensions.burn-my-windows.AnimationType">
+      <default>"fire"</default>
+      <summary>Close Animation</summary>
+      <description>The animation used for window closing.</description>
+    </key>
+
 
     <key name="destroy-animation-time" type="i">
       <default>2000</default>
