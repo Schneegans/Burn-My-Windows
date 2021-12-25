@@ -116,22 +116,25 @@ var PreferencesDialog = class PreferencesDialog {
 
     const button = this._builder.get_object(settingsKey);
 
-    // Update the settings when the color is modified.
-    button.connect('color-set', () => {
-      this._settings.set_string(settingsKey, button.get_rgba().to_string());
-    });
+    if (button) {
 
-    // Update the button state when the settings change.
-    const settingSignalHandler = () => {
-      const rgba = new Gdk.RGBA();
-      rgba.parse(this._settings.get_string(settingsKey));
-      button.rgba = rgba;
-    };
+      // Update the settings when the color is modified.
+      button.connect('color-set', () => {
+        this._settings.set_string(settingsKey, button.get_rgba().to_string());
+      });
 
-    this._settings.connect('changed::' + settingsKey, settingSignalHandler);
+      // Update the button state when the settings change.
+      const settingSignalHandler = () => {
+        const rgba = new Gdk.RGBA();
+        rgba.parse(this._settings.get_string(settingsKey));
+        button.rgba = rgba;
+      };
 
-    // Initialize the button with the state in the settings.
-    settingSignalHandler();
+      this._settings.connect('changed::' + settingsKey, settingSignalHandler);
+
+      // Initialize the button with the state in the settings.
+      settingSignalHandler();
+    }
 
     this._bindResetButton(settingsKey);
   }
@@ -139,9 +142,11 @@ var PreferencesDialog = class PreferencesDialog {
   // Connects any widget's property to a settings key. The widget must have the same ID as
   // the settings key. It also binds the corresponding reset button.
   _bind(settingsKey, property) {
-    this._settings.bind(
-        settingsKey, this._builder.get_object(settingsKey), property,
-        Gio.SettingsBindFlags.DEFAULT);
+    const object = this._builder.get_object(settingsKey);
+
+    if (object) {
+      this._settings.bind(settingsKey, object, property, Gio.SettingsBindFlags.DEFAULT);
+    }
 
     this._bindResetButton(settingsKey);
   }

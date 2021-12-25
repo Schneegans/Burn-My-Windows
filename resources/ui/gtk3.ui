@@ -88,7 +88,7 @@
                   <object class="GtkListBox">
                     <property name="selection-mode">none</property>
 
-                    <child>
+                    <!-- <child>
                       <object class="GtkListBoxRow">
                         <property name="margin-start">10</property>
                         <property name="margin-end">10</property>
@@ -138,7 +138,7 @@
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </child> -->
 
                     <child>
                       <object class="GtkListBoxRow">
@@ -415,7 +415,7 @@
               </object>
             </child>
 
-            <child>
+            <!-- <child>
               <object class="GtkBox">
                 <property name="margin-top">30</property>
                 <property name="margin-bottom">10</property>
@@ -430,9 +430,9 @@
                   </object>
                 </child>
               </object>
-            </child>
+            </child> -->
 
-            <child>
+            <!-- <child>
               <object class="GtkFrame">
                 <child>
                   <object class="GtkListBox">
@@ -633,7 +633,7 @@
                   </object>
                 </child>
               </object>
-            </child>
+            </child> -->
 
           </object>
         </child>
