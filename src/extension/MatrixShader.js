@@ -23,6 +23,8 @@ const shaderSnippets = Me.imports.src.extension.shaderSnippets;
 // The MatrixShader multiplies a grid of random letters with some gradients which are   //
 // moving from top to bottom. The speed of the moving gradients is chosen randomly.     //
 // Also, there is a random delay making the gradients not drop all at the same time.    //
+// This effect is not available on GNOME 3.3x, due to the limitation described in the   //
+// documentation of vfunc_paint_target further down in this file.                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
@@ -130,7 +132,10 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
     `);
   };
 
-  // This is overridden to bind the font texture for drawing.
+  // This is overridden to bind the font texture for drawing. Sadly, this seems to be
+  // impossible under GNOME 3.3x as this.get_pipeline() is not available. It was called
+  // get_target() back then but this is not wrapped in GJS.
+  // https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-3-36/clutter/clutter/clutter-offscreen-effect.c#L598
   vfunc_paint_target(node, paint_context) {
     const pipeline = this.get_pipeline();
     pipeline.set_layer_texture(1, this._fontTexture.get_texture());
