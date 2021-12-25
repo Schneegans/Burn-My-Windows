@@ -43,6 +43,7 @@ var PreferencesDialog = class PreferencesDialog {
     this._settings = ExtensionUtils.getSettings();
 
     // Bind all properties.
+    this._bindCombobox('close-animation');
     this._bindAdjustment('destroy-animation-time');
     this._bindSwitch('destroy-dialogs');
     this._bindAdjustment('flame-movement-speed');
@@ -52,6 +53,10 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindColorButton('fire-color-3');
     this._bindColorButton('fire-color-4');
     this._bindColorButton('fire-color-5');
+    this._bindAdjustment('matrix-scale');
+    this._bindAdjustment('matrix-randomness');
+    this._bindColorButton('matrix-trail-color');
+    this._bindColorButton('matrix-tip-color');
 
     // The fire-gradient-reset button needs to by bound explicitly.
     this._builder.get_object('reset-fire-colors').connect('clicked', () => {
@@ -87,6 +92,12 @@ var PreferencesDialog = class PreferencesDialog {
 
   // ----------------------------------------------------------------------- private stuff
 
+  // Connects a Gtk.ComboBox (or anything else which has an 'active-id' property) to a
+  // settings key. It also binds the corresponding reset button.
+  _bindCombobox(settingsKey) {
+    this._bind(settingsKey, 'active-id');
+  }
+
   // Connects a Gtk.Adjustment (or anything else which has a 'value' property) to a
   // settings key. It also binds the corresponding reset button.
   _bindAdjustment(settingsKey) {
@@ -100,36 +111,50 @@ var PreferencesDialog = class PreferencesDialog {
   }
 
   // Colors are stored as strings like 'rgb(1, 0.5, 0)'. As Gio.Settings.bind_with_mapping
-  // is not available yet, we need to do the color conversion manually.
+  // is not available yet, we need to do the color conversion manually. It also binds the
+  // corresponding reset button.
   _bindColorButton(settingsKey) {
 
     const button = this._builder.get_object(settingsKey);
 
-    // Update the settings when the color is modified.
-    button.connect('color-set', () => {
-      this._settings.set_string(settingsKey, button.get_rgba().to_string());
-    });
+    if (button) {
 
-    // Update the button state when the settings change.
-    const settingSignalHandler = () => {
-      const rgba = new Gdk.RGBA();
-      rgba.parse(this._settings.get_string(settingsKey));
-      button.rgba = rgba;
-    };
+      // Update the settings when the color is modified.
+      button.connect('color-set', () => {
+        this._settings.set_string(settingsKey, button.get_rgba().to_string());
+      });
 
-    this._settings.connect('changed::' + settingsKey, settingSignalHandler);
+      // Update the button state when the settings change.
+      const settingSignalHandler = () => {
+        const rgba = new Gdk.RGBA();
+        rgba.parse(this._settings.get_string(settingsKey));
+        button.rgba = rgba;
+      };
 
-    // Initialize the button with the state in the settings.
-    settingSignalHandler();
+      this._settings.connect('changed::' + settingsKey, settingSignalHandler);
+
+      // Initialize the button with the state in the settings.
+      settingSignalHandler();
+    }
+
+    this._bindResetButton(settingsKey);
   }
 
   // Connects any widget's property to a settings key. The widget must have the same ID as
   // the settings key. It also binds the corresponding reset button.
   _bind(settingsKey, property) {
-    this._settings.bind(
-        settingsKey, this._builder.get_object(settingsKey), property,
-        Gio.SettingsBindFlags.DEFAULT);
+    const object = this._builder.get_object(settingsKey);
 
+    if (object) {
+      this._settings.bind(settingsKey, object, property, Gio.SettingsBindFlags.DEFAULT);
+    }
+
+    this._bindResetButton(settingsKey);
+  }
+
+  // Searches for a reset button for the given settings key and make it reset the settings
+  // key when clicked.
+  _bindResetButton(settingsKey) {
     const resetButton = this._builder.get_object('reset-' + settingsKey);
     if (resetButton) {
       resetButton.connect('clicked', () => {

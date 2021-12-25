@@ -13,7 +13,7 @@
 
 'use strict';
 
-const {Clutter, Meta} = imports.gi;
+const {Clutter, Gio, Meta} = imports.gi;
 
 const Workspace                  = imports.ui.workspace.Workspace;
 const WindowManager              = imports.ui.windowManager.WindowManager;
@@ -23,6 +23,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.common.utils;
 const FireShader     = Me.imports.src.extension.FireShader.FireShader;
+const MatrixShader   = Me.imports.src.extension.MatrixShader.MatrixShader;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close animation to look like the window was set  //
@@ -38,6 +39,10 @@ class Extension {
   // This function could be called after the extension is enabled, which could be done
   // from GNOME Tweaks, when you log in or when the screen is unlocked.
   enable() {
+
+    // Load all of our resources.
+    this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
+    Gio.resources_register(this._resources);
 
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
@@ -141,23 +146,36 @@ class Extension {
       tweakTransition('scale-x', 1);
       tweakTransition('scale-y', 1);
 
-      // Instead, we add a cool shader to our window actor!
-      const shader = new FireShader(this._settings);
-      actor.add_effect(shader);
+      let shader = null;
 
-      // Update uniforms at each frame.
-      transition.connect('new-frame', (t) => {
-        shader.set_uniform_value('uProgress', t.get_progress());
-        shader.set_uniform_value('uTime', 0.001 * t.get_elapsed_time());
-        shader.set_uniform_value('uSizeX', actor.width);
-        shader.set_uniform_value('uSizeY', actor.height);
-      });
+      // Add a cool shader to our window actor!
+      const mode = this._settings.get_enum('close-animation');
+      if (mode == 1) {
+        shader = new FireShader(this._settings);
+      } else if (mode == 2) {
+        shader = new MatrixShader(this._settings);
+      }
+
+      if (shader) {
+        actor.add_effect(shader);
+
+        // Update uniforms at each frame.
+        transition.connect('new-frame', (t) => {
+          shader.set_uniform_value('uProgress', t.get_progress());
+          shader.set_uniform_value('uTime', 0.001 * t.get_elapsed_time());
+          shader.set_uniform_value('uSizeX', actor.width);
+          shader.set_uniform_value('uSizeY', actor.height);
+        });
+      }
     });
   }
 
   // This function could be called after the extension is uninstalled, disabled in GNOME
   // Tweaks, when you log out or when the screen locks.
   disable() {
+
+    // Unregister our resources.
+    Gio.resources_unregister(this._resources);
 
     // Restore the original behavior.
     global.window_manager.disconnect(this._destroyConnection);
