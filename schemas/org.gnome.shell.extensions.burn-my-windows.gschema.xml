@@ -21,6 +21,12 @@
       <description>The time it takes to burn the windows.</description>
     </key>
 
+    <key name="destroy-dialogs" type="b">
+      <default>true</default>
+      <summary>Destroy Dialogs</summary>
+      <description>Set to true to burn dialogs as well.</description>
+    </key>
+
     <key name="flame-movement-speed" type="d">
       <default>0.5</default>
       <summary>Flame Movement Speed</summary>

@@ -13,7 +13,7 @@
 
 'use strict';
 
-const {Clutter, Gio} = imports.gi;
+const {Clutter, Gio, Meta} = imports.gi;
 
 const Workspace                  = imports.ui.workspace.Workspace;
 const WindowManager              = imports.ui.windowManager.WindowManager;
@@ -53,14 +53,22 @@ class Extension {
     this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
 
     // We may also override these animation times.
-    this._origDestroyTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
+    this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
+    this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
 
+    // Update animation times if the respective settings are changed.
     const loadAnimationTimes = () => {
       imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
           this._settings.get_int('destroy-animation-time');
+
+      imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
+          this._settings.get_boolean('destroy-dialogs') ?
+          this._settings.get_int('destroy-animation-time') :
+          this._origDialogTime;
     };
 
     this._settings.connect('changed::destroy-animation-time', loadAnimationTimes);
+    this._settings.connect('changed::destroy-dialogs', loadAnimationTimes);
     loadAnimationTimes();
 
     // We will use extensionThis to refer to the extension inside the patched methods of
@@ -72,7 +80,7 @@ class Extension {
     // from the overview (why?). With these overrides we make sure that they are actually
     // faded out. To do this, _windowRemoved and _doRemoveWindow now check whether there
     // is a transition ongoing (via extensionThis._shouldDestroy). If that's the case,
-    // they methods do nothing. Are the actors removed in the end? I hope so. The
+    // these methods do nothing. Are the actors removed in the end? I hope so. The
     // _destroyWindow of the WindowManager sets the transitions up and should take care of
     // removing the actors at the end of the transitions.
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1299
@@ -112,8 +120,15 @@ class Extension {
       // one, set up the window close animation. This usually fades-out the window and
       // scales it a bit down. If no transition is in progress, something unexpected
       // happened. We rather try not to burn the window!
-      const transition = actor.get_transition('opacity');
+      const transition = actor.get_transition('scale-y');
       if (!transition) {
+        return;
+      }
+
+      // We do nothing if a dialog got closed and we should not burn them.
+      if (!this._settings.get_boolean('destroy-dialogs') &&
+          (actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
+           actor.meta_window.window_type == Meta.WindowType.DIALOG)) {
         return;
       }
 
@@ -169,13 +184,16 @@ class Extension {
     Workspace.prototype._doRemoveWindow         = this._origDoRemoveWindow;
     WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
 
-    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME = this._origDestroyTime;
+    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
+    imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
 
     this._settings = null;
   }
 
   // ----------------------------------------------------------------------- private stuff
 
+  // This is required to enable window-close animations in the overview. See the comment
+  // for Workspace.prototype._windowRemoved above for an explanation.
   _shouldDestroy(workspace, metaWindow) {
     const index = workspace._lookupIndex(metaWindow);
     if (index == -1) {
@@ -183,7 +201,7 @@ class Extension {
     }
 
     const actor = workspace._windows[index]._windowActor;
-    if (!actor.get_transition('opacity')) {
+    if (!actor.get_transition('scale-y')) {
       return true;
     }
 

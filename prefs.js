@@ -43,8 +43,9 @@ var PreferencesDialog = class PreferencesDialog {
     this._settings = ExtensionUtils.getSettings();
 
     // Bind all properties.
-    this._bindAdjustment('destroy-animation-time');
     this._bindCombobox('close-animation');
+    this._bindAdjustment('destroy-animation-time');
+    this._bindSwitch('destroy-dialogs');
     this._bindAdjustment('flame-movement-speed');
     this._bindAdjustment('flame-scale');
     this._bindColorButton('fire-color-1');

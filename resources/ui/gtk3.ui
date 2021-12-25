@@ -189,6 +189,50 @@
                       </object>
                     </child>
 
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="margin-start">10</property>
+                        <property name="margin-end">10</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Also Burn Dialogs</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkSwitch" id="destroy-dialogs">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton" id="reset-destroy-dialogs">
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">edit-clear-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
+                                <property name="tooltip-text">Reset to Default Value</property>
+                                <style>
+                                  <class name="flat" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
                   </object>
                 </child>
               </object>
