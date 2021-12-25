@@ -2,7 +2,7 @@
 
 ## [Burn My Window 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
 
-**Release Date:** TBD
+**Release Date:** 2021-12-25
 
 #### New Features
 
