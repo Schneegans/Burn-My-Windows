@@ -159,7 +159,7 @@
                 <property name="margin-bottom">10</property>
                 <child>
                   <object class="GtkLabel">
-                    <property name="label">Fire Options</property>
+                    <property name="label">Fire Animation Options</property>
                     <property name="xalign">0</property>
                     <property name="hexpand">1</property>
                     <style>
@@ -348,7 +348,7 @@
                 <property name="margin-bottom">10</property>
                 <child>
                   <object class="GtkLabel">
-                    <property name="label">Matrix Options</property>
+                    <property name="label">Matrix Animation Options</property>
                     <property name="xalign">0</property>
                     <property name="hexpand">1</property>
                     <style>
