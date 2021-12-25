@@ -22,7 +22,7 @@
     </key>
 
     <key name="destroy-dialogs" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Destroy Dialogs</summary>
       <description>Set to true to burn dialogs as well.</description>
     </key>
