@@ -51,7 +51,7 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       // These may be configurable in the future.
       const float EDGE_FADE  = 70;
       const float FADE_WIDTH = 0.1;
-      const float HIDE_TIME  = 0.3;
+      const float HIDE_TIME  = 0.4;
       const vec2  FIRE_SCALE = vec2(400, 600) * ${settings.get_double('flame-scale')};
       const float FIRE_SPEED = ${settings.get_double('flame-movement-speed')};
 
@@ -93,29 +93,29 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
         float burnProgress      = clamp(uProgress/hideTime, 0, 1);
         float afterBurnProgress = clamp((uProgress-hideTime)/(1-hideTime), 0, 1);
-    
+
         // Gradient from top to bottom.
         float t = cogl_tex_coord_in[0].t * (1 - fadeWidth);
-    
+
         // Visible part of the window. Gradually dissolves towards the bottom.
         float windowMask = 1 - clamp((burnProgress - t) / fadeWidth, 0, 1);
-    
+
         // Gradient from top burning window.
         float effectMask = clamp(t*(1-windowMask)/burnProgress, 0, 1);
-    
+
         // Fade-out when the window burned down.
         if (uProgress > hideTime) {
-          float fade = cos(afterBurnProgress*3.14159*0.5);
-          effectMask *= mix(1-t, 1, fade) * fade;
+          float fade = sqrt(1-afterBurnProgress*afterBurnProgress);
+          effectMask *= mix(1, 1-t, afterBurnProgress) * fade;
         }
-    
+
         // Fade at window borders.
         vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
         effectMask *= clamp(pos.x / edgeFadeWidth, 0, 1);
         effectMask *= clamp(pos.y / edgeFadeWidth, 0, 1);
         effectMask *= clamp((uSizeX - pos.x) / edgeFadeWidth, 0, 1);
         effectMask *= clamp((uSizeY - pos.y) / edgeFadeWidth, 0, 1);
-    
+
         return vec2(windowMask, effectMask);
       }
 
@@ -139,6 +139,11 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
 
         // Add the fire to the window.
         cogl_color_out += fire;
+
+        // These are pretty useful for understanding how this works.
+        // cogl_color_out = vec4(vec3(noise), 1);
+        // cogl_color_out = vec4(vec3(effectMask.x), 1);
+        // cogl_color_out = vec4(vec3(effectMask.y), 1);
       }
     `);
   };
