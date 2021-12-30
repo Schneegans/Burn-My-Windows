@@ -1,5 +1,14 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 5](https://github.com/schneegans/Burn-My-Windows/releases/tag/v5)
+
+**Release Date:** TBD
+
+#### Other Enhancements
+
+* The fire shader now uses a `smoothstep` to make it less blocky.
+
+
 ## [Burn My Window 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
 
 **Release Date:** 2021-12-25

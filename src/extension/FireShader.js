@@ -111,10 +111,10 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
 
         // Fade at window borders.
         vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
-        effectMask *= clamp(pos.x / edgeFadeWidth, 0, 1);
-        effectMask *= clamp(pos.y / edgeFadeWidth, 0, 1);
-        effectMask *= clamp((uSizeX - pos.x) / edgeFadeWidth, 0, 1);
-        effectMask *= clamp((uSizeY - pos.y) / edgeFadeWidth, 0, 1);
+        effectMask *= smoothstep(0, 1, clamp(pos.x / edgeFadeWidth, 0, 1));
+        effectMask *= smoothstep(0, 1, clamp(pos.y / edgeFadeWidth, 0, 1));
+        effectMask *= smoothstep(0, 1, clamp((uSizeX - pos.x) / edgeFadeWidth, 0, 1));
+        effectMask *= smoothstep(0, 1, clamp((uSizeY - pos.y) / edgeFadeWidth, 0, 1));
 
         return vec2(windowMask, effectMask);
       }
