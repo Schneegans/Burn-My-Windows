@@ -24,6 +24,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.common.utils;
 const FireShader     = Me.imports.src.extension.FireShader.FireShader;
 const MatrixShader   = Me.imports.src.extension.MatrixShader.MatrixShader;
+const TVEffectShader = Me.imports.src.extension.TVEffectShader.TVEffectShader;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close animation to look like the window was set  //
@@ -154,6 +155,9 @@ class Extension {
         shader = new FireShader(this._settings);
       } else if (mode == 2) {
         shader = new MatrixShader(this._settings);
+      } else if (mode == 3) {
+        shader = new TVEffectShader(this._settings);
+        tweakTransition('scale-y', 0.5);
       }
 
       if (shader) {

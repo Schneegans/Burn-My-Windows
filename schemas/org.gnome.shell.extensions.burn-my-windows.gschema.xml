@@ -4,6 +4,7 @@
   <enum id='org.gnome.shell.extensions.burn-my-windows.AnimationType'>
     <value value='1' nick='fire' />
     <value value='2' nick='matrix' />
+    <value value='3' nick='tv' />
   </enum>
 
   <schema path="/org/gnome/shell/extensions/burn-my-windows/" id="org.gnome.shell.extensions.burn-my-windows">
