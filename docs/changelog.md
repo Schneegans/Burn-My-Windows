@@ -4,6 +4,10 @@
 
 **Release Date:** TBD
 
+#### New Features
+
+* Added a new simple close-animation: the TV-Effect!
+
 #### Other Enhancements
 
 * The fire shader now uses a `smoothstep` to make it less blocky.
