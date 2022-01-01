@@ -20,6 +20,10 @@
         <col id="0">TV Effect</col>
         <col id="1">tv</col>
       </row>
+      <row>
+        <col id="0">T-Rex Attack</col>
+        <col id="1">trex</col>
+      </row>
     </data>
   </object>
 
