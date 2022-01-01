@@ -57,6 +57,7 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindAdjustment('matrix-randomness');
     this._bindColorButton('matrix-trail-color');
     this._bindColorButton('matrix-tip-color');
+    this._bindColorButton('tv-effect-color');
 
     // The fire-gradient-reset button needs to by bound explicitly.
     this._builder.get_object('reset-fire-colors').connect('clicked', () => {

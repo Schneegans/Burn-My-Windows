@@ -95,6 +95,13 @@
       <description>The color matrix trails.</description>
     </key>
 
+    <key name="tv-effect-color" type="s">
+      <default>"rgb(255, 255, 255)"</default>
+      <summary>TV Effect Color</summary>
+      <description>The color of the TV effect.</description>
+    </key>
+
+
   </schema>
 
 </schemalist>
