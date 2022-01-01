@@ -25,6 +25,7 @@ const utils          = Me.imports.src.common.utils;
 const FireShader     = Me.imports.src.extension.FireShader.FireShader;
 const MatrixShader   = Me.imports.src.extension.MatrixShader.MatrixShader;
 const TVEffectShader = Me.imports.src.extension.TVEffectShader.TVEffectShader;
+const TRexShader     = Me.imports.src.extension.TRexShader.TRexShader;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close animation to look like the window was set  //
@@ -158,6 +159,12 @@ class Extension {
       } else if (mode == 3) {
         shader = new TVEffectShader(this._settings);
         tweakTransition('scale-y', 0.5);
+      } else if (mode == 4) {
+        shader = new TRexShader(this._settings);
+
+        const warp = 0.5 * this._settings.get_double('claw-scratch-warp');
+        tweakTransition('scale-x', 1.0 + warp);
+        tweakTransition('scale-y', 1.0 + warp);
       }
 
       if (shader) {
