@@ -482,7 +482,6 @@
                 <child>
                   <object class="GtkListBox">
                     <property name="selection-mode">none</property>
-                    <property name="show-separators">1</property>
                     <style>
                       <class name="rich-list" />
                     </style>
@@ -514,10 +513,12 @@
                             </child>
                             <child>
                               <object class="GtkButton" id="reset-tv-effect-color">
-                                <object class="GtkImage">
-                                  <property name="icon-name">edit-clear-symbolic</property>
-                                  <property name="icon-size">1</property>
-                                </object>
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">edit-clear-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
                                 <property name="tooltip-text">Reset to Default Value</property>
                                 <style>
                                   <class name="flat" />
