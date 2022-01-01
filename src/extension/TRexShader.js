@@ -20,6 +20,9 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const shaderSnippets = Me.imports.src.extension.shaderSnippets;
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// This effect tears your windows apart with a series of violent scratches!             //
+// This effect is not available on GNOME 3.3x, due to the limitation described in the   //
+// documentation of vfunc_paint_target further down in this file.                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
