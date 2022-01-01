@@ -30,6 +30,9 @@ var TVEffectShader = GObject.registerClass(
       _init(settings) {
         super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
+        const color =
+            Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
+
         this.set_shader_source(`
 
         // Inject some common shader snippets.
@@ -68,7 +71,9 @@ var TVEffectShader = GObject.registerClass(
           float mask = tbMask * lrMask * ffMask;
 
           vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-          vec4 effectColor = vec4(1, 1, 1, 1) * windowColor.a;
+          vec4 effectColor = vec4(${color.red / 255},
+                                  ${color.green / 255},
+                                  ${color.blue / 255}, 1.0) * windowColor.a;
 
           windowColor.rgb = mix(windowColor.rgb, effectColor.rgb, smoothstep(0, 1, uProgress));
 
