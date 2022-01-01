@@ -27,8 +27,9 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
   _init(settings) {
     super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
-    // Load the font texture. As the shader is re-created for each window animation, this
+    // Load the claw texture. As the shader is re-created for each window animation, this
     // texture is also re-created each time. This could be improved in the future!
+    // See assets/README.md for how this texture was created.
     const clawData    = GdkPixbuf.Pixbuf.new_from_resource('/img/claws.png');
     this._clawTexture = new Clutter.Image();
     this._clawTexture.set_data(
@@ -37,94 +38,105 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
 
     const color = Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
 
-    // This is partially based on https://www.shadertoy.com/view/ldccW4 (CC-BY-NC-SA).
     this.set_shader_source(`
 
       // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
       ${shaderSnippets.noise()}
 
+      // See assets/README.md for how this texture was created.
       uniform sampler2D uClawTexture;
 
-      const vec2 SEED = vec2(${Math.random()}, ${Math.random()});
+      const vec2  SEED            = vec2(${Math.random()}, ${Math.random()});
+      const float CLAW_SIZE       = ${settings.get_double('claw-scratch-scale')};
+      const float NUM_CLAWS       = ${settings.get_int('claw-scratch-count')};
+      const float WARP_INTENSITY  = 1.0 + ${settings.get_double('claw-scratch-warp')};
+      const float FLASH_INTENSITY = 0.1;
+      const float MAX_SPAWN_TIME  = 0.5; // Scratches will only start in the first half of the animation.
+      const float FF_TIME         = 0.5; // Relative time for the final fade to transparency.
 
-      vec2 getClawUV(vec2 texCoords, float globalScale, vec2 seed) {
+      // This method generates a grid of randomly rotated, slightly shifted and scaled 
+      // UV squares. It returns the texture coords of the UV square at the given actor
+      // coordinates. If these do not fall into one of the UV grids, the coordinates of
+      // the closest UV grid will be clamped and returned.
+      vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
 
+        // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
         vec2 coords = texCoords + rand2(seed);
         coords *= uSizeX < uSizeY ? vec2(1.0, 1.0 * uSizeY / uSizeX) : vec2(1.0 * uSizeX / uSizeY, 1.0);
         
-        coords *= globalScale;
+        // Apply global scale.
+        coords *= gridScale;
 
-        vec2 uv = mod(coords, vec2(1));
-        vec2 block = coords-uv + vec2(362.456);
+        // Get grid cell coordinates in [0..1].
+        vec2 cellUV = mod(coords, vec2(1));
 
-        float scale    = mix(0.8, 1.0,         rand(block*seed*134.451));
-        float offsetX  = mix(0.0, 1.0 - scale, rand(block*seed*54.4129));
-        float offsetY  = mix(0.0, 1.0 - scale, rand(block*seed*25.3089));
-        float rotation = mix(0.0, 2.0 * 3.141, rand(block*seed*2.99837));
+        // This is unique for each cell.
+        vec2 cellID = coords-cellUV + vec2(362.456);
+
+        // Add random rotation, scale and offset to each grid cell.
+        float scale    = mix(0.8, 1.0,         rand(cellID*seed*134.451));
+        float offsetX  = mix(0.0, 1.0 - scale, rand(cellID*seed*54.4129));
+        float offsetY  = mix(0.0, 1.0 - scale, rand(cellID*seed*25.3089));
+        float rotation = mix(0.0, 2.0 * 3.141, rand(cellID*seed*2.99837));
         
-        uv -= vec2(offsetX, offsetY);
-        uv /= scale;
+        cellUV -= vec2(offsetX, offsetY);
+        cellUV /= scale;
 
-        uv -= 0.5;
-        uv = vec2(uv.x * cos(rotation) - uv.y * sin(rotation),
-                  uv.x * sin(rotation) + uv.y * cos(rotation));
-        uv += 0.5;
+        cellUV -= 0.5;
+        cellUV = vec2(cellUV.x * cos(rotation) - cellUV.y * sin(rotation),
+                  cellUV.x * sin(rotation) + cellUV.y * cos(rotation));
+        cellUV += 0.5;
 
-        return clamp(uv, vec2(0), vec2(1));
+        // Clamp resulting coordinates.
+        return clamp(cellUV, vec2(0), vec2(1));
       }
 
       void main() {
 
-        const float CLAW_SIZE       = ${settings.get_double('claw-scratch-scale')};
-        const float NUM_CLAWS       = ${settings.get_int('claw-scratch-count')};
-        const float WARP_INTENSITY  = 1.0 + ${settings.get_double('claw-scratch-warp')};
-        const float FLASH_INTENSITY = 0.1;
-        const float MAX_SPAWN_TIME  = 0.5;
-        const float FF_TIME         = 0.5;  // Relative time for the final fade to transparency.
-
-        float fade = smoothstep(0, 1, 1 - clamp((uProgress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
-
-        float mask = 1.0;
-
+        // Warp the texture coordinates to create a blow-up effect.
         vec2 coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
         float dist = length(coords);
-
         coords = (coords/dist * pow(dist, WARP_INTENSITY)) * 0.5 + 0.5;
-
         coords = mix(cogl_tex_coord_in[0].st, coords, uProgress);
 
+        // Accumulate several random scratches. The color in the scratch map refers to the
+        // relative time when the respective part will become invisible. Therefore we can
+        // add a value to make the scratch appear later.
+        float scratchMap = 1.0;
         for (int i=0; i<NUM_CLAWS; ++i) {
           vec2 uv = getClawUV(coords, 1.0/CLAW_SIZE, SEED*(i+1));
           float delay = i/NUM_CLAWS * MAX_SPAWN_TIME;
-          mask = min(mask, clamp(texture2D(uClawTexture, uv).r + delay, 0, 1));
+          scratchMap = min(scratchMap, clamp(texture2D(uClawTexture, uv).r + delay, 0, 1));
         }
 
+        // Get the window texture. We shift the texture lookup by the local derivative of
+        // the claw texture in order to mimic some folding distortion.
+        vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * uProgress * 0.5;
+        cogl_color_out = texture2D(uTexture, coords + offset);
 
+        // Hide scratched out parts.
+        cogl_color_out *= (scratchMap > uProgress ? 1 : 0);
 
-        // Get the window texture.
-        vec2 dir = vec2(dFdx(mask), dFdy(mask))*uProgress*mask*0.5;
-        cogl_color_out = texture2D(uTexture, coords + dir);
-
-        float flash = 1.0 / FLASH_INTENSITY * (mask - uProgress) + 1;
-        if (flash < 0 || flash >= 1) {
-          flash = 0;
+        // Add colorful flashes.
+        float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - uProgress) + 1;
+        if (flashIntensity < 0 || flashIntensity >= 1) {
+          flashIntensity = 0;
         }
 
-        vec3 flashColor = vec3(${color.red / 255}, 
-                               ${color.green / 255}, 
+        vec3 flashColor = vec3(${color.red / 255},
+                               ${color.green / 255},
                                ${color.blue / 255}) * ${color.alpha / 255};
 
-        cogl_color_out *= (mask > uProgress ? 1 : 0);
-        cogl_color_out.rgb += flash * mix(flashColor, vec3(0), uProgress);
+        cogl_color_out.rgb += flashIntensity * mix(flashColor, vec3(0), uProgress);
 
-        
-
+        // Fade out the remaining shards.
+        float fade = smoothstep(0, 1, 1 - clamp((uProgress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
         cogl_color_out *= fade;
 
-        // cogl_color_out = vec4(vec3(flash), 1);
-        // cogl_color_out = vec4(vec3(mask), 1);
-
+        // These are pretty useful for understanding how this works.
+        // cogl_color_out = vec4(vec3(flashIntensity), 1);
+        // cogl_color_out = vec4(vec3(scratchMap), 1);
       }
     `);
   };
