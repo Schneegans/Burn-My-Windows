@@ -6,6 +6,7 @@
 
 #### New Features
 
+* Added a new ridiculous close-animation: the T-Rex-Attack!
 * Added a new simple close-animation: the TV-Effect!
 
 #### Other Enhancements
