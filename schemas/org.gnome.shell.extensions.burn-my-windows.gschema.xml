@@ -105,7 +105,7 @@
 
 
     <key name="claw-scratch-color" type="s">
-      <default>"rgb(255, 0, 0)"</default>
+      <default>"rgb(170, 0, 0)"</default>
       <summary>Claw Scratch Color</summary>
       <description>The color of the claw scratches.</description>
     </key>
@@ -117,7 +117,7 @@
     </key>
 
     <key name="claw-scratch-warp" type="d">
-      <default>0.1</default>
+      <default>0.15</default>
       <summary>Claw Scratch Warp</summary>
       <description>Intensity of the claw scratch warp effect.</description>
     </key>
