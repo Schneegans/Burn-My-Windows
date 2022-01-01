@@ -35,6 +35,8 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
         clawData.get_pixels(), Cogl.PixelFormat.RGB_888, clawData.width, clawData.height,
         clawData.rowstride);
 
+    const color = Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
+
     // This is partially based on https://www.shadertoy.com/view/ldccW4 (CC-BY-NC-SA).
     this.set_shader_source(`
 
@@ -74,10 +76,10 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
 
       void main() {
 
-        
-
-        const float CLAW_SIZE       = 1;
-        const float NUM_CLAWS       = 5;
+        const float CLAW_SIZE       = ${settings.get_double('claw-scratch-scale')};
+        const float NUM_CLAWS       = ${settings.get_int('claw-scratch-count')};
+        const float WARP_INTENSITY  = 1.0 + ${settings.get_double('claw-scratch-warp')};
+        const float FLASH_INTENSITY = 0.1;
         const float MAX_SPAWN_TIME  = 0.5;
         const float FF_TIME         = 0.5;  // Relative time for the final fade to transparency.
 
@@ -88,7 +90,7 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
         vec2 coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
         float dist = length(coords);
 
-        coords = (coords/dist * pow(dist, 1.1)) * 0.5 + 0.5;
+        coords = (coords/dist * pow(dist, WARP_INTENSITY)) * 0.5 + 0.5;
 
         coords = mix(cogl_tex_coord_in[0].st, coords, uProgress);
 
@@ -104,13 +106,17 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
         vec2 dir = vec2(dFdx(mask), dFdy(mask))*uProgress*mask*0.5;
         cogl_color_out = texture2D(uTexture, coords + dir);
 
-        float flash = 25 * (mask - uProgress) + 1;
+        float flash = 1.0 / FLASH_INTENSITY * (mask - uProgress) + 1;
         if (flash < 0 || flash >= 1) {
           flash = 0;
         }
 
+        vec3 flashColor = vec3(${color.red / 255}, 
+                               ${color.green / 255}, 
+                               ${color.blue / 255}) * ${color.alpha / 255};
+
         cogl_color_out *= (mask > uProgress ? 1 : 0);
-        cogl_color_out.rgb += flash * mix(vec3(1, 0, 0), vec3(0), uProgress);
+        cogl_color_out.rgb += flash * mix(flashColor, vec3(0), uProgress);
 
         
 

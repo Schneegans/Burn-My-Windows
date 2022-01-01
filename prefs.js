@@ -58,8 +58,12 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindColorButton('matrix-trail-color');
     this._bindColorButton('matrix-tip-color');
     this._bindColorButton('tv-effect-color');
+    this._bindColorButton('claw-scratch-color');
+    this._bindAdjustment('claw-scratch-scale');
+    this._bindAdjustment('claw-scratch-count');
+    this._bindAdjustment('claw-scratch-warp');
 
-    // The fire-gradient-reset button needs to by bound explicitly.
+    // The fire-gradient-reset button needs to be bound explicitly.
     this._builder.get_object('reset-fire-colors').connect('clicked', () => {
       this._settings.reset('fire-color-1');
       this._settings.reset('fire-color-2');

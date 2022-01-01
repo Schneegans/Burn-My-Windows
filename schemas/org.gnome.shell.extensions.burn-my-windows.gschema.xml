@@ -96,10 +96,36 @@
       <description>The color matrix trails.</description>
     </key>
 
+
     <key name="tv-effect-color" type="s">
       <default>"rgb(255, 255, 255)"</default>
       <summary>TV Effect Color</summary>
       <description>The color of the TV effect.</description>
+    </key>
+
+
+    <key name="claw-scratch-color" type="s">
+      <default>"rgb(255, 0, 0)"</default>
+      <summary>Claw Scratch Color</summary>
+      <description>The color of the claw scratches.</description>
+    </key>
+
+    <key name="claw-scratch-scale" type="d">
+      <default>1.0</default>
+      <summary>Claw Scratch Scale</summary>
+      <description>Size of the claw scratches.</description>
+    </key>
+
+    <key name="claw-scratch-warp" type="d">
+      <default>0.1</default>
+      <summary>Claw Scratch Warp</summary>
+      <description>Intensity of the claw scratch warp effect.</description>
+    </key>
+
+    <key name="claw-scratch-count" type="i">
+      <default>5</default>
+      <summary>Claw Scratch Count</summary>
+      <description>Number of claw scratches drawn on top of each other.</description>
     </key>
 
 
