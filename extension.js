@@ -161,8 +161,8 @@ class Extension {
         tweakTransition('scale-y', 0.5);
       } else if (mode == 4) {
         shader = new TRexShader(this._settings);
-        tweakTransition('scale-x', 1.1);
-        tweakTransition('scale-y', 1.1);
+        tweakTransition('scale-x', 1.05);
+        tweakTransition('scale-y', 1.05);
       }
 
       if (shader) {
