@@ -112,7 +112,6 @@ class Extension {
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1178
     Workspace.prototype._doRemoveWindow = function(metaWin) {
       if (extensionThis._shouldDestroy(this, metaWin)) {
-        utils.debug((new Error()).stack);
         extensionThis._origDoRemoveWindow.apply(this, [metaWin]);
       }
     };
