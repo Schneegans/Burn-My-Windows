@@ -15,7 +15,7 @@
 
 #### Bug Fixes
 
-* Fixed a bug which messed up the overview of GNOME Shell 3.36. Sadly, the only viable "fix" was to disable window-close animations in the overview of GNOME Shell 3.36 entirely.
+* Fixed a bug which messed up the overview of GNOME Shell 3.36.
 
 ## [Burn My Window 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
 

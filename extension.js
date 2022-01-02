@@ -55,6 +55,7 @@ class Extension {
     // We will monkey-patch these three methods. Let's store the original ones.
     this._origWindowRemoved      = Workspace.prototype._windowRemoved;
     this._origDoRemoveWindow     = Workspace.prototype._doRemoveWindow;
+    this._origAddWindowClone     = Workspace.prototype._addWindowClone;
     this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
 
     // We may also override these animation times.
@@ -80,51 +81,55 @@ class Extension {
     // the WorkspacesView.
     const extensionThis = this;
 
-    // I have not yet found a way to create a close animation for window clones in the
-    // overview of GNOME Shell 3.36. The destruction of the clones was handled differently
-    // back then and it seems that the developers noticed that animating the closing is
-    // difficult / impossible with how things are set up. See this comment:
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1481
-    const cannotCreateCloseAnimationForOverview = GS_MAJOR < 40 && GS_MINOR < 38;
-
-    if (!cannotCreateCloseAnimationForOverview) {
-
-      // These three method overrides are mega-hacky! They are only required to make the
-      // fire animation work in the overview. Usually, windows are not faded when closed
-      // from the overview (why?). With these overrides we make sure that they are
-      // actually faded out. To do this, _windowRemoved and _doRemoveWindow now check
-      // whether there is a transition ongoing (via extensionThis._shouldDestroy). If
-      // that's the case, these methods do nothing. Are the actors removed in the end? I
-      // hope so. The _destroyWindow of the WindowManager sets the transitions up and
-      // should take care of removing the actors at the end of the transitions.
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1299
-      Workspace.prototype._windowRemoved = function(ws, metaWin) {
-        if (extensionThis._shouldDestroy(this, metaWin)) {
-          extensionThis._origWindowRemoved.apply(this, [ws, metaWin]);
-        }
-      };
-
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1178
-      Workspace.prototype._doRemoveWindow = function(metaWin) {
-        if (extensionThis._shouldDestroy(this, metaWin)) {
-          extensionThis._origDoRemoveWindow.apply(this, [metaWin]);
-        }
-      };
-
-      // Here comes the ULTRA-HACK: The method below is called (amongst others) by the
-      // _destroyWindow method of the WindowManager. Usually, it returns false when we are
-      // in the overview. This prevents the window-close animation. As we cannot
-      // monkey-patch the _destroyWindow method itself, we check inside the method below
-      // whether it was called by _destroyWindow. If so, we return true. Let's see if this
-      // breaks stuff left and right...
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1125
-      WindowManager.prototype._shouldAnimateActor = function(actor, types) {
-        if ((new Error()).stack.split('\n')[1].includes('_destroyWindow@')) {
-          return true;
-        }
-        return extensionThis._origShouldAnimateActor.apply(this, [actor, types]);
+    // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
+    // but not _doRemoveWindow. The latter is required to trigger the repositioning of the
+    // overview window layout. Therefore we call this method in addition.
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1415
+    if (GS_MAJOR == 3 && GS_MINOR == 36) {
+      Workspace.prototype._addWindowClone = function(...params) {
+        const [clone, overlay] = extensionThis._origAddWindowClone.apply(this, params);
+        clone.connect('destroy', () => this._doRemoveWindow(clone.metaWindow));
+        return [clone, overlay];
       };
     }
+
+    // These three method overrides are mega-hacky! They are only required to make the
+    // fire animation work in the overview. Usually, windows are not faded when closed
+    // from the overview (why?). With these overrides we make sure that they are actually
+    // faded out. To do this, _windowRemoved and _doRemoveWindow now check whether there
+    // is a transition ongoing (via extensionThis._shouldDestroy). If that's the case,
+    // these methods do nothing. Are the actors removed in the end? I hope so. The
+    // _destroyWindow of the WindowManager sets the transitions up and should take care of
+    // removing the actors at the end of the transitions.
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1299
+    Workspace.prototype._windowRemoved = function(ws, metaWin) {
+      if (extensionThis._shouldDestroy(this, metaWin)) {
+        extensionThis._origWindowRemoved.apply(this, [ws, metaWin]);
+      }
+    };
+
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1178
+    Workspace.prototype._doRemoveWindow = function(metaWin) {
+      if (extensionThis._shouldDestroy(this, metaWin)) {
+        utils.debug((new Error()).stack);
+        extensionThis._origDoRemoveWindow.apply(this, [metaWin]);
+      }
+    };
+
+    // Here comes the ULTRA-HACK: The method below is called (amongst others) by the
+    // _destroyWindow method of the WindowManager. Usually, it returns false when we are
+    // in the overview. This prevents the window-close animation. As we cannot
+    // monkey-patch the _destroyWindow method itself, we check inside the method below
+    // whether it was called by _destroyWindow. If so, we return true. Let's see if this
+    // breaks stuff left and right...
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1125
+    WindowManager.prototype._shouldAnimateActor = function(...params) {
+      if ((new Error()).stack.split('\n')[1].includes('_destroyWindow@')) {
+        return true;
+      }
+      return extensionThis._origShouldAnimateActor.apply(this, params);
+    };
 
     // The close animation is set up in WindowManager's _destroyWindow:
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1549
@@ -206,6 +211,7 @@ class Extension {
 
     Workspace.prototype._windowRemoved          = this._origWindowRemoved;
     Workspace.prototype._doRemoveWindow         = this._origDoRemoveWindow;
+    Workspace.prototype._addWindowClone         = this._origAddWindowClone;
     WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
 
     imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
@@ -224,10 +230,9 @@ class Extension {
       return true;
     }
 
-    // This was called "realWindow" in GNOME 3.36 but destroying the clones does not
-    // really work anyways... So we simply do not attempt to animate the closing of
-    // windows in the overview of GNOME Shell 3.36.
-    const actor = workspace._windows[index]._windowActor;
+    // This was called "realWindow" in GNOME 3.36.
+    const GS_336 = GS_MAJOR == 3 && GS_MINOR == 36;
+    const actor  = workspace._windows[index][GS_336 ? 'realWindow' : '_windowActor'];
     if (!actor.get_transition('scale-y')) {
       return true;
     }
