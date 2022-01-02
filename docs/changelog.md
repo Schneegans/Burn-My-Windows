@@ -1,8 +1,16 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 6](https://github.com/schneegans/Burn-My-Windows/releases/tag/v6)
+
+**Release Date:** 2022-01-02
+
+#### Fixes
+
+* Removed a debug log message.
+
 ## [Burn My Window 5](https://github.com/schneegans/Burn-My-Windows/releases/tag/v5)
 
-**Release Date:** TBD
+**Release Date:** 2022-01-02
 
 #### New Features
 
