@@ -8,6 +8,7 @@
 
 * Added a new ridiculous close-animation: the T-Rex-Attack!
 * Added a new simple close-animation: the TV-Effect!
+* Added a menu to the preferences dialog with links for bug reporting and donations.
 
 #### Other Enhancements
 

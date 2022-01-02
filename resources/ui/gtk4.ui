@@ -27,6 +27,37 @@
     </data>
   </object>
 
+  <menu id="main-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Visit Homepage</attribute>
+        <attribute name="action">prefs.homepage</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Report a Bug</attribute>
+        <attribute name="action">prefs.bugs</attribute>
+      </item>
+    </section>
+    <section>
+      <submenu>
+        <attribute name="label" translatable="yes">Donate</attribute>
+        <item>
+          <attribute name="label" translatable="yes">Via PayPal</attribute>
+          <attribute name="action">prefs.donate-paypal</attribute>
+        </item>
+        <item>
+          <attribute name="label" translatable="yes">Via GitHub</attribute>
+          <attribute name="action">prefs.donate-github</attribute>
+        </item>
+      </submenu>
+    </section>
+  </menu>
+
+  <object class="GtkMenuButton" id="menu-button">
+    <property name="menu-model">main-menu</property>
+    <property name="icon-name">open-menu-symbolic</property>
+  </object>
+
   <object class="GtkScrolledWindow" id="settings-widget">
     <property name="hscrollbar-policy">never</property>
     <property name="min-content-height">200</property>

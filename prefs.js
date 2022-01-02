@@ -75,6 +75,36 @@ var PreferencesDialog = class PreferencesDialog {
     // Initialize the fire-preset dropdown.
     this._createFirePresets();
 
+    // Add a menu to the title bar of the preferences dialog.
+    this._widget.connect('realize', (widget) => {
+      const window = utils.gtk4() ? widget.get_root() : widget.get_toplevel();
+
+      // Show the version number in the title bar.
+      window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
+
+      // Add the menu.
+      const menu = this._builder.get_object('menu-button');
+      window.get_titlebar().pack_end(menu);
+
+      // Populate the actions.
+      const group = Gio.SimpleActionGroup.new();
+
+      const addAction = (name, uri) => {
+        const action = Gio.SimpleAction.new(name, null);
+        action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
+        group.add_action(action);
+      };
+
+      addAction('homepage', 'https://github.com/Schneegans/Burn-My-Windows');
+      addAction('bugs', 'https://github.com/Schneegans/Burn-My-Windows/issues');
+      addAction(
+          'donate-paypal',
+          'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
+      addAction('donate-github', 'https://github.com/sponsors/Schneegans');
+
+      window.insert_action_group('prefs', group);
+    });
+
     // As we do not have something like a destructor, we just listen for the destroy
     // signal of our main widget.
     this._widget.connect('destroy', () => {
