@@ -1,7 +1,3 @@
-<p align="center">
-  <img src ="docs/pics/teaser.gif" />
-</p>
-
 # Set your Windows on Fire!
 
 <a href="https://github.com/Schneegans/Burn-My-Windows/actions"><img src="https://github.com/Schneegans/Burn-My-Windows/workflows/Checks/badge.svg?branch=main" /></a>
@@ -11,6 +7,14 @@
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
 
+## Included Effects
+
+Name | Preview
+-----|--------
+**Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
+**Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable. <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/matrix.gif" />
+**T-Rex Attack** <br> Destroy your windows with a series of violent slashes! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/trex.gif" />
+**TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
 
 ## Installation
 
