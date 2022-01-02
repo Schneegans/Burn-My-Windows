@@ -1,6 +1,6 @@
 {
     "uuid": "burn-my-windows@schneegans.github.com",
-    "description": "Disintegrate your apps the old-school way.",
+    "description": "Disintegrate your apps with style.",
     "name": "Burn My Windows",
     "gettext-domain": "burn-my-windows",
     "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
