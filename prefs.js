@@ -77,7 +77,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Add a menu to the title bar of the preferences dialog.
     this._widget.connect('realize', (widget) => {
-      const window = widget.get_root();
+      const window = utils.gtk4() ? widget.get_root() : widget.get_toplevel();
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
