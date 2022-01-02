@@ -4,10 +4,6 @@
 
 **Release Date:** TBD
 
-Sadly, it does not seem to be enough. `WINDOW_REPOSITIONING_DELAY` is set to 750ms per default; setting the window-close animation time to 500ms does not solve the issue.
-
-It's quite difficult to trace the code flow for me. One difference seems to be that `Workspace._doRemoveWindow` is called after the clone is destroyed on GNOME 3.38 and beyond but not on GNOME 3.36. 
-
 #### New Features
 
 * Added a new ridiculous close-animation: the T-Rex-Attack!
@@ -19,7 +15,7 @@ It's quite difficult to trace the code flow for me. One difference seems to be t
 
 #### Bug Fixes
 
-* Fixed a bug which messed up the overview of GNOME Shell 3.36. Sadly, the only viable "fix" was to disable window-close animations in the overview of GNOME Shell 3.36 entirely.
+* Fixed a bug which messed up the overview of GNOME Shell 3.36.
 
 ## [Burn My Window 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
 
