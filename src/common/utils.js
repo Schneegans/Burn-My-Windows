@@ -39,6 +39,6 @@ function debug(message) {
 }
 
 // This method simply returns true if we are currently using GTK4.
-function gtk4() {
+function isGTK4() {
   return Gtk.get_major_version() == 4;
 }

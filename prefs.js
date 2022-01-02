@@ -34,7 +34,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the user interface file.
     this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/${utils.gtk4() ? 'gtk4' : 'gtk3'}.ui`);
+    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}.ui`);
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
@@ -77,7 +77,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Add a menu to the title bar of the preferences dialog.
     this._widget.connect('realize', (widget) => {
-      const window = utils.gtk4() ? widget.get_root() : widget.get_toplevel();
+      const window = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
@@ -113,7 +113,7 @@ var PreferencesDialog = class PreferencesDialog {
     });
 
     // Show the widgets on GTK3.
-    if (!utils.gtk4()) {
+    if (!utils.isGTK4()) {
       this._widget.show_all();
     }
   }
@@ -280,7 +280,7 @@ var PreferencesDialog = class PreferencesDialog {
 
       this._builder.get_object('fire-preset-button').set_menu_model(menu);
 
-      const root = utils.gtk4() ? widget.get_root() : widget.get_toplevel();
+      const root = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
       root.insert_action_group(groupName, group);
     });
   }
