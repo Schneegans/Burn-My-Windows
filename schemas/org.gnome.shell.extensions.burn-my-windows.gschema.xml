@@ -41,6 +41,12 @@
       <description>The size of the flames.</description>
     </key>
 
+    <key name="flame-3d-noise" type="b">
+      <default>false</default>
+      <summary>Flame 3D Noise</summary>
+      <description>Use a 3D noise for the flames.</description>
+    </key>
+
     <key name="fire-color-1" type="s">
       <default>"rgba(76, 51, 25, 0.0)"</default>
       <summary>Fire Color 1</summary>

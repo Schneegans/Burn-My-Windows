@@ -48,6 +48,7 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindSwitch('destroy-dialogs');
     this._bindAdjustment('flame-movement-speed');
     this._bindAdjustment('flame-scale');
+    this._bindSwitch('flame-3d-noise');
     this._bindColorButton('fire-color-1');
     this._bindColorButton('fire-color-2');
     this._bindColorButton('fire-color-3');
