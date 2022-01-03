@@ -124,8 +124,12 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
         // Get a noise value which moves vertically in time.
         vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / FIRE_SCALE;
         uv.y += uTime * FIRE_SPEED;
-        float noise = noise2D(uv * 7.5, 5);
-        //  float noise = noise3D(vec3(uv*7.5, uTime*FIRE_SPEED*4.0), 5);
+
+        #if ${settings.get_boolean('flame-3d-noise') ? 1 : 0}
+          float noise = noise3D(vec3(uv*7.5, uTime*FIRE_SPEED*3.0), 5);
+        #else
+          float noise = noise2D(uv * 7.5, 5);
+        #endif
 
         // Modulate noise by effect mask.
         vec2 effectMask = effectMask(HIDE_TIME, FADE_WIDTH, EDGE_FADE);
