@@ -96,6 +96,9 @@ var PreferencesDialog = class PreferencesDialog {
       };
 
       addAction('homepage', 'https://github.com/Schneegans/Burn-My-Windows');
+      addAction(
+          'changelog',
+          'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
       addAction('bugs', 'https://github.com/Schneegans/Burn-My-Windows/issues');
       addAction(
           'donate-paypal',

@@ -26,6 +26,10 @@
         <attribute name="action">prefs.homepage</attribute>
       </item>
       <item>
+        <attribute name="label" translatable="yes">View Changelog</attribute>
+        <attribute name="action">prefs.changelog</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">Report a Bug</attribute>
         <attribute name="action">prefs.bugs</attribute>
       </item>
