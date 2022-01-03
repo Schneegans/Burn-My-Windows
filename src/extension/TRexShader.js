@@ -65,7 +65,7 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
       vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
 
         // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-        vec2 coords = texCoords + rand2(seed);
+        vec2 coords = texCoords + rand(seed);
         coords *= uSizeX < uSizeY ? vec2(1.0, 1.0 * uSizeY / uSizeX) : vec2(1.0 * uSizeX / uSizeY, 1.0);
         
         // Apply global scale.
@@ -78,10 +78,10 @@ var TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
         vec2 cellID = coords-cellUV + vec2(362.456);
 
         // Add random rotation, scale and offset to each grid cell.
-        float scale    = mix(0.8, 1.0,         rand(cellID*seed*134.451));
-        float offsetX  = mix(0.0, 1.0 - scale, rand(cellID*seed*54.4129));
-        float offsetY  = mix(0.0, 1.0 - scale, rand(cellID*seed*25.3089));
-        float rotation = mix(0.0, 2.0 * 3.141, rand(cellID*seed*2.99837));
+        float scale    = mix(0.8, 1.0,         rand(cellID*seed*134.451).x);
+        float offsetX  = mix(0.0, 1.0 - scale, rand(cellID*seed*54.4129).x);
+        float offsetY  = mix(0.0, 1.0 - scale, rand(cellID*seed*25.3089).x);
+        float rotation = mix(0.0, 2.0 * 3.141, rand(cellID*seed*2.99837).x);
         
         cellUV -= vec2(offsetX, offsetY);
         cellUV /= scale;

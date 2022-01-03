@@ -33,51 +33,41 @@ function standardUniforms() {
   `;
 }
 
-// The noise implementation is from https://www.shadertoy.com/view/3tcBzH (CC-BY-NC-SA).
+// This simplex noise algorithm is based on an implementation by Inigo Quilez which is
+// available under the MIT License (Copyright © 2013 Inigo Quilez).
+// https://www.shadertoy.com/view/Msf3WH.
 function noise() {
   return `
-  float rand(vec2 co) {
-    return fract(sin(dot(co.xy, vec2(12.9898,78.233))) * 43758.5453);
+  vec2 rand(vec2 p) { 
+    p = vec2(dot(p,vec2(127.1,311.7)), dot(p,vec2(269.5,183.3)));
+    return fract(sin(p)*43758.5453123);
   }
 
-  vec2 rand2(vec2 co) {
-    return vec2(rand(co), rand(co + vec2(12.9898,78.233)));
+  float noiseImpl(vec2 p) {
+    const float K1 = 0.366025404; // (sqrt(3)-1)/2;
+    const float K2 = 0.211324865; // (3-sqrt(3))/6;
+    
+    vec2  i = floor(p + (p.x + p.y) * K1);
+    vec2  a = p - i + (i.x + i.y) * K2;
+    float m = step(a.y, a.x); 
+    vec2  o = vec2(m, 1.0-m);
+    vec2  b = a - o + K2;
+    vec2  c = a - 1.0 + 2.0*K2;
+    vec3  h = max(0.5 - vec3(dot(a, a), dot(b, b), dot(c, c)), 0.0);
+    vec3  n = h * h * h * h * vec3(dot(a, -1.0 + 2.0 * rand(i + 0.0)),
+                                   dot(b, -1.0 + 2.0 * rand(i + o)),
+                                   dot(c, -1.0 + 2.0 * rand(i + 1.0)));
+    return dot(n, vec3(70.0)) * 0.5 + 0.5;
   }
 
-  float hermite(float t) {
-    return t * t * (3.0 - 2.0 * t);
-  }
+  float noise(vec2 p) {
+    mat2 m = mat2(1.6, 1.2, -1.2, 1.6);
+    float f = 0.5000 * noiseImpl(p); p = m*p;
+    f      += 0.2500 * noiseImpl(p); p = m*p;
+    f      += 0.1250 * noiseImpl(p); p = m*p;
+    f      += 0.0625 * noiseImpl(p); p = m*p;
 
-  float noiseImpl(vec2 co, float frequency) {
-    vec2 v = vec2(co.x * frequency, co.y * frequency);
-
-    float ix1 = floor(v.x);
-    float iy1 = floor(v.y);
-    float ix2 = floor(v.x + 1.0);
-    float iy2 = floor(v.y + 1.0);
-
-    float fx = hermite(fract(v.x));
-    float fy = hermite(fract(v.y));
-
-    float fade1 = mix(rand(vec2(ix1, iy1)), rand(vec2(ix2, iy1)), fx);
-    float fade2 = mix(rand(vec2(ix1, iy2)), rand(vec2(ix2, iy2)), fx);
-
-    return mix(fade1, fade2, fy);
-  }
-
-  float perlinNoise(vec2 co, float freq, int steps, float persistence) {
-    float value = 0.0;
-    float ampl = 1.0;
-    float sum = 0.0;
-
-    for(int i=0 ; i<steps ; i++) {
-      sum += ampl;
-      value += noiseImpl(co, freq) * ampl;
-      freq *= 2.0;
-      ampl *= persistence;
-    }
-
-    return value / sum;
+    return f;
   }
   `;
 }

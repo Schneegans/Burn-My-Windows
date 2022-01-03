@@ -46,7 +46,9 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
     const tipColor =
         Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
 
-    // This is partially based on https://www.shadertoy.com/view/ldccW4 (CC-BY-NC-SA).
+    // The technique for this effect was inspired by
+    // https://www.shadertoy.com/view/ldccW4, however the implementation is quite
+    // different as the letters drop only once and there is no need for a noise texture.
     this.set_shader_source(`
 
       // Inject some common shader snippets.
@@ -72,7 +74,7 @@ var MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
         vec2 block = pixelCoords/LETTER_SIZE - uv;
 
         // Choose random letter.
-        uv += floor(rand2(floor(rand(block)*vec2(12.9898,78.233) + LETTER_FLICKER_SPEED*uTime + 42.254))*LETTER_TILES);
+        uv += floor(rand(floor(rand(block)*vec2(12.9898,78.233) + LETTER_FLICKER_SPEED*uTime + 42.254))*LETTER_TILES);
         
         return texture2D(uFontTexture, uv/LETTER_TILES).r;
       }
