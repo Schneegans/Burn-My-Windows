@@ -1,5 +1,18 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 7](https://github.com/schneegans/Burn-My-Windows/releases/tag/v7)
+
+**Release Date:** 2022-01-03
+
+#### New Features
+
+* Added a changelog entry to the menu of the preferences dialog.
+
+#### Fixes
+
+* Resolve copyright issues by using a MIT-licensed noise implementation.
+
+
 ## [Burn My Window 6](https://github.com/schneegans/Burn-My-Windows/releases/tag/v6)
 
 **Release Date:** 2022-01-02
