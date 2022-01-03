@@ -6,6 +6,7 @@
 
 #### New Features
 
+* Add the option to use a 3D noise for the fire shader. This will add some more temporal variation to the flames at the cost of slightly decreased rendering performance.
 * Added a changelog entry to the menu of the preferences dialog.
 
 #### Fixes
