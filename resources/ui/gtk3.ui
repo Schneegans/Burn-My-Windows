@@ -443,7 +443,7 @@
                                 <property name="spacing">3</property>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Use a 3D Noise</property>
+                                    <property name="label" translatable="yes">3D Noise</property>
                                     <property name="xalign">0</property>
                                     <property name="halign">start</property>
                                     <property name="valign">center</property>
@@ -452,7 +452,7 @@
                                 </child>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Makes the fire look more interesting at the cost of performance.</property>
+                                    <property name="label" translatable="yes">Creates a more dynamic fire but requires more GPU power.</property>
                                     <property name="xalign">0</property>
                                     <property name="halign">start</property>
                                     <property name="valign">center</property>
