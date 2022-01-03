@@ -49,7 +49,7 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
       ${shaderSnippets.noise()}
 
       // These may be configurable in the future.
-      const float EDGE_FADE  = 70;
+      const float EDGE_FADE  = 90;
       const float FADE_WIDTH = 0.1;
       const float HIDE_TIME  = 0.4;
       const vec2  FIRE_SCALE = vec2(400, 600) * ${settings.get_double('flame-scale')};
@@ -124,7 +124,8 @@ var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
         // Get a noise value which moves vertically in time.
         vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / FIRE_SCALE;
         uv.y += uTime * FIRE_SPEED;
-        float noise = noise(uv * 5.0);
+        float noise = noise2D(uv * 7.5, 5);
+        //  float noise = noise3D(vec3(uv*7.5, uTime*FIRE_SPEED*4.0), 5);
 
         // Modulate noise by effect mask.
         vec2 effectMask = effectMask(HIDE_TIME, FADE_WIDTH, EDGE_FADE);
