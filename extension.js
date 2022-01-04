@@ -32,9 +32,12 @@ const TRexShader     = Me.imports.src.extension.TRexShader.TRexShader;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close animation to look like the window was set  //
-// on fire. While this is definitely a homage to the good old Compiz plugin, it is      //
-// implemented differently. While Compiz used a particle system, this extension uses a  //
-// perlin noise shader.                                                                 //
+// on fire. There are also a few other effects available. All of them are implemented   //
+// using GLSL shaders which are applied to the window's Clutter.Actor. The extension is //
+// actually very simple, most of the complexity comes from the fact that GNOME Shell    //
+// usually does not show an animation when a window is closed in the overview. Several  //
+// methods need to be monkey-patched to get this working. For more details, read the    //
+// other comments in this file...                                                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 class Extension {

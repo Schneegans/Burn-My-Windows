@@ -20,10 +20,11 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const shaderSnippets = Me.imports.src.extension.shaderSnippets;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// The FireShader uses a procedural gray-scale noise texture. This texture is moved     //
-// vertically over time and mapped to a configurable color gradient. It is faded to     //
-// transparency towards the edges of the window. In addition, there are a couple of     //
-// moving gradients which fade-in or fade-out the fire effect.                          //
+// This effect is a homage to the good old Compiz days. However, it is implemented      //
+// quite differently. While Compiz used a particle system, this effect uses a noise     //
+// shader. The noise is moved  vertically over time and mapped to a configurable color  //
+// gradient. It is faded to transparency towards the edges of the window. In addition,  //
+// there are a couple of moving gradients which fade-in or fade-out the fire effect.    //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var FireShader = GObject.registerClass({Properties: {}, Signals: {}},
