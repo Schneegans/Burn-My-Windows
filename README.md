@@ -1,4 +1,4 @@
-# Set GNOME Shell on Fire!
+# 🔥 Set GNOME Shell on Fire!
 
 <a href="https://github.com/Schneegans/Burn-My-Windows/actions"><img src="https://github.com/Schneegans/Burn-My-Windows/workflows/Checks/badge.svg?branch=main" /></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg?labelColor=303030" /></a>
@@ -7,16 +7,42 @@
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
 
-## Included Effects
 
-Name | Preview
+Effect | Preview
 -----|--------
 **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
 **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable. <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/matrix.gif" />
 **T-Rex Attack** <br> Destroy your windows with a series of violent slashes! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/trex.gif" />
 **TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
 
-## Installation
+
+## 💞 These People _love_ this Extension
+
+Do you want to show that you love it too? You may <a href="https://github.com/sponsors/Schneegans">become a sponsor for as little as 1$ / month</a>!
+While coding new features is the most awesome way to contribute, providing financial support will help me stay motivated to invest my spare time to keep the project alive in the future.
+
+<h2 align="center">🥇 Current Gold Sponsors</h2>
+<p align="center">
+<a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
+</p>
+
+<h2 align="center">🥈 Current Silver Sponsors</h2>
+<p align="center">
+  <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
+</p>
+
+<h2 align="center">🥉 Current Bronze Sponsors</h2>
+<p align="center">
+  <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
+</p>
+
+<!--
+<h2 align="center">🏅 Previous Sponsors and One-Time Donators</h2>
+<p align="center">
+</p>
+-->
+
+## ⬇️ Installation
 
 You can either install the Burn-My-Windows extension from extensions.gnome.org (a), download a stable release
 from GitHub (b) or clone the latest version directly with `git` (c).
