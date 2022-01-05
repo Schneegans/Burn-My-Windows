@@ -21,23 +21,23 @@ Effect | Preview
 Do you want to show that you love it too? You may <a href="https://github.com/sponsors/Schneegans">become a sponsor for as little as 1$ / month</a>!
 While coding new features is the most awesome way to contribute, providing financial support will help me stay motivated to invest my spare time to keep the project alive in the future.
 
-<h2 align="center">🥇 Current Gold Sponsors</h2>
+<h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
 <a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
 </p>
 
-<h2 align="center">🥈 Current Silver Sponsors</h2>
+<h3 align="center">🥈 Current Silver Sponsors</h3>
 <p align="center">
   <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
 </p>
 
-<h2 align="center">🥉 Current Bronze Sponsors</h2>
+<h3 align="center">🥉 Current Bronze Sponsors</h3>
 <p align="center">
   <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
 </p>
 
 <!--
-<h2 align="center">🏅 Previous Sponsors and One-Time Donators</h2>
+<h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
 </p>
 -->
