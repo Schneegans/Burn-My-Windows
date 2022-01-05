@@ -7,6 +7,8 @@
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
 
+For a list of things changed in previous releases, you can have a look at the [changelog](docs/changelog.md)!
+
 
 Effect | Preview
 -----|--------
