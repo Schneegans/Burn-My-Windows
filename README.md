@@ -29,7 +29,7 @@ While coding new features is the most awesome way to contribute, providing finan
 
 <h3 align="center">🥈 Current Silver Sponsors</h3>
 <p align="center">
-  <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
+  <a href="https://github.com/castrojo">Jorge Castro</a>
 </p>
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
