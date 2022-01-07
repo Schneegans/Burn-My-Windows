@@ -24,7 +24,7 @@ While coding new features is the most awesome way to contribute, providing finan
 
 <h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
-<a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
+  <a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
 </p>
 
 <h3 align="center">🥈 Current Silver Sponsors</h3>
@@ -37,11 +37,11 @@ While coding new features is the most awesome way to contribute, providing finan
   <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
 </p>
 
-<!--
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
+  <a href="https://github.com/RickStanley">@RickStanley</a><br>
 </p>
--->
+
 
 Do you want to show that you love it too? You may <a href="https://github.com/sponsors/Schneegans">become a sponsor for as little as 1$ / month</a>!
 If you like this extension, you may also want to try one of my other extensions: [🧊 Desktop-Cube](https://github.com/Schneegans/Desktop-Cube) or [🍰 Fly-Pie](https://github.com/Schneegans/Fly-Pie/)!
