@@ -19,36 +19,6 @@
     </data>
   </object>
 
-  <menu id="main-menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">Visit Homepage</attribute>
-        <attribute name="action">prefs.homepage</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">View Changelog</attribute>
-        <attribute name="action">prefs.changelog</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Report a Bug</attribute>
-        <attribute name="action">prefs.bugs</attribute>
-      </item>
-    </section>
-    <section>
-      <submenu>
-        <attribute name="label" translatable="yes">Donate</attribute>
-        <item>
-          <attribute name="label" translatable="yes">Via PayPal</attribute>
-          <attribute name="action">prefs.donate-paypal</attribute>
-        </item>
-        <item>
-          <attribute name="label" translatable="yes">Via GitHub</attribute>
-          <attribute name="action">prefs.donate-github</attribute>
-        </item>
-      </submenu>
-    </section>
-  </menu>
-
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
     <property name="visible">1</property>

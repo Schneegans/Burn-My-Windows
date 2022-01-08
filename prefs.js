@@ -37,6 +37,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the user interface file.
     this._builder = new Gtk.Builder();
+    this._builder.add_from_resource(`/ui/common/main-menu.ui`);
     this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/prefs.ui`);
     this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/fire.ui`);
     this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/matrix.ui`);
