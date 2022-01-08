@@ -53,7 +53,22 @@
                     <child>
                       <object class="GtkMenuButton" id="fire-preset-button">
                         <property name="relief">none</property>
-                        <property name="label">Choose a Preset</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Choose a Preset</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="icon-name">pan-down-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
@@ -124,6 +139,10 @@
 
             <child>
               <object class="GtkListBoxRow">
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
                 <property name="activatable">0</property>
                 <child>
                   <object class="GtkBox">
@@ -168,6 +187,10 @@
 
             <child>
               <object class="GtkListBoxRow">
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
                 <property name="activatable">0</property>
                 <child>
                   <object class="GtkBox">
@@ -226,9 +249,14 @@
 
             <child>
               <object class="GtkListBoxRow">
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
                 <property name="activatable">0</property>
                 <child>
                   <object class="GtkBox">
+                    <property name="spacing">8</property>
                     <child>
                       <object class="GtkLabel">
                         <property name="label" translatable="yes">Gradient</property>
