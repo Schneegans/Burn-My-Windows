@@ -15,6 +15,9 @@
 
 const {Gtk} = imports.gi;
 
+const Config               = imports.misc.config;
+const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.');
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 
@@ -41,4 +44,20 @@ function debug(message) {
 // This method simply returns true if we are currently using GTK4.
 function isGTK4() {
   return Gtk.get_major_version() == 4;
+}
+
+function shellVersionIs(major, minor) {
+  return GS_MAJOR == major && GS_MINOR == minor;
+}
+
+function shellVersionIsAtLeast(major, minor) {
+  if (GS_MAJOR > major) {
+    return true;
+  }
+
+  if (GS_MAJOR == major) {
+    return GS_MINOR >= minor;
+  }
+
+  return false;
 }

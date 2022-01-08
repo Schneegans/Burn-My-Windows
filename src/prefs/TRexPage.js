@@ -15,6 +15,7 @@
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
+const utils          = Me.imports.src.common.utils;
 const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -26,6 +27,10 @@ var TRexPage = class TRexPage extends PrefsPage {
 
   constructor(settings, builder) {
     super(settings, builder);
+
+    if (!utils.shellVersionIsAtLeast(40, 0)) {
+      return;
+    }
 
     this._builder.add_from_resource('/ui/gtk4/trexPage.ui');
 
@@ -41,10 +46,6 @@ var TRexPage = class TRexPage extends PrefsPage {
   }
 
   // ---------------------------------------------------------------------- public methods
-
-  getMinVersion() {
-    return [40, 0];
-  }
 
   getEnabledKey() {
     return 'trex-close-effect';

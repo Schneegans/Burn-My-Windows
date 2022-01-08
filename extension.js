@@ -15,9 +15,6 @@
 
 const {Clutter, Gio, Meta} = imports.gi;
 
-const Config               = imports.misc.config;
-const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.');
-
 const Workspace                  = imports.ui.workspace.Workspace;
 const WindowManager              = imports.ui.windowManager.WindowManager;
 const WINDOW_REPOSITIONING_DELAY = imports.ui.workspace.WINDOW_REPOSITIONING_DELAY;
@@ -89,7 +86,7 @@ class Extension {
     // overview window layout. Therefore we call this method in addition.
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1415
-    if (GS_MAJOR == 3 && GS_MINOR == 36) {
+    if (utils.shellVersionIs(3, 36)) {
       Workspace.prototype._addWindowClone = function(...params) {
         const [clone, overlay] = extensionThis._origAddWindowClone.apply(this, params);
         clone.connect('destroy', () => this._doRemoveWindow(clone.metaWindow));

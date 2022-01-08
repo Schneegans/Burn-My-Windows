@@ -62,10 +62,6 @@ var FirePage = class FirePage extends PrefsPage {
 
   // ---------------------------------------------------------------------- public methods
 
-  getMinVersion() {
-    return [3, 36];
-  }
-
   getEnabledKey() {
     return 'fire-close-effect';
   }

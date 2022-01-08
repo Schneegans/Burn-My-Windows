@@ -40,10 +40,6 @@ var TVEffectPage = class TVEffectPage extends PrefsPage {
 
   // ---------------------------------------------------------------------- public methods
 
-  getMinVersion() {
-    return [3, 36];
-  }
-
   getEnabledKey() {
     return 'tv-close-effect';
   }
