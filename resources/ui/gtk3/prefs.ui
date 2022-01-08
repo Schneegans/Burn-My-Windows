@@ -51,10 +51,6 @@
 
         <child>
 
-          <packing>
-            <property name="title">General Options</property>
-          </packing>
-
           <object class="GtkBox">
             <property name="orientation">vertical</property>
             <property name="margin-start">60</property>
@@ -219,6 +215,9 @@
             </child>
 
           </object>
+          <packing>
+            <property name="title">General Options</property>
+          </packing>
 
         </child>
       </object>
