@@ -32,15 +32,25 @@ var PreferencesDialog = class PreferencesDialog {
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
+    // Store a reference to the settings object.
+    this._settings = ExtensionUtils.getSettings();
+
     // Load the user interface file.
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/prefs.ui`);
+    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/fire.ui`);
+    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/matrix.ui`);
+    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/tv.ui`);
+    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/trex.ui`);
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
 
-    // Store a reference to the settings object.
-    this._settings = ExtensionUtils.getSettings();
+    const stack = this._builder.get_object('main-stack');
+    stack.add_titled(this._builder.get_object('fire-prefs'), 'fire', 'Fire');
+    stack.add_titled(this._builder.get_object('matrix-prefs'), 'matrix', 'Matrix');
+    stack.add_titled(this._builder.get_object('trex-prefs'), 'trex', 'T-Rex Attack');
+    stack.add_titled(this._builder.get_object('tv-prefs'), 'tv', 'TV Effect');
 
     // Bind all properties.
     this._bindCombobox('close-animation');
