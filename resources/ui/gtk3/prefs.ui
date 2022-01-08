@@ -96,13 +96,9 @@
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="GtkScrolledWindow" id="settings-widget">
-    <property name="hscrollbar-policy">never</property>
-    <property name="min-content-height">200</property>
-    <property name="hexpand">0</property>
-    <property name="vexpand">1</property>
+  <object class="GtkBox" id="settings-widget">
     <child>
-      <object class="GtkViewport">
+      <object class="GtkStack" id="main-stack">
         <child>
           <object class="GtkBox">
             <property name="orientation">vertical</property>

@@ -34,7 +34,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the user interface file.
     this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}.ui`);
+    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/prefs.ui`);
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
