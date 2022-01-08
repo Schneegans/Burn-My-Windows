@@ -28,7 +28,6 @@
         <child>
           <object class="GtkListBox">
             <property name="selection-mode">none</property>
-            <property name="show-separators">1</property>
             <style>
               <class name="rich-list" />
             </style>
@@ -71,7 +70,6 @@
         <child>
           <object class="GtkListBox">
             <property name="selection-mode">none</property>
-            <property name="show-separators">1</property>
             <style>
               <class name="rich-list" />
             </style>
