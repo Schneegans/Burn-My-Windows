@@ -40,6 +40,11 @@
 
   <object class="GtkBox" id="settings-widget">
     <child>
+      <object class="GtkStackSidebar">
+        <property name="stack">main-stack</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkStack" id="main-stack">
         <child>
           <object class="GtkBox">
