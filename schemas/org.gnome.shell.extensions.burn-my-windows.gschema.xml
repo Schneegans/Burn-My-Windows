@@ -128,7 +128,7 @@
     </key>
 
     <key name="tv-animation-time" type="i">
-      <default>250</default>
+      <default>400</default>
       <summary>TV Animation Time</summary>
       <description>The time the tv effect takes.</description>
     </key>
