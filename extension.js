@@ -58,25 +58,6 @@ class Extension {
     this._origAddWindowClone     = Workspace.prototype._addWindowClone;
     this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
 
-    // We may also override these animation times.
-    this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
-    this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
-
-    // Update animation times if the respective settings are changed.
-    const loadAnimationTimes = () => {
-      imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
-          this._settings.get_int('destroy-animation-time');
-
-      imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
-          this._settings.get_boolean('destroy-dialogs') ?
-          this._settings.get_int('destroy-animation-time') :
-          this._origDialogTime;
-    };
-
-    this._settings.connect('changed::destroy-animation-time', loadAnimationTimes);
-    this._settings.connect('changed::destroy-dialogs', loadAnimationTimes);
-    loadAnimationTimes();
-
     // We will use extensionThis to refer to the extension inside the patched methods of
     // the WorkspacesView.
     const extensionThis = this;
@@ -158,6 +139,7 @@ class Extension {
         if (transition) {
           transition.set_to(value);
           transition.set_progress_mode(Clutter.AnimationMode.EASE_OUT_QUAD);
+          transition.set_duration(1500);
         }
       };
 
@@ -212,9 +194,6 @@ class Extension {
     Workspace.prototype._doRemoveWindow         = this._origDoRemoveWindow;
     Workspace.prototype._addWindowClone         = this._origAddWindowClone;
     WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
-
-    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
-    imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
 
     this._settings = null;
   }
