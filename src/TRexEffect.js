@@ -201,4 +201,24 @@ var TRexEffect = class TRexEffect {
   static createShader(settings) {
     return new TRexShader(settings);
   }
+
+  // If there's a transition in progress, we re-target these transitions so that the
+  // window is neither scaled nor faded.
+  static tweakTransitions(actor, settings) {
+    const animationTime = settings.get_int('trex-animation-time');
+
+    const tweakTransition = (property, value) => {
+      const transition = actor.get_transition(property);
+      if (transition) {
+        transition.set_to(value);
+        transition.set_duration(animationTime);
+      }
+    };
+
+    const warp = 0.5 * settings.get_double('claw-scratch-warp');
+
+    tweakTransition('opacity', 255);
+    tweakTransition('scale-x', 1.0 + warp);
+    tweakTransition('scale-y', 1.0 + warp);
+  }
 }

@@ -24,7 +24,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 const FireEffect     = Me.imports.src.FireEffect.FireEffect;
 
-const EFFECT_TYPES = [
+const ALL_EFFECTS = [
   Me.imports.src.FireEffect.FireEffect,
   Me.imports.src.MatrixEffect.MatrixEffect,
   Me.imports.src.TRexEffect.TRexEffect,
@@ -136,39 +136,27 @@ class Extension {
         return;
       }
 
-      // If there's a transition in progress, we re-target these transitions so that the
-      // window is neither scaled nor faded.
-      const tweakTransition = (property, value) => {
-        const transition = actor.get_transition(property);
-        if (transition) {
-          transition.set_to(value);
-          transition.set_progress_mode(Clutter.AnimationMode.EASE_OUT_QUAD);
-          transition.set_duration(1500);
+      // Choose a random effect.
+      const enabledEffects = [];
+      ALL_EFFECTS.forEach(Effect => {
+        const [minMajor, minMinor] = Effect.getMinShellVersion();
+        const prefix               = Effect.getSettingsPrefix();
+        if (utils.shellVersionIsAtLeast(minMajor, minMinor) &&
+            this._settings.get_boolean(`${prefix}-close-effect`)) {
+          enabledEffects.push(Effect);
         }
-      };
+      });
 
-      tweakTransition('opacity', 255);
-      tweakTransition('scale-x', 1);
-      tweakTransition('scale-y', 1);
+      if (enabledEffects.length == 0) {
+        return;
+      }
 
-      let shader = null;
+      const Effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
+
+      Effect.tweakTransitions(actor, this._settings);
 
       // Add a cool shader to our window actor!
-      // const mode = this._settings.get_enum('close-animation');
-      // if (mode == 1) {
-      shader = FireEffect.createShader(this._settings);
-      // } else if (mode == 2) {
-      //   shader = new MatrixShader(this._settings);
-      // } else if (mode == 3) {
-      //   shader = new TVEffectShader(this._settings);
-      //   tweakTransition('scale-y', 0.5);
-      // } else if (mode == 4) {
-      //   shader = new TRexShader(this._settings);
-
-      //   const warp = 0.5 * this._settings.get_double('claw-scratch-warp');
-      //   tweakTransition('scale-x', 1.0 + warp);
-      //   tweakTransition('scale-y', 1.0 + warp);
-      // }
+      const shader = Effect.createShader(this._settings);
 
       if (shader) {
         actor.add_effect(shader);

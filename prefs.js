@@ -19,7 +19,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
-const EFFECT_TYPES = [
+const ALL_EFFECTS = [
   Me.imports.src.FireEffect.FireEffect,
   Me.imports.src.MatrixEffect.MatrixEffect,
   Me.imports.src.TRexEffect.TRexEffect,
@@ -57,10 +57,10 @@ var PreferencesDialog = class PreferencesDialog {
     stack.add_titled(
         this._builder.get_object('general-prefs'), 'general', 'General Options');
 
-    EFFECT_TYPES.forEach(Type => {
-      const [minMajor, minMinor] = Type.getMinShellVersion();
+    ALL_EFFECTS.forEach(Effect => {
+      const [minMajor, minMinor] = Effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-        Type.initPreferences(this);
+        Effect.initPreferences(this);
       }
     });
 
@@ -107,11 +107,11 @@ var PreferencesDialog = class PreferencesDialog {
 
         const menu = this._builder.get_object('close-effect-menu');
 
-        EFFECT_TYPES.forEach(Type => {
-          const [minMajor, minMinor] = Type.getMinShellVersion();
+        ALL_EFFECTS.forEach(Effect => {
+          const [minMajor, minMinor] = Effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const prefix = Type.getSettingsPrefix();
-            const label  = Type.getLabel();
+            const prefix = Effect.getSettingsPrefix();
+            const label  = Effect.getLabel();
 
             const action = this._settings.create_action(`${prefix}-close-effect`);
             group.add_action(action);
