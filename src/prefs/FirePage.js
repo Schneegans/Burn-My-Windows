@@ -18,12 +18,11 @@ const {Gio} = imports.gi;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.common.utils;
-const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var FirePage = class FirePage extends PrefsPage {
+var FirePage = class FirePage {
 
   // ---------------------------------------------------------------------- static methods
 
@@ -39,46 +38,43 @@ var FirePage = class FirePage extends PrefsPage {
     return 'Fire';
   }
 
-  // ------------------------------------------------------------ constructor / destructor
+  static initPreferences(dialog) {
 
-  constructor(settings, builder) {
-    super(settings, builder);
-
-    this._builder.add_from_resource(
+    dialog.getBuilder().add_from_resource(
         `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/firePage.ui`);
 
     // Bind all properties.
-    this._bindAdjustment('fire-animation-time');
-    this._bindAdjustment('flame-movement-speed');
-    this._bindAdjustment('flame-scale');
-    this._bindSwitch('flame-3d-noise');
-    this._bindColorButton('fire-color-1');
-    this._bindColorButton('fire-color-2');
-    this._bindColorButton('fire-color-3');
-    this._bindColorButton('fire-color-4');
-    this._bindColorButton('fire-color-5');
+    dialog.bindAdjustment('fire-animation-time');
+    dialog.bindAdjustment('flame-movement-speed');
+    dialog.bindAdjustment('flame-scale');
+    dialog.bindSwitch('flame-3d-noise');
+    dialog.bindColorButton('fire-color-1');
+    dialog.bindColorButton('fire-color-2');
+    dialog.bindColorButton('fire-color-3');
+    dialog.bindColorButton('fire-color-4');
+    dialog.bindColorButton('fire-color-5');
 
     // The fire-gradient-reset button needs to be bound explicitly.
-    this._builder.get_object('reset-fire-colors').connect('clicked', () => {
-      this._settings.reset('fire-color-1');
-      this._settings.reset('fire-color-2');
-      this._settings.reset('fire-color-3');
-      this._settings.reset('fire-color-4');
-      this._settings.reset('fire-color-5');
+    dialog.getBuilder().get_object('reset-fire-colors').connect('clicked', () => {
+      dialog.getSettings().reset('fire-color-1');
+      dialog.getSettings().reset('fire-color-2');
+      dialog.getSettings().reset('fire-color-3');
+      dialog.getSettings().reset('fire-color-4');
+      dialog.getSettings().reset('fire-color-5');
     });
 
     // Initialize the fire-preset dropdown.
-    this._createFirePresets();
+    FirePage._createFirePresets(dialog);
 
-    const stack = this._builder.get_object('main-stack');
-    stack.add_titled(this._builder.get_object('fire-prefs'), 'fire', 'Fire');
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(dialog.getBuilder().get_object('fire-prefs'), 'fire', 'Fire');
   }
 
   // ----------------------------------------------------------------------- private stuff
 
   // This populates the preset dropdown menu for the fire options.
-  _createFirePresets() {
-    this._builder.get_object('settings-widget').connect('realize', (widget) => {
+  static _createFirePresets(dialog) {
+    dialog.getBuilder().get_object('settings-widget').connect('realize', (widget) => {
       const presets = [
         {
           name: 'Default Fire',
@@ -144,19 +140,19 @@ var FirePage = class FirePage extends PrefsPage {
 
         // Load the preset on activation.
         action.connect('activate', () => {
-          this._settings.set_double('flame-movement-speed', preset.speed);
-          this._settings.set_double('flame-scale', preset.scale);
-          this._settings.set_string('fire-color-1', preset.color1);
-          this._settings.set_string('fire-color-2', preset.color2);
-          this._settings.set_string('fire-color-3', preset.color3);
-          this._settings.set_string('fire-color-4', preset.color4);
-          this._settings.set_string('fire-color-5', preset.color5);
+          dialog.getSettings().set_double('flame-movement-speed', preset.speed);
+          dialog.getSettings().set_double('flame-scale', preset.scale);
+          dialog.getSettings().set_string('fire-color-1', preset.color1);
+          dialog.getSettings().set_string('fire-color-2', preset.color2);
+          dialog.getSettings().set_string('fire-color-3', preset.color3);
+          dialog.getSettings().set_string('fire-color-4', preset.color4);
+          dialog.getSettings().set_string('fire-color-5', preset.color5);
         });
 
         group.add_action(action);
       });
 
-      this._builder.get_object('fire-preset-button').set_menu_model(menu);
+      dialog.getBuilder().get_object('fire-preset-button').set_menu_model(menu);
 
       const root = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
       root.insert_action_group(groupName, group);

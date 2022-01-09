@@ -16,12 +16,11 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.common.utils;
-const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var MatrixPage = class MatrixPage extends PrefsPage {
+var MatrixPage = class MatrixPage {
 
   // ---------------------------------------------------------------------- static methods
 
@@ -37,21 +36,18 @@ var MatrixPage = class MatrixPage extends PrefsPage {
     return 'Matrix';
   }
 
-  // ------------------------------------------------------------ constructor / destructor
+  static initPreferences(dialog) {
 
-  constructor(settings, builder) {
-    super(settings, builder);
-
-    this._builder.add_from_resource('/ui/gtk4/matrixPage.ui');
+    dialog.getBuilder().add_from_resource('/ui/gtk4/matrixPage.ui');
 
     // Bind all properties.
-    this._bindAdjustment('matrix-animation-time');
-    this._bindAdjustment('matrix-scale');
-    this._bindAdjustment('matrix-randomness');
-    this._bindColorButton('matrix-trail-color');
-    this._bindColorButton('matrix-tip-color');
+    dialog.bindAdjustment('matrix-animation-time');
+    dialog.bindAdjustment('matrix-scale');
+    dialog.bindAdjustment('matrix-randomness');
+    dialog.bindColorButton('matrix-trail-color');
+    dialog.bindColorButton('matrix-tip-color');
 
-    const stack = this._builder.get_object('main-stack');
-    stack.add_titled(this._builder.get_object('matrix-prefs'), 'matrix', 'Matrix');
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(dialog.getBuilder().get_object('matrix-prefs'), 'matrix', 'Matrix');
   }
 }

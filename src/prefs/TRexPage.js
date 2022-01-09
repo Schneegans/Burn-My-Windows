@@ -16,12 +16,11 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.common.utils;
-const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var TRexPage = class TRexPage extends PrefsPage {
+var TRexPage = class TRexPage {
 
   // ---------------------------------------------------------------------- static methods
 
@@ -37,21 +36,19 @@ var TRexPage = class TRexPage extends PrefsPage {
     return 'T-Rex Attack';
   }
 
-  // ------------------------------------------------------------ constructor / destructor
+  static initPreferences(dialog) {
 
-  constructor(settings, builder) {
-    super(settings, builder);
-
-    this._builder.add_from_resource('/ui/gtk4/trexPage.ui');
+    dialog.getBuilder().add_from_resource('/ui/gtk4/trexPage.ui');
 
     // Bind all properties.
-    this._bindAdjustment('trex-animation-time');
-    this._bindColorButton('claw-scratch-color');
-    this._bindAdjustment('claw-scratch-scale');
-    this._bindAdjustment('claw-scratch-count');
-    this._bindAdjustment('claw-scratch-warp');
+    dialog.bindAdjustment('trex-animation-time');
+    dialog.bindColorButton('claw-scratch-color');
+    dialog.bindAdjustment('claw-scratch-scale');
+    dialog.bindAdjustment('claw-scratch-count');
+    dialog.bindAdjustment('claw-scratch-warp');
 
-    const stack = this._builder.get_object('main-stack');
-    stack.add_titled(this._builder.get_object('trex-prefs'), 'trex', 'T-Rex Attack');
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(
+        dialog.getBuilder().get_object('trex-prefs'), 'trex', 'T-Rex Attack');
   }
 }

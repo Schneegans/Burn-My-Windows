@@ -23,7 +23,6 @@ const FirePage     = Me.imports.src.prefs.FirePage.FirePage;
 const MatrixPage   = Me.imports.src.prefs.MatrixPage.MatrixPage;
 const TVEffectPage = Me.imports.src.prefs.TVEffectPage.TVEffectPage;
 const TRexPage     = Me.imports.src.prefs.TRexPage.TRexPage;
-const GeneralPage  = Me.imports.src.prefs.GeneralPage.GeneralPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // For now, the preferences dialog of this extension is very simple. In the future, if  //
@@ -48,14 +47,20 @@ var PreferencesDialog = class PreferencesDialog {
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/main-menu.ui`);
     this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/prefs.ui`);
+    this._builder.add_from_resource(
+        `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/generalPage.ui`);
 
-    this._generalPAge = new GeneralPage(this._settings, this._builder);
+    // Bind general options properties.
+    this.bindSwitch('destroy-dialogs');
 
-    this._effects = [];
+    const stack = this._builder.get_object('main-stack');
+    stack.add_titled(
+        this._builder.get_object('general-prefs'), 'general', 'General Options');
+
     EFFECT_TYPES.forEach(Type => {
       const [minMajor, minMinor] = Type.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-        this._effects.push(new Type(this._settings, this._builder));
+        Type.initPreferences(this);
       }
     });
 
@@ -102,15 +107,18 @@ var PreferencesDialog = class PreferencesDialog {
 
         const menu = this._builder.get_object('close-effect-menu');
 
-        this._effects.forEach(effect => {
-          const prefix = effect.constructor.getSettingsPrefix();
-          const label  = effect.constructor.getLabel();
+        EFFECT_TYPES.forEach(Type => {
+          const [minMajor, minMinor] = Type.getMinShellVersion();
+          if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+            const prefix = Type.getSettingsPrefix();
+            const label  = Type.getLabel();
 
-          const action = this._settings.create_action(`${prefix}-close-effect`);
-          group.add_action(action);
+            const action = this._settings.create_action(`${prefix}-close-effect`);
+            group.add_action(action);
 
-          menu.append_item(
-              Gio.MenuItem.new(label, `close-effects.${prefix}-close-effect`));
+            menu.append_item(
+                Gio.MenuItem.new(label, `close-effects.${prefix}-close-effect`));
+          }
         });
       }
     });
@@ -130,9 +138,90 @@ var PreferencesDialog = class PreferencesDialog {
 
   // -------------------------------------------------------------------- public interface
 
+  getBuilder() {
+    return this._builder;
+  }
+
+  getSettings() {
+    return this._settings;
+  }
+
   // Returns the widget used for the settings of this extension.
   getWidget() {
     return this._widget;
+  }
+
+  // Connects a Gtk.ComboBox (or anything else which has an 'active-id' property) to a
+  // settings key. It also binds the corresponding reset button.
+  bindCombobox(settingsKey) {
+    this._bind(settingsKey, 'active-id');
+  }
+
+  // Connects a Gtk.Adjustment (or anything else which has a 'value' property) to a
+  // settings key. It also binds the corresponding reset button.
+  bindAdjustment(settingsKey) {
+    this._bind(settingsKey, 'value');
+  }
+
+  // Connects a Gtk.Switch (or anything else which has an 'active' property) to a settings
+  // key. It also binds the corresponding reset button.
+  bindSwitch(settingsKey) {
+    this._bind(settingsKey, 'active');
+  }
+
+  // Colors are stored as strings like 'rgb(1, 0.5, 0)'. As Gio.Settings.bind_with_mapping
+  // is not available yet, we need to do the color conversion manually. It also binds the
+  // corresponding reset button.
+  bindColorButton(settingsKey) {
+
+    const button = this._builder.get_object(settingsKey);
+
+    if (button) {
+
+      // Update the settings when the color is modified.
+      button.connect('color-set', () => {
+        this._settings.set_string(settingsKey, button.get_rgba().to_string());
+      });
+
+      // Update the button state when the settings change.
+      const settingSignalHandler = () => {
+        const rgba = new Gdk.RGBA();
+        rgba.parse(this._settings.get_string(settingsKey));
+        button.rgba = rgba;
+      };
+
+      this._settings.connect('changed::' + settingsKey, settingSignalHandler);
+
+      // Initialize the button with the state in the settings.
+      settingSignalHandler();
+    }
+
+    this._bindResetButton(settingsKey);
+  }
+
+  // ----------------------------------------------------------------------- private stuff
+
+  // Searches for a reset button for the given settings key and make it reset the settings
+  // key when clicked.
+  _bindResetButton(settingsKey) {
+    const resetButton = this._builder.get_object('reset-' + settingsKey);
+    if (resetButton) {
+      resetButton.connect('clicked', () => {
+        this._settings.reset(settingsKey);
+      });
+    }
+  }
+
+  // Connects any widget's property to a settings key. The widget must have the same ID as
+  // the settings key. It also binds the corresponding reset button.
+  _bind(settingsKey, property) {
+    const object = this._builder.get_object(settingsKey);
+
+    if (object) {
+      this._settings.bind(settingsKey, object, property, Gio.SettingsBindFlags.DEFAULT);
+    }
+
+    this._bindResetButton(settingsKey);
   }
 }
 

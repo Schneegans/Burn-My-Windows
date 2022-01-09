@@ -16,12 +16,11 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.common.utils;
-const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var TVEffectPage = class TVEffectPage extends PrefsPage {
+var TVEffectPage = class TVEffectPage {
 
   // ---------------------------------------------------------------------- static methods
 
@@ -37,18 +36,16 @@ var TVEffectPage = class TVEffectPage extends PrefsPage {
     return 'TV Effect';
   }
 
-  // ------------------------------------------------------------ constructor / destructor
+  static initPreferences(dialog) {
 
-  constructor(settings, builder) {
-    super(settings, builder);
-
-    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/tvPage.ui`);
+    dialog.getBuilder().add_from_resource(
+        `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/tvPage.ui`);
 
     // Bind all properties.
-    this._bindAdjustment('tv-animation-time');
-    this._bindColorButton('tv-effect-color');
+    dialog.bindAdjustment('tv-animation-time');
+    dialog.bindColorButton('tv-effect-color');
 
-    const stack = this._builder.get_object('main-stack');
-    stack.add_titled(this._builder.get_object('tv-prefs'), 'tv', 'TV Effect');
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(dialog.getBuilder().get_object('tv-prefs'), 'tv', 'TV Effect');
   }
 }
