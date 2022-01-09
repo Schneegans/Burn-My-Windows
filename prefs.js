@@ -17,19 +17,19 @@ const {Gio, Gtk, Gdk} = imports.gi;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.common.utils;
+const utils          = Me.imports.src.utils;
 
-const FirePage     = Me.imports.src.prefs.FirePage.FirePage;
-const MatrixPage   = Me.imports.src.prefs.MatrixPage.MatrixPage;
-const TVEffectPage = Me.imports.src.prefs.TVEffectPage.TVEffectPage;
-const TRexPage     = Me.imports.src.prefs.TRexPage.TRexPage;
+const EFFECT_TYPES = [
+  Me.imports.src.FireEffect.FireEffect,
+  Me.imports.src.MatrixEffect.MatrixEffect,
+  Me.imports.src.TRexEffect.TRexEffect,
+  Me.imports.src.TVEffect.TVEffect,
+];
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // For now, the preferences dialog of this extension is very simple. In the future, if  //
 // we might consider to improve its layout...                                           //
 //////////////////////////////////////////////////////////////////////////////////////////
-
-const EFFECT_TYPES = [FirePage, MatrixPage, TVEffectPage, TRexPage];
 
 var PreferencesDialog = class PreferencesDialog {
 

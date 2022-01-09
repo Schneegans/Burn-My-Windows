@@ -46,6 +46,10 @@ function isGTK4() {
   return Gtk.get_major_version() == 4;
 }
 
+function isInShellProcess() {
+  return window.global && global.stage;
+}
+
 function shellVersionIs(major, minor) {
   return GS_MAJOR == major && GS_MINOR == minor;
 }

@@ -30,7 +30,7 @@ burn-my-windows@schneegans.github.com.zip: schemas/gschemas.compiled resources/b
 	
 	@echo "Packing zip file..."
 	@rm --force burn-my-windows@schneegans.github.com.zip
-	@zip -r burn-my-windows@schneegans.github.com.zip -- *.js src/*/*.js resources/burn-my-windows.gresource schemas/gschemas.compiled metadata.json LICENSE
+	@zip -r burn-my-windows@schneegans.github.com.zip -- *.js src/*.js resources/burn-my-windows.gresource schemas/gschemas.compiled metadata.json LICENSE
 	
 	@#Check if the zip size is too big to be uploaded
 	@if [[ "$$(stat -c %s burn-my-windows@schneegans.github.com.zip)" -gt 4096000 ]]; then \
