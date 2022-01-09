@@ -209,8 +209,8 @@ class Extension {
     }
 
     // This was called "realWindow" in GNOME 3.36.
-    const GS_336 = GS_MAJOR == 3 && GS_MINOR == 36;
-    const actor  = workspace._windows[index][GS_336 ? 'realWindow' : '_windowActor'];
+    const propertyName = utils.shellVersionIs(3, 36) ? 'realWindow' : '_windowActor';
+    const actor        = workspace._windows[index][propertyName];
     if (!actor.get_transition('scale-y')) {
       return true;
     }
