@@ -29,19 +29,19 @@
       <description>The time the fire effect takes.</description>
     </key>
 
-    <key name="fire-movement-speed" type="d">
+    <key name="flame-movement-speed" type="d">
       <default>0.5</default>
       <summary>Fire Movement Speed</summary>
       <description>The speed at which the fire moves.</description>
     </key>
 
-    <key name="fire-scale" type="d">
+    <key name="flame-scale" type="d">
       <default>1.0</default>
       <summary>Fire Scale</summary>
       <description>The size of the fire.</description>
     </key>
 
-    <key name="fire-3d-noise" type="b">
+    <key name="flame-3d-noise" type="b">
       <default>false</default>
       <summary>Fire 3D Noise</summary>
       <description>Use a 3D noise for the fire.</description>

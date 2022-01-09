@@ -49,9 +49,9 @@ var FirePage = class FirePage extends PrefsPage {
 
     // Bind all properties.
     this._bindAdjustment('fire-animation-time');
-    this._bindAdjustment('fire-movement-speed');
-    this._bindAdjustment('fire-scale');
-    this._bindSwitch('fire-3d-noise');
+    this._bindAdjustment('flame-movement-speed');
+    this._bindAdjustment('flame-scale');
+    this._bindSwitch('flame-3d-noise');
     this._bindColorButton('fire-color-1');
     this._bindColorButton('fire-color-2');
     this._bindColorButton('fire-color-3');
@@ -144,8 +144,8 @@ var FirePage = class FirePage extends PrefsPage {
 
         // Load the preset on activation.
         action.connect('activate', () => {
-          this._settings.set_double('fire-movement-speed', preset.speed);
-          this._settings.set_double('fire-scale', preset.scale);
+          this._settings.set_double('flame-movement-speed', preset.speed);
+          this._settings.set_double('flame-scale', preset.scale);
           this._settings.set_string('fire-color-1', preset.color1);
           this._settings.set_string('fire-color-2', preset.color2);
           this._settings.set_string('fire-color-3', preset.color3);
