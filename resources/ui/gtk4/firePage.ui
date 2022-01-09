@@ -36,7 +36,6 @@
                     <child>
                       <object class="GtkMenuButton" id="fire-preset-button">
                         <property name="label">Choose a Preset</property>
-                        <property name="has-frame">0</property>
                       </object>
                     </child>
                   </object>

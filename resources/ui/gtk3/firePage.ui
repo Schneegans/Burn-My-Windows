@@ -59,7 +59,6 @@
                     </child>
                     <child>
                       <object class="GtkMenuButton" id="fire-preset-button">
-                        <property name="relief">none</property>
                         <child>
                           <object class="GtkBox">
                             <property name="spacing">8</property>
