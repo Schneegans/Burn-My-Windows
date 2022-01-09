@@ -23,6 +23,20 @@ const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 var TVEffectPage = class TVEffectPage extends PrefsPage {
 
+  // ---------------------------------------------------------------------- static methods
+
+  static getMinShellVersion() {
+    return [3, 36];
+  }
+
+  static getSettingsPrefix() {
+    return 'tv';
+  }
+
+  static getLabel() {
+    return 'TV Effect';
+  }
+
   // ------------------------------------------------------------ constructor / destructor
 
   constructor(settings, builder) {
@@ -36,15 +50,5 @@ var TVEffectPage = class TVEffectPage extends PrefsPage {
 
     const stack = this._builder.get_object('main-stack');
     stack.add_titled(this._builder.get_object('tv-prefs'), 'tv', 'TV Effect');
-  }
-
-  // ---------------------------------------------------------------------- public methods
-
-  getEnabledKey() {
-    return 'tv-close-effect';
-  }
-
-  getAnimationTime() {
-    return this._settings.get_int('tv-animation-time');
   }
 }

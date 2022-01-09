@@ -30,6 +30,8 @@ const GeneralPage  = Me.imports.src.prefs.GeneralPage.GeneralPage;
 // we might consider to improve its layout...                                           //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+const EFFECT_TYPES = [FirePage, MatrixPage, TVEffectPage, TRexPage];
+
 var PreferencesDialog = class PreferencesDialog {
 
   // ------------------------------------------------------------ constructor / destructor
@@ -47,44 +49,70 @@ var PreferencesDialog = class PreferencesDialog {
     this._builder.add_from_resource(`/ui/common/main-menu.ui`);
     this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/prefs.ui`);
 
-    this._generalPage  = new GeneralPage(this._settings, this._builder);
-    this._firePage     = new FirePage(this._settings, this._builder);
-    this._matrixPage   = new MatrixPage(this._settings, this._builder);
-    this._tvEffectPage = new TVEffectPage(this._settings, this._builder);
-    this._trexPage     = new TRexPage(this._settings, this._builder);
+    this._generalPAge = new GeneralPage(this._settings, this._builder);
+
+    this._effects = [];
+    EFFECT_TYPES.forEach(Type => {
+      const [minMajor, minMinor] = Type.getMinShellVersion();
+      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+        this._effects.push(new Type(this._settings, this._builder));
+      }
+    });
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
 
-    // Add a menu to the title bar of the preferences dialog.
+    // Some things can only be done once the widget is shown as we do not have access to
+    // the toplevel widget before.
     this._widget.connect('realize', (widget) => {
       const window = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
 
-      // Add the menu.
-      const menu = this._builder.get_object('menu-button');
-      window.get_titlebar().pack_end(menu);
+      // Add the main menu to the title bar.
+      {
+        // Add the menu button to the title bar.
+        const menu = this._builder.get_object('menu-button');
+        window.get_titlebar().pack_end(menu);
 
-      // Populate the actions.
-      const group = Gio.SimpleActionGroup.new();
+        // Populate the menu with actions.
+        const group = Gio.SimpleActionGroup.new();
+        window.insert_action_group('prefs', group);
 
-      const addAction = (name, uri) => {
-        const action = Gio.SimpleAction.new(name, null);
-        action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
-        group.add_action(action);
-      };
+        const addAction = (name, uri) => {
+          const action = Gio.SimpleAction.new(name, null);
+          action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
+          group.add_action(action);
+        };
 
-      // clang-format off
-      addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
-      addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
-      addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
-      addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
-      addAction('donate-github', 'https://github.com/sponsors/Schneegans');
-      // clang-format on
+        // clang-format off
+        addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
+        addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
+        addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
+        addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
+        addAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        // clang-format on
+      }
 
-      window.insert_action_group('prefs', group);
+      // Populate the close-effects drop-down menu.
+      {
+        const group = Gio.SimpleActionGroup.new();
+        window.insert_action_group('close-effects', group);
+
+        const menu = this._builder.get_object('close-effect-menu');
+
+        this._effects.forEach(effect => {
+          const prefix = effect.constructor.getSettingsPrefix();
+          const label  = effect.constructor.getLabel();
+
+          const action = this._settings.create_action(`${prefix}-close-effect`);
+          group.add_action(action);
+
+          menu.append_item(
+              Gio.MenuItem.new(label, `close-effects.${prefix}-close-effect`));
+        });
+      }
     });
 
     // As we do not have something like a destructor, we just listen for the destroy

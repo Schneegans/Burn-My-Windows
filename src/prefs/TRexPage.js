@@ -23,14 +23,24 @@ const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 var TRexPage = class TRexPage extends PrefsPage {
 
+  // ---------------------------------------------------------------------- static methods
+
+  static getMinShellVersion() {
+    return [40, 0];
+  }
+
+  static getSettingsPrefix() {
+    return 'trex';
+  }
+
+  static getLabel() {
+    return 'T-Rex Attack';
+  }
+
   // ------------------------------------------------------------ constructor / destructor
 
   constructor(settings, builder) {
     super(settings, builder);
-
-    if (!utils.shellVersionIsAtLeast(40, 0)) {
-      return;
-    }
 
     this._builder.add_from_resource('/ui/gtk4/trexPage.ui');
 
@@ -43,15 +53,5 @@ var TRexPage = class TRexPage extends PrefsPage {
 
     const stack = this._builder.get_object('main-stack');
     stack.add_titled(this._builder.get_object('trex-prefs'), 'trex', 'T-Rex Attack');
-  }
-
-  // ---------------------------------------------------------------------- public methods
-
-  getEnabledKey() {
-    return 'trex-close-effect';
-  }
-
-  getAnimationTime() {
-    return this._settings.get_int('trex-animation-time');
   }
 }

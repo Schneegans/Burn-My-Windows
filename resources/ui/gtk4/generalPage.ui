@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
 
+  <menu id="close-effect-menu"></menu>
+
   <object class="GtkBox" id="general-prefs">
     <property name="orientation">vertical</property>
     <property name="margin-start">60</property>
@@ -54,16 +56,8 @@
                     </child>
                     <child>
                       <object class="GtkMenuButton" id="close-effect-button">
-                        <property name="label">Effects</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-close-animation">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
+                        <property name="label">Choose Effects</property>
+                        <property name="menu-model">close-effect-menu</property>
                       </object>
                     </child>
                   </object>

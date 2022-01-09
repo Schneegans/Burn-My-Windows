@@ -23,14 +23,24 @@ const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 var MatrixPage = class MatrixPage extends PrefsPage {
 
+  // ---------------------------------------------------------------------- static methods
+
+  static getMinShellVersion() {
+    return [40, 0];
+  }
+
+  static getSettingsPrefix() {
+    return 'matrix';
+  }
+
+  static getLabel() {
+    return 'Matrix';
+  }
+
   // ------------------------------------------------------------ constructor / destructor
 
   constructor(settings, builder) {
     super(settings, builder);
-
-    if (!utils.shellVersionIsAtLeast(40, 0)) {
-      return;
-    }
 
     this._builder.add_from_resource('/ui/gtk4/matrixPage.ui');
 
@@ -43,15 +53,5 @@ var MatrixPage = class MatrixPage extends PrefsPage {
 
     const stack = this._builder.get_object('main-stack');
     stack.add_titled(this._builder.get_object('matrix-prefs'), 'matrix', 'Matrix');
-  }
-
-  // ---------------------------------------------------------------------- public methods
-
-  getEnabledKey() {
-    return 'matrix-close-effect';
-  }
-
-  getAnimationTime() {
-    return this._settings.get_int('matrix-animation-time');
   }
 }

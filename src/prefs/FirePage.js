@@ -25,6 +25,20 @@ const PrefsPage      = Me.imports.src.prefs.PrefsPage.PrefsPage;
 
 var FirePage = class FirePage extends PrefsPage {
 
+  // ---------------------------------------------------------------------- static methods
+
+  static getMinShellVersion() {
+    return [3, 36];
+  }
+
+  static getSettingsPrefix() {
+    return 'fire';
+  }
+
+  static getLabel() {
+    return 'Fire';
+  }
+
   // ------------------------------------------------------------ constructor / destructor
 
   constructor(settings, builder) {
@@ -58,16 +72,6 @@ var FirePage = class FirePage extends PrefsPage {
 
     const stack = this._builder.get_object('main-stack');
     stack.add_titled(this._builder.get_object('fire-prefs'), 'fire', 'Fire');
-  }
-
-  // ---------------------------------------------------------------------- public methods
-
-  getEnabledKey() {
-    return 'fire-close-effect';
-  }
-
-  getAnimationTime() {
-    return this._settings.get_int('fire-animation-time');
   }
 
   // ----------------------------------------------------------------------- private stuff
