@@ -20,28 +20,81 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// The TVEffectShader hides the actor by making it first transparent from top and       //
+// The TVShader hides the actor by making it first transparent from top and             //
 // bottom towards the middle and then hiding the resulting line from left and right     //
 // towards the center.                                                                  //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 
-let TVEffectShader = null;
+let TVShader = null;
+
+
+var TVEffect = class TVEffect {
+
+  // ---------------------------------------------------------------------- static methods
+
+  static getMinShellVersion() {
+    return [3, 36];
+  }
+
+  static getSettingsPrefix() {
+    return 'tv';
+  }
+
+  static getLabel() {
+    return 'TV Effect';
+  }
+
+  static initPreferences(dialog) {
+
+    dialog.getBuilder().add_from_resource(
+        `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/tvPage.ui`);
+
+    // Bind all properties.
+    dialog.bindAdjustment('tv-animation-time');
+    dialog.bindColorButton('tv-effect-color');
+
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(dialog.getBuilder().get_object('tv-prefs'), 'tv', 'TV Effect');
+  }
+
+  static createShader(settings) {
+    return new TVShader(settings);
+  }
+
+  // If there's a transition in progress, we re-target these transitions so that the
+  // window is neither scaled nor faded.
+  static tweakTransitions(actor, settings) {
+    const animationTime = settings.get_int('tv-animation-time');
+
+    const tweakTransition = (property, value) => {
+      const transition = actor.get_transition(property);
+      if (transition) {
+        transition.set_to(value);
+        transition.set_duration(animationTime);
+      }
+    };
+
+    tweakTransition('opacity', 255);
+    tweakTransition('scale-x', 1);
+    tweakTransition('scale-y', 0.5);
+  }
+}
+
 
 if (utils.isInShellProcess()) {
 
   const Clutter        = imports.gi.Clutter;
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
-  TVEffectShader = GObject.registerClass(
-      {Properties: {}, Signals: {}}, class TVEffectShader extends Clutter.ShaderEffect {
-        _init(settings) {
-          super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  TVShader = GObject.registerClass({Properties: {}, Signals: {}},
+                                   class TVShader extends Clutter.ShaderEffect {
+    _init(settings) {
+      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
-          const color =
-              Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
+      const color = Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
 
-          this.set_shader_source(`
+      this.set_shader_source(`
 
       // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
@@ -94,58 +147,6 @@ if (utils.isInShellProcess()) {
         // cogl_color_out = vec4(vec3(mask), 1);
       }
       `);
-        };
-      });
-}
-
-var TVEffect = class TVEffect {
-
-  // ---------------------------------------------------------------------- static methods
-
-  static getMinShellVersion() {
-    return [3, 36];
-  }
-
-  static getSettingsPrefix() {
-    return 'tv';
-  }
-
-  static getLabel() {
-    return 'TV Effect';
-  }
-
-  static initPreferences(dialog) {
-
-    dialog.getBuilder().add_from_resource(
-        `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/tvPage.ui`);
-
-    // Bind all properties.
-    dialog.bindAdjustment('tv-animation-time');
-    dialog.bindColorButton('tv-effect-color');
-
-    const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(dialog.getBuilder().get_object('tv-prefs'), 'tv', 'TV Effect');
-  }
-
-  static createShader(settings) {
-    return new TVEffectShader(settings);
-  }
-
-  // If there's a transition in progress, we re-target these transitions so that the
-  // window is neither scaled nor faded.
-  static tweakTransitions(actor, settings) {
-    const animationTime = settings.get_int('tv-animation-time');
-
-    const tweakTransition = (property, value) => {
-      const transition = actor.get_transition(property);
-      if (transition) {
-        transition.set_to(value);
-        transition.set_duration(animationTime);
-      }
     };
-
-    tweakTransition('opacity', 255);
-    tweakTransition('scale-x', 1);
-    tweakTransition('scale-y', 0.5);
-  }
+  });
 }
