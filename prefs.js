@@ -45,14 +45,10 @@ var PreferencesDialog = class PreferencesDialog {
     this._settings = ExtensionUtils.getSettings();
 
     // Load the general user interface files.
-    {
-      const dir = utils.isGTK4() ? 'gtk4' : 'gtk3';
-
-      this._builder = new Gtk.Builder();
-      this._builder.add_from_resource(`/ui/common/main-menu.ui`);
-      this._builder.add_from_resource(`/ui/${dir}/prefs.ui`);
-      this._builder.add_from_resource(`/ui/${dir}/generalPage.ui`);
-    }
+    this._builder = new Gtk.Builder();
+    this._builder.add_from_resource(`/ui/common/main-menu.ui`);
+    this._builder.add_from_resource(`/ui/${utils.getGTKString()}/prefs.ui`);
+    this._builder.add_from_resource(`/ui/${utils.getGTKString()}/generalPage.ui`);
 
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');

@@ -46,6 +46,10 @@ function isGTK4() {
   return Gtk.get_major_version() == 4;
 }
 
+function getGTKString() {
+  return isGTK4() ? 'gtk4' : 'gtk3';
+}
+
 function isInShellProcess() {
   return window.global && global.stage;
 }

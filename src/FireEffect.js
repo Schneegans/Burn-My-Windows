@@ -61,8 +61,7 @@ var FireEffect = class FireEffect {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(
-        `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/firePage.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/firePage.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('fire-animation-time');
