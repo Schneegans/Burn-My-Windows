@@ -27,27 +27,31 @@ const utils          = Me.imports.src.utils;
 // documentation of vfunc_paint_target further down in this file.                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
+// The shader class for this effect is registered further down in this file.
 let MatrixShader = null;
 
 var MatrixEffect = class MatrixEffect {
 
   // ---------------------------------------------------------------------- static methods
 
+  // This effect is only available on GNOME Shell 40+.
   static getMinShellVersion() {
     return [40, 0];
   }
 
-  static getSettingsPrefix() {
+  static getNick() {
     return 'matrix';
   }
 
+  // This will be shown in the sidebar of the preferences dialog as well as in the
+  // drop-down menus where the user can choose the effect.
   static getLabel() {
     return 'Matrix';
   }
 
   static initPreferences(dialog) {
 
+    // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource('/ui/gtk4/matrixPage.ui');
 
     // Bind all properties.
@@ -57,8 +61,11 @@ var MatrixEffect = class MatrixEffect {
     dialog.bindColorButton('matrix-trail-color');
     dialog.bindColorButton('matrix-tip-color');
 
+    // Finally, append the settings page to the main stack.
     const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(dialog.getBuilder().get_object('matrix-prefs'), 'matrix', 'Matrix');
+    stack.add_titled(
+        dialog.getBuilder().get_object('matrix-prefs'), MatrixEffect.getNick(),
+        MatrixEffect.getLabel());
   }
 
   static createShader(settings) {
@@ -84,6 +91,12 @@ var MatrixEffect = class MatrixEffect {
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// The shader class for this effect will only be registered in GNOME Shell's process    //
+// (not in the preferences process). It's done this way as Clutter may not be installed //
+// on the system and therefore the preferences would crash.                             //
+//////////////////////////////////////////////////////////////////////////////////////////
 
 if (utils.isInShellProcess()) {
 
@@ -155,7 +168,7 @@ if (utils.isInShellProcess()) {
           float speed = fract(cos(coords.x)*12.989) * mix(0.0, 0.3, RANDOMNESS) + 1.5;
 
           float distToDrop  = (uProgress*2-delay)*speed - fragCoord.y;
-          
+
           float rainAlpha   = distToDrop >= 0 ? exp(-distToDrop/TRAIL_LENGTH) : 0;
           float windowAlpha = 1 - clamp(uSizeY*distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
 

@@ -25,28 +25,31 @@ const utils          = Me.imports.src.utils;
 // towards the center.                                                                  //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
+// The shader class for this effect is registered further down in this file.
 let TVShader = null;
-
 
 var TVEffect = class TVEffect {
 
   // ---------------------------------------------------------------------- static methods
 
+  // The effect is available on all GNOME Shell versions supported by this extension.
   static getMinShellVersion() {
     return [3, 36];
   }
 
-  static getSettingsPrefix() {
+  static getNick() {
     return 'tv';
   }
 
+  // This will be shown in the sidebar of the preferences dialog as well as in the
+  // drop-down menus where the user can choose the effect.
   static getLabel() {
     return 'TV Effect';
   }
 
   static initPreferences(dialog) {
 
+    // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource(
         `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/tvPage.ui`);
 
@@ -54,8 +57,11 @@ var TVEffect = class TVEffect {
     dialog.bindAdjustment('tv-animation-time');
     dialog.bindColorButton('tv-effect-color');
 
+    // Finally, append the settings page to the main stack.
     const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(dialog.getBuilder().get_object('tv-prefs'), 'tv', 'TV Effect');
+    stack.add_titled(
+        dialog.getBuilder().get_object('tv-prefs'), TVEffect.getNick(),
+        TVEffect.getLabel());
   }
 
   static createShader(settings) {
@@ -81,6 +87,12 @@ var TVEffect = class TVEffect {
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// The shader class for this effect will only be registered in GNOME Shell's process    //
+// (not in the preferences process). It's done this way as Clutter may not be installed //
+// on the system and therefore the preferences would crash.                             //
+//////////////////////////////////////////////////////////////////////////////////////////
 
 if (utils.isInShellProcess()) {
 

@@ -27,26 +27,31 @@ const utils          = Me.imports.src.utils;
 // there are a couple of moving gradients which fade-in or fade-out the fire effect.    //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// The shader class for this effect is registered further down in this file.
 let FireShader = null;
 
 var FireEffect = class FireEffect {
 
   // ---------------------------------------------------------------------- static methods
 
+  // The effect is available on all GNOME Shell versions supported by this extension.
   static getMinShellVersion() {
     return [3, 36];
   }
 
-  static getSettingsPrefix() {
+  static getNick() {
     return 'fire';
   }
 
+  // This will be shown in the sidebar of the preferences dialog as well as in the
+  // drop-down menus where the user can choose the effect.
   static getLabel() {
     return 'Fire';
   }
 
   static initPreferences(dialog) {
 
+    // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource(
         `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/firePage.ui`);
 
@@ -73,8 +78,11 @@ var FireEffect = class FireEffect {
     // Initialize the fire-preset dropdown.
     FireEffect._createFirePresets(dialog);
 
+    // Finally, append the settings page to the main stack.
     const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(dialog.getBuilder().get_object('fire-prefs'), 'fire', 'Fire');
+    stack.add_titled(
+        dialog.getBuilder().get_object('fire-prefs'), FireEffect.getNick(),
+        FireEffect.getLabel());
   }
 
   static createShader(settings) {
@@ -189,6 +197,12 @@ var FireEffect = class FireEffect {
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// The shader class for this effect will only be registered in GNOME Shell's process    //
+// (not in the preferences process). It's done this way as Clutter may not be installed //
+// on the system and therefore the preferences would crash.                             //
+//////////////////////////////////////////////////////////////////////////////////////////
 
 if (utils.isInShellProcess()) {
 

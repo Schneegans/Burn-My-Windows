@@ -138,8 +138,7 @@ class Extension {
 
       // Create a list of all currently enabled effects.
       const enabledEffects = ALL_EFFECTS.filter(Effect => {
-        const prefix = Effect.getSettingsPrefix();
-        return this._settings.get_boolean(`${prefix}-close-effect`);
+        return this._settings.get_boolean(`${Effect.getNick()}-close-effect`);
       });
 
       // Nothing is enabled...

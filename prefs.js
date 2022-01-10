@@ -115,9 +115,9 @@ var PreferencesDialog = class PreferencesDialog {
         ALL_EFFECTS.forEach(Effect => {
           const [minMajor, minMinor] = Effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const prefix     = Effect.getSettingsPrefix();
+            const nick       = Effect.getNick();
             const label      = Effect.getLabel();
-            const actionName = prefix + '-close-effect';
+            const actionName = nick + '-close-effect';
             const fullName   = 'close-effects.' + actionName;
 
             const action = this._settings.create_action(actionName);

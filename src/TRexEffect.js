@@ -25,26 +25,31 @@ const utils          = Me.imports.src.utils;
 // documentation of vfunc_paint_target further down in this file.                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// The shader class for this effect is registered further down in this file.
 let TRexShader = null;
 
 var TRexEffect = class TRexEffect {
 
   // ---------------------------------------------------------------------- static methods
 
+  // This effect is only available on GNOME Shell 40+.
   static getMinShellVersion() {
     return [40, 0];
   }
 
-  static getSettingsPrefix() {
+  static getNick() {
     return 'trex';
   }
 
+  // This will be shown in the sidebar of the preferences dialog as well as in the
+  // drop-down menus where the user can choose the effect.
   static getLabel() {
     return 'T-Rex Attack';
   }
 
   static initPreferences(dialog) {
 
+    // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource('/ui/gtk4/trexPage.ui');
 
     // Bind all properties.
@@ -54,9 +59,11 @@ var TRexEffect = class TRexEffect {
     dialog.bindAdjustment('claw-scratch-count');
     dialog.bindAdjustment('claw-scratch-warp');
 
+    // Finally, append the settings page to the main stack.
     const stack = dialog.getBuilder().get_object('main-stack');
     stack.add_titled(
-        dialog.getBuilder().get_object('trex-prefs'), 'trex', 'T-Rex Attack');
+        dialog.getBuilder().get_object('trex-prefs'), TRexEffect.getNick(),
+        TRexEffect.getLabel());
   }
 
   static createShader(settings) {
@@ -84,6 +91,12 @@ var TRexEffect = class TRexEffect {
   }
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// The shader class for this effect will only be registered in GNOME Shell's process    //
+// (not in the preferences process). It's done this way as Clutter may not be installed //
+// on the system and therefore the preferences would crash.                             //
+//////////////////////////////////////////////////////////////////////////////////////////
 
 if (utils.isInShellProcess()) {
 
