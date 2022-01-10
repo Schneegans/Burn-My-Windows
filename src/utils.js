@@ -46,18 +46,25 @@ function isGTK4() {
   return Gtk.get_major_version() == 4;
 }
 
+// This method returns 'gtk3' or 'gtk4' depending on the currently used gtk version.
 function getGTKString() {
   return isGTK4() ? 'gtk4' : 'gtk3';
 }
 
+// This method returns true if called in GNOME Shell's process, false if called in the
+// preferences process.
 function isInShellProcess() {
   return window.global && global.stage;
 }
 
+// This method returns true if the current GNOME Shell version matches the given
+// arguments.
 function shellVersionIs(major, minor) {
   return GS_MAJOR == major && GS_MINOR == minor;
 }
 
+// This method returns true if the current GNOME Shell version is at least as high as the
+// given arguments.
 function shellVersionIsAtLeast(major, minor) {
   if (GS_MAJOR > major) {
     return true;

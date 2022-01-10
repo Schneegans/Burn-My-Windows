@@ -57,7 +57,9 @@ var MatrixEffect = class MatrixEffect {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-
+  // This is called by the preferences dialog. It loads the settings page for this effect,
+  // binds all properties to the settings and appends the page to the main stack of the
+  // preferences dialog.
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
@@ -79,13 +81,14 @@ var MatrixEffect = class MatrixEffect {
 
   // ---------------------------------------------------------------- API for extension.js
 
-
+  // This is called from extension.js whenever a window is closed with this effect.
   static createShader(settings) {
     return new MatrixShader(settings);
   }
 
-  // If there's a transition in progress, we re-target these transitions so that the
-  // window is neither scaled nor faded.
+  // This is also called from extension.js. It is used to tweak the ongoing transitions of
+  // the actor - usually windows are faded to transparency and scaled down slightly by
+  // GNOME Shell. Here, we modify this behavior as well as the transition duration.
   static tweakTransitions(actor, settings) {
     const animationTime = settings.get_int('matrix-animation-time');
 
@@ -97,6 +100,8 @@ var MatrixEffect = class MatrixEffect {
       }
     };
 
+    // If there's a transition in progress, we re-target these transitions so that the
+    // window is neither scaled nor faded.
     tweakTransition('opacity', 255);
     tweakTransition('scale-x', 1);
     tweakTransition('scale-y', 1);
