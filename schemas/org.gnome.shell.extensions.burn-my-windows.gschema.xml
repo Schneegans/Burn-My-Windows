@@ -1,27 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
 
-  <enum id='org.gnome.shell.extensions.burn-my-windows.AnimationType'>
-    <value value='1' nick='fire' />
-    <value value='2' nick='matrix' />
-    <value value='3' nick='tv' />
-    <value value='4' nick='trex' />
-  </enum>
-
   <schema path="/org/gnome/shell/extensions/burn-my-windows/" id="org.gnome.shell.extensions.burn-my-windows">
 
-    <key name="close-animation" enum="org.gnome.shell.extensions.burn-my-windows.AnimationType">
-      <default>"fire"</default>
-      <summary>Close Animation</summary>
-      <description>The animation used for window closing.</description>
-    </key>
-
-
-    <key name="destroy-animation-time" type="i">
-      <default>1500</default>
-      <summary>Destroy Animation Time</summary>
-      <description>The time it takes to burn the windows.</description>
-    </key>
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- General Options                                                               -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
     <key name="destroy-dialogs" type="b">
       <default>false</default>
@@ -29,22 +13,38 @@
       <description>Set to true to burn dialogs as well.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Fire Options                                                                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="fire-close-effect" type="b">
+      <default>true</default>
+      <summary>Fire Close Effect</summary>
+      <description>Use the fire effect for window closing.</description>
+    </key>
+
+    <key name="fire-animation-time" type="i">
+      <default>1500</default>
+      <summary>Fire Animation Time</summary>
+      <description>The time the fire effect takes.</description>
+    </key>
+
     <key name="flame-movement-speed" type="d">
       <default>0.5</default>
-      <summary>Flame Movement Speed</summary>
-      <description>The speed at which the flames move.</description>
+      <summary>Fire Movement Speed</summary>
+      <description>The speed at which the fire moves.</description>
     </key>
 
     <key name="flame-scale" type="d">
       <default>1.0</default>
-      <summary>Flame Scale</summary>
-      <description>The size of the flames.</description>
+      <summary>Fire Scale</summary>
+      <description>The size of the fire.</description>
     </key>
 
     <key name="flame-3d-noise" type="b">
       <default>false</default>
-      <summary>Flame 3D Noise</summary>
-      <description>Use a 3D noise for the flames.</description>
+      <summary>Fire 3D Noise</summary>
+      <description>Use a 3D noise for the fire.</description>
     </key>
 
     <key name="fire-color-1" type="s">
@@ -77,6 +77,21 @@
       <description>The fifth color of the fire gradient.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Matrix Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="matrix-close-effect" type="b">
+      <default>false</default>
+      <summary>Matrix Close Effect</summary>
+      <description>Use the matrix effect for window closing.</description>
+    </key>
+
+    <key name="matrix-animation-time" type="i">
+      <default>2000</default>
+      <summary>Matrix Animation Time</summary>
+      <description>The time the matrix effect takes.</description>
+    </key>
 
     <key name="matrix-scale" type="i">
       <default>20</default>
@@ -102,6 +117,21 @@
       <description>The color matrix trails.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- TV Effect Options                                                             -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="tv-close-effect" type="b">
+      <default>false</default>
+      <summary>TV Close Effect</summary>
+      <description>Use the tv effect for window closing.</description>
+    </key>
+
+    <key name="tv-animation-time" type="i">
+      <default>400</default>
+      <summary>TV Animation Time</summary>
+      <description>The time the tv effect takes.</description>
+    </key>
 
     <key name="tv-effect-color" type="s">
       <default>"rgb(255, 255, 255)"</default>
@@ -109,6 +139,21 @@
       <description>The color of the TV effect.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- T-Rex Attack Options                                                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="trex-close-effect" type="b">
+      <default>false</default>
+      <summary>T-Rex Close Effect</summary>
+      <description>Use the trex effect for window closing.</description>
+    </key>
+
+    <key name="trex-animation-time" type="i">
+      <default>1500</default>
+      <summary>T-Rex Animation Time</summary>
+      <description>The time the trex effect takes.</description>
+    </key>
 
     <key name="claw-scratch-color" type="s">
       <default>"rgb(170, 0, 0)"</default>
@@ -133,7 +178,6 @@
       <summary>Claw Scratch Count</summary>
       <description>Number of claw scratches drawn on top of each other.</description>
     </key>
-
 
   </schema>
 

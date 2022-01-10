@@ -1,5 +1,21 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 8](https://github.com/schneegans/Burn-My-Windows/releases/tag/v8)
+
+**Release Date:** TBD
+
+#### New Features
+
+* **Random effects!** You can now select a set of effects of which one will be chosen randomly whenever you close a window.
+* Each effect has its own "Animation Time" setting now. The global animation time has been replaced by those, so **you may have to adjust the sliders to match your previous settings**. 
+
+#### Other Enhancements
+
+* The source code has received a **major refactoring**. This will make the addition of new effects much easier in the future.
+* The **layout of the settings dialog** has been reworked to make it easier to expand it in the future.
+* The lower limit of the **animation time of the TV Effect** has been reduced.
+
+
 ## [Burn My Window 7](https://github.com/schneegans/Burn-My-Windows/releases/tag/v7)
 
 **Release Date:** 2022-01-03

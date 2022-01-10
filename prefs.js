@@ -17,14 +17,24 @@ const {Gio, Gtk, Gdk} = imports.gi;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.common.utils;
+const utils          = Me.imports.src.utils;
+
+// New effects must be registered here and in extension.js.
+const ALL_EFFECTS = [
+  Me.imports.src.FireEffect.FireEffect,
+  Me.imports.src.MatrixEffect.MatrixEffect,
+  Me.imports.src.TRexEffect.TRexEffect,
+  Me.imports.src.TVEffect.TVEffect,
+];
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// For now, the preferences dialog of this extension is very simple. In the future, if  //
-// we might consider to improve its layout...                                           //
+// The preferences dialog is organized in pages, each of which is loaded from a         //
+// separate ui file. There's one page with general options, all other paged are loaded  //
+// from the respective effects.                                                         //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var PreferencesDialog = class PreferencesDialog {
+
   // ------------------------------------------------------------ constructor / destructor
 
   constructor() {
@@ -32,81 +42,88 @@ var PreferencesDialog = class PreferencesDialog {
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
-    // Load the user interface file.
+    // Store a reference to the settings object.
+    this._settings = ExtensionUtils.getSettings();
+
+    // Load the general user interface files.
     this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}.ui`);
+    this._builder.add_from_resource(`/ui/common/main-menu.ui`);
+    this._builder.add_from_resource(`/ui/${utils.getGTKString()}/prefs.ui`);
+    this._builder.add_from_resource(`/ui/${utils.getGTKString()}/generalPage.ui`);
+
+    // Bind general options properties.
+    this.bindSwitch('destroy-dialogs');
+
+    // Add the General Options page to the main stack.
+    const stack = this._builder.get_object('main-stack');
+    stack.add_titled(
+        this._builder.get_object('general-prefs'), 'general', 'General Options');
+
+    // Add all other effect pages.
+    ALL_EFFECTS.forEach(Effect => {
+      const [minMajor, minMinor] = Effect.getMinShellVersion();
+      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+        Effect.initPreferences(this);
+      }
+    });
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('settings-widget');
 
-    // Store a reference to the settings object.
-    this._settings = ExtensionUtils.getSettings();
-
-    // Bind all properties.
-    this._bindCombobox('close-animation');
-    this._bindAdjustment('destroy-animation-time');
-    this._bindSwitch('destroy-dialogs');
-    this._bindAdjustment('flame-movement-speed');
-    this._bindAdjustment('flame-scale');
-    this._bindSwitch('flame-3d-noise');
-    this._bindColorButton('fire-color-1');
-    this._bindColorButton('fire-color-2');
-    this._bindColorButton('fire-color-3');
-    this._bindColorButton('fire-color-4');
-    this._bindColorButton('fire-color-5');
-    this._bindAdjustment('matrix-scale');
-    this._bindAdjustment('matrix-randomness');
-    this._bindColorButton('matrix-trail-color');
-    this._bindColorButton('matrix-tip-color');
-    this._bindColorButton('tv-effect-color');
-    this._bindColorButton('claw-scratch-color');
-    this._bindAdjustment('claw-scratch-scale');
-    this._bindAdjustment('claw-scratch-count');
-    this._bindAdjustment('claw-scratch-warp');
-
-    // The fire-gradient-reset button needs to be bound explicitly.
-    this._builder.get_object('reset-fire-colors').connect('clicked', () => {
-      this._settings.reset('fire-color-1');
-      this._settings.reset('fire-color-2');
-      this._settings.reset('fire-color-3');
-      this._settings.reset('fire-color-4');
-      this._settings.reset('fire-color-5');
-    });
-
-    // Initialize the fire-preset dropdown.
-    this._createFirePresets();
-
-    // Add a menu to the title bar of the preferences dialog.
+    // Some things can only be done once the widget is shown as we do not have access to
+    // the toplevel widget before.
     this._widget.connect('realize', (widget) => {
       const window = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
 
-      // Add the menu.
-      const menu = this._builder.get_object('menu-button');
-      window.get_titlebar().pack_end(menu);
+      // Add the main menu to the title bar.
+      {
+        // Add the menu button to the title bar.
+        const menu = this._builder.get_object('menu-button');
+        window.get_titlebar().pack_end(menu);
 
-      // Populate the actions.
-      const group = Gio.SimpleActionGroup.new();
+        // Populate the menu with actions.
+        const group = Gio.SimpleActionGroup.new();
+        window.insert_action_group('prefs', group);
 
-      const addAction = (name, uri) => {
-        const action = Gio.SimpleAction.new(name, null);
-        action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
-        group.add_action(action);
-      };
+        const addAction = (name, uri) => {
+          const action = Gio.SimpleAction.new(name, null);
+          action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
+          group.add_action(action);
+        };
 
-      addAction('homepage', 'https://github.com/Schneegans/Burn-My-Windows');
-      addAction(
-          'changelog',
-          'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
-      addAction('bugs', 'https://github.com/Schneegans/Burn-My-Windows/issues');
-      addAction(
-          'donate-paypal',
-          'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
-      addAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        // clang-format off
+        addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
+        addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
+        addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
+        addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
+        addAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        // clang-format on
+      }
 
-      window.insert_action_group('prefs', group);
+      // Populate the close-effects drop-down menu.
+      {
+        const menu  = this._builder.get_object('close-effect-menu');
+        const group = Gio.SimpleActionGroup.new();
+        window.insert_action_group('close-effects', group);
+
+        ALL_EFFECTS.forEach(Effect => {
+          const [minMajor, minMinor] = Effect.getMinShellVersion();
+          if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+            const nick       = Effect.getNick();
+            const label      = Effect.getLabel();
+            const actionName = nick + '-close-effect';
+            const fullName   = 'close-effects.' + actionName;
+
+            const action = this._settings.create_action(actionName);
+            group.add_action(action);
+
+            menu.append_item(Gio.MenuItem.new(label, fullName));
+          }
+        });
+      }
     });
 
     // As we do not have something like a destructor, we just listen for the destroy
@@ -124,35 +141,44 @@ var PreferencesDialog = class PreferencesDialog {
 
   // -------------------------------------------------------------------- public interface
 
+  // Returns the internally used Gtk.Builder. Effects can use this to modify the UI of the
+  // preferences dialog.
+  getBuilder() {
+    return this._builder;
+  }
+
+  // Returns a Gio.Settings object for this extension.
+  getSettings() {
+    return this._settings;
+  }
+
   // Returns the widget used for the settings of this extension.
   getWidget() {
     return this._widget;
   }
 
-  // ----------------------------------------------------------------------- private stuff
-
   // Connects a Gtk.ComboBox (or anything else which has an 'active-id' property) to a
   // settings key. It also binds the corresponding reset button.
-  _bindCombobox(settingsKey) {
+  bindCombobox(settingsKey) {
     this._bind(settingsKey, 'active-id');
   }
 
   // Connects a Gtk.Adjustment (or anything else which has a 'value' property) to a
   // settings key. It also binds the corresponding reset button.
-  _bindAdjustment(settingsKey) {
+  bindAdjustment(settingsKey) {
     this._bind(settingsKey, 'value');
   }
 
   // Connects a Gtk.Switch (or anything else which has an 'active' property) to a settings
   // key. It also binds the corresponding reset button.
-  _bindSwitch(settingsKey) {
+  bindSwitch(settingsKey) {
     this._bind(settingsKey, 'active');
   }
 
   // Colors are stored as strings like 'rgb(1, 0.5, 0)'. As Gio.Settings.bind_with_mapping
   // is not available yet, we need to do the color conversion manually. It also binds the
   // corresponding reset button.
-  _bindColorButton(settingsKey) {
+  bindColorButton(settingsKey) {
 
     const button = this._builder.get_object(settingsKey);
 
@@ -179,17 +205,7 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindResetButton(settingsKey);
   }
 
-  // Connects any widget's property to a settings key. The widget must have the same ID as
-  // the settings key. It also binds the corresponding reset button.
-  _bind(settingsKey, property) {
-    const object = this._builder.get_object(settingsKey);
-
-    if (object) {
-      this._settings.bind(settingsKey, object, property, Gio.SettingsBindFlags.DEFAULT);
-    }
-
-    this._bindResetButton(settingsKey);
-  }
+  // ----------------------------------------------------------------------- private stuff
 
   // Searches for a reset button for the given settings key and make it reset the settings
   // key when clicked.
@@ -202,91 +218,16 @@ var PreferencesDialog = class PreferencesDialog {
     }
   }
 
-  // This populates the preset dropdown menu for the fire options.
-  _createFirePresets() {
-    this._widget.connect('realize', (widget) => {
-      const presets = [
-        {
-          name: 'Default Fire',
-          scale: 1.0,
-          speed: 0.5,
-          color1: 'rgba(76, 51, 25, 0.0)',
-          color2: 'rgba(180, 55, 30, 0.7)',
-          color3: 'rgba(255, 76, 38, 0.9)',
-          color4: 'rgba(255, 166, 25, 1)',
-          color5: 'rgba(255, 255, 255, 1)'
-        },
-        {
-          name: 'Hell Fire',
-          scale: 1.5,
-          speed: 0.2,
-          color1: 'rgba(0,0,0,0)',
-          color2: 'rgba(103,7,80,0.5)',
-          color3: 'rgba(150,0,24,0.9)',
-          color4: 'rgb(255,200,0)',
-          color5: 'rgba(255, 255, 255, 1)'
-        },
-        {
-          name: 'Dark and Smutty',
-          scale: 1.0,
-          speed: 0.5,
-          color1: 'rgba(0,0,0,0)',
-          color2: 'rgba(36,3,0,0.5)',
-          color3: 'rgba(150,0,24,0.9)',
-          color4: 'rgb(255,177,21)',
-          color5: 'rgb(255,238,166)'
-        },
-        {
-          name: 'Cold Breeze',
-          scale: 1.5,
-          speed: -0.1,
-          color1: 'rgba(0,110,255,0)',
-          color2: 'rgba(30,111,180,0.24)',
-          color3: 'rgba(38,181,255,0.54)',
-          color4: 'rgba(34,162,255,0.84)',
-          color5: 'rgb(97,189,255)'
-        },
-        {
-          name: 'Santa is Coming',
-          scale: 0.4,
-          speed: -0.5,
-          color1: 'rgba(0,110,255,0)',
-          color2: 'rgba(208,233,255,0.24)',
-          color3: 'rgba(207,235,255,0.84)',
-          color4: 'rgb(208,243,255)',
-          color5: 'rgb(255,255,255)'
-        }
-      ];
+  // Connects any widget's property to a settings key. The widget must have the same ID as
+  // the settings key. It also binds the corresponding reset button.
+  _bind(settingsKey, property) {
+    const object = this._builder.get_object(settingsKey);
 
-      const menu      = Gio.Menu.new();
-      const group     = Gio.SimpleActionGroup.new();
-      const groupName = 'presets';
+    if (object) {
+      this._settings.bind(settingsKey, object, property, Gio.SettingsBindFlags.DEFAULT);
+    }
 
-      // Add all presets.
-      presets.forEach((preset, i) => {
-        const actionName = 'fire' + i;
-        menu.append(preset.name, groupName + '.' + actionName);
-        let action = Gio.SimpleAction.new(actionName, null);
-
-        // Load the preset on activation.
-        action.connect('activate', () => {
-          this._settings.set_double('flame-movement-speed', preset.speed);
-          this._settings.set_double('flame-scale', preset.scale);
-          this._settings.set_string('fire-color-1', preset.color1);
-          this._settings.set_string('fire-color-2', preset.color2);
-          this._settings.set_string('fire-color-3', preset.color3);
-          this._settings.set_string('fire-color-4', preset.color4);
-          this._settings.set_string('fire-color-5', preset.color5);
-        });
-
-        group.add_action(action);
-      });
-
-      this._builder.get_object('fire-preset-button').set_menu_model(menu);
-
-      const root = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
-      root.insert_action_group(groupName, group);
-    });
+    this._bindResetButton(settingsKey);
   }
 }
 

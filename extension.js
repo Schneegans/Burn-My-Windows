@@ -15,20 +15,22 @@
 
 const {Clutter, Gio, Meta} = imports.gi;
 
-const Config               = imports.misc.config;
-const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.');
-
 const Workspace                  = imports.ui.workspace.Workspace;
 const WindowManager              = imports.ui.windowManager.WindowManager;
 const WINDOW_REPOSITIONING_DELAY = imports.ui.workspace.WINDOW_REPOSITIONING_DELAY;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.common.utils;
-const FireShader     = Me.imports.src.extension.FireShader.FireShader;
-const MatrixShader   = Me.imports.src.extension.MatrixShader.MatrixShader;
-const TVEffectShader = Me.imports.src.extension.TVEffectShader.TVEffectShader;
-const TRexShader     = Me.imports.src.extension.TRexShader.TRexShader;
+const utils          = Me.imports.src.utils;
+const FireEffect     = Me.imports.src.FireEffect.FireEffect;
+
+// New effects must be registered here and in prefs.js.
+const ALL_EFFECTS = [
+  Me.imports.src.FireEffect.FireEffect,
+  Me.imports.src.MatrixEffect.MatrixEffect,
+  Me.imports.src.TRexEffect.TRexEffect,
+  Me.imports.src.TVEffect.TVEffect,
+];
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close animation to look like the window was set  //
@@ -61,25 +63,6 @@ class Extension {
     this._origAddWindowClone     = Workspace.prototype._addWindowClone;
     this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
 
-    // We may also override these animation times.
-    this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
-    this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
-
-    // Update animation times if the respective settings are changed.
-    const loadAnimationTimes = () => {
-      imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
-          this._settings.get_int('destroy-animation-time');
-
-      imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
-          this._settings.get_boolean('destroy-dialogs') ?
-          this._settings.get_int('destroy-animation-time') :
-          this._origDialogTime;
-    };
-
-    this._settings.connect('changed::destroy-animation-time', loadAnimationTimes);
-    this._settings.connect('changed::destroy-dialogs', loadAnimationTimes);
-    loadAnimationTimes();
-
     // We will use extensionThis to refer to the extension inside the patched methods of
     // the WorkspacesView.
     const extensionThis = this;
@@ -89,7 +72,7 @@ class Extension {
     // overview window layout. Therefore we call this method in addition.
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1415
-    if (GS_MAJOR == 3 && GS_MINOR == 36) {
+    if (utils.shellVersionIs(3, 36)) {
       Workspace.prototype._addWindowClone = function(...params) {
         const [clone, overlay] = extensionThis._origAddWindowClone.apply(this, params);
         clone.connect('destroy', () => this._doRemoveWindow(clone.metaWindow));
@@ -154,38 +137,24 @@ class Extension {
         return;
       }
 
-      // If there's a transition in progress, we re-target these transitions so that the
-      // window is neither scaled nor faded.
-      const tweakTransition = (property, value) => {
-        const transition = actor.get_transition(property);
-        if (transition) {
-          transition.set_to(value);
-          transition.set_progress_mode(Clutter.AnimationMode.EASE_OUT_QUAD);
-        }
-      };
+      // Create a list of all currently enabled effects.
+      const enabledEffects = ALL_EFFECTS.filter(Effect => {
+        return this._settings.get_boolean(`${Effect.getNick()}-close-effect`);
+      });
 
-      tweakTransition('opacity', 255);
-      tweakTransition('scale-x', 1);
-      tweakTransition('scale-y', 1);
+      // Nothing is enabled...
+      if (enabledEffects.length == 0) {
+        return;
+      }
 
-      let shader = null;
+      // Choose a random effect.
+      const Effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
+
+      // The effect usually will choose to override the present transitions on the actor.
+      Effect.tweakTransitions(actor, this._settings);
 
       // Add a cool shader to our window actor!
-      const mode = this._settings.get_enum('close-animation');
-      if (mode == 1) {
-        shader = new FireShader(this._settings);
-      } else if (mode == 2) {
-        shader = new MatrixShader(this._settings);
-      } else if (mode == 3) {
-        shader = new TVEffectShader(this._settings);
-        tweakTransition('scale-y', 0.5);
-      } else if (mode == 4) {
-        shader = new TRexShader(this._settings);
-
-        const warp = 0.5 * this._settings.get_double('claw-scratch-warp');
-        tweakTransition('scale-x', 1.0 + warp);
-        tweakTransition('scale-y', 1.0 + warp);
-      }
+      const shader = Effect.createShader(this._settings);
 
       if (shader) {
         actor.add_effect(shader);
@@ -216,9 +185,6 @@ class Extension {
     Workspace.prototype._addWindowClone         = this._origAddWindowClone;
     WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
 
-    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
-    imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
-
     this._settings = null;
   }
 
@@ -233,8 +199,8 @@ class Extension {
     }
 
     // This was called "realWindow" in GNOME 3.36.
-    const GS_336 = GS_MAJOR == 3 && GS_MINOR == 36;
-    const actor  = workspace._windows[index][GS_336 ? 'realWindow' : '_windowActor'];
+    const propertyName = utils.shellVersionIs(3, 36) ? 'realWindow' : '_windowActor';
+    const actor        = workspace._windows[index][propertyName];
     if (!actor.get_transition('scale-y')) {
       return true;
     }

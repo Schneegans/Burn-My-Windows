@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0" />
+
+  <object class="GtkMenuButton" id="menu-button">
+    <property name="menu-model">main-menu</property>
+    <property name="icon-name">open-menu-symbolic</property>
+  </object>
+
+  <object class="GtkBox" id="settings-widget">
+    <child>
+      <object class="GtkStackSidebar">
+        <property name="stack">main-stack</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkStack" id="main-stack">
+        <property name="transition-type">slide-up-down</property>
+        <property name="hexpand">1</property>
+
+        <!-- Stack pages are inserted here -->
+
+      </object>
+    </child>
+  </object>
+
+</interface>
