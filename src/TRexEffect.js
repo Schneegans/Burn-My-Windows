@@ -214,16 +214,14 @@ if (utils.isInShellProcess()) {
           vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * uProgress * 0.5;
           cogl_color_out = texture2D(uTexture, coords + offset);
 
+          // Hide scratched out parts.
+          cogl_color_out *= (scratchMap > uProgress ? 1 : 0);
+
           // Add colorful flashes.
           float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - uProgress) + 1;
           if (flashIntensity < 0 || flashIntensity >= 1) {
             flashIntensity = 0;
           }
-
-          flashIntensity *= cogl_color_out.a;
-
-          // Hide scratched out parts.
-          cogl_color_out *= (scratchMap > uProgress ? 1 : 0);
 
           vec3 flashColor = vec3(${color.red / 255},
           ${color.green / 255},

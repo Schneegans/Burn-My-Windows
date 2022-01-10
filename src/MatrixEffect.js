@@ -95,20 +95,16 @@ var MatrixEffect = class MatrixEffect {
     const tweakTransition = (property, value) => {
       const transition = actor.get_transition(property);
       if (transition) {
-        transition.set_from(value);
         transition.set_to(value);
         transition.set_duration(animationTime);
       }
     };
 
     // If there's a transition in progress, we re-target these transitions so that the
-    // window is not faded. We scale the actor vertically by a factor of two in order to
-    // be able to start the drops above the window and let them drop further down. The
-    // texture coordinates are scale inversely so that the windows does not get stretched
-    // visually.
+    // window is neither scaled nor faded.
     tweakTransition('opacity', 255);
     tweakTransition('scale-x', 1);
-    tweakTransition('scale-y', 2);
+    tweakTransition('scale-y', 1);
   }
 }
 
@@ -198,15 +194,12 @@ if (utils.isInShellProcess()) {
 
         void main() {
 
-          vec2 coords = cogl_tex_coord_in[0].st;
-          coords.t = coords.t*2-0.5;
-
           // Get a cool matrix effect. See comments for those methods above.
-          vec2  rain = getRain(coords);
-          float text = getText(coords);
+          vec2  rain = getRain(cogl_tex_coord_in[0].st);
+          float text = getText(cogl_tex_coord_in[0].st);
 
           // Get the window texture and fade it according to the effect mask.
-          cogl_color_out = texture2D(uTexture, coords) * rain.y;
+          cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * rain.y;
 
           // This is used to fade out the remaining trails in the end.
           float finalFade = 1-clamp((uProgress-FINAL_FADE_START_TIME)/
@@ -214,7 +207,7 @@ if (utils.isInShellProcess()) {
           float rainAlpha = finalFade * rain.x;
 
           // Fade at window borders.
-          vec2 pos = coords * vec2(uSizeX, uSizeY);
+          vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
           rainAlpha *= clamp(pos.x / EDGE_FADE, 0, 1);
           rainAlpha *= clamp(pos.y / EDGE_FADE, 0, 1);
           rainAlpha *= clamp((uSizeX - pos.x) / EDGE_FADE, 0, 1);
@@ -230,7 +223,7 @@ if (utils.isInShellProcess()) {
           cogl_color_out.rgb += mix(trailColor, tipColor, min(1, pow(rainAlpha+0.1, 4))) * rainAlpha * text;
 
           // These are pretty useful for understanding how this works.
-          cogl_color_out = vec4(vec3(text), 1);
+          // cogl_color_out = vec4(vec3(text), 1);
           // cogl_color_out = vec4(vec3(rain.x), 1);
           // cogl_color_out = vec4(vec3(rain.y), 1);
         }
@@ -243,8 +236,6 @@ if (utils.isInShellProcess()) {
     // https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-3-36/clutter/clutter/clutter-offscreen-effect.c#L598
     vfunc_paint_target(node, paint_context) {
       const pipeline = this.get_pipeline();
-      pipeline.set_layer_filters(
-          0, Cogl.PipelineFilter.LINEAR, Cogl.PipelineFilter.LINEAR);
       pipeline.set_layer_texture(1, this._fontTexture.get_texture());
       this.set_uniform_value('uFontTexture', 1);
       super.vfunc_paint_target(node, paint_context);
