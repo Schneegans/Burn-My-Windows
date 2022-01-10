@@ -28,15 +28,21 @@ const utils          = Me.imports.src.utils;
 // The shader class for this effect is registered further down in this file.
 let TRexShader = null;
 
+// The effect class is completely static. It can be used to get some metadata (like the
+// effect's name or supported GNOME Shell versions), to initialize the respective page of
+// the settings dialog, as well as to create the actual shader for the effect.
 var TRexEffect = class TRexEffect {
 
-  // ---------------------------------------------------------------------- static methods
+  // ---------------------------------------------------------------------------- metadata
 
   // This effect is only available on GNOME Shell 40+.
   static getMinShellVersion() {
     return [40, 0];
   }
 
+  // This will be called in various places where a unique identifier for this effect is
+  // required. It should match the prefix of the settings keys which store whether the
+  // effect is enabled currently (e.g. the '*-close-effect').
   static getNick() {
     return 'trex';
   }
@@ -46,6 +52,8 @@ var TRexEffect = class TRexEffect {
   static getLabel() {
     return 'T-Rex Attack';
   }
+
+  // -------------------------------------------------------------------- API for prefs.js
 
   static initPreferences(dialog) {
 
@@ -65,6 +73,9 @@ var TRexEffect = class TRexEffect {
         dialog.getBuilder().get_object('trex-prefs'), TRexEffect.getNick(),
         TRexEffect.getLabel());
   }
+
+  // ---------------------------------------------------------------- API for extension.js
+
 
   static createShader(settings) {
     return new TRexShader(settings);

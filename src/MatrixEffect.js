@@ -30,15 +30,21 @@ const utils          = Me.imports.src.utils;
 // The shader class for this effect is registered further down in this file.
 let MatrixShader = null;
 
+// The effect class is completely static. It can be used to get some metadata (like the
+// effect's name or supported GNOME Shell versions), to initialize the respective page of
+// the settings dialog, as well as to create the actual shader for the effect.
 var MatrixEffect = class MatrixEffect {
 
-  // ---------------------------------------------------------------------- static methods
+  // ---------------------------------------------------------------------------- metadata
 
   // This effect is only available on GNOME Shell 40+.
   static getMinShellVersion() {
     return [40, 0];
   }
 
+  // This will be called in various places where a unique identifier for this effect is
+  // required. It should match the prefix of the settings keys which store whether the
+  // effect is enabled currently (e.g. the '*-close-effect').
   static getNick() {
     return 'matrix';
   }
@@ -48,6 +54,9 @@ var MatrixEffect = class MatrixEffect {
   static getLabel() {
     return 'Matrix';
   }
+
+  // -------------------------------------------------------------------- API for prefs.js
+
 
   static initPreferences(dialog) {
 
@@ -67,6 +76,9 @@ var MatrixEffect = class MatrixEffect {
         dialog.getBuilder().get_object('matrix-prefs'), MatrixEffect.getNick(),
         MatrixEffect.getLabel());
   }
+
+  // ---------------------------------------------------------------- API for extension.js
+
 
   static createShader(settings) {
     return new MatrixShader(settings);

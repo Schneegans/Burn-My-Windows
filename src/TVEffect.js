@@ -28,15 +28,21 @@ const utils          = Me.imports.src.utils;
 // The shader class for this effect is registered further down in this file.
 let TVShader = null;
 
+// The effect class is completely static. It can be used to get some metadata (like the
+// effect's name or supported GNOME Shell versions), to initialize the respective page of
+// the settings dialog, as well as to create the actual shader for the effect.
 var TVEffect = class TVEffect {
 
-  // ---------------------------------------------------------------------- static methods
+  // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
   static getMinShellVersion() {
     return [3, 36];
   }
 
+  // This will be called in various places where a unique identifier for this effect is
+  // required. It should match the prefix of the settings keys which store whether the
+  // effect is enabled currently (e.g. the '*-close-effect').
   static getNick() {
     return 'tv';
   }
@@ -46,6 +52,9 @@ var TVEffect = class TVEffect {
   static getLabel() {
     return 'TV Effect';
   }
+
+  // -------------------------------------------------------------------- API for prefs.js
+
 
   static initPreferences(dialog) {
 
@@ -63,6 +72,9 @@ var TVEffect = class TVEffect {
         dialog.getBuilder().get_object('tv-prefs'), TVEffect.getNick(),
         TVEffect.getLabel());
   }
+
+  // ---------------------------------------------------------------- API for extension.js
+
 
   static createShader(settings) {
     return new TVShader(settings);
