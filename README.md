@@ -29,7 +29,8 @@ While coding new features is the most awesome way to contribute, providing finan
 
 <h3 align="center">🥈 Current Silver Sponsors</h3>
 <p align="center">
-  <a href="https://github.com/castrojo">Jorge Castro</a>
+  <a href="https://github.com/MRR-dev">@MRR-dev</a><br>
+  <a href="https://github.com/castrojo">Jorge Castro</a><br>
 </p>
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
