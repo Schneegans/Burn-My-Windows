@@ -15,6 +15,10 @@
 * The **layout of the settings dialog** has been reworked to make it easier to expand it in the future.
 * The lower limit of the **animation time of the TV Effect** has been reduced.
 
+#### Fixes
+
+* The extension now works even if GNOME Shell's animations are disabled globally.
+
 
 ## [Burn My Window 7](https://github.com/schneegans/Burn-My-Windows/releases/tag/v7)
 
