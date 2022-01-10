@@ -19,6 +19,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
+// New effects must be registered here and in extension.js.
 const ALL_EFFECTS = [
   Me.imports.src.FireEffect.FireEffect,
   Me.imports.src.MatrixEffect.MatrixEffect,
@@ -140,10 +141,13 @@ var PreferencesDialog = class PreferencesDialog {
 
   // -------------------------------------------------------------------- public interface
 
+  // Returns the internally used Gtk.Builder. Effects can use this to modify the UI of the
+  // preferences dialog.
   getBuilder() {
     return this._builder;
   }
 
+  // Returns a Gio.Settings object for this extension.
   getSettings() {
     return this._settings;
   }

@@ -24,6 +24,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 const FireEffect     = Me.imports.src.FireEffect.FireEffect;
 
+// New effects must be registered here and in prefs.js.
 const ALL_EFFECTS = [
   Me.imports.src.FireEffect.FireEffect,
   Me.imports.src.MatrixEffect.MatrixEffect,
