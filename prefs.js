@@ -27,8 +27,9 @@ const ALL_EFFECTS = [
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// For now, the preferences dialog of this extension is very simple. In the future, if  //
-// we might consider to improve its layout...                                           //
+// The preferences dialog is organized in pages, each of which is loaded from a         //
+// separate ui file. There's one page with general options, all other paged are loaded  //
+// from the respective effects.                                                         //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var PreferencesDialog = class PreferencesDialog {
@@ -43,20 +44,25 @@ var PreferencesDialog = class PreferencesDialog {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
-    // Load the user interface file.
-    this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/common/main-menu.ui`);
-    this._builder.add_from_resource(`/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/prefs.ui`);
-    this._builder.add_from_resource(
-        `/ui/${utils.isGTK4() ? 'gtk4' : 'gtk3'}/generalPage.ui`);
+    // Load the general user interface files.
+    {
+      const dir = utils.isGTK4() ? 'gtk4' : 'gtk3';
+
+      this._builder = new Gtk.Builder();
+      this._builder.add_from_resource(`/ui/common/main-menu.ui`);
+      this._builder.add_from_resource(`/ui/${dir}/prefs.ui`);
+      this._builder.add_from_resource(`/ui/${dir}/generalPage.ui`);
+    }
 
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
 
+    // Add the General Options page to the main stack.
     const stack = this._builder.get_object('main-stack');
     stack.add_titled(
         this._builder.get_object('general-prefs'), 'general', 'General Options');
 
+    // Add all other effect pages.
     ALL_EFFECTS.forEach(Effect => {
       const [minMajor, minMinor] = Effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
@@ -102,22 +108,22 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Populate the close-effects drop-down menu.
       {
+        const menu  = this._builder.get_object('close-effect-menu');
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('close-effects', group);
-
-        const menu = this._builder.get_object('close-effect-menu');
 
         ALL_EFFECTS.forEach(Effect => {
           const [minMajor, minMinor] = Effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const prefix = Effect.getSettingsPrefix();
-            const label  = Effect.getLabel();
+            const prefix     = Effect.getSettingsPrefix();
+            const label      = Effect.getLabel();
+            const actionName = prefix + '-close-effect';
+            const fullName   = 'close-effects.' + actionName;
 
-            const action = this._settings.create_action(`${prefix}-close-effect`);
+            const action = this._settings.create_action(actionName);
             group.add_action(action);
 
-            menu.append_item(
-                Gio.MenuItem.new(label, `close-effects.${prefix}-close-effect`));
+            menu.append_item(Gio.MenuItem.new(label, fullName));
           }
         });
       }

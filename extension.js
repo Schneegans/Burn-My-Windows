@@ -136,23 +136,21 @@ class Extension {
         return;
       }
 
-      // Choose a random effect.
-      const enabledEffects = [];
-      ALL_EFFECTS.forEach(Effect => {
-        const [minMajor, minMinor] = Effect.getMinShellVersion();
-        const prefix               = Effect.getSettingsPrefix();
-        if (utils.shellVersionIsAtLeast(minMajor, minMinor) &&
-            this._settings.get_boolean(`${prefix}-close-effect`)) {
-          enabledEffects.push(Effect);
-        }
+      // Create a list of all currently enabled effects.
+      const enabledEffects = ALL_EFFECTS.filter(Effect => {
+        const prefix = Effect.getSettingsPrefix();
+        return this._settings.get_boolean(`${prefix}-close-effect`);
       });
 
+      // Nothing is enabled...
       if (enabledEffects.length == 0) {
         return;
       }
 
+      // Choose a random effect.
       const Effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
 
+      // The effect usually will choose to override the present transitions on the actor.
       Effect.tweakTransitions(actor, this._settings);
 
       // Add a cool shader to our window actor!
