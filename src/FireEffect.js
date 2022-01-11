@@ -28,7 +28,7 @@ const utils          = Me.imports.src.utils;
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file.
-let FireShader = null;
+let Shader = null;
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -99,7 +99,7 @@ var FireEffect = class FireEffect {
 
   // This is called from extension.js whenever a window is closed with this effect.
   static createShader(settings) {
-    return new FireShader(settings);
+    return new Shader(settings);
   }
 
   // This is also called from extension.js. It is used to tweak the ongoing transitions of
@@ -116,8 +116,7 @@ var FireEffect = class FireEffect {
       }
     };
 
-    // If there's a transition in progress, we re-target these transitions so that the
-    // window is neither scaled nor faded.
+    // We re-target these transitions so that the window is neither scaled nor faded.
     tweakTransition('opacity', 255);
     tweakTransition('scale-x', 1);
     tweakTransition('scale-y', 1);
@@ -225,8 +224,7 @@ if (utils.isInShellProcess()) {
   const Clutter        = imports.gi.Clutter;
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
-  FireShader = GObject.registerClass({Properties: {}, Signals: {}},
-                                     class FireShader extends Clutter.ShaderEffect {
+  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
     _init(settings) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 

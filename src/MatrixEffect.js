@@ -20,7 +20,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// The MatrixShader multiplies a grid of random letters with some gradients which are   //
+// The Matrix shader multiplies a grid of random letters with some gradients which are  //
 // moving from top to bottom. The speed of the moving gradients is chosen randomly.     //
 // Also, there is a random delay making the gradients not drop all at the same time.    //
 // This effect is not available on GNOME 3.3x, due to the limitation described in the   //
@@ -28,7 +28,7 @@ const utils          = Me.imports.src.utils;
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file.
-let MatrixShader = null;
+let Shader = null;
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -83,7 +83,7 @@ var MatrixEffect = class MatrixEffect {
 
   // This is called from extension.js whenever a window is closed with this effect.
   static createShader(settings) {
-    return new MatrixShader(settings);
+    return new Shader(settings);
   }
 
   // This is also called from extension.js. It is used to tweak the ongoing transitions of
@@ -100,8 +100,7 @@ var MatrixEffect = class MatrixEffect {
       }
     };
 
-    // If there's a transition in progress, we re-target these transitions so that the
-    // window is neither scaled nor faded.
+    // We re-target these transitions so that the window is neither scaled nor faded.
     tweakTransition('opacity', 255);
     tweakTransition('scale-x', 1);
     tweakTransition('scale-y', 1);
@@ -120,9 +119,7 @@ if (utils.isInShellProcess()) {
   const {Clutter, GdkPixbuf, Cogl} = imports.gi;
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
-
-  MatrixShader = GObject.registerClass({Properties: {}, Signals: {}},
-                                       class MatrixShader extends Clutter.ShaderEffect {
+  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
     _init(settings) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 

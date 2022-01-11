@@ -26,7 +26,7 @@ const utils          = Me.imports.src.utils;
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file.
-let TRexShader = null;
+let Shader = null;
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -81,7 +81,7 @@ var TRexEffect = class TRexEffect {
 
   // This is called from extension.js whenever a window is closed with this effect.
   static createShader(settings) {
-    return new TRexShader(settings);
+    return new Shader(settings);
   }
 
   // This is also called from extension.js. It is used to tweak the ongoing transitions of
@@ -119,9 +119,7 @@ if (utils.isInShellProcess()) {
   const {Clutter, GdkPixbuf, Cogl} = imports.gi;
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
-
-  TRexShader = GObject.registerClass({Properties: {}, Signals: {}},
-                                     class TRexShader extends Clutter.ShaderEffect {
+  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
     _init(settings) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
