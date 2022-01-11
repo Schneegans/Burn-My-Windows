@@ -42,6 +42,13 @@ var PreferencesDialog = class PreferencesDialog {
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
+    // Make sure custom icons are found.
+    if (utils.isGTK4()) {
+      Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).add_resource_path('/img');
+    } else {
+      Gtk.IconTheme.get_default().add_resource_path('/img');
+    }
+
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
