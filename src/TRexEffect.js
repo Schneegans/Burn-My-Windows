@@ -182,7 +182,7 @@ if (utils.isInShellProcess()) {
 
           cellUV -= 0.5;
           cellUV = vec2(cellUV.x * cos(rotation) - cellUV.y * sin(rotation),
-          cellUV.x * sin(rotation) + cellUV.y * cos(rotation));
+                        cellUV.x * sin(rotation) + cellUV.y * cos(rotation));
           cellUV += 0.5;
 
           // Clamp resulting coordinates.
