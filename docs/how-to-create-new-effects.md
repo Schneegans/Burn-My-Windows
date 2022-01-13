@@ -35,14 +35,14 @@ Three simple steps are required to create a new effect.
 You will have to ...
 
 1. add a preferences key for enabling the effect,
-2. create one additional effects class, and finally
+2. create an additional effects class, and finally
 3. register the new effect in two places.
 
 ### 1. Expanding the Schema
 
 For enabling the new effect, the boolean settings key `simple-fade-close-effect` is required.
 In this example, we also add an integer valued settings key for storing the animation time of the new effect and a floating point value for storing another property of the effect - we will use them later in the tutorial.
-Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml`](schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml).
+Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml).
 Just remember to replace `simple-fade` with your custom name!
 
 ```xml
@@ -227,7 +227,7 @@ if (utils.isInShellProcess()) {
 ### 3. Registering the new Effect
 
 You will have to register the new effect in two files.
-Both, [`extension.js`](extension.js) and [`prefs.js`](prefs.js) define an array in the beginning where you have to add an import to your new effect.
+Both, [`extension.js`](../extension.js) and [`prefs.js`](../prefs.js) define an array in the beginning where you have to add an import to your new effect.
 Like this:
 
 ```javascript
