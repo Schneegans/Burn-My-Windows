@@ -110,7 +110,8 @@ gnome-extensions enable burn-my-windows@schneegans.github.com
 ## :octocat: I want to contribute!
 
 That's great!
-Here are some basic rulles to get you started:
+Most likely, you want to [create a custom effects](docs/how-to-create-new-effects.md)?
+Here are some basic rules to get you started:
 Commits should start with a Capital letter and should be written in present tense (e.g. __:tada: Add cool new feature__ instead of __:tada: Added cool new feature__).
 You should also start your commit message with **one** applicable emoji.
 This does not only look great but also makes you rethink what to add to a commit. Make many but small commits!
