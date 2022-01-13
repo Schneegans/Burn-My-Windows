@@ -29,6 +29,7 @@ const ALL_EFFECTS = [
   Me.imports.src.FireEffect.FireEffect,
   Me.imports.src.MatrixEffect.MatrixEffect,
   Me.imports.src.TRexEffect.TRexEffect,
+  Me.imports.src.TOSTransporterEffect.TOSTransporterEffect,
   Me.imports.src.TVEffect.TVEffect,
 ];
 
