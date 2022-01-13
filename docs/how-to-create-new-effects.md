@@ -254,10 +254,12 @@ gnome-extensions prefs burn-my-windows@schneegans.github.com
 
 ## Adding a Preferences Page
 
-If your effect should support GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide two `*.ui` files.
+There should be two sliders in this example: The animation duration and the width of the fading gradient.
+
+If your effect supports GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide two `*.ui` files for this.
 This is because starting with GNOME Shell 40, the preference dialog uses GTK4, before it used to use GTK3.
-We will load the relevant file in the `initPreferences()` method of your new effect class.
-There are two sliders in this example: The animation duration and the width of the fading gradient.
+Usually, there are only a few minor differences between the two files.
+We will load the respective file in the `initPreferences()` method of your new effect class.
 
 Just save the code below to `resources/ui/gtk3/simpleFadePage.ui` and `resources/ui/gtk4/simpleFadePage.ui` respectively.
 Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
