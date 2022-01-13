@@ -254,13 +254,161 @@ gnome-extensions prefs burn-my-windows@schneegans.github.com
 
 ## Adding a Preferences Page
 
-For this, we will create a `simpleFadePage.ui` file and load this in the `initPreferences()` method of your new effect class.
-We will be able to adjust two properties: The animation duration and the width of the fading gradient.
+If your effect should support GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide two `*.ui` files.
+This is because starting with GNOME Shell 40, the preference dialog uses GTK4, before it used to use GTK3.
+We will load the relevant file in the `initPreferences()` method of your new effect class.
+There are two sliders in this example: The animation duration and the width of the fading gradient.
 
-Just save the code below to a file called `resources/ui/common/simpleFadePage.ui` and replace any occurrence of `simple-fade` with your effect's nick name!
+Just save the code below to `resources/ui/gtk3/simpleFadePage.ui` and `resources/ui/gtk4/simpleFadePage.ui` respectively.
+Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
 
 <details>
-  <summary>Expand this to show the code.</summary>
+  <summary>Expand this to show the GTK3 code.</summary>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+  <object class="GtkAdjustment" id="simple-fade-animation-time">
+    <property name="upper">5000</property>
+    <property name="lower">100</property>
+    <property name="step-increment">10</property>
+    <property name="page-increment">100</property>
+  </object>
+
+  <object class="GtkAdjustment" id="simple-fade-width">
+    <property name="upper">1</property>
+    <property name="lower">0</property>
+    <property name="step-increment">0.01</property>
+    <property name="page-increment">0.1</property>
+  </object>
+
+  <object class="GtkBox" id="simple-fade-prefs">
+    <property name="orientation">vertical</property>
+    <property name="margin-start">60</property>
+    <property name="margin-end">60</property>
+    <property name="margin-top">60</property>
+    <property name="margin-bottom">60</property>
+
+    <child>
+      <object class="GtkFrame">
+        <child>
+          <object class="GtkListBox">
+            <property name="selection-mode">none</property>
+            <style>
+              <class name="rich-list" />
+            </style>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Animation Time [ms]</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">0</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">simple-fade-animation-time</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-simple-fade-animation-time">
+                        <child>
+                          <object class="GtkImage">
+                            <property name="icon-name">edit-clear-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Fade Width</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">simple-fade-width</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-simple-fade-width">
+                        <child>
+                          <object class="GtkImage">
+                            <property name="icon-name">edit-clear-symbolic</property>
+                            <property name="icon-size">1</property>
+                          </object>
+                        </child>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </object>
+
+</interface>
+```
+
+</details>
+
+<details>
+  <summary>Expand this to show the GTK4 code.</summary>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -324,12 +472,7 @@ Just save the code below to a file called `resources/ui/common/simpleFadePage.ui
                     </child>
                     <child>
                       <object class="GtkButton" id="reset-simple-fade-animation-time">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
+                        <property name="icon-name">edit-clear-symbolic</property>
                         <property name="tooltip-text">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
@@ -368,12 +511,7 @@ Just save the code below to a file called `resources/ui/common/simpleFadePage.ui
                     </child>
                     <child>
                       <object class="GtkButton" id="reset-simple-fade-width">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
+                        <property name="icon-name">edit-clear-symbolic</property>
                         <property name="tooltip-text">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
@@ -399,13 +537,13 @@ Just save the code below to a file called `resources/ui/common/simpleFadePage.ui
 
 ### Loading the Preferences Page
 
-In order to load the above `*.ui` file, add the following code to your effect's `initPreferences()` method.
+In order to load the above `*.ui` files, add the following code to your effect's `initPreferences()` method.
 
 ```javascript
 static initPreferences(dialog) {
 
   // Add the settings page to the builder.
-  dialog.getBuilder().add_from_resource(`/ui/common/simpleFadePage.ui`);
+  dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/simpleFadePage.ui`);
 
   // These connect the settings to the UI elements. Have a look at prefs.js
   // on how to bind other types of UI elements.
@@ -426,18 +564,6 @@ Here's a handy one-liner to do this:
 
 ```bash
 make install && pkill -f '.Extensions' && sleep 2 ; gnome-extensions prefs burn-my-windows@schneegans.github.com
-```
-
-### Supporting GTK3 and GTK4
-
-The above UI file has been designed to support both, GTK3 and GTK4.
-Usually, that is not possible as properties have been changed between the versions.
-Most of the time, if your effect should support GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide two `*.ui` files.
-
-You can then load the respective files in your `initPreferences()` with such a line:
-
-```javascript
-dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/simpleFadePage.ui`);
 ```
 
 ## Summing Up
