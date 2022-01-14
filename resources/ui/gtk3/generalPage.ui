@@ -83,8 +83,23 @@
                     </child>
                     <child>
                       <object class="GtkMenuButton" id="close-effect-button">
-                        <property name="label">Choose Effects</property>
                         <property name="menu-model">close-effect-menu</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Choose Effects</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="icon-name">pan-down-symbolic</property>
+                                <property name="icon-size">1</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
