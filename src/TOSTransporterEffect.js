@@ -125,7 +125,7 @@ if (utils.isInShellProcess()) {
       ${shaderSnippets.noise()}
 
       const vec2  SEED          = vec2(${Math.random()}, ${Math.random()});
-      const float SPARK_RADIUS  = 15.0;
+      const float SPARK_RADIUS  = 30.0;
       const float SPARK_SPEED   = 10.0;
       const float SPARK_SPACING = 50 + SPARK_RADIUS;
       const int   SPARK_LAYERS  = 15;
@@ -161,8 +161,8 @@ if (utils.isInShellProcess()) {
         float dist = length(cellUV - 0.5) * gridSize / radius;
           
         if (dist < 1.0) {
-          return 5.0 * exp(-10.0 * dist);
-          return 0.05 / pow(dist, 2.0);
+          return exp(-4.0 * dist);
+          // return 0.03 / pow(dist, 2.0);
         }
 
         return 0;
@@ -175,14 +175,15 @@ if (utils.isInShellProcess()) {
                                 ${color.green / 255},
                                 ${color.blue / 255}, 1.0) * windowColor.a;
 
-        cogl_color_out = windowColor + effectColor;
-
         vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / 20 + vec2(0, uTime);
-        float sparks = noise3D(vec3(uv, uTime*15.0), 5) * 0.25;
-
+        float sparks = 0;
+        
         for (int i=0; i<SPARK_LAYERS; ++i) {
           sparks += getSparks((cogl_tex_coord_in[0].st-0.5) / mix(2.0, 1.0, uProgress), SPARK_SPACING, SEED * (i+1));
         }
+
+        float noise = noise3D(vec3(uv, uTime*5.0), 5);
+        sparks = sparks*(noise*0.8 + 0.2) + noise*0.15;
 
         float edgeFadeWidth = 0.5;
         float heartMask     = 1.0;
@@ -197,6 +198,8 @@ if (utils.isInShellProcess()) {
         for (int i=0; i<SPARK_LAYERS; ++i) {
           heart += heartMask * getSparks((cogl_tex_coord_in[0].st-0.5) / mix(2.0, 1.0, uProgress), SPARK_SPACING, SEED * (i+1+SPARK_LAYERS));
         }
+
+        heart *= (noise*0.8 + 0.2);
         
         const float FADE_IN_TIME  = 0.3;
         const float FADE_OUT_TIME = 0.4;
