@@ -190,7 +190,7 @@
     </key>
 
     <key name="tos-transporter-animation-time" type="i">
-      <default>5000</default>
+      <default>2500</default>
       <summary>TOS Transporter Animation Time</summary>
       <description>The time the TOS Transporter effect takes.</description>
     </key>
@@ -198,6 +198,28 @@
     <key name="tos-transporter-color" type="s">
       <default>"rgb(255, 200, 50)"</default>
       <summary>TOS Transporter Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- TNG Transporter Options                                                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="tng-transporter-close-effect" type="b">
+      <default>false</default>
+      <summary>TNG Transporter Close Effect</summary>
+      <description>Use the TNG Transporter effect for window closing.</description>
+    </key>
+
+    <key name="tng-transporter-animation-time" type="i">
+      <default>2000</default>
+      <summary>TNG Transporter Animation Time</summary>
+      <description>The time the TNG Transporter effect takes.</description>
+    </key>
+
+    <key name="tng-transporter-color" type="s">
+      <default>"rgb(150, 150, 255)"</default>
+      <summary>TNG Transporter Color</summary>
       <description>The color of the effect.</description>
     </key>
 
