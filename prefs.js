@@ -25,6 +25,7 @@ const ALL_EFFECTS = [
   Me.imports.src.MatrixEffect.MatrixEffect,
   Me.imports.src.TRexEffect.TRexEffect,
   Me.imports.src.TVEffect.TVEffect,
+  Me.imports.src.WispsEffect.WispsEffect,
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////
