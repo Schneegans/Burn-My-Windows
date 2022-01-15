@@ -201,12 +201,9 @@ if (utils.isInShellProcess()) {
         float windowOut = smoothstep(0, 1, clamp(uProgress/WINDOW_OUT_TIME, 0, 1));
 
         // Use a noise function to dissolve the window.
-        float noise = 1.0 - abs(2.0 * simplex2D(vec2(uv * vec2(uSizeX, uSizeY) / 250)) - 1.0);
-        float windowMask = clamp(2.0 - noise - windowOut*2.0, 0.0, 1.0);
+        float noise = 1.0 - abs(2.0 * simplex2DFractal(vec2(uv * vec2(uSizeX, uSizeY) / 250)) - 1.0);
+        float windowMask = 1.0 - (windowOut < 0.5 ? mix(0.0, noise, windowOut * 2.0) : mix(noise, 1.0, windowOut * 2.0 - 1.0));
         cogl_color_out = windowColor * windowMask * mask;
-
-        // Add some color to the window.
-        cogl_color_out = mix(cogl_color_out, (1.0 - noise) * effectColor, min(wispsIn, 1.0 - windowOut) * 0.1);
 
         // Add the wisps.
         cogl_color_out += min(wispsIn, 1.0 - wispsOut) * wisps * effectColor * mask;
