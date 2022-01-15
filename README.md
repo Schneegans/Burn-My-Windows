@@ -17,7 +17,7 @@ Effect | Preview
 **T-Rex Attack** <br> Destroy your windows with a series of violent slashes! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/trex.gif" />
 **TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
 **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies! | <img src ="docs/pics/wisps.gif" />
-**Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, you can easily create your own effects. | [A tutorial for creating custom effects is available here.](docs/how-to-create-new-effects.md)
+**Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md)
 
 
 ## 💞 These People _love_ this Extension
