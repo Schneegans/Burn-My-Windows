@@ -128,7 +128,7 @@ if (utils.isInShellProcess()) {
 
       const vec2  SEED            = vec2(${Math.random()}, ${Math.random()});
       const float WISPS_RADIUS    = 20.0;
-      const float WISPS_SPEED     = 10.0;
+      const float WISPS_SPEED     = 15.0;
       const float WISPS_SPACING   = 50 + WISPS_RADIUS;
       const int   WISPS_LAYERS    = 15;
       const float WISPS_IN_TIME   = 0.5;
@@ -156,7 +156,7 @@ if (utils.isInShellProcess()) {
         float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * WISPS_RADIUS;
         float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
 
-        vec2 offset = vec2(sin(speed * (uTime+10)) * roundness, cos(speed * (uTime+10)));
+        vec2 offset = vec2(sin(speed * (uTime+1)) * roundness, cos(speed * (uTime+1)));
         offset *= (0.5 - radius / gridSize);
         offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
                       offset.x * sin(rotation) + offset.y * cos(rotation));
@@ -169,7 +169,7 @@ if (utils.isInShellProcess()) {
           return min(10, 0.01 / pow(dist, 2.0));
         }
 
-        return 0;
+        return 0.0;
       }
 
       void main() {
@@ -201,7 +201,7 @@ if (utils.isInShellProcess()) {
         float windowOut = smoothstep(0, 1, clamp(uProgress/WINDOW_OUT_TIME, 0, 1));
 
         // Use a noise function to dissolve the window.
-        float noise = 1.0 - abs(2.0 * simplex2DFractal(vec2(uv * vec2(uSizeX, uSizeY) / 250)) - 1.0);
+        float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex3DFractal(vec3(uv * vec2(uSizeX, uSizeY) / 250, uTime * 0.5)) - 1.0));
         float windowMask = 1.0 - (windowOut < 0.5 ? mix(0.0, noise, windowOut * 2.0) : mix(noise, 1.0, windowOut * 2.0 - 1.0));
         cogl_color_out = windowColor * windowMask * mask;
 
