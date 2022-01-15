@@ -88,7 +88,7 @@
     </key>
 
     <key name="matrix-animation-time" type="i">
-      <default>2000</default>
+      <default>3000</default>
       <summary>Matrix Animation Time</summary>
       <description>The time the matrix effect takes.</description>
     </key>
