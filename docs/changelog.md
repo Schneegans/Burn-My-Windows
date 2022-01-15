@@ -16,6 +16,7 @@
 * The **layout of the settings dialog** has been reworked to make it easier to expand it in the future.
 * The lower limit of the **animation time of the TV Effect** has been reduced.
 * The T-Rex-Attack effect is not shown in fully transparent regions of a window any more.
+* The shaders now use a different noise implementation which produces better 3D noise.
 
 #### Fixes
 

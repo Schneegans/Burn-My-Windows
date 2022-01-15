@@ -165,7 +165,7 @@ if (utils.isInShellProcess()) {
           vec2 block = pixelCoords/LETTER_SIZE - uv;
 
           // Choose random letter.
-          uv += floor(hash2D(floor(hash2D(block)*vec2(12.9898,78.233) + LETTER_FLICKER_SPEED*uTime + 42.254))*LETTER_TILES);
+          uv += floor(hash22(floor(hash22(block)*vec2(12.9898,78.233) + LETTER_FLICKER_SPEED*uTime + 42.254))*LETTER_TILES);
 
           return texture2D(uFontTexture, uv/LETTER_TILES).r;
         }
