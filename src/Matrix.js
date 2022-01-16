@@ -33,7 +33,7 @@ let Shader = null;
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
 // the settings dialog, as well as to create the actual shader for the effect.
-var MatrixEffect = class MatrixEffect {
+var Matrix = class Matrix {
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -75,8 +75,8 @@ var MatrixEffect = class MatrixEffect {
     // Finally, append the settings page to the main stack.
     const stack = dialog.getBuilder().get_object('main-stack');
     stack.add_titled(
-        dialog.getBuilder().get_object('matrix-prefs'), MatrixEffect.getNick(),
-        MatrixEffect.getLabel());
+        dialog.getBuilder().get_object('matrix-prefs'), Matrix.getNick(),
+        Matrix.getLabel());
   }
 
   // ---------------------------------------------------------------- API for extension.js

@@ -71,7 +71,7 @@ Just remember to replace `simple-fade` with your custom name!
 
 ### 2. Creating the Effect Class
 
-You will have to create a new file called `src/SimpleFadeEffect.js` and paste the following code to it.
+You will have to create a new file called `src/SimpleFade.js` and paste the following code to it.
 Please study this code carefully, all of it is explained with inline comments.
 
 <details>
@@ -110,7 +110,7 @@ let Shader = null;
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
 // the settings dialog, as well as to create the actual shader for the effect.
-var SimpleFadeEffect = class SimpleFadeEffect {
+var SimpleFade = class SimpleFade {
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -233,7 +233,7 @@ Like this:
 ```javascript
 const ALL_EFFECTS = [
   ...
-  Me.imports.src.SimpleFadeEffect.SimpleFadeEffect,
+  Me.imports.src.SimpleFade.SimpleFade,
   ...
 ];
 ```
@@ -555,8 +555,8 @@ static initPreferences(dialog) {
   // Finally, append the settings page to the main stack.
   const stack = dialog.getBuilder().get_object('main-stack');
   stack.add_titled(
-      dialog.getBuilder().get_object(SimpleFadeEffect.getNick() + '-prefs'),
-      SimpleFadeEffect.getNick(), SimpleFadeEffect.getLabel());
+      dialog.getBuilder().get_object(SimpleFade.getNick() + '-prefs'),
+      SimpleFade.getNick(), SimpleFade.getLabel());
   }
 ```
 
