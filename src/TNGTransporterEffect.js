@@ -137,7 +137,7 @@ if (utils.isInShellProcess()) {
       float getSparks(vec2 texCoords, float gridSize, vec2 seed) {
 
         // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-        vec2 coords = (texCoords + hash2D(seed)) * vec2(uSizeX, uSizeY);
+        vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
 
         // Apply global scale.
         coords /= gridSize;
@@ -149,10 +149,10 @@ if (utils.isInShellProcess()) {
         vec2 cellID = coords-cellUV + vec2(362.456);
 
         // Add random rotation, scale and offset to each grid cell.
-        float speed     = mix(10.0, 15.0,   hash(cellID*seed*134.451)) / gridSize * SPARK_SPEED;
-        float rotation  = mix( 0.0,  6.283, hash(cellID*seed*54.4129));
-        float radius    = mix( 0.5,  1.0,   hash(cellID*seed*19.1249)) * SPARK_RADIUS;
-        float roundness = mix(-1.0,  1.0,   hash(cellID*seed*7.51949));
+        float speed     = mix(10.0, 15.0,   hash12(cellID*seed*134.451)) / gridSize * SPARK_SPEED;
+        float rotation  = mix( 0.0,  6.283, hash12(cellID*seed*54.4129));
+        float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * SPARK_RADIUS;
+        float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
 
         vec2 offset = vec2(sin(speed * (uTime+10)) * roundness, cos(speed * (uTime+10)));
         offset *= (0.5 - radius / gridSize);
@@ -169,7 +169,7 @@ if (utils.isInShellProcess()) {
           return 0.05 / pow(dist, 2.0);
         }
 
-        return 0;
+        return 0.0;
       }
 
       // This method requires the uniforms from standardUniforms() to be available.
@@ -232,14 +232,14 @@ if (utils.isInShellProcess()) {
         
         vec2 streakScale = vec2(0.1, 0.002) * vec2(uSizeX, uSizeY);
         vec2 streakUV = uv * streakScale;
-        float streaks = noise2D(streakUV, 5) * 0.5 * masks.y;
+        float streaks = simplex2DFractal(streakUV) * 0.5 * masks.y;
         cogl_color_out.rgb += effectColor * streaks;
 
         float sparks = 0.0;
         float sparkScale = 5.0;
-        for (int i=0; i<SPARK_LAYERS; ++i) {
-          sparks += getSparks(uv / sparkScale, SPARK_SPACING, SEED * (i+1));
-        }
+        //for (int i=0; i<SPARK_LAYERS; ++i) {
+        //  sparks += getSparks(uv / sparkScale, SPARK_SPACING, SEED * (i+1));
+        //}
         cogl_color_out.rgb += effectColor * sparks * masks.x;
 
         // float edgeFadeWidth = 0.5;
