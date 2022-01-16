@@ -30,7 +30,7 @@ let Shader = null;
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
 // the settings dialog, as well as to create the actual shader for the effect.
-var TNGTransporterEffect = class TNGTransporterEffect {
+var EnergizeBEffect = class EnergizeBEffect {
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -43,13 +43,13 @@ var TNGTransporterEffect = class TNGTransporterEffect {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. the '*-close-effect').
   static getNick() {
-    return 'tng-transporter';
+    return 'energize-b';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'TNG Transporter Effect';
+    return 'Energize B';
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -69,8 +69,8 @@ var TNGTransporterEffect = class TNGTransporterEffect {
     // Finally, append the settings page to the main stack.
     // const stack = dialog.getBuilder().get_object('main-stack');
     // stack.add_titled(
-    //     dialog.getBuilder().get_object('tv-prefs'), TNGTransporterEffect.getNick(),
-    //     TNGTransporterEffect.getLabel());
+    //     dialog.getBuilder().get_object('tv-prefs'), EnergizeBEffect.getNick(),
+    //     EnergizeBEffect.getLabel());
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -84,7 +84,7 @@ var TNGTransporterEffect = class TNGTransporterEffect {
   // the actor - usually windows are faded to transparency and scaled down slightly by
   // GNOME Shell. Here, we modify this behavior as well as the transition duration.
   static tweakTransitions(actor, settings) {
-    const animationTime = settings.get_int('tng-transporter-animation-time');
+    const animationTime = settings.get_int('energize-b-animation-time');
 
     const tweakTransition = (property, value) => {
       const transition = actor.get_transition(property);
@@ -117,8 +117,7 @@ if (utils.isInShellProcess()) {
     _init(settings) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
-      const color =
-          Clutter.Color.from_string(settings.get_string('tng-transporter-color'))[1];
+      const color = Clutter.Color.from_string(settings.get_string('energize-b-color'))[1];
 
       this.set_shader_source(`
 

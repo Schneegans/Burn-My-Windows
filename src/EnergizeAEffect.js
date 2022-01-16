@@ -28,7 +28,7 @@ let Shader = null;
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
 // the settings dialog, as well as to create the actual shader for the effect.
-var TOSTransporterEffect = class TOSTransporterEffect {
+var EnergizeAEffect = class EnergizeAEffect {
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -41,13 +41,13 @@ var TOSTransporterEffect = class TOSTransporterEffect {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. the '*-close-effect').
   static getNick() {
-    return 'tos-transporter';
+    return 'energize-a';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'TOS Transporter Effect';
+    return 'Energize A';
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -67,8 +67,8 @@ var TOSTransporterEffect = class TOSTransporterEffect {
     // Finally, append the settings page to the main stack.
     // const stack = dialog.getBuilder().get_object('main-stack');
     // stack.add_titled(
-    //     dialog.getBuilder().get_object('tv-prefs'), TOSTransporterEffect.getNick(),
-    //     TOSTransporterEffect.getLabel());
+    //     dialog.getBuilder().get_object('tv-prefs'), EnergizeAEffect.getNick(),
+    //     EnergizeAEffect.getLabel());
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -82,7 +82,7 @@ var TOSTransporterEffect = class TOSTransporterEffect {
   // the actor - usually windows are faded to transparency and scaled down slightly by
   // GNOME Shell. Here, we modify this behavior as well as the transition duration.
   static tweakTransitions(actor, settings) {
-    const animationTime = settings.get_int('tos-transporter-animation-time');
+    const animationTime = settings.get_int('energize-a-animation-time');
 
     const tweakTransition = (property, value) => {
       const transition = actor.get_transition(property);
@@ -115,8 +115,7 @@ if (utils.isInShellProcess()) {
     _init(settings) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
-      const color =
-          Clutter.Color.from_string(settings.get_string('tos-transporter-color'))[1];
+      const color = Clutter.Color.from_string(settings.get_string('energize-a-color'))[1];
 
       this.set_shader_source(`
 
@@ -133,7 +132,7 @@ if (utils.isInShellProcess()) {
       float getSparks(vec2 texCoords, float gridSize, vec2 seed) {
 
         // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-        vec2 coords = (texCoords + hash2D(seed)) * vec2(uSizeX, uSizeY);
+        vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
 
         // Apply global scale.
         coords /= gridSize;
@@ -145,10 +144,10 @@ if (utils.isInShellProcess()) {
         vec2 cellID = coords-cellUV + vec2(362.456);
 
         // Add random rotation, scale and offset to each grid cell.
-        float speed     = mix(10.0, 15.0,   hash(cellID*seed*134.451)) / gridSize * SPARK_SPEED;
-        float rotation  = mix( 0.0,  6.283, hash(cellID*seed*54.4129));
-        float radius    = mix( 0.5,  1.0,   hash(cellID*seed*19.1249)) * SPARK_RADIUS;
-        float roundness = mix(-1.0,  1.0,   hash(cellID*seed*7.51949));
+        float speed     = mix(10.0, 15.0,   hash12(cellID*seed*134.451)) / gridSize * SPARK_SPEED;
+        float rotation  = mix( 0.0,  6.283, hash12(cellID*seed*54.4129));
+        float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * SPARK_RADIUS;
+        float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
 
         vec2 offset = vec2(sin(speed * (uTime+10)) * roundness, cos(speed * (uTime+10)));
         offset *= (0.5 - radius / gridSize);
@@ -165,7 +164,7 @@ if (utils.isInShellProcess()) {
           // return 0.03 / pow(dist, 2.0);
         }
 
-        return 0;
+        return 0.0;
       }
 
       void main() {
@@ -182,7 +181,7 @@ if (utils.isInShellProcess()) {
           sparks += getSparks((cogl_tex_coord_in[0].st-0.5) / mix(2.0, 1.0, uProgress), SPARK_SPACING, SEED * (i+1));
         }
 
-        float noise = noise3D(vec3(uv, uTime*5.0), 5);
+        float noise = simplex3DFractal(vec3(uv, uTime*5.0));
         sparks = sparks*(noise*0.8 + 0.2) + noise*0.15;
 
         float edgeFadeWidth = 0.5;

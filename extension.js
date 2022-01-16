@@ -26,11 +26,11 @@ const FireEffect     = Me.imports.src.FireEffect.FireEffect;
 
 // New effects must be registered here and in prefs.js.
 const ALL_EFFECTS = [
+  Me.imports.src.EnergizeAEffect.EnergizeAEffect,
+  Me.imports.src.EnergizeBEffect.EnergizeBEffect,
   Me.imports.src.FireEffect.FireEffect,
   Me.imports.src.MatrixEffect.MatrixEffect,
   Me.imports.src.TRexEffect.TRexEffect,
-  Me.imports.src.TOSTransporterEffect.TOSTransporterEffect,
-  Me.imports.src.TNGTransporterEffect.TNGTransporterEffect,
   Me.imports.src.TVEffect.TVEffect,
   Me.imports.src.WispsEffect.WispsEffect,
 ];
