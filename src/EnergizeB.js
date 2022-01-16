@@ -19,9 +19,8 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
-const Clutter = utils.isInShellProcess() ? imports.gi.Clutter : null;
-
 //////////////////////////////////////////////////////////////////////////////////////////
+// This effect looks a bit like the transporter effect from TNG                         //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file.
@@ -91,7 +90,6 @@ var EnergizeB = class EnergizeB {
       if (transition) {
         transition.set_to(value);
         transition.set_duration(animationTime);
-        transition.set_progress_mode(Clutter.AnimationMode.LINEAR);
       }
     };
 
@@ -111,6 +109,7 @@ var EnergizeB = class EnergizeB {
 
 if (utils.isInShellProcess()) {
 
+  const Clutter        = imports.gi.Clutter;
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
@@ -124,140 +123,99 @@ if (utils.isInShellProcess()) {
       // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
       ${shaderSnippets.noise()}
+      ${shaderSnippets.edgeMask()}
 
-      const vec2  SEED          = vec2(${Math.random()}, ${Math.random()});
-      const float SPARK_RADIUS  = 15.0;
-      const float SPARK_SPEED   = 20.0;
-      const float SPARK_SPACING = 50 + SPARK_RADIUS;
-      const int   SPARK_LAYERS  = 15;
+      const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
+      const float SHOWER_TIME  = 0.2;
+      const float SHOWER_WIDTH = 0.3;
+      const float STREAK_TIME  = 0.6;
+      const float EDGE_FADE    = 50;
 
-      const float SHOWER_TIME = 0.2;
-
-      float getSparks(vec2 texCoords, float gridSize, vec2 seed) {
-
-        // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-        vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
-
-        // Apply global scale.
-        coords /= gridSize;
-
-        // Get grid cell coordinates in [0..1].
-        vec2 cellUV = mod(coords, vec2(1));
-
-        // This is unique for each cell.
-        vec2 cellID = coords-cellUV + vec2(362.456);
-
-        // Add random rotation, scale and offset to each grid cell.
-        float speed     = mix(10.0, 15.0,   hash12(cellID*seed*134.451)) / gridSize * SPARK_SPEED;
-        float rotation  = mix( 0.0,  6.283, hash12(cellID*seed*54.4129));
-        float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * SPARK_RADIUS;
-        float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
-
-        vec2 offset = vec2(sin(speed * (uTime+10)) * roundness, cos(speed * (uTime+10)));
-        offset *= (0.5 - radius / gridSize);
-
-        offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
-                      offset.x * sin(rotation) + offset.y * cos(rotation));
-
-        cellUV += offset;
-
-        float dist = length(cellUV - 0.5) * gridSize / radius;
-          
-        if (dist < 1.0) {
-          return 5.0 * exp(-10.0 * dist);
-          return 0.05 / pow(dist, 2.0);
-        }
-
-        return 0.0;
-      }
-
-      // This method requires the uniforms from standardUniforms() to be available.
-      // It returns two values: The first is used as a mask for the particles which lead
-      // the shower. The second is used as a mask for the streaks which follow the particles. 
-      // showerTime:    A value in [0..1]. It determines the percentage of the animation which
-      //                is spent for the shower to come down. 1-showerTime will be spent
-      //                thereafter for dissolving the streak mask.
-      // showerWidth:   The relative size of the particle gradient in [0..1].
-      // edgeFadeWidth: The pixel width of the effect fading range at the edges of the window.
-      vec3 getMasks(float showerTime, float showerWidth, float edgeFadeWidth) {
-        float showerProgress      = uProgress/showerTime;
-        float afterShowerProgress = clamp((uProgress-showerTime)/(1-showerTime), 0, 1);
+      // This method returns four values:
+      //  result.x: A mask for the particles which lead the shower.
+      //  result.y: A mask for the streaks which follow the shower particles.
+      //  result.z: A mask for the final "atom" particles.
+      //  result.w: The opacity of the fading window.
+      vec4 getMasks() {
+        float showerProgress = uProgress/SHOWER_TIME;
+        float streakProgress = clamp((uProgress-SHOWER_TIME)/STREAK_TIME, 0, 1);
+        float fadeProgress  = clamp((uProgress-SHOWER_TIME)/(1.0 - SHOWER_TIME), 0, 1);
 
         // Gradient from top to bottom.
         float t = cogl_tex_coord_in[0].t;
 
         // A smooth gradient which moves to the bottom within the showerProgress.
-        float showerMask = smoothstep(1, 0, abs(showerProgress - t - showerWidth) / showerWidth);
+        float showerMask = smoothstep(1, 0, abs(showerProgress - t - SHOWER_WIDTH) / SHOWER_WIDTH);
 
-        // This is one above the streak mask.
-        float streakMask = (showerProgress - t - showerWidth) > 0 ? 1 : 0;
+        // This is 1 above the streak mask.
+        float streakMask = (showerProgress - t - SHOWER_WIDTH) > 0 ? 1 : 0;
 
+        // Compute mask for the "atom" particles.
+        float atomMask = getRelativeEdgeMask(0.2);
+        atomMask = max(0, atomMask - showerMask);
+        atomMask *= streakMask;
+        atomMask *= (1.0 - fadeProgress);
+
+        // Make some particles visible in the streaks.
         showerMask += 0.05 * streakMask;
 
         // Add shower mask to streak mask.
         streakMask = max(streakMask, showerMask);
 
-        // Fade-out when the masks.
-        if (uProgress > showerTime) {
-          float fade = mix(1, t * (1.0-afterShowerProgress), afterShowerProgress);
-          streakMask *= fade;
-          showerMask *= fade;
-        }
+        // Fade-out the masks at the window edges.
+        float edgeFade = getAbsoluteEdgeMask(EDGE_FADE);
+        streakMask *= edgeFade;
+        showerMask *= edgeFade;
+        
+        // Fade-out the masks from top to bottom.
+        float fade = smoothstep(0.0, 1.0, 1.0 + t - 2.0 * streakProgress);
+        streakMask *= fade;
+        showerMask *= fade;
 
-        // Fade at window borders.
-        vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
-        float edgeFade = 1.0;
-        edgeFade *= smoothstep(0, 1, clamp(pos.x / edgeFadeWidth, 0, 1));
-        edgeFade *= smoothstep(0, 1, clamp(pos.y / edgeFadeWidth, 0, 1));
-        edgeFade *= smoothstep(0, 1, clamp((uSizeX - pos.x) / edgeFadeWidth, 0, 1));
-        edgeFade *= smoothstep(0, 1, clamp((uSizeY - pos.y) / edgeFadeWidth, 0, 1));
+        // Compute fading window opacity.
+        float windowMask = pow(1.0 - fadeProgress, 2.0);
 
-        float windowMask = pow(1.0 - afterShowerProgress, 2.0);
-
-        return vec3(showerMask * edgeFade, streakMask * edgeFade, windowMask);
+        return vec4(showerMask, streakMask, atomMask, windowMask);
       }
 
       void main() {
         
-        vec3 masks       = getMasks(SHOWER_TIME, 0.2, 50);
+        vec4 masks       = getMasks();
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
         vec3 effectColor = vec3(${color.red / 255},
                                 ${color.green / 255},
                                 ${color.blue / 255});
 
-        cogl_color_out = windowColor * masks.z;
+        // Dissolve window to effect color / transparency.
+        cogl_color_out = mix(vec4(effectColor, 1.0) * windowColor.a, windowColor, 0.5 * masks.w + 0.5) * masks.w;
 
-        vec2 uv = cogl_tex_coord_in[0].st + vec2(0, -uProgress/SHOWER_TIME);
-        
-        vec2 streakScale = vec2(0.1, 0.002) * vec2(uSizeX, uSizeY);
-        vec2 streakUV = uv * streakScale;
-        float streaks = simplex2DFractal(streakUV) * 0.5 * masks.y;
-        cogl_color_out.rgb += effectColor * streaks;
+        // Add leading shower particles.
+        vec2 showerUV = cogl_tex_coord_in[0].st + vec2(0, -0.7*uProgress/SHOWER_TIME);
+        showerUV *= 0.02 * vec2(uSizeX, uSizeY);
+        float shower = pow(simplex2D(showerUV), 10.0);
+        cogl_color_out.rgb += effectColor * shower * masks.x;
 
-        float sparks = 0.0;
-        float sparkScale = 5.0;
-        //for (int i=0; i<SPARK_LAYERS; ++i) {
-        //  sparks += getSparks(uv / sparkScale, SPARK_SPACING, SEED * (i+1));
-        //}
-        cogl_color_out.rgb += effectColor * sparks * masks.x;
+        // Add trailing streak lines.
+        vec2 streakUV = cogl_tex_coord_in[0].st + vec2(0, -uProgress/SHOWER_TIME);
+        streakUV *= vec2(0.05 * uSizeX, 0.001 * uSizeY);
+        float streaks = simplex2DFractal(streakUV) * 0.5;
+        cogl_color_out.rgb += effectColor * streaks * masks.y;
 
-        // float edgeFadeWidth = 0.5;
-        // float heartMask     = 1.0;
-        // float heart         = 0.0;
-        // heartMask *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].x / edgeFadeWidth, 0, 1));
-        // heartMask *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / edgeFadeWidth, 0, 1));
-        // heartMask *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].x) / edgeFadeWidth, 0, 1));
-        // heartMask *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / edgeFadeWidth, 0, 1));
+        // Add glimmering atoms.
+        vec2 atomUV = cogl_tex_coord_in[0].st + vec2(0, -0.025*uProgress/SHOWER_TIME);
+        atomUV *= 0.2 * vec2(uSizeX, uSizeY);
+        float atoms = pow((simplex3D(vec3(atomUV, uTime))), 5.0);
+        cogl_color_out.rgb += effectColor * atoms * masks.z;
 
-        // heartMask = pow(heartMask, 10.0);
-
-        // for (int i=0; i<SPARK_LAYERS; ++i) {
-        //   heart += heartMask * getSparks((cogl_tex_coord_in[0].st-0.5) / mix(2.0, 1.0, uProgress), SPARK_SPACING, SEED * (i+1+SPARK_LAYERS));
-        // }
-        
         // These are pretty useful for understanding how this works.
-        // cogl_color_out = vec4(streakMask, 0.0, 1.0);
+        // cogl_color_out = vec4(masks.rgb, 1.0);
+        // cogl_color_out = vec4(vec3(masks.x), 1.0);
+        // cogl_color_out = vec4(vec3(masks.y), 1.0);
+        // cogl_color_out = vec4(vec3(masks.z), 1.0);
+        // cogl_color_out = vec4(vec3(masks.w), 1.0);
+        // cogl_color_out = vec4(vec3(shower), 1.0);
         // cogl_color_out = vec4(vec3(streaks), 1.0);
+        // cogl_color_out = vec4(vec3(atoms), 1.0);
       }
       `);
     };
