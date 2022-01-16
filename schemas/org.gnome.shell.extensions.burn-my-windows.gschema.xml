@@ -185,19 +185,19 @@
 
     <key name="energize-a-close-effect" type="b">
       <default>false</default>
-      <summary>TOS Transporter Close Effect</summary>
-      <description>Use the TOS Transporter effect for window closing.</description>
+      <summary>Energize A Close Effect</summary>
+      <description>Use the Energize A effect for window closing.</description>
     </key>
 
     <key name="energize-a-animation-time" type="i">
       <default>2500</default>
-      <summary>TOS Transporter Animation Time</summary>
-      <description>The time the TOS Transporter effect takes.</description>
+      <summary>Energize A Animation Time</summary>
+      <description>The time the Energize A effect takes.</description>
     </key>
 
     <key name="energize-a-color" type="s">
       <default>"rgb(255, 200, 50)"</default>
-      <summary>TOS Transporter Color</summary>
+      <summary>Energize A Color</summary>
       <description>The color of the effect.</description>
     </key>
 
@@ -207,19 +207,19 @@
 
     <key name="energize-b-close-effect" type="b">
       <default>false</default>
-      <summary>TNG Transporter Close Effect</summary>
-      <description>Use the TNG Transporter effect for window closing.</description>
+      <summary>Energize B Close Effect</summary>
+      <description>Use the Energize B effect for window closing.</description>
     </key>
 
     <key name="energize-b-animation-time" type="i">
       <default>2500</default>
-      <summary>TNG Transporter Animation Time</summary>
-      <description>The time the TNG Transporter effect takes.</description>
+      <summary>Energize B Animation Time</summary>
+      <description>The time the Energize B effect takes.</description>
     </key>
 
     <key name="energize-b-color" type="s">
       <default>"rgb(160, 180, 255)"</default>
-      <summary>TNG Transporter Color</summary>
+      <summary>Energize B Color</summary>
       <description>The color of the effect.</description>
     </key>
 
