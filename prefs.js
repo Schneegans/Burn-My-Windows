@@ -21,8 +21,8 @@ const utils          = Me.imports.src.utils;
 
 // New effects must be registered here and in extension.js.
 const ALL_EFFECTS = [
-  Me.imports.src.EnergizeAEffect.EnergizeAEffect,
-  Me.imports.src.EnergizeBEffect.EnergizeBEffect,
+  Me.imports.src.EnergizeA.EnergizeA,
+  Me.imports.src.EnergizeB.EnergizeB,
   Me.imports.src.Fire.Fire,
   Me.imports.src.Matrix.Matrix,
   Me.imports.src.TRexAttack.TRexAttack,
