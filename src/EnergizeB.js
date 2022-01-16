@@ -20,7 +20,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This effect looks a bit like the transporter effect from TNG                         //
+// This effect looks a bit like the transporter effect from TNG.                        //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file.
