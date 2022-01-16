@@ -125,6 +125,7 @@ if (utils.isInShellProcess()) {
       // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
       ${shaderSnippets.noise()}
+      ${shaderSnippets.edgeMask()}
 
       const vec2  SEED            = vec2(${Math.random()}, ${Math.random()});
       const float WISPS_RADIUS    = 20.0;
@@ -188,12 +189,7 @@ if (utils.isInShellProcess()) {
         }
 
         // Compute shrinking edge mask.
-        float edgeFadeWidth = mix(0.01, 0.5, uProgress);
-        float mask          = 1.0;
-        mask *= smoothstep(0.0, 1.0,        cogl_tex_coord_in[0].x  / edgeFadeWidth);
-        mask *= smoothstep(0.0, 1.0,        cogl_tex_coord_in[0].y  / edgeFadeWidth);
-        mask *= smoothstep(0.0, 1.0, (1.0 - cogl_tex_coord_in[0].x) / edgeFadeWidth);
-        mask *= smoothstep(0.0, 1.0, (1.0 - cogl_tex_coord_in[0].y) / edgeFadeWidth);
+        float mask = getRelativeEdgeMask(mix(0.01, 0.5, uProgress));
 
         // Compute three different progress values.
         float wispsIn   = smoothstep(0, 1, clamp(uProgress/WISPS_IN_TIME, 0, 1));
