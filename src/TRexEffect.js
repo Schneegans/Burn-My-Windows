@@ -159,7 +159,7 @@ if (utils.isInShellProcess()) {
         vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
 
           // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-          vec2 coords = texCoords + hash2D(seed);
+          vec2 coords = texCoords + hash22(seed);
           coords *= uSizeX < uSizeY ? vec2(1.0, 1.0 * uSizeY / uSizeX) : vec2(1.0 * uSizeX / uSizeY, 1.0);
 
           // Apply global scale.
@@ -172,10 +172,10 @@ if (utils.isInShellProcess()) {
           vec2 cellID = coords-cellUV + vec2(362.456);
 
           // Add random rotation, scale and offset to each grid cell.
-          float scale    = mix(0.8, 1.0,         hash(cellID*seed*134.451));
-          float offsetX  = mix(0.0, 1.0 - scale, hash(cellID*seed*54.4129));
-          float offsetY  = mix(0.0, 1.0 - scale, hash(cellID*seed*25.3089));
-          float rotation = mix(0.0, 2.0 * 3.141, hash(cellID*seed*2.99837));
+          float scale    = mix(0.8, 1.0,         hash12(cellID*seed*134.451));
+          float offsetX  = mix(0.0, 1.0 - scale, hash12(cellID*seed*54.4129));
+          float offsetY  = mix(0.0, 1.0 - scale, hash12(cellID*seed*25.3089));
+          float rotation = mix(0.0, 2.0 * 3.141, hash12(cellID*seed*2.99837));
 
           cellUV -= vec2(offsetX, offsetY);
           cellUV /= scale;

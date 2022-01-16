@@ -32,6 +32,7 @@ const ALL_EFFECTS = [
   Me.imports.src.TOSTransporterEffect.TOSTransporterEffect,
   Me.imports.src.TNGTransporterEffect.TNGTransporterEffect,
   Me.imports.src.TVEffect.TVEffect,
+  Me.imports.src.WispsEffect.WispsEffect,
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////

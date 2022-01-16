@@ -323,9 +323,9 @@ if (utils.isInShellProcess()) {
           uv.y += uTime * FIRE_SPEED;
 
           #if ${settings.get_boolean('flame-3d-noise') ? 1 : 0}
-            float noise = noise3D(vec3(uv*7.5, uTime*FIRE_SPEED*3.0), 5);
+            float noise = simplex3DFractal(vec3(uv*4.0, uTime*FIRE_SPEED*1.5));
           #else
-            float noise = noise2D(uv * 7.5, 5);
+            float noise = simplex2DFractal(uv * 4.0);
           #endif
 
           // Modulate noise by effect mask.

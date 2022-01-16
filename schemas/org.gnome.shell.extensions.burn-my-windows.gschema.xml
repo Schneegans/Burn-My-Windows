@@ -88,7 +88,7 @@
     </key>
 
     <key name="matrix-animation-time" type="i">
-      <default>2000</default>
+      <default>3000</default>
       <summary>Matrix Animation Time</summary>
       <description>The time the matrix effect takes.</description>
     </key>
@@ -221,6 +221,28 @@
       <default>"rgb(150, 150, 255)"</default>
       <summary>TNG Transporter Color</summary>
       <description>The color of the effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Wisps Effect Options                                                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="wisps-close-effect" type="b">
+      <default>false</default>
+      <summary>Wisps Close Effect</summary>
+      <description>Use the wisps effect for window closing.</description>
+    </key>
+
+    <key name="wisps-animation-time" type="i">
+      <default>2000</default>
+      <summary>Wisps Animation Time</summary>
+      <description>The time the wisps effect takes.</description>
+    </key>
+
+    <key name="wisps-color" type="s">
+      <default>"rgb(255, 100, 200)"</default>
+      <summary>Wisps Effect Color</summary>
+      <description>The color of the wisps effect.</description>
     </key>
 
   </schema>
