@@ -145,6 +145,7 @@ if (utils.isInShellProcess()) {
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
+        ${shaderSnippets.edgeMask()}
 
         uniform sampler2D uFontTexture;
 
@@ -204,11 +205,7 @@ if (utils.isInShellProcess()) {
           float rainAlpha = finalFade * rain.x;
 
           // Fade at window borders.
-          vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
-          rainAlpha *= clamp(pos.x / EDGE_FADE, 0, 1);
-          rainAlpha *= clamp(pos.y / EDGE_FADE, 0, 1);
-          rainAlpha *= clamp((uSizeX - pos.x) / EDGE_FADE, 0, 1);
-          rainAlpha *= clamp((uSizeY - pos.y) / EDGE_FADE, 0, 1);
+          rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE);
 
           // Add the matrix effect to the window.
           vec3 trailColor = vec3(${trailColor.red / 255}, 

@@ -245,6 +245,7 @@ if (utils.isInShellProcess()) {
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
+        ${shaderSnippets.edgeMask()}
 
         // These may be configurable in the future.
         const float EDGE_FADE  = 90;
@@ -307,11 +308,7 @@ if (utils.isInShellProcess()) {
           }
 
           // Fade at window borders.
-          vec2 pos = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
-          effectMask *= smoothstep(0, 1, clamp(pos.x / edgeFadeWidth, 0, 1));
-          effectMask *= smoothstep(0, 1, clamp(pos.y / edgeFadeWidth, 0, 1));
-          effectMask *= smoothstep(0, 1, clamp((uSizeX - pos.x) / edgeFadeWidth, 0, 1));
-          effectMask *= smoothstep(0, 1, clamp((uSizeY - pos.y) / edgeFadeWidth, 0, 1));
+          effectMask *= getAbsoluteEdgeMask(edgeFadeWidth);
 
           return vec2(windowMask, effectMask);
         }
