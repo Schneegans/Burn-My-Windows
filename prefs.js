@@ -23,11 +23,11 @@ const utils          = Me.imports.src.utils;
 const ALL_EFFECTS = [
   Me.imports.src.EnergizeAEffect.EnergizeAEffect,
   Me.imports.src.EnergizeBEffect.EnergizeBEffect,
-  Me.imports.src.FireEffect.FireEffect,
-  Me.imports.src.MatrixEffect.MatrixEffect,
-  Me.imports.src.TRexEffect.TRexEffect,
+  Me.imports.src.Fire.Fire,
+  Me.imports.src.Matrix.Matrix,
+  Me.imports.src.TRexAttack.TRexAttack,
   Me.imports.src.TVEffect.TVEffect,
-  Me.imports.src.WispsEffect.WispsEffect,
+  Me.imports.src.Wisps.Wisps,
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////

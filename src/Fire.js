@@ -33,7 +33,7 @@ let Shader = null;
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
 // the settings dialog, as well as to create the actual shader for the effect.
-var FireEffect = class FireEffect {
+var Fire = class Fire {
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -86,13 +86,12 @@ var FireEffect = class FireEffect {
     });
 
     // Initialize the fire-preset dropdown.
-    FireEffect._createFirePresets(dialog);
+    Fire._createFirePresets(dialog);
 
     // Finally, append the settings page to the main stack.
     const stack = dialog.getBuilder().get_object('main-stack');
     stack.add_titled(
-        dialog.getBuilder().get_object('fire-prefs'), FireEffect.getNick(),
-        FireEffect.getLabel());
+        dialog.getBuilder().get_object('fire-prefs'), Fire.getNick(), Fire.getLabel());
   }
 
   // ---------------------------------------------------------------- API for extension.js
