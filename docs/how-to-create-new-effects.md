@@ -261,7 +261,7 @@ This is because starting with GNOME Shell 40, the preference dialog uses GTK4, b
 Usually, there are only a few minor differences between the two files.
 We will load the respective file in the `initPreferences()` method of your new effect class.
 
-Just save the code below to `resources/ui/gtk3/simpleFadePage.ui` and `resources/ui/gtk4/simpleFadePage.ui` respectively.
+Just save the code below to `resources/ui/gtk3/SimpleFade.ui` and `resources/ui/gtk4/SimpleFade.ui` respectively.
 Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
 
 <details>
@@ -545,7 +545,7 @@ In order to load the above `*.ui` files, add the following code to your effect's
 static initPreferences(dialog) {
 
   // Add the settings page to the builder.
-  dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/simpleFadePage.ui`);
+  dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/SimpleFade.ui`);
 
   // These connect the settings to the UI elements. Have a look at prefs.js
   // on how to bind other types of UI elements.

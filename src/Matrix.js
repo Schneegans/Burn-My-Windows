@@ -63,7 +63,7 @@ var Matrix = class Matrix {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource('/ui/gtk4/matrixPage.ui');
+    dialog.getBuilder().add_from_resource('/ui/gtk4/Matrix.ui');
 
     // Bind all properties.
     dialog.bindAdjustment('matrix-animation-time');

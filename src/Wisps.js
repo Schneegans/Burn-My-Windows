@@ -60,7 +60,7 @@ var Wisps = class Wisps {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/wispsPage.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Wisps.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('wisps-animation-time');

@@ -59,15 +59,9 @@ var PreferencesDialog = class PreferencesDialog {
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/main-menu.ui`);
     this._builder.add_from_resource(`/ui/${utils.getGTKString()}/prefs.ui`);
-    this._builder.add_from_resource(`/ui/${utils.getGTKString()}/generalPage.ui`);
 
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
-
-    // Add the General Options page to the main stack.
-    const stack = this._builder.get_object('main-stack');
-    stack.add_titled(
-        this._builder.get_object('general-prefs'), 'general', 'General Options');
 
     // Add all other effect pages.
     ALL_EFFECTS.forEach(Effect => {

@@ -61,7 +61,7 @@ var TRexAttack = class TRexAttack {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource('/ui/gtk4/trexPage.ui');
+    dialog.getBuilder().add_from_resource('/ui/gtk4/TRexAttack.ui');
 
     // Bind all properties.
     dialog.bindAdjustment('trex-animation-time');

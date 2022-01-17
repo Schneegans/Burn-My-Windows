@@ -59,7 +59,7 @@ var EnergizeA = class EnergizeA {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/energizeAPage.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/EnergizeA.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('energize-a-animation-time');
