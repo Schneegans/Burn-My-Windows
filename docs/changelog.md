@@ -7,6 +7,8 @@
 #### New Features
 
 * **Random effects!** You can now select a set of effects of which one will be chosen randomly whenever you close a window. **This changes how effects are selected, so you will have to re-select your desired effect(s)**.
+* **New Effect: Energize A.** Beam your windows away!
+* **New Effect: Energize B.** Using different transporter technology results in an alternative visual effect.
 * **New Effect: Wisps.** These little fairies carry your windows to the realm of dreams!
 * Each effect has its own "Animation Time" setting now. The global animation time has been replaced by those, so **you may have to adjust the sliders to match your previous settings**. 
 

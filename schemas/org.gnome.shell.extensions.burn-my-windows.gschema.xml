@@ -180,6 +180,62 @@
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Energize A Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="energize-a-close-effect" type="b">
+      <default>false</default>
+      <summary>Energize A Close Effect</summary>
+      <description>Use the Energize A effect for window closing.</description>
+    </key>
+
+    <key name="energize-a-animation-time" type="i">
+      <default>2000</default>
+      <summary>Energize A Animation Time</summary>
+      <description>The time the Energize A effect takes.</description>
+    </key>
+
+    <key name="energize-a-scale" type="d">
+      <default>1.0</default>
+      <summary>Energize A Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="energize-a-color" type="s">
+      <default>"rgb(255, 200, 50)"</default>
+      <summary>Energize A Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Energize B Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="energize-b-close-effect" type="b">
+      <default>false</default>
+      <summary>Energize B Close Effect</summary>
+      <description>Use the Energize B effect for window closing.</description>
+    </key>
+
+    <key name="energize-b-animation-time" type="i">
+      <default>2000</default>
+      <summary>Energize B Animation Time</summary>
+      <description>The time the Energize B effect takes.</description>
+    </key>
+
+    <key name="energize-b-scale" type="d">
+      <default>1.0</default>
+      <summary>Energize B Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="energize-b-color" type="s">
+      <default>"rgb(160, 180, 255)"</default>
+      <summary>Energize B Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Wisps Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
@@ -193,6 +249,12 @@
       <default>2000</default>
       <summary>Wisps Animation Time</summary>
       <description>The time the wisps effect takes.</description>
+    </key>
+
+    <key name="wisps-scale" type="d">
+      <default>1.0</default>
+      <summary>Wisps Scale</summary>
+      <description>The size of the wisps.</description>
     </key>
 
     <key name="wisps-color" type="s">
