@@ -20,6 +20,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// This effect looks a bit like the transporter effect from TOS.                        //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file.
@@ -58,17 +59,18 @@ var EnergizeA = class EnergizeA {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    // dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/tvPage.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/energizeAPage.ui`);
 
     // Bind all properties.
-    // dialog.bindAdjustment('tv-animation-time');
-    // dialog.bindColorButton('tv-effect-color');
+    dialog.bindAdjustment('energize-a-animation-time');
+    dialog.bindAdjustment('energize-a-scale');
+    dialog.bindColorButton('energize-a-color');
 
     // Finally, append the settings page to the main stack.
-    // const stack = dialog.getBuilder().get_object('main-stack');
-    // stack.add_titled(
-    //     dialog.getBuilder().get_object('tv-prefs'), EnergizeA.getNick(),
-    //     EnergizeA.getLabel());
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(
+        dialog.getBuilder().get_object('energize-a-prefs'), EnergizeA.getNick(),
+        EnergizeA.getLabel());
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -122,97 +124,77 @@ if (utils.isInShellProcess()) {
       // Inject some common shader snippets.
       ${shaderSnippets.standardUniforms()}
       ${shaderSnippets.noise()}
+      ${shaderSnippets.edgeMask()}
 
-      const vec2  SEED          = vec2(${Math.random()}, ${Math.random()});
-      const float SPARK_RADIUS  = 30.0;
-      const float SPARK_SPEED   = 10.0;
-      const float SPARK_SPACING = 50 + SPARK_RADIUS;
-      const int   SPARK_LAYERS  = 15;
+      const vec2  SEED            = vec2(${Math.random()}, ${Math.random()});
+      const float FADE_IN_TIME    = 0.3;
+      const float FADE_OUT_TIME   = 0.6;
+      const float HEART_FADE_TIME = 0.3;
+      const float EDGE_FADE_WIDTH = 50;
 
-      float getSparks(vec2 texCoords, float gridSize, vec2 seed) {
+      // This method returns two values:
+      //  result.x: A mask for the particles.
+      //  result.y: The opacity of the fading window.
+      vec2 getMasks() {
+        float fadeInProgress  = clamp(uProgress/FADE_IN_TIME, 0, 1);
+        float fadeOutProgress = clamp((uProgress-FADE_IN_TIME)/FADE_OUT_TIME, 0, 1);
+        float heartProgress   = clamp((uProgress-(1.0-HEART_FADE_TIME))/HEART_FADE_TIME, 0, 1);
 
-        // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-        vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
+        // Compute mask for the "atom" particles.
+        float dist = length(cogl_tex_coord_in[0].st - 0.5) * 4.0;
+        float atomMask = smoothstep(0.0, 1.0, (fadeInProgress * 2.0 - dist + 1.0));
+        atomMask *= fadeInProgress;
+        atomMask *= smoothstep(1.0, 0.0, fadeOutProgress);
 
-        // Apply global scale.
-        coords /= gridSize;
+        // Fade-out the masks at the window edges.
+        float edgeFade = getAbsoluteEdgeMask(EDGE_FADE_WIDTH);
+        atomMask *= edgeFade;
 
-        // Get grid cell coordinates in [0..1].
-        vec2 cellUV = mod(coords, vec2(1));
+        float heartMask = getRelativeEdgeMask(0.5);
+        heartMask = 3.0 * pow(heartMask, 5);
+        heartMask *= fadeOutProgress;
+        heartMask *= 1.0 - heartProgress;
+        atomMask = clamp(heartMask+atomMask, 0, 1);
 
-        // This is unique for each cell.
-        vec2 cellID = coords-cellUV + vec2(362.456);
+        // Compute fading window opacity.
+        float windowMask = pow(1.0 - fadeOutProgress, 2.0);
 
-        // Add random rotation, scale and offset to each grid cell.
-        float speed     = mix(10.0, 15.0,   hash12(cellID*seed*134.451)) / gridSize * SPARK_SPEED;
-        float rotation  = mix( 0.0,  6.283, hash12(cellID*seed*54.4129));
-        float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * SPARK_RADIUS;
-        float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
-
-        vec2 offset = vec2(sin(speed * (uTime+10)) * roundness, cos(speed * (uTime+10)));
-        offset *= (0.5 - radius / gridSize);
-
-        offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
-                      offset.x * sin(rotation) + offset.y * cos(rotation));
-
-        cellUV += offset;
-
-        float dist = length(cellUV - 0.5) * gridSize / radius;
-          
-        if (dist < 1.0) {
-          return exp(-4.0 * dist);
-          // return 0.03 / pow(dist, 2.0);
-        }
-
-        return 0.0;
+        return vec2(atomMask, windowMask);
       }
 
       void main() {
-
+        
+        vec2 masks       = getMasks();
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-        vec4 effectColor = vec4(${color.red / 255},
+        vec3 effectColor = vec3(${color.red / 255},
                                 ${color.green / 255},
-                                ${color.blue / 255}, 1.0) * windowColor.a;
+                                ${color.blue / 255});
 
-        vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / 20 + vec2(0, uTime);
-        float sparks = 0;
-        
-        for (int i=0; i<SPARK_LAYERS; ++i) {
-          sparks += getSparks((cogl_tex_coord_in[0].st-0.5) / mix(2.0, 1.0, uProgress), SPARK_SPACING, SEED * (i+1));
+        // Dissolve window to effect color / transparency.
+        cogl_color_out = mix(vec4(effectColor, 1.0) * windowColor.a, windowColor, 0.2 * masks.y + 0.8) * masks.y;
+
+        vec2 scaledUV = (cogl_tex_coord_in[0].st-0.5) * (1.0 + 0.1*uProgress);
+        scaledUV /= ${settings.get_double('energize-a-scale')};
+
+        // Add molecule particles.
+        vec2 uv = scaledUV + vec2(0, 0.1*uTime);
+        uv *= 0.010598 * vec2(0.5*uSizeX, uSizeY);
+        float particles = 0.2 * pow((simplex3D(vec3(uv, 0.0*uTime))), 3.0);
+
+        // Add more molecule particles.
+        for (int i=1; i<=3;++i) {
+          vec2 uv = scaledUV * 0.12154 / pow(1.5, i) * vec2(uSizeX, uSizeY);
+          float atoms = simplex3D(vec3(uv, 2.0*uTime/i));
+          particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms)-1.0), 2);
         }
 
-        float noise = simplex3DFractal(vec3(uv, uTime*5.0));
-        sparks = sparks*(noise*0.8 + 0.2) + noise*0.15;
-
-        float edgeFadeWidth = 0.5;
-        float heartMask     = 1.0;
-        float heart         = 0.0;
-        heartMask *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].x / edgeFadeWidth, 0, 1));
-        heartMask *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / edgeFadeWidth, 0, 1));
-        heartMask *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].x) / edgeFadeWidth, 0, 1));
-        heartMask *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / edgeFadeWidth, 0, 1));
-
-        heartMask = pow(heartMask, 10.0);
-
-        for (int i=0; i<SPARK_LAYERS; ++i) {
-          heart += heartMask * getSparks((cogl_tex_coord_in[0].st-0.5) / mix(2.0, 1.0, uProgress), SPARK_SPACING, SEED * (i+1+SPARK_LAYERS));
-        }
-
-        heart *= (noise*0.8 + 0.2);
-        
-        const float FADE_IN_TIME  = 0.3;
-        const float FADE_OUT_TIME = 0.4;
-
-        float fadeIn   = smoothstep(0, 1, clamp(uProgress/FADE_IN_TIME, 0, 1));
-        float fadeOut  = smoothstep(0, 1, clamp((uProgress - FADE_IN_TIME)/FADE_OUT_TIME, 0, 1));
-        float heartOut = smoothstep(0, 1, clamp((uProgress - FADE_IN_TIME)/(1.0 - FADE_IN_TIME), 0, 1));
-
-        cogl_color_out = windowColor * clamp(1-fadeOut, 0, 1);
-        cogl_color_out += min(fadeIn, 1-fadeOut) * sparks * effectColor;
-        cogl_color_out += min(fadeIn, 1-heartOut) * heart * effectColor;
+        cogl_color_out.rgb += effectColor * particles * masks.x;
 
         // These are pretty useful for understanding how this works.
-        // cogl_color_out = vec4(vec3(heartMask), 1.0);
+        // cogl_color_out = vec4(masks, 0.0, 1.0);
+        // cogl_color_out = vec4(vec3(masks.x), 1.0);
+        // cogl_color_out = vec4(vec3(masks.y), 1.0);
+        // cogl_color_out = vec4(vec3(particles), 1.0);
       }
       `);
     };
