@@ -59,17 +59,18 @@ var EnergizeB = class EnergizeB {
   static initPreferences(dialog) {
 
     // Add the settings page to the builder.
-    // dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/tvPage.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/energizeBPage.ui`);
 
     // Bind all properties.
-    // dialog.bindAdjustment('tv-animation-time');
-    // dialog.bindColorButton('tv-effect-color');
+    dialog.bindAdjustment('energize-b-animation-time');
+    dialog.bindAdjustment('energize-b-scale');
+    dialog.bindColorButton('energize-b-color');
 
     // Finally, append the settings page to the main stack.
-    // const stack = dialog.getBuilder().get_object('main-stack');
-    // stack.add_titled(
-    //     dialog.getBuilder().get_object('tv-prefs'), EnergizeB.getNick(),
-    //     EnergizeB.getLabel());
+    const stack = dialog.getBuilder().get_object('main-stack');
+    stack.add_titled(
+        dialog.getBuilder().get_object('energize-b-prefs'), EnergizeB.getNick(),
+        EnergizeB.getLabel());
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -130,6 +131,7 @@ if (utils.isInShellProcess()) {
       const float SHOWER_WIDTH = 0.3;
       const float STREAK_TIME  = 0.6;
       const float EDGE_FADE    = 50;
+      const float SCALE        = ${settings.get_double('energize-b-scale')};
 
       // This method returns four values:
       //  result.x: A mask for the particles which lead the shower.
@@ -191,19 +193,19 @@ if (utils.isInShellProcess()) {
 
         // Add leading shower particles.
         vec2 showerUV = cogl_tex_coord_in[0].st + vec2(0, -0.7*uProgress/SHOWER_TIME);
-        showerUV *= 0.02 * vec2(uSizeX, uSizeY);
+        showerUV *= 0.02 * vec2(uSizeX, uSizeY) / SCALE;
         float shower = pow(simplex2D(showerUV), 10.0);
         cogl_color_out.rgb += effectColor * shower * masks.x;
 
         // Add trailing streak lines.
         vec2 streakUV = cogl_tex_coord_in[0].st + vec2(0, -uProgress/SHOWER_TIME);
-        streakUV *= vec2(0.05 * uSizeX, 0.001 * uSizeY);
+        streakUV *= vec2(0.05 * uSizeX, 0.001 * uSizeY) / SCALE;
         float streaks = simplex2DFractal(streakUV) * 0.5;
         cogl_color_out.rgb += effectColor * streaks * masks.y;
 
         // Add glimmering atoms.
         vec2 atomUV = cogl_tex_coord_in[0].st + vec2(0, -0.025*uProgress/SHOWER_TIME);
-        atomUV *= 0.2 * vec2(uSizeX, uSizeY);
+        atomUV *= 0.2 * vec2(uSizeX, uSizeY) / SCALE;
         float atoms = pow((simplex3D(vec3(atomUV, uTime))), 5.0);
         cogl_color_out.rgb += effectColor * atoms * masks.z;
 
