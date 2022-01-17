@@ -17,6 +17,7 @@ const {Clutter, Gio, Meta} = imports.gi;
 
 const Workspace                  = imports.ui.workspace.Workspace;
 const WindowManager              = imports.ui.windowManager.WindowManager;
+const WindowPreview              = imports.ui.windowPreview.WindowPreview;
 const WINDOW_REPOSITIONING_DELAY = imports.ui.workspace.WINDOW_REPOSITIONING_DELAY;
 
 const ExtensionUtils = imports.misc.extensionUtils;
@@ -64,10 +65,19 @@ class Extension {
     this._origDoRemoveWindow     = Workspace.prototype._doRemoveWindow;
     this._origAddWindowClone     = Workspace.prototype._addWindowClone;
     this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
+    this._origDeleteAll          = WindowPreview.prototype._deleteAll;
 
     // We will use extensionThis to refer to the extension inside the patched methods of
     // the WorkspacesView.
     const extensionThis = this;
+
+    // Do not attempt to close windows twice. Due to the animation in the overview, the
+    // close button can be clicked twice which normally would lead to a crash.
+    WindowPreview.prototype._deleteAll = function() {
+      if (!this._closeRequested) {
+        extensionThis._origDeleteAll.apply(this);
+      }
+    };
 
     // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
     // but not _doRemoveWindow. The latter is required to trigger the repositioning of the
@@ -186,6 +196,7 @@ class Extension {
     Workspace.prototype._doRemoveWindow         = this._origDoRemoveWindow;
     Workspace.prototype._addWindowClone         = this._origAddWindowClone;
     WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
+    WindowPreview.prototype._deleteAll          = this._origDeleteAll;
 
     this._settings = null;
   }
