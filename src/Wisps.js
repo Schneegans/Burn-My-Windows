@@ -64,6 +64,7 @@ var Wisps = class Wisps {
 
     // Bind all properties.
     dialog.bindAdjustment('wisps-animation-time');
+    dialog.bindAdjustment('wisps-scale');
     dialog.bindColorButton('wisps-color');
 
     // Finally, append the settings page to the main stack.
@@ -182,6 +183,7 @@ if (utils.isInShellProcess()) {
         
         // Compute several layers of moving wisps.
         vec2 uv = (cogl_tex_coord_in[0].st-0.5) / mix(1.0, 0.5, uProgress) + 0.5;
+        uv /= ${settings.get_double('wisps-scale')};
         float wisps = 0;
         for (int i=0; i<WISPS_LAYERS; ++i) {
           wisps += getWisps(uv*0.3, WISPS_SPACING, SEED * (i+1));

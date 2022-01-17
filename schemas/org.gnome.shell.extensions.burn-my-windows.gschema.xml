@@ -239,6 +239,12 @@
       <description>The time the wisps effect takes.</description>
     </key>
 
+    <key name="wisps-scale" type="d">
+      <default>1.0</default>
+      <summary>Wisps Scale</summary>
+      <description>The size of the wisps.</description>
+    </key>
+
     <key name="wisps-color" type="s">
       <default>"rgb(255, 100, 200)"</default>
       <summary>Wisps Effect Color</summary>
