@@ -13,16 +13,22 @@
 
 'use strict';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
-
 const {Clutter, Gio, Meta} = imports.gi;
 
 const Workspace     = imports.ui.workspace.Workspace;
 const WindowManager = imports.ui.windowManager.WindowManager;
-const WindowPreview =
-    utils.shellVersionIsAtLeast(3, 38) ? imports.ui.windowPreview.WindowPreview : null;
+
+// The WindowPreview class is only available on GNOME Shell 3.38+;
+let WindowPreview = null;
+try {
+  WindowPreview = imports.ui.windowPreview.WindowPreview;
+} catch (error) {
+  // Nothing to be done, we are on GNOME Shell 3.36.
+}
+
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me             = imports.misc.extensionUtils.getCurrentExtension();
+const utils          = Me.imports.src.utils;
 
 // New effects must be registered here and in prefs.js.
 const ALL_EFFECTS = [
