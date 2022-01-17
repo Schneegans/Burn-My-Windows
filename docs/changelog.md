@@ -2,7 +2,7 @@
 
 ## [Burn My Window 8](https://github.com/schneegans/Burn-My-Windows/releases/tag/v8)
 
-**Release Date:** TBD
+**Release Date:** 2022-01-17
 
 #### New Features
 
