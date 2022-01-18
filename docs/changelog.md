@@ -2,7 +2,7 @@
 
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
-**Release Date:** TBD
+**Release Date:** 2022-01-18
 
 #### Fixes
 
