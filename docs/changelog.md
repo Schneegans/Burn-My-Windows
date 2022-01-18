@@ -1,5 +1,14 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
+
+**Release Date:** TBD
+
+#### Fixes
+
+* Improved compatibility with [Show Application View When Workspace Empty ](https://extensions.gnome.org/extension/2036/show-application-view-when-workspace-empty/) (#54).
+* Fixed a crash which happened when the window-close icon in the overview was clicked twice (#49).
+
 ## [Burn My Window 8](https://github.com/schneegans/Burn-My-Windows/releases/tag/v8)
 
 **Release Date:** 2022-01-17
