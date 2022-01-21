@@ -12,6 +12,7 @@ For a list of things changed in previous releases, you can have a look at the [c
 
 Effect | Preview
 -----|--------
+**Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position! | <img src ="docs/pics/glass.gif" />
 **Energize A** <br> Beam your windows away! | <img src ="docs/pics/energizeA.gif" />
 **Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energizeB.gif" />
 **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
