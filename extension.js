@@ -98,10 +98,18 @@ class Extension {
           // When the user clicks the X in the overview, the window is not deleted
           // immediately. However, as soon as the window is really deleted, we need to
           // adjust the transition of its clone.
-          this.metaWindow.connect('unmanaged', () => {
-            const transitionConfig = extensionThis._effect.getCloseTransition(
-                this.window_container, extensionThis._settings);
-            extensionThis._tweakTransitions(this.window_container, transitionConfig);
+          const connectionID = this.metaWindow.connect('unmanaged', () => {
+            if (this.window_container) {
+              const transitionConfig = extensionThis._effect.getCloseTransition(
+                  this.window_container, extensionThis._settings);
+              extensionThis._tweakTransitions(this.window_container, transitionConfig);
+            }
+          });
+
+          // Make sure to not call the callback above if the Meta.Window was not unmanaged
+          // before leaving the overview.
+          this.connect('destroy', () => {
+            this.metaWindow.disconnect(connectionID);
           });
 
           // Call the original method.
