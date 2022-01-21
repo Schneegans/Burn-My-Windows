@@ -36,6 +36,7 @@ const ALL_EFFECTS = [
   Me.imports.src.EnergizeB.EnergizeB,
   Me.imports.src.Fire.Fire,
   Me.imports.src.Matrix.Matrix,
+  Me.imports.src.BrokenGlass.BrokenGlass,
   Me.imports.src.TRexAttack.TRexAttack,
   Me.imports.src.TVEffect.TVEffect,
   Me.imports.src.Wisps.Wisps,

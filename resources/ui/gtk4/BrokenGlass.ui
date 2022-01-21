@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+
+  <object class="GtkBox" id="broken-glass-prefs">
+    <property name="orientation">vertical</property>
+    <property name="margin-start">60</property>
+    <property name="margin-end">60</property>
+    <property name="margin-top">60</property>
+    <property name="margin-bottom">60</property>
+
+    <child>
+      <object class="GtkFrame">
+        <child>
+          <object class="GtkListBox">
+            <property name="selection-mode">none</property>
+            <property name="show-separators">1</property>
+            <style>
+              <class name="rich-list" />
+            </style>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Animation Time [ms]</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">0</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="broken-glass-animation-time">
+                            <property name="upper">10000</property>
+                            <property name="lower">500</property>
+                            <property name="step-increment">10</property>
+                            <property name="page-increment">100</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-broken-glass-animation-time">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Scale</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="broken-glass-scale">
+                            <property name="upper">5</property>
+                            <property name="lower">0.2</property>
+                            <property name="step-increment">0.01</property>
+                            <property name="page-increment">0.1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-broken-glass-scale">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Gravity</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="broken-glass-gravity">
+                            <property name="upper">2.0</property>
+                            <property name="lower">-2.0</property>
+                            <property name="step-increment">0.01</property>
+                            <property name="page-increment">0.1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-broken-glass-gravity">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Blow Force</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="broken-glass-blow-force">
+                            <property name="upper">2.0</property>
+                            <property name="lower">-2.0</property>
+                            <property name="step-increment">0.01</property>
+                            <property name="page-increment">0.1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-broken-glass-blow-force">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Shatter From Pointer Location</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">The shards will fly away from your mouse pointer.</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                            <style>
+                              <class name="dim-label" />
+                              <class name="caption" />
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="broken-glass-use-pointer">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-broken-glass-use-pointer">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+          </object>
+        </child>
+      </object>
+    </child>
+
+
+  </object>
+
+</interface>
