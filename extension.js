@@ -66,6 +66,10 @@ class Extension {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
+    // This will store an item of ALL_EFFECTS which was used the last time a window was
+    // closed.
+    this._effect = 0;
+
     // We will monkey-patch these three methods. Let's store the original ones.
     this._origWindowRemoved      = Workspace.prototype._windowRemoved;
     this._origDoRemoveWindow     = Workspace.prototype._doRemoveWindow;
@@ -87,7 +91,20 @@ class Extension {
 
       WindowPreview.prototype._deleteAll = function() {
         if (!this._closeRequested) {
+
+          this.metaWindow.connect('unmanaged', () => {
+            const transitionConfig = extensionThis._effect.getCloseTransition(
+                this.window_container, extensionThis._settings);
+            extensionThis._tweakTransitions(this.window_container, transitionConfig);
+          });
+
           extensionThis._origDeleteAll.apply(this);
+
+          // This is required, else WindowPreview's _restack() which is called by the
+          // "this.overlayEnabled = false", sometimes tries to access an already delete
+          // WindowPreview.
+          this._stackAbove    = null;
+          this.overlayEnabled = false;
         }
       };
     }
@@ -175,13 +192,14 @@ class Extension {
       }
 
       // Choose a random effect.
-      const Effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
+      this._effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
 
       // The effect usually will choose to override the present transitions on the actor.
-      Effect.tweakTransitions(actor, this._settings);
+      const transitionConfig = this._effect.getCloseTransition(actor, this._settings);
+      this._tweakTransitions(actor, transitionConfig);
 
       // Add a cool shader to our window actor!
-      const shader = Effect.createShader(actor, this._settings);
+      const shader = this._effect.createShader(actor, this._settings);
 
       if (shader) {
         actor.add_effect(shader);
@@ -254,6 +272,42 @@ class Extension {
     }
 
     return false;
+  }
+
+  // This is used to tweak the ongoing transitions of a window actor. This is either the
+  // actual actor of the Meta.Window or a clone in the overview. Usually windows are faded
+  // to transparency and scaled down slightly by GNOME Shell. Here, we allow modifications
+  // to this behavior by the effects.
+  _tweakTransitions(actor, config) {
+    const duration = this._settings.get_int(this._effect.getNick() + '-animation-time');
+
+    for (const property in config) {
+      const from = config[property].from;
+      const to   = config[property].to;
+      const mode = config[property].mode;
+
+      const transition = actor.get_transition(property);
+
+      if (transition) {
+        transition.set_duration(duration);
+
+        if (to != undefined) transition.set_to(to);
+        if (from != undefined) transition.set_from(from);
+        if (mode != undefined) transition.set_progress_mode(mode);
+
+      } else {
+
+        if (from != undefined) actor[property] = from;
+
+        if (to != undefined) {
+          actor.save_easing_state();
+          actor.set_easing_duration(duration)
+          if (mode != undefined) actor.set_easing_mode(mode);
+          actor[property] = to;
+          actor.restore_easing_state();
+        }
+      }
+    }
   }
 }
 
