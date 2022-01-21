@@ -286,7 +286,7 @@
     </key>
 
     <key name="broken-glass-gravity" type="d">
-      <default>-0.5</default>
+      <default>-1.0</default>
       <summary>Broken Glass Gravity</summary>
       <description>The gravity of the broken glass effect.</description>
     </key>
