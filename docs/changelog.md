@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
+
+**Release Date:** TBD
+
+#### New Features
+
+* **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
+
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
 **Release Date:** 2022-01-18
