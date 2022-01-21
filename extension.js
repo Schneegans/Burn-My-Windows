@@ -85,20 +85,26 @@ class Extension {
     // the WorkspacesView.
     const extensionThis = this;
 
-    // Do not attempt to close windows twice. Due to the animation in the overview, the
-    // close button can be clicked twice which normally would lead to a crash.
+    // This class is only available in GNOME Shell 3.38+.
     if (WindowPreview) {
       this._origDeleteAll = WindowPreview.prototype._deleteAll;
 
+      // The _deleteAll is called when the user clicks the X in the overview.
       WindowPreview.prototype._deleteAll = function() {
+        // Do not attempt to close windows twice. Due to the animation in the overview,
+        // the close button can be clicked twice which normally would lead to a crash.
         if (!this._closeRequested) {
 
+          // When the user clicks the X in the overview, the window is not deleted
+          // immediately. However, as soon as the window is really deleted, we need to
+          // adjust the transition of its clone.
           this.metaWindow.connect('unmanaged', () => {
             const transitionConfig = extensionThis._effect.getCloseTransition(
                 this.window_container, extensionThis._settings);
             extensionThis._tweakTransitions(this.window_container, transitionConfig);
           });
 
+          // Call the original method.
           extensionThis._origDeleteAll.apply(this);
 
           // This is required, else WindowPreview's _restack() which is called by the
