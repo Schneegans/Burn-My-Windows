@@ -97,7 +97,7 @@ var Fire = class Fire {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(settings) {
+  static createShader(actor, settings) {
     return new Shader(settings);
   }
 

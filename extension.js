@@ -181,7 +181,7 @@ class Extension {
       Effect.tweakTransitions(actor, this._settings);
 
       // Add a cool shader to our window actor!
-      const shader = Effect.createShader(this._settings);
+      const shader = Effect.createShader(actor, this._settings);
 
       if (shader) {
         actor.add_effect(shader);
