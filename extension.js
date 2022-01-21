@@ -85,15 +85,35 @@ class Extension {
     // the WorkspacesView.
     const extensionThis = this;
 
-    // This class is only available in GNOME Shell 3.38+.
+    // This class is only available in GNOME Shell 3.38+. So no transition tweaking in
+    // GNOME Shell 3.36, but this is not used by any effect available there anyways for
+    // now...
     if (WindowPreview) {
       this._origDeleteAll = WindowPreview.prototype._deleteAll;
+      this._origRestack   = WindowPreview.prototype._restack;
+
+      // This is required, else WindowPreview's _restack() which is called by the
+      // "this.overlayEnabled = false", sometimes tries to access an already delete
+      // WindowPreview.
+      WindowPreview.prototype._restack = function() {
+        if (!this._closeRequested) {
+          // Call the original method.
+          extensionThis._origRestack.apply(this);
+        }
+      };
 
       // The _deleteAll is called when the user clicks the X in the overview.
       WindowPreview.prototype._deleteAll = function() {
         // Do not attempt to close windows twice. Due to the animation in the overview,
         // the close button can be clicked twice which normally would lead to a crash.
         if (!this._closeRequested) {
+
+          // Call the original method.
+          extensionThis._origDeleteAll.apply(this);
+
+          // Hide the window's icon, name, and close button.
+          this.overlayEnabled = false;
+          this._icon.visible  = false;
 
           // When the user clicks the X in the overview, the window is not deleted
           // immediately. However, as soon as the window is really deleted, we need to
@@ -111,15 +131,6 @@ class Extension {
           this.connect('destroy', () => {
             this.metaWindow.disconnect(connectionID);
           });
-
-          // Call the original method.
-          extensionThis._origDeleteAll.apply(this);
-
-          // This is required, else WindowPreview's _restack() which is called by the
-          // "this.overlayEnabled = false", sometimes tries to access an already delete
-          // WindowPreview.
-          this._stackAbove    = null;
-          this.overlayEnabled = false;
         }
       };
     }
@@ -264,6 +275,7 @@ class Extension {
 
     if (WindowPreview) {
       WindowPreview.prototype._deleteAll = this._origDeleteAll;
+      WindowPreview.prototype._restack   = this._origRestack;
     }
 
     this._settings = null;
