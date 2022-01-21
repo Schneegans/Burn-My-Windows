@@ -222,7 +222,7 @@
                         </child>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="yes">The shards will fly away from your mouse pointer.</property>
+                            <property name="label" translatable="yes">The shards will fly away from where your mouse pointer was when closing the window.</property>
                             <property name="xalign">0</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
