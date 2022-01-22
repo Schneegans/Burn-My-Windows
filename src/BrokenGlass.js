@@ -60,7 +60,7 @@ var BrokenGlass = class BrokenGlass {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static initPreferences(dialog) {
+  static getPreferences(dialog) {
 
     // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource('/ui/gtk4/BrokenGlass.ui');
@@ -72,11 +72,8 @@ var BrokenGlass = class BrokenGlass {
     dialog.bindAdjustment('broken-glass-blow-force');
     dialog.bindSwitch('broken-glass-use-pointer');
 
-    // Finally, append the settings page to the main stack.
-    const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(
-        dialog.getBuilder().get_object('broken-glass-prefs'), BrokenGlass.getNick(),
-        BrokenGlass.getLabel());
+    // Finally, return the new settings page.
+    return dialog.getBuilder().get_object('broken-glass-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

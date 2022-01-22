@@ -65,10 +65,14 @@ var PreferencesDialog = class PreferencesDialog {
     this.bindSwitch('destroy-dialogs');
 
     // Add all other effect pages.
+    const stack = this._builder.get_object('main-stack');
     ALL_EFFECTS.forEach(Effect => {
       const [minMajor, minMinor] = Effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-        Effect.initPreferences(this);
+        const page = Effect.getPreferences(this);
+        if (page) {
+          stack.add_titled(page, Effect.getNick(), Effect.getLabel());
+        }
       }
     });
 
