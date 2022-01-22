@@ -91,6 +91,7 @@ class Extension {
     if (WindowPreview) {
       this._origDeleteAll = WindowPreview.prototype._deleteAll;
       this._origRestack   = WindowPreview.prototype._restack;
+      this._origInit      = WindowPreview.prototype._init;
 
       // This is required, else WindowPreview's _restack() which is called by the
       // "this.overlayEnabled = false", sometimes tries to access an already delete
@@ -102,35 +103,42 @@ class Extension {
         }
       };
 
-      // The _deleteAll is called when the user clicks the X in the overview.
+      // When a window is removed from the overview, we need adjust the transitions of the
+      // window clone according to the chosen effect. We do this in the 'unmanaged' signal
+      // of the WindowPreview's Meta.Window. This is not ideal, as it does not work for
+      // dialogs which close themselves... Maybe there's a better way?
+      WindowPreview.prototype._init = function(...params) {
+        // Call the original method.
+        extensionThis._origInit.apply(this, params);
+
+        // When the user clicks the X in the overview, the window is not deleted
+        // immediately. However, as soon as the window is really deleted, we need to
+        // adjust the transition of its clone.
+        const connectionID = this.metaWindow.connect('unmanaged', () => {
+          if (this.window_container) {
+            // Hide the window's icon, name, and close button.
+            this.overlayEnabled = false;
+            this._icon.visible  = false;
+
+            const transitionConfig = extensionThis._effect.getCloseTransition(
+                this.window_container, extensionThis._settings);
+            extensionThis._tweakTransitions(this.window_container, transitionConfig);
+          }
+        });
+
+        // Make sure to not call the callback above if the Meta.Window was not unmanaged
+        // before leaving the overview.
+        this.connect('destroy', () => {
+          this.metaWindow.disconnect(connectionID);
+        });
+      };
+
+      // The _deleteAll is called when the user clicks the X in the overview. We should
+      // not attempt to close windows twice. Due to the animation in the overview, the
+      // close button can be clicked twice which normally would lead to a crash.
       WindowPreview.prototype._deleteAll = function() {
-        // Do not attempt to close windows twice. Due to the animation in the overview,
-        // the close button can be clicked twice which normally would lead to a crash.
         if (!this._closeRequested) {
-
-          // Call the original method.
           extensionThis._origDeleteAll.apply(this);
-
-          // Hide the window's icon, name, and close button.
-          this.overlayEnabled = false;
-          this._icon.visible  = false;
-
-          // When the user clicks the X in the overview, the window is not deleted
-          // immediately. However, as soon as the window is really deleted, we need to
-          // adjust the transition of its clone.
-          const connectionID = this.metaWindow.connect('unmanaged', () => {
-            if (this.window_container) {
-              const transitionConfig = extensionThis._effect.getCloseTransition(
-                  this.window_container, extensionThis._settings);
-              extensionThis._tweakTransitions(this.window_container, transitionConfig);
-            }
-          });
-
-          // Make sure to not call the callback above if the Meta.Window was not unmanaged
-          // before leaving the overview.
-          this.connect('destroy', () => {
-            this.metaWindow.disconnect(connectionID);
-          });
         }
       };
     }
@@ -276,6 +284,7 @@ class Extension {
     if (WindowPreview) {
       WindowPreview.prototype._deleteAll = this._origDeleteAll;
       WindowPreview.prototype._restack   = this._origRestack;
+      WindowPreview.prototype._init      = this._origInit;
     }
 
     this._settings = null;
