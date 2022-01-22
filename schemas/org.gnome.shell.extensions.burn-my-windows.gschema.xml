@@ -263,6 +263,46 @@
       <description>The color of the wisps effect.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Broken Glass Effect Options                                                   -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="broken-glass-close-effect" type="b">
+      <default>false</default>
+      <summary>Broken Glass Close Effect</summary>
+      <description>Use the broken glass effect for window closing.</description>
+    </key>
+
+    <key name="broken-glass-animation-time" type="i">
+      <default>1500</default>
+      <summary>Broken Glass Animation Time</summary>
+      <description>The time the broken glass effect takes.</description>
+    </key>
+
+    <key name="broken-glass-scale" type="d">
+      <default>1.0</default>
+      <summary>Broken Glass Scale</summary>
+      <description>The size of the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-gravity" type="d">
+      <default>-1.0</default>
+      <summary>Broken Glass Gravity</summary>
+      <description>The gravity of the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-blow-force" type="d">
+      <default>0.5</default>
+      <summary>Broken Glass Blow Force</summary>
+      <description>The blow force of the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-use-pointer" type="b">
+      <default>false</default>
+      <summary>Broken Glass Use Pointer</summary>
+      <description>Use the pointer location for the broken glass effect.</description>
+    </key>
+
   </schema>
 
 </schemalist>

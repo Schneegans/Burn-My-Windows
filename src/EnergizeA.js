@@ -40,7 +40,8 @@ var EnergizeA = class EnergizeA {
 
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
-  // effect is enabled currently (e.g. the '*-close-effect').
+  // effect is enabled currently (e.g. '*-close-effect'), and its animation time
+  // (e.g. '*-animation-time').
   static getNick() {
     return 'energize-a';
   }
@@ -76,28 +77,15 @@ var EnergizeA = class EnergizeA {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(settings) {
+  static createShader(actor, settings) {
     return new Shader(settings);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transitions of
+  // This is also called from extension.js. It is used to tweak the ongoing transition of
   // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. Here, we modify this behavior as well as the transition duration.
-  static tweakTransitions(actor, settings) {
-    const animationTime = settings.get_int('energize-a-animation-time');
-
-    const tweakTransition = (property, value) => {
-      const transition = actor.get_transition(property);
-      if (transition) {
-        transition.set_to(value);
-        transition.set_duration(animationTime);
-      }
-    };
-
-    // We re-target these transitions so that the window is neither scaled nor faded.
-    tweakTransition('opacity', 255);
-    tweakTransition('scale-x', 1);
-    tweakTransition('scale-y', 1);
+  // GNOME Shell. For this effect, windows should neither be scaled nor faded.
+  static getCloseTransition(actor, settings) {
+    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 1.0}};
   }
 }
 

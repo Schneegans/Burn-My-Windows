@@ -36,6 +36,7 @@ const ALL_EFFECTS = [
   Me.imports.src.EnergizeB.EnergizeB,
   Me.imports.src.Fire.Fire,
   Me.imports.src.Matrix.Matrix,
+  Me.imports.src.BrokenGlass.BrokenGlass,
   Me.imports.src.TRexAttack.TRexAttack,
   Me.imports.src.TVEffect.TVEffect,
   Me.imports.src.Wisps.Wisps,
@@ -66,6 +67,10 @@ class Extension {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
+    // This will store an item of ALL_EFFECTS which was used the last time a window was
+    // closed.
+    this._effect = 0;
+
     // We will monkey-patch these three methods. Let's store the original ones.
     this._origWindowRemoved      = Workspace.prototype._windowRemoved;
     this._origDoRemoveWindow     = Workspace.prototype._doRemoveWindow;
@@ -80,11 +85,57 @@ class Extension {
     // the WorkspacesView.
     const extensionThis = this;
 
-    // Do not attempt to close windows twice. Due to the animation in the overview, the
-    // close button can be clicked twice which normally would lead to a crash.
+    // This class is only available in GNOME Shell 3.38+. So no transition tweaking in
+    // GNOME Shell 3.36, but this is not used by any effect available there anyways for
+    // now...
     if (WindowPreview) {
       this._origDeleteAll = WindowPreview.prototype._deleteAll;
+      this._origRestack   = WindowPreview.prototype._restack;
+      this._origInit      = WindowPreview.prototype._init;
 
+      // This is required, else WindowPreview's _restack() which is called by the
+      // "this.overlayEnabled = false", sometimes tries to access an already delete
+      // WindowPreview.
+      WindowPreview.prototype._restack = function() {
+        if (!this._closeRequested) {
+          // Call the original method.
+          extensionThis._origRestack.apply(this);
+        }
+      };
+
+      // When a window is removed from the overview, we need adjust the transitions of the
+      // window clone according to the chosen effect. We do this in the 'unmanaged' signal
+      // of the WindowPreview's Meta.Window. This is not ideal, as it does not work for
+      // dialogs which close themselves... Maybe there's a better way?
+      WindowPreview.prototype._init = function(...params) {
+        // Call the original method.
+        extensionThis._origInit.apply(this, params);
+
+        // When the user clicks the X in the overview, the window is not deleted
+        // immediately. However, as soon as the window is really deleted, we need to
+        // adjust the transition of its clone.
+        const connectionID = this.metaWindow.connect('unmanaged', () => {
+          if (this.window_container) {
+            // Hide the window's icon, name, and close button.
+            this.overlayEnabled = false;
+            this._icon.visible  = false;
+
+            const transitionConfig = extensionThis._effect.getCloseTransition(
+                this.window_container, extensionThis._settings);
+            extensionThis._tweakTransitions(this.window_container, transitionConfig);
+          }
+        });
+
+        // Make sure to not call the callback above if the Meta.Window was not unmanaged
+        // before leaving the overview.
+        this.connect('destroy', () => {
+          this.metaWindow.disconnect(connectionID);
+        });
+      };
+
+      // The _deleteAll is called when the user clicks the X in the overview. We should
+      // not attempt to close windows twice. Due to the animation in the overview, the
+      // close button can be clicked twice which normally would lead to a crash.
       WindowPreview.prototype._deleteAll = function() {
         if (!this._closeRequested) {
           extensionThis._origDeleteAll.apply(this);
@@ -175,13 +226,14 @@ class Extension {
       }
 
       // Choose a random effect.
-      const Effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
+      this._effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
 
       // The effect usually will choose to override the present transitions on the actor.
-      Effect.tweakTransitions(actor, this._settings);
+      const transitionConfig = this._effect.getCloseTransition(actor, this._settings);
+      this._tweakTransitions(actor, transitionConfig);
 
       // Add a cool shader to our window actor!
-      const shader = Effect.createShader(this._settings);
+      const shader = this._effect.createShader(actor, this._settings);
 
       if (shader) {
         actor.add_effect(shader);
@@ -231,6 +283,8 @@ class Extension {
 
     if (WindowPreview) {
       WindowPreview.prototype._deleteAll = this._origDeleteAll;
+      WindowPreview.prototype._restack   = this._origRestack;
+      WindowPreview.prototype._init      = this._origInit;
     }
 
     this._settings = null;
@@ -254,6 +308,42 @@ class Extension {
     }
 
     return false;
+  }
+
+  // This is used to tweak the ongoing transitions of a window actor. This is either the
+  // actual actor of the Meta.Window or a clone in the overview. Usually windows are faded
+  // to transparency and scaled down slightly by GNOME Shell. Here, we allow modifications
+  // to this behavior by the effects.
+  _tweakTransitions(actor, config) {
+    const duration = this._settings.get_int(this._effect.getNick() + '-animation-time');
+
+    for (const property in config) {
+      const from = config[property].from;
+      const to   = config[property].to;
+      const mode = config[property].mode;
+
+      const transition = actor.get_transition(property);
+
+      if (transition) {
+        transition.set_duration(duration);
+
+        if (to != undefined) transition.set_to(to);
+        if (from != undefined) transition.set_from(from);
+        if (mode != undefined) transition.set_progress_mode(mode);
+
+      } else {
+
+        if (from != undefined) actor[property] = from;
+
+        if (to != undefined) {
+          actor.save_easing_state();
+          actor.set_easing_duration(duration)
+          if (mode != undefined) actor.set_easing_mode(mode);
+          actor[property] = to;
+          actor.restore_easing_state();
+        }
+      }
+    }
   }
 }
 

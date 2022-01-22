@@ -1,5 +1,8 @@
 *~
 *.zip
+*.blend1
+*.blend2
+*.blend3
 /schemas/gschemas.compiled
 /resources/burn-my-windows.gresource
 /resources/burn-my-windows.gresource.xml
