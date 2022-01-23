@@ -59,7 +59,7 @@ var TVEffect = class TVEffect {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static initPreferences(dialog) {
+  static getPreferences(dialog) {
 
     // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/TVEffect.ui`);
@@ -68,11 +68,8 @@ var TVEffect = class TVEffect {
     dialog.bindAdjustment('tv-animation-time');
     dialog.bindColorButton('tv-effect-color');
 
-    // Finally, append the settings page to the main stack.
-    const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(
-        dialog.getBuilder().get_object('tv-prefs'), TVEffect.getNick(),
-        TVEffect.getLabel());
+    // Finally, return the new settings page.
+    return dialog.getBuilder().get_object('tv-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

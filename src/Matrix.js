@@ -61,7 +61,7 @@ var Matrix = class Matrix {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static initPreferences(dialog) {
+  static getPreferences(dialog) {
 
     // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource('/ui/gtk4/Matrix.ui');
@@ -70,14 +70,12 @@ var Matrix = class Matrix {
     dialog.bindAdjustment('matrix-animation-time');
     dialog.bindAdjustment('matrix-scale');
     dialog.bindAdjustment('matrix-randomness');
+    dialog.bindAdjustment('matrix-overshoot');
     dialog.bindColorButton('matrix-trail-color');
     dialog.bindColorButton('matrix-tip-color');
 
-    // Finally, append the settings page to the main stack.
-    const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(
-        dialog.getBuilder().get_object('matrix-prefs'), Matrix.getNick(),
-        Matrix.getLabel());
+    // Finally, return the new settings page.
+    return dialog.getBuilder().get_object('matrix-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -91,7 +89,12 @@ var Matrix = class Matrix {
   // the actor - usually windows are faded to transparency and scaled down slightly by
   // GNOME Shell. For this effect, windows should neither be scaled nor faded.
   static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 1.0}};
+    const yScale = 1.0 + settings.get_double('matrix-overshoot');
+    return {
+      'opacity': {to: 255},
+      'scale-x': {to: 1.0},
+      'scale-y': {from: yScale, to: yScale}
+    };
   }
 }
 
@@ -146,6 +149,7 @@ if (utils.isInShellProcess()) {
         const float LETTER_SIZE           = ${settings.get_int('matrix-scale')};
         const float LETTER_FLICKER_SPEED  = 2.0;
         const float RANDOMNESS            = ${settings.get_double('matrix-randomness')};
+        const float OVERSHOOT             = ${settings.get_double('matrix-overshoot')};
 
         // This returns a flickering grid of random letters.
         float getText(vec2 fragCoord) {
@@ -164,36 +168,44 @@ if (utils.isInShellProcess()) {
         // to one below each drop and to zero above it. This second value is used for fading
         // the window texture. 
         vec2 getRain(vec2 fragCoord) {
-          vec2 coords = fragCoord * vec2(uSizeX, uSizeY);
-          coords.x -= mod(coords.x, LETTER_SIZE);
+          float column = cogl_tex_coord_in[0].x * uSizeX;
+          column -= mod(column, LETTER_SIZE);
 
-          float delay = fract(sin(coords.x)*78.233) * mix(0.0, 1.0, RANDOMNESS);
-          float speed = fract(cos(coords.x)*12.989) * mix(0.0, 0.3, RANDOMNESS) + 1.5;
-
-          float distToDrop  = (uProgress*2-delay)*speed - fragCoord.y;
-
+          float delay = fract(sin(column)*78.233) * mix(0.0, 1.0, RANDOMNESS);
+          float speed = fract(cos(column)*12.989) * mix(0.0, 0.3, RANDOMNESS) + 1.5;
+          
+          float distToDrop  = (uProgress*2-delay)*speed - cogl_tex_coord_in[0].y;
+          
           float rainAlpha   = distToDrop >= 0 ? exp(-distToDrop/TRAIL_LENGTH) : 0;
           float windowAlpha = 1 - clamp(uSizeY*distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
+          
+          // Fade at window borders.
+          rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE);
+          
+          // Add some variation to the drop start and end position.
+          float shorten = fract(sin(column+42.0)*33.423) * mix(0.0, OVERSHOOT*0.25, RANDOMNESS);
+          rainAlpha *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / shorten, 0, 1));
+          rainAlpha *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / shorten, 0, 1));
 
           return vec2(rainAlpha, windowAlpha);
         }
 
         void main() {
 
+          vec2 coords = cogl_tex_coord_in[0].st;
+          coords.y = coords.y * (OVERSHOOT + 1.0) - OVERSHOOT * 0.5;
+
           // Get a cool matrix effect. See comments for those methods above.
-          vec2  rain = getRain(cogl_tex_coord_in[0].st);
-          float text = getText(cogl_tex_coord_in[0].st);
+          vec2  rain = getRain(coords);
+          float text = getText(coords);
 
           // Get the window texture and fade it according to the effect mask.
-          cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * rain.y;
+          cogl_color_out = texture2D(uTexture, coords) * rain.y;
 
           // This is used to fade out the remaining trails in the end.
           float finalFade = 1-clamp((uProgress-FINAL_FADE_START_TIME)/
                                     (1-FINAL_FADE_START_TIME), 0, 1);
           float rainAlpha = finalFade * rain.x;
-
-          // Fade at window borders.
-          rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE);
 
           // Add the matrix effect to the window.
           vec3 trailColor = vec3(${trailColor.red / 255}, 

@@ -13,6 +13,12 @@
       <description>Set to true to burn dialogs as well.</description>
     </key>
 
+    <key name="close-preview-effect" type="s">
+      <default>""</default>
+      <summary>Close Preview Effect</summary>
+      <description>The effect with this nick will be used for the next window-close animation.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Fire Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -115,6 +121,12 @@
       <default>"rgb(25, 255, 89)"</default>
       <summary>Matrix Trail Color</summary>
       <description>The color matrix trails.</description>
+    </key>
+
+    <key name="matrix-overshoot" type="d">
+      <default>0.25</default>
+      <summary>Matrix Overshoot</summary>
+      <description>The vertical overshooting of the matrix effect.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

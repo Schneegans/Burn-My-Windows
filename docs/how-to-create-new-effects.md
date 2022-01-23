@@ -138,8 +138,9 @@ var SimpleFade = class SimpleFade {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static initPreferences(dialog) {
+  static getPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
+    return null;
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -248,7 +249,7 @@ There should be two sliders in this example: The animation duration and the widt
 If your effect supports GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide two `*.ui` files for this.
 This is because starting with GNOME Shell 40, the preference dialog uses GTK4, before it used to use GTK3.
 Usually, there are only a few minor differences between the two files.
-We will load the respective file in the `initPreferences()` method of your new effect class.
+We will load the respective file in the `getPreferences()` method of your new effect class.
 
 Just save the code below to `resources/ui/gtk3/SimpleFade.ui` and `resources/ui/gtk4/SimpleFade.ui` respectively.
 Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
@@ -276,10 +277,6 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
   <object class="GtkBox" id="simple-fade-prefs">
     <property name="orientation">vertical</property>
-    <property name="margin-start">60</property>
-    <property name="margin-end">60</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
 
     <child>
       <object class="GtkFrame">
@@ -421,10 +418,6 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
   <object class="GtkBox" id="simple-fade-prefs">
     <property name="orientation">vertical</property>
-    <property name="margin-start">60</property>
-    <property name="margin-end">60</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
 
     <child>
       <object class="GtkFrame">
@@ -528,10 +521,10 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
 ### Loading the Preferences Page
 
-In order to load the above `*.ui` files, add the following code to your effect's `initPreferences()` method.
+In order to load the above `*.ui` files, add the following code to your effect's `getPreferences()` method.
 
 ```javascript
-static initPreferences(dialog) {
+static getPreferences(dialog) {
 
   // Add the settings page to the builder.
   dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/SimpleFade.ui`);
@@ -541,12 +534,9 @@ static initPreferences(dialog) {
   dialog.bindAdjustment('simple-fade-animation-time');
   dialog.bindAdjustment('simple-fade-width');
 
-  // Finally, append the settings page to the main stack.
-  const stack = dialog.getBuilder().get_object('main-stack');
-  stack.add_titled(
-      dialog.getBuilder().get_object(SimpleFade.getNick() + '-prefs'),
-      SimpleFade.getNick(), SimpleFade.getLabel());
-  }
+  // Finally, return the new settings page.
+  return dialog.getBuilder().get_object('simple-fade-prefs');
+}
 ```
 
 Once this is in place, you can kill the extension-preferences process and re-open the settings.

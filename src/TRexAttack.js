@@ -59,7 +59,7 @@ var TRexAttack = class TRexAttack {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static initPreferences(dialog) {
+  static getPreferences(dialog) {
 
     // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource('/ui/gtk4/TRexAttack.ui');
@@ -71,11 +71,8 @@ var TRexAttack = class TRexAttack {
     dialog.bindAdjustment('claw-scratch-count');
     dialog.bindAdjustment('claw-scratch-warp');
 
-    // Finally, append the settings page to the main stack.
-    const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(
-        dialog.getBuilder().get_object('trex-prefs'), TRexAttack.getNick(),
-        TRexAttack.getLabel());
+    // Finally, return the new settings page.
+    return dialog.getBuilder().get_object('trex-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js
