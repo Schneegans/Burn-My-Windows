@@ -3,10 +3,6 @@
 
   <object class="GtkBox" id="matrix-prefs">
     <property name="orientation">vertical</property>
-    <property name="margin-start">60</property>
-    <property name="margin-end">60</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
 
     <child>
       <object class="GtkFrame">

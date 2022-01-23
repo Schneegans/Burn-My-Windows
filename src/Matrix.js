@@ -61,7 +61,7 @@ var Matrix = class Matrix {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static initPreferences(dialog) {
+  static getPreferences(dialog) {
 
     // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource('/ui/gtk4/Matrix.ui');
@@ -73,11 +73,8 @@ var Matrix = class Matrix {
     dialog.bindColorButton('matrix-trail-color');
     dialog.bindColorButton('matrix-tip-color');
 
-    // Finally, append the settings page to the main stack.
-    const stack = dialog.getBuilder().get_object('main-stack');
-    stack.add_titled(
-        dialog.getBuilder().get_object('matrix-prefs'), Matrix.getNick(),
-        Matrix.getLabel());
+    // Finally, return the new settings page.
+    return dialog.getBuilder().get_object('matrix-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

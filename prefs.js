@@ -13,7 +13,7 @@
 
 'use strict';
 
-const {Gio, Gtk, Gdk} = imports.gi;
+const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
@@ -31,6 +31,9 @@ const ALL_EFFECTS = [
   Me.imports.src.Wisps.Wisps,
 ];
 
+// This template widget class is defined at the bottom of this file.
+var BurnMyWindowsEffectPage = null;
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // The preferences dialog is organized in pages, each of which is loaded from a         //
 // separate ui file. There's one page with general options, all other paged are loaded  //
@@ -46,12 +49,28 @@ var PreferencesDialog = class PreferencesDialog {
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
+    // Load the CSS file for the settings dialog.
+    const styleProvider = Gtk.CssProvider.new();
+    styleProvider.load_from_resource('/css/gtk.css');
+    if (utils.isGTK4()) {
+      Gtk.StyleContext.add_provider_for_display(
+          Gdk.Display.get_default(), styleProvider,
+          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    } else {
+      Gtk.StyleContext.add_provider_for_screen(
+          Gdk.Screen.get_default(), styleProvider,
+          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
     // Make sure custom icons are found.
     if (utils.isGTK4()) {
       Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).add_resource_path('/img');
     } else {
       Gtk.IconTheme.get_default().add_resource_path('/img');
     }
+
+    // Register the template widgets used in the settings dialog.
+    this._registerCustomClasses();
 
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
@@ -65,10 +84,20 @@ var PreferencesDialog = class PreferencesDialog {
     this.bindSwitch('destroy-dialogs');
 
     // Add all other effect pages.
+    const stack = this._builder.get_object('main-stack');
     ALL_EFFECTS.forEach(Effect => {
       const [minMajor, minMinor] = Effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-        Effect.initPreferences(this);
+
+        const page = new BurnMyWindowsEffectPage(Effect, this);
+
+        // Add the Effect's preferences (if any).
+        const preferences = Effect.getPreferences(this);
+        if (preferences) {
+          this.gtkBoxAppend(page, preferences);
+        }
+
+        stack.add_titled(page, Effect.getNick(), Effect.getLabel());
       }
     });
 
@@ -103,6 +132,7 @@ var PreferencesDialog = class PreferencesDialog {
         addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
         addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
         addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
+        addAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
         addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
         addAction('donate-github', 'https://github.com/sponsors/Schneegans');
         // clang-format on
@@ -210,6 +240,17 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindResetButton(settingsKey);
   }
 
+  // ----------------------------------------------------------------- GTK3 / GTK4 helpers
+
+  // Appends the given child widget to the given Gtk.Box.
+  gtkBoxAppend(box, child) {
+    if (utils.isGTK4()) {
+      box.append(child);
+    } else {
+      box.pack_start(child, false, false, 0);
+    }
+  }
+
   // ----------------------------------------------------------------------- private stuff
 
   // Searches for a reset button for the given settings key and make it reset the settings
@@ -233,6 +274,71 @@ var PreferencesDialog = class PreferencesDialog {
     }
 
     this._bindResetButton(settingsKey);
+  }
+
+  // Initializes template widgets used by the preferences dialog.
+  _registerCustomClasses() {
+
+    // Each effect page is based on a template widget. This template contains the title
+    // and the preview button.
+    // clang-format off
+    BurnMyWindowsEffectPage =
+      GObject.registerClass({
+        GTypeName: 'BurnMyWindowsEffectPage',
+        Template: `resource:///ui/${utils.getGTKString()}/effectPage.ui`,
+        InternalChildren: ['label', 'button'],
+      },
+      class BurnMyWindowsEffectPage extends Gtk.Box {
+        _init(Effect, dialog) {
+          super._init();
+
+          // Set the effect's name as label.
+          this._label.label = Effect.getLabel();
+
+          // Open the preview window once the preview button is clicked.
+          this._button.connect('clicked', () => {
+
+            // Set the to-be-previewed effect.
+            dialog.getSettings().set_string('close-preview-effect', Effect.getNick());
+
+            // Create the preview-window.
+            const window = new Gtk.Window({
+              title: `Preview for ${Effect.getLabel()}`,
+              default_width: 800,
+              default_height: 450,
+              modal: true,
+              transient_for: utils.isGTK4() ? this._button.get_root() :
+                                              this._button.get_toplevel()
+            });
+
+            const box = new Gtk.Box({
+              orientation: Gtk.Orientation.VERTICAL,
+              valign: Gtk.Align.CENTER,
+              spacing: 10,
+            });
+
+            const label = Gtk.Label.new('Close this Window to Preview the Effect!');
+            label.get_style_context().add_class('large-title');
+
+            const image = new Gtk.Image({
+              icon_name: 'burn-my-windows-symbolic',
+              pixel_size: 128,
+            });
+
+            dialog.gtkBoxAppend(box, image);
+            dialog.gtkBoxAppend(box, label);
+
+            if (utils.isGTK4()) {
+              window.set_child(box);
+            } else {
+              window.add(box);
+            }
+
+            window.show();
+          });
+        }
+      });
+    // clang-format on
   }
 }
 
