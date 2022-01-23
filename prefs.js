@@ -297,18 +297,9 @@ var PreferencesDialog = class PreferencesDialog {
 
           // Open the preview window once the preview button is clicked.
           this._button.connect('clicked', () => {
-            // Create a list of all currently enabled effects.
-            const enabledEffects = ALL_EFFECTS.filter(Effect => {
-              return dialog.getSettings().get_boolean(`${Effect.getNick()}-close-effect`);
-            });
 
-            // Disable all enabled effects temporarily.
-            enabledEffects.forEach(Effect => {
-              dialog.getSettings().set_boolean(`${Effect.getNick()}-close-effect`, false);
-            });
-
-            // Enable the to-be-previewed effect.
-            dialog.getSettings().set_boolean(`${Effect.getNick()}-close-effect`, true);
+            // Set the to-be-previewed effect.
+            dialog.getSettings().set_string('close-preview-effect', Effect.getNick());
 
             // Create the preview-window.
             const window = new Gtk.Window({
@@ -344,17 +335,6 @@ var PreferencesDialog = class PreferencesDialog {
             }
 
             window.show();
-
-            // Restore settings when the window gets closed.
-            window.connect('unrealize', () => {
-              // Disable the to-be-previewed effect again.
-              dialog.getSettings().set_boolean(`${Effect.getNick()}-close-effect`, false);
-
-              // Enable all previously enabled effects again.
-              enabledEffects.forEach(Effect => {
-                dialog.getSettings().set_boolean(`${Effect.getNick()}-close-effect`, true);
-              });
-            });
           });
         }
       });

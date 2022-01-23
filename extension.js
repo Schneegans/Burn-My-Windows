@@ -215,18 +215,37 @@ class Extension {
         return;
       }
 
-      // Create a list of all currently enabled effects.
-      const enabledEffects = ALL_EFFECTS.filter(Effect => {
-        return this._settings.get_boolean(`${Effect.getNick()}-close-effect`);
-      });
+      // Now we have to choose an effect.
+      this._effect = null;
 
-      // Nothing is enabled...
-      if (enabledEffects.length == 0) {
-        return;
+      // First we check if an effect is to be previewd.
+      const previewNick = this._settings.get_string('close-preview-effect');
+      if (previewNick != '') {
+        this._effect = ALL_EFFECTS.find(Effect => {
+          return Effect.getNick() == previewNick;
+        });
+
+        // Only preview the effect once.
+        this._settings.set_string('close-preview-effect', '');
+
+      } else {
+
+        // Else we choose a random effect from all enabled effects. Therefore, we first
+        // create a list of all currently enabled effects.
+        const enabled = ALL_EFFECTS.filter(Effect => {
+          return this._settings.get_boolean(`${Effect.getNick()}-close-effect`);
+        });
+
+        // And then choose a random effect.
+        if (enabled.length > 0) {
+          this._effect = enabled[Math.floor(Math.random() * enabled.length)];
+        }
       }
 
-      // Choose a random effect.
-      this._effect = enabledEffects[Math.floor(Math.random() * enabledEffects.length)];
+      // If nothing was enabled, we have to do nothing :)
+      if (this._effect == null) {
+        return;
+      }
 
       // The effect usually will choose to override the present transitions on the actor.
       const transitionConfig = this._effect.getCloseTransition(actor, this._settings);
