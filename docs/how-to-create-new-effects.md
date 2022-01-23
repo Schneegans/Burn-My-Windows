@@ -277,10 +277,6 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
   <object class="GtkBox" id="simple-fade-prefs">
     <property name="orientation">vertical</property>
-    <property name="margin-start">60</property>
-    <property name="margin-end">60</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
 
     <child>
       <object class="GtkFrame">
@@ -422,10 +418,6 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
   <object class="GtkBox" id="simple-fade-prefs">
     <property name="orientation">vertical</property>
-    <property name="margin-start">60</property>
-    <property name="margin-end">60</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
 
     <child>
       <object class="GtkFrame">
