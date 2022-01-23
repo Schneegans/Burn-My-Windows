@@ -201,7 +201,9 @@ if (utils.isInShellProcess()) {
 
               // Dissolve the shard by using distance information from the red channel.
               float dissolve = (shardMap.x - pow(uProgress+0.1, 2)) > 0 ? 1: 0;
-              cogl_color_out = mix(cogl_color_out, windowColor, dissolve);
+              windowColor *= dissolve;
+
+              cogl_color_out = mix(cogl_color_out, windowColor, windowColor.a);
             }
           }
         }
