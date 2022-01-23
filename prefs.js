@@ -46,6 +46,19 @@ var PreferencesDialog = class PreferencesDialog {
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
+    // Load the CSS file for the settings dialog.
+    const styleProvider = Gtk.CssProvider.new();
+    styleProvider.load_from_resource('/css/gtk.css');
+    if (utils.isGTK4()) {
+      Gtk.StyleContext.add_provider_for_display(
+          Gdk.Display.get_default(), styleProvider,
+          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    } else {
+      Gtk.StyleContext.add_provider_for_screen(
+          Gdk.Screen.get_default(), styleProvider,
+          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
     // Make sure custom icons are found.
     if (utils.isGTK4()) {
       Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).add_resource_path('/img');
