@@ -7,6 +7,7 @@
 #### New Features
 
 * **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
+* The effect-configuration pages of the preferences dialog now have **Preview Buttons** which con be used to, well, preview the current settings (without having to enable the effect first).
 
 #### Other Enhancements
 
