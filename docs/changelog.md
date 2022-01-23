@@ -8,6 +8,10 @@
 
 * **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
 
+#### Other Enhancements
+
+* Added a menu entry with a link to the guide for creating new effect types.
+
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
 **Release Date:** 2022-01-18

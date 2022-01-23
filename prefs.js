@@ -107,6 +107,7 @@ var PreferencesDialog = class PreferencesDialog {
         addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
         addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
         addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
+        addAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
         addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
         addAction('donate-github', 'https://github.com/sponsors/Schneegans');
         // clang-format on
