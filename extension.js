@@ -81,6 +81,14 @@ class Extension {
     this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
     this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
 
+    // Reset the dialog destroy time if the corresponding setting gets disabled.
+    this._settings.connect('changed::destroy-dialogs', () => {
+      if (!this._settings.get_boolean('destroy-dialogs')) {
+        imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
+            this._origDialogTime;
+      }
+    });
+
     // We will use extensionThis to refer to the extension inside the patched methods of
     // the WorkspacesView.
     const extensionThis = this;
@@ -207,19 +215,23 @@ class Extension {
       }
 
       // We do nothing if a dialog got closed and we should not burn them.
+      const shouldDestroyDialogs = this._settings.get_boolean('destroy-dialogs');
       const isDialogWindow =
           actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
           actor.meta_window.window_type == Meta.WindowType.DIALOG;
 
-      if (!this._settings.get_boolean('destroy-dialogs') && isDialogWindow) {
+      // If an effect is to be previewed, we have to affect dialogs es well. This is
+      // because the preview window is a dialog window...
+      const previewNick = this._settings.get_string('close-preview-effect');
+
+      if (isDialogWindow && !shouldDestroyDialogs && previewNick == '') {
         return;
       }
 
       // Now we have to choose an effect.
       this._effect = null;
 
-      // First we check if an effect is to be previewd.
-      const previewNick = this._settings.get_string('close-preview-effect');
+      // First we check if an effect is to be previewed.
       if (previewNick != '') {
         this._effect = ALL_EFFECTS.find(Effect => {
           return Effect.getNick() == previewNick;
@@ -274,7 +286,7 @@ class Extension {
       // We set the currently used time here, so that others can get an idea how long this
       // will take...
       const duration = transition.get_duration();
-      if (isDialogWindow) {
+      if (isDialogWindow && shouldDestroyDialogs) {
         imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = duration;
       } else {
         imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME = duration;
