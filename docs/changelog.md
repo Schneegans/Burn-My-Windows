@@ -12,6 +12,7 @@
 #### Other Enhancements
 
 * Added a menu entry with a link to the guide for creating new effect types.
+* Added a new option to the Matrix Effect: **Vertical Overshooting**: This can add some vertical variation to the start and end position of the letter drops.
 
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
