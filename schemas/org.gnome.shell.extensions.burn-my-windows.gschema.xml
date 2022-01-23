@@ -123,6 +123,12 @@
       <description>The color matrix trails.</description>
     </key>
 
+    <key name="matrix-overshoot" type="d">
+      <default>0.25</default>
+      <summary>Matrix Overshoot</summary>
+      <description>The vertical overshooting of the matrix effect.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- TV Effect Options                                                             -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
