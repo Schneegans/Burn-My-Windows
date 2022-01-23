@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk" version="4.0" />
+  <requires lib="gtk" version="3.0" />
 
   <template class="BurnMyWindowsEffectPage" parent="GtkBox">
     <property name="orientation">vertical</property>
@@ -25,7 +25,7 @@
         <child>
           <object class="GtkButton" id="button">
             <property name="valign">fill</property>
-            <property name="child">
+            <child>
               <object class="GtkBox">
                 <property name="margin_start">8</property>
                 <property name="margin_end">8</property>
@@ -42,7 +42,7 @@
                   </object>
                 </child>
               </object>
-            </property>
+            </child>
             <style>
               <class name="suggested-action" />
               <class name="pill-button" />
