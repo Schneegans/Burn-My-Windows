@@ -24,7 +24,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button">
-            <property name="valign">fill</property>
+            <property name="valign">center</property>
             <property name="child">
               <object class="GtkBox">
                 <property name="margin_start">8</property>
@@ -38,7 +38,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Preview the Effect</property>
+                    <property name="label" translatable="yes">Preview this Effect</property>
                   </object>
                 </child>
               </object>
