@@ -86,9 +86,9 @@ var SnapOfDisintegration = class SnapOfDisintegration {
   // we have some space to draw the dust.
   static getCloseTransition(actor, settings) {
     return {
-      'opacity': {to: 255},
-      'scale-x': {from: 2.0, to: 2.0},
-      'scale-y': {from: 2.0, to: 2.0}
+      'opacity': {to: 255, mode: 14},             // Mode:  EASE_IN_SINE
+      'scale-x': {from: 2.0, to: 2.0, mode: 14},  // Mode:  EASE_IN_SINE
+      'scale-y': {from: 2.0, to: 2.0, mode: 14}   // Mode:  EASE_IN_SINE
     };
   }
 }
@@ -123,6 +123,7 @@ if (utils.isInShellProcess()) {
 
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
+        ${shaderSnippets.math2D()}
 
         uniform sampler2D uDustTexture;
 
@@ -147,10 +148,21 @@ if (utils.isInShellProcess()) {
 
             vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING;
             
-            vec2 distort = vec2(cos(progress * (i+1) + coords.y * (i+1)) * 0.05 - sin(progress) * 0.1, -progress*mix(0.3, 0.5, factor));
-            coords += distort * progress;
+            float angle = 23.123 * SEED.x + mix(0.0, 0.2, factor);
+            vec2 direction = vec2(1.0, 0.0);
+            direction = rotate(direction, angle);
+
+            float dist = distToLine(vec2(0.5), direction, coords);
+            
+            vec2 distort = direction * dist * dist * uProgress * uProgress;
+
+            if (getWinding(direction, coords - 0.5) > 0) {
+              distort *= -1;
+            }
+
+            coords = coords + distort;
          
-            vec2 dustCoords = (coords + SEED) * vec2(uSizeX, uSizeY) * DUST_SCALE / 100.0;
+            vec2 dustCoords = (coords + SEED) * vec2(uSizeX, uSizeY) / DUST_SCALE / 100.0;
             vec2 dustMap = texture2D(uDustTexture, dustCoords).rg;
 
             float dustGroup = floor(dustMap.g * DUST_LAYERS * 0.999);
@@ -158,8 +170,11 @@ if (utils.isInShellProcess()) {
             if (dustGroup == i) {
               vec4 windowColor = texture2D(uTexture, coords);
               windowColor.rgb = mix(windowColor.rgb, DUST_COLOR*windowColor.a, progress);
-              float dissolve = (dustMap.x - pow(progress, 5)) > 0 ? 1: 0;
-              cogl_color_out = mix(cogl_color_out, windowColor, dissolve);
+              float dissolve = (dustMap.x - progress) > 0 ? 1: 0;
+
+              windowColor *= dissolve;
+
+              cogl_color_out = mix(cogl_color_out, windowColor, windowColor.a);
             }
           }
         }

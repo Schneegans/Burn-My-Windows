@@ -332,7 +332,7 @@
     </key>
 
     <key name="snap-scale" type="d">
-      <default>1.0</default>
+      <default>1.5</default>
       <summary>Snap Scale</summary>
       <description>The size of the snap effect.</description>
     </key>
