@@ -3,6 +3,7 @@
   <requires lib="gtk" version="3.0" />
 
   <menu id="close-effect-menu"></menu>
+  <menu id="open-effect-menu"></menu>
 
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
@@ -84,6 +85,70 @@
                                 <property name="spacing">3</property>
                                 <child>
                                   <object class="GtkLabel">
+                                    <property name="label" translatable="yes">Open Window Animation</property>
+                                    <property name="xalign">0</property>
+                                    <property name="halign">start</property>
+                                    <property name="valign">center</property>
+                                    <property name="hexpand">1</property>
+                                  </object>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel">
+                                    <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+                                    <property name="xalign">0</property>
+                                    <property name="halign">start</property>
+                                    <property name="valign">center</property>
+                                    <property name="hexpand">1</property>
+                                    <style>
+                                      <class name="dim-label" />
+                                      <class name="caption" />
+                                    </style>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkMenuButton" id="open-effect-button">
+                                <property name="menu-model">open-effect-menu</property>
+                                <child>
+                                  <object class="GtkBox">
+                                    <property name="spacing">8</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="label" translatable="yes">Choose Effects</property>
+                                      </object>
+                                    </child>
+                                    <child>
+                                      <object class="GtkImage">
+                                        <property name="icon-name">pan-down-symbolic</property>
+                                        <property name="icon-size">1</property>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkListBoxRow">
+                        <property name="margin-start">10</property>
+                        <property name="margin-end">10</property>
+                        <property name="margin-top">10</property>
+                        <property name="margin-bottom">10</property>
+                        <property name="activatable">0</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="spacing">8</property>
+                            <child>
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">3</property>
+                                <child>
+                                  <object class="GtkLabel">
                                     <property name="label" translatable="yes">Close Window Animation</property>
                                     <property name="xalign">0</property>
                                     <property name="halign">start</property>
@@ -144,7 +209,7 @@
                             <property name="spacing">8</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="yes">Also Burn Dialogs</property>
+                                <property name="label" translatable="yes">Also Add Effects to Dialogs</property>
                                 <property name="xalign">0</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
