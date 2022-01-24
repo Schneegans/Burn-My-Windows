@@ -112,7 +112,7 @@
     </key>
 
     <key name="matrix-animation-time" type="i">
-      <default>3000</default>
+      <default>1500</default>
       <summary>Matrix Animation Time</summary>
       <description>The time the matrix effect takes.</description>
     </key>
@@ -192,7 +192,7 @@
     </key>
 
     <key name="trex-animation-time" type="i">
-      <default>1500</default>
+      <default>1000</default>
       <summary>T-Rex Animation Time</summary>
       <description>The time the trex effect takes.</description>
     </key>
@@ -306,7 +306,7 @@
     </key>
 
     <key name="wisps-animation-time" type="i">
-      <default>2000</default>
+      <default>1500</default>
       <summary>Wisps Animation Time</summary>
       <description>The time the wisps effect takes.</description>
     </key>
@@ -340,7 +340,7 @@
     </key>
 
     <key name="broken-glass-animation-time" type="i">
-      <default>1500</default>
+      <default>1000</default>
       <summary>Broken Glass Animation Time</summary>
       <description>The time the broken glass effect takes.</description>
     </key>
