@@ -334,7 +334,7 @@ if (utils.isInShellProcess()) {
           cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * effectMask.x;
 
           // Add the fire to the window.
-          cogl_color_out = mix(cogl_color_out, fire, fire.a);
+          cogl_color_out = cogl_color_out * (1.0 - fire.a) + fire;
 
           // These are pretty useful for understanding how this works.
           // cogl_color_out = vec4(vec3(noise), 1);
