@@ -81,19 +81,24 @@ var Matrix = class Matrix {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows should neither be scaled nor faded.
-  static getCloseTransition(actor, settings) {
+  // This is also called from extension.js. It is used to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // forOpening is set to true if this is called for a window-open transition, for a
+  // window-close transition it is set to false. The modes can be set to any value from
+  // here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode. This also
+  // determines how the uProgress uniform value will progress in the shader.
+  // For this effect, windows should not be faded but scaled vertically to allow for some
+  // overshooting.
+  static tweakTransition(actor, settings, forOpening) {
     const yScale = 1.0 + settings.get_double('matrix-overshoot');
     return {
-      'opacity': {to: 255},
-      'scale-x': {to: 1.0},
-      'scale-y': {from: yScale, to: yScale}
+      'opacity': {from: 255, to: 255, mode: 1},
+      'scale-x': {from: 1.0, to: 1.0, mode: 1},
+      'scale-y': {from: yScale, to: yScale, mode: 1}
     };
   }
 }
@@ -111,7 +116,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       // Load the font texture. As the shader is re-created for each window animation,
@@ -186,6 +191,10 @@ if (utils.isInShellProcess()) {
           float shorten = fract(sin(column+42.0)*33.423) * mix(0.0, OVERSHOOT*0.25, RANDOMNESS);
           rainAlpha *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / shorten, 0, 1));
           rainAlpha *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / shorten, 0, 1));
+
+          #if ${forOpening ? '1' : '0'}
+            windowAlpha = 1.0 - windowAlpha;
+          #endif
 
           return vec2(rainAlpha, windowAlpha);
         }

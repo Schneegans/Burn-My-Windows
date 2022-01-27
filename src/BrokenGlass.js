@@ -79,17 +79,21 @@ var BrokenGlass = class BrokenGlass {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(actor, settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(actor, settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows are set to twice their original size, so that
+  // This is also called from extension.js. It is used to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // forOpening is set to true if this is called for a window-open transition, for a
+  // window-close transition it is set to false. The modes can be set to any value from
+  // here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode. This also
+  // determines how the uProgress uniform value will progress in the shader.
+  // For this effect, windows are set to twice their original size, so that
   // we have some space to draw the shards. We also set the animation mode to "Linear".
-  static getCloseTransition(actor, settings) {
+  static tweakTransition(actor, settings, forOpening) {
     return {
-      'opacity': {to: 255, mode: 1},
+      'opacity': {from: 255, to: 255, mode: 1},
       'scale-x': {from: 2.0, to: 2.0, mode: 1},
       'scale-y': {from: 2.0, to: 2.0, mode: 1}
     };
@@ -118,7 +122,7 @@ if (utils.isInShellProcess()) {
   // resources/img/shards.png. The red channel of the texture contains the distance to the
   // shard edges. This information is used to fade out the shards.
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(actor, settings) {
+    _init(actor, settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       // Load the shards texture. As the shader is re-created for each window animation,
@@ -151,15 +155,18 @@ if (utils.isInShellProcess()) {
         const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
         const float SHARD_SCALE  = ${settings.get_double('broken-glass-scale')};
         const float SHARD_LAYERS = 5;
-        const float GRAVITY      = ${settings.get_double('broken-glass-gravity')};
         const float BLOW_FORCE   = ${settings.get_double('broken-glass-blow-force')};
         const float ACTOR_SCALE  = 2.0;
         const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
         const vec2  EPICENTER    = vec2(${epicenterX}, ${epicenterY});
+        const float GRAVITY      = ${forOpening ? '-1.0' : '1.0'} * 
+                                   ${settings.get_double('broken-glass-gravity')};
 
         void main() {
 
           cogl_color_out = vec4(0, 0, 0, 0);
+
+          float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
 
           // Draw the individual shard layers.
           for (float i=0; i<SHARD_LAYERS; ++i) {
@@ -173,15 +180,15 @@ if (utils.isInShellProcess()) {
             coords -= EPICENTER;
 
             // Scale each layer a bit differently.
-            coords /= mix(1.0, 1.0 + BLOW_FORCE*(i+2)/SHARD_LAYERS, uProgress);
+            coords /= mix(1.0, 1.0 + BLOW_FORCE*(i+2)/SHARD_LAYERS, progress);
             
             // Rotate each layer a bit differently.
-            float rotation = (mod(i, 2.0)-0.5)*0.2*uProgress;
+            float rotation = (mod(i, 2.0)-0.5)*0.2*progress;
             coords = vec2(coords.x * cos(rotation) - coords.y * sin(rotation),
             coords.x * sin(rotation) + coords.y * cos(rotation));
             
             // Move down each layer a bit.
-            float gravity = GRAVITY*0.1*(i+1)*uProgress*uProgress;
+            float gravity = GRAVITY*0.1*(i+1)*progress*progress;
             coords += vec2(0, gravity);
 
             // Restore correct position.
@@ -200,7 +207,7 @@ if (utils.isInShellProcess()) {
               vec4 windowColor = texture2D(uTexture, coords);
 
               // Dissolve the shard by using distance information from the red channel.
-              float dissolve = (shardMap.x - pow(uProgress+0.1, 2)) > 0 ? 1: 0;
+              float dissolve = (shardMap.x - pow(progress+0.1, 2)) > 0 ? 1: 0;
               cogl_color_out = mix(cogl_color_out, windowColor, dissolve);
             }
           }

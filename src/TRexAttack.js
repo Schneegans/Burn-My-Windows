@@ -78,20 +78,23 @@ var TRexAttack = class TRexAttack {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, we slightly increase the window's scale as part of the
-  // warp effect.
-  static getCloseTransition(actor, settings) {
-    const warp = 0.5 * settings.get_double('claw-scratch-warp');
+  // This is also called from extension.js. It is used to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // forOpening is set to true if this is called for a window-open transition, for a
+  // window-close transition it is set to false. The modes can be set to any value from
+  // here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode. This also
+  // determines how the uProgress uniform value will progress in the shader.
+  // For this effect, we slightly increase the window's scale as part of the warp effect.
+  static tweakTransition(actor, settings, forOpening) {
+    const warp = 1.0 + 0.5 * settings.get_double('claw-scratch-warp');
     return {
-      'opacity': {to: 255},
-      'scale-x': {to: 1.0 + warp},
-      'scale-y': {to: 1.0 + warp}
+      'opacity': {from: 255, to: 255, mode: 3},
+      'scale-x': {from: forOpening ? warp : 1.0, to: forOpening ? 1.0 : warp, mode: 3},
+      'scale-y': {from: forOpening ? warp : 1.0, to: forOpening ? 1.0 : warp, mode: 3}
     };
   }
 }
@@ -109,7 +112,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       // Load the claw texture. As the shader is re-created for each window animation,
@@ -180,11 +183,13 @@ if (utils.isInShellProcess()) {
 
         void main() {
 
+          float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
+
           // Warp the texture coordinates to create a blow-up effect.
           vec2  coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
           float dist   = length(coords);
           coords = (coords/dist * pow(dist, WARP_INTENSITY)) * 0.5 + 0.5;
-          coords = mix(cogl_tex_coord_in[0].st, coords, uProgress);
+          coords = mix(cogl_tex_coord_in[0].st, coords, progress);
 
           // Accumulate several random scratches. The color in the scratch map refers to the
           // relative time when the respective part will become invisible. Therefore we can
@@ -198,11 +203,11 @@ if (utils.isInShellProcess()) {
 
           // Get the window texture. We shift the texture lookup by the local derivative of
           // the claw texture in order to mimic some folding distortion.
-          vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * uProgress * 0.5;
+          vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
           cogl_color_out = texture2D(uTexture, coords + offset);
 
           // Add colorful flashes.
-          float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - uProgress) + 1;
+          float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1;
           if (flashIntensity < 0 || flashIntensity >= 1) {
             flashIntensity = 0;
           }
@@ -211,16 +216,16 @@ if (utils.isInShellProcess()) {
           flashIntensity *= cogl_color_out.a;
 
           // Hide scratched out parts.
-          cogl_color_out *= (scratchMap > uProgress ? 1 : 0);
+          cogl_color_out *= (scratchMap > progress ? 1 : 0);
 
           vec3 flashColor = vec3(${color.red / 255},
           ${color.green / 255},
           ${color.blue / 255}) * ${color.alpha / 255};
 
-          cogl_color_out.rgb += flashIntensity * mix(flashColor, vec3(0), uProgress);
+          cogl_color_out.rgb += flashIntensity * mix(flashColor, vec3(0), progress);
 
           // Fade out the remaining shards.
-          float fade = smoothstep(0, 1, 1 - clamp((uProgress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
+          float fade = smoothstep(0, 1, 1 - clamp((progress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
           cogl_color_out *= fade;
 
           // These are pretty useful for understanding how this works.

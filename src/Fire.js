@@ -96,15 +96,23 @@ var Fire = class Fire {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows should neither be scaled nor faded.
-  static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 1.0}};
+  // This is also called from extension.js. It is used to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // forOpening is set to true if this is called for a window-open transition, for a
+  // window-close transition it is set to false. The modes can be set to any value from
+  // here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode. This also
+  // determines how the uProgress uniform value will progress in the shader.
+  // For this effect, windows should neither be scaled nor faded.
+  static tweakTransition(actor, settings, forOpening) {
+    return {
+      'opacity': {from: 255, to: 255, mode: 3},
+      'scale-x': {from: 1.0, to: 1.0, mode: 3},
+      'scale-y': {from: 1.0, to: 1.0, mode: 3}
+    };
   }
 
   // ----------------------------------------------------------------------- private stuff
@@ -210,7 +218,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       // Load the gradient values from the settings. We directly inject the values in the
@@ -233,7 +241,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.edgeMask()}
 
         // These may be configurable in the future.
-        const float EDGE_FADE  = 90;
+        const float EDGE_FADE  = 70;
         const float FADE_WIDTH = 0.1;
         const float HIDE_TIME  = 0.4;
         const vec2  FIRE_SCALE = vec2(400, 600) * ${settings.get_double('flame-scale')};
@@ -295,6 +303,10 @@ if (utils.isInShellProcess()) {
           // Fade at window borders.
           effectMask *= getAbsoluteEdgeMask(edgeFadeWidth);
 
+          #if ${forOpening ? '1' : '0'}
+            windowMask = 1.0 - windowMask;
+          #endif
+
           return vec2(windowMask, effectMask);
         }
 
@@ -322,7 +334,7 @@ if (utils.isInShellProcess()) {
           cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * effectMask.x;
 
           // Add the fire to the window.
-          cogl_color_out += fire;
+          cogl_color_out = mix(cogl_color_out, fire, fire.a);
 
           // These are pretty useful for understanding how this works.
           // cogl_color_out = vec4(vec3(noise), 1);
