@@ -85,38 +85,34 @@ class Extension {
     this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
 
     Workspace.prototype._addWindowClone = function(...params) {
-      const result = extensionThis._origAddWindowClone.apply(this, params);
+      const result     = extensionThis._origAddWindowClone.apply(this, params);
+      const realWindow = params[0].get_compositor_private();
 
-      const clone  = utils.shellVersionIs(3, 36) ? result[0] : result;
-      const window = params[0].get_compositor_private();
+      let clone;
 
-      const xID = window.connect('notify::scale-x', () => {
-        if (window.scale_x > 0) {
-          if (utils.shellVersionIs(3, 36)) {
-            clone.scale_x = window.scale_x;
-          } else if (utils.shellVersionIs(3, 38)) {
-            clone._windowContainer.scale_x = window.scale_x;
-          } else {
-            clone.window_container.scale_x = window.scale_x;
-          }
+      if (utils.shellVersionIs(3, 36)) {
+        clone = result[0];
+      } else if (utils.shellVersionIs(3, 38)) {
+        clone = result._windowContainer;
+      } else {
+        clone = result.window_container;
+      }
+
+      const xID = realWindow.connect('notify::scale-x', () => {
+        if (realWindow.scale_x > 0) {
+          clone.scale_x = realWindow.scale_x;
         }
       });
 
-      const yID = window.connect('notify::scale-y', () => {
-        if (window.scale_y > 0) {
-          if (utils.shellVersionIs(3, 36)) {
-            clone.scale_y = window.scale_y;
-          } else if (utils.shellVersionIs(3, 38)) {
-            clone._windowContainer.scale_y = window.scale_y;
-          } else {
-            clone.window_container.scale_y = window.scale_y;
-          }
+      const yID = realWindow.connect('notify::scale-y', () => {
+        if (realWindow.scale_y > 0) {
+          clone.scale_y = realWindow.scale_y;
         }
       });
 
-      clone.window_container.connect('destroy', () => {
-        window.disconnect(xID);
-        window.disconnect(yID);
+      clone.connect('destroy', () => {
+        realWindow.disconnect(xID);
+        realWindow.disconnect(yID);
       });
 
       // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
