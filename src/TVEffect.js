@@ -122,7 +122,7 @@ if (utils.isInShellProcess()) {
       const float TB_TIME    = 0.7;  // Relative time for the top/bottom animation.
       const float LR_TIME    = 0.4;  // Relative time for the left/right animation.
       const float LR_DELAY   = 0.6;  // Delay after which the left/right animation starts.
-      const float FF_TIME    = 0.2;  // Relative time for the final fade to transparency.
+      const float FF_TIME    = 0.1;  // Relative time for the final fade to transparency.
 
       void main() {
 
