@@ -272,7 +272,7 @@
     </key>
 
     <key name="energize-b-animation-time" type="i">
-      <default>1500</default>
+      <default>1000</default>
       <summary>Energize B Animation Time</summary>
       <description>The time the Energize B effect takes.</description>
     </key>

@@ -120,7 +120,7 @@ if (utils.isInShellProcess()) {
       ${shaderSnippets.edgeMask()}
 
       const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
-      const float SHOWER_TIME  = 0.2;
+      const float SHOWER_TIME  = 0.3;
       const float SHOWER_WIDTH = 0.3;
       const float STREAK_TIME  = 0.6;
       const float EDGE_FADE    = 50;
