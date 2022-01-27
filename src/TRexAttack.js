@@ -141,8 +141,8 @@ if (utils.isInShellProcess()) {
         const float NUM_CLAWS       = ${settings.get_int('claw-scratch-count')};
         const float WARP_INTENSITY  = 1.0 + ${settings.get_double('claw-scratch-warp')};
         const float FLASH_INTENSITY = 0.1;
-        const float MAX_SPAWN_TIME  = 0.5; // Scratches will only start in the first half of the animation.
-        const float FF_TIME         = 0.5; // Relative time for the final fade to transparency.
+        const float MAX_SPAWN_TIME  = 0.6; // Scratches will only start in the first half of the animation.
+        const float FF_TIME         = 0.6; // Relative time for the final fade to transparency.
 
         // This method generates a grid of randomly rotated, slightly shifted and scaled 
         // UV squares. It returns the texture coords of the UV square at the given actor
@@ -225,8 +225,8 @@ if (utils.isInShellProcess()) {
           cogl_color_out.rgb += flashIntensity * mix(flashColor, vec3(0), progress);
 
           // Fade out the remaining shards.
-          float fade = smoothstep(0, 1, 1 - clamp((progress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
-          cogl_color_out *= fade;
+          float fadeProgress = smoothstep(0, 1, (progress - 1.0 + FF_TIME)/FF_TIME);
+          cogl_color_out *= sqrt(1-fadeProgress*fadeProgress);
 
           // These are pretty useful for understanding how this works.
           // cogl_color_out = vec4(vec3(flashIntensity), 1);
