@@ -138,15 +138,12 @@ class Extension {
           let actor = metaWin.get_compositor_private();
 
           if (Main.overview.visible && !Main.overview.closing) {
-            utils.debug('window-created: setup effect on show');
             const id = actor.connect('show', () => {
               extensionThis._setupEffect(actor, true);
               actor.disconnect(id);
             });
 
           } else {
-
-            utils.debug('window-created: setup effect on ease');
             const orig = actor.ease;
             actor.ease = function(...params) {
               orig.apply(actor, params);
