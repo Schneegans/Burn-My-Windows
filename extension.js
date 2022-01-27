@@ -92,13 +92,25 @@ class Extension {
 
       const xID = window.connect('notify::scale-x', () => {
         if (window.scale_x > 0) {
-          clone.window_container.scale_x = window.scale_x;
+          if (utils.shellVersionIs(3, 36)) {
+            clone.scale_x = window.scale_x;
+          } else if (utils.shellVersionIs(3, 38)) {
+            clone._windowContainer.scale_x = window.scale_x;
+          } else {
+            clone.window_container.scale_x = window.scale_x;
+          }
         }
       });
 
       const yID = window.connect('notify::scale-y', () => {
         if (window.scale_y > 0) {
-          clone.window_container.scale_y = window.scale_y;
+          if (utils.shellVersionIs(3, 36)) {
+            clone.scale_y = window.scale_y;
+          } else if (utils.shellVersionIs(3, 38)) {
+            clone._windowContainer.scale_y = window.scale_y;
+          } else {
+            clone.window_container.scale_y = window.scale_y;
+          }
         }
       });
 
