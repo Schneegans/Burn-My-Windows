@@ -85,17 +85,19 @@ class Extension {
     this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
 
     Workspace.prototype._addWindowClone = function(...params) {
-      const result     = extensionThis._origAddWindowClone.apply(this, params);
-      const realWindow = params[0].get_compositor_private();
+      const result = extensionThis._origAddWindowClone.apply(this, params);
 
-      let clone;
+      let realWindow, clone;
 
       if (utils.shellVersionIs(3, 36)) {
-        clone = result[0];
+        clone      = result[0];
+        realWindow = clone.realWindow;
       } else if (utils.shellVersionIs(3, 38)) {
-        clone = result._windowContainer;
+        clone      = result._windowContainer;
+        realWindow = params[0].get_compositor_private();
       } else {
-        clone = result.window_container;
+        clone      = result.window_container;
+        realWindow = params[0].get_compositor_private();
       }
 
       const xID = realWindow.connect('notify::scale-x', () => {
