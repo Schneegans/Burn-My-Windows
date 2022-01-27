@@ -100,22 +100,26 @@ class Extension {
         realWindow = params[0].get_compositor_private();
       }
 
-      const xID = realWindow.connect('notify::scale-x', () => {
-        if (realWindow.scale_x > 0) {
-          clone.scale_x = realWindow.scale_x;
-        }
-      });
+      // Syncing the real window's scale with the scale of its clone only works on GNOME
+      // Shell 3.38+. So effects cannot scale windows in the overview of GNOME 3.36...
+      if (utils.shellVersionIsAtLeast(3, 38)) {
+        const xID = realWindow.connect('notify::scale-x', () => {
+          if (realWindow.scale_x > 0) {
+            clone.scale_x = realWindow.scale_x;
+          }
+        });
 
-      const yID = realWindow.connect('notify::scale-y', () => {
-        if (realWindow.scale_y > 0) {
-          clone.scale_y = realWindow.scale_y;
-        }
-      });
+        const yID = realWindow.connect('notify::scale-y', () => {
+          if (realWindow.scale_y > 0) {
+            clone.scale_y = realWindow.scale_y;
+          }
+        });
 
-      clone.connect('destroy', () => {
-        realWindow.disconnect(xID);
-        realWindow.disconnect(yID);
-      });
+        clone.connect('destroy', () => {
+          realWindow.disconnect(xID);
+          realWindow.disconnect(yID);
+        });
+      }
 
       // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
       // but not _doRemoveWindow. The latter is required to trigger the repositioning of
@@ -155,9 +159,8 @@ class Extension {
 
 
 
-    // This class is only available in GNOME Shell 3.38+. So no transition tweaking in
-    // GNOME Shell 3.36, but this is not used by any effect available there anyways for
-    // now...
+    // This class is only available in GNOME Shell 3.38+. So no overlay-hiding on
+    // GNOME Shell 3.36 for now.
     if (WindowPreview) {
       this._origDeleteAll = WindowPreview.prototype._deleteAll;
       this._origRestack   = WindowPreview.prototype._restack;
