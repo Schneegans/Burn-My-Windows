@@ -75,15 +75,23 @@ var Wisps = class Wisps {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows should be scaled down slightly but not faded.
-  static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 0.9}, 'scale-y': {to: 0.9}};
+  // This is also called from extension.js. It is used to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // forOpening is set to true if this is called for a window-open transition, for a
+  // window-close transition it is set to false. The modes can be set to any value from
+  // here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode. This also
+  // determines how the uProgress uniform value will progress in the shader.
+  // For this effect, windows should be scaled down slightly but not faded.
+  static tweakTransition(actor, settings, forOpening) {
+    return {
+      'opacity': {from: 255, to: 255, mode: 3},
+      'scale-x': {from: forOpening ? 0.9 : 1.0, to: forOpening ? 1.0 : 0.9, mode: 3},
+      'scale-y': {from: forOpening ? 0.9 : 1.0, to: forOpening ? 1.0 : 0.9, mode: 3}
+    };
   }
 }
 
@@ -100,7 +108,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       const color = Clutter.Color.from_string(settings.get_string('wisps-color'))[1];
@@ -159,6 +167,8 @@ if (utils.isInShellProcess()) {
       }
 
       void main() {
+
+        float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
         
         // Get the color of the window.
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
@@ -167,7 +177,7 @@ if (utils.isInShellProcess()) {
           ${color.blue / 255}, 1.0) * windowColor.a;
         
         // Compute several layers of moving wisps.
-        vec2 uv = (cogl_tex_coord_in[0].st-0.5) / mix(1.0, 0.5, uProgress) + 0.5;
+        vec2 uv = (cogl_tex_coord_in[0].st-0.5) / mix(1.0, 0.5, progress) + 0.5;
         uv /= ${settings.get_double('wisps-scale')};
         float wisps = 0;
         for (int i=0; i<WISPS_LAYERS; ++i) {
@@ -175,12 +185,12 @@ if (utils.isInShellProcess()) {
         }
 
         // Compute shrinking edge mask.
-        float mask = getRelativeEdgeMask(mix(0.01, 0.5, uProgress));
+        float mask = getRelativeEdgeMask(mix(0.01, 0.5, progress));
 
         // Compute three different progress values.
-        float wispsIn   = smoothstep(0, 1, clamp(uProgress/WISPS_IN_TIME, 0, 1));
-        float wispsOut  = smoothstep(0, 1, clamp((uProgress - WISPS_IN_TIME)/(1.0 - WISPS_IN_TIME), 0, 1));
-        float windowOut = smoothstep(0, 1, clamp(uProgress/WINDOW_OUT_TIME, 0, 1));
+        float wispsIn   = smoothstep(0, 1, clamp(progress/WISPS_IN_TIME, 0, 1));
+        float wispsOut  = smoothstep(0, 1, clamp((progress - WISPS_IN_TIME)/(1.0 - WISPS_IN_TIME), 0, 1));
+        float windowOut = smoothstep(0, 1, clamp(progress/WINDOW_OUT_TIME, 0, 1));
 
         // Use a noise function to dissolve the window.
         float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * vec2(uSizeX, uSizeY) / 250) - 1.0));

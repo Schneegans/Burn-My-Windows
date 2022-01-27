@@ -138,6 +138,28 @@ var PreferencesDialog = class PreferencesDialog {
         // clang-format on
       }
 
+      // Populate the open-effects drop-down menu.
+      {
+        const menu  = this._builder.get_object('open-effect-menu');
+        const group = Gio.SimpleActionGroup.new();
+        window.insert_action_group('open-effects', group);
+
+        ALL_EFFECTS.forEach(Effect => {
+          const [minMajor, minMinor] = Effect.getMinShellVersion();
+          if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+            const nick       = Effect.getNick();
+            const label      = Effect.getLabel();
+            const actionName = nick + '-open-effect';
+            const fullName   = 'open-effects.' + actionName;
+
+            const action = this._settings.create_action(actionName);
+            group.add_action(action);
+
+            menu.append_item(Gio.MenuItem.new(label, fullName));
+          }
+        });
+      }
+
       // Populate the close-effects drop-down menu.
       {
         const menu  = this._builder.get_object('close-effect-menu');
@@ -282,6 +304,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Each effect page is based on a template widget. This template contains the title
     // and the preview button.
     // clang-format off
+    if (GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
     BurnMyWindowsEffectPage =
       GObject.registerClass({
         GTypeName: 'BurnMyWindowsEffectPage',
@@ -299,7 +322,11 @@ var PreferencesDialog = class PreferencesDialog {
           this._button.connect('clicked', () => {
 
             // Set the to-be-previewed effect.
+            dialog.getSettings().set_string('open-preview-effect', Effect.getNick());
             dialog.getSettings().set_string('close-preview-effect', Effect.getNick());
+
+            // Make sure that the window.show() firther below "sees" this change.
+            Gio.Settings.sync();
 
             // Create the preview-window.
             const window = new Gtk.Window({
@@ -310,6 +337,12 @@ var PreferencesDialog = class PreferencesDialog {
               transient_for: utils.isGTK4() ? this._button.get_root() :
                                               this._button.get_toplevel()
             });
+
+            // Add a header bar to the window.
+            if (utils.isGTK4()) {
+              const header = Gtk.HeaderBar.new();
+              window.set_titlebar(header);
+            }
 
             const box = new Gtk.Box({
               orientation: Gtk.Orientation.VERTICAL,
@@ -330,15 +363,16 @@ var PreferencesDialog = class PreferencesDialog {
 
             if (utils.isGTK4()) {
               window.set_child(box);
+              window.show();
             } else {
               window.add(box);
+              window.show_all();
             }
-
-            window.show();
           });
         }
       });
-    // clang-format on
+      // clang-format on
+    }
   }
 }
 

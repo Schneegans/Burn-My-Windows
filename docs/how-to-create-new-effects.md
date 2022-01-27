@@ -150,12 +150,20 @@ var SimpleFade = class SimpleFade {
     return new Shader(settings);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For each property, you can set a "from", "to", and a "mode". For this
-  // effect, windows should neither be scaled nor faded.
-  static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 1.0}};
+  // This is also called from extension.js. It is used to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // This also determines how the uProgress uniform value will progress in the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+  // For this effect, windows should neither be scaled nor faded.
+  static tweakTransition(actor, settings, forOpening) {
+    return {
+      'opacity': {from: 255, to: 255, mode: 4},
+      'scale-x': {from: 1.0, to: 1.0, mode: 4},
+      'scale-y': {from: 1.0, to: 1.0, mode: 4}
+    };
   }
 }
 

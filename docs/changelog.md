@@ -6,6 +6,7 @@
 
 #### New Features
 
+* **Effects for Window Opening.** You can now select effects which are applied on newly opened windows! I expect that there are some bugs left, so please [report any issue you find](https://github.com/Schneegans/Burn-My-Windows/issues)!
 * **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
 * The effect-configuration pages of the preferences dialog now have **Preview Buttons** which con be used to, well, preview the current settings (without having to enable the effect first).
 
@@ -13,6 +14,7 @@
 
 * Added a menu entry with a link to the guide for creating new effect types.
 * Added a new option to the Matrix Effect: **Vertical Overshooting**: This can add some vertical variation to the start and end position of the letter drops.
+* Thanks to improved timing, the default animation time of several effects could be reduced.
 
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 

@@ -19,6 +19,12 @@
       <description>The effect with this nick will be used for the next window-close animation.</description>
     </key>
 
+    <key name="open-preview-effect" type="s">
+      <default>""</default>
+      <summary>Open Preview Effect</summary>
+      <description>The effect with this nick will be used for the next window-open animation.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Fire Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -27,6 +33,12 @@
       <default>true</default>
       <summary>Fire Close Effect</summary>
       <description>Use the fire effect for window closing.</description>
+    </key>
+
+    <key name="fire-open-effect" type="b">
+      <default>false</default>
+      <summary>Fire Open Effect</summary>
+      <description>Use the fire effect for window opening.</description>
     </key>
 
     <key name="fire-animation-time" type="i">
@@ -93,8 +105,14 @@
       <description>Use the matrix effect for window closing.</description>
     </key>
 
+    <key name="matrix-open-effect" type="b">
+      <default>false</default>
+      <summary>Matrix Open Effect</summary>
+      <description>Use the matrix effect for window opening.</description>
+    </key>
+
     <key name="matrix-animation-time" type="i">
-      <default>3000</default>
+      <default>1500</default>
       <summary>Matrix Animation Time</summary>
       <description>The time the matrix effect takes.</description>
     </key>
@@ -139,6 +157,12 @@
       <description>Use the tv effect for window closing.</description>
     </key>
 
+    <key name="tv-open-effect" type="b">
+      <default>false</default>
+      <summary>TV Open Effect</summary>
+      <description>Use the tv effect for window opening.</description>
+    </key>
+
     <key name="tv-animation-time" type="i">
       <default>400</default>
       <summary>TV Animation Time</summary>
@@ -161,8 +185,14 @@
       <description>Use the trex effect for window closing.</description>
     </key>
 
+    <key name="trex-open-effect" type="b">
+      <default>false</default>
+      <summary>T-Rex Open Effect</summary>
+      <description>Use the trex effect for window opening.</description>
+    </key>
+
     <key name="trex-animation-time" type="i">
-      <default>1500</default>
+      <default>1000</default>
       <summary>T-Rex Animation Time</summary>
       <description>The time the trex effect takes.</description>
     </key>
@@ -201,6 +231,12 @@
       <description>Use the Energize A effect for window closing.</description>
     </key>
 
+    <key name="energize-a-open-effect" type="b">
+      <default>false</default>
+      <summary>Energize A Open Effect</summary>
+      <description>Use the Energize A effect for window opening.</description>
+    </key>
+
     <key name="energize-a-animation-time" type="i">
       <default>2000</default>
       <summary>Energize A Animation Time</summary>
@@ -229,8 +265,14 @@
       <description>Use the Energize B effect for window closing.</description>
     </key>
 
+    <key name="energize-b-open-effect" type="b">
+      <default>false</default>
+      <summary>Energize B Open Effect</summary>
+      <description>Use the Energize B effect for window opening.</description>
+    </key>
+
     <key name="energize-b-animation-time" type="i">
-      <default>2000</default>
+      <default>1500</default>
       <summary>Energize B Animation Time</summary>
       <description>The time the Energize B effect takes.</description>
     </key>
@@ -257,8 +299,14 @@
       <description>Use the wisps effect for window closing.</description>
     </key>
 
+    <key name="wisps-open-effect" type="b">
+      <default>false</default>
+      <summary>Wisps Open Effect</summary>
+      <description>Use the wisps effect for window opening.</description>
+    </key>
+
     <key name="wisps-animation-time" type="i">
-      <default>2000</default>
+      <default>1500</default>
       <summary>Wisps Animation Time</summary>
       <description>The time the wisps effect takes.</description>
     </key>
@@ -285,8 +333,14 @@
       <description>Use the broken glass effect for window closing.</description>
     </key>
 
+    <key name="broken-glass-open-effect" type="b">
+      <default>false</default>
+      <summary>Broken Glass Open Effect</summary>
+      <description>Use the broken glass effect for window opening.</description>
+    </key>
+
     <key name="broken-glass-animation-time" type="i">
-      <default>1500</default>
+      <default>1000</default>
       <summary>Broken Glass Animation Time</summary>
       <description>The time the broken glass effect takes.</description>
     </key>
