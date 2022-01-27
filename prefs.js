@@ -338,8 +338,10 @@ var PreferencesDialog = class PreferencesDialog {
             });
 
             // Add a header bar to the window.
-            const header = Gtk.HeaderBar.new();
-            window.set_titlebar(header);
+            if (utils.isGTK4()) {
+              const header = Gtk.HeaderBar.new();
+              window.set_titlebar(header);
+            }
 
             const box = new Gtk.Box({
               orientation: Gtk.Orientation.VERTICAL,
