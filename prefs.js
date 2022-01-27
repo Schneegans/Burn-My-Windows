@@ -337,6 +337,10 @@ var PreferencesDialog = class PreferencesDialog {
                                               this._button.get_toplevel()
             });
 
+            // Add a header bar to the window.
+            const header = Gtk.HeaderBar.new();
+            window.set_titlebar(header);
+
             const box = new Gtk.Box({
               orientation: Gtk.Orientation.VERTICAL,
               valign: Gtk.Align.CENTER,
