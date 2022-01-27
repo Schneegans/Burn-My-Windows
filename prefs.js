@@ -360,11 +360,11 @@ var PreferencesDialog = class PreferencesDialog {
 
             if (utils.isGTK4()) {
               window.set_child(box);
+              window.show();
             } else {
               window.add(box);
+              window.show_all();
             }
-
-            window.show();
           });
         }
       });
