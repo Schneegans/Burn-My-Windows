@@ -149,7 +149,7 @@ if (utils.isInShellProcess()) {
         float atomMask = getRelativeEdgeMask(0.2);
         atomMask = max(0, atomMask - showerMask);
         atomMask *= streakMask;
-        atomMask *= (1.0 - fadeProgress);
+        atomMask *= sqrt(1-fadeProgress*fadeProgress);
 
         // Make some particles visible in the streaks.
         showerMask += 0.05 * streakMask;
