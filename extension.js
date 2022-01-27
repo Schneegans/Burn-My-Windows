@@ -67,8 +67,8 @@ class Extension {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
-    // This will store an item of ALL_EFFECTS which was used the last time a window was
-    // opened / closed.
+    // This will store an item of ALL_EFFECTS array which was used the last time a window
+    // was opened / closed.
     this._currentEffect = 0;
 
     // We will use extensionThis to refer to the extension inside the patched methods.
@@ -84,9 +84,52 @@ class Extension {
     this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
     this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
 
+
+    // ------------------------------------------------ patching the window-open animation
+
+    // Here we add an effect to the window-open animation. This is done whenever a new
+    // window is created.
+    this._windowCreatedConnection =
+        global.display.connect('window-created', (d, metaWin) => {
+          let actor = metaWin.get_compositor_private();
+
+          // If we are currently in the overview, we add the effect to the original window
+          // actor. The window preview in the overview is basically a Clutter.Clone which
+          // shows the original window.
+          if (Main.overview.visible && !Main.overview.closing) {
+            const id = actor.connect('show', () => {
+              extensionThis._setupEffect(actor, true);
+              actor.disconnect(id);
+            });
+
+          }
+          // If a window is created outside of the overview, the transitions are set up in
+          // the async _mapWindow of the WindowManager which can defer the actual showing
+          // of the window significantly, especially when currently leaving the overview:
+          // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1449
+          // AFAIK, overriding this method is not possible as it's called by a signal to
+          // which it is bound via the bind() method. To tweak the async transition
+          // anyways, we override the actors ease() method once - the next time it will be
+          // called by the _mapWindow(), we will intercept it!
+          else {
+            const orig = actor.ease;
+            actor.ease = function(...params) {
+              orig.apply(actor, params);
+              actor.ease = orig;
+
+              extensionThis._setupEffect(actor, true);
+            };
+          }
+        });
+
+    // Some of the effects require that the window's actor is enlarged to provide a bigger
+    // canvas to draw the effects. Outside the overview we can simply increase the scale
+    // of the actor. However, if we are in the overview, we have to enlarge the clone of
+    // the window as well.
     Workspace.prototype._addWindowClone = function(...params) {
       const result = extensionThis._origAddWindowClone.apply(this, params);
 
+      // The parameters of this method changed a bit through the versions...
       let realWindow, clone;
 
       if (utils.shellVersionIs(3, 36)) {
@@ -121,6 +164,7 @@ class Extension {
         });
       }
 
+      // This is actually need for the window-close animation on GNOME Shell 3.36.
       // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
       // but not _doRemoveWindow. The latter is required to trigger the repositioning of
       // the overview window layout. Therefore we call this method in addition.
@@ -133,83 +177,28 @@ class Extension {
       return result;
     };
 
-    this._windowCreatedConnection =
-        global.display.connect('window-created', (d, metaWin) => {
-          let actor = metaWin.get_compositor_private();
 
-          if (Main.overview.visible && !Main.overview.closing) {
-            const id = actor.connect('show', () => {
-              extensionThis._setupEffect(actor, true);
-              actor.disconnect(id);
-            });
+    // ----------------------------------------------- patching the window-close animation
 
-          } else {
-            const orig = actor.ease;
-            actor.ease = function(...params) {
-              orig.apply(actor, params);
-              actor.ease = orig;
+    // The signal handler below is all which is required outside of the overview. All
+    // other hacks further below are just required to defer the window-hiding in the
+    // overview until the effect is finished.
 
-              extensionThis._setupEffect(actor, true);
-            };
-          }
-        });
+    // The close animation is set up in WindowManager's _destroyWindow:
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1549
+    // As we cannot monkey-patch the _destroyWindow itself, we connect to the 'destroy'
+    // signal of the window manager and tweak the animation to our needs.
+    this._destroyConnection = global.window_manager.connect('destroy', (wm, actor) => {
+      this._setupEffect(actor, false);
+    });
 
-
-
-    // This class is only available in GNOME Shell 3.38+. So no overlay-hiding on
-    // GNOME Shell 3.36 for now.
-    if (WindowPreview) {
-      this._origDeleteAll = WindowPreview.prototype._deleteAll;
-      this._origRestack   = WindowPreview.prototype._restack;
-      this._origInit      = WindowPreview.prototype._init;
-
-      // This is required, else WindowPreview's _restack() which is called by the
-      // "this.overlayEnabled = false", sometimes tries to access an already delete
-      // WindowPreview.
-      WindowPreview.prototype._restack = function() {
-        if (!this._closeRequested) {
-          // Call the original method.
-          extensionThis._origRestack.apply(this);
-        }
-      };
-
-      WindowPreview.prototype._init = function(...params) {
-        // Call the original method.
-        extensionThis._origInit.apply(this, params);
-
-        const connectionID = this.metaWindow.connect('unmanaged', () => {
-          if (this.window_container) {
-            // Hide the window's icon, name, and close button.
-            this.overlayEnabled = false;
-            this._icon.visible  = false;
-          }
-        });
-
-        // Make sure to not call the callback above if the Meta.Window was not unmanaged
-        // before leaving the overview.
-        this.connect('destroy', () => {
-          this.metaWindow.disconnect(connectionID);
-        });
-      };
-
-      // The _deleteAll is called when the user clicks the X in the overview. We should
-      // not attempt to close windows twice. Due to the animation in the overview, the
-      // close button can be clicked twice which normally would lead to a crash.
-      WindowPreview.prototype._deleteAll = function() {
-        if (!this._closeRequested) {
-          extensionThis._origDeleteAll.apply(this);
-        }
-      };
-    }
-
-    // These three method overrides are mega-hacky! They are only required to make the
-    // fire animation work in the overview. Usually, windows are not faded when closed
-    // from the overview (why?). With these overrides we make sure that they are actually
-    // faded out. To do this, _windowRemoved and _doRemoveWindow now check whether there
-    // is a transition ongoing (via extensionThis._shouldDestroy). If that's the case,
-    // these methods do nothing. Are the actors removed in the end? I hope so. The
-    // _destroyWindow of the WindowManager sets the transitions up and should take care of
-    // removing the actors at the end of the transitions.
+    // These three method overrides are mega-hacky! Usually, windows are not faded when
+    // closed from the overview (why?). With these overrides we make sure that they are
+    // actually faded out. To do this, _windowRemoved and _doRemoveWindow now check
+    // whether there is a transition ongoing (via extensionThis._shouldDestroy). If that's
+    // the case, these methods do nothing. Are the actors removed in the end? I hope so.
+    // The _destroyWindow of the WindowManager sets the transitions up and should take
+    // care of removing the actors at the end of the transitions.
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1299
     Workspace.prototype._windowRemoved = function(ws, metaWin) {
       if (extensionThis._shouldDestroy(this, metaWin)) {
@@ -238,13 +227,54 @@ class Extension {
       return extensionThis._origShouldAnimateActor.apply(this, params);
     };
 
-    // The close animation is set up in WindowManager's _destroyWindow:
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1549
-    // As we cannot monkey-patch the _destroyWindow itself, we connect to the 'destroy'
-    // signal of the window manager and tweak the animation to our needs.
-    this._destroyConnection = global.window_manager.connect('destroy', (wm, actor) => {
-      this._setupEffect(actor, false);
-    });
+    // With the code below, we hide the window-overlay (icon, label, close button) in the
+    // overview once the close-animation is running. As the WindowPreview class is only
+    // available on GNOME 3.38 and beyond, we cannot hide the overlay on GNOME 3.36.
+    if (WindowPreview) {
+
+      // We will monkey-patch these methods.
+      this._origDeleteAll = WindowPreview.prototype._deleteAll;
+      this._origRestack   = WindowPreview.prototype._restack;
+      this._origInit      = WindowPreview.prototype._init;
+
+      // Whenever a WindowPreview is created, we connect to the referenced Meta.Window's
+      // 'unmanaged' signal to hide the overlay.
+      WindowPreview.prototype._init = function(...params) {
+        extensionThis._origInit.apply(this, params);
+
+        // Hide the window's icon, name, and close button.
+        const connectionID = this.metaWindow.connect('unmanaged', () => {
+          if (this.window_container) {
+            this.overlayEnabled = false;
+            this._icon.visible  = false;
+          }
+        });
+
+        // Make sure to not call the callback above if the Meta.Window was not unmanaged
+        // before leaving the overview.
+        this.connect('destroy', () => {
+          this.metaWindow.disconnect(connectionID);
+        });
+      };
+
+      // The _deleteAll is called when the user clicks the X in the overview. We should
+      // not attempt to close windows twice. Due to the animation in the overview, the
+      // close button can be clicked twice which normally would lead to a crash.
+      WindowPreview.prototype._deleteAll = function() {
+        if (!this._closeRequested) {
+          extensionThis._origDeleteAll.apply(this);
+        }
+      };
+
+      // This is required, else WindowPreview's _restack() which is called by the
+      // "this.overlayEnabled = false", sometimes tries to access an already delete
+      // WindowPreview.
+      WindowPreview.prototype._restack = function() {
+        if (!this._closeRequested) {
+          extensionThis._origRestack.apply(this);
+        }
+      };
+    }
   }
 
   // This function could be called after the extension is uninstalled, disabled in GNOME
@@ -277,7 +307,13 @@ class Extension {
 
   // ----------------------------------------------------------------------- private stuff
 
+  // This method adds one of the configured effects to the given actor. If forOpening is
+  // set to true, a effect from the enabled window-open animations is chosen, else an
+  // enabled window-close animation is used. This will also tweak the transitions of the
+  // given actor (e.g. scale it up if required).
   _setupEffect(actor, forOpening) {
+
+    // Only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
     const isDialogWindow =
         actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
@@ -290,7 +326,7 @@ class Extension {
     // We do nothing if a dialog got closed and we should not burn them.
     const shouldDestroyDialogs = this._settings.get_boolean('destroy-dialogs');
 
-    // If an effect is to be previewed, we have to affect dialogs es well. This is
+    // If an effect is to be previewed however, we have to affect dialogs es well. This is
     // because the preview window is a dialog window...
     const action      = forOpening ? 'open' : 'close';
     const previewNick = this._settings.get_string(action + '-preview-effect');
@@ -302,8 +338,10 @@ class Extension {
 
     // ------------------------------------------------------------------ choose an effect
 
+    // Now we chose a random effect from all enabled effects.
     this._currentEffect = null;
 
+    // First we check if an effect is to be previewed.
     if (previewNick != '') {
       this._currentEffect = ALL_EFFECTS.find(Effect => {
         return Effect.getNick() == previewNick;
@@ -312,10 +350,11 @@ class Extension {
       // Only preview the effect once.
       this._settings.set_string(action + '-preview-effect', '');
 
-    } else {
+    }
+    // Else we choose a random effect from all enabled effects.
+    else {
 
-      // Else we choose a random effect from all enabled effects. Therefore, we first
-      // create a list of all currently enabled effects.
+      // Therefore, we first create a list of all currently enabled effects.
       const enabled = ALL_EFFECTS.filter(Effect => {
         return this._settings.get_boolean(`${Effect.getNick()}-${action}-effect`);
       });
@@ -334,24 +373,27 @@ class Extension {
 
     // ----------------------------------------------------------- tweak actor transitions
 
-    // This is used to tweak the ongoing transitions of a window actor. This is either the
-    // actual actor of the Meta.Window or a clone in the overview. Usually windows are
-    // faded in / out scaled up / down slightly by GNOME Shell. Here, we allow
-    // modifications to this behavior by the effects. The given config object is created
-    // by the effect's tweakTransition() method.
+    // The following is used to tweak the ongoing transitions of a window actor. Usually
+    // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we allow
+    // modifications to this behavior by the effects.
     const config = this._currentEffect.tweakTransition(actor, this._settings, forOpening);
     const duration =
         this._settings.get_int(this._currentEffect.getNick() + '-animation-time');
 
+    // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
 
+    // This goes through all properties given in the config object and tweaks any ongoing
+    // transitions accordingly. If there is no ongoing transition for a given property, a
+    // new one is set up.
     for (const property in config) {
-      const from = config[property].from;
-      const to   = config[property].to;
-      const mode = config[property].mode;
-
       let transition = actor.get_transition(property);
 
+      // If there is currently no ongoing transition, we create a new one. Clutter does
+      // not like to create transitions with the same start and end value - however, we
+      // need at least one transition for our progress value in the shader. So we trick
+      // Clutter by creating an arbitrary transition first and then modifying the start
+      // and end values according to our config object.
       if (!transition) {
         actor.set_property(property, 0);
         actor.save_easing_state();
@@ -359,20 +401,27 @@ class Extension {
         actor.set_property(property, 1);
         actor.restore_easing_state();
 
+        // Now there should be a transition!
         transition = actor.get_transition(property);
       }
 
+      // For some reason, there are rare cases, where no transition is set up. We do not
+      // try to continue here...
       if (!transition) {
+        utils.debug('Failed to set up transitions.');
         this._fixAnimationTimes(isDialogWindow, forOpening, null);
         return;
       }
 
+      // Tweak the transition according to the config object.
       transition.set_duration(duration);
-      transition.set_to(to);
-      transition.set_from(from);
-      transition.set_progress_mode(mode);
+      transition.set_to(config[property].to);
+      transition.set_from(config[property].from);
+      transition.set_progress_mode(config[property].mode);
     }
 
+    // There should always be a scale-y transitions. Once this is finished, we restore the
+    // original actor size.
     const transition = actor.get_transition('scale-y');
     transition.connect('completed', () => {
       actor.scale_x = 1.0;
@@ -381,10 +430,11 @@ class Extension {
 
     // -------------------------------------------------------------------- add the shader
 
-    // Add a cool shader to our window actor!
+    // Now add a cool shader to our window actor!
     const shader = this._currentEffect.createShader(actor, this._settings, forOpening);
 
     if (shader) {
+      // First remove any old effect.
       actor.remove_effect_by_name(`burn-my-windows-effect`);
       actor.add_effect_with_name(`burn-my-windows-effect`, shader);
 
@@ -401,6 +451,8 @@ class Extension {
       });
     }
 
+    // Finally, ensure that all animation times are set properly so that other extensions
+    // may guess how long it will take until windows are gone :)
     this._fixAnimationTimes(isDialogWindow, forOpening, duration);
   }
 
