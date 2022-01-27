@@ -304,6 +304,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Each effect page is based on a template widget. This template contains the title
     // and the preview button.
     // clang-format off
+    if (GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
     BurnMyWindowsEffectPage =
       GObject.registerClass({
         GTypeName: 'BurnMyWindowsEffectPage',
@@ -370,7 +371,8 @@ var PreferencesDialog = class PreferencesDialog {
           });
         }
       });
-    // clang-format on
+      // clang-format on
+    }
   }
 }
 
