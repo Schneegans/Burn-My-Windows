@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 20:08+0100\n"
+"POT-Creation-Date: 2022-01-28 20:40+0100\n"
 "PO-Revision-Date: 2022-01-28 19:10+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -25,9 +25,41 @@ msgstr ""
 msgid "Preview for %s"
 msgstr "Vorschau für %s"
 
-#: prefs.js:356
+#: prefs.js:358
 msgid "Close this Window to Preview the Effect!"
 msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
+
+#: src/BrokenGlass.js:57
+msgid "Broken Glass"
+msgstr ""
+
+#: src/TVEffect.js:56
+msgid "TV Effect"
+msgstr ""
+
+#: src/TRexAttack.js:56
+msgid "T-Rex Attack"
+msgstr ""
+
+#: src/Wisps.js:55
+msgid "Wisps"
+msgstr ""
+
+#: src/Fire.js:58
+msgid "Fire"
+msgstr ""
+
+#: src/EnergizeA.js:54
+msgid "Energize A"
+msgstr ""
+
+#: src/EnergizeB.js:54
+msgid "Energize B"
+msgstr ""
+
+#: src/Matrix.js:58
+msgid "Matrix"
+msgstr ""
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
