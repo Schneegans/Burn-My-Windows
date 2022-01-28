@@ -49,7 +49,7 @@
                     <child>
                       <object class="GtkButton" id="reset-trex-animation-time">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -95,7 +95,7 @@
                     <child>
                       <object class="GtkButton" id="reset-claw-scratch-scale">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -141,7 +141,7 @@
                     <child>
                       <object class="GtkButton" id="reset-claw-scratch-count">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -187,7 +187,7 @@
                     <child>
                       <object class="GtkButton" id="reset-claw-scratch-warp">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -221,7 +221,7 @@
                     <child>
                       <object class="GtkButton" id="reset-claw-scratch-color">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>

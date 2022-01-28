@@ -334,7 +334,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                             <property name="icon-size">1</property>
                           </object>
                         </child>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -382,7 +382,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                             <property name="icon-size">1</property>
                           </object>
                         </child>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -467,7 +467,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                     <child>
                       <object class="GtkButton" id="reset-simple-fade-animation-time">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -506,7 +506,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                     <child>
                       <object class="GtkButton" id="reset-simple-fade-width">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>

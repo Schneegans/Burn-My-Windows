@@ -106,7 +106,7 @@
                                 </child>
                                 <child>
                                   <object class="GtkMenuButton" id="open-effect-button">
-                                    <property name="label">Choose Effects</property>
+                                    <property name="label" translatable="yes">Choose Effects</property>
                                     <property name="menu-model">open-effect-menu</property>
                                   </object>
                                 </child>
@@ -150,7 +150,7 @@
                                 </child>
                                 <child>
                                   <object class="GtkMenuButton" id="close-effect-button">
-                                    <property name="label">Choose Effects</property>
+                                    <property name="label" translatable="yes">Choose Effects</property>
                                     <property name="menu-model">close-effect-menu</property>
                                   </object>
                                 </child>
@@ -182,7 +182,7 @@
                                 <child>
                                   <object class="GtkButton" id="reset-destroy-dialogs">
                                     <property name="icon-name">edit-clear-symbolic</property>
-                                    <property name="tooltip-text">Reset to Default Value</property>
+                                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                                     <style>
                                       <class name="flat" />
                                     </style>

@@ -58,7 +58,7 @@
                             <property name="icon-size">1</property>
                           </object>
                         </child>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -101,7 +101,7 @@
                             <property name="icon-size">1</property>
                           </object>
                         </child>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>

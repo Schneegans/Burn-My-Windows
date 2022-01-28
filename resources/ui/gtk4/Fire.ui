@@ -74,7 +74,7 @@
                     <child>
                       <object class="GtkButton" id="reset-fire-animation-time">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -120,7 +120,7 @@
                     <child>
                       <object class="GtkButton" id="reset-flame-scale">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -166,7 +166,7 @@
                     <child>
                       <object class="GtkButton" id="reset-flame-movement-speed">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -219,7 +219,7 @@
                     <child>
                       <object class="GtkButton" id="reset-flame-3d-noise">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -277,7 +277,7 @@
                     <child>
                       <object class="GtkButton" id="reset-fire-colors">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>

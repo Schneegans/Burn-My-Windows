@@ -49,7 +49,7 @@
                     <child>
                       <object class="GtkButton" id="reset-broken-glass-animation-time">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -95,7 +95,7 @@
                     <child>
                       <object class="GtkButton" id="reset-broken-glass-scale">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -141,7 +141,7 @@
                     <child>
                       <object class="GtkButton" id="reset-broken-glass-gravity">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -187,7 +187,7 @@
                     <child>
                       <object class="GtkButton" id="reset-broken-glass-blow-force">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -223,6 +223,7 @@
                             <property name="halign">start</property>
                             <property name="valign">center</property>
                             <property name="hexpand">1</property>
+                            <property name="wrap">1</property>
                             <style>
                               <class name="dim-label" />
                               <class name="caption" />
@@ -240,7 +241,7 @@
                     <child>
                       <object class="GtkButton" id="reset-broken-glass-use-pointer">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
