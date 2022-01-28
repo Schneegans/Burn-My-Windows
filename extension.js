@@ -75,10 +75,11 @@ class Extension {
     const extensionThis = this;
 
     // We will monkey-patch these methods. Let's store the original ones.
-    this._origAddWindowClone     = Workspace.prototype._addWindowClone;
-    this._origWindowRemoved      = Workspace.prototype._windowRemoved;
-    this._origDoRemoveWindow     = Workspace.prototype._doRemoveWindow;
-    this._origShouldAnimateActor = WindowManager.prototype._shouldAnimateActor;
+    this._origAddWindowClone        = Workspace.prototype._addWindowClone;
+    this._origWindowRemoved         = Workspace.prototype._windowRemoved;
+    this._origDoRemoveWindow        = Workspace.prototype._doRemoveWindow;
+    this._origShouldAnimateActor    = WindowManager.prototype._shouldAnimateActor;
+    this._origWaitForOverviewToHide = WindowManager.prototype._waitForOverviewToHide;
 
     // We will also override these animation times.
     this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
@@ -88,38 +89,28 @@ class Extension {
     // ------------------------------------------------ patching the window-open animation
 
     // Here we add an effect to the window-open animation. This is done whenever a new
-    // window is created.
+    // window is created. Usually, there is no real window animation for opening windows
+    // in the overview - only the window's clone is animated - but thanks to the hacks
+    // below, we can show the real animations in the overview.
+
+    // If a window is created the transitions are set up in the async _mapWindow of the
+    // WindowManager:
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1449
+    // AFAIK, overriding this method is not possible as it's called by a signal to
+    // which it is bound via the bind() method. To tweak the async transition
+    // anyways, we override the actors ease() method once - the next time it will be
+    // called by the _mapWindow(), we will intercept it!
     this._windowCreatedConnection =
         global.display.connect('window-created', (d, metaWin) => {
           let actor = metaWin.get_compositor_private();
 
-          // If we are currently in the overview, we add the effect to the original window
-          // actor. The window preview in the overview is basically a Clutter.Clone which
-          // shows the original window.
-          if (Main.overview.visible && !Main.overview.closing) {
-            const id = actor.connect('notify::mapped', () => {
-              extensionThis._setupEffect(actor, true);
-              actor.disconnect(id);
-            });
+          const orig = actor.ease;
+          actor.ease = function(...params) {
+            orig.apply(actor, params);
+            actor.ease = orig;
 
-          }
-          // If a window is created outside of the overview, the transitions are set up in
-          // the async _mapWindow of the WindowManager which can defer the actual showing
-          // of the window significantly, especially when currently leaving the overview:
-          // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1449
-          // AFAIK, overriding this method is not possible as it's called by a signal to
-          // which it is bound via the bind() method. To tweak the async transition
-          // anyways, we override the actors ease() method once - the next time it will be
-          // called by the _mapWindow(), we will intercept it!
-          else {
-            const orig = actor.ease;
-            actor.ease = function(...params) {
-              orig.apply(actor, params);
-              actor.ease = orig;
-
-              extensionThis._setupEffect(actor, true);
-            };
-          }
+            extensionThis._setupEffect(actor, true);
+          };
         });
 
     // Some of the effects require that the window's actor is enlarged to provide a bigger
@@ -147,13 +138,13 @@ class Extension {
       // Shell 3.38+. So effects cannot scale windows in the overview of GNOME 3.36...
       if (utils.shellVersionIsAtLeast(3, 38)) {
         const xID = realWindow.connect('notify::scale-x', () => {
-          if (realWindow.scale_x > 0) {
+          if (realWindow.scale_x > 0 && clone.allocation.get_size()[0] > 0) {
             clone.scale_x = realWindow.scale_x;
           }
         });
 
         const yID = realWindow.connect('notify::scale-y', () => {
-          if (realWindow.scale_y > 0) {
+          if (realWindow.scale_y > 0 && clone.allocation.get_size()[1] > 0) {
             clone.scale_y = realWindow.scale_y;
           }
         });
@@ -164,7 +155,7 @@ class Extension {
         });
       }
 
-      // This is actually need for the window-close animation on GNOME Shell 3.36.
+      // This is actually needed for the window-close animation on GNOME Shell 3.36.
       // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
       // but not _doRemoveWindow. The latter is required to trigger the repositioning of
       // the overview window layout. Therefore we call this method in addition.
@@ -175,6 +166,27 @@ class Extension {
       }
 
       return result;
+    };
+
+    // Usually, windows are faded in after the overview is completely hidden. We enable
+    // window-open animations by not waiting for this.
+    WindowManager.prototype._waitForOverviewToHide = async function() {
+      return Promise.resolve();
+    };
+
+    // Here comes the ULTRA-HACK: The method below is called (amongst others) by the
+    // _destroyWindow and _mapWindow methods of the WindowManager. Usually, it returns
+    // false when we are in the overview. This prevents the window animations. As we
+    // cannot monkey-patch the _destroyWindow or _mapWindow methods themselves, we check
+    // inside the method below whether it was called by either of those. If so, we return
+    // true. Let's see if this breaks stuff left and right...
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1125
+    WindowManager.prototype._shouldAnimateActor = function(...params) {
+      const caller = (new Error()).stack.split('\n')[1];
+      if (caller.includes('_destroyWindow@') || caller.includes('_mapWindow@')) {
+        return true;
+      }
+      return extensionThis._origShouldAnimateActor.apply(this, params);
     };
 
 
@@ -211,20 +223,6 @@ class Extension {
       if (extensionThis._shouldDestroy(this, metaWin)) {
         extensionThis._origDoRemoveWindow.apply(this, [metaWin]);
       }
-    };
-
-    // Here comes the ULTRA-HACK: The method below is called (amongst others) by the
-    // _destroyWindow method of the WindowManager. Usually, it returns false when we are
-    // in the overview. This prevents the window-close animation. As we cannot
-    // monkey-patch the _destroyWindow method itself, we check inside the method below
-    // whether it was called by _destroyWindow. If so, we return true. Let's see if this
-    // breaks stuff left and right...
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1125
-    WindowManager.prototype._shouldAnimateActor = function(...params) {
-      if ((new Error()).stack.split('\n')[1].includes('_destroyWindow@')) {
-        return true;
-      }
-      return extensionThis._origShouldAnimateActor.apply(this, params);
     };
 
     // With the code below, we hide the window-overlay (icon, label, close button) in the
@@ -288,10 +286,11 @@ class Extension {
     global.window_manager.disconnect(this._destroyConnection);
     global.display.disconnect(this._windowCreatedConnection);
 
-    Workspace.prototype._addWindowClone         = this._origAddWindowClone;
-    Workspace.prototype._windowRemoved          = this._origWindowRemoved;
-    Workspace.prototype._doRemoveWindow         = this._origDoRemoveWindow;
-    WindowManager.prototype._shouldAnimateActor = this._origShouldAnimateActor;
+    Workspace.prototype._addWindowClone            = this._origAddWindowClone;
+    Workspace.prototype._windowRemoved             = this._origWindowRemoved;
+    Workspace.prototype._doRemoveWindow            = this._origDoRemoveWindow;
+    WindowManager.prototype._shouldAnimateActor    = this._origShouldAnimateActor;
+    WindowManager.prototype._waitForOverviewToHide = this._origWaitForOverviewToHide;
 
     imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
     imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
