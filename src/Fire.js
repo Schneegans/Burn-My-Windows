@@ -127,7 +127,7 @@ var Fire = class Fire {
     dialog.getBuilder().get_object('settings-widget').connect('realize', (widget) => {
       const presets = [
         {
-          name: 'Default Fire',
+          name: _('Default Fire'),
           scale: 1.0,
           speed: 0.5,
           color1: 'rgba(76, 51, 25, 0.0)',
@@ -137,7 +137,7 @@ var Fire = class Fire {
           color5: 'rgba(255, 255, 255, 1)'
         },
         {
-          name: 'Hell Fire',
+          name: _('Hell Fire'),
           scale: 1.5,
           speed: 0.2,
           color1: 'rgba(0,0,0,0)',
@@ -147,7 +147,7 @@ var Fire = class Fire {
           color5: 'rgba(255, 255, 255, 1)'
         },
         {
-          name: 'Dark and Smutty',
+          name: _('Dark and Smutty'),
           scale: 1.0,
           speed: 0.5,
           color1: 'rgba(0,0,0,0)',
@@ -157,7 +157,7 @@ var Fire = class Fire {
           color5: 'rgb(255,238,166)'
         },
         {
-          name: 'Cold Breeze',
+          name: _('Cold Breeze'),
           scale: 1.5,
           speed: -0.1,
           color1: 'rgba(0,110,255,0)',
@@ -167,7 +167,7 @@ var Fire = class Fire {
           color5: 'rgb(97,189,255)'
         },
         {
-          name: 'Santa is Coming',
+          name: _('Santa is Coming'),
           scale: 0.4,
           speed: -0.5,
           color1: 'rgba(0,110,255,0)',
