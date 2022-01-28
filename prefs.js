@@ -332,7 +332,8 @@ var PreferencesDialog = class PreferencesDialog {
 
             // Create the preview-window.
             const window = new Gtk.Window({
-              title: `Preview for ${Effect.getLabel()}`,
+              // Translators: %s will be replaced by the effect's name.
+              title: _('Preview for %s').replace("%s", Effect.getLabel()),
               default_width: 800,
               default_height: 450,
               modal: true,
