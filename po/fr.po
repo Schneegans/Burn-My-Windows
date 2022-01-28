@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 20:40+0100\n"
+"POT-Creation-Date: 2022-01-28 20:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -44,6 +44,26 @@ msgstr ""
 
 #: src/Fire.js:58
 msgid "Fire"
+msgstr ""
+
+#: src/Fire.js:130
+msgid "Default Fire"
+msgstr ""
+
+#: src/Fire.js:140
+msgid "Hell Fire"
+msgstr ""
+
+#: src/Fire.js:150
+msgid "Dark and Smutty"
+msgstr ""
+
+#: src/Fire.js:160
+msgid "Cold Breeze"
+msgstr ""
+
+#: src/Fire.js:170
+msgid "Santa is Coming"
 msgstr ""
 
 #: src/EnergizeA.js:54
