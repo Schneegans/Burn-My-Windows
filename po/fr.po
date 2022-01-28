@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 20:54+0100\n"
+"POT-Creation-Date: 2022-01-28 21:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -114,6 +114,34 @@ msgstr ""
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
 msgid "Animation Time [ms]"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
+#: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
+#: resources/ui/gtk4/Matrix.ui:224 resources/ui/gtk4/Matrix.ui:258
+#: resources/ui/gtk4/BrokenGlass.ui:52 resources/ui/gtk4/BrokenGlass.ui:98
+#: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
+#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Wisps.ui:52
+#: resources/ui/gtk4/Wisps.ui:98 resources/ui/gtk4/Wisps.ui:132
+#: resources/ui/gtk4/Fire.ui:77 resources/ui/gtk4/Fire.ui:123
+#: resources/ui/gtk4/Fire.ui:169 resources/ui/gtk4/Fire.ui:222
+#: resources/ui/gtk4/Fire.ui:280 resources/ui/gtk4/TRexAttack.ui:52
+#: resources/ui/gtk4/TRexAttack.ui:98 resources/ui/gtk4/TRexAttack.ui:144
+#: resources/ui/gtk4/TRexAttack.ui:190 resources/ui/gtk4/TRexAttack.ui:224
+#: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
+#: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
+#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/EnergizeB.ui:52
+#: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
+#: resources/ui/gtk4/prefs.ui:185 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
+#: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
+#: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
+#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/TVEffect.ui:61
+#: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
+#: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
+#: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
+#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:233
+msgid "Reset to Default Value"
 msgstr ""
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
@@ -226,6 +254,11 @@ msgstr ""
 msgid "If multiple are selected, one is chosen randomly."
 msgstr ""
 
+#: resources/ui/gtk4/prefs.ui:109 resources/ui/gtk4/prefs.ui:153
+#: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
+msgid "Choose Effects"
+msgstr ""
+
 #: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
 msgid "Close Window Animation"
 msgstr ""
@@ -236,8 +269,4 @@ msgstr ""
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr ""
-
-#: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
-msgid "Choose Effects"
 msgstr ""
