@@ -8,41 +8,44 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-28 14:12+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-01-28 13:52+0000\n"
+"Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr ""
+msgstr "Homepage besuchen"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
-msgstr ""
+msgstr "Changelog anzeigen"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr ""
+msgstr "Fehler melden"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create a Custom Effect"
-msgstr ""
+msgstr "Einen neuen Effekt erstellen"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Donate"
-msgstr ""
+msgstr "Spenden"
 
 #: resources/ui/common/main-menu.ui:26
 msgid "Via PayPal"
-msgstr ""
+msgstr "Mit PayPal"
 
 #: resources/ui/common/main-menu.ui:30
 msgid "Via GitHub"
-msgstr ""
+msgstr "Mit GitHub"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
