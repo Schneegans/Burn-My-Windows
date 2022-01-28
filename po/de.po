@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-28 21:25+0100\n"
-"PO-Revision-Date: 2022-01-28 20:19+0000\n"
+"PO-Revision-Date: 2022-01-28 20:28+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -145,7 +145,7 @@ msgstr "Animationszeit [ms]"
 #: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
 #: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:233
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "Auf Standardwert zurücksetzen"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
