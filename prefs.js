@@ -351,9 +351,13 @@ var PreferencesDialog = class PreferencesDialog {
               orientation: Gtk.Orientation.VERTICAL,
               valign: Gtk.Align.CENTER,
               spacing: 10,
+              margin_start:50,
+              margin_end:50
             });
 
             const label = Gtk.Label.new(_('Close this Window to Preview the Effect!'));
+            label.wrap = true;
+            label.justify = Gtk.Justification.CENTER;
             label.get_style_context().add_class('large-title');
 
             const image = new Gtk.Image({
