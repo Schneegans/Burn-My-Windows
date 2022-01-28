@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-28 20:54+0100\n"
-"PO-Revision-Date: 2022-01-28 19:10+0000\n"
+"PO-Revision-Date: 2022-01-28 20:19+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -31,55 +31,55 @@ msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
-msgstr ""
+msgstr "Glassplitter"
 
 #: src/TVEffect.js:56
 msgid "TV Effect"
-msgstr ""
+msgstr "TV-Effekt"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "T-Rex-Angriff"
 
 #: src/Wisps.js:55
 msgid "Wisps"
-msgstr ""
+msgstr "Irrlichter"
 
 #: src/Fire.js:58
 msgid "Fire"
-msgstr ""
+msgstr "Feuer"
 
 #: src/Fire.js:130
 msgid "Default Fire"
-msgstr ""
+msgstr "Standardfeuer"
 
 #: src/Fire.js:140
 msgid "Hell Fire"
-msgstr ""
+msgstr "Höllenfeuer"
 
 #: src/Fire.js:150
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Dunkel und schmutzig"
 
 #: src/Fire.js:160
 msgid "Cold Breeze"
-msgstr ""
+msgstr "Kalte Brise"
 
 #: src/Fire.js:170
 msgid "Santa is Coming"
-msgstr ""
+msgstr "Weihnachtsgrüße"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr ""
+msgstr "Energie A"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
-msgstr ""
+msgstr "Energie B"
 
 #: src/Matrix.js:58
 msgid "Matrix"
-msgstr ""
+msgstr "Matrix"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
@@ -117,7 +117,7 @@ msgstr "Mit GitHub"
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Animationszeit [ms]"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
@@ -125,122 +125,124 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
 #: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
-msgstr ""
+msgstr "Größe"
 
 #: resources/ui/gtk4/Matrix.ui:116
 msgid "Randomness"
-msgstr ""
+msgstr "Zufälligkeit"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Vertikales Überschießen"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
-msgstr ""
+msgstr "Farbe der Spur"
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
-msgstr ""
+msgstr "Farbe der Spitze"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "Schwerkraft"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "Schlagkraft"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Von Mauszeigerposition zerbrechen"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"Die Scherben fliegen von der Stelle weg, an der sich Ihr Mauszeiger beim "
+"Schließen des Fensters befand."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
 #: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
 #: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
 #: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr ""
+msgstr "Farbe"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr ""
+msgstr "Voreinstellungen"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr ""
+msgstr "Geschwindigkeit"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "3D-Rauschen"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Erzeugt ein dynamischeres Feuer, erfordert jedoch mehr GPU-Leistung."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr ""
+msgstr "Farbverlauf"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Kratzergröße"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Kratzeranzahl"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "Warp-Effekt"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr ""
+msgstr "Blitzfarbe"
 
 #: resources/ui/gtk4/effectPage.ui:41 resources/ui/gtk3/effectPage.ui:41
 msgid "Preview this Effect"
-msgstr ""
+msgstr "Vorschau dieses Effekts"
 
 #: resources/ui/gtk4/prefs.ui:27 resources/ui/gtk3/prefs.ui:251
 msgid "General Options"
-msgstr ""
+msgstr "Allgemeine Optionen"
 
 #: resources/ui/gtk4/prefs.ui:47 resources/ui/gtk3/prefs.ui:49
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "Willkommen bei Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:58 resources/ui/gtk3/prefs.ui:60
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr ""
+msgstr "Wenn Sie diese Erweiterung mögen, empfehlen Sie sie Ihren Freunden :)"
 
 #: resources/ui/gtk4/prefs.ui:85 resources/ui/gtk3/prefs.ui:88
 msgid "Open Window Animation"
-msgstr ""
+msgstr "Fenster-Öffnen-Animation"
 
 #: resources/ui/gtk4/prefs.ui:94 resources/ui/gtk4/prefs.ui:138
 #: resources/ui/gtk3/prefs.ui:97 resources/ui/gtk3/prefs.ui:161
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "Wenn mehrere ausgewählt sind, wird eine zufällig ausgewählt."
 
 #: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
 msgid "Close Window Animation"
-msgstr ""
+msgstr "Fenster-Schließen-Animation"
 
 #: resources/ui/gtk4/prefs.ui:169 resources/ui/gtk3/prefs.ui:212
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "Effekte auch zu Dialogen hinzufügen"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Wählen Sie eine Voreinstellung"
 
 #: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
 msgid "Choose Effects"
-msgstr ""
+msgstr "Effekte auswählen"
