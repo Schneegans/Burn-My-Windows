@@ -416,10 +416,12 @@ class Extension {
     }
 
     // Once the transitions are finished, we restore the original actor size.
-    actor.connect('transitions-completed', () => {
+    const connectionID = actor.connect('transitions-completed', () => {
       actor.scale_x = 1.0;
       actor.scale_y = 1.0;
       actor.opacity = forOpening ? 1.0 : 0.0;
+
+      actor.disconnect(connectionID);
     });
 
     // -------------------------------------------------------------------- add the shader
