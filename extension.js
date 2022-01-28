@@ -97,7 +97,7 @@ class Extension {
           // actor. The window preview in the overview is basically a Clutter.Clone which
           // shows the original window.
           if (Main.overview.visible && !Main.overview.closing) {
-            const id = actor.connect('show', () => {
+            const id = actor.connect('notify::mapped', () => {
               extensionThis._setupEffect(actor, true);
               actor.disconnect(id);
             });
@@ -405,27 +405,21 @@ class Extension {
         transition = actor.get_transition(property);
       }
 
-      // For some reason, there are rare cases, where no transition is set up. We do not
-      // try to continue here...
-      if (!transition) {
-        utils.debug('Failed to set up transitions.');
-        this._fixAnimationTimes(isDialogWindow, forOpening, null);
-        return;
+      // Tweak the transition according to the config object. For some reason, there are
+      // rare cases, where no transition is set up. This happens from time to time...
+      if (transition) {
+        transition.set_duration(duration);
+        transition.set_to(config[property].to);
+        transition.set_from(config[property].from);
+        transition.set_progress_mode(config[property].mode);
       }
-
-      // Tweak the transition according to the config object.
-      transition.set_duration(duration);
-      transition.set_to(config[property].to);
-      transition.set_from(config[property].from);
-      transition.set_progress_mode(config[property].mode);
     }
 
-    // There should always be a scale-y transitions. Once this is finished, we restore the
-    // original actor size.
-    const transition = actor.get_transition('scale-y');
-    transition.connect('completed', () => {
+    // Once the transitions are finished, we restore the original actor size.
+    actor.connect('transitions-completed', () => {
       actor.scale_x = 1.0;
       actor.scale_y = 1.0;
+      actor.opacity = forOpening ? 1.0 : 0.0;
     });
 
     // -------------------------------------------------------------------- add the shader
@@ -434,6 +428,15 @@ class Extension {
     const shader = this._currentEffect.createShader(actor, this._settings, forOpening);
 
     if (shader) {
+      // There should always be an opacity transition going on...
+      const transition = actor.get_transition('opacity');
+
+      if (!transition) {
+        this._fixAnimationTimes(isDialogWindow, forOpening, null);
+        utils.debug('Cannot setup shader without opacity transition.')
+        return;
+      }
+
       // First remove any old effect.
       actor.remove_effect_by_name(`burn-my-windows-effect`);
       actor.add_effect_with_name(`burn-my-windows-effect`, shader);
