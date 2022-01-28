@@ -15,6 +15,8 @@
 
 const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -350,7 +352,7 @@ var PreferencesDialog = class PreferencesDialog {
               spacing: 10,
             });
 
-            const label = Gtk.Label.new('Close this Window to Preview the Effect!');
+            const label = Gtk.Label.new(_('Close this Window to Preview the Effect!'));
             label.get_style_context().add_class('large-title');
 
             const image = new Gtk.Image({
@@ -376,8 +378,10 @@ var PreferencesDialog = class PreferencesDialog {
   }
 }
 
-// Nothing to do for now...
-function init() {}
+// This is used for setting up the translations.
+function init() {
+  ExtensionUtils.initTranslations();
+}
 
 // This function is called when the preferences window is created to build and return a
 // Gtk widget. We create a new instance of the PreferencesDialog class each time this
