@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 14:59+0100\n"
+"POT-Creation-Date: 2022-01-28 20:08+0100\n"
 "PO-Revision-Date: 2022-01-28 13:52+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -19,7 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.11-dev\n"
 
-#: prefs.js:355
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:336
+#, javascript-format
+msgid "Preview for %s"
+msgstr ""
+
+#: prefs.js:356
 msgid "Close this Window to Preview the Effect!"
 msgstr ""
 
