@@ -15,6 +15,8 @@
 
 const {Gio, GObject} = imports.gi;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -53,7 +55,7 @@ var Fire = class Fire {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'Fire';
+    return _('Fire');
   }
 
   // -------------------------------------------------------------------- API for prefs.js

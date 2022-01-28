@@ -15,6 +15,8 @@
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -49,7 +51,7 @@ var EnergizeB = class EnergizeB {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'Energize B';
+    return _('Energize B');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
