@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="tv-animation-time">
     <property name="upper">5000</property>
