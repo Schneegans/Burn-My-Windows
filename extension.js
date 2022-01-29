@@ -109,7 +109,16 @@ class Extension {
             orig.apply(actor, params);
             actor.ease = orig;
 
-            extensionThis._setupEffect(actor, true);
+            // There are cases where the ease() is called prior to mapping the actor. If
+            // the actor is not yet mapped, we defer the effect creation.
+            if (actor.mapped) {
+              extensionThis._setupEffect(actor, true);
+            } else {
+              const connectionID = actor.connect('notify::mapped', () => {
+                extensionThis._setupEffect(actor, true);
+                actor.disconnect(connectionID);
+              });
+            }
           };
         });
 
@@ -415,13 +424,14 @@ class Extension {
     }
 
     // Once the transitions are finished, we restore the original actor size.
-    const connectionID = actor.connect('transitions-completed', () => {
-      actor.scale_x = 1.0;
-      actor.scale_y = 1.0;
-      actor.opacity = forOpening ? 1.0 : 0.0;
+    if (forOpening) {
+      const connectionID = actor.connect('transitions-completed', () => {
+        actor.scale_x = 1.0;
+        actor.scale_y = 1.0;
+        actor.disconnect(connectionID);
+      });
+    }
 
-      actor.disconnect(connectionID);
-    });
 
     // -------------------------------------------------------------------- add the shader
 
