@@ -16,6 +16,7 @@
 * Added a menu entry with a link to the guide for creating new effect types.
 * Added a new option to the Matrix Effect: **Vertical Overshooting**: This can add some vertical variation to the start and end position of the letter drops.
 * Thanks to improved timing, the default animation time of several effects could be reduced.
+* The README now shows the current lines of code and the current comment percentage using my [dynamic-badges-action](https://github.com/Schneegans/dynamic-badges-action).
 
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
