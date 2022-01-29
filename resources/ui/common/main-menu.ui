@@ -17,8 +17,12 @@
         <attribute name="action">prefs.bugs</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Create a Custom Effect</attribute>
+        <attribute name="label" translatable="yes">Create an Effect</attribute>
         <attribute name="action">prefs.new-effect</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Translate</attribute>
+        <attribute name="action">prefs.translate</attribute>
       </item>
       <submenu>
         <attribute name="label" translatable="yes">Donate</attribute>
