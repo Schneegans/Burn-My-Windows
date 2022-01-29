@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-29 05:40+0100\n"
-"PO-Revision-Date: 2022-01-28 20:28+0000\n"
+"PO-Revision-Date: 2022-01-29 04:43+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -95,11 +95,11 @@ msgstr "Fehler melden"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
-msgstr ""
+msgstr "Einen Effekt hinzufügen"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr ""
+msgstr "Übersetzen"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
