@@ -8,7 +8,7 @@
 
 * **Effects for Window Opening.** You can now select effects which are applied on newly opened windows! I expect that there are some bugs left, so please [report any issue you find](https://github.com/Schneegans/Burn-My-Windows/issues)!
 * **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
-* The effect-configuration pages of the preferences dialog now have **Preview Buttons** which con be used to, well, preview the current settings (without having to enable the effect first).
+* The effect-configuration pages of the preferences dialog now have **Preview Buttons** which can be used to, well, preview the current settings (without having to enable the effect first).
 
 #### Other Enhancements
 
