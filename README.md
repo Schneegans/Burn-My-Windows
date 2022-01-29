@@ -27,7 +27,7 @@ Effect | Preview
 
 ## 💞 These People _love_ this Extension
 
-While coding new features is the most awesome way to contribute, providing financial support will help me stay motivated to invest my spare time to keep the project alive in the future.
+While [coding new features](docs/how-to-create-new-effects.md) or [translating the extension](https://hosted.weblate.org/engage/burn-my-windows/) are the most awesome ways to contribute, providing financial support will help me stay motivated to invest my spare time to keep the project alive in the future.
 
 <h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
@@ -118,7 +118,7 @@ gnome-extensions enable burn-my-windows@schneegans.github.com
 ## :octocat: I want to contribute!
 
 That's great!
-Most likely, you want to [create a new effect](docs/how-to-create-new-effects.md)?
+Most likely, you want to [create a new effect](docs/how-to-create-new-effects.md) or to  [translate the extension](https://hosted.weblate.org/engage/burn-my-windows/)?
 Here are some basic rules to get you started:
 Commits should start with a Capital letter and should be written in present tense (e.g. __:tada: Add cool new feature__ instead of __:tada: Added cool new feature__).
 You should also start your commit message with **one** applicable emoji.
