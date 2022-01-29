@@ -12,6 +12,7 @@
 
 #### Other Enhancements
 
+* **Translations!** It is now possible to [translate the preferences dialog](https://hosted.weblate.org/engage/burn-my-windows/).
 * Added a menu entry with a link to the guide for creating new effect types.
 * Added a new option to the Matrix Effect: **Vertical Overshooting**: This can add some vertical variation to the start and end position of the letter drops.
 * Thanks to improved timing, the default animation time of several effects could be reduced.

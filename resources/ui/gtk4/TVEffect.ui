@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkBox" id="tv-prefs">
     <property name="orientation">vertical</property>
@@ -49,7 +49,7 @@
                     <child>
                       <object class="GtkButton" id="reset-tv-animation-time">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -83,7 +83,7 @@
                     <child>
                       <object class="GtkButton" id="reset-tv-effect-color">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
