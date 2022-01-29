@@ -78,5 +78,9 @@ jobs:
       contains(github.event.head_commit.message, '[run-ci]')
     steps:
     - uses: actions/checkout@v2
+    - name: Download Dependencies
+      run: |
+        sudo apt update -qq
+        sudo apt install gettext -qq
     - name: Build Burn-My-Windows
       run: make
