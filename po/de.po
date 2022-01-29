@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 21:25+0100\n"
+"POT-Creation-Date: 2022-01-29 05:40+0100\n"
 "PO-Revision-Date: 2022-01-28 20:28+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -20,12 +20,12 @@ msgstr ""
 "X-Generator: Weblate 4.11-dev\n"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:336
+#: prefs.js:337
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Vorschau für %s"
 
-#: prefs.js:358
+#: prefs.js:359
 msgid "Close this Window to Preview the Effect!"
 msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
 
@@ -94,18 +94,22 @@ msgid "Report a Bug"
 msgstr "Fehler melden"
 
 #: resources/ui/common/main-menu.ui:20
-msgid "Create a Custom Effect"
-msgstr "Einen neuen Effekt erstellen"
+msgid "Create an Effect"
+msgstr ""
 
 #: resources/ui/common/main-menu.ui:24
+msgid "Translate"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:28
 msgid "Donate"
 msgstr "Spenden"
 
-#: resources/ui/common/main-menu.ui:26
+#: resources/ui/common/main-menu.ui:30
 msgid "Via PayPal"
 msgstr "Mit PayPal"
 
-#: resources/ui/common/main-menu.ui:30
+#: resources/ui/common/main-menu.ui:34
 msgid "Via GitHub"
 msgstr "Mit GitHub"
 
@@ -275,3 +279,6 @@ msgstr "Effekte auch zu Dialogen hinzufügen"
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
 msgstr "Wählen Sie eine Voreinstellung"
+
+#~ msgid "Create a Custom Effect"
+#~ msgstr "Einen neuen Effekt erstellen"
