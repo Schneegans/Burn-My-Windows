@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-28 21:25+0100\n"
+"POT-Creation-Date: 2022-01-29 05:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:336
+#: prefs.js:337
 #, javascript-format
 msgid "Preview for %s"
 msgstr ""
 
-#: prefs.js:358
+#: prefs.js:359
 msgid "Close this Window to Preview the Effect!"
 msgstr ""
 
@@ -92,18 +92,22 @@ msgid "Report a Bug"
 msgstr ""
 
 #: resources/ui/common/main-menu.ui:20
-msgid "Create a Custom Effect"
+msgid "Create an Effect"
 msgstr ""
 
 #: resources/ui/common/main-menu.ui:24
+msgid "Translate"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:28
 msgid "Donate"
 msgstr ""
 
-#: resources/ui/common/main-menu.ui:26
+#: resources/ui/common/main-menu.ui:30
 msgid "Via PayPal"
 msgstr ""
 
-#: resources/ui/common/main-menu.ui:30
+#: resources/ui/common/main-menu.ui:34
 msgid "Via GitHub"
 msgstr ""
 
