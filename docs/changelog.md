@@ -8,16 +8,16 @@
 
 * **Effects for Window Opening.** You can now select effects which are applied on newly opened windows! I expect that there are some bugs left, so please [report any issue you find](https://github.com/Schneegans/Burn-My-Windows/issues)!
 * **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
-* The effect-configuration pages of the preferences dialog now have **Preview Buttons** which can be used to, well, preview the current settings (without having to enable the effect first).
+* **Preview Buttons** have been added to the effect-configuration pages of the preferences dialog. These can be used to, well, preview the current settings (without having to enable the effect first).
+* **Translations!** It is now possible to [translate the preferences dialog](https://hosted.weblate.org/engage/burn-my-windows/).
+* **A "Vertical Overshooting" option** was added to the Matrix Effect: This can add some vertical variation to the start and end position of the letter drops.
 
 #### Other Enhancements
 
-* **Translations!** It is now possible to [translate the preferences dialog](https://hosted.weblate.org/engage/burn-my-windows/).
 * Added a menu entry with a link to the guide for creating new effect types.
-* Added a new option to the Matrix Effect: **Vertical Overshooting**: This can add some vertical variation to the start and end position of the letter drops.
 * Thanks to improved timing, the default animation time of several effects could be reduced.
-* **Add advanced CI tests:** For each commit to `main`, it is now tested whether the extension can be installed and if the preferences dialog can be shown on GNOME Shell 3.36, 3.38, 40, and 41. Both, X11 and Wayland are checked. 
 * The README now shows the current lines of code and the current comment percentage using my [dynamic-badges-action](https://github.com/Schneegans/dynamic-badges-action).
+* **Add advanced CI tests:** For each commit to `main`, it is now tested whether the extension can be installed and if the preferences dialog can be shown on GNOME Shell 3.36, 3.38, 40, and 41. Both, X11 and Wayland are checked. 
 
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
