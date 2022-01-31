@@ -8,23 +8,26 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-29 05:40+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-01-31 08:50+0000\n"
+"Last-Translator: Théo Remon <theo.remon+weblate@uswery.eu>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:337
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "Aperçu pour %s"
 
 #: prefs.js:359
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "Fermer cette fenêtre pour"
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
@@ -32,7 +35,7 @@ msgstr ""
 
 #: src/TVEffect.js:56
 msgid "TV Effect"
-msgstr ""
+msgstr "Effet TV"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
@@ -96,19 +99,19 @@ msgstr ""
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr ""
+msgstr "Traduire"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
-msgstr ""
+msgstr "Donner"
 
 #: resources/ui/common/main-menu.ui:30
 msgid "Via PayPal"
-msgstr ""
+msgstr "Par PayPal"
 
 #: resources/ui/common/main-menu.ui:34
 msgid "Via GitHub"
-msgstr ""
+msgstr "Par GitHub"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -118,7 +121,7 @@ msgstr ""
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Durée d'animation (ms)"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -146,7 +149,7 @@ msgstr ""
 #: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
 #: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:233
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "Réinitialiser à la valeur par défaut"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
@@ -154,7 +157,7 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
 #: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
-msgstr ""
+msgstr "Échelle"
 
 #: resources/ui/gtk4/Matrix.ui:116
 msgid "Randomness"
@@ -174,7 +177,7 @@ msgstr ""
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "Gravité"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
@@ -195,7 +198,7 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
 #: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr ""
+msgstr "Couleur"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
@@ -203,19 +206,20 @@ msgstr ""
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr ""
+msgstr "Vitesse"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "Bruit 3D"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
+#, fuzzy
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Crée un feu plus dynamique mais demande un GPU plus puissant."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr ""
+msgstr "Dégradé"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -239,15 +243,15 @@ msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:27 resources/ui/gtk3/prefs.ui:251
 msgid "General Options"
-msgstr ""
+msgstr "Options générales"
 
 #: resources/ui/gtk4/prefs.ui:47 resources/ui/gtk3/prefs.ui:49
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "Bienvenue dans Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:58 resources/ui/gtk3/prefs.ui:60
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr ""
+msgstr "Si vous aimez cette extension, recommendez-la à vos amis :)"
 
 #: resources/ui/gtk4/prefs.ui:85 resources/ui/gtk3/prefs.ui:88
 msgid "Open Window Animation"
