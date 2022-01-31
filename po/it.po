@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-29 05:40+0100\n"
-"PO-Revision-Date: 2022-01-31 04:48+0000\n"
+"PO-Revision-Date: 2022-02-02 19:55+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -39,11 +39,11 @@ msgstr "Effetto TV"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "Attacco T-Rex"
 
 #: src/Wisps.js:55
 msgid "Wisps"
-msgstr ""
+msgstr "Scintille"
 
 #: src/Fire.js:58
 msgid "Fire"
@@ -59,11 +59,11 @@ msgstr "Fuoco Infernale"
 
 #: src/Fire.js:150
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Scuro e Tenebroso"
 
 #: src/Fire.js:160
 msgid "Cold Breeze"
-msgstr ""
+msgstr "Brezza Fredda"
 
 #: src/Fire.js:170
 msgid "Santa is Coming"
@@ -71,11 +71,11 @@ msgstr "Babbo Natale sta arrivando"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr ""
+msgstr "Energizzare A"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
-msgstr ""
+msgstr "Energizzare B"
 
 #: src/Matrix.js:58
 msgid "Matrix"
@@ -165,7 +165,7 @@ msgstr "Casuale"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Sovrapposizione Verticale"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
@@ -173,25 +173,27 @@ msgstr ""
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
-msgstr ""
+msgstr "Colore della Punta"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "Gravità"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "Forza Esplosiva"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Frammento dalla posizione del puntatore"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"I frammenti voleranno fuori dal punto in cui si trovava il puntatore del "
+"mouse quando chiudi la finestra."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
 #: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
@@ -210,7 +212,7 @@ msgstr "Velocità"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "Rumore 3D"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
@@ -222,19 +224,19 @@ msgstr "Gradiente"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Scala ad Artiglio"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Numero di colpi"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "Effetto Distorsione"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr ""
+msgstr "Colore Flash"
 
 #: resources/ui/gtk4/effectPage.ui:41 resources/ui/gtk3/effectPage.ui:41
 msgid "Preview this Effect"
@@ -254,7 +256,7 @@ msgstr "Se ti piace questa estensione, consigliala ai tuoi amici :)"
 
 #: resources/ui/gtk4/prefs.ui:85 resources/ui/gtk3/prefs.ui:88
 msgid "Open Window Animation"
-msgstr ""
+msgstr "Animazione all'apertura della finestra"
 
 #: resources/ui/gtk4/prefs.ui:94 resources/ui/gtk4/prefs.ui:138
 #: resources/ui/gtk3/prefs.ui:97 resources/ui/gtk3/prefs.ui:161
@@ -268,7 +270,7 @@ msgstr "Scegli Effetti"
 
 #: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
 msgid "Close Window Animation"
-msgstr ""
+msgstr "Animazione alla chiusura della finestra"
 
 #: resources/ui/gtk4/prefs.ui:169 resources/ui/gtk3/prefs.ui:212
 msgid "Also Add Effects to Dialogs"
