@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-29 05:40+0100\n"
 "PO-Revision-Date: 2022-01-31 09:08+0000\n"
-"Last-Translator: Reda <redxxiii@zaclys.net>\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
 "Language: fr\n"
@@ -268,17 +268,16 @@ msgstr "Si plusieurs sont sélectionnés, un est choisi au hasard."
 #: resources/ui/gtk4/prefs.ui:109 resources/ui/gtk4/prefs.ui:153
 #: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
 msgid "Choose Effects"
-msgstr "Choisir des effets"
+msgstr "Sélectionner des effets"
 
 #: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
 msgid "Close Window Animation"
 msgstr "Animation de fermeture de fenêtre"
 
 #: resources/ui/gtk4/prefs.ui:169 resources/ui/gtk3/prefs.ui:212
-#, fuzzy
 msgid "Also Add Effects to Dialogs"
-msgstr "Ajouter des effets aux boîtes de dialogue"
+msgstr "Appliquer également les effets aux boîtes de dialogue"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Sélectionner un préréglage"
