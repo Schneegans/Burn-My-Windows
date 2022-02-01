@@ -8,107 +8,110 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-29 05:40+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-02-02 19:55+0000\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:337
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "%s-voorvertoning"
 
 #: prefs.js:359
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "Sluit dit venster om het effect voor te vertonen."
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
-msgstr ""
+msgstr "Gebroken glas"
 
 #: src/TVEffect.js:56
 msgid "TV Effect"
-msgstr ""
+msgstr "Tv-effect"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "T-Rex-aanval"
 
 #: src/Wisps.js:55
 msgid "Wisps"
-msgstr ""
+msgstr "Dwaallicht"
 
 #: src/Fire.js:58
 msgid "Fire"
-msgstr ""
+msgstr "Vuur"
 
 #: src/Fire.js:130
 msgid "Default Fire"
-msgstr ""
+msgstr "Normaal vuur"
 
 #: src/Fire.js:140
 msgid "Hell Fire"
-msgstr ""
+msgstr "Hellevuur"
 
 #: src/Fire.js:150
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Donker en zwart"
 
 #: src/Fire.js:160
 msgid "Cold Breeze"
-msgstr ""
+msgstr "Koude wind"
 
 #: src/Fire.js:170
 msgid "Santa is Coming"
-msgstr ""
+msgstr "Kerstmanvuur"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr ""
+msgstr "Stimulatie A"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
-msgstr ""
+msgstr "Stimulatie B"
 
 #: src/Matrix.js:58
 msgid "Matrix"
-msgstr ""
+msgstr "Matrix"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr ""
+msgstr "Website openen"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
-msgstr ""
+msgstr "Wijzigingslog bekijken"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr ""
+msgstr "Bug melden"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
-msgstr ""
+msgstr "Effect creëren"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr ""
+msgstr "Vertalen"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
-msgstr ""
+msgstr "Doneren"
 
 #: resources/ui/common/main-menu.ui:30
 msgid "Via PayPal"
-msgstr ""
+msgstr "Via PayPal"
 
 #: resources/ui/common/main-menu.ui:34
 msgid "Via GitHub"
-msgstr ""
+msgstr "Via GitHub"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -118,7 +121,7 @@ msgstr ""
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Animatieduur [in ms]"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -146,7 +149,7 @@ msgstr ""
 #: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
 #: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:233
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "Standaardwaarde herstellen"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
@@ -154,123 +157,126 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
 #: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
-msgstr ""
+msgstr "Schaal"
 
 #: resources/ui/gtk4/Matrix.ui:116
 msgid "Randomness"
-msgstr ""
+msgstr "Willekeurigheid"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Verticale verspringing"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
-msgstr ""
+msgstr "Sleepspoorkleur"
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
-msgstr ""
+msgstr "Piekkleur"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "Zwaartekracht"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "Windkracht"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Uiteenvallen bij cursorpositie"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"De stukken vliegen weg vanaf de cursorpositie na het sluiten van een venster."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
 #: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
 #: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
 #: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr ""
+msgstr "Voorinstellingen"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr ""
+msgstr "Snelheid"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "3D-ruis"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Zorgt voor een speels vuur, maar vereist meer computerkracht."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr ""
+msgstr "Verloop"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Schaal van pootkrabben"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Aantal pootkrabben"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "Vervormingseffect"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr ""
+msgstr "Flitskleur"
 
 #: resources/ui/gtk4/effectPage.ui:41 resources/ui/gtk3/effectPage.ui:41
 msgid "Preview this Effect"
-msgstr ""
+msgstr "Voorvertonen"
 
 #: resources/ui/gtk4/prefs.ui:27 resources/ui/gtk3/prefs.ui:251
 msgid "General Options"
-msgstr ""
+msgstr "Algemene voorkeuren"
 
 #: resources/ui/gtk4/prefs.ui:47 resources/ui/gtk3/prefs.ui:49
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "Welkom bij ‘Burn-My-Windows’!"
 
 #: resources/ui/gtk4/prefs.ui:58 resources/ui/gtk3/prefs.ui:60
 msgid "If you like this extension, recommend it to your friends :)"
 msgstr ""
+"Als u deze uitbreiding leuk vindt, deel hem dan met vrienden en kennissen. :)"
 
 #: resources/ui/gtk4/prefs.ui:85 resources/ui/gtk3/prefs.ui:88
 msgid "Open Window Animation"
-msgstr ""
+msgstr "Animatie bij openen van vensters"
 
 #: resources/ui/gtk4/prefs.ui:94 resources/ui/gtk4/prefs.ui:138
 #: resources/ui/gtk3/prefs.ui:97 resources/ui/gtk3/prefs.ui:161
 msgid "If multiple are selected, one is chosen randomly."
 msgstr ""
+"Als er meerdere effecten zijn geselecteerd, dan wordt er willekeurig gekozen."
 
 #: resources/ui/gtk4/prefs.ui:109 resources/ui/gtk4/prefs.ui:153
 #: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
 msgid "Choose Effects"
-msgstr ""
+msgstr "Kies de effecten"
 
 #: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
 msgid "Close Window Animation"
-msgstr ""
+msgstr "Animatie bij sluiten van vensters"
 
 #: resources/ui/gtk4/prefs.ui:169 resources/ui/gtk3/prefs.ui:212
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "Dialoogvensters ook voorzien van effecten"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Kies een voorinstelling"
