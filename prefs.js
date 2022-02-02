@@ -14,6 +14,7 @@
 'use strict';
 
 const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
+const ByteArray                      = imports.byteArray;
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
@@ -124,21 +125,65 @@ var PreferencesDialog = class PreferencesDialog {
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('prefs', group);
 
-        const addAction = (name, uri) => {
+        const addURIAction = (name, uri) => {
           const action = Gio.SimpleAction.new(name, null);
           action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
           group.add_action(action);
         };
 
         // clang-format off
-        addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
-        addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
-        addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
-        addAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
-        addAction('translate',     'https://hosted.weblate.org/engage/burn-my-windows/');
-        addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
-        addAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        addURIAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
+        addURIAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
+        addURIAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
+        addURIAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
+        addURIAction('translate',     'https://hosted.weblate.org/engage/burn-my-windows/');
+        addURIAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
+        addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
         // clang-format on
+
+        // Add the about dialog.
+        const aboutAction = Gio.SimpleAction.new('about', null);
+        aboutAction.connect('activate', () => {
+          // The JSON report format from weblate is a bit weird. Here we extract all
+          // unique names from the translation report.
+          const translators = new Set();
+          this._getJSONResource('/credits/translators.json').forEach(i => {
+            for (const j of Object.values(i)) {
+              j.forEach(k => translators.add(k[1]));
+            }
+          });
+
+          const sponsors = this._getJSONResource('/credits/sponsors.json');
+
+          const dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
+          dialog.set_logo_icon_name('burn-my-windows-symbolic');
+          dialog.set_program_name(`Burn-My-Windows ${Me.metadata.version}`);
+          dialog.set_website('https://github.com/Schneegans/Burn-My-Windows');
+          dialog.set_authors(['Simon Schneegans']);
+          dialog.set_copyright('© 2022 Simon Schneegans');
+          dialog.set_translator_credits([...translators].join('\n'));
+          if (sponsors.gold.length > 0) {
+            dialog.add_credit_section(_('Gold Sponsors'), sponsors.gold);
+          }
+          if (sponsors.silver.length > 0) {
+            dialog.add_credit_section(_('Silver Sponsors'), sponsors.silver);
+          }
+          if (sponsors.bronze.length > 0) {
+            dialog.add_credit_section(_('Bronze Sponsors'), sponsors.bronze);
+          }
+          if (sponsors.past.length > 0) {
+            dialog.add_credit_section(_('Past Sponsors'), sponsors.past);
+          }
+          dialog.set_license_type(Gtk.License.GPL_3_0);
+          dialog.set_comments(_('Disintegrate your windows with style.'));
+
+          if (utils.isGTK4()) {
+            dialog.show();
+          } else {
+            dialog.show_all();
+          }
+        });
+        group.add_action(aboutAction);
       }
 
       // Populate the open-effects drop-down menu.
@@ -299,6 +344,14 @@ var PreferencesDialog = class PreferencesDialog {
     }
 
     this._bindResetButton(settingsKey);
+  }
+
+  // Reads the contents of a JSON file contained in the global resources archive. The data
+  // is parsed and returned as a JavaScript object / array.
+  _getJSONResource(path) {
+    const data   = Gio.resources_lookup_data(path, 0);
+    const string = ByteArray.toString(ByteArray.fromGBytes(data));
+    return JSON.parse(string);
   }
 
   // Initializes template widgets used by the preferences dialog.

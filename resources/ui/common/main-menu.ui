@@ -36,5 +36,11 @@
         </item>
       </submenu>
     </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">About Burn-My-Windows</attribute>
+        <attribute name="action">prefs.about</attribute>
+      </item>
+    </section>
   </menu>
 </interface>
