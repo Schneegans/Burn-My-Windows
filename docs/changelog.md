@@ -4,6 +4,10 @@
 
 **Release Date:** TBD
 
+#### New Features
+
+* Added an about-dialog which shows all translators and sponsors.
+
 #### Enhancements
 
 * There are several new translations! Thanks a lot to all the translators! We now have translations for:
