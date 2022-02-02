@@ -460,9 +460,12 @@ class Extension {
         shader.set_uniform_value('uSizeY', actor.height);
       });
 
-      transition.connect('completed', () => {
-        actor.remove_effect_by_name(`burn-my-windows-effect`);
-      });
+      // Remove the effect if the animation finished or was interrupted.
+      if (forOpening) {
+        transition.connect('stopped', () => {
+          actor.remove_effect_by_name(`burn-my-windows-effect`);
+        });
+      }
     }
 
     // Finally, ensure that all animation times are set properly so that other extensions
