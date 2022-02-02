@@ -1,5 +1,25 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 11](https://github.com/schneegans/Burn-My-Windows/releases/tag/v11)
+
+**Release Date:** TBD
+
+#### Enhancements
+
+* There are several new translations! Thanks a lot to all the translators! We now have translations for:
+  * German 
+  * English
+  * Czech 
+  * Dutch 
+  * French 
+  * Italian 
+  * Norwegian Bokmål 
+  * Spanish
+
+#### Fixes
+
+ * Fixed an issue which caused corrupted windows when trying to maximize windows while the window-open animation was still running (#82, #86).
+
 ## [Burn My Window 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
 
 **Release Date:** 2022-01-31
