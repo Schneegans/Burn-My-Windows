@@ -50,6 +50,7 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
+  Pouhiou<br>
   DAPREMONT Christophe<br>
   <a href="https://github.com/manero6">@manero6</a><br>
   <a href="https://github.com/RickStanley">@RickStanley</a><br>
