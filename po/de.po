@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:10+0100\n"
-"PO-Revision-Date: 2022-01-29 04:43+0000\n"
+"PO-Revision-Date: 2022-02-03 12:13+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -21,19 +21,19 @@ msgstr ""
 
 #: prefs.js:166
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Gold-Sponsoren"
 
 #: prefs.js:169
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Silber-Sponsoren"
 
 #: prefs.js:172
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Bronze-Sponsoren"
 
 #: prefs.js:175
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Ehemalige Sponsoren"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:389
@@ -131,7 +131,7 @@ msgstr "Mit GitHub"
 
 #: resources/ui/common/main-menu.ui:41
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "Über Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
