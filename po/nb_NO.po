@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-29 05:40+0100\n"
+"POT-Creation-Date: 2022-02-03 13:10+0100\n"
 "PO-Revision-Date: 2022-01-29 12:30+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"burn-my-windows/core/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/burn-my-"
+"windows/core/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,13 +19,29 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.11-dev\n"
 
+#: prefs.js:166
+msgid "Gold Sponsors"
+msgstr ""
+
+#: prefs.js:169
+msgid "Silver Sponsors"
+msgstr ""
+
+#: prefs.js:172
+msgid "Bronze Sponsors"
+msgstr ""
+
+#: prefs.js:175
+msgid "Past Sponsors"
+msgstr ""
+
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:337
+#: prefs.js:389
 #, javascript-format
 msgid "Preview for %s"
 msgstr ""
 
-#: prefs.js:359
+#: prefs.js:411
 msgid "Close this Window to Preview the Effect!"
 msgstr ""
 
@@ -112,6 +128,10 @@ msgstr "med PayPal"
 #: resources/ui/common/main-menu.ui:34
 msgid "Via GitHub"
 msgstr "på GitHub"
+
+#: resources/ui/common/main-menu.ui:41
+msgid "About Burn-My-Windows"
+msgstr ""
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
