@@ -11,18 +11,19 @@
 #### Enhancements
 
 * There are several new translations! Thanks a lot to all the translators! We now have translations for:
-  * German 
+  * German
   * English
-  * Czech 
-  * Dutch 
-  * French 
-  * Italian 
-  * Norwegian Bokmål 
+  * Czech
+  * Dutch
+  * French
+  * Italian
+  * Norwegian Bokmål
   * Spanish
+* A new issue template for suggesting new effects has been added.
 
 #### Fixes
 
- * Fixed an issue which caused corrupted windows when trying to maximize windows while the window-open animation was still running (#82, #86).
+* Fixed an issue which caused corrupted windows when trying to maximize windows while the window-open animation was still running (#82, #86, #91).
 
 ## [Burn My Window 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
 
