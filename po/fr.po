@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-03 13:10+0100\n"
-"PO-Revision-Date: 2022-02-02 19:55+0000\n"
+"PO-Revision-Date: 2022-02-05 12:53+0000\n"
 "Last-Translator: Reda <redxxiii@zaclys.net>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
@@ -21,19 +21,19 @@ msgstr ""
 
 #: prefs.js:166
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Sponsors Or"
 
 #: prefs.js:169
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Sponsors Argent"
 
 #: prefs.js:172
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Sponsors Bronze"
 
 #: prefs.js:175
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Anciens Sponsors"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:389
@@ -99,7 +99,7 @@ msgstr "Matrix"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr "Voir le site Web"
+msgstr "Visiter la page d'accueil"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
@@ -131,7 +131,7 @@ msgstr "Via GitHub"
 
 #: resources/ui/common/main-menu.ui:41
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "À propos de Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -242,7 +242,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr "Dégradé"
+msgstr "Gradient"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -288,7 +288,7 @@ msgstr "Si plusieurs sont sélectionnés, un est choisi au hasard."
 #: resources/ui/gtk4/prefs.ui:109 resources/ui/gtk4/prefs.ui:153
 #: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
 msgid "Choose Effects"
-msgstr "Choisissez les effets"
+msgstr "Choisir les effets"
 
 #: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
 msgid "Close Window Animation"
