@@ -175,7 +175,6 @@ var PreferencesDialog = class PreferencesDialog {
             dialog.add_credit_section(_('Past Sponsors'), sponsors.past);
           }
           dialog.set_license_type(Gtk.License.GPL_3_0);
-          dialog.set_comments(_('Disintegrate your windows with style.'));
 
           if (utils.isGTK4()) {
             dialog.show();
