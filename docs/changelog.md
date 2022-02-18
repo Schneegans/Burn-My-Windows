@@ -1,5 +1,14 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
+
+**Release Date:** TBD
+
+#### New Features
+
+* Added initial support for GNOME Shell 42.
+* The preferences dialog now uses libadwaita on GNOME Shell 42.
+
 ## [Burn My Window 11](https://github.com/schneegans/Burn-My-Windows/releases/tag/v11)
 
 **Release Date:** 2022-02-03
