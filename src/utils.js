@@ -71,6 +71,10 @@ function shellVersionIsAtLeast(major, minor) {
   }
 
   if (GS_MAJOR == major) {
+    if (minor == 'alpha') return true;
+    if (minor == 'beta' && GS_MINOR == 'alpha') return false;
+    if (minor == 'beta' && GS_MINOR == 'beta') return true;
+
     return GS_MINOR >= minor;
   }
 

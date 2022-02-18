@@ -4,10 +4,6 @@
 
   <template class="BurnMyWindowsEffectPage" parent="GtkBox">
     <property name="orientation">vertical</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
-    <property name="margin-start">60</property>
-    <property name="margin-end">60</property>
     <property name="hexpand">1</property>
     <property name="spacing">10</property>
 
@@ -44,8 +40,8 @@
               </object>
             </property>
             <style>
-              <class name="suggested-action" />
               <class name="pill-button" />
+              <class name="flat" />
             </style>
           </object>
         </child>

@@ -16,6 +16,14 @@
 const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
 const ByteArray                      = imports.byteArray;
 
+// libadwaita is available starting with GNOME Shell 42.
+let Adw = null;
+try {
+  Adw = imports.gi.Adw;
+} catch (e) {
+  // Nothing to do.
+}
+
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
@@ -86,26 +94,116 @@ var PreferencesDialog = class PreferencesDialog {
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
 
-    // Add all other effect pages.
-    const stack = this._builder.get_object('main-stack');
-    ALL_EFFECTS.forEach(Effect => {
-      const [minMajor, minMinor] = Effect.getMinShellVersion();
-      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
-        const page = new BurnMyWindowsEffectPage(Effect, this);
+    // Starting with GNOME Shell 42, the settings dialog uses libadwaita. We have to use a
+    // different layout, as the stack sidebar looks pretty ugly with the included
+    // Adw.Clamp...
+    if (utils.shellVersionIsAtLeast(42, 'beta')) {
 
-        // Add the Effect's preferences (if any).
-        const preferences = Effect.getPreferences(this);
-        if (preferences) {
-          this.gtkBoxAppend(page, preferences);
+      // This is our top-level widget which we will return later.
+      this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
+
+      // Add the general options page to the settings dialog.
+      const generalPrefs = this._builder.get_object('general-prefs');
+      this.gtkBoxAppend(this._widget, generalPrefs);
+
+      // Then add a preferences group with action rows to open the effect subpages.
+      const group = new Adw.PreferencesGroup({title: _('Effect Options')});
+      this.gtkBoxAppend(this._widget, group);
+
+      ALL_EFFECTS.forEach(Effect => {
+        const [minMajor, minMinor] = Effect.getMinShellVersion();
+        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+
+          const row = new Adw.ActionRow({title: Effect.getLabel(), activatable: true});
+          row.add_suffix(new Gtk.Image({icon_name: 'go-next-symbolic'}));
+
+          // Open a subpage with the effect's settings.
+          row.connect('activated', () => {
+            const page         = new BurnMyWindowsEffectPage(Effect, this);
+            page.valign        = Gtk.Align.CENTER;
+            page.margin_top    = 10;
+            page.margin_bottom = 10;
+            page.margin_start  = 10;
+            page.margin_end    = 10;
+
+            // Add the Effect's preferences (if any).
+            const preferences = Effect.getPreferences(this);
+            if (preferences) {
+              this.gtkBoxAppend(page, preferences);
+            }
+
+            // Add a button for back navigation.
+            const backButton = new Gtk.Button({
+              halign: Gtk.Align.CENTER,
+              label: _('Go Back'),
+            });
+            backButton.add_css_class('suggested-action');
+            backButton.add_css_class('pill-button');
+            backButton.connect('clicked', () => {
+              row.get_root().close_subpage();
+            });
+
+            this.gtkBoxAppend(page, backButton);
+
+            // Wrap the preferences group in an Adw.Clamp.
+            const clamp = new Adw.Clamp({
+              child: page,
+              maximum_size: 600,
+              tightening_threshold: 400,
+            });
+
+            // Open the subpage on click.
+            row.get_root().present_subpage(clamp);
+          });
+
+          group.add(row);
         }
+      });
 
-        stack.add_titled(page, Effect.getNick(), Effect.getLabel());
-      }
-    });
+    }
+    // On older GNOME versions, we use a StackSidebar.
+    else {
 
-    // This is our top-level widget which we will return later.
-    this._widget = this._builder.get_object('settings-widget');
+      // This is our top-level widget which we will return later.
+      this._widget = new Gtk.Box({
+        orientation: Gtk.Orientation.HORIZONTAL,
+      });
+
+      const stack = new Gtk.Stack({
+        transition_type: Gtk.StackTransitionType.SLIDE_UP_DOWN,
+      });
+
+      // Add the general options page.
+      const generalPage        = this._builder.get_object('general-prefs');
+      generalPage.margin_start = 60;
+      generalPage.margin_end   = 60;
+      stack.add_titled(generalPage, 'general', _('General Options'));
+
+      this.gtkBoxAppend(this._widget, new Gtk.StackSidebar({stack: stack}));
+      this.gtkBoxAppend(this._widget, stack);
+
+      // Add all other effect pages.
+      ALL_EFFECTS.forEach(Effect => {
+        const [minMajor, minMinor] = Effect.getMinShellVersion();
+        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+
+          const page         = new BurnMyWindowsEffectPage(Effect, this);
+          page.margin_start  = 60;
+          page.margin_end    = 60;
+          page.margin_top    = 60;
+          page.margin_bottom = 60;
+
+          // Add the Effect's preferences (if any).
+          const preferences = Effect.getPreferences(this);
+          if (preferences) {
+            this.gtkBoxAppend(page, preferences);
+          }
+
+          stack.add_titled(page, Effect.getNick(), Effect.getLabel());
+        }
+      });
+    }
 
     // Some things can only be done once the widget is shown as we do not have access to
     // the toplevel widget before.
@@ -119,7 +217,18 @@ var PreferencesDialog = class PreferencesDialog {
       {
         // Add the menu button to the title bar.
         const menu = this._builder.get_object('menu-button');
-        window.get_titlebar().pack_end(menu);
+
+        // Starting with GNOME Shell 42, we have to hack our way through the widget tree
+        // of the Adw.PreferencesWindow...
+        if (utils.shellVersionIsAtLeast(42, 'beta')) {
+          const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
+          header.pack_end(menu);
+
+          // Allow closing of the sub pages.
+          window.can_navigate_back = true;
+        } else {
+          window.get_titlebar().pack_end(menu);
+        }
 
         // Populate the menu with actions.
         const group = Gio.SimpleActionGroup.new();
@@ -352,6 +461,19 @@ var PreferencesDialog = class PreferencesDialog {
     const data   = Gio.resources_lookup_data(path, 0);
     const string = ByteArray.toString(ByteArray.fromGBytes(data));
     return JSON.parse(string);
+  }
+
+  // This traverses the widget tree below the given parent recursively and returns the
+  // first widget of the given type.
+  _findWidgetByType(parent, type) {
+    for (const child of [...parent]) {
+      if (child instanceof type) return child;
+
+      const match = this._findWidgetByType(child, type);
+      if (match) return match;
+    }
+
+    return null;
   }
 
   // Initializes template widgets used by the preferences dialog.
