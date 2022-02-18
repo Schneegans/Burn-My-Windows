@@ -9,6 +9,10 @@
 * Added initial support for GNOME Shell 42.
 * The preferences dialog now uses libadwaita on GNOME Shell 42.
 
+#### Enhancements
+
+* Added [Liberapay](https://liberapay.com/Schneegans) to the sponsorship options.
+
 ## [Burn My Window 11](https://github.com/schneegans/Burn-My-Windows/releases/tag/v11)
 
 **Release Date:** 2022-02-03
