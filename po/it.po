@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-03 13:10+0100\n"
+"POT-Creation-Date: 2022-02-18 20:33+0100\n"
 "PO-Revision-Date: 2022-02-13 14:57+0000\n"
 "Last-Translator: Mario <mario03@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -19,29 +19,41 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.11-dev\n"
 
-#: prefs.js:166
+#: prefs.js:111
+msgid "Effect Options"
+msgstr ""
+
+#: prefs.js:139
+msgid "Go Back"
+msgstr ""
+
+#: prefs.js:181
+msgid "General Options"
+msgstr "Opzioni generali"
+
+#: prefs.js:276
 msgid "Gold Sponsors"
 msgstr "Sponsor d'oro"
 
-#: prefs.js:169
+#: prefs.js:279
 msgid "Silver Sponsors"
 msgstr "Sponsor d'argento"
 
-#: prefs.js:172
+#: prefs.js:282
 msgid "Bronze Sponsors"
 msgstr "Sponsor di bronzo"
 
-#: prefs.js:175
+#: prefs.js:285
 msgid "Past Sponsors"
 msgstr "Sponsor passati"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:389
+#: prefs.js:512
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Anteprima per %s"
 
-#: prefs.js:411
+#: prefs.js:534
 msgid "Close this Window to Preview the Effect!"
 msgstr "Chiudi questa finestra per visualizzare in anteprima l'effetto!"
 
@@ -121,15 +133,7 @@ msgstr "Traduci"
 msgid "Donate"
 msgstr "Donare"
 
-#: resources/ui/common/main-menu.ui:30
-msgid "Via PayPal"
-msgstr "Tramite PayPal"
-
-#: resources/ui/common/main-menu.ui:34
-msgid "Via GitHub"
-msgstr "Tramite GitHub"
-
-#: resources/ui/common/main-menu.ui:41
+#: resources/ui/common/main-menu.ui:45
 msgid "About Burn-My-Windows"
 msgstr "Informazioni su Burn-My-Windows"
 
@@ -159,7 +163,7 @@ msgstr "Tempo animazione [ms]"
 #: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
 #: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/EnergizeB.ui:52
 #: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
-#: resources/ui/gtk4/prefs.ui:185 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/Wisps.ui:68
 #: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
 #: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
 #: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
@@ -167,7 +171,7 @@ msgstr "Tempo animazione [ms]"
 #: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
 #: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
 #: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
-#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:233
+#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
 msgid "Reset to Default Value"
 msgstr "Ripristina valore predefinito"
 
@@ -258,44 +262,46 @@ msgstr "Effetto Distorsione"
 msgid "Flash Color"
 msgstr "Colore Flash"
 
-#: resources/ui/gtk4/effectPage.ui:41 resources/ui/gtk3/effectPage.ui:41
+#: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
 msgstr "Anteprima di questo effetto"
 
-#: resources/ui/gtk4/prefs.ui:27 resources/ui/gtk3/prefs.ui:251
-msgid "General Options"
-msgstr "Opzioni generali"
-
-#: resources/ui/gtk4/prefs.ui:47 resources/ui/gtk3/prefs.ui:49
+#: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
 msgstr "Benvenuto in Burn-My-Windows!"
 
-#: resources/ui/gtk4/prefs.ui:58 resources/ui/gtk3/prefs.ui:60
+#: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
 msgstr "Se ti piace questa estensione, consigliala ai tuoi amici :)"
 
-#: resources/ui/gtk4/prefs.ui:85 resources/ui/gtk3/prefs.ui:88
+#: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
 msgstr "Animazione all'apertura della finestra"
 
-#: resources/ui/gtk4/prefs.ui:94 resources/ui/gtk4/prefs.ui:138
-#: resources/ui/gtk3/prefs.ui:97 resources/ui/gtk3/prefs.ui:161
+#: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
+#: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
 msgstr "Se ne vengono selezionati multipli, uno viene scelto a caso."
 
-#: resources/ui/gtk4/prefs.ui:109 resources/ui/gtk4/prefs.ui:153
-#: resources/ui/gtk3/prefs.ui:118 resources/ui/gtk3/prefs.ui:182
+#: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
+#: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
 msgid "Choose Effects"
 msgstr "Scegli Effetti"
 
-#: resources/ui/gtk4/prefs.ui:129 resources/ui/gtk3/prefs.ui:152
+#: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
 msgid "Close Window Animation"
 msgstr "Animazione alla chiusura della finestra"
 
-#: resources/ui/gtk4/prefs.ui:169 resources/ui/gtk3/prefs.ui:212
+#: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
 msgstr "Aggiungi anche effetti ai dialoghi"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
 msgstr "Scegli un predefinito"
+
+#~ msgid "Via PayPal"
+#~ msgstr "Tramite PayPal"
+
+#~ msgid "Via GitHub"
+#~ msgstr "Tramite GitHub"
