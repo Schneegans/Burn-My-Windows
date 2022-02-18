@@ -27,12 +27,16 @@
       <submenu>
         <attribute name="label" translatable="yes">Donate</attribute>
         <item>
-          <attribute name="label" translatable="yes">Via PayPal</attribute>
+          <attribute name="label">PayPal</attribute>
           <attribute name="action">prefs.donate-paypal</attribute>
         </item>
         <item>
-          <attribute name="label" translatable="yes">Via GitHub</attribute>
+          <attribute name="label">GitHub</attribute>
           <attribute name="action">prefs.donate-github</attribute>
+        </item>
+        <item>
+          <attribute name="label">Liberapay</attribute>
+          <attribute name="action">prefs.donate-liberapay</attribute>
         </item>
       </submenu>
     </section>
