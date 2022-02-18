@@ -168,8 +168,6 @@ var PreferencesDialog = class PreferencesDialog {
       // This is our top-level widget which we will return later.
       this._widget = new Gtk.Box({
         orientation: Gtk.Orientation.HORIZONTAL,
-        margin_start: 50,
-        margin_end: 50,
       });
 
       const stack = new Gtk.Stack({
@@ -177,8 +175,10 @@ var PreferencesDialog = class PreferencesDialog {
       });
 
       // Add the general options page.
-      stack.add_titled(
-          this._builder.get_object('general-prefs'), 'general', _('General Options'));
+      const generalPage        = this._builder.get_object('general-prefs');
+      generalPage.margin_start = 60;
+      generalPage.margin_end   = 60;
+      stack.add_titled(generalPage, 'general', _('General Options'));
 
       this.gtkBoxAppend(this._widget, new Gtk.StackSidebar({stack: stack}));
       this.gtkBoxAppend(this._widget, stack);
