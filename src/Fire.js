@@ -124,7 +124,7 @@ var Fire = class Fire {
 
   // This populates the preset dropdown menu for the fire options.
   static _createFirePresets(dialog) {
-    dialog.getBuilder().get_object('settings-widget').connect('realize', (widget) => {
+    dialog.getBuilder().get_object('fire-prefs').connect('realize', (widget) => {
       const presets = [
         {
           name: _('Default Fire'),
