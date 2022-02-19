@@ -2,7 +2,7 @@
 
 ## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
 
-**Release Date:** TBD
+**Release Date:** 2022-02-19
 
 #### New Features
 
