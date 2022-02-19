@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 20:33+0100\n"
-"PO-Revision-Date: 2022-02-13 14:57+0000\n"
-"Last-Translator: Mario <mario03@gmail.com>\n"
+"PO-Revision-Date: 2022-02-21 11:58+0000\n"
+"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
 "Language: it\n"
@@ -21,11 +21,11 @@ msgstr ""
 
 #: prefs.js:111
 msgid "Effect Options"
-msgstr ""
+msgstr "Opzioni effetto"
 
 #: prefs.js:139
 msgid "Go Back"
-msgstr ""
+msgstr "Indietro"
 
 #: prefs.js:181
 msgid "General Options"
