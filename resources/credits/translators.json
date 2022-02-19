@@ -4,7 +4,7 @@
       [
         "epost@anotheragency.no",
         "Allan Nordh\u00f8y",
-        7
+        3
       ]
     ]
   },
@@ -13,7 +13,7 @@
       [
         "vistausss@fastmail.com",
         "Heimen Stoffels",
-        60
+        65
       ]
     ]
   },
@@ -22,16 +22,21 @@
       [
         "jiri.doubravsky@gmail.com",
         "Ji\u0159\u00ed Doubravsk\u00fd",
-        72
+        70
       ]
     ]
   },
   {
     "Italian": [
       [
+        "mario03@gmail.com",
+        "Mario",
+        1
+      ],
+      [
         "albano_battistella@hotmail.com",
         "albanobattistella",
-        54
+        59
       ]
     ]
   },
@@ -40,7 +45,7 @@
       [
         "code@simonschneegans.de",
         "Simon Schneegans",
-        54
+        59
       ]
     ]
   },
@@ -49,26 +54,31 @@
       [
         "redxxiii@zaclys.net",
         "Reda",
-        5
+        13
       ],
       [
         "theo.remon+weblate@uswery.eu",
         "Th\u00e9o Remon",
-        26
+        24
       ],
       [
         "bonnemainsnathan@gmail.com",
         "Nathan",
-        42
+        40
       ]
     ]
   },
   {
     "Spanish": [
       [
+        "ulicesah@gmail.com",
+        "Ulices",
+        5
+      ],
+      [
         "oscfdezdz@tuta.io",
         "\u00d3scar Fern\u00e1ndez D\u00edaz",
-        57
+        55
       ]
     ]
   }
