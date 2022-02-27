@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 20:33+0100\n"
-"PO-Revision-Date: 2022-02-21 11:58+0000\n"
+"PO-Revision-Date: 2022-02-28 12:56+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.11-dev\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: prefs.js:111
 msgid "Effect Options"
@@ -99,11 +99,11 @@ msgstr "Babbo Natale sta arrivando"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr "Energizzare A"
+msgstr "Energia A"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
-msgstr "Energizzare B"
+msgstr "Energia B"
 
 #: src/Matrix.js:58
 msgid "Matrix"
