@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=L2aaNF_rPHo"><img src ="docs/pics/teaser.jpg" /></a>
+</p>
+
 <h1 align="center">🔥 Set GNOME Shell on Fire!</h1>
 
 <p align="center">
