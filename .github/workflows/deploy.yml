@@ -6,7 +6,7 @@ on:
       - '**'
 
 jobs:
-  source_code:
+  extension_bundle:
     name: Extension Bundle
     runs-on: ubuntu-latest
     steps:
@@ -20,10 +20,9 @@ jobs:
       run: |
         make zip
     - name: Upload Release
-      uses: svenstaro/upload-release-action@v1-release
+      uses: svenstaro/upload-release-action@2.2.1
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: burn-my-windows@schneegans.github.com.zip
-        asset_name: burn-my-windows@schneegans.github.com.zip
         tag: ${{ github.ref }}
         overwrite: true
