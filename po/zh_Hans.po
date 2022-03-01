@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 20:33+0100\n"
-"PO-Revision-Date: 2022-03-01 10:57+0000\n"
+"PO-Revision-Date: 2022-03-01 15:05+0000\n"
 "Last-Translator: 刘韬 <lyuutau@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "burn-my-windows/core/zh_Hans/>\n"
@@ -65,16 +65,19 @@ msgid "Close this Window to Preview the Effect!"
 msgstr "关闭此窗口，预览效果!"
 
 #: src/BrokenGlass.js:57
+#, fuzzy
 msgid "Broken Glass"
-msgstr ""
+msgstr "破碎的玻璃"
 
 #: src/TVEffect.js:56
+#, fuzzy
 msgid "TV Effect"
-msgstr ""
+msgstr "电视效果"
 
 #: src/TRexAttack.js:56
+#, fuzzy
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "霸王龙攻击"
 
 #: src/Wisps.js:55
 msgid "Wisps"
@@ -89,20 +92,24 @@ msgid "Default Fire"
 msgstr ""
 
 #: src/Fire.js:140
+#, fuzzy
 msgid "Hell Fire"
-msgstr ""
+msgstr "地狱之火"
 
 #: src/Fire.js:150
+#, fuzzy
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "黑暗和污秽"
 
 #: src/Fire.js:160
+#, fuzzy
 msgid "Cold Breeze"
-msgstr ""
+msgstr "寒风"
 
 #: src/Fire.js:170
+#, fuzzy
 msgid "Santa is Coming"
-msgstr ""
+msgstr "圣诞老人来了"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
@@ -114,35 +121,36 @@ msgstr ""
 
 #: src/Matrix.js:58
 msgid "Matrix"
-msgstr ""
+msgstr "矩阵"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr ""
+msgstr "访问主页"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
-msgstr ""
+msgstr "查看更新日志"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr ""
+msgstr "报告错误"
 
 #: resources/ui/common/main-menu.ui:20
+#, fuzzy
 msgid "Create an Effect"
-msgstr ""
+msgstr "创建效果"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr ""
+msgstr "翻译"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
-msgstr ""
+msgstr "捐赠"
 
 #: resources/ui/common/main-menu.ui:45
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "关于 Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -151,8 +159,9 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:42 resources/ui/gtk3/Fire.ui:93
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
+#, fuzzy
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "动画时间 [毫秒]"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -180,39 +189,45 @@ msgstr ""
 #: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
 #: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "重置为默认值"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
 #: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/EnergizeB.ui:70
 #: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
 #: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
+#, fuzzy
 msgid "Scale"
-msgstr ""
+msgstr "规模"
 
 #: resources/ui/gtk4/Matrix.ui:116
+#, fuzzy
 msgid "Randomness"
-msgstr ""
+msgstr "随机性"
 
 #: resources/ui/gtk4/Matrix.ui:162
+#, fuzzy
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "垂直过冲"
 
 #: resources/ui/gtk4/Matrix.ui:208
+#, fuzzy
 msgid "Trail Color"
-msgstr ""
+msgstr "尾迹颜色"
 
 #: resources/ui/gtk4/Matrix.ui:242
+#, fuzzy
 msgid "Tip Color"
-msgstr ""
+msgstr "提示颜色"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "重力"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
+#, fuzzy
 msgid "Blow Force"
-msgstr ""
+msgstr "吹力"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
@@ -229,19 +244,20 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
 #: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr ""
+msgstr "颜色"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr ""
+msgstr "预设"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr ""
+msgstr "速度"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
+#, fuzzy
 msgid "3D Noise"
-msgstr ""
+msgstr "3D 噪点"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
