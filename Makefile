@@ -1,74 +1,89 @@
 SHELL := /bin/bash
 
-JS_FILES = $(shell find -type f -and \( -name "*.js" \))
-UI_FILES = $(shell find -type f -and \( -name "*.ui" \))
+# We define these here to make the makefile easier to port to another extension.
+NAME     := burn-my-windows
+DOMAIN   := schneegans.github.com
+ZIP_NAME := $(NAME)@$(DOMAIN).zip
+
+# Some of the recipes below depend on some of these files.
+JS_FILES       = $(shell find -type f -and \( -name "*.js" \))
+UI_FILES       = $(shell find -type f -and \( -name "*.ui" \))
 RESOURCE_FILES = $(shell find resources -mindepth 2 -type f)
+LOCALES_PO     = $(wildcard po/*.po)
+LOCALES_MO     = $(patsubst po/%.po,locale/%/LC_MESSAGES/$(NAME).mo,$(LOCALES_PO))
 
-LOCALES_PO = $(wildcard po/*.po)
-LOCALES_MO = $(patsubst po/%.po,locale/%/LC_MESSAGES/burn-my-windows.mo,$(LOCALES_PO))
+# These files will be included in the extension zip file.
+ZIP_CONTENT = $(JS_FILES) $(LOCALES_MO) resources/$(NAME).gresource \
+              schemas/gschemas.compiled metadata.json LICENSE
 
-.PHONY: zip install uninstall all-po pot clean
+# These five recipes can be invoked by the user.
+.PHONY: zip install uninstall pot clean
 
-zip: burn-my-windows@schneegans.github.com.zip
+# The zip recipes only bundles the extension without installing it.
+zip: $(ZIP_NAME)
 
-install: burn-my-windows@schneegans.github.com.zip
-	gnome-extensions install "burn-my-windows@schneegans.github.com.zip" --force
+# The install recipes creates the extension zip and installs it.
+install: $(ZIP_NAME)
+	gnome-extensions install "$(ZIP_NAME)" --force
 	@echo "Extension installed successfully! Now restart the Shell ('Alt'+'F2', then 'r')."
 
+# This uninstalls the previously installed extension.
 uninstall:
-	gnome-extensions uninstall "burn-my-windows@schneegans.github.com"
+	gnome-extensions uninstall "$(NAME)@$(DOMAIN)"
 
-all-po: $(LOCALES_PO)
-
+# Use gettext to generate a translation template file.
 pot: $(JS_FILES) $(UI_FILES)
-	@echo "Generating 'burn-my-windows.pot'..."
+	@echo "Generating '$(NAME).pot'..."
 	@xgettext --from-code=UTF-8 \
-			  --add-comments=Translators \
-			  --copyright-holder="Simon Schneegans" \
-			  --package-name="Burn-My-Windows" \
-			  --output=po/burn-my-windows.pot \
-			  $(JS_FILES) $(UI_FILES)
+	          --add-comments=Translators \
+	          --copyright-holder="Simon Schneegans" \
+	          --package-name="$(NAME)" \
+	          --output=po/$(NAME).pot \
+	          $(JS_FILES) $(UI_FILES)
 
+# This removes all temporary files created with the other recipes.
 clean:
-	rm -rf \
-	burn-my-windows@schneegans.github.com.zip \
-	resources/burn-my-windows.gresource \
-	resources/burn-my-windows.gresource.xml \
-	schemas/gschemas.compiled \
-	locale \
-	ui/*.ui~ \
-	po/*.po~
+	rm -rf $(ZIP_NAME) \
+	       resources/$(NAME).gresource \
+	       resources/$(NAME).gresource.xml \
+	       schemas/gschemas.compiled \
+	       locale
 
-burn-my-windows@schneegans.github.com.zip: schemas/gschemas.compiled resources/burn-my-windows.gresource $(JS_FILES) $(LOCALES_MO)
+# This bundles the extension and checks whether it is small enough to be uploaded to
+# extensions.gnome.org. We do not use "gnome-extensions pack" for this, as this is not
+# readily available on the GitHub runners.
+$(ZIP_NAME): $(ZIP_CONTENT)
 	@echo "Packing zip file..."
-	@rm --force burn-my-windows@schneegans.github.com.zip
-	@zip -r burn-my-windows@schneegans.github.com.zip -- *.js src/*.js resources/burn-my-windows.gresource schemas/gschemas.compiled $(LOCALES_MO) metadata.json LICENSE
-	
+	@rm --force $(ZIP_NAME)
+	@zip $(ZIP_NAME) -- $(ZIP_CONTENT)
+
 	@#Check if the zip size is too big to be uploaded
-	@if [[ "$$(stat -c %s burn-my-windows@schneegans.github.com.zip)" -gt 4096000 ]]; then \
-	  echo "ERROR! The extension is too big to be uploaded to the extensions website, keep it smaller than 4096 KB!"; exit 1; \
-	fi
+	@SIZE=$$(unzip -Zt $(ZIP_NAME) | awk '{print $$3}') ; \
+	 if [[ $$SIZE -gt 5242880 ]]; then \
+	    echo "ERROR! The extension is too big to be uploaded to" \
+	         "the extensions website, keep it smaller than 5 MB!"; \
+	    exit 1; \
+	 fi
 
-resources/burn-my-windows.gresource: resources/burn-my-windows.gresource.xml
-	@echo "Compiling resources..."
-	@glib-compile-resources --sourcedir="resources" --generate resources/burn-my-windows.gresource.xml
-
-resources/burn-my-windows.gresource.xml: $(RESOURCE_FILES)
-	@echo "Creating resources xml..."
-	@FILES=$$(find "resources" -mindepth 2 -type f -printf "%P\n" | xargs -i echo "<file>{}</file>") ; \
-	echo "<?xml version='1.0' encoding='UTF-8'?><gresources><gresource> $$FILES </gresource></gresources>" > resources/burn-my-windows.gresource.xml
-
-schemas/gschemas.compiled: schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml
+# Compiles the gschemas.compiled file from the gschema.xml file.
+schemas/gschemas.compiled: schemas/org.gnome.shell.extensions.$(NAME).gschema.xml
 	@echo "Compiling schemas..."
 	@glib-compile-schemas schemas
 
-locale/%/LC_MESSAGES/burn-my-windows.mo: po/%.po
+# Compiles the gresource file from the gresources.xml.
+resources/$(NAME).gresource: resources/$(NAME).gresource.xml
+	@echo "Compiling resources..."
+	@glib-compile-resources --sourcedir="resources" --generate resources/$(NAME).gresource.xml
+
+# Generates the gresources.xml based on all files in the resources subdirectory.
+resources/$(NAME).gresource.xml: $(RESOURCE_FILES)
+	@echo "Creating resources xml..."
+	@FILES=$$(find "resources" -mindepth 2 -type f -printf "%P\n" | xargs -i echo "<file>{}</file>") ; \
+	 echo "<?xml version='1.0' encoding='UTF-8'?><gresources><gresource> $$FILES </gresource></gresources>" \
+	     > resources/$(NAME).gresource.xml
+
+# Compiles all *.po files to *.mo files.
+locale/%/LC_MESSAGES/$(NAME).mo: po/%.po
 	@echo "Compiling $@"
 	@mkdir -p locale/$*/LC_MESSAGES
 	@msgfmt -c -o $@ $<
-
-po/%.po:
-	@echo "Updating $@"
-	msgmerge --previous --update $@ po/burn-my-windows.pot
-	@# Output translation progress
-	@msgfmt --check --verbose --output-file=/dev/null $@
