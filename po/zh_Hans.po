@@ -8,51 +8,61 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 20:33+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-03-01 10:57+0000\n"
+"Last-Translator: 刘韬 <lyuutau@outlook.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.11.1-dev\n"
 
 #: prefs.js:111
+#, fuzzy
 msgid "Effect Options"
-msgstr ""
+msgstr "效果选项"
 
 #: prefs.js:139
 msgid "Go Back"
 msgstr ""
 
 #: prefs.js:181
+#, fuzzy
 msgid "General Options"
-msgstr ""
+msgstr "一般选项"
 
 #: prefs.js:276
+#, fuzzy
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "金牌赞助商"
 
 #: prefs.js:279
+#, fuzzy
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "银牌赞助商"
 
 #: prefs.js:282
+#, fuzzy
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "铜牌赞助商"
 
 #: prefs.js:285
+#, fuzzy
 msgid "Past Sponsors"
-msgstr ""
+msgstr "往届赞助商"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:512
-#, javascript-format
+#, fuzzy, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "%s 的预览"
 
 #: prefs.js:534
+#, fuzzy
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "关闭此窗口，预览效果!"
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
