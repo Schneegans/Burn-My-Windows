@@ -93,7 +93,7 @@ set_setting() {
 }
 
 # This makes a screen capture (cropped to $CROP) inside the container and stores it
-# relative to this script at the given png file name.
+# on the host relative to this script with the given file name.
 capture() {
   do_in_pod import -window root -crop $CROP out.png
   podman cp "${POD}":/home/gnomeshell/out.png "${1}"
