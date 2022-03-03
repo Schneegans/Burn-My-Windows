@@ -117,6 +117,9 @@ if (utils.isInShellProcess()) {
 
       const color = Clutter.Color.from_string(settings.get_string('energize-a-color'))[1];
 
+      // If we are currently performing integration test, the animation uses a fixed seed.
+      const testMode = settings.get_boolean('test-mode');
+
       this.set_shader_source(`
 
       // Inject some common shader snippets.
@@ -124,7 +127,8 @@ if (utils.isInShellProcess()) {
       ${shaderSnippets.noise()}
       ${shaderSnippets.edgeMask()}
 
-      const vec2  SEED            = vec2(${Math.random()}, ${Math.random()});
+      const vec2  SEED            = vec2(${testMode ? 0 : Math.random()}, 
+                                         ${testMode ? 0 : Math.random()});
       const float FADE_IN_TIME    = 0.3;
       const float FADE_OUT_TIME   = 0.6;
       const float HEART_FADE_TIME = 0.3;

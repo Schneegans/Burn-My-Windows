@@ -25,6 +25,12 @@
       <description>The effect with this nick will be used for the next window-open animation.</description>
     </key>
 
+    <key name="test-mode" type="b">
+      <default>false</default>
+      <summary>Test Mode</summary>
+      <description>If set to true, all animations will show only one still frame to allow for continuous integration tests.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Fire Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

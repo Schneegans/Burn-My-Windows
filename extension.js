@@ -381,11 +381,16 @@ class Extension {
 
     // ----------------------------------------------------------- tweak actor transitions
 
+    // If we are currently performing integration test, all animations are set to a fixed
+    // duration and show a fixed frame from the middle of the animation.
+    const testMode = this._settings.get_boolean('test-mode');
+
     // The following is used to tweak the ongoing transitions of a window actor. Usually
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we allow
     // modifications to this behavior by the effects.
     const config = this._currentEffect.tweakTransition(actor, this._settings, forOpening);
-    const duration =
+    const duration = testMode ?
+        5000 :
         this._settings.get_int(this._currentEffect.getNick() + '-animation-time');
 
     // All animations are relative to the window's center.
@@ -416,9 +421,10 @@ class Extension {
       // Tweak the transition according to the config object. For some reason, there are
       // rare cases, where no transition is set up. This happens from time to time...
       if (transition) {
+        const middle = (config[property].to + config[property].from) / 2;
         transition.set_duration(duration);
-        transition.set_to(config[property].to);
-        transition.set_from(config[property].from);
+        transition.set_to(testMode ? middle : config[property].to);
+        transition.set_from(testMode ? middle : config[property].from);
         transition.set_progress_mode(config[property].mode);
       }
     }
@@ -454,8 +460,9 @@ class Extension {
 
       // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
-        shader.set_uniform_value('uProgress', t.get_progress());
-        shader.set_uniform_value('uTime', 0.001 * t.get_elapsed_time());
+        shader.set_uniform_value('uProgress', testMode ? 0.5 : t.get_progress());
+        shader.set_uniform_value(
+            'uTime', testMode ? duration / 2 : 0.001 * t.get_elapsed_time());
         shader.set_uniform_value('uSizeX', actor.width);
         shader.set_uniform_value('uSizeY', actor.height);
       });

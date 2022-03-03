@@ -150,6 +150,9 @@ if (utils.isInShellProcess()) {
         epicenterY                 = localY / actor.height;
       }
 
+      // If we are currently performing integration test, the animation uses a fixed seed.
+      const testMode = settings.get_boolean('test-mode');
+
       this.set_shader_source(`
 
         // Inject some common shader snippets.
@@ -157,7 +160,8 @@ if (utils.isInShellProcess()) {
 
         uniform sampler2D uShardTexture;
 
-        const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
+        const vec2  SEED         = vec2(${testMode ? 0 : Math.random()}, 
+                                        ${testMode ? 0 : Math.random()});
         const float SHARD_SCALE  = ${settings.get_double('broken-glass-scale')};
         const float SHARD_LAYERS = 5;
         const float BLOW_FORCE   = ${settings.get_double('broken-glass-blow-force')};
