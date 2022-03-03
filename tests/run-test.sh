@@ -81,7 +81,7 @@ do_in_pod() {
 fail() {
   echo "${1}"
   podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command 'convert xwd:- fail.png'
-  LOG=$(do_in_pod sudo journalctl | grep -C 5 "error\|gjs")
+  LOG=$(do_in_pod sudo journalctl)
   echo "${LOG}" > fail.log
   exit 1
 }
@@ -97,21 +97,6 @@ find_target() {
   fi
 }
 
-# This searches the virtual screen of the container for a given target image (first
-# parameter) and moves the mouse to the upper left corner of the best match. If the target
-# image is not found, an error message (second paramter) is printed and the script exits
-# via the fail() method above.
-move_mouse_to_target() {
-  echo "Trying to move mouse to ${1}."
-  POS=$(do_in_pod find-target.sh "${1}") || true
-  if [[ -z "${POS}" ]]; then
-    fail "${2}"
-  fi
-
-  # shellcheck disable=SC2086
-  do_in_pod xdotool mousemove $POS
-}
-
 # This simulates the given keystroke in the container. Simply calling "xdotool key $1"
 # sometimes fails to be recognized. Maybe the default 12ms between key-down and key-up
 # are too short for xvfb...
@@ -121,15 +106,30 @@ send_keystroke() {
   do_in_pod xdotool keyup "${1}"
 }
 
-# This simulates a mouse click in the container. Simply calling "xdotool click $1"
-# sometimes fails to be recognized. Maybe the default 12ms between button-down and
-# button-up are too short for xvfb...
-send_click() {
-  do_in_pod xdotool mousedown "${1}"
-  sleep 0.5
-  do_in_pod xdotool mouseup "${1}"
+# This can be used to set a gsettings key of the extension.
+set_setting() {
+  do_in_pod gsettings --schemadir /home/gnomeshell/.local/share/gnome-shell/extensions/burn-my-windows@schneegans.github.com/schemas \
+                      set org.gnome.shell.extensions.burn-my-windows "${1}" "${2}"
 }
 
+# This opens the extensions preferences dialog and captures two images: One during the
+# window-open animation, and one during the window-close animation.
+# The images are then compared to reference images.
+test_effect() {
+  echo "Testing ${1} effect."
+
+  set_setting "open-preview-effect" "${1}"
+  set_setting "close-preview-effect" "${1}"
+
+  sleep 2
+  do_in_pod gnome-extensions prefs "${EXTENSION}"
+  sleep 2
+  find_target "references/${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
+  send_keystroke "Alt+F4"
+  sleep 2
+  find_target "references/${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
+  sleep 2
+}
 
 # ----------------------------------------------------- wait for the container to start up
 
@@ -143,7 +143,6 @@ echo "Installing extension."
 podman cp "tests/references" "${POD}:/home/gnomeshell/references"
 podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
-do_in_pod gnome-extensions enable "${EXTENSION}"
 
 
 # ---------------------------------------------------------------------- start GNOME Shell
@@ -159,22 +158,36 @@ echo "Starting $(do_in_pod gnome-shell --version)."
 do_in_pod systemctl --user start "${SESSION}@:99"
 sleep 10
 
+# Enable the extension.
+do_in_pod gnome-extensions enable "${EXTENSION}"
+
 # Starting with GNOME 40, the overview is the default mode. We close this here by hitting
 # the super key.
 if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   echo "Closing Overview."
   send_keystroke "super"
-  sleep 3
 fi
 
+# Wait until the extension is enabled and the overview closed.
+sleep 3
 
 # ---------------------------------------------------------------------- perform the tests
 
-# First we open the preferences and check whether the window is shown on screen by
-# searching for a small snippet of the preferences dialog.
-echo "Opening Preferences."
-do_in_pod gnome-extensions prefs "${EXTENSION}"
-sleep 3
-find_target "references/preferences.png" "Failed to open preferences!"
+# The test mode ensures that the animations are "frozen" and do not change in time.
+echo "Entering test mode."
+set_setting "test-mode" true
+do_in_pod gsettings set org.gnome.mutter center-new-windows true
+
+test_effect "energize-a"
+test_effect "energize-b"
+test_effect "fire"
+test_effect "tv"
+test_effect "wisps"
+
+if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
+  test_effect "trex"
+  test_effect "broken-glass"
+  test_effect "matrix"
+fi
 
 echo "All tests executed successfully."
