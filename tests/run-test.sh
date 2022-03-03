@@ -91,7 +91,7 @@ fail() {
 # script exits via the fail() method above.
 find_target() {
   echo "Looking for ${1} on the screen."
-  POS=$(do_in_pod find-target.sh "${1}") || true
+  POS=$(do_in_pod find-target.sh -f 0.02 "${1}") || true
   if [[ -z "${POS}" ]]; then
     fail "${2}"
   fi
@@ -113,8 +113,10 @@ set_setting() {
 }
 
 # This opens the extensions preferences dialog and captures two images: One during the
-# window-open animation, and one during the window-close animation.
-# The images are then compared to reference images.
+# window-open animation, and one during the window-close animation. For each capture, a
+# reference image is searched. The sleeps are a bit excessive, but it's difficult to get
+# consistent results with shorter sleeps. The animations are shown for five seconds, so
+# we also have to make sure that one animation is finished before starting the next one.
 test_effect() {
   echo "Testing ${1} effect."
 
