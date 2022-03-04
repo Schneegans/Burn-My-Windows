@@ -125,12 +125,11 @@ if (utils.isInShellProcess()) {
       // See assets/README.md for how this texture was created.
       const clawData    = GdkPixbuf.Pixbuf.new_from_resource('/img/claws.png');
       this._clawTexture = new Clutter.Image();
-      this._clawTexture.set_data(
-          clawData.get_pixels(), Cogl.PixelFormat.RGB_888, clawData.width,
-          clawData.height, clawData.rowstride);
+      this._clawTexture.set_data(clawData.get_pixels(), Cogl.PixelFormat.RGB_888,
+                                 clawData.width, clawData.height, clawData.rowstride);
 
       const color =
-          Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
+        Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
 
       // If we are currently performing integration test, the animation uses a fixed seed.
       const testMode = settings.get_boolean('test-mode');

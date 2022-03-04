@@ -129,14 +129,14 @@ if (utils.isInShellProcess()) {
       const fontData    = GdkPixbuf.Pixbuf.new_from_resource('/img/matrixFont.png');
       this._fontTexture = new Clutter.Image();
       this._fontTexture.set_data(
-          fontData.get_pixels(),
-          fontData.has_alpha ? Cogl.PixelFormat.RGBA_8888 : Cogl.PixelFormat.RGB_888,
-          fontData.width, fontData.height, fontData.rowstride);
+        fontData.get_pixels(),
+        fontData.has_alpha ? Cogl.PixelFormat.RGBA_8888 : Cogl.PixelFormat.RGB_888,
+        fontData.width, fontData.height, fontData.rowstride);
 
       const trailColor =
-          Clutter.Color.from_string(settings.get_string('matrix-trail-color'))[1];
+        Clutter.Color.from_string(settings.get_string('matrix-trail-color'))[1];
       const tipColor =
-          Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
+        Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
 
       // The technique for this effect was inspired by
       // https://www.shadertoy.com/view/ldccW4, however the implementation is quite

@@ -233,9 +233,9 @@ if (utils.isInShellProcess()) {
       const gradient = [];
       for (let i = 1; i <= 5; i++) {
         const color =
-            Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
+          Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
         gradient.push(`vec4(${color.red / 255}, ${color.green / 255}, ${
-            color.blue / 255}, ${color.alpha / 255})`);
+          color.blue / 255}, ${color.alpha / 255})`);
       }
 
       this.set_shader_source(`

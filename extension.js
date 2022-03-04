@@ -101,26 +101,26 @@ class Extension {
     // anyways, we override the actors ease() method once - the next time it will be
     // called by the _mapWindow(), we will intercept it!
     this._windowCreatedConnection =
-        global.display.connect('window-created', (d, metaWin) => {
-          let actor = metaWin.get_compositor_private();
+      global.display.connect('window-created', (d, metaWin) => {
+        let actor = metaWin.get_compositor_private();
 
-          const orig = actor.ease;
-          actor.ease = function(...params) {
-            orig.apply(actor, params);
-            actor.ease = orig;
+        const orig = actor.ease;
+        actor.ease = function(...params) {
+          orig.apply(actor, params);
+          actor.ease = orig;
 
-            // There are cases where the ease() is called prior to mapping the actor. If
-            // the actor is not yet mapped, we defer the effect creation.
-            if (actor.mapped) {
+          // There are cases where the ease() is called prior to mapping the actor. If
+          // the actor is not yet mapped, we defer the effect creation.
+          if (actor.mapped) {
+            extensionThis._setupEffect(actor, true);
+          } else {
+            const connectionID = actor.connect('notify::mapped', () => {
               extensionThis._setupEffect(actor, true);
-            } else {
-              const connectionID = actor.connect('notify::mapped', () => {
-                extensionThis._setupEffect(actor, true);
-                actor.disconnect(connectionID);
-              });
-            }
-          };
-        });
+              actor.disconnect(connectionID);
+            });
+          }
+        };
+      });
 
     // Some of the effects require that the window's actor is enlarged to provide a bigger
     // canvas to draw the effects. Outside the overview we can simply increase the scale
@@ -324,8 +324,8 @@ class Extension {
     // Only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
     const isDialogWindow =
-        actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
-        actor.meta_window.window_type == Meta.WindowType.DIALOG;
+      actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
+      actor.meta_window.window_type == Meta.WindowType.DIALOG;
 
     if (!isNormalWindow && !isDialogWindow) {
       return;
@@ -390,8 +390,8 @@ class Extension {
     // modifications to this behavior by the effects.
     const config = this._currentEffect.tweakTransition(actor, this._settings, forOpening);
     const duration = testMode ?
-        5000 :
-        this._settings.get_int(this._currentEffect.getNick() + '-animation-time');
+      5000 :
+      this._settings.get_int(this._currentEffect.getNick() + '-animation-time');
 
     // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
@@ -461,8 +461,8 @@ class Extension {
       // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
         shader.set_uniform_value('uProgress', testMode ? 0.5 : t.get_progress());
-        shader.set_uniform_value(
-            'uTime', testMode ? duration / 2 : 0.001 * t.get_elapsed_time());
+        shader.set_uniform_value('uTime',
+                                 testMode ? duration / 2 : 0.001 * t.get_elapsed_time());
         shader.set_uniform_value('uSizeX', actor.width);
         shader.set_uniform_value('uSizeY', actor.height);
       });
@@ -491,10 +491,10 @@ class Extension {
     if (!forOpening) {
       if (isDialogWindow) {
         imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
-            duration != null ? duration : this._origDialogTime;
+          duration != null ? duration : this._origDialogTime;
       } else {
         imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
-            duration != null ? duration : this._origWindowTime;
+          duration != null ? duration : this._origWindowTime;
       }
     }
   }
