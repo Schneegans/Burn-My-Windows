@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 13](https://github.com/schneegans/Burn-My-Windows/releases/tag/v13)
+
+**Release Date:** TBD
+
+#### Enhancements
+
+* The continuous integration tests have been significantly enhanced. Now, all window-open and window-close animations are visually tested on all supported GNOME versions and on X11 / Wayland (summing up to a total of 136 test cases).
+
 ## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
 
 **Release Date:** 2022-02-19
