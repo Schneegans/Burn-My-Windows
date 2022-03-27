@@ -7,6 +7,7 @@
 #### Enhancements
 
 * The continuous integration tests have been significantly enhanced. Now, all window-open and window-close animations are visually tested on all supported GNOME versions and on X11 / Wayland (summing up to a total of 136 test cases).
+* Many translation updates, including a completely new Turkish and Chinese translation. A BIG THANKS to all translators!
 
 #### Other Changes
 

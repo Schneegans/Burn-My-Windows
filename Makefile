@@ -9,12 +9,13 @@ ZIP_NAME := $(NAME)@$(DOMAIN).zip
 JS_FILES       = $(shell find -type f -and \( -name "*.js" \))
 UI_FILES       = $(shell find -type f -and \( -name "*.ui" \))
 RESOURCE_FILES = $(shell find resources -mindepth 2 -type f)
+SOUND_FILES    = $(wildcard sounds/*)
 LOCALES_PO     = $(wildcard po/*.po)
 LOCALES_MO     = $(patsubst po/%.po,locale/%/LC_MESSAGES/$(NAME).mo,$(LOCALES_PO))
 
 # These files will be included in the extension zip file.
 ZIP_CONTENT = $(JS_FILES) $(LOCALES_MO) resources/$(NAME).gresource \
-              schemas/gschemas.compiled metadata.json LICENSE
+              $(SOUND_FILES) schemas/gschemas.compiled metadata.json LICENSE
 
 # These seven recipes can be invoked by the user.
 .PHONY: zip install uninstall pot clean test references

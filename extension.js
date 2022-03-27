@@ -478,6 +478,11 @@ class Extension {
     // Finally, ensure that all animation times are set properly so that other extensions
     // may guess how long it will take until windows are gone :)
     this._fixAnimationTimes(isDialogWindow, forOpening, duration);
+
+    // const player = global.display.get_sound_player();
+    // const file   = Gio.File.new_for_path(Me.path + '/sounds/energize.ogg');
+    // utils.debug(file.query_exists(null));
+    // player.play_from_file(file, 'burn-my-windows sound effect', null);
   }
 
   // The code below is not necessary for Burn-My-Windows to function. However, there
