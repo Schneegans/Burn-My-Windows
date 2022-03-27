@@ -8,6 +8,10 @@
 
 * The continuous integration tests have been significantly enhanced. Now, all window-open and window-close animations are visually tested on all supported GNOME versions and on X11 / Wayland (summing up to a total of 136 test cases).
 
+#### Other Changes
+
+* Removed the Liberapay donation option as it does not work properly.
+
 ## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
 
 **Release Date:** 2022-02-19

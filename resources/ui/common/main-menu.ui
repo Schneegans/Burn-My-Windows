@@ -34,10 +34,6 @@
           <attribute name="label">GitHub</attribute>
           <attribute name="action">prefs.donate-github</attribute>
         </item>
-        <item>
-          <attribute name="label">Liberapay</attribute>
-          <attribute name="action">prefs.donate-liberapay</attribute>
-        </item>
       </submenu>
     </section>
     <section>
