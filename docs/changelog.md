@@ -2,7 +2,7 @@
 
 ## [Burn My Window 13](https://github.com/schneegans/Burn-My-Windows/releases/tag/v13)
 
-**Release Date:** TBD
+**Release Date:** 2022-03-27
 
 #### Enhancements
 
