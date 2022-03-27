@@ -15,8 +15,14 @@
 
 const {Gtk} = imports.gi;
 
+// Returns the given argument, except for "alpha" and "beta". In these cases -2 and -1 are
+// returned respectively.
+function toNumericVersion(x) {
+  return x == 'alpha' ? -2 : x == 'beta' ? -1 : x;
+}
+
 const Config               = imports.misc.config;
-const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.');
+const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVersion);
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
@@ -60,22 +66,18 @@ function isInShellProcess() {
 // This method returns true if the current GNOME Shell version matches the given
 // arguments.
 function shellVersionIs(major, minor) {
-  return GS_MAJOR == major && GS_MINOR == minor;
+  return GS_MAJOR == major && GS_MINOR == toNumericVersion(minor);
 }
 
 // This method returns true if the current GNOME Shell version is at least as high as the
-// given arguments.
+// given arguments. Supports "alpha" and "beta" for the minor version number.
 function shellVersionIsAtLeast(major, minor) {
   if (GS_MAJOR > major) {
     return true;
   }
 
   if (GS_MAJOR == major) {
-    if (minor == 'alpha') return true;
-    if (minor == 'beta' && GS_MINOR == 'alpha') return false;
-    if (minor == 'beta' && GS_MINOR == 'beta') return true;
-
-    return GS_MINOR >= minor;
+    return GS_MINOR >= toNumericVersion(minor);
   }
 
   return false;
