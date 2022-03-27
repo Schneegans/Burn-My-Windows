@@ -12,6 +12,10 @@
 
 * Removed the Liberapay donation option as it does not work properly.
 
+#### Bug Fixes
+
+* Fixed the version check for GNOME Shell 42.
+
 ## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
 
 **Release Date:** 2022-02-19
