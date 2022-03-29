@@ -8,131 +8,135 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 20:33+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-03-29 18:24+0000\n"
+"Last-Translator: ANIGO R. (AR) <franigoyt@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.12-dev\n"
 
 #: prefs.js:111
 msgid "Effect Options"
-msgstr ""
+msgstr "Параметры эффекта"
 
 #: prefs.js:139
 msgid "Go Back"
-msgstr ""
+msgstr "Назад"
 
 #: prefs.js:181
 msgid "General Options"
-msgstr ""
+msgstr "Общие настройки"
 
 #: prefs.js:276
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Золотые спонсоры"
 
 #: prefs.js:279
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Серебряные спонсоры"
 
 #: prefs.js:282
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Бронзовые спонсоры"
 
 #: prefs.js:285
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Прошлые спонсоры"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:512
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "Предварительный просмотр %s"
 
 #: prefs.js:534
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "Закройте это окно для предварительного просмотра эффекта!"
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
-msgstr ""
+msgstr "Разбитое стекло"
 
 #: src/TVEffect.js:56
 msgid "TV Effect"
-msgstr ""
+msgstr "Телевизионный эффект"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "T-Rex атака"
 
 #: src/Wisps.js:55
 msgid "Wisps"
-msgstr ""
+msgstr "Огоньки"
 
 #: src/Fire.js:58
 msgid "Fire"
-msgstr ""
+msgstr "Огонь"
 
 #: src/Fire.js:130
 msgid "Default Fire"
-msgstr ""
+msgstr "по умолчанию FIRE"
 
 #: src/Fire.js:140
 msgid "Hell Fire"
-msgstr ""
+msgstr "Адский Огонь"
 
 #: src/Fire.js:150
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Тёмный и развратный"
 
 #: src/Fire.js:160
 msgid "Cold Breeze"
-msgstr ""
+msgstr "Холодный ветер"
 
 #: src/Fire.js:170
 msgid "Santa is Coming"
-msgstr ""
+msgstr "Дед мороз приходит"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr ""
+msgstr "Заряжение A"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
-msgstr ""
+msgstr "Энергия B"
 
 #: src/Matrix.js:58
 msgid "Matrix"
-msgstr ""
+msgstr "Матрица"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr ""
+msgstr "Перейти на главную страницу"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
-msgstr ""
+msgstr "Просмотреть список изменений"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr ""
+msgstr "Сообщить об ошибке"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
-msgstr ""
+msgstr "Создать эффект"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr ""
+msgstr "Перевести"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвовать"
 
 #: resources/ui/common/main-menu.ui:45
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "О Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -142,7 +146,7 @@ msgstr ""
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Время анимации (mc)"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -170,7 +174,7 @@ msgstr ""
 #: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
 #: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "Сброс на значение по умолчанию"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
@@ -178,119 +182,123 @@ msgstr ""
 #: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
 #: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
-msgstr ""
+msgstr "Масштаб"
 
 #: resources/ui/gtk4/Matrix.ui:116
 msgid "Randomness"
-msgstr ""
+msgstr "Случайность"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Вертикальное превышение"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
-msgstr ""
+msgstr "Цвет следа"
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
-msgstr ""
+msgstr "Цвет наконечника"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "Сила тяжести"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "Сила удара"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Разбить из местоположения указателя"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"Осколки разлетятся в стороны от того места, где находился указатель мыши при "
+"закрытии окна."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
 #: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
 #: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
 #: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr ""
+msgstr "Цвет"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr ""
+msgstr "Заготовки"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr ""
+msgstr "Скорость"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "3D Шум"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Создает более динамичный огонь, но требует большей мощности GPU."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr ""
+msgstr "Градиент"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "царапины"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Количество царапин от когтей"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "Эффект искривления"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr ""
+msgstr "Цвет вспышки"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
-msgstr ""
+msgstr "Предварительный просмотр этого эффекта"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "Добро пожаловать в Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
 msgstr ""
+"Если вам нравится это расширение, порекомендуйте или поделитесь его своим "
+"друзьям :)"
 
 #: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
-msgstr ""
+msgstr "Анимация открытого окна"
 
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "Если выбрано несколько, то один выбирается случайным образом."
 
 #: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
 #: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
 msgid "Choose Effects"
-msgstr ""
+msgstr "Выберите эффекты"
 
 #: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
 msgid "Close Window Animation"
-msgstr ""
+msgstr "Анимация закрытия окна"
 
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "Также добавьте эффекты к диалогам"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Выберите заготовку"
