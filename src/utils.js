@@ -15,10 +15,18 @@
 
 const {Gtk} = imports.gi;
 
-// Returns the given argument, except for "alpha" and "beta". In these cases -2 and -1 are
-// returned respectively.
+// Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
+// -2, and -1 are returned respectively.
 function toNumericVersion(x) {
-  return x == 'alpha' ? -2 : x == 'beta' ? -1 : x;
+  switch (x) {
+    case 'alpha':
+      return -3;
+    case 'beta':
+      return -2;
+    case 'rc':
+      return -1;
+  }
+  return x;
 }
 
 const Config               = imports.misc.config;
