@@ -39,8 +39,8 @@
                         <property name="adjustment">
                           <object class="GtkAdjustment" id="energize-a-animation-time">
                             <property name="upper">10000</property>
-                            <property name="lower">500</property>
-                            <property name="step-increment">10</property>
+                            <property name="lower">100</property>
+                            <property name="step-increment">1</property>
                             <property name="page-increment">100</property>
                           </object>
                         </property>
