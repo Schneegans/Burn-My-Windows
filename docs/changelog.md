@@ -7,6 +7,7 @@
 #### Enhancements
 
 * Reduced the lower animation time limits for all effects to 100 ms. This should now allow for very snappy animations!
+* A completely new Russian translation. Thank you, ANIGO R.!
 
 #### Bug Fixes
 
