@@ -1,5 +1,18 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 14](https://github.com/schneegans/Burn-My-Windows/releases/tag/v14)
+
+**Release Date:** 2022-03-29
+
+#### Enhancements
+
+* Reduced the lower animation time limits for all effects to 100 ms. This should now allow for very snappy animations!
+
+#### Bug Fixes
+
+* Fixed the version check for GNOME Shell `42.rc` (before it only worked on `42.alpha` and `42.beta`)
+
+
 ## [Burn My Window 13](https://github.com/schneegans/Burn-My-Windows/releases/tag/v13)
 
 **Release Date:** 2022-03-27
