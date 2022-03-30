@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-18 20:33+0100\n"
-"PO-Revision-Date: 2022-03-29 18:24+0000\n"
-"Last-Translator: ANIGO R. (AR) <franigoyt@gmail.com>\n"
+"PO-Revision-Date: 2022-03-31 11:07+0000\n"
+"Last-Translator: Егор Ермаков <eg.ermakov2016@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
 "Language: ru\n"
@@ -52,11 +52,11 @@ msgstr "Прошлые спонсоры"
 #: prefs.js:512
 #, javascript-format
 msgid "Preview for %s"
-msgstr "Предварительный просмотр %s"
+msgstr "Предпросмотр %s"
 
 #: prefs.js:534
 msgid "Close this Window to Preview the Effect!"
-msgstr "Закройте это окно для предварительного просмотра эффекта!"
+msgstr "Закройте это окно для предпросмотра эффекта!"
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
@@ -64,11 +64,11 @@ msgstr "Разбитое стекло"
 
 #: src/TVEffect.js:56
 msgid "TV Effect"
-msgstr "Телевизионный эффект"
+msgstr "Эффект ЭЛТ"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
-msgstr "T-Rex атака"
+msgstr "Атака тираннозавра"
 
 #: src/Wisps.js:55
 msgid "Wisps"
@@ -80,27 +80,27 @@ msgstr "Огонь"
 
 #: src/Fire.js:130
 msgid "Default Fire"
-msgstr "по умолчанию FIRE"
+msgstr "Обычный огонь"
 
 #: src/Fire.js:140
 msgid "Hell Fire"
-msgstr "Адский Огонь"
+msgstr "Адское пламя"
 
 #: src/Fire.js:150
 msgid "Dark and Smutty"
-msgstr "Тёмный и развратный"
+msgstr "Тёмный и грязный"
 
 #: src/Fire.js:160
 msgid "Cold Breeze"
-msgstr "Холодный ветер"
+msgstr "Холодный бриз"
 
 #: src/Fire.js:170
 msgid "Santa is Coming"
-msgstr "Дед мороз приходит"
+msgstr "Дед Мороз идёт"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr "Заряжение A"
+msgstr "Энергия A"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
@@ -112,7 +112,7 @@ msgstr "Матрица"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr "Перейти на главную страницу"
+msgstr "Посетить страницу проекта"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
@@ -146,7 +146,7 @@ msgstr "О Burn-My-Windows"
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
 #: resources/ui/gtk3/EnergizeB.ui:42
 msgid "Animation Time [ms]"
-msgstr "Время анимации (mc)"
+msgstr "Время анимации (мс)"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -202,7 +202,7 @@ msgstr "Цвет наконечника"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr "Сила тяжести"
+msgstr "Гравитация"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
@@ -210,14 +210,14 @@ msgstr "Сила удара"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr "Разбить из местоположения указателя"
+msgstr "Разбить от положения курсора"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
-"Осколки разлетятся в стороны от того места, где находился указатель мыши при "
+"Осколки разлетятся в стороны от того места, где находился курсор мыши при "
 "закрытии окна."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
@@ -229,7 +229,7 @@ msgstr "Цвет"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr "Заготовки"
+msgstr "Пресеты"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
@@ -249,11 +249,11 @@ msgstr "Градиент"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr "царапины"
+msgstr "Масштаб царапин"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr "Количество царапин от когтей"
+msgstr "Количество царапин"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
@@ -265,7 +265,7 @@ msgstr "Цвет вспышки"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
-msgstr "Предварительный просмотр этого эффекта"
+msgstr "Предпросмотр этого эффекта"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
@@ -273,13 +273,11 @@ msgstr "Добро пожаловать в Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr ""
-"Если вам нравится это расширение, порекомендуйте или поделитесь его своим "
-"друзьям :)"
+msgstr "Если вам нравится это расширение, порекомендуйте его своим друзьям :)"
 
 #: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
-msgstr "Анимация открытого окна"
+msgstr "Анимация открытия окна"
 
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
@@ -297,8 +295,8 @@ msgstr "Анимация закрытия окна"
 
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
-msgstr "Также добавьте эффекты к диалогам"
+msgstr "Также добавить эффекты к диалогам"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr "Выберите заготовку"
+msgstr "Выберите пресет"
