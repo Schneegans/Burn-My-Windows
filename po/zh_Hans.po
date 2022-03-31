@@ -1,0 +1,322 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Simon Schneegans
+# This file is distributed under the same license as the Burn-My-Windows package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Burn-My-Windows\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-18 20:33+0100\n"
+"PO-Revision-Date: 2022-03-01 15:05+0000\n"
+"Last-Translator: 刘韬 <lyuutau@outlook.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.11.1-dev\n"
+
+#: prefs.js:111
+#, fuzzy
+msgid "Effect Options"
+msgstr "效果选项"
+
+#: prefs.js:139
+msgid "Go Back"
+msgstr ""
+
+#: prefs.js:181
+#, fuzzy
+msgid "General Options"
+msgstr "一般选项"
+
+#: prefs.js:276
+#, fuzzy
+msgid "Gold Sponsors"
+msgstr "金牌赞助商"
+
+#: prefs.js:279
+#, fuzzy
+msgid "Silver Sponsors"
+msgstr "银牌赞助商"
+
+#: prefs.js:282
+#, fuzzy
+msgid "Bronze Sponsors"
+msgstr "铜牌赞助商"
+
+#: prefs.js:285
+#, fuzzy
+msgid "Past Sponsors"
+msgstr "往届赞助商"
+
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:512
+#, fuzzy, javascript-format
+msgid "Preview for %s"
+msgstr "%s 的预览"
+
+#: prefs.js:534
+#, fuzzy
+msgid "Close this Window to Preview the Effect!"
+msgstr "关闭此窗口，预览效果!"
+
+#: src/BrokenGlass.js:57
+#, fuzzy
+msgid "Broken Glass"
+msgstr "破碎的玻璃"
+
+#: src/TVEffect.js:56
+#, fuzzy
+msgid "TV Effect"
+msgstr "电视效果"
+
+#: src/TRexAttack.js:56
+#, fuzzy
+msgid "T-Rex Attack"
+msgstr "霸王龙攻击"
+
+#: src/Wisps.js:55
+msgid "Wisps"
+msgstr ""
+
+#: src/Fire.js:58
+msgid "Fire"
+msgstr ""
+
+#: src/Fire.js:130
+msgid "Default Fire"
+msgstr ""
+
+#: src/Fire.js:140
+#, fuzzy
+msgid "Hell Fire"
+msgstr "地狱之火"
+
+#: src/Fire.js:150
+#, fuzzy
+msgid "Dark and Smutty"
+msgstr "黑暗和污秽"
+
+#: src/Fire.js:160
+#, fuzzy
+msgid "Cold Breeze"
+msgstr "寒风"
+
+#: src/Fire.js:170
+#, fuzzy
+msgid "Santa is Coming"
+msgstr "圣诞老人来了"
+
+#: src/EnergizeA.js:54
+msgid "Energize A"
+msgstr ""
+
+#: src/EnergizeB.js:54
+msgid "Energize B"
+msgstr ""
+
+#: src/Matrix.js:58
+msgid "Matrix"
+msgstr "矩阵"
+
+#: resources/ui/common/main-menu.ui:6
+msgid "Visit Homepage"
+msgstr "访问主页"
+
+#: resources/ui/common/main-menu.ui:10
+msgid "View Changelog"
+msgstr "查看更新日志"
+
+#: resources/ui/common/main-menu.ui:16
+msgid "Report a Bug"
+msgstr "报告错误"
+
+#: resources/ui/common/main-menu.ui:20
+#, fuzzy
+msgid "Create an Effect"
+msgstr "创建效果"
+
+#: resources/ui/common/main-menu.ui:24
+msgid "Translate"
+msgstr "翻译"
+
+#: resources/ui/common/main-menu.ui:28
+msgid "Donate"
+msgstr "捐赠"
+
+#: resources/ui/common/main-menu.ui:45
+msgid "About Burn-My-Windows"
+msgstr "关于 Burn-My-Windows"
+
+#: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
+#: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
+#: resources/ui/gtk4/TRexAttack.ui:24 resources/ui/gtk4/TVEffect.ui:24
+#: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/EnergizeB.ui:24
+#: resources/ui/gtk3/Wisps.ui:42 resources/ui/gtk3/Fire.ui:93
+#: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
+#: resources/ui/gtk3/EnergizeB.ui:42
+#, fuzzy
+msgid "Animation Time [ms]"
+msgstr "动画时间 [毫秒]"
+
+#: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
+#: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
+#: resources/ui/gtk4/Matrix.ui:224 resources/ui/gtk4/Matrix.ui:258
+#: resources/ui/gtk4/BrokenGlass.ui:52 resources/ui/gtk4/BrokenGlass.ui:98
+#: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
+#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Wisps.ui:52
+#: resources/ui/gtk4/Wisps.ui:98 resources/ui/gtk4/Wisps.ui:132
+#: resources/ui/gtk4/Fire.ui:77 resources/ui/gtk4/Fire.ui:123
+#: resources/ui/gtk4/Fire.ui:169 resources/ui/gtk4/Fire.ui:222
+#: resources/ui/gtk4/Fire.ui:280 resources/ui/gtk4/TRexAttack.ui:52
+#: resources/ui/gtk4/TRexAttack.ui:98 resources/ui/gtk4/TRexAttack.ui:144
+#: resources/ui/gtk4/TRexAttack.ui:190 resources/ui/gtk4/TRexAttack.ui:224
+#: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
+#: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
+#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/EnergizeB.ui:52
+#: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
+#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
+#: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
+#: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
+#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/TVEffect.ui:61
+#: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
+#: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
+#: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
+#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
+msgid "Reset to Default Value"
+msgstr "重置为默认值"
+
+#: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
+#: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
+#: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/EnergizeB.ui:70
+#: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
+#: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
+#, fuzzy
+msgid "Scale"
+msgstr "规模"
+
+#: resources/ui/gtk4/Matrix.ui:116
+#, fuzzy
+msgid "Randomness"
+msgstr "随机性"
+
+#: resources/ui/gtk4/Matrix.ui:162
+#, fuzzy
+msgid "Vertical Overshooting"
+msgstr "垂直过冲"
+
+#: resources/ui/gtk4/Matrix.ui:208
+#, fuzzy
+msgid "Trail Color"
+msgstr "尾迹颜色"
+
+#: resources/ui/gtk4/Matrix.ui:242
+#, fuzzy
+msgid "Tip Color"
+msgstr "提示颜色"
+
+#: resources/ui/gtk4/BrokenGlass.ui:116
+msgid "Gravity"
+msgstr "重力"
+
+#: resources/ui/gtk4/BrokenGlass.ui:162
+#, fuzzy
+msgid "Blow Force"
+msgstr "吹力"
+
+#: resources/ui/gtk4/BrokenGlass.ui:212
+msgid "Shatter From Pointer Location"
+msgstr ""
+
+#: resources/ui/gtk4/BrokenGlass.ui:221
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+
+#: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
+#: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
+#: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
+#: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
+msgid "Color"
+msgstr "颜色"
+
+#: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
+msgid "Presets"
+msgstr "预设"
+
+#: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
+msgid "Speed"
+msgstr "速度"
+
+#: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
+#, fuzzy
+msgid "3D Noise"
+msgstr "3D 噪点"
+
+#: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
+msgid "Gradient"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:70
+msgid "Claw Scratch Scale"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:116
+msgid "Claw Scratch Count"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:162
+msgid "Warp Effect"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:208
+msgid "Flash Color"
+msgstr ""
+
+#: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
+msgid "Preview this Effect"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
+msgid "Welcome to Burn-My-Windows!"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
+msgid "If you like this extension, recommend it to your friends :)"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
+msgid "Open Window Animation"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
+#: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
+msgid "If multiple are selected, one is chosen randomly."
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
+#: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
+msgid "Choose Effects"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
+msgid "Close Window Animation"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
+msgid "Also Add Effects to Dialogs"
+msgstr ""
+
+#: resources/ui/gtk3/Fire.ui:63
+msgid "Choose a Preset"
+msgstr ""

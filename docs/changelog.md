@@ -1,18 +1,94 @@
 # Changelog of the Burn-My-Windows Extension
 
-## [Burn My Window 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
+## [Burn My Window 14](https://github.com/schneegans/Burn-My-Windows/releases/tag/v14)
 
-**Release Date:** TBD
+**Release Date:** 2022-03-29
+
+#### Enhancements
+
+* Reduced the lower animation time limits for all effects to 100 ms. This should now allow for very snappy animations!
+* A completely new Russian translation. Thank you, ANIGO R.!
+
+#### Bug Fixes
+
+* Fixed the version check for GNOME Shell `42.rc` (before it only worked on `42.alpha` and `42.beta`)
+
+
+## [Burn My Window 13](https://github.com/schneegans/Burn-My-Windows/releases/tag/v13)
+
+**Release Date:** 2022-03-27
+
+#### Enhancements
+
+* The continuous integration tests have been significantly enhanced. Now, all window-open and window-close animations are visually tested on all supported GNOME versions and on X11 / Wayland (summing up to a total of 136 test cases).
+* Many translation updates, including a completely new Turkish and Chinese translation. A BIG THANKS to all translators!
+
+#### Other Changes
+
+* Removed the Liberapay donation option as it does not work properly.
+
+#### Bug Fixes
+
+* Fixed the version check for GNOME Shell 42.
+
+## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
+
+**Release Date:** 2022-02-19
 
 #### New Features
 
+* Added initial support for GNOME Shell 42.
+* The preferences dialog now uses libadwaita on GNOME Shell 42.
+
+#### Enhancements
+
+* Added [Liberapay](https://liberapay.com/Schneegans) to the sponsorship options.
+
+## [Burn My Window 11](https://github.com/schneegans/Burn-My-Windows/releases/tag/v11)
+
+**Release Date:** 2022-02-03
+
+#### New Features
+
+* Added an about-dialog which shows all translators and sponsors.
+
+#### Enhancements
+
+* There are several new translations! Thanks a lot to all the translators! We now have translations for:
+  * German
+  * English
+  * Czech
+  * Dutch
+  * French
+  * Italian
+  * Norwegian Bokmål
+  * Spanish
+* A new issue template for suggesting new effects has been added.
+
+#### Fixes
+
+* Fixed an issue which caused corrupted windows when trying to maximize windows while the window-open animation was still running (#82, #86, #91).
+
+## [Burn My Window 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
+
+**Release Date:** 2022-01-31
+
+#### New Features
+
+<a href="https://youtu.be/L2aaNF_rPHo"><img align="right" src ="pics/bmw10.jpg" /></a>
+
+* **Effects for Window Opening.** You can now select effects which are applied on newly opened windows! I expect that there are some bugs left, so please [report any issue you find](https://github.com/Schneegans/Burn-My-Windows/issues)!
 * **New Effect: Broken Glass.** Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!
-* The effect-configuration pages of the preferences dialog now have **Preview Buttons** which con be used to, well, preview the current settings (without having to enable the effect first).
+* **Preview Buttons** have been added to the effect-configuration pages of the preferences dialog. These can be used to, well, preview the current settings (without having to enable the effect first).
+* **Translations!** It is now possible to [translate the preferences dialog](https://hosted.weblate.org/engage/burn-my-windows/). There is already a finished German translation, and in-progress translations to Italian and Norwegian Bokmål.
+* **A "Vertical Overshooting" option** was added to the Matrix Effect: This can add some vertical variation to the start and end position of the letter drops.
 
 #### Other Enhancements
 
 * Added a menu entry with a link to the guide for creating new effect types.
-* Added a new option to the Matrix Effect: **Vertical Overshooting**: This can add some vertical variation to the start and end position of the letter drops.
+* Thanks to improved timing, the default animation time of several effects could be reduced.
+* The README now shows the current lines of code and the current comment percentage using my [dynamic-badges-action](https://github.com/Schneegans/dynamic-badges-action).
+* **Add advanced CI tests:** For each commit to `main`, it is now tested whether the extension can be installed and if the preferences dialog can be shown on GNOME Shell 3.36, 3.38, 40, and 41. Both, X11 and Wayland are checked. 
 
 ## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 

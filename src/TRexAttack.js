@@ -15,6 +15,8 @@
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -51,7 +53,7 @@ var TRexAttack = class TRexAttack {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'T-Rex Attack';
+    return _('T-Rex Attack');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -78,20 +80,26 @@ var TRexAttack = class TRexAttack {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, we slightly increase the window's scale as part of the
-  // warp effect.
-  static getCloseTransition(actor, settings) {
-    const warp = 0.5 * settings.get_double('claw-scratch-warp');
+  // The tweakTransition() is called from extension.js to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
+  // current value of the opacity transition is passed as uProgress to the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+
+  // For this effect, we slightly increase the window's scale as part of the warp effect.
+  static tweakTransition(actor, settings, forOpening) {
+    const warp = 1.0 + 0.5 * settings.get_double('claw-scratch-warp');
     return {
-      'opacity': {to: 255},
-      'scale-x': {to: 1.0 + warp},
-      'scale-y': {to: 1.0 + warp}
+      'opacity': {from: 255, to: 255, mode: 3},
+      'scale-x': {from: forOpening ? warp : 1.0, to: forOpening ? 1.0 : warp, mode: 3},
+      'scale-y': {from: forOpening ? warp : 1.0, to: forOpening ? 1.0 : warp, mode: 3}
     };
   }
 }
@@ -109,7 +117,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       // Load the claw texture. As the shader is re-created for each window animation,
@@ -117,12 +125,14 @@ if (utils.isInShellProcess()) {
       // See assets/README.md for how this texture was created.
       const clawData    = GdkPixbuf.Pixbuf.new_from_resource('/img/claws.png');
       this._clawTexture = new Clutter.Image();
-      this._clawTexture.set_data(
-          clawData.get_pixels(), Cogl.PixelFormat.RGB_888, clawData.width,
-          clawData.height, clawData.rowstride);
+      this._clawTexture.set_data(clawData.get_pixels(), Cogl.PixelFormat.RGB_888,
+                                 clawData.width, clawData.height, clawData.rowstride);
 
       const color =
-          Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
+        Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
+
+      // If we are currently performing integration test, the animation uses a fixed seed.
+      const testMode = settings.get_boolean('test-mode');
 
       this.set_shader_source(`
 
@@ -133,13 +143,14 @@ if (utils.isInShellProcess()) {
         // See assets/README.md for how this texture was created.
         uniform sampler2D uClawTexture;
 
-        const vec2  SEED            = vec2(${Math.random()}, ${Math.random()});
+        const vec2  SEED            = vec2(${testMode ? 0 : Math.random()}, 
+                                           ${testMode ? 0 : Math.random()});
         const float CLAW_SIZE       = ${settings.get_double('claw-scratch-scale')};
         const float NUM_CLAWS       = ${settings.get_int('claw-scratch-count')};
         const float WARP_INTENSITY  = 1.0 + ${settings.get_double('claw-scratch-warp')};
         const float FLASH_INTENSITY = 0.1;
-        const float MAX_SPAWN_TIME  = 0.5; // Scratches will only start in the first half of the animation.
-        const float FF_TIME         = 0.5; // Relative time for the final fade to transparency.
+        const float MAX_SPAWN_TIME  = 0.6; // Scratches will only start in the first half of the animation.
+        const float FF_TIME         = 0.6; // Relative time for the final fade to transparency.
 
         // This method generates a grid of randomly rotated, slightly shifted and scaled 
         // UV squares. It returns the texture coords of the UV square at the given actor
@@ -180,11 +191,13 @@ if (utils.isInShellProcess()) {
 
         void main() {
 
+          float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
+
           // Warp the texture coordinates to create a blow-up effect.
           vec2  coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
           float dist   = length(coords);
           coords = (coords/dist * pow(dist, WARP_INTENSITY)) * 0.5 + 0.5;
-          coords = mix(cogl_tex_coord_in[0].st, coords, uProgress);
+          coords = mix(cogl_tex_coord_in[0].st, coords, progress);
 
           // Accumulate several random scratches. The color in the scratch map refers to the
           // relative time when the respective part will become invisible. Therefore we can
@@ -198,11 +211,11 @@ if (utils.isInShellProcess()) {
 
           // Get the window texture. We shift the texture lookup by the local derivative of
           // the claw texture in order to mimic some folding distortion.
-          vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * uProgress * 0.5;
+          vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
           cogl_color_out = texture2D(uTexture, coords + offset);
 
           // Add colorful flashes.
-          float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - uProgress) + 1;
+          float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1;
           if (flashIntensity < 0 || flashIntensity >= 1) {
             flashIntensity = 0;
           }
@@ -211,17 +224,17 @@ if (utils.isInShellProcess()) {
           flashIntensity *= cogl_color_out.a;
 
           // Hide scratched out parts.
-          cogl_color_out *= (scratchMap > uProgress ? 1 : 0);
+          cogl_color_out *= (scratchMap > progress ? 1 : 0);
 
           vec3 flashColor = vec3(${color.red / 255},
           ${color.green / 255},
           ${color.blue / 255}) * ${color.alpha / 255};
 
-          cogl_color_out.rgb += flashIntensity * mix(flashColor, vec3(0), uProgress);
+          cogl_color_out.rgb += flashIntensity * mix(flashColor, vec3(0), progress);
 
           // Fade out the remaining shards.
-          float fade = smoothstep(0, 1, 1 - clamp((uProgress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
-          cogl_color_out *= fade;
+          float fadeProgress = smoothstep(0, 1, (progress - 1.0 + FF_TIME)/FF_TIME);
+          cogl_color_out *= sqrt(1-fadeProgress*fadeProgress);
 
           // These are pretty useful for understanding how this works.
           // cogl_color_out = vec4(vec3(flashIntensity), 1);

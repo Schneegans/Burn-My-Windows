@@ -1,0 +1,40 @@
+name: Badges
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-badges:
+    name: Update Badges
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download cloc
+        run: sudo apt-get update -y && sudo apt-get install -y cloc
+      - name: Get the Numbers
+        run: |
+          echo "CODE_LINES=$(scripts/cloc.sh --loc)" >> $GITHUB_ENV
+          echo "COMMENT_LINES=$(scripts/cloc.sh --percentage)%" >> $GITHUB_ENV
+      - name: Create Lines-of-Code-Badge
+        uses: schneegans/dynamic-badges-action@v1.2.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 8cf45f23253ff09b21196e7271378762
+          filename: loc.json
+          label: Lines of Code
+          message: ${{ env.CODE_LINES }}
+          color: lightgrey
+          labelColor: 303030
+      - name: Create Comments-Badge
+        uses: schneegans/dynamic-badges-action@v1.2.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 8cf45f23253ff09b21196e7271378762
+          filename: comments.json
+          label: Comments
+          message: ${{ env.COMMENT_LINES }}
+          color: green
+          labelColor: 303030

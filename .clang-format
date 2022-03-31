@@ -1,4 +1,6 @@
 BasedOnStyle: Google
 AlignConsecutiveAssignments: true
+AlignAfterOpenBracket: Align
+ContinuationIndentWidth: 2
 KeepEmptyLinesAtTheStartOfBlocks: true
 ColumnLimit: 90

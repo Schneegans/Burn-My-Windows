@@ -1,0 +1,1 @@
+The `translators.json` file is directly exported from weblate.

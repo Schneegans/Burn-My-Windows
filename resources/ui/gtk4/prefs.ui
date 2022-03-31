@@ -1,167 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface>
+<interface domain="burn-my-windows">
   <requires lib="gtk" version="4.0" />
 
   <menu id="close-effect-menu"></menu>
+  <menu id="open-effect-menu"></menu>
 
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
     <property name="icon-name">open-menu-symbolic</property>
   </object>
 
-  <object class="GtkBox" id="settings-widget">
+  <object class="GtkBox" id="general-prefs">
+    <property name="orientation">vertical</property>
+    <property name="margin-top">60</property>
+    <property name="margin-bottom">60</property>
+
     <child>
-      <object class="GtkStackSidebar">
-        <property name="stack">main-stack</property>
+      <object class="GtkImage">
+        <property name="valign">center</property>
+        <property name="icon-name">burn-my-windows-symbolic</property>
+        <property name="pixel_size">128</property>
       </object>
     </child>
+
     <child>
-      <object class="GtkStack" id="main-stack">
-        <property name="transition-type">slide-up-down</property>
-        <property name="hexpand">1</property>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Welcome to Burn-My-Windows!</property>
+        <property name="margin-top">8</property>
+        <property name="margin-bottom">6</property>
+        <style>
+          <class name="large-title" />
+        </style>
+      </object>
+    </child>
 
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">If you like this extension, recommend it to your friends :)</property>
+        <property name="margin-bottom">36</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkFrame">
         <child>
-          <object class="GtkStackPage">
-            <property name="name">general</property>
-            <property name="title" translatable="yes">General Options</property>
+          <object class="GtkListBox">
+            <property name="selection-mode">none</property>
+            <property name="show-separators">1</property>
+            <style>
+              <class name="rich-list" />
+            </style>
 
-            <property name="child">
-              <object class="GtkBox" id="general-prefs">
-                <property name="orientation">vertical</property>
-                <property name="margin-start">60</property>
-                <property name="margin-end">60</property>
-                <property name="margin-top">60</property>
-                <property name="margin-bottom">60</property>
 
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
                 <child>
-                  <object class="GtkImage">
-                    <property name="valign">center</property>
-                    <property name="icon-name">burn-my-windows-symbolic</property>
-                    <property name="pixel_size">128</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">Welcome to Burn-My-Windows!</property>
-                    <property name="margin-top">8</property>
-                    <property name="margin-bottom">6</property>
-                    <style>
-                      <class name="large-title" />
-                    </style>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">If you like this extension, recommend it to your friends :)</property>
-                    <property name="margin-bottom">36</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="GtkFrame">
+                  <object class="GtkBox">
                     <child>
-                      <object class="GtkListBox">
-                        <property name="selection-mode">none</property>
-                        <property name="show-separators">1</property>
-                        <style>
-                          <class name="rich-list" />
-                        </style>
-
-
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
                         <child>
-                          <object class="GtkListBoxRow">
-                            <property name="activatable">0</property>
-                            <child>
-                              <object class="GtkBox">
-                                <child>
-                                  <object class="GtkBox">
-                                    <property name="orientation">vertical</property>
-                                    <property name="spacing">3</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="label" translatable="yes">Close Window Animation</property>
-                                        <property name="xalign">0</property>
-                                        <property name="halign">start</property>
-                                        <property name="valign">center</property>
-                                        <property name="hexpand">1</property>
-                                      </object>
-                                    </child>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
-                                        <property name="xalign">0</property>
-                                        <property name="halign">start</property>
-                                        <property name="valign">center</property>
-                                        <property name="hexpand">1</property>
-                                        <style>
-                                          <class name="dim-label" />
-                                          <class name="caption" />
-                                        </style>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkMenuButton" id="close-effect-button">
-                                    <property name="label">Choose Effects</property>
-                                    <property name="menu-model">close-effect-menu</property>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Open Window Animation</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
                           </object>
                         </child>
-
                         <child>
-                          <object class="GtkListBoxRow">
-                            <property name="activatable">0</property>
-                            <child>
-                              <object class="GtkBox">
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Also Burn Dialogs</property>
-                                    <property name="xalign">0</property>
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">1</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkSwitch" id="destroy-dialogs">
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="reset-destroy-dialogs">
-                                    <property name="icon-name">edit-clear-symbolic</property>
-                                    <property name="tooltip-text">Reset to Default Value</property>
-                                    <style>
-                                      <class name="flat" />
-                                    </style>
-                                  </object>
-                                </child>
-                              </object>
-                            </child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                            <style>
+                              <class name="dim-label" />
+                              <class name="caption" />
+                            </style>
                           </object>
                         </child>
-
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="open-effect-button">
+                        <property name="label" translatable="yes">Choose Effects</property>
+                        <property name="menu-model">open-effect-menu</property>
                       </object>
                     </child>
                   </object>
                 </child>
-
               </object>
-            </property>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Close Window Animation</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                            <style>
+                              <class name="dim-label" />
+                              <class name="caption" />
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="close-effect-button">
+                        <property name="label" translatable="yes">Choose Effects</property>
+                        <property name="menu-model">close-effect-menu</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Also Add Effects to Dialogs</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="destroy-dialogs">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-destroy-dialogs">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
           </object>
         </child>
-
-        <!-- Stack pages are inserted here -->
-
       </object>
     </child>
+
   </object>
 
 </interface>

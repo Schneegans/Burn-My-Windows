@@ -15,6 +15,8 @@
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -53,7 +55,7 @@ var Matrix = class Matrix {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'Matrix';
+    return _('Matrix');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -81,19 +83,27 @@ var Matrix = class Matrix {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows should neither be scaled nor faded.
-  static getCloseTransition(actor, settings) {
+  // The tweakTransition() is called from extension.js to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
+  // current value of the opacity transition is passed as uProgress to the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+
+  // For this effect, windows should not be faded but scaled vertically to allow for some
+  // overshooting.
+  static tweakTransition(actor, settings, forOpening) {
     const yScale = 1.0 + settings.get_double('matrix-overshoot');
     return {
-      'opacity': {to: 255},
-      'scale-x': {to: 1.0},
-      'scale-y': {from: yScale, to: yScale}
+      'opacity': {from: 255, to: 255, mode: 1},
+      'scale-x': {from: 1.0, to: 1.0, mode: 1},
+      'scale-y': {from: yScale, to: yScale, mode: 1}
     };
   }
 }
@@ -111,7 +121,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       // Load the font texture. As the shader is re-created for each window animation,
@@ -119,14 +129,14 @@ if (utils.isInShellProcess()) {
       const fontData    = GdkPixbuf.Pixbuf.new_from_resource('/img/matrixFont.png');
       this._fontTexture = new Clutter.Image();
       this._fontTexture.set_data(
-          fontData.get_pixels(),
-          fontData.has_alpha ? Cogl.PixelFormat.RGBA_8888 : Cogl.PixelFormat.RGB_888,
-          fontData.width, fontData.height, fontData.rowstride);
+        fontData.get_pixels(),
+        fontData.has_alpha ? Cogl.PixelFormat.RGBA_8888 : Cogl.PixelFormat.RGB_888,
+        fontData.width, fontData.height, fontData.rowstride);
 
       const trailColor =
-          Clutter.Color.from_string(settings.get_string('matrix-trail-color'))[1];
+        Clutter.Color.from_string(settings.get_string('matrix-trail-color'))[1];
       const tipColor =
-          Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
+        Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
 
       // The technique for this effect was inspired by
       // https://www.shadertoy.com/view/ldccW4, however the implementation is quite
@@ -186,6 +196,10 @@ if (utils.isInShellProcess()) {
           float shorten = fract(sin(column+42.0)*33.423) * mix(0.0, OVERSHOOT*0.25, RANDOMNESS);
           rainAlpha *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / shorten, 0, 1));
           rainAlpha *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / shorten, 0, 1));
+
+          #if ${forOpening ? '1' : '0'}
+            windowAlpha = 1.0 - windowAlpha;
+          #endif
 
           return vec2(rainAlpha, windowAlpha);
         }

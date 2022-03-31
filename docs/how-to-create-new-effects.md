@@ -34,14 +34,14 @@ Of course, you can replace any occurrence of this name and its nick `simple-fade
 Three simple steps are required to create a new effect. 
 You will have to ...
 
-1. add a preferences key for enabling the effect,
+1. add preferences keys for enabling the effect,
 2. create an additional effects class, and finally
 3. register the new effect in two places.
 
 ### 1. Expanding the Schema
 
-For enabling the new effect, the boolean settings key `simple-fade-close-effect` is required.
-In this example, we also add an integer valued settings key for storing the animation time of the new effect and a floating point value for storing another property of the effect - we will use them later in the tutorial.
+For enabling the new effect, the boolean settings keys `simple-fade-open-effect`, `simple-fade-close-effect`, and `simple-fade-animation-time` are required.
+In this example, we also add a floating point value for storing another property of the effect - we will use them later in the tutorial.
 Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml).
 Just remember to replace `simple-fade` with your custom name!
 
@@ -54,6 +54,12 @@ Just remember to replace `simple-fade` with your custom name!
   <default>false</default>
   <summary>Simple Fade Close Effect</summary>
   <description>Use the Simple Fade effect for window closing.</description>
+</key>
+
+<key name="simple-fade-open-effect" type="b">
+  <default>false</default>
+  <summary>Simple Fade Open Effect</summary>
+  <description>Use the Simple Fade effect for window opening.</description>
 </key>
 
 <key name="simple-fade-animation-time" type="i">
@@ -146,16 +152,26 @@ var SimpleFade = class SimpleFade {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For each property, you can set a "from", "to", and a "mode". For this
-  // effect, windows should neither be scaled nor faded.
-  static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 1.0}};
+  // The tweakTransition() is called from extension.js to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
+  // current value of the opacity transition is passed as uProgress to the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+
+  // For this effect, windows should neither be scaled nor faded.
+  static tweakTransition(actor, settings, forOpening) {
+    return {
+      'opacity': {from: 255, to: 255, mode: 4},
+      'scale-x': {from: 1.0, to: 1.0, mode: 4},
+      'scale-y': {from: 1.0, to: 1.0, mode: 4}
+    };
   }
 }
 
@@ -172,7 +188,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       this.set_shader_source(`
@@ -197,8 +213,10 @@ if (utils.isInShellProcess()) {
           // Radial distance from window edge to the window's center.
           float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
 
-          // This gradually dissolves from [1..0] from the outside to the center.
-          float mask = (1.0 - uProgress * (1.0 + FADE_WIDTH) - dist + FADE_WIDTH) / FADE_WIDTH;
+          // This gradually dissolves from [1..0] from the outside to the center. We
+          // switch the direction for opening and closing.
+          float progress = ${forOpening ? '1.0 - uProgress' : 'uProgress'};
+          float mask = (1.0 - progress * (1.0 + FADE_WIDTH) - dist + FADE_WIDTH) / FADE_WIDTH;
 
           // Make the mask smoother.
           mask = smoothstep(0, 1, mask);
@@ -324,7 +342,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                             <property name="icon-size">1</property>
                           </object>
                         </child>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -372,7 +390,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                             <property name="icon-size">1</property>
                           </object>
                         </child>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -457,7 +475,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                     <child>
                       <object class="GtkButton" id="reset-simple-fade-animation-time">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>
@@ -496,7 +514,7 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
                     <child>
                       <object class="GtkButton" id="reset-simple-fade-width">
                         <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text">Reset to Default Value</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>
                           <class name="flat" />
                         </style>

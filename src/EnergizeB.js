@@ -15,6 +15,8 @@
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -49,7 +51,7 @@ var EnergizeB = class EnergizeB {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'Energize B';
+    return _('Energize B');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -74,15 +76,26 @@ var EnergizeB = class EnergizeB {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows should neither be scaled nor faded.
-  static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 1.0}};
+  // The tweakTransition() is called from extension.js to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
+  // current value of the opacity transition is passed as uProgress to the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+
+  // For this effect, windows should neither be scaled nor faded.
+  static tweakTransition(actor, settings, forOpening) {
+    return {
+      'opacity': {from: 255, to: 255, mode: 3},
+      'scale-x': {from: 1.0, to: 1.0, mode: 3},
+      'scale-y': {from: 1.0, to: 1.0, mode: 3}
+    };
   }
 }
 
@@ -99,10 +112,13 @@ if (utils.isInShellProcess()) {
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       const color = Clutter.Color.from_string(settings.get_string('energize-b-color'))[1];
+
+      // If we are currently performing integration test, the animation uses a fixed seed.
+      const testMode = settings.get_boolean('test-mode');
 
       this.set_shader_source(`
 
@@ -111,8 +127,9 @@ if (utils.isInShellProcess()) {
       ${shaderSnippets.noise()}
       ${shaderSnippets.edgeMask()}
 
-      const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
-      const float SHOWER_TIME  = 0.2;
+      const vec2  SEED         = vec2(${testMode ? 0 : Math.random()}, 
+                                      ${testMode ? 0 : Math.random()});
+      const float SHOWER_TIME  = 0.3;
       const float SHOWER_WIDTH = 0.3;
       const float STREAK_TIME  = 0.6;
       const float EDGE_FADE    = 50;
@@ -141,7 +158,7 @@ if (utils.isInShellProcess()) {
         float atomMask = getRelativeEdgeMask(0.2);
         atomMask = max(0, atomMask - showerMask);
         atomMask *= streakMask;
-        atomMask *= (1.0 - fadeProgress);
+        atomMask *= sqrt(1-fadeProgress*fadeProgress);
 
         // Make some particles visible in the streaks.
         showerMask += 0.05 * streakMask;
@@ -161,6 +178,10 @@ if (utils.isInShellProcess()) {
 
         // Compute fading window opacity.
         float windowMask = pow(1.0 - fadeProgress, 2.0);
+
+        #if ${forOpening ? '1' : '0'}
+          windowMask = 1.0 - windowMask;
+        #endif
 
         return vec4(showerMask, streakMask, atomMask, windowMask);
       }

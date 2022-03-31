@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface>
+<interface domain="burn-my-windows">
   <menu id="main-menu">
     <section>
       <item>
@@ -17,20 +17,30 @@
         <attribute name="action">prefs.bugs</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">Create a Custom Effect</attribute>
+        <attribute name="label" translatable="yes">Create an Effect</attribute>
         <attribute name="action">prefs.new-effect</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Translate</attribute>
+        <attribute name="action">prefs.translate</attribute>
       </item>
       <submenu>
         <attribute name="label" translatable="yes">Donate</attribute>
         <item>
-          <attribute name="label" translatable="yes">Via PayPal</attribute>
+          <attribute name="label">PayPal</attribute>
           <attribute name="action">prefs.donate-paypal</attribute>
         </item>
         <item>
-          <attribute name="label" translatable="yes">Via GitHub</attribute>
+          <attribute name="label">GitHub</attribute>
           <attribute name="action">prefs.donate-github</attribute>
         </item>
       </submenu>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">About Burn-My-Windows</attribute>
+        <attribute name="action">prefs.about</attribute>
+      </item>
     </section>
   </menu>
 </interface>

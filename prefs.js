@@ -14,6 +14,17 @@
 'use strict';
 
 const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
+const ByteArray                      = imports.byteArray;
+
+// libadwaita is available starting with GNOME Shell 42.
+let Adw = null;
+try {
+  Adw = imports.gi.Adw;
+} catch (e) {
+  // Nothing to do.
+}
+
+const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
@@ -54,13 +65,11 @@ var PreferencesDialog = class PreferencesDialog {
     const styleProvider = Gtk.CssProvider.new();
     styleProvider.load_from_resource('/css/gtk.css');
     if (utils.isGTK4()) {
-      Gtk.StyleContext.add_provider_for_display(
-          Gdk.Display.get_default(), styleProvider,
-          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+      Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), styleProvider,
+                                                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     } else {
-      Gtk.StyleContext.add_provider_for_screen(
-          Gdk.Screen.get_default(), styleProvider,
-          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+      Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), styleProvider,
+                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     // Make sure custom icons are found.
@@ -84,26 +93,116 @@ var PreferencesDialog = class PreferencesDialog {
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
 
-    // Add all other effect pages.
-    const stack = this._builder.get_object('main-stack');
-    ALL_EFFECTS.forEach(Effect => {
-      const [minMajor, minMinor] = Effect.getMinShellVersion();
-      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
-        const page = new BurnMyWindowsEffectPage(Effect, this);
+    // Starting with GNOME Shell 42, the settings dialog uses libadwaita. We have to use a
+    // different layout, as the stack sidebar looks pretty ugly with the included
+    // Adw.Clamp...
+    if (utils.shellVersionIsAtLeast(42, 'beta')) {
 
-        // Add the Effect's preferences (if any).
-        const preferences = Effect.getPreferences(this);
-        if (preferences) {
-          this.gtkBoxAppend(page, preferences);
+      // This is our top-level widget which we will return later.
+      this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
+
+      // Add the general options page to the settings dialog.
+      const generalPrefs = this._builder.get_object('general-prefs');
+      this.gtkBoxAppend(this._widget, generalPrefs);
+
+      // Then add a preferences group with action rows to open the effect subpages.
+      const group = new Adw.PreferencesGroup({title: _('Effect Options')});
+      this.gtkBoxAppend(this._widget, group);
+
+      ALL_EFFECTS.forEach(Effect => {
+        const [minMajor, minMinor] = Effect.getMinShellVersion();
+        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+
+          const row = new Adw.ActionRow({title: Effect.getLabel(), activatable: true});
+          row.add_suffix(new Gtk.Image({icon_name: 'go-next-symbolic'}));
+
+          // Open a subpage with the effect's settings.
+          row.connect('activated', () => {
+            const page         = new BurnMyWindowsEffectPage(Effect, this);
+            page.valign        = Gtk.Align.CENTER;
+            page.margin_top    = 10;
+            page.margin_bottom = 10;
+            page.margin_start  = 10;
+            page.margin_end    = 10;
+
+            // Add the Effect's preferences (if any).
+            const preferences = Effect.getPreferences(this);
+            if (preferences) {
+              this.gtkBoxAppend(page, preferences);
+            }
+
+            // Add a button for back navigation.
+            const backButton = new Gtk.Button({
+              halign: Gtk.Align.CENTER,
+              label: _('Go Back'),
+            });
+            backButton.add_css_class('suggested-action');
+            backButton.add_css_class('pill-button');
+            backButton.connect('clicked', () => {
+              row.get_root().close_subpage();
+            });
+
+            this.gtkBoxAppend(page, backButton);
+
+            // Wrap the preferences group in an Adw.Clamp.
+            const clamp = new Adw.Clamp({
+              child: page,
+              maximum_size: 600,
+              tightening_threshold: 400,
+            });
+
+            // Open the subpage on click.
+            row.get_root().present_subpage(clamp);
+          });
+
+          group.add(row);
         }
+      });
 
-        stack.add_titled(page, Effect.getNick(), Effect.getLabel());
-      }
-    });
+    }
+    // On older GNOME versions, we use a StackSidebar.
+    else {
 
-    // This is our top-level widget which we will return later.
-    this._widget = this._builder.get_object('settings-widget');
+      // This is our top-level widget which we will return later.
+      this._widget = new Gtk.Box({
+        orientation: Gtk.Orientation.HORIZONTAL,
+      });
+
+      const stack = new Gtk.Stack({
+        transition_type: Gtk.StackTransitionType.SLIDE_UP_DOWN,
+      });
+
+      // Add the general options page.
+      const generalPage        = this._builder.get_object('general-prefs');
+      generalPage.margin_start = 60;
+      generalPage.margin_end   = 60;
+      stack.add_titled(generalPage, 'general', _('General Options'));
+
+      this.gtkBoxAppend(this._widget, new Gtk.StackSidebar({stack: stack}));
+      this.gtkBoxAppend(this._widget, stack);
+
+      // Add all other effect pages.
+      ALL_EFFECTS.forEach(Effect => {
+        const [minMajor, minMinor] = Effect.getMinShellVersion();
+        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+
+          const page         = new BurnMyWindowsEffectPage(Effect, this);
+          page.margin_start  = 60;
+          page.margin_end    = 60;
+          page.margin_top    = 60;
+          page.margin_bottom = 60;
+
+          // Add the Effect's preferences (if any).
+          const preferences = Effect.getPreferences(this);
+          if (preferences) {
+            this.gtkBoxAppend(page, preferences);
+          }
+
+          stack.add_titled(page, Effect.getNick(), Effect.getLabel());
+        }
+      });
+    }
 
     // Some things can only be done once the widget is shown as we do not have access to
     // the toplevel widget before.
@@ -117,26 +216,103 @@ var PreferencesDialog = class PreferencesDialog {
       {
         // Add the menu button to the title bar.
         const menu = this._builder.get_object('menu-button');
-        window.get_titlebar().pack_end(menu);
+
+        // Starting with GNOME Shell 42, we have to hack our way through the widget tree
+        // of the Adw.PreferencesWindow...
+        if (utils.shellVersionIsAtLeast(42, 'beta')) {
+          const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
+          header.pack_end(menu);
+
+          // Allow closing of the sub pages.
+          window.can_navigate_back = true;
+        } else {
+          window.get_titlebar().pack_end(menu);
+        }
 
         // Populate the menu with actions.
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('prefs', group);
 
-        const addAction = (name, uri) => {
+        const addURIAction = (name, uri) => {
           const action = Gio.SimpleAction.new(name, null);
           action.connect('activate', () => Gtk.show_uri(null, uri, Gdk.CURRENT_TIME));
           group.add_action(action);
         };
 
         // clang-format off
-        addAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
-        addAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
-        addAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
-        addAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
-        addAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
-        addAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        addURIAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
+        addURIAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
+        addURIAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
+        addURIAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
+        addURIAction('translate',     'https://hosted.weblate.org/engage/burn-my-windows/');
+        addURIAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
+        addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
         // clang-format on
+
+        // Add the about dialog.
+        const aboutAction = Gio.SimpleAction.new('about', null);
+        aboutAction.connect('activate', () => {
+          // The JSON report format from weblate is a bit weird. Here we extract all
+          // unique names from the translation report.
+          const translators = new Set();
+          this._getJSONResource('/credits/translators.json').forEach(i => {
+            for (const j of Object.values(i)) {
+              j.forEach(k => translators.add(k[1]));
+            }
+          });
+
+          const sponsors = this._getJSONResource('/credits/sponsors.json');
+
+          const dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
+          dialog.set_logo_icon_name('burn-my-windows-symbolic');
+          dialog.set_program_name(`Burn-My-Windows ${Me.metadata.version}`);
+          dialog.set_website('https://github.com/Schneegans/Burn-My-Windows');
+          dialog.set_authors(['Simon Schneegans']);
+          dialog.set_copyright('© 2022 Simon Schneegans');
+          dialog.set_translator_credits([...translators].join('\n'));
+          if (sponsors.gold.length > 0) {
+            dialog.add_credit_section(_('Gold Sponsors'), sponsors.gold);
+          }
+          if (sponsors.silver.length > 0) {
+            dialog.add_credit_section(_('Silver Sponsors'), sponsors.silver);
+          }
+          if (sponsors.bronze.length > 0) {
+            dialog.add_credit_section(_('Bronze Sponsors'), sponsors.bronze);
+          }
+          if (sponsors.past.length > 0) {
+            dialog.add_credit_section(_('Past Sponsors'), sponsors.past);
+          }
+          dialog.set_license_type(Gtk.License.GPL_3_0);
+
+          if (utils.isGTK4()) {
+            dialog.show();
+          } else {
+            dialog.show_all();
+          }
+        });
+        group.add_action(aboutAction);
+      }
+
+      // Populate the open-effects drop-down menu.
+      {
+        const menu  = this._builder.get_object('open-effect-menu');
+        const group = Gio.SimpleActionGroup.new();
+        window.insert_action_group('open-effects', group);
+
+        ALL_EFFECTS.forEach(Effect => {
+          const [minMajor, minMinor] = Effect.getMinShellVersion();
+          if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+            const nick       = Effect.getNick();
+            const label      = Effect.getLabel();
+            const actionName = nick + '-open-effect';
+            const fullName   = 'open-effects.' + actionName;
+
+            const action = this._settings.create_action(actionName);
+            group.add_action(action);
+
+            menu.append_item(Gio.MenuItem.new(label, fullName));
+          }
+        });
       }
 
       // Populate the close-effects drop-down menu.
@@ -277,74 +453,111 @@ var PreferencesDialog = class PreferencesDialog {
     this._bindResetButton(settingsKey);
   }
 
+  // Reads the contents of a JSON file contained in the global resources archive. The data
+  // is parsed and returned as a JavaScript object / array.
+  _getJSONResource(path) {
+    const data   = Gio.resources_lookup_data(path, 0);
+    const string = ByteArray.toString(ByteArray.fromGBytes(data));
+    return JSON.parse(string);
+  }
+
+  // This traverses the widget tree below the given parent recursively and returns the
+  // first widget of the given type.
+  _findWidgetByType(parent, type) {
+    for (const child of [...parent]) {
+      if (child instanceof type) return child;
+
+      const match = this._findWidgetByType(child, type);
+      if (match) return match;
+    }
+
+    return null;
+  }
+
   // Initializes template widgets used by the preferences dialog.
   _registerCustomClasses() {
 
     // Each effect page is based on a template widget. This template contains the title
     // and the preview button.
-    // clang-format off
-    BurnMyWindowsEffectPage =
-      GObject.registerClass({
-        GTypeName: 'BurnMyWindowsEffectPage',
-        Template: `resource:///ui/${utils.getGTKString()}/effectPage.ui`,
-        InternalChildren: ['label', 'button'],
-      },
-      class BurnMyWindowsEffectPage extends Gtk.Box {
-        _init(Effect, dialog) {
-          super._init();
+    if (GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
+      BurnMyWindowsEffectPage = GObject.registerClass(
+        {
+          GTypeName: 'BurnMyWindowsEffectPage',
+          Template: `resource:///ui/${utils.getGTKString()}/effectPage.ui`,
+          InternalChildren: ['label', 'button'],
+        },
+        class BurnMyWindowsEffectPage extends Gtk.Box {  // ------------------------------
+          _init(Effect, dialog) {
+            super._init();
 
-          // Set the effect's name as label.
-          this._label.label = Effect.getLabel();
+            // Set the effect's name as label.
+            this._label.label = Effect.getLabel();
 
-          // Open the preview window once the preview button is clicked.
-          this._button.connect('clicked', () => {
+            // Open the preview window once the preview button is clicked.
+            this._button.connect('clicked', () => {
+              // Set the to-be-previewed effect.
+              dialog.getSettings().set_string('open-preview-effect', Effect.getNick());
+              dialog.getSettings().set_string('close-preview-effect', Effect.getNick());
 
-            // Set the to-be-previewed effect.
-            dialog.getSettings().set_string('close-preview-effect', Effect.getNick());
+              // Make sure that the window.show() firther below "sees" this change.
+              Gio.Settings.sync();
 
-            // Create the preview-window.
-            const window = new Gtk.Window({
-              title: `Preview for ${Effect.getLabel()}`,
-              default_width: 800,
-              default_height: 450,
-              modal: true,
-              transient_for: utils.isGTK4() ? this._button.get_root() :
-                                              this._button.get_toplevel()
+              // Create the preview-window.
+              const window = new Gtk.Window({
+                // Translators: %s will be replaced by the effect's name.
+                title: _('Preview for %s').replace('%s', Effect.getLabel()),
+                default_width: 800,
+                default_height: 450,
+                modal: true,
+                transient_for: utils.isGTK4() ? this._button.get_root() :
+                                                this._button.get_toplevel()
+              });
+
+              // Add a header bar to the window.
+              if (utils.isGTK4()) {
+                const header = Gtk.HeaderBar.new();
+                window.set_titlebar(header);
+              }
+
+              const box = new Gtk.Box({
+                orientation: Gtk.Orientation.VERTICAL,
+                valign: Gtk.Align.CENTER,
+                spacing: 10,
+                margin_start: 50,
+                margin_end: 50
+              });
+
+              const label = Gtk.Label.new(_('Close this Window to Preview the Effect!'));
+              label.wrap  = true;
+              label.justify = Gtk.Justification.CENTER;
+              label.get_style_context().add_class('large-title');
+
+              const image = new Gtk.Image({
+                icon_name: 'burn-my-windows-symbolic',
+                pixel_size: 128,
+              });
+
+              dialog.gtkBoxAppend(box, image);
+              dialog.gtkBoxAppend(box, label);
+
+              if (utils.isGTK4()) {
+                window.set_child(box);
+                window.show();
+              } else {
+                window.add(box);
+                window.show_all();
+              }
             });
-
-            const box = new Gtk.Box({
-              orientation: Gtk.Orientation.VERTICAL,
-              valign: Gtk.Align.CENTER,
-              spacing: 10,
-            });
-
-            const label = Gtk.Label.new('Close this Window to Preview the Effect!');
-            label.get_style_context().add_class('large-title');
-
-            const image = new Gtk.Image({
-              icon_name: 'burn-my-windows-symbolic',
-              pixel_size: 128,
-            });
-
-            dialog.gtkBoxAppend(box, image);
-            dialog.gtkBoxAppend(box, label);
-
-            if (utils.isGTK4()) {
-              window.set_child(box);
-            } else {
-              window.add(box);
-            }
-
-            window.show();
-          });
-        }
-      });
-    // clang-format on
+          }
+        });
+    }
   }
 }
 
-// Nothing to do for now...
-function init() {}
+// This is used for setting up the translations.
+function init() {
+  ExtensionUtils.initTranslations();
+}
 
 // This function is called when the preferences window is created to build and return a
 // Gtk widget. We create a new instance of the PreferencesDialog class each time this

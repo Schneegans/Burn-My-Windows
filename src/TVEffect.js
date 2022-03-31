@@ -15,6 +15,8 @@
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -51,7 +53,7 @@ var TVEffect = class TVEffect {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'TV Effect';
+    return _('TV Effect');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -75,15 +77,26 @@ var TVEffect = class TVEffect {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows are scaled down vertically.
-  static getCloseTransition(actor, settings) {
-    return {'opacity': {to: 255}, 'scale-x': {to: 1.0}, 'scale-y': {to: 0.5}};
+  // The tweakTransition() is called from extension.js to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
+  // current value of the opacity transition is passed as uProgress to the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+
+  // For this effect, windows are scaled down vertically.
+  static tweakTransition(actor, settings, forOpening) {
+    return {
+      'opacity': {from: 255, to: 255, mode: 3},
+      'scale-x': {from: 1.0, to: 1.0, mode: 3},
+      'scale-y': {from: forOpening ? 0.5 : 1.0, to: forOpening ? 1.0 : 0.5, mode: 3}
+    };
   }
 }
 
@@ -100,7 +113,7 @@ if (utils.isInShellProcess()) {
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings) {
+    _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
       const color = Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
@@ -114,17 +127,19 @@ if (utils.isInShellProcess()) {
       const float TB_TIME    = 0.7;  // Relative time for the top/bottom animation.
       const float LR_TIME    = 0.4;  // Relative time for the left/right animation.
       const float LR_DELAY   = 0.6;  // Delay after which the left/right animation starts.
-      const float FF_TIME    = 0.2;  // Relative time for the final fade to transparency.
+      const float FF_TIME    = 0.1;  // Relative time for the final fade to transparency.
 
       void main() {
+
+        float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
 
         // All of these are in [0..1] during the different stages of the animation.
         // tb refers to the top-bottom animation.
         // lr refers to the left-right animation.
         // ff refers to the final fade animation.
-        float tbProgress = smoothstep(0, 1, clamp(uProgress/TB_TIME, 0, 1));
-        float lrProgress = smoothstep(0, 1, clamp((uProgress - LR_DELAY)/LR_TIME, 0, 1));
-        float ffProgress = smoothstep(0, 1, clamp((uProgress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
+        float tbProgress = smoothstep(0, 1, clamp(progress/TB_TIME, 0, 1));
+        float lrProgress = smoothstep(0, 1, clamp((progress - LR_DELAY)/LR_TIME, 0, 1));
+        float ffProgress = smoothstep(0, 1, clamp((progress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
 
         // This is a top-center-bottom gradient in [0..1..0]
         float tb = cogl_tex_coord_in[0].t * 2;
@@ -147,7 +162,7 @@ if (utils.isInShellProcess()) {
                                 ${color.green / 255},
                                 ${color.blue / 255}, 1.0) * windowColor.a;
 
-        windowColor.rgb = mix(windowColor.rgb, effectColor.rgb, smoothstep(0, 1, uProgress));
+        windowColor.rgb = mix(windowColor.rgb, effectColor.rgb, smoothstep(0, 1, progress));
 
         cogl_color_out = windowColor * mask;
 

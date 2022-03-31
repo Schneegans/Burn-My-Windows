@@ -76,7 +76,35 @@ jobs:
       ( contains(github.ref, 'main') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
       ( contains(github.ref, 'develop') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
       contains(github.event.head_commit.message, '[run-ci]')
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - '32'
+          - '33'
+          - '34'
+          - '35'
+          - '36'
+        session:
+          - 'gnome-xsession'
+          - 'gnome-wayland-nested'
     steps:
     - uses: actions/checkout@v2
+    - name: Download Dependencies
+      run: |
+        sudo apt update -qq
+        sudo apt install gettext -qq
     - name: Build Burn-My-Windows
       run: make
+    - name: Test Burn-My-Windows
+      run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: log_${{ matrix.version }}_${{ matrix.session }}
+        path: fail.log
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: screen_${{ matrix.version }}_${{ matrix.session }}
+        path: fail.png

@@ -17,13 +17,12 @@ Steps to reproduce the behavior:
 4. See error
 
 You may also check the output of GNOME Shell for any error messages.
-This can be done with the following terminal command:
+This can be done with the following terminal command.
+Execute this in a terminal and observe the output while reproducing the bug.
 
+```bash
 journalctl -f -o cat | grep -E 'burn-my-windows|'
 ```
-
-## Expected Behavior
-A clear and concise description of what you expected to happen.
 
 ## System
 _Please complete the following information:_

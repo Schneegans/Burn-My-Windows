@@ -1,8 +1,17 @@
-# 🔥 Set GNOME Shell on Fire!
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=L2aaNF_rPHo"><img src ="docs/pics/teaser.jpg" /></a>
+</p>
 
+<h1 align="center">🔥 Set GNOME Shell on Fire!</h1>
+
+<p align="center">
+<a href="https://extensions.gnome.org/extension/4679/burn-my-windows/"><img src="https://img.shields.io/badge/Download-extensions.gnome.org-e67f4d.svg?logo=gnome&logoColor=lightgrey&labelColor=303030" /></a><br/>
 <a href="https://github.com/Schneegans/Burn-My-Windows/actions"><img src="https://github.com/Schneegans/Burn-My-Windows/workflows/Checks/badge.svg?branch=main" /></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg?labelColor=303030" /></a>
-<a href="https://extensions.gnome.org/extension/4679/burn-my-windows/"><img src="https://img.shields.io/badge/Download-extensions.gnome.org-e67f4d.svg?logo=gnome&logoColor=lightgrey&labelColor=303030" /></a>
+<a href="https://hosted.weblate.org/engage/burn-my-windows/"><img src="https://img.shields.io/weblate/progress/burn-my-windows?label=Translated&logo=weblate&logoColor=lightgray&labelColor=303030" /></a>
+<a href="scripts/cloc.sh"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Schneegans/8cf45f23253ff09b21196e7271378762/raw/loc.json" /></a>
+<a href="scripts/cloc.sh"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Schneegans/8cf45f23253ff09b21196e7271378762/raw/comments.json" /></a>
+</p>
 
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
@@ -25,7 +34,7 @@ Effect | Preview
 
 ## 💞 These People _love_ this Extension
 
-While coding new features is the most awesome way to contribute, providing financial support will help me stay motivated to invest my spare time to keep the project alive in the future.
+While [coding new features](docs/how-to-create-new-effects.md) or [translating the extension](https://hosted.weblate.org/engage/burn-my-windows/) are the most awesome ways to contribute, providing financial support will help me stay motivated to invest my spare time to keep the project alive in the future.
 
 <h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
@@ -34,17 +43,20 @@ While coding new features is the most awesome way to contribute, providing finan
 
 <h3 align="center">🥈 Current Silver Sponsors</h3>
 <p align="center">
+  <a href="https://twitter.com/tjiiik">tj3k</a><br>
   <a href="https://github.com/MRR-dev">@MRR-dev</a><br>
   <a href="https://github.com/castrojo">Jorge Castro</a><br>
 </p>
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
 <p align="center">
-  <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
+  <a href="https://github.com/danielheadbang">@danielheadbang</a><br>
 </p>
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
+  <a href="https://github.com/MrTomRod">@MrTomRod</a><br>
+  Pouhiou<br>
   DAPREMONT Christophe<br>
   <a href="https://github.com/manero6">@manero6</a><br>
   <a href="https://github.com/RickStanley">@RickStanley</a><br>
@@ -116,7 +128,7 @@ gnome-extensions enable burn-my-windows@schneegans.github.com
 ## :octocat: I want to contribute!
 
 That's great!
-Most likely, you want to [create a new effect](docs/how-to-create-new-effects.md)?
+Most likely, you want to [create a new effect](docs/how-to-create-new-effects.md) or to  [translate the extension](https://hosted.weblate.org/engage/burn-my-windows/)?
 Here are some basic rules to get you started:
 Commits should start with a Capital letter and should be written in present tense (e.g. __:tada: Add cool new feature__ instead of __:tada: Added cool new feature__).
 You should also start your commit message with **one** applicable emoji.

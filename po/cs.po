@@ -1,0 +1,306 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Simon Schneegans
+# This file is distributed under the same license as the Burn-My-Windows package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Burn-My-Windows\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-18 20:33+0100\n"
+"PO-Revision-Date: 2022-02-02 19:55+0000\n"
+"Last-Translator: Jiří Doubravský <jiri.doubravsky@gmail.com>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/cs/>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.11-dev\n"
+
+#: prefs.js:111
+msgid "Effect Options"
+msgstr ""
+
+#: prefs.js:139
+msgid "Go Back"
+msgstr ""
+
+#: prefs.js:181
+msgid "General Options"
+msgstr "Obecné možnosti"
+
+#: prefs.js:276
+msgid "Gold Sponsors"
+msgstr ""
+
+#: prefs.js:279
+msgid "Silver Sponsors"
+msgstr ""
+
+#: prefs.js:282
+msgid "Bronze Sponsors"
+msgstr ""
+
+#: prefs.js:285
+msgid "Past Sponsors"
+msgstr ""
+
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:512
+#, javascript-format
+msgid "Preview for %s"
+msgstr "Náhled %s"
+
+#: prefs.js:534
+msgid "Close this Window to Preview the Effect!"
+msgstr "Zavřete toto okno, pokud chcete vidět efekt!"
+
+#: src/BrokenGlass.js:57
+msgid "Broken Glass"
+msgstr "Střepy"
+
+#: src/TVEffect.js:56
+msgid "TV Effect"
+msgstr "Televize"
+
+#: src/TRexAttack.js:56
+msgid "T-Rex Attack"
+msgstr "Tyrannosaurus"
+
+#: src/Wisps.js:55
+msgid "Wisps"
+msgstr "Obláčky"
+
+#: src/Fire.js:58
+msgid "Fire"
+msgstr "Oheň"
+
+#: src/Fire.js:130
+msgid "Default Fire"
+msgstr "Výchozí oheň"
+
+#: src/Fire.js:140
+msgid "Hell Fire"
+msgstr "Pekelný oheň"
+
+#: src/Fire.js:150
+msgid "Dark and Smutty"
+msgstr "Temný"
+
+#: src/Fire.js:160
+msgid "Cold Breeze"
+msgstr "Studený vánek"
+
+#: src/Fire.js:170
+msgid "Santa is Coming"
+msgstr "Santa přichází"
+
+#: src/EnergizeA.js:54
+msgid "Energize A"
+msgstr "Energizovat A"
+
+#: src/EnergizeB.js:54
+msgid "Energize B"
+msgstr "Energizovat B"
+
+#: src/Matrix.js:58
+msgid "Matrix"
+msgstr "Matrix"
+
+#: resources/ui/common/main-menu.ui:6
+msgid "Visit Homepage"
+msgstr "Navštívit web"
+
+#: resources/ui/common/main-menu.ui:10
+msgid "View Changelog"
+msgstr "Zobrazit historii změn"
+
+#: resources/ui/common/main-menu.ui:16
+msgid "Report a Bug"
+msgstr "Ohlásit chybu"
+
+#: resources/ui/common/main-menu.ui:20
+msgid "Create an Effect"
+msgstr "Vytvořit efekt"
+
+#: resources/ui/common/main-menu.ui:24
+msgid "Translate"
+msgstr "Přeložit"
+
+#: resources/ui/common/main-menu.ui:28
+msgid "Donate"
+msgstr "Přispět"
+
+#: resources/ui/common/main-menu.ui:45
+msgid "About Burn-My-Windows"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
+#: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
+#: resources/ui/gtk4/TRexAttack.ui:24 resources/ui/gtk4/TVEffect.ui:24
+#: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/EnergizeB.ui:24
+#: resources/ui/gtk3/Wisps.ui:42 resources/ui/gtk3/Fire.ui:93
+#: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
+#: resources/ui/gtk3/EnergizeB.ui:42
+msgid "Animation Time [ms]"
+msgstr "Délka animace [ms]"
+
+#: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
+#: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
+#: resources/ui/gtk4/Matrix.ui:224 resources/ui/gtk4/Matrix.ui:258
+#: resources/ui/gtk4/BrokenGlass.ui:52 resources/ui/gtk4/BrokenGlass.ui:98
+#: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
+#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Wisps.ui:52
+#: resources/ui/gtk4/Wisps.ui:98 resources/ui/gtk4/Wisps.ui:132
+#: resources/ui/gtk4/Fire.ui:77 resources/ui/gtk4/Fire.ui:123
+#: resources/ui/gtk4/Fire.ui:169 resources/ui/gtk4/Fire.ui:222
+#: resources/ui/gtk4/Fire.ui:280 resources/ui/gtk4/TRexAttack.ui:52
+#: resources/ui/gtk4/TRexAttack.ui:98 resources/ui/gtk4/TRexAttack.ui:144
+#: resources/ui/gtk4/TRexAttack.ui:190 resources/ui/gtk4/TRexAttack.ui:224
+#: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
+#: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
+#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/EnergizeB.ui:52
+#: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
+#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
+#: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
+#: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
+#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/TVEffect.ui:61
+#: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
+#: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
+#: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
+#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
+msgid "Reset to Default Value"
+msgstr "Obnovit výchozí hodnoty"
+
+#: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
+#: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
+#: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/EnergizeB.ui:70
+#: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
+#: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
+msgid "Scale"
+msgstr "Měřítko"
+
+#: resources/ui/gtk4/Matrix.ui:116
+msgid "Randomness"
+msgstr "Nahodilost"
+
+#: resources/ui/gtk4/Matrix.ui:162
+#, fuzzy
+msgid "Vertical Overshooting"
+msgstr "Vertikální přestřelení"
+
+#: resources/ui/gtk4/Matrix.ui:208
+msgid "Trail Color"
+msgstr "Barva ohonu"
+
+#: resources/ui/gtk4/Matrix.ui:242
+msgid "Tip Color"
+msgstr "Barva hrotu"
+
+#: resources/ui/gtk4/BrokenGlass.ui:116
+msgid "Gravity"
+msgstr "Gravitace"
+
+#: resources/ui/gtk4/BrokenGlass.ui:162
+msgid "Blow Force"
+msgstr "Síla úderu"
+
+#: resources/ui/gtk4/BrokenGlass.ui:212
+msgid "Shatter From Pointer Location"
+msgstr "Roztříštění od místa ukazatele"
+
+#: resources/ui/gtk4/BrokenGlass.ui:221
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr "Střepy odletí z místa, kde byl ukazatel myši při zavírání okna."
+
+#: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
+#: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
+#: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
+#: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
+msgid "Color"
+msgstr "Barva"
+
+#: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
+msgid "Presets"
+msgstr "Předvolby"
+
+#: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
+msgid "Speed"
+msgstr "Rychlost"
+
+#: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
+msgid "3D Noise"
+msgstr "3D šum"
+
+#: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Vytvoří dynamičtejší efekt, ale potřebuje k tomu silnější GPU"
+
+#: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
+msgid "Gradient"
+msgstr "Přechod"
+
+#: resources/ui/gtk4/TRexAttack.ui:70
+msgid "Claw Scratch Scale"
+msgstr "Velikost škrábanců od drápů"
+
+#: resources/ui/gtk4/TRexAttack.ui:116
+msgid "Claw Scratch Count"
+msgstr "Počet škrábanců"
+
+#: resources/ui/gtk4/TRexAttack.ui:162
+msgid "Warp Effect"
+msgstr "Efekt zakřivení"
+
+#: resources/ui/gtk4/TRexAttack.ui:208
+msgid "Flash Color"
+msgstr "Barva blesku"
+
+#: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
+msgid "Preview this Effect"
+msgstr "Náhled efektu"
+
+#: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
+msgid "Welcome to Burn-My-Windows!"
+msgstr "Vítá Vás Burn-My-Windows!"
+
+#: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
+msgid "If you like this extension, recommend it to your friends :)"
+msgstr "Pokud se vám líbí tento doplňek, doporučte jej přátelům :-)"
+
+#: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
+msgid "Open Window Animation"
+msgstr "Animace při otevírání okna"
+
+#: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
+#: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
+msgid "If multiple are selected, one is chosen randomly."
+msgstr "Pokud vyberete více, budou se střídat náhodně."
+
+#: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
+#: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
+msgid "Choose Effects"
+msgstr "Vyberte efekty"
+
+#: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
+msgid "Close Window Animation"
+msgstr "Animace při zavírání okna"
+
+#: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
+msgid "Also Add Effects to Dialogs"
+msgstr "Použít efekt i na dialogová okna"
+
+#: resources/ui/gtk3/Fire.ui:63
+msgid "Choose a Preset"
+msgstr "Vyberte předvolbu"
+
+#~ msgid "Via PayPal"
+#~ msgstr "skrze PayPal"
+
+#~ msgid "Via GitHub"
+#~ msgstr "skrze GitHub"
