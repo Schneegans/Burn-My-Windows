@@ -142,11 +142,14 @@ if (utils.isInShellProcess()) {
       let epicenterY = 0.5;
 
       // However, if this option is set, we use the mouse pointer position.
-      if (settings.get_boolean('broken-glass-use-pointer')) {
+      if (!forOpening && settings.get_boolean('broken-glass-use-pointer')) {
         const [x, y]               = global.get_pointer();
         const [ok, localX, localY] = actor.transform_stage_point(x, y);
-        epicenterX                 = localX / actor.width;
-        epicenterY                 = localY / actor.height;
+
+        if (ok) {
+          epicenterX = localX / actor.width;
+          epicenterY = localY / actor.height;
+        }
       }
 
       // If we are currently performing integration test, the animation uses a fixed seed.
