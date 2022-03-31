@@ -178,6 +178,7 @@ if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   capture_effect "trex"
   capture_effect "broken-glass"
   capture_effect "matrix"
+  capture_effect "snap"
 fi
 
 echo "All reference images generated successfully."

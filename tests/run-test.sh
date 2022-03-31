@@ -207,6 +207,7 @@ if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   test_effect "trex"
   test_effect "broken-glass"
   test_effect "matrix"
+  test_effect "snap"
 fi
 
 echo "All tests executed successfully."

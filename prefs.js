@@ -32,11 +32,12 @@ const utils          = Me.imports.src.utils;
 
 // New effects must be registered here and in extension.js.
 const ALL_EFFECTS = [
+  Me.imports.src.BrokenGlass.BrokenGlass,
   Me.imports.src.EnergizeA.EnergizeA,
   Me.imports.src.EnergizeB.EnergizeB,
   Me.imports.src.Fire.Fire,
   Me.imports.src.Matrix.Matrix,
-  Me.imports.src.BrokenGlass.BrokenGlass,
+  Me.imports.src.SnapOfDisintegration.SnapOfDisintegration,
   Me.imports.src.TRexAttack.TRexAttack,
   Me.imports.src.TVEffect.TVEffect,
   Me.imports.src.Wisps.Wisps,

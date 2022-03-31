@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Window 15](https://github.com/schneegans/Burn-My-Windows/releases/tag/v15)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+* Disabled the buggy "Shatter from pointer" option of the Broken Glass effect when opening windows (it only makes sense for closing windows).
+
 ## [Burn My Window 14](https://github.com/schneegans/Burn-My-Windows/releases/tag/v14)
 
 **Release Date:** 2022-03-29

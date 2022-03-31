@@ -375,6 +375,40 @@
       <description>Use the pointer location for the broken glass effect.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Snap of Disintegration Effect Options                                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="snap-open-effect" type="b">
+      <default>false</default>
+      <summary>Snap Open Effect</summary>
+      <description>Use the snap effect for window openeing.</description>
+    </key>
+
+    <key name="snap-close-effect" type="b">
+      <default>false</default>
+      <summary>Snap Close Effect</summary>
+      <description>Use the snap effect for window closing.</description>
+    </key>
+
+    <key name="snap-animation-time" type="i">
+      <default>1000</default>
+      <summary>Snap Animation Time</summary>
+      <description>The time the snap effect takes.</description>
+    </key>
+
+    <key name="snap-scale" type="d">
+      <default>1.0</default>
+      <summary>Snap Scale</summary>
+      <description>The size of the snap effect.</description>
+    </key>
+
+    <key name="snap-color" type="s">
+      <default>"rgb(50, 40, 35)"</default>
+      <summary>Snap Effect Color</summary>
+      <description>The color of the dust.</description>
+    </key>
+
   </schema>
 
 </schemalist>
