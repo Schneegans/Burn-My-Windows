@@ -4,6 +4,10 @@
 
 **Release Date:** TBD
 
+#### New Features
+
+* **New Effect: Snap of Disintegration.** This was requested quite frequently! Dissolve your windows into a cloud of dust.
+
 #### Bug Fixes
 
 * Disabled the buggy "Shatter from pointer" option of the Broken Glass effect when opening windows (it only makes sense for closing windows).
