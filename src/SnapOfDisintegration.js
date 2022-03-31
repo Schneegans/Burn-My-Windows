@@ -15,12 +15,18 @@
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// ...                                                                                  //
+// This effects dissolves your windows into a cloud of dust. For this, it uses an       //
+// approach similar to the Broken Glass effect. A dust texture is used to segment the   //
+// window texture into a set of layers. Each layer is then moved, sheared and scaled    //
+// randomly. Just a few layers are sufficient to create the illusion of many individual //
+// dust particles.                                                                      //
 // This effect is not available on GNOME 3.3x, due to the limitation described in the   //
 // documentation of vfunc_paint_target further down in this file.                       //
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +57,7 @@ var SnapOfDisintegration = class SnapOfDisintegration {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'Snap of Disintegration';
+    return _('Snap of Disintegration');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -76,19 +82,26 @@ var SnapOfDisintegration = class SnapOfDisintegration {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings) {
-    return new Shader(actor, settings);
+  static createShader(actor, settings, forOpening) {
+    return new Shader(actor, settings, forOpening);
   }
 
-  // This is also called from extension.js. It is used to tweak the ongoing transition of
-  // the actor - usually windows are faded to transparency and scaled down slightly by
-  // GNOME Shell. For this effect, windows are set to twice their original size, so that
-  // we have some space to draw the dust.
-  static getCloseTransition(actor, settings) {
+  // The tweakTransition() is called from extension.js to tweak a window's open / close
+  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
+  // The parameter 'forOpening' is set to true if this is called for a window-open
+  // transition, for a window-close transition it is set to false. The modes can be set to
+  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
+  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
+  // current value of the opacity transition is passed as uProgress to the shader.
+  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
+
+  // For this effect, windows are set to 1.2 times their original size, so that we have
+  // some space to draw the dust particles. We also set the animation mode to "Linear".
+  static tweakTransition(actor, settings, forOpening) {
     return {
-      'opacity': {to: 255, mode: 14},             // Mode:  EASE_IN_SINE
-      'scale-x': {from: 2.0, to: 2.0, mode: 14},  // Mode:  EASE_IN_SINE
-      'scale-y': {from: 2.0, to: 2.0, mode: 14}   // Mode:  EASE_IN_SINE
+      'opacity': {from: 255, to: 255, mode: 1},
+      'scale-x': {from: 1.2, to: 1.2, mode: 1},
+      'scale-y': {from: 1.2, to: 1.2, mode: 1}
     };
   }
 }
@@ -106,17 +119,17 @@ if (utils.isInShellProcess()) {
   const shaderSnippets             = Me.imports.src.shaderSnippets;
 
   Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(actor, settings) {
+    _init(actor, settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
-      // Load the claw texture. As the shader is re-created for each window animation,
+      // Load the dust texture. As the shader is re-created for each window animation,
       // this texture is also re-created each time. This could be improved in the future!
       const dustData    = GdkPixbuf.Pixbuf.new_from_resource('/img/dust.png');
       this._dustTexture = new Clutter.Image();
-      this._dustTexture.set_data(
-          dustData.get_pixels(), Cogl.PixelFormat.RGB_888, dustData.width,
-          dustData.height, dustData.rowstride);
+      this._dustTexture.set_data(dustData.get_pixels(), Cogl.PixelFormat.RGB_888,
+                                 dustData.width, dustData.height, dustData.rowstride);
 
+      // The dust particles will fade to this color over time.
       const color = Clutter.Color.from_string(settings.get_string('snap-color'))[1];
 
       this.set_shader_source(`
@@ -130,50 +143,64 @@ if (utils.isInShellProcess()) {
         const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
         const float DUST_SCALE   = ${settings.get_double('snap-scale')};
         const float DUST_LAYERS  = 5;
-        const float ACTOR_SCALE  = 2.0;
+        const float ACTOR_SCALE  = 1.2;
         const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
+        const vec2  EPICENTER    = vec2(0.5);
         const vec3  DUST_COLOR   = vec3(${color.red / 255},
                                         ${color.green / 255},
                                         ${color.blue / 255});
-
         void main() {
 
-          float progress = pow(uProgress, 2.0);
+          // We simply inverse the progress for opening windows.
+          float progress = pow(${forOpening ? '1.0-uProgress' : 'uProgress'}, 2.0);
 
           cogl_color_out = vec4(0, 0, 0, 0);
 
           for (float i=0; i<DUST_LAYERS; ++i) {
-
-            float factor = DUST_LAYERS == 1 ? 0 : i/(DUST_LAYERS-1);
-
-            vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING;
             
-            float angle = 23.123 * SEED.x + mix(0.0, 0.2, factor);
+            // Create a random direction.
+            float factor   = DUST_LAYERS == 1 ? 0 : i/(DUST_LAYERS-1);
+            float angle    = 123.123 * (SEED.x + factor);
             vec2 direction = vec2(1.0, 0.0);
-            direction = rotate(direction, angle);
-
-            float dist = distToLine(vec2(0.5), direction, coords);
+            direction      = rotate(direction, angle);
             
-            vec2 distort = direction * dist * dist * uProgress * uProgress;
-
-            if (getWinding(direction, coords - 0.5) > 0) {
-              distort *= -1;
+            // Flip direction for one side of the window.
+            vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING - EPICENTER;
+            if (getWinding(direction, coords) > 0) {
+              direction *= -1;
             }
 
-            coords = coords + distort;
-         
-            vec2 dustCoords = (coords + SEED) * vec2(uSizeX, uSizeY) / DUST_SCALE / 100.0;
-            vec2 dustMap = texture2D(uDustTexture, dustCoords).rg;
+            // Flip direction for half the layers.
+            if (factor > 0.5) {
+              direction *= -1;
+            }
+            
+            // We grow the layer along the random direction, shrink it orthogonally to it
+            // and scale it up slightly.
+            float dist  = distToLine(vec2(0.0), direction, coords);
+            vec2 grow   = direction * dist * mix(0, 0.1, progress);
+            vec2 shrink = vec2(direction.y, -direction.x) * dist * mix(0, 0.1, progress);
+            float scale = mix(1.0, 1.1, factor * progress);
 
+            coords = (coords + grow + shrink) / scale;
+         
+            // Now check wether there is actually something in the current dust layer at
+            // the coords position.
+            vec2 dustCoords = (coords + SEED) * vec2(uSizeX, uSizeY) / DUST_SCALE / 100.0;
+            vec2 dustMap    = texture2D(uDustTexture, dustCoords).rg;
             float dustGroup = floor(dustMap.g * DUST_LAYERS * 0.999);
 
             if (dustGroup == i) {
-              vec4 windowColor = texture2D(uTexture, coords);
-              windowColor.rgb = mix(windowColor.rgb, DUST_COLOR*windowColor.a, progress);
-              float dissolve = (dustMap.x - progress) > 0 ? 1: 0;
 
+              // Fade the window color to DUST_COLOR.
+              vec4 windowColor = texture2D(uTexture, coords + EPICENTER);
+              windowColor.rgb = mix(windowColor.rgb, DUST_COLOR*windowColor.a, progress);
+
+              // Dissolve the dust particles.
+              float dissolve = (dustMap.x - progress) > 0 ? 1 : 0;
               windowColor *= dissolve;
 
+              // Blend the layers.
               cogl_color_out = mix(cogl_color_out, windowColor, windowColor.a);
             }
           }
@@ -187,8 +214,8 @@ if (utils.isInShellProcess()) {
     // https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-3-36/clutter/clutter/clutter-offscreen-effect.c#L598
     vfunc_paint_target(node, paint_context) {
       const pipeline = this.get_pipeline();
-      pipeline.set_layer_filters(
-          0, Cogl.PipelineFilter.LINEAR, Cogl.PipelineFilter.LINEAR);
+      pipeline.set_layer_filters(0, Cogl.PipelineFilter.LINEAR,
+                                 Cogl.PipelineFilter.LINEAR);
       pipeline.set_layer_texture(1, this._dustTexture.get_texture());
       pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
       this.set_uniform_value('uDustTexture', 1);
