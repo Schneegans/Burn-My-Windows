@@ -132,6 +132,9 @@ if (utils.isInShellProcess()) {
       // The dust particles will fade to this color over time.
       const color = Clutter.Color.from_string(settings.get_string('snap-color'))[1];
 
+      // If we are currently performing integration test, the animation uses a fixed seed.
+      const testMode = settings.get_boolean('test-mode');
+
       this.set_shader_source(`
 
         // Inject some common shader snippets.
@@ -140,7 +143,8 @@ if (utils.isInShellProcess()) {
 
         uniform sampler2D uDustTexture;
 
-        const vec2  SEED         = vec2(${Math.random()}, ${Math.random()});
+        const vec2  SEED         = vec2(${testMode ? 0 : Math.random()}, 
+                                        ${testMode ? 0 : Math.random()});
         const float DUST_SCALE   = ${settings.get_double('snap-scale')};
         const float DUST_LAYERS  = 5;
         const float ACTOR_SCALE  = 1.2;
