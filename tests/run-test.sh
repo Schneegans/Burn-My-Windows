@@ -197,6 +197,7 @@ echo "Entering test mode."
 set_setting "test-mode" true
 do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
+test_effect "apparition"
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
