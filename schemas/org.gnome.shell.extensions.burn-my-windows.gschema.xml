@@ -32,6 +32,52 @@
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Apparition Effect Options                                                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="apparition-open-effect" type="b">
+      <default>false</default>
+      <summary>Apparition Open Effect</summary>
+      <description>Use the apparition effect for window openeing.</description>
+    </key>
+
+    <key name="apparition-close-effect" type="b">
+      <default>false</default>
+      <summary>Apparition Close Effect</summary>
+      <description>Use the apparition effect for window closing.</description>
+    </key>
+
+    <key name="apparition-animation-time" type="i">
+      <default>300</default>
+      <summary>Apparition Animation Time</summary>
+      <description>The time the apparition effect takes.</description>
+    </key>
+
+    <key name="apparition-randomness" type="d">
+      <default>0.7</default>
+      <summary>Apparition Randomness</summary>
+      <description>The amount of randomness of the apparition effect.</description>
+    </key>
+
+    <key name="apparition-twirl-intensity" type="d">
+      <default>3.0</default>
+      <summary>Apparition Twirl Intensity</summary>
+      <description>The amount of twirling of the apparition effect.</description>
+    </key>
+
+    <key name="apparition-shake-intensity" type="d">
+      <default>3.0</default>
+      <summary>Apparition Shake Intensity</summary>
+      <description>The amount of shaking of the apparition effect.</description>
+    </key>
+
+    <key name="apparition-suction-intensity" type="d">
+      <default>0.5</default>
+      <summary>Apparition Suction Intensity</summary>
+      <description>The amount of suction of the apparition effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Fire Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 

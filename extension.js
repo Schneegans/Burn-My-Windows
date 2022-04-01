@@ -33,6 +33,7 @@ const utils          = Me.imports.src.utils;
 
 // New effects must be registered here and in prefs.js.
 const ALL_EFFECTS = [
+  Me.imports.src.Apparition.Apparition,
   Me.imports.src.BrokenGlass.BrokenGlass,
   Me.imports.src.EnergizeA.EnergizeA,
   Me.imports.src.EnergizeB.EnergizeB,

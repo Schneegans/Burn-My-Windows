@@ -6,6 +6,7 @@
 
 #### New Features
 
+* **New Effect: Apparition.** This effect hides the window by violently sucking it into the void of magic.
 * **New Effect: Snap of Disintegration.** This was requested quite frequently! Dissolve your windows into a cloud of dust.
 
 #### Bug Fixes
