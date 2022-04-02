@@ -168,12 +168,15 @@ echo "Entering test mode."
 set_setting "test-mode" true
 do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
-capture_effect "apparition"
 capture_effect "energize-a"
 capture_effect "energize-b"
 capture_effect "fire"
 capture_effect "tv"
 capture_effect "wisps"
+
+if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
+  capture_effect "apparition"
+fi
 
 if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   capture_effect "trex"

@@ -197,12 +197,15 @@ echo "Entering test mode."
 set_setting "test-mode" true
 do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
-test_effect "apparition"
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
 test_effect "tv"
 test_effect "wisps"
+
+if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
+  test_effect "apparition"
+fi
 
 if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   test_effect "trex"

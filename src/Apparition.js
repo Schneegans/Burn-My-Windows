@@ -37,9 +37,10 @@ var Apparition = class Apparition {
 
   // ---------------------------------------------------------------------------- metadata
 
-  // The effect is available on all GNOME Shell versions supported by this extension.
+  // The effect is not available on GNOME Shell 3.36 as it requires scaling of the window
+  // actor.
   static getMinShellVersion() {
-    return [3, 36];
+    return [3, 38];
   }
 
   // This will be called in various places where a unique identifier for this effect is
