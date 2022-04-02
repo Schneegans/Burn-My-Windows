@@ -21,6 +21,7 @@ For a list of things changed in previous releases, you can have a look at the [c
 
 Effect | Preview
 -----|--------
+**Apparition** <br> This effect hides your windows by violently sucking them into the void of magic! <br><br> _Only available in GNOME Shell 3.38+_ | <img src ="docs/pics/apparition.gif" />
 **Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/glass.gif" />
 **Energize A** <br> Beam your windows away! | <img src ="docs/pics/energizeA.gif" />
 **Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energizeB.gif" />
