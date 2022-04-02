@@ -54,13 +54,13 @@
     </key>
 
     <key name="apparition-randomness" type="d">
-      <default>0.7</default>
+      <default>0.5</default>
       <summary>Apparition Randomness</summary>
       <description>The amount of randomness of the apparition effect.</description>
     </key>
 
     <key name="apparition-twirl-intensity" type="d">
-      <default>3.0</default>
+      <default>5.0</default>
       <summary>Apparition Twirl Intensity</summary>
       <description>The amount of twirling of the apparition effect.</description>
     </key>
@@ -72,7 +72,7 @@
     </key>
 
     <key name="apparition-suction-intensity" type="d">
-      <default>0.5</default>
+      <default>0.75</default>
       <summary>Apparition Suction Intensity</summary>
       <description>The amount of suction of the apparition effect.</description>
     </key>
