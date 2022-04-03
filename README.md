@@ -27,6 +27,7 @@ Effect | Preview
 **Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energizeB.gif" />
 **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
 **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable. <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/matrix.gif" />
+**Snap of Disintegration** <br> Dissolve your windows into a cloud of dust. <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/snap.gif" />
 **T-Rex Attack** <br> Destroy your windows with a series of violent slashes! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/trex.gif" />
 **TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
 **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies! | <img src ="docs/pics/wisps.gif" />
