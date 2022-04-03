@@ -139,24 +139,36 @@ if (utils.isInShellProcess()) {
 
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
+        ${shaderSnippets.noise()}
         ${shaderSnippets.math2D()}
 
         uniform sampler2D uDustTexture;
 
-        const vec2  SEED         = vec2(${testMode ? 0 : Math.random()}, 
-                                        ${testMode ? 0 : Math.random()});
-        const float DUST_SCALE   = ${settings.get_double('snap-scale')};
-        const float DUST_LAYERS  = 5;
-        const float ACTOR_SCALE  = 1.2;
-        const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
-        const vec2  EPICENTER    = vec2(0.5);
-        const vec3  DUST_COLOR   = vec3(${color.red / 255},
-                                        ${color.green / 255},
-                                        ${color.blue / 255});
+        const vec2  SEED             = vec2(${testMode ? 0 : Math.random()}, 
+                                            ${testMode ? 0 : Math.random()});
+        const float DUST_SCALE       = ${settings.get_double('snap-scale')};
+        const float DUST_LAYERS      = 4;
+        const float GROW_INTENSITY   = 0.05;
+        const float SHRINK_INTENSITY = 0.05;
+        const float WIND_INTENSITY   = 0.05;
+        const float ACTOR_SCALE      = 1.2;
+        const float PADDING          = ACTOR_SCALE / 2.0 - 0.5;
+        const vec3  DUST_COLOR       = vec3(${color.red / 255},
+                                            ${color.green / 255},
+                                            ${color.blue / 255});
         void main() {
 
           // We simply inverse the progress for opening windows.
-          float progress = pow(${forOpening ? '1.0-uProgress' : 'uProgress'}, 2.0);
+          float progress = ${forOpening ? 'uProgress' : '1.0 - uProgress'};
+
+          float gradient = cogl_tex_coord_in[0].t * ACTOR_SCALE - PADDING;
+          progress = 2.0 - gradient - 2.0 * progress;
+          progress = progress + 0.25 - 0.5 * simplex2D((cogl_tex_coord_in[0].st + SEED) * 2.0);
+          progress = pow(max(0, progress), 2.0);
+
+          // This may help you to understand how this effect works.
+          // cogl_color_out = vec4(progress, 0, 0, 0);
+          // return;
 
           cogl_color_out = vec4(0, 0, 0, 0);
 
@@ -169,7 +181,7 @@ if (utils.isInShellProcess()) {
             direction      = rotate(direction, angle);
             
             // Flip direction for one side of the window.
-            vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING - EPICENTER;
+            vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING - 0.5;
             if (getWinding(direction, coords) > 0) {
               direction *= -1;
             }
@@ -182,11 +194,13 @@ if (utils.isInShellProcess()) {
             // We grow the layer along the random direction, shrink it orthogonally to it
             // and scale it up slightly.
             float dist  = distToLine(vec2(0.0), direction, coords);
-            vec2 grow   = direction * dist * mix(0, 0.1, progress);
-            vec2 shrink = vec2(direction.y, -direction.x) * dist * mix(0, 0.1, progress);
-            float scale = mix(1.0, 1.1, factor * progress);
-
+            vec2 grow   = direction * dist * mix(0, GROW_INTENSITY, progress);
+            vec2 shrink = vec2(direction.y, -direction.x) * dist * mix(0, SHRINK_INTENSITY, progress);
+            float scale = mix(1.0, 1.05, factor * progress);
             coords = (coords + grow + shrink) / scale;
+
+            // Add some wind.
+            coords.x = coords.x ${forOpening ? ' + ' : ' - '} progress * WIND_INTENSITY;
          
             // Now check wether there is actually something in the current dust layer at
             // the coords position.
@@ -197,7 +211,7 @@ if (utils.isInShellProcess()) {
             if (dustGroup == i) {
 
               // Fade the window color to DUST_COLOR.
-              vec4 windowColor = texture2D(uTexture, coords + EPICENTER);
+              vec4 windowColor = texture2D(uTexture, coords + 0.5);
               windowColor.rgb = mix(windowColor.rgb, DUST_COLOR*windowColor.a, progress);
 
               // Dissolve the dust particles.

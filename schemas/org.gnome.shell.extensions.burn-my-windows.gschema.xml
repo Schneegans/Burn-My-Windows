@@ -438,13 +438,13 @@
     </key>
 
     <key name="snap-animation-time" type="i">
-      <default>1000</default>
+      <default>1500</default>
       <summary>Snap Animation Time</summary>
       <description>The time the snap effect takes.</description>
     </key>
 
     <key name="snap-scale" type="d">
-      <default>1.0</default>
+      <default>2.0</default>
       <summary>Snap Scale</summary>
       <description>The size of the snap effect.</description>
     </key>
