@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-18 20:33+0100\n"
+"POT-Creation-Date: 2022-04-05 09:22+0200\n"
 "PO-Revision-Date: 2022-02-02 19:55+0000\n"
 "Last-Translator: Jiří Doubravský <jiri.doubravsky@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -19,15 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 4.11-dev\n"
 
-#: prefs.js:111
+#: prefs.js:112
 msgid "Effect Options"
 msgstr ""
 
-#: prefs.js:139
+#: prefs.js:140
 msgid "Go Back"
 msgstr ""
 
-#: prefs.js:181
+#: prefs.js:182
 msgid "General Options"
 msgstr "Obecné možnosti"
 
@@ -48,12 +48,12 @@ msgid "Past Sponsors"
 msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:512
+#: prefs.js:510
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Náhled %s"
 
-#: prefs.js:534
+#: prefs.js:532
 msgid "Close this Window to Preview the Effect!"
 msgstr "Zavřete toto okno, pokud chcete vidět efekt!"
 
@@ -68,6 +68,10 @@ msgstr "Televize"
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
 msgstr "Tyrannosaurus"
+
+#: src/SnapOfDisintegration.js:60
+msgid "Snap of Disintegration"
+msgstr ""
 
 #: src/Wisps.js:55
 msgid "Wisps"
@@ -97,9 +101,17 @@ msgstr "Studený vánek"
 msgid "Santa is Coming"
 msgstr "Santa přichází"
 
+#: src/Hexagon.js:53
+msgid "Hexagon"
+msgstr ""
+
 #: src/EnergizeA.js:54
 msgid "Energize A"
 msgstr "Energizovat A"
+
+#: src/Apparition.js:57
+msgid "Apparition"
+msgstr ""
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
@@ -133,17 +145,20 @@ msgstr "Přeložit"
 msgid "Donate"
 msgstr "Přispět"
 
-#: resources/ui/common/main-menu.ui:45
+#: resources/ui/common/main-menu.ui:41
 msgid "About Burn-My-Windows"
 msgstr ""
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
+#: resources/ui/gtk4/SnapOfDisintegration.ui:24
 #: resources/ui/gtk4/TRexAttack.ui:24 resources/ui/gtk4/TVEffect.ui:24
-#: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/EnergizeB.ui:24
+#: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/Hexagon.ui:24
+#: resources/ui/gtk4/EnergizeB.ui:24 resources/ui/gtk4/Apparition.ui:24
 #: resources/ui/gtk3/Wisps.ui:42 resources/ui/gtk3/Fire.ui:93
 #: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
-#: resources/ui/gtk3/EnergizeB.ui:42
+#: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
+#: resources/ui/gtk3/Apparition.ui:63
 msgid "Animation Time [ms]"
 msgstr "Délka animace [ms]"
 
@@ -161,29 +176,43 @@ msgstr "Délka animace [ms]"
 #: resources/ui/gtk4/TRexAttack.ui:190 resources/ui/gtk4/TRexAttack.ui:224
 #: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
 #: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
-#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/EnergizeB.ui:52
+#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/Hexagon.ui:52
+#: resources/ui/gtk4/Hexagon.ui:98 resources/ui/gtk4/Hexagon.ui:144
+#: resources/ui/gtk4/Hexagon.ui:178 resources/ui/gtk4/Hexagon.ui:212
+#: resources/ui/gtk4/Hexagon.ui:265 resources/ui/gtk4/EnergizeB.ui:52
 #: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
-#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/Wisps.ui:68
-#: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
-#: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
-#: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
-#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/TVEffect.ui:61
-#: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
-#: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
-#: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
-#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
+#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk4/Apparition.ui:52
+#: resources/ui/gtk4/Apparition.ui:98 resources/ui/gtk4/Apparition.ui:144
+#: resources/ui/gtk4/Apparition.ui:190 resources/ui/gtk4/Apparition.ui:236
+#: resources/ui/gtk3/Wisps.ui:68 resources/ui/gtk3/Wisps.ui:117
+#: resources/ui/gtk3/Wisps.ui:160 resources/ui/gtk3/Fire.ui:119
+#: resources/ui/gtk3/Fire.ui:167 resources/ui/gtk3/Fire.ui:215
+#: resources/ui/gtk3/Fire.ui:277 resources/ui/gtk3/Fire.ui:345
+#: resources/ui/gtk3/TVEffect.ui:61 resources/ui/gtk3/TVEffect.ui:104
+#: resources/ui/gtk3/EnergizeA.ui:68 resources/ui/gtk3/EnergizeA.ui:117
+#: resources/ui/gtk3/EnergizeA.ui:160 resources/ui/gtk3/Hexagon.ui:75
+#: resources/ui/gtk3/Hexagon.ui:124 resources/ui/gtk3/Hexagon.ui:173
+#: resources/ui/gtk3/Hexagon.ui:216 resources/ui/gtk3/Hexagon.ui:259
+#: resources/ui/gtk3/Hexagon.ui:321 resources/ui/gtk3/EnergizeB.ui:68
+#: resources/ui/gtk3/EnergizeB.ui:117 resources/ui/gtk3/EnergizeB.ui:160
+#: resources/ui/gtk3/prefs.ui:219 resources/ui/gtk3/Apparition.ui:89
+#: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
+#: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
 msgid "Reset to Default Value"
 msgstr "Obnovit výchozí hodnoty"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
-#: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/EnergizeB.ui:70
-#: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
-#: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/EnergizeB.ui:91
+#: resources/ui/gtk4/SnapOfDisintegration.ui:70
+#: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/Hexagon.ui:70
+#: resources/ui/gtk4/EnergizeB.ui:70 resources/ui/gtk3/Wisps.ui:91
+#: resources/ui/gtk3/Fire.ui:141 resources/ui/gtk3/EnergizeA.ui:91
+#: resources/ui/gtk3/Hexagon.ui:98 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
 msgstr "Měřítko"
 
-#: resources/ui/gtk4/Matrix.ui:116
+#: resources/ui/gtk4/Matrix.ui:116 resources/ui/gtk4/Apparition.ui:70
+#: resources/ui/gtk3/Apparition.ui:112
 msgid "Randomness"
 msgstr "Nahodilost"
 
@@ -218,10 +247,11 @@ msgid ""
 "window."
 msgstr "Střepy odletí z místa, kde byl ukazatel myši při zavírání okna."
 
-#: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/TVEffect.ui:70
-#: resources/ui/gtk4/EnergizeA.ui:116 resources/ui/gtk4/EnergizeB.ui:116
-#: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
-#: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
+#: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/SnapOfDisintegration.ui:116
+#: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
+#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Wisps.ui:139
+#: resources/ui/gtk3/TVEffect.ui:83 resources/ui/gtk3/EnergizeA.ui:139
+#: resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
 msgstr "Barva"
 
@@ -265,6 +295,26 @@ msgstr "Barva blesku"
 msgid "Preview this Effect"
 msgstr "Náhled efektu"
 
+#: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
+msgid "Mesh Line Width"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
+msgid "Line Color"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
+msgid "Glow Color"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
+msgid "Additive Blending"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
+msgid "You may want to enable this for dark window themes."
+msgstr ""
+
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
 msgstr "Vítá Vás Burn-My-Windows!"
@@ -294,6 +344,18 @@ msgstr "Animace při zavírání okna"
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
 msgstr "Použít efekt i na dialogová okna"
+
+#: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
+msgid "Twirl Intensity"
+msgstr ""
+
+#: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
+msgid "Shake Intensity"
+msgstr ""
+
+#: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
+msgid "Suction Intensity"
+msgstr ""
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
