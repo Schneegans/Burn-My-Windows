@@ -274,6 +274,58 @@
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Hexagon Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="hexagon-close-effect" type="b">
+      <default>false</default>
+      <summary>Hexagon Close Effect</summary>
+      <description>Use the Hexagon effect for window closing.</description>
+    </key>
+
+    <key name="hexagon-open-effect" type="b">
+      <default>false</default>
+      <summary>Hexagon Open Effect</summary>
+      <description>Use the Hexagon effect for window opening.</description>
+    </key>
+
+    <key name="hexagon-animation-time" type="i">
+      <default>1500</default>
+      <summary>Hexagon Animation Time</summary>
+      <description>The time the Hexagon effect takes.</description>
+    </key>
+
+    <key name="hexagon-scale" type="d">
+      <default>3.0</default>
+      <summary>Hexagon Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="hexagon-line-width" type="d">
+      <default>2.0</default>
+      <summary>Hexagon Line Width</summary>
+      <description>The width of the lines.</description>
+    </key>
+
+    <key name="hexagon-line-color" type="s">
+      <default>"rgba(200, 255, 255, 0.5)"</default>
+      <summary>Hexagon Line Color</summary>
+      <description>The color of the lines.</description>
+    </key>
+
+    <key name="hexagon-glow-color" type="s">
+      <default>"rgba(20, 80, 255, 0.5)"</default>
+      <summary>Hexagon Glow Color</summary>
+      <description>The color of the glow effect.</description>
+    </key>
+
+    <key name="hexagon-additive-blending" type="b">
+      <default>true</default>
+      <summary>Hexagon Additive Blending</summary>
+      <description>Use additive blending for the line and the glow.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Energize A Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 

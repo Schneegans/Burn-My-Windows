@@ -38,6 +38,7 @@ const ALL_EFFECTS = [
   Me.imports.src.EnergizeA.EnergizeA,
   Me.imports.src.EnergizeB.EnergizeB,
   Me.imports.src.Fire.Fire,
+  Me.imports.src.Hexagon.Hexagon,
   Me.imports.src.Matrix.Matrix,
   Me.imports.src.SnapOfDisintegration.SnapOfDisintegration,
   Me.imports.src.TRexAttack.TRexAttack,
