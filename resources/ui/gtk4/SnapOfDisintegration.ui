@@ -84,7 +84,7 @@
                         <property name="width-request">300</property>
                         <property name="adjustment">
                           <object class="GtkAdjustment" id="snap-scale">
-                            <property name="upper">5</property>
+                            <property name="upper">20</property>
                             <property name="lower">0.1</property>
                             <property name="step-increment">0.01</property>
                             <property name="page-increment">0.1</property>
@@ -122,7 +122,7 @@
                     </child>
                     <child>
                       <object class="GtkColorButton" id="snap-color">
-                        <property name="use_alpha">0</property>
+                        <property name="use_alpha">1</property>
                         <property name="show_editor">1</property>
                       </object>
                     </child>

@@ -153,9 +153,8 @@ if (utils.isInShellProcess()) {
         const float WIND_INTENSITY   = 0.05;
         const float ACTOR_SCALE      = 1.2;
         const float PADDING          = ACTOR_SCALE / 2.0 - 0.5;
-        const vec3  DUST_COLOR       = vec3(${color.red / 255},
-                                            ${color.green / 255},
-                                            ${color.blue / 255});
+        const vec4  DUST_COLOR       = vec4(${color.red / 255},  ${color.green / 255},
+                                            ${color.blue / 255}, ${color.alpha / 255});
         void main() {
 
           // We simply inverse the progress for opening windows.
@@ -212,7 +211,8 @@ if (utils.isInShellProcess()) {
 
               // Fade the window color to DUST_COLOR.
               vec4 windowColor = texture2D(uTexture, coords + 0.5);
-              windowColor.rgb = mix(windowColor.rgb, DUST_COLOR*windowColor.a, progress);
+              vec3 dustColor = mix(windowColor.rgb, DUST_COLOR.rgb, DUST_COLOR.a);
+              windowColor.rgb = mix(windowColor.rgb, dustColor*windowColor.a, progress);
 
               // Dissolve the dust particles.
               float dissolve = (dustMap.x - progress) > 0 ? 1 : 0;
