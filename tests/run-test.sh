@@ -200,6 +200,7 @@ do_in_pod gsettings set org.gnome.mutter center-new-windows true
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
+test_effect "hexagon"
 test_effect "tv"
 test_effect "wisps"
 

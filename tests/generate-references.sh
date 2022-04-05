@@ -171,6 +171,7 @@ do_in_pod gsettings set org.gnome.mutter center-new-windows true
 capture_effect "energize-a"
 capture_effect "energize-b"
 capture_effect "fire"
+capture_effect "hexagon"
 capture_effect "tv"
 capture_effect "wisps"
 
