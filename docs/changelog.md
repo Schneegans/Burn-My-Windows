@@ -1,19 +1,20 @@
 # Changelog of the Burn-My-Windows Extension
 
-## [Burn My Window 15](https://github.com/schneegans/Burn-My-Windows/releases/tag/v15)
+## [Burn My Windows 15](https://github.com/schneegans/Burn-My-Windows/releases/tag/v15)
 
 **Release Date:** TBD
 
 #### New Features
 
 * **New Effect: Apparition.** This effect hides the window by violently sucking it into the void of magic.
+* **New Effect: Hexagon.** With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi.
 * **New Effect: Snap of Disintegration.** This was requested quite frequently! Dissolve your windows into a cloud of dust.
 
 #### Bug Fixes
 
 * Disabled the buggy "Shatter from pointer" option of the Broken Glass effect when opening windows (it only makes sense for closing windows).
 
-## [Burn My Window 14](https://github.com/schneegans/Burn-My-Windows/releases/tag/v14)
+## [Burn My Windows 14](https://github.com/schneegans/Burn-My-Windows/releases/tag/v14)
 
 **Release Date:** 2022-03-29
 
@@ -27,7 +28,7 @@
 * Fixed the version check for GNOME Shell `42.rc` (before it only worked on `42.alpha` and `42.beta`)
 
 
-## [Burn My Window 13](https://github.com/schneegans/Burn-My-Windows/releases/tag/v13)
+## [Burn My Windows 13](https://github.com/schneegans/Burn-My-Windows/releases/tag/v13)
 
 **Release Date:** 2022-03-27
 
@@ -44,7 +45,7 @@
 
 * Fixed the version check for GNOME Shell 42.
 
-## [Burn My Window 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
+## [Burn My Windows 12](https://github.com/schneegans/Burn-My-Windows/releases/tag/v12)
 
 **Release Date:** 2022-02-19
 
@@ -57,7 +58,7 @@
 
 * Added [Liberapay](https://liberapay.com/Schneegans) to the sponsorship options.
 
-## [Burn My Window 11](https://github.com/schneegans/Burn-My-Windows/releases/tag/v11)
+## [Burn My Windows 11](https://github.com/schneegans/Burn-My-Windows/releases/tag/v11)
 
 **Release Date:** 2022-02-03
 
@@ -82,7 +83,7 @@
 
 * Fixed an issue which caused corrupted windows when trying to maximize windows while the window-open animation was still running (#82, #86, #91).
 
-## [Burn My Window 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
+## [Burn My Windows 10](https://github.com/schneegans/Burn-My-Windows/releases/tag/v10)
 
 **Release Date:** 2022-01-31
 
@@ -103,7 +104,7 @@
 * The README now shows the current lines of code and the current comment percentage using my [dynamic-badges-action](https://github.com/Schneegans/dynamic-badges-action).
 * **Add advanced CI tests:** For each commit to `main`, it is now tested whether the extension can be installed and if the preferences dialog can be shown on GNOME Shell 3.36, 3.38, 40, and 41. Both, X11 and Wayland are checked. 
 
-## [Burn My Window 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
+## [Burn My Windows 9](https://github.com/schneegans/Burn-My-Windows/releases/tag/v9)
 
 **Release Date:** 2022-01-18
 
@@ -112,7 +113,7 @@
 * Improved compatibility with [Show Application View When Workspace Empty ](https://extensions.gnome.org/extension/2036/show-application-view-when-workspace-empty/) (#54).
 * Fixed a crash which happened when the window-close icon in the overview was clicked twice (#49).
 
-## [Burn My Window 8](https://github.com/schneegans/Burn-My-Windows/releases/tag/v8)
+## [Burn My Windows 8](https://github.com/schneegans/Burn-My-Windows/releases/tag/v8)
 
 **Release Date:** 2022-01-17
 
@@ -138,7 +139,7 @@
 * The extension now works even if GNOME Shell's animations are disabled globally.
 
 
-## [Burn My Window 7](https://github.com/schneegans/Burn-My-Windows/releases/tag/v7)
+## [Burn My Windows 7](https://github.com/schneegans/Burn-My-Windows/releases/tag/v7)
 
 **Release Date:** 2022-01-03
 
@@ -152,7 +153,7 @@
 * Resolve copyright issues by using a MIT-licensed noise implementation.
 
 
-## [Burn My Window 6](https://github.com/schneegans/Burn-My-Windows/releases/tag/v6)
+## [Burn My Windows 6](https://github.com/schneegans/Burn-My-Windows/releases/tag/v6)
 
 **Release Date:** 2022-01-02
 
@@ -160,7 +161,7 @@
 
 * Removed a debug log message.
 
-## [Burn My Window 5](https://github.com/schneegans/Burn-My-Windows/releases/tag/v5)
+## [Burn My Windows 5](https://github.com/schneegans/Burn-My-Windows/releases/tag/v5)
 
 **Release Date:** 2022-01-02
 
@@ -178,7 +179,7 @@
 
 * Fixed a bug which messed up the overview of GNOME Shell 3.36.
 
-## [Burn My Window 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
+## [Burn My Windows 4](https://github.com/schneegans/Burn-My-Windows/releases/tag/v4)
 
 **Release Date:** 2021-12-25
 
@@ -192,7 +193,7 @@
 * Refactored the code a lot to make it easier to add new shader effects in the future.
 * Tweaked timing of the fire shader. Previously, the fire became invisible quite quickly. Due to this new animation timing, the default animation time has been reduced to 1500 ms.
 
-## [Burn My Window 3](https://github.com/schneegans/Burn-My-Windows/releases/tag/v3)
+## [Burn My Windows 3](https://github.com/schneegans/Burn-My-Windows/releases/tag/v3)
 
 **Release Date:** 2021-12-20
 
@@ -200,7 +201,7 @@
 
 * Add support for GNOME 3.36 and GNOME 3.38.
 
-## [Burn My Window 2](https://github.com/schneegans/Burn-My-Windows/releases/tag/v2)
+## [Burn My Windows 2](https://github.com/schneegans/Burn-My-Windows/releases/tag/v2)
 
 **Release Date:** 2021-12-16
 
@@ -210,7 +211,7 @@
 * Added the possibility to adjust flame speed and scale.
 * Added some fire presets.
 
-## [Burn My Window 1](https://github.com/schneegans/Burn-My-Windows/releases/tag/v1)
+## [Burn My Windows 1](https://github.com/schneegans/Burn-My-Windows/releases/tag/v1)
 
 **Release Date:** 2021-12-14
 
