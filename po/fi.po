@@ -1,0 +1,358 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Simon Schneegans
+# This file is distributed under the same license as the burn-my-windows package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: burn-my-windows\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-05 09:22+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: prefs.js:112
+msgid "Effect Options"
+msgstr ""
+
+#: prefs.js:140
+msgid "Go Back"
+msgstr ""
+
+#: prefs.js:182
+msgid "General Options"
+msgstr ""
+
+#: prefs.js:276
+msgid "Gold Sponsors"
+msgstr ""
+
+#: prefs.js:279
+msgid "Silver Sponsors"
+msgstr ""
+
+#: prefs.js:282
+msgid "Bronze Sponsors"
+msgstr ""
+
+#: prefs.js:285
+msgid "Past Sponsors"
+msgstr ""
+
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:510
+#, javascript-format
+msgid "Preview for %s"
+msgstr ""
+
+#: prefs.js:532
+msgid "Close this Window to Preview the Effect!"
+msgstr ""
+
+#: src/BrokenGlass.js:57
+msgid "Broken Glass"
+msgstr ""
+
+#: src/TVEffect.js:56
+msgid "TV Effect"
+msgstr ""
+
+#: src/TRexAttack.js:56
+msgid "T-Rex Attack"
+msgstr ""
+
+#: src/SnapOfDisintegration.js:60
+msgid "Snap of Disintegration"
+msgstr ""
+
+#: src/Wisps.js:55
+msgid "Wisps"
+msgstr ""
+
+#: src/Fire.js:58
+msgid "Fire"
+msgstr ""
+
+#: src/Fire.js:130
+msgid "Default Fire"
+msgstr ""
+
+#: src/Fire.js:140
+msgid "Hell Fire"
+msgstr ""
+
+#: src/Fire.js:150
+msgid "Dark and Smutty"
+msgstr ""
+
+#: src/Fire.js:160
+msgid "Cold Breeze"
+msgstr ""
+
+#: src/Fire.js:170
+msgid "Santa is Coming"
+msgstr ""
+
+#: src/Hexagon.js:53
+msgid "Hexagon"
+msgstr ""
+
+#: src/EnergizeA.js:54
+msgid "Energize A"
+msgstr ""
+
+#: src/Apparition.js:57
+msgid "Apparition"
+msgstr ""
+
+#: src/EnergizeB.js:54
+msgid "Energize B"
+msgstr ""
+
+#: src/Matrix.js:58
+msgid "Matrix"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:6
+msgid "Visit Homepage"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:10
+msgid "View Changelog"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:16
+msgid "Report a Bug"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:20
+msgid "Create an Effect"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:24
+msgid "Translate"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:28
+msgid "Donate"
+msgstr ""
+
+#: resources/ui/common/main-menu.ui:41
+msgid "About Burn-My-Windows"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
+#: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
+#: resources/ui/gtk4/SnapOfDisintegration.ui:24
+#: resources/ui/gtk4/TRexAttack.ui:24 resources/ui/gtk4/TVEffect.ui:24
+#: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/Hexagon.ui:24
+#: resources/ui/gtk4/EnergizeB.ui:24 resources/ui/gtk4/Apparition.ui:24
+#: resources/ui/gtk3/Wisps.ui:42 resources/ui/gtk3/Fire.ui:93
+#: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
+#: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
+#: resources/ui/gtk3/Apparition.ui:63
+msgid "Animation Time [ms]"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
+#: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
+#: resources/ui/gtk4/Matrix.ui:224 resources/ui/gtk4/Matrix.ui:258
+#: resources/ui/gtk4/BrokenGlass.ui:52 resources/ui/gtk4/BrokenGlass.ui:98
+#: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
+#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Wisps.ui:52
+#: resources/ui/gtk4/Wisps.ui:98 resources/ui/gtk4/Wisps.ui:132
+#: resources/ui/gtk4/Fire.ui:77 resources/ui/gtk4/Fire.ui:123
+#: resources/ui/gtk4/Fire.ui:169 resources/ui/gtk4/Fire.ui:222
+#: resources/ui/gtk4/Fire.ui:280 resources/ui/gtk4/TRexAttack.ui:52
+#: resources/ui/gtk4/TRexAttack.ui:98 resources/ui/gtk4/TRexAttack.ui:144
+#: resources/ui/gtk4/TRexAttack.ui:190 resources/ui/gtk4/TRexAttack.ui:224
+#: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
+#: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
+#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/Hexagon.ui:52
+#: resources/ui/gtk4/Hexagon.ui:98 resources/ui/gtk4/Hexagon.ui:144
+#: resources/ui/gtk4/Hexagon.ui:178 resources/ui/gtk4/Hexagon.ui:212
+#: resources/ui/gtk4/Hexagon.ui:265 resources/ui/gtk4/EnergizeB.ui:52
+#: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
+#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk4/Apparition.ui:52
+#: resources/ui/gtk4/Apparition.ui:98 resources/ui/gtk4/Apparition.ui:144
+#: resources/ui/gtk4/Apparition.ui:190 resources/ui/gtk4/Apparition.ui:236
+#: resources/ui/gtk3/Wisps.ui:68 resources/ui/gtk3/Wisps.ui:117
+#: resources/ui/gtk3/Wisps.ui:160 resources/ui/gtk3/Fire.ui:119
+#: resources/ui/gtk3/Fire.ui:167 resources/ui/gtk3/Fire.ui:215
+#: resources/ui/gtk3/Fire.ui:277 resources/ui/gtk3/Fire.ui:345
+#: resources/ui/gtk3/TVEffect.ui:61 resources/ui/gtk3/TVEffect.ui:104
+#: resources/ui/gtk3/EnergizeA.ui:68 resources/ui/gtk3/EnergizeA.ui:117
+#: resources/ui/gtk3/EnergizeA.ui:160 resources/ui/gtk3/Hexagon.ui:75
+#: resources/ui/gtk3/Hexagon.ui:124 resources/ui/gtk3/Hexagon.ui:173
+#: resources/ui/gtk3/Hexagon.ui:216 resources/ui/gtk3/Hexagon.ui:259
+#: resources/ui/gtk3/Hexagon.ui:321 resources/ui/gtk3/EnergizeB.ui:68
+#: resources/ui/gtk3/EnergizeB.ui:117 resources/ui/gtk3/EnergizeB.ui:160
+#: resources/ui/gtk3/prefs.ui:219 resources/ui/gtk3/Apparition.ui:89
+#: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
+#: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
+msgid "Reset to Default Value"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
+#: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
+#: resources/ui/gtk4/SnapOfDisintegration.ui:70
+#: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/Hexagon.ui:70
+#: resources/ui/gtk4/EnergizeB.ui:70 resources/ui/gtk3/Wisps.ui:91
+#: resources/ui/gtk3/Fire.ui:141 resources/ui/gtk3/EnergizeA.ui:91
+#: resources/ui/gtk3/Hexagon.ui:98 resources/ui/gtk3/EnergizeB.ui:91
+msgid "Scale"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:116 resources/ui/gtk4/Apparition.ui:70
+#: resources/ui/gtk3/Apparition.ui:112
+msgid "Randomness"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:162
+msgid "Vertical Overshooting"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:208
+msgid "Trail Color"
+msgstr ""
+
+#: resources/ui/gtk4/Matrix.ui:242
+msgid "Tip Color"
+msgstr ""
+
+#: resources/ui/gtk4/BrokenGlass.ui:116
+msgid "Gravity"
+msgstr ""
+
+#: resources/ui/gtk4/BrokenGlass.ui:162
+msgid "Blow Force"
+msgstr ""
+
+#: resources/ui/gtk4/BrokenGlass.ui:212
+msgid "Shatter From Pointer Location"
+msgstr ""
+
+#: resources/ui/gtk4/BrokenGlass.ui:221
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+
+#: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/SnapOfDisintegration.ui:116
+#: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
+#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Wisps.ui:139
+#: resources/ui/gtk3/TVEffect.ui:83 resources/ui/gtk3/EnergizeA.ui:139
+#: resources/ui/gtk3/EnergizeB.ui:139
+msgid "Color"
+msgstr ""
+
+#: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
+msgid "Presets"
+msgstr ""
+
+#: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
+msgid "Speed"
+msgstr ""
+
+#: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
+msgid "3D Noise"
+msgstr ""
+
+#: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
+msgid "Gradient"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:70
+msgid "Claw Scratch Scale"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:116
+msgid "Claw Scratch Count"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:162
+msgid "Warp Effect"
+msgstr ""
+
+#: resources/ui/gtk4/TRexAttack.ui:208
+msgid "Flash Color"
+msgstr ""
+
+#: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
+msgid "Preview this Effect"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
+msgid "Mesh Line Width"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
+msgid "Line Color"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
+msgid "Glow Color"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
+msgid "Additive Blending"
+msgstr ""
+
+#: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
+msgid "You may want to enable this for dark window themes."
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
+msgid "Welcome to Burn-My-Windows!"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
+msgid "If you like this extension, recommend it to your friends :)"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
+msgid "Open Window Animation"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
+#: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
+msgid "If multiple are selected, one is chosen randomly."
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
+#: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
+msgid "Choose Effects"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
+msgid "Close Window Animation"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
+msgid "Also Add Effects to Dialogs"
+msgstr ""
+
+#: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
+msgid "Twirl Intensity"
+msgstr ""
+
+#: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
+msgid "Shake Intensity"
+msgstr ""
+
+#: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
+msgid "Suction Intensity"
+msgstr ""
+
+#: resources/ui/gtk3/Fire.ui:63
+msgid "Choose a Preset"
+msgstr ""
