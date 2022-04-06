@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-03-15 06:54+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"PO-Revision-Date: 2022-04-06 17:08+0000\n"
+"Last-Translator: Andres Segarra <andres.segarra.aparicio@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
 "Language: es\n"
@@ -71,7 +71,7 @@ msgstr "Ataque de T-Rex"
 
 #: src/SnapOfDisintegration.js:60
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Chasquido de desintegración"
 
 #: src/Wisps.js:55
 msgid "Wisps"
@@ -103,7 +103,7 @@ msgstr "Viene Papá Noel"
 
 #: src/Hexagon.js:53
 msgid "Hexagon"
-msgstr ""
+msgstr "Hexágonos"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
@@ -111,7 +111,7 @@ msgstr "Energizar A"
 
 #: src/Apparition.js:57
 msgid "Apparition"
-msgstr ""
+msgstr "Aparición"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
@@ -297,12 +297,13 @@ msgid "Preview this Effect"
 msgstr "Previsualizar este efecto"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
+#, fuzzy
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Ancho de línea de malla"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr ""
+msgstr "Color de línea"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
@@ -310,11 +311,11 @@ msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
-msgstr ""
+msgstr "Fundido activo"
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Puede ser que necesites activar esto para temas oscuros de ventana."
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
@@ -348,15 +349,15 @@ msgstr "Añadir también efectos a los diálogos"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Intensidad del giro"
 
 #: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Intensidad del temblor"
 
 #: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Intensidad de la succión"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
