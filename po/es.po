@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-04-06 17:08+0000\n"
-"Last-Translator: Andres Segarra <andres.segarra.aparicio@gmail.com>\n"
+"PO-Revision-Date: 2022-04-08 07:11+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
 "Language: es\n"
@@ -297,9 +297,8 @@ msgid "Preview this Effect"
 msgstr "Previsualizar este efecto"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
-#, fuzzy
 msgid "Mesh Line Width"
-msgstr "Ancho de línea de malla"
+msgstr "Ancho de la línea de malla"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
@@ -307,7 +306,7 @@ msgstr "Color de línea"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
-msgstr ""
+msgstr "Color del brillo"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
@@ -319,7 +318,7 @@ msgstr "Puede ser que necesites activar esto para temas oscuros de ventana."
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
-msgstr "Le damos la bienvenida a Burn-My-Windows."
+msgstr "¡Le damos la bienvenida a Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
