@@ -2,13 +2,13 @@
 
 ## [Burn My Windows 15](https://github.com/schneegans/Burn-My-Windows/releases/tag/v15)
 
-**Release Date:** TBD
+**Release Date:** 2022-04-06
 
 #### New Features
 
-* **New Effect: Apparition.** This effect hides the window by violently sucking it into the void of magic.
-* **New Effect: Hexagon.** With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi.
-* **New Effect: Snap of Disintegration.** This was requested quite frequently! Dissolve your windows into a cloud of dust.
+* **New Effect: Apparition.** This effect hides the window by violently sucking it into the void of magic. This is available only for GNOME Shell 3.38 and newer.
+* **New Effect: Hexagon.** With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi. This is available for GNOME Shell 3.36 and newer.
+* **New Effect: Snap of Disintegration.** This was requested quite frequently! Dissolve your windows into a cloud of dust. This is available only for GNOME Shell 40 and newer.
 
 #### Bug Fixes
 
