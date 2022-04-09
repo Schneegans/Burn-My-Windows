@@ -96,10 +96,11 @@ var PreferencesDialog = class PreferencesDialog {
     this.bindSwitch('destroy-dialogs');
 
 
-    // Starting with GNOME Shell 42, the settings dialog uses libadwaita. We have to use a
-    // different layout, as the stack sidebar looks pretty ugly with the included
-    // Adw.Clamp...
-    if (utils.shellVersionIsAtLeast(42, 'beta')) {
+    // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
+    // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We
+    // have to use a different layout, as the stack sidebar looks pretty ugly with the
+    // included Adw.Clamp...
+    if (Adw && utils.shellVersionIsAtLeast(42, 'beta')) {
 
       // This is our top-level widget which we will return later.
       this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
@@ -221,7 +222,7 @@ var PreferencesDialog = class PreferencesDialog {
 
         // Starting with GNOME Shell 42, we have to hack our way through the widget tree
         // of the Adw.PreferencesWindow...
-        if (utils.shellVersionIsAtLeast(42, 'beta')) {
+        if (Adw && utils.shellVersionIsAtLeast(42, 'beta')) {
           const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
           header.pack_end(menu);
 
