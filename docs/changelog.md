@@ -6,7 +6,7 @@
 
 #### Bug Fixes
 
-* There seem to be cases were `libadwaita` is not available on GNOME 42 (e.g. Pop!_OS 22.04 beta). The preferences dialog now tries to fallback to the GTK4-only variant if `libadwaita is not available`.
+* There seem to be cases were `libadwaita` is not available on GNOME 42 (e.g. Pop!_OS 22.04 beta). The preferences dialog now tries to fallback to the GTK4-only variant if `libadwaita` is not available.
 
 ## [Burn My Windows 15](https://github.com/schneegans/Burn-My-Windows/releases/tag/v15)
 
