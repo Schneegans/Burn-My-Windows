@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-03-31 11:07+0000\n"
+"PO-Revision-Date: 2022-04-13 13:09+0000\n"
 "Last-Translator: Егор Ермаков <eg.ermakov2016@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
@@ -104,7 +104,7 @@ msgstr "Дед Мороз идёт"
 
 #: src/Hexagon.js:53
 msgid "Hexagon"
-msgstr ""
+msgstr "Гексагон"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
@@ -299,15 +299,15 @@ msgstr "Предпросмотр этого эффекта"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Ширина линии сетки"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr ""
+msgstr "Цвет линии"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
-msgstr ""
+msgstr "Цвет свечения"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
@@ -315,7 +315,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Возможно, вы захотите включить это для тёмной темы."
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
@@ -349,15 +349,15 @@ msgstr "Также добавить эффекты к диалогам"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Интенсивность вращения"
 
 #: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Интенсивность встряски"
 
 #: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Интенсивность всасывания"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
