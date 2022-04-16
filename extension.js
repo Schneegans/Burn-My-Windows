@@ -98,7 +98,7 @@ class Extension {
 
     // If a window is created the transitions are set up in the async _mapWindow of the
     // WindowManager:
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1449
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1452
     // AFAIK, overriding this method is not possible as it's called by a signal to
     // which it is bound via the bind() method. To tweak the async transition
     // anyways, we override the actors ease() method once - the next time it will be
@@ -172,7 +172,7 @@ class Extension {
       // but not _doRemoveWindow. The latter is required to trigger the repositioning of
       // the overview window layout. Therefore we call this method in addition.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1415
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1405
       if (utils.shellVersionIs(3, 36)) {
         clone.connect('destroy', () => this._doRemoveWindow(clone.metaWindow));
       }
@@ -192,7 +192,7 @@ class Extension {
     // cannot monkey-patch the _destroyWindow or _mapWindow methods themselves, we check
     // inside the method below whether it was called by either of those. If so, we return
     // true. Let's see if this breaks stuff left and right...
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1125
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1124
     WindowManager.prototype._shouldAnimateActor = function(...params) {
       const caller = (new Error()).stack.split('\n')[1];
       if (caller.includes('_destroyWindow@') || caller.includes('_mapWindow@')) {
@@ -209,7 +209,7 @@ class Extension {
     // overview until the effect is finished.
 
     // The close animation is set up in WindowManager's _destroyWindow:
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1549
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1541
     // As we cannot monkey-patch the _destroyWindow itself, we connect to the 'destroy'
     // signal of the window manager and tweak the animation to our needs.
     this._destroyConnection = global.window_manager.connect('destroy', (wm, actor) => {
@@ -223,14 +223,14 @@ class Extension {
     // the case, these methods do nothing. Are the actors removed in the end? I hope so.
     // The _destroyWindow of the WindowManager sets the transitions up and should take
     // care of removing the actors at the end of the transitions.
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1299
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1301
     Workspace.prototype._windowRemoved = function(ws, metaWin) {
       if (extensionThis._shouldDestroy(this, metaWin)) {
         extensionThis._origWindowRemoved.apply(this, [ws, metaWin]);
       }
     };
 
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1178
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1180
     Workspace.prototype._doRemoveWindow = function(metaWin) {
       if (extensionThis._shouldDestroy(this, metaWin)) {
         extensionThis._origDoRemoveWindow.apply(this, [metaWin]);
