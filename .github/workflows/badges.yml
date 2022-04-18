@@ -17,9 +17,9 @@ jobs:
       - name: Get the Numbers
         run: |
           echo "CODE_LINES=$(scripts/cloc.sh --loc)" >> $GITHUB_ENV
-          echo "COMMENT_LINES=$(scripts/cloc.sh --percentage)%" >> $GITHUB_ENV
+          echo "COMMENT_LINES=$(scripts/cloc.sh --percentage)" >> $GITHUB_ENV
       - name: Create Lines-of-Code-Badge
-        uses: schneegans/dynamic-badges-action@v1.2.0
+        uses: schneegans/dynamic-badges-action@master
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 8cf45f23253ff09b21196e7271378762
@@ -29,12 +29,14 @@ jobs:
           color: lightgrey
           labelColor: 303030
       - name: Create Comments-Badge
-        uses: schneegans/dynamic-badges-action@v1.2.0
+        uses: schneegans/dynamic-badges-action@master
         with:
           auth: ${{ secrets.GIST_SECRET }}
           gistID: 8cf45f23253ff09b21196e7271378762
           filename: comments.json
           label: Comments
-          message: ${{ env.COMMENT_LINES }}
-          color: green
+          message: ${{ env.COMMENT_LINES }}%
+          valColorRange: ${{ env.COMMENT_LINES }}
+          maxColorRange: 50
+          minColorRange: 0
           labelColor: 303030
