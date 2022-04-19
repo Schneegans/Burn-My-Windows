@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-03-21 05:57+0000\n"
+"PO-Revision-Date: 2022-04-20 22:13+0000\n"
 "Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/tr/>\n"
@@ -103,7 +103,7 @@ msgstr "Noel Baba Geliyor"
 
 #: src/Hexagon.js:53
 msgid "Hexagon"
-msgstr ""
+msgstr "Altıgen"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
@@ -286,7 +286,7 @@ msgstr "Pençe Çizik Sayısı"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "Çözgü Etkisi"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
@@ -302,7 +302,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr ""
+msgstr "Çizgi rengi"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
