@@ -54,7 +54,7 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
 <p align="center">
-  <a href="https://github.com/sponsors/Schneegans">Be the first!</a>
+  <a href='https://github.com/AngelBrielez'>Angel Brielez</a>
 </p>
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
