@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-04-20 22:13+0000\n"
+"PO-Revision-Date: 2022-05-01 23:10+0000\n"
 "Last-Translator: matb <perso@mathieu-bousquet.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: prefs.js:112
 msgid "Effect Options"
@@ -71,11 +71,11 @@ msgstr "Attaque de T-Rex"
 
 #: src/SnapOfDisintegration.js:60
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Désintégration"
 
 #: src/Wisps.js:55
 msgid "Wisps"
-msgstr "Volutes"
+msgstr "Feux follets"
 
 #: src/Fire.js:58
 msgid "Fire"
@@ -131,7 +131,7 @@ msgstr "Voir le journal des modifications"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr "Signaler un bug"
+msgstr "Signaler un bogue"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
@@ -280,11 +280,11 @@ msgstr "Gradient"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr "Échelle de griffe"
+msgstr "Taille de la griffe"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr "Nombre de coups"
+msgstr "Nombre de griffures"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
@@ -315,7 +315,6 @@ msgid "Additive Blending"
 msgstr "Mélange additif"
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
-#, fuzzy
 msgid "You may want to enable this for dark window themes."
 msgstr "Vous voudrez peut-être l'activer pour les thèmes de fenêtre sombre."
 
@@ -334,7 +333,7 @@ msgstr "Animation d'ouverture de fenêtre"
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Si plusieurs sont sélectionnés, un est choisi au hasard."
+msgstr "Si plusieurs effets sont sélectionnés, un est choisi au hasard."
 
 #: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
 #: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
