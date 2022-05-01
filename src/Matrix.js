@@ -236,6 +236,8 @@ if (utils.isInShellProcess()) {
           // cogl_color_out = vec4(vec3(rain.y), 1);
         }
       `);
+
+      this.set_uniform_value('uFontTexture', 1);
     };
 
     // This is overridden to bind the font texture for drawing. Sadly, this seems to be
@@ -243,9 +245,7 @@ if (utils.isInShellProcess()) {
     // get_target() back then but this is not wrapped in GJS.
     // https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-3-36/clutter/clutter/clutter-offscreen-effect.c#L598
     vfunc_paint_target(node, paint_context) {
-      const pipeline = this.get_pipeline();
-      pipeline.set_layer_texture(1, this._fontTexture.get_texture());
-      this.set_uniform_value('uFontTexture', 1);
+      this.get_pipeline().set_layer_texture(1, this._fontTexture.get_texture());
       super.vfunc_paint_target(node, paint_context);
     }
   });

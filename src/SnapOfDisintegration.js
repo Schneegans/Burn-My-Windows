@@ -224,6 +224,8 @@ if (utils.isInShellProcess()) {
           }
         }
       `);
+
+      this.set_uniform_value('uDustTexture', 1);
     };
 
     // This is overridden to bind the dust texture for drawing. Sadly, this seems to be
@@ -236,7 +238,6 @@ if (utils.isInShellProcess()) {
                                  Cogl.PipelineFilter.LINEAR);
       pipeline.set_layer_texture(1, this._dustTexture.get_texture());
       pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
-      this.set_uniform_value('uDustTexture', 1);
       super.vfunc_paint_target(node, paint_context);
     }
   });
