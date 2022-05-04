@@ -32,17 +32,17 @@ const utils          = Me.imports.src.utils;
 
 // New effects must be registered here and in extension.js.
 const ALL_EFFECTS = [
-  Me.imports.src.Apparition.Apparition,
-  Me.imports.src.BrokenGlass.BrokenGlass,
-  Me.imports.src.EnergizeA.EnergizeA,
-  Me.imports.src.EnergizeB.EnergizeB,
+  // Me.imports.src.Apparition.Apparition,
+  // Me.imports.src.BrokenGlass.BrokenGlass,
+  // Me.imports.src.EnergizeA.EnergizeA,
+  // Me.imports.src.EnergizeB.EnergizeB,
   Me.imports.src.Fire.Fire,
-  Me.imports.src.Hexagon.Hexagon,
-  Me.imports.src.Matrix.Matrix,
-  Me.imports.src.SnapOfDisintegration.SnapOfDisintegration,
-  Me.imports.src.TRexAttack.TRexAttack,
-  Me.imports.src.TVEffect.TVEffect,
-  Me.imports.src.Wisps.Wisps,
+  // Me.imports.src.Hexagon.Hexagon,
+  // Me.imports.src.Matrix.Matrix,
+  // Me.imports.src.SnapOfDisintegration.SnapOfDisintegration,
+  // Me.imports.src.TRexAttack.TRexAttack,
+  // Me.imports.src.TVEffect.TVEffect,
+  // Me.imports.src.Wisps.Wisps,
 ];
 
 // This template widget class is defined at the bottom of this file.
