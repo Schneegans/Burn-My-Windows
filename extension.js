@@ -69,10 +69,6 @@ class Extension {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
-    // This will store an item of ALL_EFFECTS array which was used the last time a window
-    // was opened / closed.
-    this._currentEffect = 0;
-
     // We will use extensionThis to refer to the extension inside the patched methods.
     const extensionThis = this;
 
@@ -352,11 +348,11 @@ class Extension {
     // ------------------------------------------------------------------ choose an effect
 
     // Now we chose a random effect from all enabled effects.
-    this._currentEffect = null;
+    let effect = null;
 
     // First we check if an effect is to be previewed.
     if (previewNick != '') {
-      this._currentEffect = ALL_EFFECTS.find(Effect => {
+      effect = ALL_EFFECTS.find(Effect => {
         return Effect.getNick() == previewNick;
       });
 
@@ -374,12 +370,12 @@ class Extension {
 
       // And then choose a random effect.
       if (enabled.length > 0) {
-        this._currentEffect = enabled[Math.floor(Math.random() * enabled.length)];
+        effect = enabled[Math.floor(Math.random() * enabled.length)];
       }
     }
 
     // If nothing was enabled, we have to do nothing :)
-    if (this._currentEffect == null) {
+    if (effect == null) {
       this._fixAnimationTimes(isDialogWindow, forOpening, null);
       return;
     }
@@ -393,10 +389,9 @@ class Extension {
     // The following is used to tweak the ongoing transitions of a window actor. Usually
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we allow
     // modifications to this behavior by the effects.
-    const config = this._currentEffect.tweakTransition(actor, this._settings, forOpening);
-    const duration = testMode ?
-      5000 :
-      this._settings.get_int(this._currentEffect.getNick() + '-animation-time');
+    const config = effect.tweakTransition(actor, this._settings, forOpening);
+    const duration =
+      testMode ? 5000 : this._settings.get_int(effect.getNick() + '-animation-time');
 
     // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
@@ -447,7 +442,7 @@ class Extension {
     // -------------------------------------------------------------------- add the shader
 
     // Now add a cool shader to our window actor!
-    const shader = this._currentEffect.getShader(actor, this._settings, forOpening);
+    const shader = effect.getShader(actor, this._settings, forOpening);
 
     if (shader) {
       // There should always be an opacity transition going on...
@@ -459,9 +454,7 @@ class Extension {
         return;
       }
 
-      // First remove any old effect.
-      actor.remove_effect_by_name(`burn-my-windows-effect`);
-      actor.add_effect_with_name(`burn-my-windows-effect`, shader);
+      actor.add_effect_with_name('burn-my-windows-effect', shader);
 
       // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
@@ -476,11 +469,13 @@ class Extension {
       });
 
       // Remove the effect if the animation finished or was interrupted.
-      if (forOpening) {
-        transition.connect('stopped', () => {
-          actor.remove_effect_by_name(`burn-my-windows-effect`);
-        });
-      }
+      transition.connect('stopped', () => {
+        if (forOpening) {
+          actor.remove_effect_by_name('burn-my-windows-effect');
+        }
+
+        effect.returnShader(shader);
+      });
     }
 
     // Finally, ensure that all animation times are set properly so that other extensions

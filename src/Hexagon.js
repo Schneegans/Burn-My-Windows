@@ -27,10 +27,12 @@ const utils          = Me.imports.src.utils;
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The shader class for this effect is registered further down in this file. When this
-// effect is used for the first time, shaderInstance will store one instance of
-// ShaderClass which will be used whenever this effect is used.
-let ShaderClass    = null;
-let shaderInstance = null;
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the shaderInstances array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass      = null;
+let availableShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -83,15 +85,26 @@ var Hexagon = class Hexagon {
   // ---------------------------------------------------------------- API for extension.js
 
   // This is called from extension.js whenever a window is opened or closed with this
-  // effect.
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
   static getShader(actor, settings, forOpening) {
-    if (shaderInstance == null) {
-      shaderInstance = new ShaderClass();
+    let shader;
+
+    if (availableShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = availableShaders.pop();
     }
 
-    shaderInstance.setUniforms(settings, forOpening);
+    shader.setUniforms(settings, forOpening);
 
-    return shaderInstance;
+    return shader;
+  }
+
+  // This will be called from extension.js once a shader which was previously acquired via
+  // getShader() is not used anymore.
+  static returnShader(shader) {
+    availableShaders.push(shader);
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
