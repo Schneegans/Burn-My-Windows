@@ -28,11 +28,11 @@ const utils          = Me.imports.src.utils;
 
 // The shader class for this effect is registered further down in this file. When this
 // effect is used for the first time, an instance of this shader class is created. Once
-// the effect is finished, the shader will be stored in the shaderInstances array and will
+// the effect is finished, the shader will be stored in the freeShaders array and will
 // then be reused if a new shader is requested. ShaderClass which will be used whenever
 // this effect is used.
-let ShaderClass      = null;
-let availableShaders = [];
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -90,10 +90,10 @@ var Hexagon = class Hexagon {
   static getShader(actor, settings, forOpening) {
     let shader;
 
-    if (availableShaders.length == 0) {
+    if (freeShaders.length == 0) {
       shader = new ShaderClass();
     } else {
-      shader = availableShaders.pop();
+      shader = freeShaders.pop();
     }
 
     shader.setUniforms(settings, forOpening);
@@ -159,34 +159,27 @@ if (utils.isInShellProcess()) {
 
       // Get the two configurable colors. They are directly injected into the shader code
       // below.
-      const glow =
-        Clutter.Color.from_string(settings.get_string('hexagon-glow-color'))[1];
-      const line =
-        Clutter.Color.from_string(settings.get_string('hexagon-line-color'))[1];
+      const gc = Clutter.Color.from_string(settings.get_string('hexagon-glow-color'))[1];
+      const lc = Clutter.Color.from_string(settings.get_string('hexagon-line-color'))[1];
 
       // If we are currently performing integration test, the animation uses a fixed seed.
       const testMode = settings.get_boolean('test-mode');
 
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uAdditiveBlending, 1,
-                             [settings.get_boolean('hexagon-additive-blending')]);
-      this.set_uniform_float(
-        this._uSeed, 2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-      this.set_uniform_float(this._uScale, 1, [settings.get_double('hexagon-scale')]);
-      this.set_uniform_float(this._uLineWidth, 1,
-                             [settings.get_double('hexagon-line-width')]);
-      this.set_uniform_float(
-        this._uGlowColor, 4,
-        [glow.red / 255, glow.green / 255, glow.blue / 255, glow.alpha / 255]);
-      this.set_uniform_float(
-        this._uLineColor, 4,
-        [line.red / 255, line.green / 255, line.blue / 255, line.alpha / 255]);
+      // clang-format off
+      this.set_uniform_float(this._uForOpening,       1, [forOpening]);
+      this.set_uniform_float(this._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);
+      this.set_uniform_float(this._uSeed,             2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uScale,            1, [settings.get_double('hexagon-scale')]);
+      this.set_uniform_float(this._uLineWidth,        1, [settings.get_double('hexagon-line-width')]);
+      this.set_uniform_float(this._uGlowColor,        4, [gc.red / 255, gc.green / 255, gc.blue / 255, gc.alpha / 255]);
+      this.set_uniform_float(this._uLineColor,        4, [lc.red / 255, lc.green / 255, lc.blue / 255, lc.alpha / 255]);
+      // clang-format on
     }
 
     // This is called by extension.js when the shader is not used anymore. We will store
     // this instance of the shader so that it can be re-used in th future.
     free() {
-      availableShaders.push(this);
+      freeShaders.push(this);
     }
 
     // This is called by the constructor. This is means it's only called when the effect

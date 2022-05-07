@@ -31,11 +31,11 @@ const utils          = Me.imports.src.utils;
 
 // The shader class for this effect is registered further down in this file. When this
 // effect is used for the first time, an instance of this shader class is created. Once
-// the effect is finished, the shader will be stored in the shaderInstances array and will
+// the effect is finished, the shader will be stored in the freeShaders array and will
 // then be reused if a new shader is requested. ShaderClass which will be used whenever
 // this effect is used.
-let ShaderClass      = null;
-let availableShaders = [];
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -108,10 +108,10 @@ var Fire = class Fire {
   static getShader(actor, settings, forOpening) {
     let shader;
 
-    if (availableShaders.length == 0) {
+    if (freeShaders.length == 0) {
       shader = new ShaderClass();
     } else {
-      shader = availableShaders.pop();
+      shader = freeShaders.pop();
     }
 
     shader.setUniforms(settings, forOpening);
@@ -140,7 +140,7 @@ var Fire = class Fire {
   // This is called from extension.js if the extension is disabled. This should free all
   // static resources.
   static cleanUp() {
-    availableShaders = [];
+    freeShaders = [];
   }
 
   // ----------------------------------------------------------------------- private stuff
@@ -276,17 +276,18 @@ if (utils.isInShellProcess()) {
                                [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
       }
 
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._u3DNoise, 1, [settings.get_boolean('flame-3d-noise')]);
-      this.set_uniform_float(this._uScale, 1, [settings.get_double('flame-scale')]);
-      this.set_uniform_float(this._uMovementSpeed, 1,
-                             [settings.get_double('flame-movement-speed')]);
+      // clang-format off
+      this.set_uniform_float(this._uForOpening,    1, [forOpening]);
+      this.set_uniform_float(this._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
+      this.set_uniform_float(this._uScale,         1, [settings.get_double('flame-scale')]);
+      this.set_uniform_float(this._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
+      // clang-format on
     }
 
     // This is called by extension.js when the shader is not used anymore. We will store
     // this instance of the shader so that it can be re-used in th future.
     free() {
-      availableShaders.push(this);
+      freeShaders.push(this);
     }
 
     // This is called by the constructor. This is means it's only called when the effect
