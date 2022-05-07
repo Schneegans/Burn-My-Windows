@@ -101,12 +101,6 @@ var Hexagon = class Hexagon {
     return shader;
   }
 
-  // This will be called from extension.js once a shader which was previously acquired via
-  // getShader() is not used anymore.
-  static returnShader(shader) {
-    availableShaders.push(shader);
-  }
-
   // The tweakTransition() is called from extension.js to tweak a window's open / close
   // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
   // The parameter 'forOpening' is set to true if this is called for a window-open
@@ -187,6 +181,12 @@ if (utils.isInShellProcess()) {
       this.set_uniform_float(
         this._uLineColor, 4,
         [line.red / 255, line.green / 255, line.blue / 255, line.alpha / 255]);
+    }
+
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      availableShaders.push(this);
     }
 
     // This is called by the constructor. This is means it's only called when the effect

@@ -78,6 +78,7 @@ class Extension {
     this._origDoRemoveWindow        = Workspace.prototype._doRemoveWindow;
     this._origShouldAnimateActor    = WindowManager.prototype._shouldAnimateActor;
     this._origWaitForOverviewToHide = WindowManager.prototype._waitForOverviewToHide;
+    this._origDestroyWindowDone     = WindowManager.prototype._destroyWindowDone;
 
     // We will also override these animation times.
     this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
@@ -199,9 +200,9 @@ class Extension {
 
     // ----------------------------------------------- patching the window-close animation
 
-    // The signal handler below is all which is required outside of the overview. All
-    // other hacks further below are just required to defer the window-hiding in the
-    // overview until the effect is finished.
+    // The signal handler below and the following patch are all which is required outside
+    // of the overview. All other hacks further below are just required to defer the
+    // window-hiding in the overview until the effect is finished.
 
     // The close animation is set up in WindowManager's _destroyWindow:
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1541
@@ -210,6 +211,23 @@ class Extension {
     this._destroyConnection = global.window_manager.connect('destroy', (wm, actor) => {
       this._setupEffect(actor, false);
     });
+
+    // Once the window-close animation is is finished, the window manager's
+    // _destroyWindowDone is called. We use this to free the effect so that it can be
+    // re-used in future.
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1541
+    WindowManager.prototype._destroyWindowDone = function(shellwm, actor) {
+      if (this._destroying.has(actor)) {
+        const shader = actor.get_effect('burn-my-windows-effect');
+        if (shader) {
+          actor.remove_effect(shader);
+          shader.free();
+        }
+      }
+
+      // Call the original method.
+      extensionThis._origDestroyWindowDone.apply(this, [shellwm, actor]);
+    };
 
     // These three method overrides are mega-hacky! Usually, windows are not faded when
     // closed from the overview (why?). With these overrides we make sure that they are
@@ -301,6 +319,7 @@ class Extension {
     Workspace.prototype._doRemoveWindow            = this._origDoRemoveWindow;
     WindowManager.prototype._shouldAnimateActor    = this._origShouldAnimateActor;
     WindowManager.prototype._waitForOverviewToHide = this._origWaitForOverviewToHide;
+    WindowManager.prototype._destroyWindowDone     = this._origDestroyWindowDone;
 
     imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
     imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
@@ -469,13 +488,12 @@ class Extension {
       });
 
       // Remove the effect if the animation finished or was interrupted.
-      transition.connect('stopped', () => {
-        if (forOpening) {
+      if (forOpening) {
+        transition.connect('stopped', () => {
           actor.remove_effect_by_name('burn-my-windows-effect');
-        }
-
-        effect.returnShader(shader);
-      });
+          shader.free();
+        });
+      }
     }
 
     // Finally, ensure that all animation times are set properly so that other extensions

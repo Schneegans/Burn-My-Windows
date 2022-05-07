@@ -119,12 +119,6 @@ var Fire = class Fire {
     return shader;
   }
 
-  // This will be called from extension.js once a shader which was previously acquired via
-  // getShader() is not used anymore.
-  static returnShader(shader) {
-    availableShaders.push(shader);
-  }
-
   // The tweakTransition() is called from extension.js to tweak a window's open / close
   // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
   // The parameter 'forOpening' is set to true if this is called for a window-open
@@ -287,6 +281,12 @@ if (utils.isInShellProcess()) {
       this.set_uniform_float(this._uScale, 1, [settings.get_double('flame-scale')]);
       this.set_uniform_float(this._uMovementSpeed, 1,
                              [settings.get_double('flame-movement-speed')]);
+    }
+
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      availableShaders.push(this);
     }
 
     // This is called by the constructor. This is means it's only called when the effect
