@@ -28,8 +28,8 @@ function standardUniforms() {
   uniform sampler2D uTexture;
   uniform float     uProgress;
   uniform float     uTime;
-  uniform int       uSizeX;
-  uniform int       uSizeY;
+  uniform float     uSizeX;
+  uniform float     uSizeY;
   `;
 }
 
