@@ -354,13 +354,21 @@ class Extension {
     // We do nothing if a dialog got closed and we should not burn them.
     const shouldDestroyDialogs = this._settings.get_boolean('destroy-dialogs');
 
-    // If an effect is to be previewed however, we have to affect dialogs es well. This is
+    // If an effect is to be previewed, we have to affect dialogs es well. This is
     // because the preview window is a dialog window...
     const action      = forOpening ? 'open' : 'close';
     const previewNick = this._settings.get_string(action + '-preview-effect');
 
     if (isDialogWindow && !shouldDestroyDialogs && previewNick == '') {
       this._fixAnimationTimes(isDialogWindow, forOpening, null);
+      return;
+    }
+
+    // There is the weird case where an animation is already ongoing and then a
+    // window-open animation is requested. This happens when a window is closed which has
+    // been created before the session was started (e.g. when GNOME Shell has been
+    // restarted in the meantime). We do nothing in this case.
+    if (forOpening && actor.get_effect('burn-my-windows-effect')) {
       return;
     }
 
