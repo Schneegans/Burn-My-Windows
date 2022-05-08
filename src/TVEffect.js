@@ -206,10 +206,9 @@ if (utils.isInShellProcess()) {
         // Assemble the final alpha value.
         float mask = tbMask * lrMask * ffMask;
 
-        vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-        windowColor.rgb = mix(windowColor.rgb, uColor * windowColor.a, smoothstep(0, 1, progress));
-
-        cogl_color_out = windowColor * mask;
+        cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+        cogl_color_out.rgb = mix(cogl_color_out.rgb, uColor * cogl_color_out.a, smoothstep(0, 1, progress));
+        cogl_color_out.a *= mask;
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(vec3(tbMask), 1);
