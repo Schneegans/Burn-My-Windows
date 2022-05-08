@@ -264,7 +264,7 @@ if (utils.isInShellProcess()) {
         if (tileProgress > hex.z) {
 
           // Crop outer parts of the shrinking tiles.
-          cogl_color_out *= vec4(0.0);
+          cogl_color_out.a = 0.0;
 
         } else {
 

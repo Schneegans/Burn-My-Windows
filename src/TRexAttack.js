@@ -196,6 +196,7 @@ if (utils.isInShellProcess()) {
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
+        ${shaderSnippets.compositing()}
 
         // See assets/README.md for how this texture was created.
         uniform bool      uForOpening;
@@ -279,17 +280,18 @@ if (utils.isInShellProcess()) {
         }
 
         // Hide flashes where there is now window.
-        flashIntensity *= cogl_color_out.a;
+        vec4 flash = uFlashColor;
+        flash.a *= flashIntensity * cogl_color_out.a * (1.0 - progress);
 
         // Hide scratched out parts.
-        cogl_color_out *= (scratchMap > progress ? 1 : 0);
+        cogl_color_out.a *= (scratchMap > progress ? 1 : 0);
 
         // Add flash color.
-        cogl_color_out.rgb += flashIntensity * mix(uFlashColor.rgb * uFlashColor.a, vec3(0), progress);
+        cogl_color_out = blendOver(flash, cogl_color_out);
 
         // Fade out the remaining shards.
         float fadeProgress = smoothstep(0, 1, (progress - 1.0 + FF_TIME)/FF_TIME);
-        cogl_color_out *= sqrt(1-fadeProgress*fadeProgress);
+        cogl_color_out.a *= sqrt(1-fadeProgress*fadeProgress);
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(vec3(flashIntensity), 1);
