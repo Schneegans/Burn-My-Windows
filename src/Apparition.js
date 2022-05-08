@@ -219,7 +219,8 @@ if (utils.isInShellProcess()) {
         coords = vec2(dot(coords, vec2(c, -s)), dot(coords, vec2(s, c)));
 
         // Fade out the window texture.
-        cogl_color_out = texture2D(uTexture, coords + center) * (1.0 - progress);
+        cogl_color_out = texture2D(uTexture, coords + center);
+        cogl_color_out.a *= 1.0 - progress;
       `;
 
       this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
