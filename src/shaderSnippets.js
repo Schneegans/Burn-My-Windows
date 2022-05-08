@@ -51,6 +51,17 @@ function math2D() {
   `;
 }
 
+// The Shell.GLSLEffect uses straight alpha blending. This helper method allows
+// compositing color values in the shader in the same way.
+function compositing() {
+  return `
+  vec4 blendOver(vec4 over, vec4 under) {
+    float alpha = over.a + under.a * (1.0 - over.a);
+    return vec4((over.rgb * over.a + under.rgb * under.a * (1.0 - over.a)) / alpha, alpha);
+  }
+  `;
+}
+
 // This method returns a mask which smoothly transitions towards zero when approaching
 // the window's borders. There is a variant which takes the transition area width in
 // pixels and one which takes this as a percentage.
