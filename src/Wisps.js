@@ -26,8 +26,13 @@ const utils          = Me.imports.src.utils;
 // fairies. It's implemented with several overlaid grids of randomly moving points.     //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
 
 // This will be called in various places where a unique identifier for this effect is
 // required. It should match the prefix of the settings keys which store whether the
@@ -76,9 +81,21 @@ var Wisps = class Wisps {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -98,6 +115,12 @@ var Wisps = class Wisps {
       'scale-y': {from: forOpening ? 0.9 : 1.0, to: forOpening ? 1.0 : 0.9, mode: 3}
     };
   }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders = [];
+  }
 }
 
 
@@ -109,88 +132,115 @@ var Wisps = class Wisps {
 
 if (utils.isInShellProcess()) {
 
-  const Clutter        = imports.gi.Clutter;
-  const shaderSnippets = Me.imports.src.shaderSnippets;
+  const {Clutter, Shell} = imports.gi;
+  const shaderSnippets   = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
 
-      const color = Clutter.Color.from_string(settings.get_string('wisps-color'))[1];
+      this._uForOpening = this.get_uniform_location('uForOpening');
+      this._uSeed       = this.get_uniform_location('uSeed');
+      this._uColor      = this.get_uniform_location('uColor');
+      this._uScale      = this.get_uniform_location('uScale');
+    }
+
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
+      const c = Clutter.Color.from_string(settings.get_string('wisps-color'))[1];
 
       // If we are currently performing integration test, the animation uses a fixed seed.
       const testMode = settings.get_boolean('test-mode');
 
-      this.set_shader_source(`
+      // clang-format off
+      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
+      this.set_uniform_float(this._uScale,      1, [settings.get_double('wisps-scale')]);
+      // clang-format on
+    }
 
-      // Inject some common shader snippets.
-      ${shaderSnippets.standardUniforms()}
-      ${shaderSnippets.noise()}
-      ${shaderSnippets.edgeMask()}
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
 
-      const vec2  SEED            = vec2(${testMode ? 0 : Math.random()}, 
-                                         ${testMode ? 0 : Math.random()});
-      const float WISPS_RADIUS    = 20.0;
-      const float WISPS_SPEED     = 10.0;
-      const float WISPS_SPACING   = 40 + WISPS_RADIUS;
-      const int   WISPS_LAYERS    = 8;
-      const float WISPS_IN_TIME   = 0.5;
-      const float WINDOW_OUT_TIME = 1.0;
+    // This is called by the constructor. This is means it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+      const declarations = `
+        // Inject some common shader snippets.
+        ${shaderSnippets.standardUniforms()}
+        ${shaderSnippets.noise()}
+        ${shaderSnippets.edgeMask()}
 
-      // Returns a grid of randomly moving points. Each grid cell contains one point which
-      // moves on an ellipse. 
-      float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
+        uniform bool  uForOpening;
+        uniform vec2  uSeed;
+        uniform vec3  uColor;
+        uniform float uScale;
 
-        // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-        vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
+        const float WISPS_RADIUS    = 20.0;
+        const float WISPS_SPEED     = 10.0;
+        const float WISPS_SPACING   = 40 + WISPS_RADIUS;
+        const int   WISPS_LAYERS    = 8;
+        const float WISPS_IN_TIME   = 0.5;
+        const float WINDOW_OUT_TIME = 1.0;
 
-        // Apply global scale.
-        coords /= gridSize;
+        // Returns a grid of randomly moving points. Each grid cell contains one point which
+        // moves on an ellipse. 
+        float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
 
-        // Get grid cell coordinates in [0..1].
-        vec2 cellUV = mod(coords, vec2(1));
+          // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
+          vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
 
-        // This is unique for each cell.
-        vec2 cellID = coords-cellUV + vec2(362.456);
+          // Apply global scale.
+          coords /= gridSize;
 
-        // Add random rotation, scale and offset to each grid cell.
-        float speed     = mix(10.0, 15.0,   hash12(cellID*seed*134.451)) / gridSize * WISPS_SPEED;
-        float rotation  = mix( 0.0,  6.283, hash12(cellID*seed*54.4129));
-        float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * WISPS_RADIUS;
-        float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
+          // Get grid cell coordinates in [0..1].
+          vec2 cellUV = mod(coords, vec2(1));
 
-        vec2 offset = vec2(sin(speed * (uTime+1)) * roundness, cos(speed * (uTime+1)));
-        offset *= 0.5 - 0.5 * radius / gridSize;
-        offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
-                      offset.x * sin(rotation) + offset.y * cos(rotation));
+          // This is unique for each cell.
+          vec2 cellID = coords-cellUV + vec2(362.456);
 
-        cellUV += offset;
+          // Add random rotation, scale and offset to each grid cell.
+          float speed     = mix(10.0, 15.0,   hash12(cellID*seed*134.451)) / gridSize * WISPS_SPEED;
+          float rotation  = mix( 0.0,  6.283, hash12(cellID*seed*54.4129));
+          float radius    = mix( 0.5,  1.0,   hash12(cellID*seed*19.1249)) * WISPS_RADIUS;
+          float roundness = mix(-1.0,  1.0,   hash12(cellID*seed*7.51949));
 
-        // Use distance to center of shifted / rotated UV coordinates to draw a glaring point.
-        float dist = length(cellUV - 0.5) * gridSize / radius;
-        if (dist < 1.0) {
-          return min(10, 0.01 / pow(dist, 2.0));
+          vec2 offset = vec2(sin(speed * (uTime+1)) * roundness, cos(speed * (uTime+1)));
+          offset *= 0.5 - 0.5 * radius / gridSize;
+          offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
+                        offset.x * sin(rotation) + offset.y * cos(rotation));
+
+          cellUV += offset;
+
+          // Use distance to center of shifted / rotated UV coordinates to draw a glaring point.
+          float dist = length(cellUV - 0.5) * gridSize / radius;
+          if (dist < 1.0) {
+            return min(10, 0.01 / pow(dist, 2.0));
+          }
+
+          return 0.0;
         }
+      `;
 
-        return 0.0;
-      }
-
-      void main() {
-
-        float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
+      const code = `
+        float progress = uForOpening ? 1.0-uProgress : uProgress;
         
         // Get the color of the window.
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-        vec4 effectColor = vec4(${color.red / 255},
-          ${color.green / 255},
-          ${color.blue / 255}, 1.0) * windowColor.a;
         
         // Compute several layers of moving wisps.
         vec2 uv = (cogl_tex_coord_in[0].st-0.5) / mix(1.0, 0.5, progress) + 0.5;
-        uv /= ${settings.get_double('wisps-scale')};
+        uv /= uScale;
         float wisps = 0;
         for (int i=0; i<WISPS_LAYERS; ++i) {
-          wisps += getWisps(uv*0.3, WISPS_SPACING, SEED * (i+1));
+          wisps += getWisps(uv*0.3, WISPS_SPACING, uSeed * (i+1));
         }
 
         // Compute shrinking edge mask.
@@ -207,15 +257,16 @@ if (utils.isInShellProcess()) {
         cogl_color_out = windowColor * windowMask * mask;
 
         // Add the wisps.
-        cogl_color_out += min(wispsIn, 1.0 - wispsOut) * wisps * effectColor * mask;
+        cogl_color_out += min(wispsIn, 1.0 - wispsOut) * wisps * vec4(uColor, 1.0) * mask * windowColor.a;
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(vec3(windowMask), 1.0);
         // cogl_color_out = vec4(vec3(wisps), 1.0);
         // cogl_color_out = vec4(vec3(noise), 1.0);
         // cogl_color_out = vec4(vec3(mask*min(wispsIn, 1.0 - wispsOut)), 1.0);
-      }
-      `);
-    };
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
   });
 }

@@ -255,7 +255,7 @@ if (utils.isInShellProcess()) {
           coords = (coords + grow + shrink) / scale;
 
           // Add some wind.
-          coords.x = WIND_INTENSITY * coords.x * progress * (uForOpening ? 1.0 : -1.0);
+          coords.x += WIND_INTENSITY * progress * (uForOpening ? 1.0 : -1.0);
         
           // Now check wether there is actually something in the current dust layer at
           // the coords position.

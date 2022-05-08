@@ -27,8 +27,13 @@ const utils          = Me.imports.src.utils;
 // the center.                                                                          //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -76,9 +81,21 @@ var TVEffect = class TVEffect {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -98,6 +115,12 @@ var TVEffect = class TVEffect {
       'scale-y': {from: forOpening ? 0.5 : 1.0, to: forOpening ? 1.0 : 0.5, mode: 3}
     };
   }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders = [];
+  }
 }
 
 
@@ -109,29 +132,55 @@ var TVEffect = class TVEffect {
 
 if (utils.isInShellProcess()) {
 
-  const Clutter        = imports.gi.Clutter;
-  const shaderSnippets = Me.imports.src.shaderSnippets;
+  const {Clutter, Shell} = imports.gi;
+  const shaderSnippets   = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
 
-      const color = Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
+      this._uForOpening = this.get_uniform_location('uForOpening');
+      this._uColor      = this.get_uniform_location('uColor');
+    }
 
-      this.set_shader_source(`
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
+      const c = Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
 
-      // Inject some common shader snippets.
-      ${shaderSnippets.standardUniforms()}
+      // clang-format off
+      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
+      // clang-format on
+    }
 
-      const float BLUR_WIDTH = 0.01; // Width of the gradients.
-      const float TB_TIME    = 0.7;  // Relative time for the top/bottom animation.
-      const float LR_TIME    = 0.4;  // Relative time for the left/right animation.
-      const float LR_DELAY   = 0.6;  // Delay after which the left/right animation starts.
-      const float FF_TIME    = 0.1;  // Relative time for the final fade to transparency.
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
 
-      void main() {
+    // This is called by the constructor. This is means it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+      const declarations = `
+        // Inject some common shader snippets.
+        ${shaderSnippets.standardUniforms()}
 
-        float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
+        uniform bool uForOpening;
+        uniform vec3 uColor;
+
+        const float BLUR_WIDTH = 0.01; // Width of the gradients.
+        const float TB_TIME    = 0.7;  // Relative time for the top/bottom animation.
+        const float LR_TIME    = 0.4;  // Relative time for the left/right animation.
+        const float LR_DELAY   = 0.6;  // Delay after which the left/right animation starts.
+        const float FF_TIME    = 0.1;  // Relative time for the final fade to transparency.
+      `;
+
+      const code = `
+        float progress = uForOpening ? 1.0-uProgress : uProgress;
 
         // All of these are in [0..1] during the different stages of the animation.
         // tb refers to the top-bottom animation.
@@ -158,11 +207,7 @@ if (utils.isInShellProcess()) {
         float mask = tbMask * lrMask * ffMask;
 
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-        vec4 effectColor = vec4(${color.red / 255},
-                                ${color.green / 255},
-                                ${color.blue / 255}, 1.0) * windowColor.a;
-
-        windowColor.rgb = mix(windowColor.rgb, effectColor.rgb, smoothstep(0, 1, progress));
+        windowColor.rgb = mix(windowColor.rgb, uColor * windowColor.a, smoothstep(0, 1, progress));
 
         cogl_color_out = windowColor * mask;
 
@@ -171,8 +216,9 @@ if (utils.isInShellProcess()) {
         // cogl_color_out = vec4(vec3(lrMask), 1);
         // cogl_color_out = vec4(vec3(ffMask), 1);
         // cogl_color_out = vec4(vec3(mask), 1);
-      }
-      `);
-    };
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
   });
 }

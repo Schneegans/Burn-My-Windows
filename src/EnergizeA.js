@@ -25,8 +25,13 @@ const utils          = Me.imports.src.utils;
 // This effect looks a bit like the transporter effect from TOS.                        //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -75,9 +80,21 @@ var EnergizeA = class EnergizeA {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -97,6 +114,12 @@ var EnergizeA = class EnergizeA {
       'scale-y': {from: 1.0, to: 1.0, mode: 3}
     };
   }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders = [];
+  }
 }
 
 
@@ -108,79 +131,100 @@ var EnergizeA = class EnergizeA {
 
 if (utils.isInShellProcess()) {
 
-  const Clutter        = imports.gi.Clutter;
-  const shaderSnippets = Me.imports.src.shaderSnippets;
+  const {Clutter, Shell} = imports.gi;
+  const shaderSnippets   = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
 
-      const color = Clutter.Color.from_string(settings.get_string('energize-a-color'))[1];
+      this._uForOpening = this.get_uniform_location('uForOpening');
+      this._uColor      = this.get_uniform_location('uColor');
+      this._uScale      = this.get_uniform_location('uScale');
+    }
 
-      // If we are currently performing integration test, the animation uses a fixed seed.
-      const testMode = settings.get_boolean('test-mode');
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
+      const c = Clutter.Color.from_string(settings.get_string('energize-a-color'))[1];
 
-      this.set_shader_source(`
+      // clang-format off
+      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
+      this.set_uniform_float(this._uScale,      1, [settings.get_double('energize-a-scale')]);
+      // clang-format on
+    }
 
-      // Inject some common shader snippets.
-      ${shaderSnippets.standardUniforms()}
-      ${shaderSnippets.noise()}
-      ${shaderSnippets.edgeMask()}
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
 
-      const vec2  SEED            = vec2(${testMode ? 0 : Math.random()}, 
-                                         ${testMode ? 0 : Math.random()});
-      const float FADE_IN_TIME    = 0.3;
-      const float FADE_OUT_TIME   = 0.6;
-      const float HEART_FADE_TIME = 0.3;
-      const float EDGE_FADE_WIDTH = 50;
+    // This is called by the constructor. This is means it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+      const declarations = `
+        // Inject some common shader snippets.
+        ${shaderSnippets.standardUniforms()}
+        ${shaderSnippets.noise()}
+        ${shaderSnippets.edgeMask()}
 
-      // This method returns two values:
-      //  result.x: A mask for the particles.
-      //  result.y: The opacity of the fading window.
-      vec2 getMasks() {
-        float fadeInProgress  = clamp(uProgress/FADE_IN_TIME, 0, 1);
-        float fadeOutProgress = clamp((uProgress-FADE_IN_TIME)/FADE_OUT_TIME, 0, 1);
-        float heartProgress   = clamp((uProgress-(1.0-HEART_FADE_TIME))/HEART_FADE_TIME, 0, 1);
+        uniform bool  uForOpening;
+        uniform vec3  uColor;
+        uniform float uScale;
 
-        // Compute mask for the "atom" particles.
-        float dist = length(cogl_tex_coord_in[0].st - 0.5) * 4.0;
-        float atomMask = smoothstep(0.0, 1.0, (fadeInProgress * 2.0 - dist + 1.0));
-        atomMask *= fadeInProgress;
-        atomMask *= smoothstep(1.0, 0.0, fadeOutProgress);
+        const float FADE_IN_TIME    = 0.3;
+        const float FADE_OUT_TIME   = 0.6;
+        const float HEART_FADE_TIME = 0.3;
+        const float EDGE_FADE_WIDTH = 50;
 
-        // Fade-out the masks at the window edges.
-        float edgeFade = getAbsoluteEdgeMask(EDGE_FADE_WIDTH);
-        atomMask *= edgeFade;
+        // This method returns two values:
+        //  result.x: A mask for the particles.
+        //  result.y: The opacity of the fading window.
+        vec2 getMasks() {
+          float fadeInProgress  = clamp(uProgress/FADE_IN_TIME, 0, 1);
+          float fadeOutProgress = clamp((uProgress-FADE_IN_TIME)/FADE_OUT_TIME, 0, 1);
+          float heartProgress   = clamp((uProgress-(1.0-HEART_FADE_TIME))/HEART_FADE_TIME, 0, 1);
 
-        float heartMask = getRelativeEdgeMask(0.5);
-        heartMask = 3.0 * pow(heartMask, 5);
-        heartMask *= fadeOutProgress;
-        heartMask *= 1.0 - heartProgress;
-        atomMask = clamp(heartMask+atomMask, 0, 1);
+          // Compute mask for the "atom" particles.
+          float dist = length(cogl_tex_coord_in[0].st - 0.5) * 4.0;
+          float atomMask = smoothstep(0.0, 1.0, (fadeInProgress * 2.0 - dist + 1.0));
+          atomMask *= fadeInProgress;
+          atomMask *= smoothstep(1.0, 0.0, fadeOutProgress);
 
-        // Compute fading window opacity.
-        float windowMask = pow(1.0 - fadeOutProgress, 2.0);
+          // Fade-out the masks at the window edges.
+          float edgeFade = getAbsoluteEdgeMask(EDGE_FADE_WIDTH);
+          atomMask *= edgeFade;
 
-        #if ${forOpening ? '1' : '0'}
-          windowMask = 1.0 - windowMask;
-        #endif
+          float heartMask = getRelativeEdgeMask(0.5);
+          heartMask = 3.0 * pow(heartMask, 5);
+          heartMask *= fadeOutProgress;
+          heartMask *= 1.0 - heartProgress;
+          atomMask = clamp(heartMask+atomMask, 0, 1);
 
-        return vec2(atomMask, windowMask);
-      }
+          // Compute fading window opacity.
+          float windowMask = pow(1.0 - fadeOutProgress, 2.0);
 
-      void main() {
-        
+          if (uForOpening) {
+            windowMask = 1.0 - windowMask;
+          }
+
+          return vec2(atomMask, windowMask);
+        }
+      `;
+
+      const code = `
         vec2 masks       = getMasks();
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-        vec3 effectColor = vec3(${color.red / 255},
-                                ${color.green / 255},
-                                ${color.blue / 255});
 
         // Dissolve window to effect color / transparency.
-        cogl_color_out = mix(vec4(effectColor, 1.0) * windowColor.a, windowColor, 0.2 * masks.y + 0.8) * masks.y;
+        cogl_color_out = mix(vec4(uColor, 1.0) * windowColor.a, windowColor, 0.2 * masks.y + 0.8) * masks.y;
 
         vec2 scaledUV = (cogl_tex_coord_in[0].st-0.5) * (1.0 + 0.1*uProgress);
-        scaledUV /= ${settings.get_double('energize-a-scale')};
+        scaledUV /= uScale;
 
         // Add molecule particles.
         vec2 uv = scaledUV + vec2(0, 0.1*uTime);
@@ -194,15 +238,16 @@ if (utils.isInShellProcess()) {
           particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms)-1.0), 2);
         }
 
-        cogl_color_out.rgb += effectColor * particles * masks.x;
+        cogl_color_out.rgb += uColor * particles * masks.x;
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(masks, 0.0, 1.0);
         // cogl_color_out = vec4(vec3(masks.x), 1.0);
         // cogl_color_out = vec4(vec3(masks.y), 1.0);
         // cogl_color_out = vec4(vec3(particles), 1.0);
-      }
-      `);
-    };
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
   });
 }
