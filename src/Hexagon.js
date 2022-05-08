@@ -96,7 +96,7 @@ var Hexagon = class Hexagon {
       shader = freeShaders.pop();
     }
 
-    shader.setUniforms(settings, forOpening);
+    shader.setUniforms(actor, settings, forOpening);
 
     return shader;
   }
@@ -155,7 +155,7 @@ if (utils.isInShellProcess()) {
 
     // This is called each time the effect is used. This can be used to retrieve the
     // configuration from the settings and update all uniforms accordingly.
-    setUniforms(settings, forOpening) {
+    setUniforms(actor, settings, forOpening) {
 
       // Get the two configurable colors. They are directly injected into the shader code
       // below.
@@ -304,6 +304,6 @@ if (utils.isInShellProcess()) {
       `;
 
       this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
-    };
+    }
   });
 }

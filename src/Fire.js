@@ -114,7 +114,7 @@ var Fire = class Fire {
       shader = freeShaders.pop();
     }
 
-    shader.setUniforms(settings, forOpening);
+    shader.setUniforms(actor, settings, forOpening);
 
     return shader;
   }
@@ -267,7 +267,7 @@ if (utils.isInShellProcess()) {
 
     // This is called each time the effect is used. This can be used to retrieve the
     // configuration from the settings and update all uniforms accordingly.
-    setUniforms(settings, forOpening) {
+    setUniforms(actor, settings, forOpening) {
 
       // Load the gradient values from the settings.
       for (let i = 1; i <= 5; i++) {
@@ -408,6 +408,6 @@ if (utils.isInShellProcess()) {
       `;
 
       this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
-    };
+    }
   });
 }
