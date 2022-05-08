@@ -221,7 +221,8 @@ if (utils.isInShellProcess()) {
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
 
         // Dissolve window to effect color / transparency.
-        cogl_color_out = mix(vec4(uColor, 1.0) * windowColor.a, windowColor, 0.2 * masks.y + 0.8) * masks.y;
+        cogl_color_out.rgb = mix(uColor, windowColor.rgb, 0.2 * masks.y + 0.8);
+        cogl_color_out.a = windowColor.a * masks.y;
 
         vec2 scaledUV = (cogl_tex_coord_in[0].st-0.5) * (1.0 + 0.1*uProgress);
         scaledUV /= uScale;
@@ -239,6 +240,7 @@ if (utils.isInShellProcess()) {
         }
 
         cogl_color_out.rgb += uColor * particles * masks.x;
+        cogl_color_out.a += particles * masks.x;
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(masks, 0.0, 1.0);

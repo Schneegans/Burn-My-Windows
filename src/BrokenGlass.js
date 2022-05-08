@@ -273,12 +273,8 @@ if (utils.isInShellProcess()) {
           // the bin of the current shard.
           float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
 
-          if (shardGroup == i) {
-            vec4 windowColor = texture2D(uTexture, coords);
-
-            // Dissolve the shard by using distance information from the red channel.
-            float dissolve = (shardMap.x - pow(progress+0.1, 2)) > 0 ? 1 : 0;
-            cogl_color_out = mix(cogl_color_out, windowColor, dissolve);
+          if (shardGroup == i && (shardMap.x - pow(progress+0.1, 2)) > 0) {
+            cogl_color_out = texture2D(uTexture, coords);
           }
         }
       `;

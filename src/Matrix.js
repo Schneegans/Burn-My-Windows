@@ -204,6 +204,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
+        ${shaderSnippets.compositing()}
 
         uniform bool      uForOpening;
         uniform sampler2D uFontTexture;
@@ -270,24 +271,26 @@ if (utils.isInShellProcess()) {
         coords.y = coords.y * (uOverShoot + 1.0) - uOverShoot * 0.5;
 
         // Get a cool matrix effect. See comments for those methods above.
-        vec2  rain = getRain(coords);
-        float text = getText(coords);
+        vec2  rainMask = getRain(coords);
+        float textMask = getText(coords);
 
         // Get the window texture and fade it according to the effect mask.
-        cogl_color_out = texture2D(uTexture, coords) * rain.y;
+        cogl_color_out = texture2D(uTexture, coords);
+        cogl_color_out.a *= rainMask.y;
 
         // This is used to fade out the remaining trails in the end.
         float finalFade = 1-clamp((uProgress-FINAL_FADE_START_TIME)/
                                   (1-FINAL_FADE_START_TIME), 0, 1);
-        float rainAlpha = finalFade * rain.x;
+        float rainAlpha = finalFade * rainMask.x;
 
         // Add the matrix effect to the window.
-        cogl_color_out.rgb += mix(uTrailColor, uTipColor, min(1, pow(rainAlpha+0.1, 4))) * rainAlpha * text;
+        vec4 text = vec4(mix(uTrailColor, uTipColor, min(1, pow(rainAlpha+0.1, 4))), rainAlpha * textMask);
+        cogl_color_out = alphaOver(cogl_color_out, text);
 
         // These are pretty useful for understanding how this works.
-        // cogl_color_out = vec4(vec3(text), 1);
-        // cogl_color_out = vec4(vec3(rain.x), 1);
-        // cogl_color_out = vec4(vec3(rain.y), 1);
+        // cogl_color_out = vec4(vec3(textMask), 1);
+        // cogl_color_out = vec4(vec3(rainMask.x), 1);
+        // cogl_color_out = vec4(vec3(rainMask.y), 1);
       `;
 
       this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);

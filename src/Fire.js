@@ -299,6 +299,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
+        ${shaderSnippets.compositing()}
 
         uniform bool  uForOpening;
         uniform bool  u3DNoise;
@@ -393,13 +394,13 @@ if (utils.isInShellProcess()) {
 
         // Map noise value to color.
         vec4 fire = getFireColor(noise);
-        fire.rgb *= fire.a;
 
         // Get the window texture and fade it according to the effect mask.
-        cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * effectMask.x;
+        cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+        cogl_color_out.a *= effectMask.x;
 
         // Add the fire to the window.
-        cogl_color_out = cogl_color_out * (1.0 - fire.a) + fire;
+        cogl_color_out = alphaOver(cogl_color_out, fire);
 
         // These are pretty useful for understanding how this works.
         // cogl_color_out = vec4(vec3(noise), 1);

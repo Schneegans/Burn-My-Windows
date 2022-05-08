@@ -287,7 +287,7 @@ if (utils.isInShellProcess()) {
         cogl_color_out.a *= (scratchMap > progress ? 1 : 0);
 
         // Add flash color.
-        cogl_color_out = blendOver(flash, cogl_color_out);
+        cogl_color_out = alphaOver(cogl_color_out, flash);
 
         // Fade out the remaining shards.
         float fadeProgress = smoothstep(0, 1, (progress - 1.0 + FF_TIME)/FF_TIME);
