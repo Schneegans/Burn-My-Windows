@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-04-20 22:13+0000\n"
+"PO-Revision-Date: 2022-05-11 12:17+0000\n"
 "Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: prefs.js:112
 msgid "Effect Options"
@@ -314,7 +314,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Bunu koyu temalı pencereler için etkinleştirmek isteyebilirsiniz."
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
