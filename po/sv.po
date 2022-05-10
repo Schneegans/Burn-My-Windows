@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
 "PO-Revision-Date: 2022-05-11 12:17+0000\n"
-"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
+"Last-Translator: obslsessed <obslsessed@duck.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sv/>\n"
 "Language: sv\n"
@@ -222,7 +222,7 @@ msgstr "Vertikal överskjutning"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
-msgstr ""
+msgstr "Spårets färg"
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
