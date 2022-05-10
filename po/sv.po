@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: 2022-04-11 12:07+0000\n"
+"PO-Revision-Date: 2022-05-11 12:17+0000\n"
 "Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sv/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.12.1\n"
 
 #: prefs.js:112
 msgid "Effect Options"
@@ -160,7 +160,7 @@ msgstr "Om Bränn-mitt-Windows"
 #: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
 #: resources/ui/gtk3/Apparition.ui:63
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Animationens tid [ms]"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -234,7 +234,7 @@ msgstr "Tyngdkraft"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "Blåskraft"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
