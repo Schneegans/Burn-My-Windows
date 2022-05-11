@@ -259,7 +259,7 @@ if (utils.isInShellProcess()) {
         
           // Now check wether there is actually something in the current dust layer at
           // the coords position.
-          vec2 dustCoords = (coords + uSeed) * vec2(uSizeX, uSizeY) / uDustScale / 100.0;
+          vec2 dustCoords = (coords + uSeed) * uSize / uDustScale / 100.0;
           vec2 dustMap    = texture2D(uDustTexture, dustCoords).rg;
           float dustGroup = floor(dustMap.g * DUST_LAYERS * 0.999);
 

@@ -382,7 +382,7 @@ if (utils.isInShellProcess()) {
 
       const code = `
         // Get a noise value which moves vertically in time.
-        vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / vec2(400, 600) / uScale;
+        vec2 uv = cogl_tex_coord_in[0].st * uSize / vec2(400, 600) / uScale;
         uv.y += uTime * uMovementSpeed;
 
         float noise = u3DNoise ? simplex3DFractal(vec3(uv*4.0, uTime*uMovementSpeed*1.5))

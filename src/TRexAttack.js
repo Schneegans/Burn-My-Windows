@@ -219,7 +219,7 @@ if (utils.isInShellProcess()) {
 
           // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
           vec2 coords = texCoords + hash22(seed);
-          coords *= uSizeX < uSizeY ? vec2(1.0, 1.0 * uSizeY / uSizeX) : vec2(1.0 * uSizeX / uSizeY, 1.0);
+          coords *= uSize.x < uSize.y ? vec2(1.0, 1.0 * uSize.y / uSize.x) : vec2(1.0 * uSize.x / uSize.y, 1.0);
 
           // Apply global scale.
           coords *= gridScale;

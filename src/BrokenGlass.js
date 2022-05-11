@@ -265,7 +265,7 @@ if (utils.isInShellProcess()) {
           coords += uEpicenter;
 
           // Retrieve information from the shard texture for our layer.
-          vec2 shardCoords = (coords + uSeed) * vec2(uSizeX, uSizeY) / uShardScale / 500.0;
+          vec2 shardCoords = (coords + uSeed) * uSize / uShardScale / 500.0;
           vec2 shardMap = texture2D(uShardTexture, shardCoords).rg;
 
           // The green channel contains a random value in [0..1] for each shard. We

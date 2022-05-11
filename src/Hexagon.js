@@ -258,7 +258,7 @@ if (utils.isInShellProcess()) {
         float glowProgress = smoothstep(0, 1, clamp(progress / 0.5, 0, 1));
         float tileProgress = smoothstep(0, 1, clamp((progress - 0.5) / 0.5, 0, 1));
 
-        vec2 texScale = 0.1 * vec2(uSizeX, uSizeY) / uScale;
+        vec2 texScale = 0.1 * uSize / uScale;
         vec4 hex = getHexagons(cogl_tex_coord_in[0].st * texScale);
 
         if (tileProgress > hex.z) {

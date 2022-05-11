@@ -21,15 +21,13 @@
 // uTexture:    Contains the texture of the window.
 // uProgress:   A value which transitions from 0 to 1 during the entire animation.
 // uTime:       A steadily increasing value in seconds.
-// uSizeX:      The horizontal size of uTexture in pixels.
-// uSizeY:      The vertical size of uTexture in pixels.
+// uSize:       The size of uTexture in pixels.
 function standardUniforms() {
   return `
   uniform sampler2D uTexture;
   uniform float     uProgress;
   uniform float     uTime;
-  uniform float     uSizeX;
-  uniform float     uSizeY;
+  uniform vec2      uSize;
   `;
 }
 
@@ -78,8 +76,8 @@ function edgeMask() {
   }
 
   float getAbsoluteEdgeMask(float fadePixels) {
-    vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY);
-    return getEdgeMask(uv, vec2(uSizeX, uSizeY), fadePixels);
+    vec2 uv = cogl_tex_coord_in[0].st * uSize;
+    return getEdgeMask(uv, uSize, fadePixels);
   }
   
   float getRelativeEdgeMask(float fadeAmount) {

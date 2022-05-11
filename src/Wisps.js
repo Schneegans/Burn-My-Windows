@@ -196,7 +196,7 @@ if (utils.isInShellProcess()) {
         float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
 
           // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-          vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
+          vec2 coords = (texCoords + hash22(seed)) * uSize;
 
           // Apply global scale.
           coords /= gridSize;
@@ -258,7 +258,7 @@ if (utils.isInShellProcess()) {
         float windowOut = smoothstep(0, 1, clamp(progress/WINDOW_OUT_TIME, 0, 1));
 
         // Use a noise function to dissolve the window.
-        float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * vec2(uSizeX, uSizeY) / 250) - 1.0));
+        float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * uSize / 250) - 1.0));
         float windowMask = 1.0 - (windowOut < 0.5 ? mix(0.0, noise, windowOut * 2.0) : mix(noise, 1.0, windowOut * 2.0 - 1.0));
         cogl_color_out.a *= windowMask * mask;
 
