@@ -487,6 +487,8 @@ class Extension {
 
       // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
+        shader.set_uniform_float(shader.get_uniform_location('uForOpening'), 1,
+                                 [forOpening]);
         shader.set_uniform_float(shader.get_uniform_location('uProgress'), 1,
                                  [testMode ? 0.5 : t.get_progress()]);
         shader.set_uniform_float(

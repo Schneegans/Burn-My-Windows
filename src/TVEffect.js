@@ -141,19 +141,14 @@ if (utils.isInShellProcess()) {
     _init() {
       super._init();
 
-      this._uForOpening = this.get_uniform_location('uForOpening');
-      this._uColor      = this.get_uniform_location('uColor');
+      this._uColor = this.get_uniform_location('uColor');
     }
 
     // This is called each time the effect is used. This can be used to retrieve the
     // configuration from the settings and update all uniforms accordingly.
     setUniforms(actor, settings, forOpening) {
       const c = Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
-
-      // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
-      // clang-format on
+      this.set_uniform_float(this._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
     }
 
     // This is called by extension.js when the shader is not used anymore. We will store
@@ -169,7 +164,6 @@ if (utils.isInShellProcess()) {
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
 
-        uniform bool uForOpening;
         uniform vec3 uColor;
 
         const float BLUR_WIDTH = 0.01; // Width of the gradients.

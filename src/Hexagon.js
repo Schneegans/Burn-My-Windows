@@ -144,7 +144,6 @@ if (utils.isInShellProcess()) {
     _init() {
       super._init();
 
-      this._uForOpening       = this.get_uniform_location('uForOpening');
       this._uAdditiveBlending = this.get_uniform_location('uAdditiveBlending');
       this._uSeed             = this.get_uniform_location('uSeed');
       this._uScale            = this.get_uniform_location('uScale');
@@ -166,7 +165,6 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening,       1, [forOpening]);
       this.set_uniform_float(this._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);
       this.set_uniform_float(this._uSeed,             2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
       this.set_uniform_float(this._uScale,            1, [settings.get_double('hexagon-scale')]);
@@ -193,7 +191,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
 
-        uniform bool  uForOpening;
         uniform bool  uAdditiveBlending;
         uniform vec2  uSeed;
         uniform float uScale;

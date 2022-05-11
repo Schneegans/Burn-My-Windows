@@ -156,7 +156,6 @@ if (utils.isInShellProcess()) {
                              clawData.width, clawData.height, clawData.rowstride);
       }
 
-      this._uForOpening    = this.get_uniform_location('uForOpening');
       this._uClawTexture   = this.get_uniform_location('uClawTexture');
       this._uFlashColor    = this.get_uniform_location('uFlashColor');
       this._uSeed          = this.get_uniform_location('uSeed');
@@ -174,7 +173,6 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening,    1, [forOpening]);
       this.set_uniform_float(this._uFlashColor,    4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
       this.set_uniform_float(this._uSeed,          2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
       this.set_uniform_float(this._uClawSize,      1, [settings.get_double('claw-scratch-scale')]);
@@ -199,7 +197,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.compositing()}
 
         // See assets/README.md for how this texture was created.
-        uniform bool      uForOpening;
         uniform sampler2D uClawTexture;
         uniform vec4      uFlashColor;
         uniform vec2      uSeed;

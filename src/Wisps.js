@@ -141,10 +141,9 @@ if (utils.isInShellProcess()) {
     _init() {
       super._init();
 
-      this._uForOpening = this.get_uniform_location('uForOpening');
-      this._uSeed       = this.get_uniform_location('uSeed');
-      this._uColor      = this.get_uniform_location('uColor');
-      this._uScale      = this.get_uniform_location('uScale');
+      this._uSeed  = this.get_uniform_location('uSeed');
+      this._uColor = this.get_uniform_location('uColor');
+      this._uScale = this.get_uniform_location('uScale');
     }
 
     // This is called each time the effect is used. This can be used to retrieve the
@@ -156,10 +155,9 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
-      this.set_uniform_float(this._uScale,      1, [settings.get_double('wisps-scale')]);
+      this.set_uniform_float(this._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+      this.set_uniform_float(this._uScale, 1, [settings.get_double('wisps-scale')]);
       // clang-format on
     }
 
@@ -179,7 +177,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
 
-        uniform bool  uForOpening;
         uniform vec2  uSeed;
         uniform vec3  uColor;
         uniform float uScale;

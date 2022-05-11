@@ -259,7 +259,6 @@ if (utils.isInShellProcess()) {
         this.get_uniform_location('uGradient5'),
       ];
 
-      this._uForOpening    = this.get_uniform_location('uForOpening');
       this._u3DNoise       = this.get_uniform_location('u3DNoise');
       this._uScale         = this.get_uniform_location('uScale');
       this._uMovementSpeed = this.get_uniform_location('uMovementSpeed');
@@ -277,7 +276,6 @@ if (utils.isInShellProcess()) {
       }
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening,    1, [forOpening]);
       this.set_uniform_float(this._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
       this.set_uniform_float(this._uScale,         1, [settings.get_double('flame-scale')]);
       this.set_uniform_float(this._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
@@ -301,7 +299,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
 
-        uniform bool  uForOpening;
         uniform bool  u3DNoise;
         uniform float uScale;
         uniform float uMovementSpeed;

@@ -163,7 +163,6 @@ if (utils.isInShellProcess()) {
           fontData.width, fontData.height, fontData.rowstride);
       }
 
-      this._uForOpening  = this.get_uniform_location('uForOpening');
       this._uFontTexture = this.get_uniform_location('uFontTexture');
       this._uTrailColor  = this.get_uniform_location('uTrailColor');
       this._uTipColor    = this.get_uniform_location('uTipColor');
@@ -179,7 +178,6 @@ if (utils.isInShellProcess()) {
       const c2 = Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uTrailColor, 3, [c1.red / 255, c1.green / 255, c1.blue / 255]);
       this.set_uniform_float(this._uTipColor,   3, [c2.red / 255, c2.green / 255, c2.blue / 255]);
       this.set_uniform_float(this._uLetterSize, 1, [settings.get_int('matrix-scale')]);
@@ -206,7 +204,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
 
-        uniform bool      uForOpening;
         uniform sampler2D uFontTexture;
         uniform vec3      uTrailColor;
         uniform vec3      uTipColor;

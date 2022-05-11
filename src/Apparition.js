@@ -146,7 +146,6 @@ if (utils.isInShellProcess()) {
     _init() {
       super._init();
 
-      this._uForOpening = this.get_uniform_location('uForOpening');
       this._uSeed       = this.get_uniform_location('uSeed');
       this._uShake      = this.get_uniform_location('uShake');
       this._uTwirl      = this.get_uniform_location('uTwirl');
@@ -161,7 +160,6 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
       this.set_uniform_float(this._uShake,      1, [settings.get_double('apparition-shake-intensity')]);
       this.set_uniform_float(this._uTwirl,      1, [settings.get_double('apparition-twirl-intensity')]);
@@ -183,7 +181,6 @@ if (utils.isInShellProcess()) {
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
 
-        uniform bool  uForOpening;
         uniform vec2  uSeed;
         uniform float uShake;
         uniform float uTwirl;

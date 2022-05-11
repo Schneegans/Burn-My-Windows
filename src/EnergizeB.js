@@ -140,9 +140,8 @@ if (utils.isInShellProcess()) {
     _init() {
       super._init();
 
-      this._uForOpening = this.get_uniform_location('uForOpening');
-      this._uColor      = this.get_uniform_location('uColor');
-      this._uScale      = this.get_uniform_location('uScale');
+      this._uColor = this.get_uniform_location('uColor');
+      this._uScale = this.get_uniform_location('uScale');
     }
 
     // This is called each time the effect is used. This can be used to retrieve the
@@ -151,9 +150,8 @@ if (utils.isInShellProcess()) {
       const c = Clutter.Color.from_string(settings.get_string('energize-b-color'))[1];
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
-      this.set_uniform_float(this._uScale,      1, [settings.get_double('energize-b-scale')]);
+      this.set_uniform_float(this._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+      this.set_uniform_float(this._uScale, 1, [settings.get_double('energize-b-scale')]);
       // clang-format on
     }
 
@@ -172,7 +170,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
 
-        uniform bool  uForOpening;
         uniform vec3  uColor;
         uniform float uScale;
 
