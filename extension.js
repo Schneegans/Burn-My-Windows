@@ -365,12 +365,13 @@ class Extension {
       return;
     }
 
-    // There is the weird case where an animation is already ongoing and then a
-    // window-open animation is requested. This happens when a window is closed which has
-    // been created before the session was started (e.g. when GNOME Shell has been
-    // restarted in the meantime). We do nothing in this case.
-    if (forOpening && actor.get_effect('burn-my-windows-effect')) {
-      return;
+    // There is the weird case where an animation is already. This happens when a window
+    // is closed which has been created before the session was started (e.g. when GNOME
+    // Shell has been restarted in the meantime).
+    const oldShader = actor.get_effect('burn-my-windows-effect');
+    if (oldShader) {
+      actor.remove_effect(oldShader);
+      oldShader.free();
     }
 
     // ------------------------------------------------------------------ choose an effect
@@ -499,8 +500,11 @@ class Extension {
       // Remove the effect if the animation finished or was interrupted.
       if (forOpening) {
         transition.connect('stopped', () => {
-          actor.remove_effect_by_name('burn-my-windows-effect');
-          shader.free();
+          const oldShader = actor.get_effect('burn-my-windows-effect');
+          if (oldShader) {
+            actor.remove_effect(oldShader);
+            oldShader.free();
+          }
         });
       }
     }
