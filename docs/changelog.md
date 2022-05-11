@@ -6,6 +6,8 @@
 
 #### Bug Fixes
 
+* **Fixed a major memory leak**. Now, shaders are not re-created anymore whenever a window is opened or closed. Instead, previously created shaders are re-used as often as possible. This requires that all settings are set as uniform values (previously they were injected into the shader source) which in turn requires that `Shell.GLSLEffect` is used instead of `Clutter.ShaderEffect`. This change also requires that all shaders now work with straight instead of premultiplied alpha. Anyways, a lot needed to be refactored for this fix and I hope that it did not bring too many visual changes.
+* Fixed the window-close animation of windows which were opened before the session was started (e.g. before GNOME Shell has been restarted).
 * There seem to be cases were `libadwaita` is not available on GNOME 42 (e.g. Pop!_OS 22.04 beta). The preferences dialog now tries to fallback to the GTK4-only variant if `libadwaita` is not available.
 
 ## [Burn My Windows 15](https://github.com/schneegans/Burn-My-Windows/releases/tag/v15)

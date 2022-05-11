@@ -26,8 +26,13 @@ const utils          = Me.imports.src.utils;
 // gradually shrink until the window is fully dissolved.                                //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -79,9 +84,21 @@ var Hexagon = class Hexagon {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -101,6 +118,12 @@ var Hexagon = class Hexagon {
       'scale-y': {from: 1.0, to: 1.0, mode: 1}
     };
   }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders = [];
+  }
 }
 
 
@@ -112,34 +135,71 @@ var Hexagon = class Hexagon {
 
 if (utils.isInShellProcess()) {
 
-  const Clutter        = imports.gi.Clutter;
-  const shaderSnippets = Me.imports.src.shaderSnippets;
+  const {Clutter, Shell} = imports.gi;
+  const shaderSnippets   = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
+
+      this._uForOpening       = this.get_uniform_location('uForOpening');
+      this._uAdditiveBlending = this.get_uniform_location('uAdditiveBlending');
+      this._uSeed             = this.get_uniform_location('uSeed');
+      this._uScale            = this.get_uniform_location('uScale');
+      this._uLineWidth        = this.get_uniform_location('uLineWidth');
+      this._uGlowColor        = this.get_uniform_location('uGlowColor');
+      this._uLineColor        = this.get_uniform_location('uLineColor');
+    }
+
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
 
       // Get the two configurable colors. They are directly injected into the shader code
       // below.
-      const glowColor =
-        Clutter.Color.from_string(settings.get_string('hexagon-glow-color'))[1];
-      const lineColor =
-        Clutter.Color.from_string(settings.get_string('hexagon-line-color'))[1];
+      const gc = Clutter.Color.from_string(settings.get_string('hexagon-glow-color'))[1];
+      const lc = Clutter.Color.from_string(settings.get_string('hexagon-line-color'))[1];
 
       // If we are currently performing integration test, the animation uses a fixed seed.
       const testMode = settings.get_boolean('test-mode');
 
+      // clang-format off
+      this.set_uniform_float(this._uForOpening,       1, [forOpening]);
+      this.set_uniform_float(this._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);
+      this.set_uniform_float(this._uSeed,             2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uScale,            1, [settings.get_double('hexagon-scale')]);
+      this.set_uniform_float(this._uLineWidth,        1, [settings.get_double('hexagon-line-width')]);
+      this.set_uniform_float(this._uGlowColor,        4, [gc.red / 255, gc.green / 255, gc.blue / 255, gc.alpha / 255]);
+      this.set_uniform_float(this._uLineColor,        4, [lc.red / 255, lc.green / 255, lc.blue / 255, lc.alpha / 255]);
+      // clang-format on
+    }
+
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
+
+    // This is called by the constructor. This means, it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+
       // Feel free to read the inline comments below to learn how this shader works.
-      this.set_shader_source(`
+      const declarations = `
 
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
 
-        const vec2  SEED       = vec2(${testMode ? 0 : Math.random()},
-                                      ${testMode ? 0 : Math.random()});
-        const float SCALE      = 10.0 * ${settings.get_double('hexagon-scale')};
-        const float LINE_WIDTH = 0.02 * ${settings.get_double('hexagon-line-width')};
+        uniform bool  uForOpening;
+        uniform bool  uAdditiveBlending;
+        uniform vec2  uSeed;
+        uniform float uScale;
+        uniform float uLineWidth;
+        uniform vec4  uGlowColor;
+        uniform vec4  uLineColor;
 
         // This methods generates a procedural hexagonal pattern. It returns four values:
         // result.xy: This contains cell-relative coordinates for the given point.
@@ -182,69 +242,73 @@ if (utils.isInShellProcess()) {
         
           return vec4(cellCoords, dist, glow);
         }
+      `;
 
-        void main() {
+      const code = `
+        // We simply inverse the progress for opening windows.
+        float progress = uForOpening ? 1.0-uProgress : uProgress;
 
-          // We simply inverse the progress for opening windows.
-          float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
+        // Add some smooth noise to the progress so that not every tile behaves the
+        // same.
+        float noise = simplex2D(cogl_tex_coord_in[0].st + uSeed);
+        progress = clamp(mix(noise - 1.0, noise + 1.0, progress), 0.0, 1.0);
 
-          // Add some smooth noise to the progress so that not every tile behaves the
-          // same.
-          float noise = simplex2D(cogl_tex_coord_in[0].st + SEED);
-          progress = clamp(mix(noise - 1.0, noise + 1.0, progress), 0.0, 1.0);
+        // glowProgress fades in in the first half of the animation, tileProgress fades
+        // in in the second half.
+        float glowProgress = smoothstep(0, 1, clamp(progress / 0.5, 0, 1));
+        float tileProgress = smoothstep(0, 1, clamp((progress - 0.5) / 0.5, 0, 1));
 
-          // glowProgress fades in in the first half of the animation, tileProgress fades
-          // in in the second half.
-          float glowProgress = smoothstep(0, 1, clamp(progress / 0.5, 0, 1));
-          float tileProgress = smoothstep(0, 1, clamp((progress - 0.5) / 0.5, 0, 1));
+        vec2 texScale = 0.1 * vec2(uSizeX, uSizeY) / uScale;
+        vec4 hex = getHexagons(cogl_tex_coord_in[0].st * texScale);
 
-          vec2 texScale = vec2(uSizeX, uSizeY) / SCALE;
-          vec4 hex = getHexagons(cogl_tex_coord_in[0].st * texScale);
+        if (tileProgress > hex.z) {
 
-          if (tileProgress > hex.z) {
+          // Crop outer parts of the shrinking tiles.
+          cogl_color_out.a = 0.0;
 
-            // Crop outer parts of the shrinking tiles.
-            cogl_color_out *= vec4(0.0);
+        } else {
 
+          // Make the tiles shrink by offsetting the texture lookup towards the edge
+          // of the cell.
+          vec2 lookupOffset = tileProgress * hex.xy / texScale / (1.0 - tileProgress);
+          cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st + lookupOffset);
+
+          // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+          if (cogl_color_out.a > 0) {
+            cogl_color_out.rgb /= cogl_color_out.a;
+          }
+
+          vec4 glow = uGlowColor;
+          vec4 line = uLineColor;
+
+          // For the glow, we accumulate a few exponentially scaled versions of hex.w.
+          glow.a *= pow(hex.w, 20.0) * 10.0 +
+                    pow(hex.w, 10.0) * 5.0 +
+                    pow(hex.w,  2.0) * 0.5;
+          
+          // Using step(uLineWidth, hex.z) would be simpler, but the below creates some
+          // fake antialiasing.
+          line.a *= 1.0 - smoothstep(uLineWidth*0.02*0.5, uLineWidth*0.02, hex.z);
+
+          // Fade in the glowing lines.
+          glow.a *= glowProgress;
+          line.a *= glowProgress;
+
+          // Do not add the hexagon lines onto transparent parts of the window.
+          glow *= cogl_color_out.a;
+          line *= cogl_color_out.a;
+
+          if (uAdditiveBlending) {
+            cogl_color_out.rgb += glow.rgb * glow.a;
+            cogl_color_out.rgb += line.rgb * line.a;
           } else {
-
-            // Make the tiles shrink by offsetting the texture lookup towards the edge
-            // of the cell.
-            vec2 lookupOffset = tileProgress * hex.xy / texScale / (1.0 - tileProgress);
-            cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st + lookupOffset);
-
-            vec4 glow = vec4(${glowColor.red / 255},  ${glowColor.green / 255},
-                            ${glowColor.blue / 255}, ${glowColor.alpha / 255});
-            vec4 line = vec4(${lineColor.red / 255},  ${lineColor.green / 255},
-                            ${lineColor.blue / 255}, ${lineColor.alpha / 255});
-
-            // For the glow, we accumulate a few exponentially scaled versions of hex.w.
-            glow.a *= pow(hex.w, 20.0) * 10.0 +
-                      pow(hex.w, 10.0) * 5.0 +
-                      pow(hex.w,  2.0) * 0.5;
-            
-            // Using step(LINE_WIDTH, hex.z) would be simpler, but the below creates some
-            // fake antialiasing.
-            line.a *= 1.0 - smoothstep(LINE_WIDTH*0.5, LINE_WIDTH, hex.z);
-
-            // Fade in the glowing lines.
-            glow.a *= glowProgress;
-            line.a *= glowProgress;
-
-            // Do not add the hexagon lines onto transparent parts of the window.
-            glow *= cogl_color_out.a;
-            line *= cogl_color_out.a;
-
-            if (${settings.get_boolean('hexagon-additive-blending')}) {
-              cogl_color_out.rgb += glow.rgb * glow.a;
-              cogl_color_out.rgb += line.rgb * line.a;
-            } else {
-              cogl_color_out.rgb = mix(cogl_color_out.rgb, glow.rgb, glow.a);
-              cogl_color_out.rgb = mix(cogl_color_out.rgb, line.rgb, line.a);
-            }
+            cogl_color_out.rgb = mix(cogl_color_out.rgb, glow.rgb, glow.a);
+            cogl_color_out.rgb = mix(cogl_color_out.rgb, line.rgb, line.a);
           }
         }
-      `);
-    };
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
   });
 }

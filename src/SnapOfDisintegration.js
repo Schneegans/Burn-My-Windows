@@ -31,8 +31,16 @@ const utils          = Me.imports.src.utils;
 // documentation of vfunc_paint_target further down in this file.                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
+
+// This texture will be loaded when the effect is used for the first time.
+let dustTexture = null;
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -81,9 +89,21 @@ var SnapOfDisintegration = class SnapOfDisintegration {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(actor, settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -104,6 +124,13 @@ var SnapOfDisintegration = class SnapOfDisintegration {
       'scale-y': {from: 1.2, to: 1.2, mode: 1}
     };
   }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders = [];
+    dustTexture = null;
+  }
 }
 
 
@@ -115,116 +142,151 @@ var SnapOfDisintegration = class SnapOfDisintegration {
 
 if (utils.isInShellProcess()) {
 
-  const {Clutter, GdkPixbuf, Cogl} = imports.gi;
-  const shaderSnippets             = Me.imports.src.shaderSnippets;
+  const {Clutter, GdkPixbuf, Cogl, Shell} = imports.gi;
+  const shaderSnippets                    = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(actor, settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
 
-      // Load the dust texture. As the shader is re-created for each window animation,
-      // this texture is also re-created each time. This could be improved in the future!
-      const dustData    = GdkPixbuf.Pixbuf.new_from_resource('/img/dust.png');
-      this._dustTexture = new Clutter.Image();
-      this._dustTexture.set_data(dustData.get_pixels(), Cogl.PixelFormat.RGB_888,
-                                 dustData.width, dustData.height, dustData.rowstride);
+      // Load the dust texture.
+      if (dustTexture == null) {
+        const dustData = GdkPixbuf.Pixbuf.new_from_resource('/img/dust.png');
+        dustTexture    = new Clutter.Image();
+        dustTexture.set_data(dustData.get_pixels(), Cogl.PixelFormat.RGB_888,
+                             dustData.width, dustData.height, dustData.rowstride);
+      }
 
+      this._uForOpening  = this.get_uniform_location('uForOpening');
+      this._uDustTexture = this.get_uniform_location('uDustTexture');
+      this._uDustColor   = this.get_uniform_location('uDustColor');
+      this._uSeed        = this.get_uniform_location('uSeed');
+      this._uDustScale   = this.get_uniform_location('uDustScale');
+    }
+
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
       // The dust particles will fade to this color over time.
-      const color = Clutter.Color.from_string(settings.get_string('snap-color'))[1];
+      const c = Clutter.Color.from_string(settings.get_string('snap-color'))[1];
 
       // If we are currently performing integration test, the animation uses a fixed seed.
       const testMode = settings.get_boolean('test-mode');
 
-      this.set_shader_source(`
+      // clang-format off
+      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uDustColor,  4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+      this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uDustScale,  1, [settings.get_double('snap-scale')]);
+      // clang-format on
+    }
 
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
+
+    // This is called by the constructor. This means, it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+      const declarations = `
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
         ${shaderSnippets.math2D()}
 
+        uniform bool      uForOpening;
         uniform sampler2D uDustTexture;
+        uniform vec4      uDustColor;
+        uniform vec2      uSeed;
+        uniform float     uDustScale;
 
-        const vec2  SEED             = vec2(${testMode ? 0 : Math.random()}, 
-                                            ${testMode ? 0 : Math.random()});
-        const float DUST_SCALE       = ${settings.get_double('snap-scale')};
         const float DUST_LAYERS      = 4;
         const float GROW_INTENSITY   = 0.05;
         const float SHRINK_INTENSITY = 0.05;
         const float WIND_INTENSITY   = 0.05;
         const float ACTOR_SCALE      = 1.2;
         const float PADDING          = ACTOR_SCALE / 2.0 - 0.5;
-        const vec4  DUST_COLOR       = vec4(${color.red / 255},  ${color.green / 255},
-                                            ${color.blue / 255}, ${color.alpha / 255});
-        void main() {
+      `;
 
-          // We simply inverse the progress for opening windows.
-          float progress = ${forOpening ? 'uProgress' : '1.0 - uProgress'};
+      const code = `
+        // We simply inverse the progress for opening windows.
+        float progress = uForOpening ? uProgress : 1.0 - uProgress;
 
-          float gradient = cogl_tex_coord_in[0].t * ACTOR_SCALE - PADDING;
-          progress = 2.0 - gradient - 2.0 * progress;
-          progress = progress + 0.25 - 0.5 * simplex2D((cogl_tex_coord_in[0].st + SEED) * 2.0);
-          progress = pow(max(0, progress), 2.0);
+        float gradient = cogl_tex_coord_in[0].t * ACTOR_SCALE - PADDING;
+        progress = 2.0 - gradient - 2.0 * progress;
+        progress = progress + 0.25 - 0.5 * simplex2D((cogl_tex_coord_in[0].st + uSeed) * 2.0);
+        progress = pow(max(0, progress), 2.0);
 
-          // This may help you to understand how this effect works.
-          // cogl_color_out = vec4(progress, 0, 0, 0);
-          // return;
+        // This may help you to understand how this effect works.
+        // cogl_color_out = vec4(progress, 0, 0, 0);
+        // return;
 
-          cogl_color_out = vec4(0, 0, 0, 0);
+        cogl_color_out = vec4(0, 0, 0, 0);
 
-          for (float i=0; i<DUST_LAYERS; ++i) {
+        for (float i=0; i<DUST_LAYERS; ++i) {
+          
+          // Create a random direction.
+          float factor   = DUST_LAYERS == 1 ? 0 : i/(DUST_LAYERS-1);
+          float angle    = 123.123 * (uSeed.x + factor);
+          vec2 direction = vec2(1.0, 0.0);
+          direction      = rotate(direction, angle);
+          
+          // Flip direction for one side of the window.
+          vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING - 0.5;
+          if (getWinding(direction, coords) > 0) {
+            direction *= -1;
+          }
+
+          // Flip direction for half the layers.
+          if (factor > 0.5) {
+            direction *= -1;
+          }
+          
+          // We grow the layer along the random direction, shrink it orthogonally to it
+          // and scale it up slightly.
+          float dist  = distToLine(vec2(0.0), direction, coords);
+          vec2 grow   = direction * dist * mix(0, GROW_INTENSITY, progress);
+          vec2 shrink = vec2(direction.y, -direction.x) * dist * mix(0, SHRINK_INTENSITY, progress);
+          float scale = mix(1.0, 1.05, factor * progress);
+          coords = (coords + grow + shrink) / scale;
+
+          // Add some wind.
+          coords.x += WIND_INTENSITY * progress * (uForOpening ? 1.0 : -1.0);
+        
+          // Now check wether there is actually something in the current dust layer at
+          // the coords position.
+          vec2 dustCoords = (coords + uSeed) * vec2(uSizeX, uSizeY) / uDustScale / 100.0;
+          vec2 dustMap    = texture2D(uDustTexture, dustCoords).rg;
+          float dustGroup = floor(dustMap.g * DUST_LAYERS * 0.999);
+
+          if (dustGroup == i) {
+
+            // Get the window color.
+            vec4 windowColor = texture2D(uTexture, coords + 0.5);
             
-            // Create a random direction.
-            float factor   = DUST_LAYERS == 1 ? 0 : i/(DUST_LAYERS-1);
-            float angle    = 123.123 * (SEED.x + factor);
-            vec2 direction = vec2(1.0, 0.0);
-            direction      = rotate(direction, angle);
-            
-            // Flip direction for one side of the window.
-            vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING - 0.5;
-            if (getWinding(direction, coords) > 0) {
-              direction *= -1;
+            // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+            if (windowColor.a > 0) {
+              windowColor.rgb /= windowColor.a;
             }
-
-            // Flip direction for half the layers.
-            if (factor > 0.5) {
-              direction *= -1;
-            }
             
-            // We grow the layer along the random direction, shrink it orthogonally to it
-            // and scale it up slightly.
-            float dist  = distToLine(vec2(0.0), direction, coords);
-            vec2 grow   = direction * dist * mix(0, GROW_INTENSITY, progress);
-            vec2 shrink = vec2(direction.y, -direction.x) * dist * mix(0, SHRINK_INTENSITY, progress);
-            float scale = mix(1.0, 1.05, factor * progress);
-            coords = (coords + grow + shrink) / scale;
+            // Fade the window color to uDustColor.
+            vec3 dustColor = mix(windowColor.rgb, uDustColor.rgb, uDustColor.a);
+            windowColor.rgb = mix(windowColor.rgb, dustColor, progress);
 
-            // Add some wind.
-            coords.x = coords.x ${forOpening ? ' + ' : ' - '} progress * WIND_INTENSITY;
-         
-            // Now check wether there is actually something in the current dust layer at
-            // the coords position.
-            vec2 dustCoords = (coords + SEED) * vec2(uSizeX, uSizeY) / DUST_SCALE / 100.0;
-            vec2 dustMap    = texture2D(uDustTexture, dustCoords).rg;
-            float dustGroup = floor(dustMap.g * DUST_LAYERS * 0.999);
-
-            if (dustGroup == i) {
-
-              // Fade the window color to DUST_COLOR.
-              vec4 windowColor = texture2D(uTexture, coords + 0.5);
-              vec3 dustColor = mix(windowColor.rgb, DUST_COLOR.rgb, DUST_COLOR.a);
-              windowColor.rgb = mix(windowColor.rgb, dustColor*windowColor.a, progress);
-
-              // Dissolve the dust particles.
-              float dissolve = (dustMap.x - progress) > 0 ? 1 : 0;
-              windowColor *= dissolve;
-
-              // Blend the layers.
-              cogl_color_out = mix(cogl_color_out, windowColor, windowColor.a);
+            // Dissolve and blend the layers.
+            if (dustMap.x - progress > 0) {
+              cogl_color_out = windowColor;
             }
           }
         }
-      `);
-    };
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
 
     // This is overridden to bind the dust texture for drawing. Sadly, this seems to be
     // impossible under GNOME 3.3x as this.get_pipeline() is not available. It was called
@@ -234,9 +296,9 @@ if (utils.isInShellProcess()) {
       const pipeline = this.get_pipeline();
       pipeline.set_layer_filters(0, Cogl.PipelineFilter.LINEAR,
                                  Cogl.PipelineFilter.LINEAR);
-      pipeline.set_layer_texture(1, this._dustTexture.get_texture());
+      pipeline.set_layer_texture(1, dustTexture.get_texture());
       pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
-      this.set_uniform_value('uDustTexture', 1);
+      pipeline.set_uniform_1i(this._uDustTexture, 1);
       super.vfunc_paint_target(node, paint_context);
     }
   });

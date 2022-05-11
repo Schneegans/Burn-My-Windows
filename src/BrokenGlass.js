@@ -28,8 +28,16 @@ const utils          = Me.imports.src.utils;
 // of vfunc_paint_target further down in this file.                                     //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
+
+// This texture will be loaded when the effect is used for the first time.
+let shardTexture = null;
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -80,9 +88,21 @@ var BrokenGlass = class BrokenGlass {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(actor, settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -103,6 +123,13 @@ var BrokenGlass = class BrokenGlass {
       'scale-y': {from: 2.0, to: 2.0, mode: 1}
     };
   }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders  = [];
+    shardTexture = null;
+  }
 }
 
 
@@ -114,8 +141,8 @@ var BrokenGlass = class BrokenGlass {
 
 if (utils.isInShellProcess()) {
 
-  const {Clutter, GdkPixbuf, Cogl} = imports.gi;
-  const shaderSnippets             = Me.imports.src.shaderSnippets;
+  const {Clutter, GdkPixbuf, Cogl, Shell} = imports.gi;
+  const shaderSnippets                    = Me.imports.src.shaderSnippets;
 
   // This shader creates a complex-looking effect with rather simple means. Here is how it
   // works: The window is drawn five times on top of each other (see the SHARD_LAYERS
@@ -126,17 +153,32 @@ if (utils.isInShellProcess()) {
   // belongs to which layer is defined by the green channel of the texture
   // resources/img/shards.png. The red channel of the texture contains the distance to the
   // shard edges. This information is used to fade out the shards.
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(actor, settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
 
-      // Load the shards texture. As the shader is re-created for each window animation,
-      // this texture is also re-created each time. This could be improved in the future!
-      const shardData    = GdkPixbuf.Pixbuf.new_from_resource('/img/shards.png');
-      this._shardTexture = new Clutter.Image();
-      this._shardTexture.set_data(shardData.get_pixels(), Cogl.PixelFormat.RGB_888,
-                                  shardData.width, shardData.height, shardData.rowstride);
+      // Load the shards texture.
+      if (shardTexture == null) {
+        const shardData = GdkPixbuf.Pixbuf.new_from_resource('/img/shards.png');
+        shardTexture    = new Clutter.Image();
+        shardTexture.set_data(shardData.get_pixels(), Cogl.PixelFormat.RGB_888,
+                              shardData.width, shardData.height, shardData.rowstride);
+      }
 
+      this._uForOpening   = this.get_uniform_location('uForOpening');
+      this._uShardTexture = this.get_uniform_location('uShardTexture');
+      this._uSeed         = this.get_uniform_location('uSeed');
+      this._uEpicenter    = this.get_uniform_location('uEpicenter');
+      this._uShardScale   = this.get_uniform_location('uShardScale');
+      this._uBlowForce    = this.get_uniform_location('uBlowForce');
+      this._uGravity      = this.get_uniform_location('uGravity');
+    }
+
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
       // Usually, the shards fly away from the center of the window.
       let epicenterX = 0.5;
       let epicenterY = 0.5;
@@ -155,76 +197,95 @@ if (utils.isInShellProcess()) {
       // If we are currently performing integration test, the animation uses a fixed seed.
       const testMode = settings.get_boolean('test-mode');
 
-      this.set_shader_source(`
+      // clang-format off
+      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uEpicenter,  2, [epicenterX, epicenterY]);
+      this.set_uniform_float(this._uShardScale, 1, [settings.get_double('broken-glass-scale')]);
+      this.set_uniform_float(this._uBlowForce,  1, [settings.get_double('broken-glass-blow-force')]);
+      this.set_uniform_float(this._uGravity,    1, [settings.get_double('broken-glass-gravity')]);
+      // clang-format on
+    }
 
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
+
+    // This is called by the constructor. This means, it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+      const declarations = `
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
 
+        uniform bool      uForOpening;
         uniform sampler2D uShardTexture;
+        uniform vec2      uSeed;
+        uniform vec2      uEpicenter;
+        uniform float     uShardScale;
+        uniform float     uBlowForce;
+        uniform float     uGravity;
 
-        const vec2  SEED         = vec2(${testMode ? 0 : Math.random()}, 
-                                        ${testMode ? 0 : Math.random()});
-        const float SHARD_SCALE  = ${settings.get_double('broken-glass-scale')};
         const float SHARD_LAYERS = 5;
-        const float BLOW_FORCE   = ${settings.get_double('broken-glass-blow-force')};
         const float ACTOR_SCALE  = 2.0;
         const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
-        const vec2  EPICENTER    = vec2(${epicenterX}, ${epicenterY});
-        const float GRAVITY      = ${forOpening ? '-1.0' : '1.0'} * 
-                                   ${settings.get_double('broken-glass-gravity')};
+      `;
 
-        void main() {
+      const code = `
+        cogl_color_out = vec4(0, 0, 0, 0);
 
-          cogl_color_out = vec4(0, 0, 0, 0);
+        float progress = uForOpening ? 1.0-uProgress : uProgress;
 
-          float progress = ${forOpening ? '1.0-uProgress' : 'uProgress'};
+        // Draw the individual shard layers.
+        for (float i=0; i<SHARD_LAYERS; ++i) {
 
-          // Draw the individual shard layers.
-          for (float i=0; i<SHARD_LAYERS; ++i) {
+          // To enable drawing shards outside of the window bounds, the actor was scaled
+          // by ACTOR_SCALE. Here we scale and move the texture coordinates so that the
+          // window gets drawn at the correct position again.
+          vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING;
 
-            // To enable drawing shards outside of the window bounds, the actor was scaled
-            // by ACTOR_SCALE. Here we scale and move the texture coordinates so that the
-            // window gets drawn at the correct position again.
-            vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING;
+          // Scale and rotate around our epicenter.
+          coords -= uEpicenter;
 
-            // Scale and rotate around our epicenter.
-            coords -= EPICENTER;
+          // Scale each layer a bit differently.
+          coords /= mix(1.0, 1.0 + uBlowForce*(i+2)/SHARD_LAYERS, progress);
+          
+          // Rotate each layer a bit differently.
+          float rotation = (mod(i, 2.0)-0.5)*0.2*progress;
+          coords = vec2(coords.x * cos(rotation) - coords.y * sin(rotation),
+          coords.x * sin(rotation) + coords.y * cos(rotation));
+          
+          // Move down each layer a bit.
+          float gravity = (uForOpening ? -1.0 : 1.0) * uGravity*0.1*(i+1)*progress*progress;
+          coords += vec2(0, gravity);
 
-            // Scale each layer a bit differently.
-            coords /= mix(1.0, 1.0 + BLOW_FORCE*(i+2)/SHARD_LAYERS, progress);
-            
-            // Rotate each layer a bit differently.
-            float rotation = (mod(i, 2.0)-0.5)*0.2*progress;
-            coords = vec2(coords.x * cos(rotation) - coords.y * sin(rotation),
-            coords.x * sin(rotation) + coords.y * cos(rotation));
-            
-            // Move down each layer a bit.
-            float gravity = GRAVITY*0.1*(i+1)*progress*progress;
-            coords += vec2(0, gravity);
+          // Restore correct position.
+          coords += uEpicenter;
 
-            // Restore correct position.
-            coords += EPICENTER;
-            
-            // Retrieve information from the shard texture for our layer.
-            vec2 shardCoords = (coords + SEED) * vec2(uSizeX, uSizeY) / SHARD_SCALE / 500.0;
-            vec2 shardMap = texture2D(uShardTexture, shardCoords).rg;
+          // Retrieve information from the shard texture for our layer.
+          vec2 shardCoords = (coords + uSeed) * vec2(uSizeX, uSizeY) / uShardScale / 500.0;
+          vec2 shardMap = texture2D(uShardTexture, shardCoords).rg;
 
-            // The green channel contains a random value in [0..1] for each shard. We
-            // discretize this into SHARD_LAYERS bins and check if our layer falls into
-            // the bin of the current shard.
-            float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
+          // The green channel contains a random value in [0..1] for each shard. We
+          // discretize this into SHARD_LAYERS bins and check if our layer falls into
+          // the bin of the current shard.
+          float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
 
-            if (shardGroup == i) {
-              vec4 windowColor = texture2D(uTexture, coords);
-
-              // Dissolve the shard by using distance information from the red channel.
-              float dissolve = (shardMap.x - pow(progress+0.1, 2)) > 0 ? 1: 0;
-              cogl_color_out = mix(cogl_color_out, windowColor, dissolve);
-            }
+          if (shardGroup == i && (shardMap.x - pow(progress+0.1, 2)) > 0) {
+            cogl_color_out = texture2D(uTexture, coords);
           }
         }
-      `);
-    };
+
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
+        }
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
 
     // This is overridden to bind the shard texture for drawing. Sadly, this seems to be
     // impossible under GNOME 3.3x as this.get_pipeline() is not available. It was called
@@ -238,9 +299,9 @@ if (utils.isInShellProcess()) {
                                  Cogl.PipelineFilter.LINEAR);
 
       // Bind the shard texture.
-      pipeline.set_layer_texture(1, this._shardTexture.get_texture());
+      pipeline.set_layer_texture(1, shardTexture.get_texture());
       pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
-      this.set_uniform_value('uShardTexture', 1);
+      pipeline.set_uniform_1i(this._uShardTexture, 1);
 
       super.vfunc_paint_target(node, paint_context);
     }

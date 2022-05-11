@@ -28,8 +28,8 @@ function standardUniforms() {
   uniform sampler2D uTexture;
   uniform float     uProgress;
   uniform float     uTime;
-  uniform int       uSizeX;
-  uniform int       uSizeY;
+  uniform float     uSizeX;
+  uniform float     uSizeY;
   `;
 }
 
@@ -47,6 +47,17 @@ function math2D() {
   vec2 rotate(vec2 a, float angle) {
     return vec2(a.x * cos(angle) - a.y * sin(angle),
                 a.x * sin(angle) + a.y * cos(angle));
+  }
+  `;
+}
+
+// The Shell.GLSLEffect uses straight alpha blending. This helper method allows
+// compositing color values in the shader in the same way.
+function compositing() {
+  return `
+  vec4 alphaOver(vec4 under, vec4 over) {
+    float alpha = over.a + under.a * (1.0 - over.a);
+    return vec4((over.rgb * over.a + under.rgb * under.a * (1.0 - over.a)) / alpha, alpha);
   }
   `;
 }

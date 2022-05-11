@@ -24,13 +24,18 @@ const utils          = Me.imports.src.utils;
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
 // quite differently. While Compiz used a particle system, this effect uses a noise     //
-// shader. The noise is moved  vertically over time and mapped to a configurable color  //
+// shader. The noise is moved vertically over time and mapped to a configurable color   //
 // gradient. It is faded to transparency towards the edges of the window. In addition,  //
 // there are a couple of moving gradients which fade-in or fade-out the fire effect.    //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -97,9 +102,21 @@ var Fire = class Fire {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -118,6 +135,12 @@ var Fire = class Fire {
       'scale-x': {from: 1.0, to: 1.0, mode: 3},
       'scale-y': {from: 1.0, to: 1.0, mode: 3}
     };
+  }
+
+  // This is called from extension.js if the extension is disabled. This should free all
+  // static resources.
+  static cleanUp() {
+    freeShaders = [];
   }
 
   // ----------------------------------------------------------------------- private stuff
@@ -219,48 +242,89 @@ var Fire = class Fire {
 
 if (utils.isInShellProcess()) {
 
-  const Clutter        = imports.gi.Clutter;
-  const shaderSnippets = Me.imports.src.shaderSnippets;
+  const {Clutter, Shell} = imports.gi;
+  const shaderSnippets   = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
-    _init(settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
+    // This is called when the effect is used for the first time. This can be used to
+    // store all required uniform locations.
+    _init() {
+      super._init();
 
-      // Load the gradient values from the settings. We directly inject the values in the
-      // GLSL code below. The shader is compiled once for each window-closing anyways. In
-      // the future, we may want to prevent this frequent recompilations of shaders,
-      // though.
-      const gradient = [];
+      this._uGradient = [
+        this.get_uniform_location('uGradient1'),
+        this.get_uniform_location('uGradient2'),
+        this.get_uniform_location('uGradient3'),
+        this.get_uniform_location('uGradient4'),
+        this.get_uniform_location('uGradient5'),
+      ];
+
+      this._uForOpening    = this.get_uniform_location('uForOpening');
+      this._u3DNoise       = this.get_uniform_location('u3DNoise');
+      this._uScale         = this.get_uniform_location('uScale');
+      this._uMovementSpeed = this.get_uniform_location('uMovementSpeed');
+    }
+
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
+
+      // Load the gradient values from the settings.
       for (let i = 1; i <= 5; i++) {
-        const color =
-          Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
-        gradient.push(`vec4(${color.red / 255}, ${color.green / 255}, ${
-          color.blue / 255}, ${color.alpha / 255})`);
+        const c = Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
+        this.set_uniform_float(this._uGradient[i - 1], 4,
+                               [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
       }
 
-      this.set_shader_source(`
+      // clang-format off
+      this.set_uniform_float(this._uForOpening,    1, [forOpening]);
+      this.set_uniform_float(this._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
+      this.set_uniform_float(this._uScale,         1, [settings.get_double('flame-scale')]);
+      this.set_uniform_float(this._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
+      // clang-format on
+    }
 
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
+
+    // This is called by the constructor. This means, it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+
+      const declarations = `
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
+        ${shaderSnippets.compositing()}
+
+        uniform bool  uForOpening;
+        uniform bool  u3DNoise;
+        uniform float uScale;
+        uniform float uMovementSpeed;
+        uniform vec4  uGradient1;
+        uniform vec4  uGradient2;
+        uniform vec4  uGradient3;
+        uniform vec4  uGradient4;
+        uniform vec4  uGradient5;
 
         // These may be configurable in the future.
         const float EDGE_FADE  = 70;
         const float FADE_WIDTH = 0.1;
         const float HIDE_TIME  = 0.4;
-        const vec2  FIRE_SCALE = vec2(400, 600) * ${settings.get_double('flame-scale')};
-        const float FIRE_SPEED = ${settings.get_double('flame-movement-speed')};
 
         // This maps the input value from [0..1] to a color from the gradient.
         vec4 getFireColor(float v) {
           const float steps[5] = float[](0.0, 0.2, 0.35, 0.5, 0.8);
-          const vec4 colors[5] = vec4[](
-            ${gradient[0]},
-            ${gradient[1]},
-            ${gradient[2]},
-            ${gradient[3]},
-            ${gradient[4]}
+          vec4 colors[5] = vec4[](
+            uGradient1,
+            uGradient2,
+            uGradient3,
+            uGradient4,
+            uGradient5
           );
 
           if (v < steps[0]) {
@@ -308,45 +372,50 @@ if (utils.isInShellProcess()) {
           // Fade at window borders.
           effectMask *= getAbsoluteEdgeMask(edgeFadeWidth);
 
-          #if ${forOpening ? '1' : '0'}
+          if (uForOpening) {
             windowMask = 1.0 - windowMask;
-          #endif
+          }
 
           return vec2(windowMask, effectMask);
         }
+      `;
 
-        void main() {
+      const code = `
+        // Get a noise value which moves vertically in time.
+        vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / vec2(400, 600) / uScale;
+        uv.y += uTime * uMovementSpeed;
 
-          // Get a noise value which moves vertically in time.
-          vec2 uv = cogl_tex_coord_in[0].st * vec2(uSizeX, uSizeY) / FIRE_SCALE;
-          uv.y += uTime * FIRE_SPEED;
+        float noise = u3DNoise ? simplex3DFractal(vec3(uv*4.0, uTime*uMovementSpeed*1.5))
+                                : simplex2DFractal(uv * 4.0);
 
-          #if ${settings.get_boolean('flame-3d-noise') ? 1 : 0}
-            float noise = simplex3DFractal(vec3(uv*4.0, uTime*FIRE_SPEED*1.5));
-          #else
-            float noise = simplex2DFractal(uv * 4.0);
-          #endif
+        // Modulate noise by effect mask.
+        vec2 effectMask = effectMask(HIDE_TIME, FADE_WIDTH, EDGE_FADE);
+        noise *= effectMask.y;
 
-          // Modulate noise by effect mask.
-          vec2 effectMask = effectMask(HIDE_TIME, FADE_WIDTH, EDGE_FADE);
-          noise *= effectMask.y;
+        // Map noise value to color.
+        vec4 fire = getFireColor(noise);
 
-          // Map noise value to color.
-          vec4 fire = getFireColor(noise);
-          fire.rgb *= fire.a;
+        // Get the window texture.
+        cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
 
-          // Get the window texture and fade it according to the effect mask.
-          cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st) * effectMask.x;
-
-          // Add the fire to the window.
-          cogl_color_out = cogl_color_out * (1.0 - fire.a) + fire;
-
-          // These are pretty useful for understanding how this works.
-          // cogl_color_out = vec4(vec3(noise), 1);
-          // cogl_color_out = vec4(vec3(effectMask.x), 1);
-          // cogl_color_out = vec4(vec3(effectMask.y), 1);
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
         }
-      `);
-    };
+
+        // Fade the window according to the effect mask.
+        cogl_color_out.a *= effectMask.x;
+
+        // Add the fire to the window.
+        cogl_color_out = alphaOver(cogl_color_out, fire);
+
+        // These are pretty useful for understanding how this works.
+        // cogl_color_out = vec4(vec3(noise), 1);
+        // cogl_color_out = vec4(vec3(effectMask.x), 1);
+        // cogl_color_out = vec4(vec3(effectMask.y), 1);
+      `;
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+    }
   });
 }
