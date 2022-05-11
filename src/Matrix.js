@@ -163,7 +163,6 @@ if (utils.isInShellProcess()) {
           fontData.width, fontData.height, fontData.rowstride);
       }
 
-      this._uForOpening  = this.get_uniform_location('uForOpening');
       this._uFontTexture = this.get_uniform_location('uFontTexture');
       this._uTrailColor  = this.get_uniform_location('uTrailColor');
       this._uTipColor    = this.get_uniform_location('uTipColor');
@@ -179,7 +178,6 @@ if (utils.isInShellProcess()) {
       const c2 = Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uTrailColor, 3, [c1.red / 255, c1.green / 255, c1.blue / 255]);
       this.set_uniform_float(this._uTipColor,   3, [c2.red / 255, c2.green / 255, c2.blue / 255]);
       this.set_uniform_float(this._uLetterSize, 1, [settings.get_int('matrix-scale')]);
@@ -206,7 +204,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
 
-        uniform bool      uForOpening;
         uniform sampler2D uFontTexture;
         uniform vec3      uTrailColor;
         uniform vec3      uTipColor;
@@ -224,7 +221,7 @@ if (utils.isInShellProcess()) {
 
         // This returns a flickering grid of random letters.
         float getText(vec2 fragCoord) {
-          vec2 pixelCoords = fragCoord * vec2(uSizeX, uSizeY);
+          vec2 pixelCoords = fragCoord * uSize;
           vec2 uv = mod(pixelCoords.xy, uLetterSize)/uLetterSize;
           vec2 block = pixelCoords/uLetterSize - uv;
 
@@ -239,7 +236,7 @@ if (utils.isInShellProcess()) {
         // to one below each drop and to zero above it. This second value is used for fading
         // the window texture. 
         vec2 getRain(vec2 fragCoord) {
-          float column = cogl_tex_coord_in[0].x * uSizeX;
+          float column = cogl_tex_coord_in[0].x * uSize.x;
           column -= mod(column, uLetterSize);
 
           float delay = fract(sin(column)*78.233) * mix(0.0, 1.0, uRandomness);
@@ -248,7 +245,7 @@ if (utils.isInShellProcess()) {
           float distToDrop  = (uProgress*2-delay)*speed - cogl_tex_coord_in[0].y;
           
           float rainAlpha   = distToDrop >= 0 ? exp(-distToDrop/TRAIL_LENGTH) : 0;
-          float windowAlpha = 1 - clamp(uSizeY*distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
+          float windowAlpha = 1 - clamp(uSize.y*distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
           
           // Fade at window borders.
           rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE);

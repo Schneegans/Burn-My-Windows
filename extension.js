@@ -487,14 +487,15 @@ class Extension {
 
       // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
+        shader.set_uniform_float(shader.get_uniform_location('uForOpening'), 1,
+                                 [forOpening]);
         shader.set_uniform_float(shader.get_uniform_location('uProgress'), 1,
                                  [testMode ? 0.5 : t.get_progress()]);
         shader.set_uniform_float(
           shader.get_uniform_location('uTime'), 1,
           [testMode ? duration / 2 : 0.001 * t.get_elapsed_time()]);
-        shader.set_uniform_float(shader.get_uniform_location('uSizeX'), 1, [actor.width]);
-        shader.set_uniform_float(shader.get_uniform_location('uSizeY'), 1,
-                                 [actor.height]);
+        shader.set_uniform_float(shader.get_uniform_location('uSize'), 2,
+                                 [actor.width, actor.height]);
       });
 
       // Remove the effect if the animation finished or was interrupted.

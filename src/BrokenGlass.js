@@ -167,7 +167,6 @@ if (utils.isInShellProcess()) {
                               shardData.width, shardData.height, shardData.rowstride);
       }
 
-      this._uForOpening   = this.get_uniform_location('uForOpening');
       this._uShardTexture = this.get_uniform_location('uShardTexture');
       this._uSeed         = this.get_uniform_location('uSeed');
       this._uEpicenter    = this.get_uniform_location('uEpicenter');
@@ -198,7 +197,6 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
       this.set_uniform_float(this._uEpicenter,  2, [epicenterX, epicenterY]);
       this.set_uniform_float(this._uShardScale, 1, [settings.get_double('broken-glass-scale')]);
@@ -220,7 +218,6 @@ if (utils.isInShellProcess()) {
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
 
-        uniform bool      uForOpening;
         uniform sampler2D uShardTexture;
         uniform vec2      uSeed;
         uniform vec2      uEpicenter;
@@ -265,7 +262,7 @@ if (utils.isInShellProcess()) {
           coords += uEpicenter;
 
           // Retrieve information from the shard texture for our layer.
-          vec2 shardCoords = (coords + uSeed) * vec2(uSizeX, uSizeY) / uShardScale / 500.0;
+          vec2 shardCoords = (coords + uSeed) * uSize / uShardScale / 500.0;
           vec2 shardMap = texture2D(uShardTexture, shardCoords).rg;
 
           // The green channel contains a random value in [0..1] for each shard. We

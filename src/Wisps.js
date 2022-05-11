@@ -141,10 +141,9 @@ if (utils.isInShellProcess()) {
     _init() {
       super._init();
 
-      this._uForOpening = this.get_uniform_location('uForOpening');
-      this._uSeed       = this.get_uniform_location('uSeed');
-      this._uColor      = this.get_uniform_location('uColor');
-      this._uScale      = this.get_uniform_location('uScale');
+      this._uSeed  = this.get_uniform_location('uSeed');
+      this._uColor = this.get_uniform_location('uColor');
+      this._uScale = this.get_uniform_location('uScale');
     }
 
     // This is called each time the effect is used. This can be used to retrieve the
@@ -156,10 +155,9 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-      this.set_uniform_float(this._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
-      this.set_uniform_float(this._uScale,      1, [settings.get_double('wisps-scale')]);
+      this.set_uniform_float(this._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+      this.set_uniform_float(this._uScale, 1, [settings.get_double('wisps-scale')]);
       // clang-format on
     }
 
@@ -179,7 +177,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
 
-        uniform bool  uForOpening;
         uniform vec2  uSeed;
         uniform vec3  uColor;
         uniform float uScale;
@@ -196,7 +193,7 @@ if (utils.isInShellProcess()) {
         float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
 
           // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
-          vec2 coords = (texCoords + hash22(seed)) * vec2(uSizeX, uSizeY);
+          vec2 coords = (texCoords + hash22(seed)) * uSize;
 
           // Apply global scale.
           coords /= gridSize;
@@ -258,7 +255,7 @@ if (utils.isInShellProcess()) {
         float windowOut = smoothstep(0, 1, clamp(progress/WINDOW_OUT_TIME, 0, 1));
 
         // Use a noise function to dissolve the window.
-        float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * vec2(uSizeX, uSizeY) / 250) - 1.0));
+        float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * uSize / 250) - 1.0));
         float windowMask = 1.0 - (windowOut < 0.5 ? mix(0.0, noise, windowOut * 2.0) : mix(noise, 1.0, windowOut * 2.0 - 1.0));
         cogl_color_out.a *= windowMask * mask;
 

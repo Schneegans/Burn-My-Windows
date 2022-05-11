@@ -234,11 +234,11 @@ if (utils.isInShellProcess()) {
       const declarations = `
         // The code below injects some standard uniforms which will be updated during the
         // animation. This includes:
-        // uTexture:    Contains the texture of the window.
-        // uProgress:   A value which transitions from 0 to 1 during the entire animation.
-        // uTime:       A steadily increasing value in seconds.
-        // uSizeX:      The horizontal size of uTexture in pixels.
-        // uSizeY:      The vertical size of uTexture in pixels.
+        // bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
+        // sampler2D uTexture:    Contains the texture of the window.
+        // float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
+        // float     uTime:       A steadily increasing value in seconds.
+        // vec2      uSize:       The size of uTexture in pixels.
         ${shaderSnippets.standardUniforms()}
 
         // The width of the fading effect is loaded from the settings.

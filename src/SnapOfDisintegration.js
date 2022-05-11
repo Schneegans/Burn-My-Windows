@@ -159,7 +159,6 @@ if (utils.isInShellProcess()) {
                              dustData.width, dustData.height, dustData.rowstride);
       }
 
-      this._uForOpening  = this.get_uniform_location('uForOpening');
       this._uDustTexture = this.get_uniform_location('uDustTexture');
       this._uDustColor   = this.get_uniform_location('uDustColor');
       this._uSeed        = this.get_uniform_location('uSeed');
@@ -176,10 +175,9 @@ if (utils.isInShellProcess()) {
       const testMode = settings.get_boolean('test-mode');
 
       // clang-format off
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uDustColor,  4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
-      this.set_uniform_float(this._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-      this.set_uniform_float(this._uDustScale,  1, [settings.get_double('snap-scale')]);
+      this.set_uniform_float(this._uDustColor, 4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+      this.set_uniform_float(this._uSeed,      2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+      this.set_uniform_float(this._uDustScale, 1, [settings.get_double('snap-scale')]);
       // clang-format on
     }
 
@@ -198,7 +196,6 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.noise()}
         ${shaderSnippets.math2D()}
 
-        uniform bool      uForOpening;
         uniform sampler2D uDustTexture;
         uniform vec4      uDustColor;
         uniform vec2      uSeed;
@@ -259,7 +256,7 @@ if (utils.isInShellProcess()) {
         
           // Now check wether there is actually something in the current dust layer at
           // the coords position.
-          vec2 dustCoords = (coords + uSeed) * vec2(uSizeX, uSizeY) / uDustScale / 100.0;
+          vec2 dustCoords = (coords + uSeed) * uSize / uDustScale / 100.0;
           vec2 dustMap    = texture2D(uDustTexture, dustCoords).rg;
           float dustGroup = floor(dustMap.g * DUST_LAYERS * 0.999);
 
