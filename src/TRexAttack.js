@@ -189,7 +189,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
       const declarations = `
@@ -272,6 +272,11 @@ if (utils.isInShellProcess()) {
         // the claw texture in order to mimic some folding distortion.
         vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
         cogl_color_out = texture2D(uTexture, coords + offset);
+
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
+        }
 
         // Add colorful flashes.
         float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1;

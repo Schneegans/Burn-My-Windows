@@ -176,7 +176,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
       const declarations = `
@@ -218,8 +218,13 @@ if (utils.isInShellProcess()) {
         float c = cos(angle);
         coords = vec2(dot(coords, vec2(c, -s)), dot(coords, vec2(s, c)));
 
-        // Fade out the window texture.
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
         cogl_color_out = texture2D(uTexture, coords + center);
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
+        }
+
+        // Fade out the window texture.
         cogl_color_out.a *= 1.0 - progress;
       `;
 

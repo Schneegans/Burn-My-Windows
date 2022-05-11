@@ -163,7 +163,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
       const declarations = `
@@ -236,6 +236,11 @@ if (utils.isInShellProcess()) {
       const code = `
         vec4 masks       = getMasks();
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
+
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (windowColor.a > 0) {
+          windowColor.rgb /= windowColor.a;
+        }
 
         // Dissolve window to effect color / transparency.
         cogl_color_out.rgb = mix(uColor, windowColor.rgb, 0.5 * masks.w + 0.5);

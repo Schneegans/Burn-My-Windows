@@ -189,7 +189,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
       const declarations = `
@@ -265,17 +265,22 @@ if (utils.isInShellProcess()) {
 
           if (dustGroup == i) {
 
-            // Fade the window color to uDustColor.
+            // Get the window color.
             vec4 windowColor = texture2D(uTexture, coords + 0.5);
+            
+            // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+            if (windowColor.a > 0) {
+              windowColor.rgb /= windowColor.a;
+            }
+            
+            // Fade the window color to uDustColor.
             vec3 dustColor = mix(windowColor.rgb, uDustColor.rgb, uDustColor.a);
-            windowColor.rgb = mix(windowColor.rgb, dustColor*windowColor.a, progress);
+            windowColor.rgb = mix(windowColor.rgb, dustColor, progress);
 
-            // Dissolve the dust particles.
-            float dissolve = (dustMap.x - progress) > 0 ? 1 : 0;
-            windowColor *= dissolve;
-
-            // Blend the layers.
-            cogl_color_out = mix(cogl_color_out, windowColor, windowColor.a);
+            // Dissolve and blend the layers.
+            if (dustMap.x - progress > 0) {
+              cogl_color_out = windowColor;
+            }
           }
         }
       `;

@@ -169,7 +169,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
       const declarations = `
@@ -235,6 +235,11 @@ if (utils.isInShellProcess()) {
         
         // Get the color of the window.
         cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+        
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
+        }
         
         // Compute several layers of moving wisps.
         vec2 uv = (cogl_tex_coord_in[0].st-0.5) / mix(1.0, 0.5, progress) + 0.5;

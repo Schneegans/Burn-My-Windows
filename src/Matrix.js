@@ -194,7 +194,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time. The technique for this effect was inspired by
     // https://www.shadertoy.com/view/ldccW4, however the implementation is quite
     // different as the letters drop only once and there is no need for a noise texture.
@@ -274,8 +274,15 @@ if (utils.isInShellProcess()) {
         vec2  rainMask = getRain(coords);
         float textMask = getText(coords);
 
-        // Get the window texture and fade it according to the effect mask.
+        // Get the window texture.
         cogl_color_out = texture2D(uTexture, coords);
+        
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
+        }
+        
+        // Fade the window according to the effect mask.
         cogl_color_out.a *= rainMask.y;
 
         // This is used to fade out the remaining trails in the end.

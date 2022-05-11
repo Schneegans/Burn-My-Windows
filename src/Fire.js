@@ -290,7 +290,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
 
@@ -395,8 +395,15 @@ if (utils.isInShellProcess()) {
         // Map noise value to color.
         vec4 fire = getFireColor(noise);
 
-        // Get the window texture and fade it according to the effect mask.
+        // Get the window texture.
         cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+
+        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+        if (cogl_color_out.a > 0) {
+          cogl_color_out.rgb /= cogl_color_out.a;
+        }
+
+        // Fade the window according to the effect mask.
         cogl_color_out.a *= effectMask.x;
 
         // Add the fire to the window.

@@ -122,7 +122,7 @@ var Hexagon = class Hexagon {
   // This is called from extension.js if the extension is disabled. This should free all
   // static resources.
   static cleanUp() {
-    shaderInstance = null;
+    freeShaders = [];
   }
 }
 
@@ -182,7 +182,7 @@ if (utils.isInShellProcess()) {
       freeShaders.push(this);
     }
 
-    // This is called by the constructor. This is means it's only called when the effect
+    // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
 
@@ -272,6 +272,11 @@ if (utils.isInShellProcess()) {
           // of the cell.
           vec2 lookupOffset = tileProgress * hex.xy / texScale / (1.0 - tileProgress);
           cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st + lookupOffset);
+
+          // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+          if (cogl_color_out.a > 0) {
+            cogl_color_out.rgb /= cogl_color_out.a;
+          }
 
           vec4 glow = uGlowColor;
           vec4 line = uLineColor;
