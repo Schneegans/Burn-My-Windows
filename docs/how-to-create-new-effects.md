@@ -101,6 +101,8 @@ Please study this code carefully, all of it is explained with inline comments.
 
 const GObject = imports.gi.GObject;
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -110,8 +112,13 @@ const utils          = Me.imports.src.utils;
 // <- Please add a description of your effect here ->                                   //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file.
-let Shader = null;
+// The shader class for this effect is registered further down in this file. When this
+// effect is used for the first time, an instance of this shader class is created. Once
+// the effect is finished, the shader will be stored in the freeShaders array and will
+// then be reused if a new shader is requested. ShaderClass which will be used whenever
+// this effect is used.
+let ShaderClass = null;
+let freeShaders = [];
 
 // The effect class is completely static. It can be used to get some metadata (like the
 // effect's name or supported GNOME Shell versions), to initialize the respective page of
@@ -136,7 +143,7 @@ var SimpleFade = class SimpleFade {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return 'Simple Fade Effect';
+    return _('Simple Fade Effect');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -151,9 +158,21 @@ var SimpleFade = class SimpleFade {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is closed with this effect.
-  static createShader(actor, settings, forOpening) {
-    return new Shader(settings, forOpening);
+  // This is called from extension.js whenever a window is opened or closed with this
+  // effect. It returns an instance of the shader class, trying to reuse previously
+  // created shaders.
+  static getShader(actor, settings, forOpening) {
+    let shader;
+
+    if (freeShaders.length == 0) {
+      shader = new ShaderClass();
+    } else {
+      shader = freeShaders.pop();
+    }
+
+    shader.setUniforms(actor, settings, forOpening);
+
+    return shader;
   }
 
   // The tweakTransition() is called from extension.js to tweak a window's open / close
@@ -184,15 +203,35 @@ var SimpleFade = class SimpleFade {
 
 if (utils.isInShellProcess()) {
 
-  const Clutter        = imports.gi.Clutter;
+  const Shell          = imports.gi.Shell;
   const shaderSnippets = Me.imports.src.shaderSnippets;
 
-  Shader = GObject.registerClass({}, class Shader extends Clutter.ShaderEffect {
+  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
     _init(settings, forOpening) {
       super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
 
-      this.set_shader_source(`
+      this._uForOpening = this.get_uniform_location('uForOpening');
+      this._uFadeWidth  = this.get_uniform_location('uFadeWidth');
+    }
 
+    // This is called each time the effect is used. This can be used to retrieve the
+    // configuration from the settings and update all uniforms accordingly.
+    setUniforms(actor, settings, forOpening) {
+      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uFadeWidth, 1, [settings.get_double('simple-fade-width')]);
+    }
+
+    // This is called by extension.js when the shader is not used anymore. We will store
+    // this instance of the shader so that it can be re-used in th future.
+    free() {
+      freeShaders.push(this);
+    }
+
+    // This is called by the constructor. This means, it's only called when the effect
+    // is used for the first time.
+    vfunc_build_pipeline() {
+
+      const declarations = `
         // The code below injects some standard uniforms which will be updated during the
         // animation. This includes:
         // uTexture:    Contains the texture of the window.
@@ -202,29 +241,30 @@ if (utils.isInShellProcess()) {
         // uSizeY:      The vertical size of uTexture in pixels.
         ${shaderSnippets.standardUniforms()}
 
-        // The width of the fading effect is directly loaded from the settings.
-        const float FADE_WIDTH = ${settings.get_double('simple-fade-width')};
+        // The width of the fading effect is loaded from the settings.
+        uniform float uFadeWidth;
+      `;
 
-        void main() {
+      const code = `
+        // Get the color from the window texture.
+        vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
 
-          // Get the color from the window texture.
-          vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
+        // Radial distance from window edge to the window's center.
+        float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
 
-          // Radial distance from window edge to the window's center.
-          float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
+        // This gradually dissolves from [1..0] from the outside to the center. We
+        // switch the direction for opening and closing.
+        float progress = uForOpening ? 1.0 - uProgress : uProgress;
+        float mask = (1.0 - progress * (1.0 + uFadeWidth) - dist + uFadeWidth) / uFadeWidth;
 
-          // This gradually dissolves from [1..0] from the outside to the center. We
-          // switch the direction for opening and closing.
-          float progress = ${forOpening ? '1.0 - uProgress' : 'uProgress'};
-          float mask = (1.0 - progress * (1.0 + FADE_WIDTH) - dist + FADE_WIDTH) / FADE_WIDTH;
+        // Make the mask smoother.
+        mask = smoothstep(0, 1, mask);
 
-          // Make the mask smoother.
-          mask = smoothstep(0, 1, mask);
+        // Set the final output color. This uses premultiplied alpha.
+        cogl_color_out = windowColor * mask;
+      `;
 
-          // Set the final output color. This uses premultiplied alpha.
-          cogl_color_out = windowColor * mask;
-        }
-      `);
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
     };
   });
 }
