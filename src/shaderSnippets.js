@@ -34,10 +34,12 @@ function standardUniforms() {
 }
 
 // This provides some basic easing function. More can be added if required!
+// Taken from here:
+// https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
 function easing() {
   return `
   float easeOutQuad(float x) {
-    return 1.0 - (1.0 - x) * (1.0 - x);
+    return -1.0 * x * (x - 2);
   }
   `;
 }
