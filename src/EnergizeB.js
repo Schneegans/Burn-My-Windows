@@ -97,22 +97,11 @@ var EnergizeB = class EnergizeB {
     return shader;
   }
 
-  // The tweakTransition() is called from extension.js to tweak a window's open / close
-  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
-  // The parameter 'forOpening' is set to true if this is called for a window-open
-  // transition, for a window-close transition it is set to false. The modes can be set to
-  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
-  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
-  // current value of the opacity transition is passed as uProgress to the shader.
-  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
-
-  // For this effect, windows should neither be scaled nor faded.
-  static tweakTransition(actor, settings, forOpening) {
-    return {
-      'opacity': {from: 255, to: 255, mode: 3},
-      'scale-x': {from: 1.0, to: 1.0, mode: 3},
-      'scale-y': {from: 1.0, to: 1.0, mode: 3}
-    };
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  static getActorScale(settings) {
+    return {x: 1.0, y: 1.0};
   }
 
   // This is called from extension.js if the extension is disabled. This should free all
@@ -169,6 +158,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
+        ${shaderSnippets.easing()}
 
         uniform vec3  uColor;
         uniform float uScale;
@@ -183,10 +173,10 @@ if (utils.isInShellProcess()) {
         //  result.y: A mask for the streaks which follow the shower particles.
         //  result.z: A mask for the final "atom" particles.
         //  result.w: The opacity of the fading window.
-        vec4 getMasks() {
-          float showerProgress = uProgress/SHOWER_TIME;
-          float streakProgress = clamp((uProgress-SHOWER_TIME)/STREAK_TIME, 0, 1);
-          float fadeProgress  = clamp((uProgress-SHOWER_TIME)/(1.0 - SHOWER_TIME), 0, 1);
+        vec4 getMasks(float progress) {
+          float showerProgress = progress/SHOWER_TIME;
+          float streakProgress = clamp((progress-SHOWER_TIME)/STREAK_TIME, 0, 1);
+          float fadeProgress  = clamp((progress-SHOWER_TIME)/(1.0 - SHOWER_TIME), 0, 1);
 
           // Gradient from top to bottom.
           float t = cogl_tex_coord_in[0].t;
@@ -231,7 +221,9 @@ if (utils.isInShellProcess()) {
       `;
 
       const code = `
-        vec4 masks       = getMasks();
+        float progress = easeOutQuad(uProgress);
+
+        vec4 masks       = getMasks(progress);
         vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
 
         // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
@@ -244,21 +236,21 @@ if (utils.isInShellProcess()) {
         cogl_color_out.a = windowColor.a * masks.w;
 
         // Add leading shower particles.
-        vec2 showerUV = cogl_tex_coord_in[0].st + vec2(0, -0.7*uProgress/SHOWER_TIME);
+        vec2 showerUV = cogl_tex_coord_in[0].st + vec2(0, -0.7*progress/SHOWER_TIME);
         showerUV *= 0.02 * uSize / uScale;
         float shower = pow(simplex2D(showerUV), 10.0);
         cogl_color_out.rgb += uColor * shower * masks.x;
         cogl_color_out.a += shower * masks.x;
 
         // Add trailing streak lines.
-        vec2 streakUV = cogl_tex_coord_in[0].st + vec2(0, -uProgress/SHOWER_TIME);
+        vec2 streakUV = cogl_tex_coord_in[0].st + vec2(0, -progress/SHOWER_TIME);
         streakUV *= vec2(0.05 * uSize.x, 0.001 * uSize.y) / uScale;
         float streaks = simplex2DFractal(streakUV) * 0.5;
         cogl_color_out.rgb += uColor * streaks * masks.y;
         cogl_color_out.a += streaks * masks.y;
 
         // Add glimmering atoms.
-        vec2 atomUV = cogl_tex_coord_in[0].st + vec2(0, -0.025*uProgress/SHOWER_TIME);
+        vec2 atomUV = cogl_tex_coord_in[0].st + vec2(0, -0.025*progress/SHOWER_TIME);
         atomUV *= 0.2 * uSize / uScale;
         float atoms = pow((simplex3D(vec3(atomUV, uTime))), 5.0);
         cogl_color_out.rgb += uColor * atoms * masks.z;
