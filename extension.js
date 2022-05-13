@@ -33,17 +33,17 @@ const utils          = Me.imports.src.utils;
 
 // New effects must be registered here and in prefs.js.
 const ALL_EFFECTS = [
-  Me.imports.src.Apparition.Apparition,
-  Me.imports.src.BrokenGlass.BrokenGlass,
-  Me.imports.src.EnergizeA.EnergizeA,
-  Me.imports.src.EnergizeB.EnergizeB,
-  Me.imports.src.Fire.Fire,
-  Me.imports.src.Hexagon.Hexagon,
-  Me.imports.src.Matrix.Matrix,
-  Me.imports.src.SnapOfDisintegration.SnapOfDisintegration,
-  Me.imports.src.TRexAttack.TRexAttack,
-  Me.imports.src.TVEffect.TVEffect,
-  Me.imports.src.Wisps.Wisps,
+  new Me.imports.src.Apparition.Apparition(),
+  new Me.imports.src.BrokenGlass.BrokenGlass(),
+  new Me.imports.src.EnergizeA.EnergizeA(),
+  new Me.imports.src.EnergizeB.EnergizeB(),
+  new Me.imports.src.Fire.Fire(),
+  new Me.imports.src.Hexagon.Hexagon(),
+  new Me.imports.src.Matrix.Matrix(),
+  new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
+  new Me.imports.src.TRexAttack.TRexAttack(),
+  new Me.imports.src.TVEffect.TVEffect(),
+  new Me.imports.src.Wisps.Wisps(),
 ];
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -222,7 +222,7 @@ class Extension {
         const shader = actor.get_effect('burn-my-windows-effect');
         if (shader) {
           actor.remove_effect(shader);
-          shader.free();
+          shader.endAnimation();
         }
       }
 
@@ -306,7 +306,7 @@ class Extension {
   disable() {
 
     // Free all effect resources.
-    ALL_EFFECTS.forEach(Effect => Effect.cleanUp());
+    ALL_EFFECTS.forEach(effect => effect.cleanUp());
 
     // Unregister our resources.
     Gio.resources_unregister(this._resources);
@@ -371,7 +371,7 @@ class Extension {
     const oldShader = actor.get_effect('burn-my-windows-effect');
     if (oldShader) {
       actor.remove_effect(oldShader);
-      oldShader.free();
+      oldShader.endAnimation();
     }
 
     // ------------------------------------------------------------------ choose an effect
@@ -381,9 +381,7 @@ class Extension {
 
     // First we check if an effect is to be previewed.
     if (previewNick != '') {
-      effect = ALL_EFFECTS.find(Effect => {
-        return Effect.getNick() == previewNick;
-      });
+      effect = ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
 
       // Only preview the effect once.
       this._settings.set_string(action + '-preview-effect', '');
@@ -393,8 +391,8 @@ class Extension {
     else {
 
       // Therefore, we first create a list of all currently enabled effects.
-      const enabled = ALL_EFFECTS.filter(Effect => {
-        return this._settings.get_boolean(`${Effect.getNick()}-${action}-effect`);
+      const enabled = ALL_EFFECTS.filter(effect => {
+        return this._settings.get_boolean(`${effect.getNick()}-${action}-effect`);
       });
 
       // And then choose a random effect.
@@ -490,17 +488,12 @@ class Extension {
 
       actor.add_effect_with_name('burn-my-windows-effect', shader);
 
+      shader.beginAnimation(actor, this._settings, forOpening);
+
       // Update uniforms at each frame.
       transition.connect('new-frame', (t) => {
-        shader.set_uniform_float(shader.get_uniform_location('uForOpening'), 1,
-                                 [forOpening]);
-        shader.set_uniform_float(shader.get_uniform_location('uProgress'), 1,
-                                 [testMode ? 0.5 : t.get_progress()]);
-        shader.set_uniform_float(
-          shader.get_uniform_location('uTime'), 1,
-          [testMode ? duration / 2 : 0.001 * t.get_elapsed_time()]);
-        shader.set_uniform_float(shader.get_uniform_location('uSize'), 2,
-                                 [actor.width, actor.height]);
+        shader.updateAnimation(testMode ? 0.5 : t.get_progress(),
+                               testMode ? duration / 2 : 0.001 * t.get_elapsed_time());
       });
 
       // Remove the effect if the animation finished or was interrupted.
@@ -509,7 +502,7 @@ class Extension {
           const oldShader = actor.get_effect('burn-my-windows-effect');
           if (oldShader) {
             actor.remove_effect(oldShader);
-            oldShader.free();
+            oldShader.endAnimation();
           }
         });
       }

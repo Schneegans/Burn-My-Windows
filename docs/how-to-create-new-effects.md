@@ -128,7 +128,7 @@ var SimpleFade = class SimpleFade {
   // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
-  static getMinShellVersion() {
+  getMinShellVersion() {
     return [3, 36];
   }
 
@@ -136,13 +136,13 @@ var SimpleFade = class SimpleFade {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
-  static getNick() {
+  getNick() {
     return 'simple-fade';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  static getLabel() {
+  getLabel() {
     return _('Simple Fade Effect');
   }
 
@@ -151,7 +151,7 @@ var SimpleFade = class SimpleFade {
   // This is called by the preferences dialog. It loads the settings page for this effect,
   // binds all properties to the settings and appends the page to the main stack of the
   // preferences dialog.
-  static getPreferences(dialog) {
+  getPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
     return null;
   }
@@ -161,7 +161,7 @@ var SimpleFade = class SimpleFade {
   // This is called from extension.js whenever a window is opened or closed with this
   // effect. It returns an instance of the shader class, trying to reuse previously
   // created shaders.
-  static getShader(actor, settings, forOpening) {
+  getShader(actor, settings, forOpening) {
     let shader;
 
     if (freeShaders.length == 0) {
@@ -170,7 +170,7 @@ var SimpleFade = class SimpleFade {
       shader = freeShaders.pop();
     }
 
-    shader.setUniforms(actor, settings, forOpening);
+    shader.updateAnimation(actor, settings, forOpening);
 
     return shader;
   }
@@ -178,7 +178,7 @@ var SimpleFade = class SimpleFade {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  static getActorScale(settings) {
+  getActorScale(settings) {
     return {x: 1.0, y: 1.0};
   }
 }
@@ -203,9 +203,9 @@ if (utils.isInShellProcess()) {
       this._uFadeWidth  = this.get_uniform_location('uFadeWidth');
     }
 
-    // This is called each time the effect is used. This can be used to retrieve the
+    // This is called each  time the shader is used. This can be used to retrieve the
     // configuration from the settings and update all uniforms accordingly.
-    setUniforms(actor, settings, forOpening) {
+    updateAnimation(actor, settings, forOpening) {
       this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uFadeWidth, 1, [settings.get_double('simple-fade-width')]);
     }
