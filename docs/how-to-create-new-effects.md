@@ -228,7 +228,7 @@ if (utils.isInShellProcess()) {
         // float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
         // float     uTime:       A steadily increasing value in seconds.
         // vec2      uSize:       The size of uTexture in pixels.
-        ${shaderSnippets.standardUniforms()}
+        #include "common/uniforms.glsl"
 
         // The width of the fading effect is loaded from the settings.
         uniform float uFadeWidth;

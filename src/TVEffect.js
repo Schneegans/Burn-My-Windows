@@ -122,7 +122,6 @@ var TVEffect = class TVEffect {
 if (utils.isInShellProcess()) {
 
   const {Clutter, Shell} = imports.gi;
-  const shaderSnippets   = Me.imports.src.shaderSnippets;
 
   ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
     // This is called when the effect is used for the first time. This can be used to
@@ -149,71 +148,16 @@ if (utils.isInShellProcess()) {
     // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
-      const declarations = `
-        // Inject some common shader snippets.
-        ${shaderSnippets.standardUniforms()}
-        ${shaderSnippets.easing()}
+      const code = utils.loadGLSLResource(`/shaders/${TVEffect.getNick()}.glsl`);
 
-        uniform vec3 uColor;
+      // Match anything between the curly brackets of "void main() {...}".
+      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
+      const match = regex.exec(code);
 
-        const float BLUR_WIDTH = 0.01; // Width of the gradients.
-        const float TB_TIME    = 0.7;  // Relative time for the top/bottom animation.
-        const float LR_TIME    = 0.4;  // Relative time for the left/right animation.
-        const float LR_DELAY   = 0.6;  // Delay after which the left/right animation starts.
-        const float FF_TIME    = 0.1;  // Relative time for the final fade to transparency.
-        const float SCALING    = 0.5;  // Additional vertical scaling of the window.
-      `;
+      const declarations = code.substr(0, match.index);
+      const main         = match[1];
 
-      const code = `
-        float progress = uForOpening ? 1.0-easeOutQuad(uProgress) : easeOutQuad(uProgress);
-
-        // Scale down the window vertically.
-        float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
-        vec2 coords = cogl_tex_coord_in[0].st;
-        coords.y = coords.y * (scale + 1.0) - scale * 0.5;
-
-        // All of these are in [0..1] during the different stages of the animation.
-        // tb refers to the top-bottom animation.
-        // lr refers to the left-right animation.
-        // ff refers to the final fade animation.
-        float tbProgress = smoothstep(0, 1, clamp(progress/TB_TIME, 0, 1));
-        float lrProgress = smoothstep(0, 1, clamp((progress - LR_DELAY)/LR_TIME, 0, 1));
-        float ffProgress = smoothstep(0, 1, clamp((progress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
-
-        // This is a top-center-bottom gradient in [0..1..0]
-        float tb = coords.y * 2;
-        tb = tb < 1 ? tb : 2 - tb;
-        
-        // This is a left-center-right gradient in [0..1..0]
-        float lr = coords.x * 2;
-        lr = lr < 1 ? lr : 2 - lr;
-        
-        // Combine the progress values with the gradients to create the alpha masks.
-        float tbMask = 1 - smoothstep(0, 1, clamp((tbProgress - tb) / BLUR_WIDTH, 0, 1));
-        float lrMask = 1 - smoothstep(0, 1, clamp((lrProgress - lr) / BLUR_WIDTH, 0, 1));
-        float ffMask = 1 - smoothstep(0, 1, ffProgress);
-
-        // Assemble the final alpha value.
-        float mask = tbMask * lrMask * ffMask;
-
-        cogl_color_out = texture2D(uTexture, coords);
-        
-        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-        if (cogl_color_out.a > 0) {
-          cogl_color_out.rgb /= cogl_color_out.a;
-        }
-
-        cogl_color_out.rgb = mix(cogl_color_out.rgb, uColor * cogl_color_out.a, smoothstep(0, 1, progress));
-        cogl_color_out.a *= mask;
-
-        // These are pretty useful for understanding how this works.
-        // cogl_color_out = vec4(vec3(tbMask), 1);
-        // cogl_color_out = vec4(vec3(lrMask), 1);
-        // cogl_color_out = vec4(vec3(ffMask), 1);
-        // cogl_color_out = vec4(vec3(mask), 1);
-      `;
-
-      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
     }
   });
 }

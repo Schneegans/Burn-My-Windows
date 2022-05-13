@@ -132,7 +132,6 @@ var Matrix = class Matrix {
 if (utils.isInShellProcess()) {
 
   const {Clutter, GdkPixbuf, Cogl, Shell} = imports.gi;
-  const shaderSnippets                    = Me.imports.src.shaderSnippets;
 
   ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
     // This is called when the effect is used for the first time. This can be used to
@@ -184,107 +183,16 @@ if (utils.isInShellProcess()) {
     // https://www.shadertoy.com/view/ldccW4, however the implementation is quite
     // different as the letters drop only once and there is no need for a noise texture.
     vfunc_build_pipeline() {
-      const declarations = `
-        // Inject some common shader snippets.
-        ${shaderSnippets.standardUniforms()}
-        ${shaderSnippets.noise()}
-        ${shaderSnippets.edgeMask()}
-        ${shaderSnippets.compositing()}
+      const code = utils.loadGLSLResource(`/shaders/${Matrix.getNick()}.glsl`);
 
-        uniform sampler2D uFontTexture;
-        uniform vec3      uTrailColor;
-        uniform vec3      uTipColor;
-        uniform float     uLetterSize;
-        uniform float     uRandomness;
-        uniform float     uOverShoot;
+      // Match anything between the curly brackets of "void main() {...}".
+      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
+      const match = regex.exec(code);
 
-        // These may be configurable in the future.
-        const float EDGE_FADE             = 30;
-        const float FADE_WIDTH            = 150;
-        const float TRAIL_LENGTH          = 0.2;
-        const float FINAL_FADE_START_TIME = 0.8;
-        const float LETTER_TILES          = 16.0;
-        const float LETTER_FLICKER_SPEED  = 2.0;
+      const declarations = code.substr(0, match.index);
+      const main         = match[1];
 
-        // This returns a flickering grid of random letters.
-        float getText(vec2 fragCoord) {
-          vec2 pixelCoords = fragCoord * uSize;
-          vec2 uv = mod(pixelCoords.xy, uLetterSize)/uLetterSize;
-          vec2 block = pixelCoords/uLetterSize - uv;
-
-          // Choose random letter.
-          uv += floor(hash22(floor(hash22(block)*vec2(12.9898,78.233) + LETTER_FLICKER_SPEED*uTime + 42.254))*LETTER_TILES);
-
-          return texture2D(uFontTexture, uv/LETTER_TILES).r;
-        }
-
-        // This returns two values: The first are gradients for the "raindrops" which move
-        // from top to bottom. This is used for fading the letters. The second value is set
-        // to one below each drop and to zero above it. This second value is used for fading
-        // the window texture. 
-        vec2 getRain(vec2 fragCoord) {
-          float column = cogl_tex_coord_in[0].x * uSize.x;
-          column -= mod(column, uLetterSize);
-
-          float delay = fract(sin(column)*78.233) * mix(0.0, 1.0, uRandomness);
-          float speed = fract(cos(column)*12.989) * mix(0.0, 0.3, uRandomness) + 1.5;
-          
-          float distToDrop  = (uProgress*2-delay)*speed - cogl_tex_coord_in[0].y;
-          
-          float rainAlpha   = distToDrop >= 0 ? exp(-distToDrop/TRAIL_LENGTH) : 0;
-          float windowAlpha = 1 - clamp(uSize.y*distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
-          
-          // Fade at window borders.
-          rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE);
-          
-          // Add some variation to the drop start and end position.
-          float shorten = fract(sin(column+42.0)*33.423) * mix(0.0, uOverShoot*0.25, uRandomness);
-          rainAlpha *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / shorten, 0, 1));
-          rainAlpha *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / shorten, 0, 1));
-
-          if (uForOpening) {
-            windowAlpha = 1.0 - windowAlpha;
-          }
-
-          return vec2(rainAlpha, windowAlpha);
-        }
-      `;
-
-      const code = `
-        vec2 coords = cogl_tex_coord_in[0].st;
-        coords.y = coords.y * (uOverShoot + 1.0) - uOverShoot * 0.5;
-
-        // Get a cool matrix effect. See comments for those methods above.
-        vec2  rainMask = getRain(coords);
-        float textMask = getText(coords);
-
-        // Get the window texture.
-        cogl_color_out = texture2D(uTexture, coords);
-        
-        // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-        if (cogl_color_out.a > 0) {
-          cogl_color_out.rgb /= cogl_color_out.a;
-        }
-        
-        // Fade the window according to the effect mask.
-        cogl_color_out.a *= rainMask.y;
-
-        // This is used to fade out the remaining trails in the end.
-        float finalFade = 1-clamp((uProgress-FINAL_FADE_START_TIME)/
-                                  (1-FINAL_FADE_START_TIME), 0, 1);
-        float rainAlpha = finalFade * rainMask.x;
-
-        // Add the matrix effect to the window.
-        vec4 text = vec4(mix(uTrailColor, uTipColor, min(1, pow(rainAlpha+0.1, 4))), rainAlpha * textMask);
-        cogl_color_out = alphaOver(cogl_color_out, text);
-
-        // These are pretty useful for understanding how this works.
-        // cogl_color_out = vec4(vec3(textMask), 1);
-        // cogl_color_out = vec4(vec3(rainMask.x), 1);
-        // cogl_color_out = vec4(vec3(rainMask.y), 1);
-      `;
-
-      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
     }
 
     // This is overridden to bind the font texture for drawing. Sadly, this seems to be
