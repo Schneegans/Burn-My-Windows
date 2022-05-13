@@ -183,11 +183,16 @@ if (utils.isInShellProcess()) {
     // https://www.shadertoy.com/view/ldccW4, however the implementation is quite
     // different as the letters drop only once and there is no need for a noise texture.
     vfunc_build_pipeline() {
-      const decl =
-        utils.loadGLSLResource(`/shaders/${Matrix.getNick()}-declarations.glsl`);
       const code = utils.loadGLSLResource(`/shaders/${Matrix.getNick()}.glsl`);
 
-      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, decl, code, true);
+      // Match anything between the curly brackets of "void main() {...}".
+      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}', 'd');
+      const match = regex.exec(code);
+
+      const declarations = code.substr(0, match.index);
+      const main         = match[1];
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
     }
 
     // This is overridden to bind the font texture for drawing. Sadly, this seems to be

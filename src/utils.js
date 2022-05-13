@@ -106,7 +106,9 @@ function loadGLSLResource(path) {
 
   // This regex matches either #include "..." or #include <...>. The part between the
   // brackets is captured in the named "file" capture group.
-  code = code.replaceAll(/#include ["<](?<file>.+)[">]/g, (m, p1, p2, str, groups) => {
+  const regex = RegExp('#include ["<](?<file>.+)[">]', 'g');
+
+  code = code.replaceAll(regex, (m, p1, p2, str, groups) => {
     return loadStringResource('/shaders/' + groups.file);
   });
 

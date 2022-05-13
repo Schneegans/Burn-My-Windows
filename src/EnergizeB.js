@@ -152,11 +152,16 @@ if (utils.isInShellProcess()) {
     // This is called by the constructor. This means, it's only called when the effect
     // is used for the first time.
     vfunc_build_pipeline() {
-      const decl =
-        utils.loadGLSLResource(`/shaders/${EnergizeB.getNick()}-declarations.glsl`);
       const code = utils.loadGLSLResource(`/shaders/${EnergizeB.getNick()}.glsl`);
 
-      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, decl, code, true);
+      // Match anything between the curly brackets of "void main() {...}".
+      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}', 'd');
+      const match = regex.exec(code);
+
+      const declarations = code.substr(0, match.index);
+      const main         = match[1];
+
+      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
     }
   });
 }
