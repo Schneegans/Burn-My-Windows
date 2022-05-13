@@ -103,23 +103,13 @@ var TRexAttack = class TRexAttack {
 
     return shader;
   }
-  // The tweakTransition() is called from extension.js to tweak a window's open / close
-  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
-  // The parameter 'forOpening' is set to true if this is called for a window-open
-  // transition, for a window-close transition it is set to false. The modes can be set to
-  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
-  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
-  // current value of the opacity transition is passed as uProgress to the shader.
-  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
 
-  // For this effect, we slightly increase the window's scale as part of the warp effect.
-  static tweakTransition(actor, settings, forOpening) {
-    const warp = 1.0 + 0.5 * settings.get_double('claw-scratch-warp');
-    return {
-      'opacity': {from: 255, to: 255, mode: 3},
-      'scale-x': {from: forOpening ? warp : 1.0, to: forOpening ? 1.0 : warp, mode: 3},
-      'scale-y': {from: forOpening ? warp : 1.0, to: forOpening ? 1.0 : warp, mode: 3}
-    };
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  static getActorScale(settings) {
+    const scale = 1.0 + 0.5 * settings.get_double('claw-scratch-warp');
+    return {x: scale, y: scale};
   }
 
   // This is called from extension.js if the extension is disabled. This should free all
@@ -195,6 +185,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.standardUniforms()}
         ${shaderSnippets.noise()}
         ${shaderSnippets.compositing()}
+        ${shaderSnippets.easing()}
 
         // See assets/README.md for how this texture was created.
         uniform sampler2D uClawTexture;
@@ -247,13 +238,17 @@ if (utils.isInShellProcess()) {
       `;
 
       const code = `
-        float progress = uForOpening ? 1.0-uProgress : uProgress;
+        float progress = uForOpening ? 1.0-easeOutQuad(uProgress) : easeOutQuad(uProgress);
 
         // Warp the texture coordinates to create a blow-up effect.
         vec2  coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
         float dist   = length(coords);
         coords = (coords/dist * pow(dist, 1.0 + uWarpIntensity)) * 0.5 + 0.5;
         coords = mix(cogl_tex_coord_in[0].st, coords, progress);
+
+        // Scale down the window according to the warp.
+        float scale = 0.5 * uWarpIntensity * (1.0 - progress);
+        coords = coords * (scale + 1.0) - scale * 0.5;
 
         // Accumulate several random scratches. The color in the scratch map refers to the
         // relative time when the respective part will become invisible. Therefore we can

@@ -119,22 +119,11 @@ var Fire = class Fire {
     return shader;
   }
 
-  // The tweakTransition() is called from extension.js to tweak a window's open / close
-  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
-  // The parameter 'forOpening' is set to true if this is called for a window-open
-  // transition, for a window-close transition it is set to false. The modes can be set to
-  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
-  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
-  // current value of the opacity transition is passed as uProgress to the shader.
-  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
-
-  // For this effect, windows should neither be scaled nor faded.
-  static tweakTransition(actor, settings, forOpening) {
-    return {
-      'opacity': {from: 255, to: 255, mode: 3},
-      'scale-x': {from: 1.0, to: 1.0, mode: 3},
-      'scale-y': {from: 1.0, to: 1.0, mode: 3}
-    };
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  static getActorScale(settings) {
+    return {x: 1.0, y: 1.0};
   }
 
   // This is called from extension.js if the extension is disabled. This should free all
@@ -298,6 +287,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
+        ${shaderSnippets.easing()}
 
         uniform bool  u3DNoise;
         uniform float uScale;
@@ -348,8 +338,10 @@ if (utils.isInShellProcess()) {
         // fadeWidth:     The relative size of the window-hiding gradient in [0..1].
         // edgeFadeWidth: The pixel width of the effect fading range at the edges of the window.
         vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
-          float burnProgress      = clamp(uProgress/hideTime, 0, 1);
-          float afterBurnProgress = clamp((uProgress-hideTime)/(1-hideTime), 0, 1);
+          float progress = easeOutQuad(uProgress);
+
+          float burnProgress      = clamp(progress/hideTime, 0, 1);
+          float afterBurnProgress = clamp((progress-hideTime)/(1-hideTime), 0, 1);
 
           // Gradient from top to bottom.
           float t = cogl_tex_coord_in[0].t * (1 - fadeWidth);
@@ -361,7 +353,7 @@ if (utils.isInShellProcess()) {
           float effectMask = clamp(t*(1-windowMask)/burnProgress, 0, 1);
 
           // Fade-out when the window burned down.
-          if (uProgress > hideTime) {
+          if (progress > hideTime) {
             float fade = sqrt(1-afterBurnProgress*afterBurnProgress);
             effectMask *= mix(1, 1-t, afterBurnProgress) * fade;
           }

@@ -98,22 +98,11 @@ var TVEffect = class TVEffect {
     return shader;
   }
 
-  // The tweakTransition() is called from extension.js to tweak a window's open / close
-  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
-  // The parameter 'forOpening' is set to true if this is called for a window-open
-  // transition, for a window-close transition it is set to false. The modes can be set to
-  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
-  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
-  // current value of the opacity transition is passed as uProgress to the shader.
-  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
-
-  // For this effect, windows are scaled down vertically.
-  static tweakTransition(actor, settings, forOpening) {
-    return {
-      'opacity': {from: 255, to: 255, mode: 3},
-      'scale-x': {from: 1.0, to: 1.0, mode: 3},
-      'scale-y': {from: forOpening ? 0.5 : 1.0, to: forOpening ? 1.0 : 0.5, mode: 3}
-    };
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  static getActorScale(settings) {
+    return {x: 1.0, y: 1.0};
   }
 
   // This is called from extension.js if the extension is disabled. This should free all
@@ -163,6 +152,7 @@ if (utils.isInShellProcess()) {
       const declarations = `
         // Inject some common shader snippets.
         ${shaderSnippets.standardUniforms()}
+        ${shaderSnippets.easing()}
 
         uniform vec3 uColor;
 
@@ -171,10 +161,16 @@ if (utils.isInShellProcess()) {
         const float LR_TIME    = 0.4;  // Relative time for the left/right animation.
         const float LR_DELAY   = 0.6;  // Delay after which the left/right animation starts.
         const float FF_TIME    = 0.1;  // Relative time for the final fade to transparency.
+        const float SCALING    = 0.5;  // Additional vertical scaling of the window.
       `;
 
       const code = `
-        float progress = uForOpening ? 1.0-uProgress : uProgress;
+        float progress = uForOpening ? 1.0-easeOutQuad(uProgress) : easeOutQuad(uProgress);
+
+        // Scale down the window vertically.
+        float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
+        vec2 coords = cogl_tex_coord_in[0].st;
+        coords.y = coords.y * (scale + 1.0) - scale * 0.5;
 
         // All of these are in [0..1] during the different stages of the animation.
         // tb refers to the top-bottom animation.
@@ -185,11 +181,11 @@ if (utils.isInShellProcess()) {
         float ffProgress = smoothstep(0, 1, clamp((progress - 1.0 + FF_TIME)/FF_TIME, 0, 1));
 
         // This is a top-center-bottom gradient in [0..1..0]
-        float tb = cogl_tex_coord_in[0].t * 2;
+        float tb = coords.y * 2;
         tb = tb < 1 ? tb : 2 - tb;
         
         // This is a left-center-right gradient in [0..1..0]
-        float lr = cogl_tex_coord_in[0].s * 2;
+        float lr = coords.x * 2;
         lr = lr < 1 ? lr : 2 - lr;
         
         // Combine the progress values with the gradients to create the alpha masks.
@@ -200,7 +196,7 @@ if (utils.isInShellProcess()) {
         // Assemble the final alpha value.
         float mask = tbMask * lrMask * ffMask;
 
-        cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+        cogl_color_out = texture2D(uTexture, coords);
         
         // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
         if (cogl_color_out.a > 0) {

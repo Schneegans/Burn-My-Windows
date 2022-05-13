@@ -33,6 +33,17 @@ function standardUniforms() {
   `;
 }
 
+// This provides some basic easing function. More can be added if required!
+// Taken from here:
+// https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
+function easing() {
+  return `
+  float easeOutQuad(float x) {
+    return -1.0 * x * (x - 2);
+  }
+  `;
+}
+
 function math2D() {
   return `
   float distToLine(vec2 origin, vec2 direction, vec2 point) {

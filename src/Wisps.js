@@ -98,22 +98,11 @@ var Wisps = class Wisps {
     return shader;
   }
 
-  // The tweakTransition() is called from extension.js to tweak a window's open / close
-  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
-  // The parameter 'forOpening' is set to true if this is called for a window-open
-  // transition, for a window-close transition it is set to false. The modes can be set to
-  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
-  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
-  // current value of the opacity transition is passed as uProgress to the shader.
-  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
-
-  // For this effect, windows should be scaled down slightly but not faded.
-  static tweakTransition(actor, settings, forOpening) {
-    return {
-      'opacity': {from: 255, to: 255, mode: 3},
-      'scale-x': {from: forOpening ? 0.9 : 1.0, to: forOpening ? 1.0 : 0.9, mode: 3},
-      'scale-y': {from: forOpening ? 0.9 : 1.0, to: forOpening ? 1.0 : 0.9, mode: 3}
-    };
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  static getActorScale(settings) {
+    return {x: 1.0, y: 1.0};
   }
 
   // This is called from extension.js if the extension is disabled. This should free all
@@ -176,6 +165,7 @@ if (utils.isInShellProcess()) {
         ${shaderSnippets.noise()}
         ${shaderSnippets.edgeMask()}
         ${shaderSnippets.compositing()}
+        ${shaderSnippets.easing()}
 
         uniform vec2  uSeed;
         uniform vec3  uColor;
@@ -187,6 +177,7 @@ if (utils.isInShellProcess()) {
         const int   WISPS_LAYERS    = 8;
         const float WISPS_IN_TIME   = 0.5;
         const float WINDOW_OUT_TIME = 1.0;
+        const float SCALING         = 0.9;
 
         // Returns a grid of randomly moving points. Each grid cell contains one point which
         // moves on an ellipse. 
@@ -228,10 +219,14 @@ if (utils.isInShellProcess()) {
       `;
 
       const code = `
-        float progress = uForOpening ? 1.0-uProgress : uProgress;
+        float progress = uForOpening ? 1.0-easeOutQuad(uProgress) : easeOutQuad(uProgress);
+
+        // Scale down the window slightly.
+        float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
+        vec2 coords = cogl_tex_coord_in[0].st * (scale + 1.0) - scale * 0.5;
         
         // Get the color of the window.
-        cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+        cogl_color_out = texture2D(uTexture, coords);
         
         // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
         if (cogl_color_out.a > 0) {
