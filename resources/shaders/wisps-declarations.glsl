@@ -5,6 +5,7 @@
 #include "common/noise.glsl"
 #include "common/edgeMask.glsl"
 #include "common/compositing.glsl"
+#include "common/easing.glsl"
 
 uniform vec2 uSeed;
 uniform vec3 uColor;
@@ -16,6 +17,7 @@ const float WISPS_SPACING   = 40 + WISPS_RADIUS;
 const int WISPS_LAYERS      = 8;
 const float WISPS_IN_TIME   = 0.5;
 const float WINDOW_OUT_TIME = 1.0;
+const float SCALING         = 0.9;
 
 // Returns a grid of randomly moving points. Each grid cell contains one point which
 // moves on an ellipse.

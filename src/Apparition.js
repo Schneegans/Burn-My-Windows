@@ -102,23 +102,11 @@ var Apparition = class Apparition {
     return shader;
   }
 
-  // The tweakTransition() is called from extension.js to tweak a window's open / close
-  // transitions - usually windows are faded in / out and scaled up / down by GNOME Shell.
-  // The parameter 'forOpening' is set to true if this is called for a window-open
-  // transition, for a window-close transition it is set to false. The modes can be set to
-  // any value from here: https://gjs-docs.gnome.org/clutter8~8_api/clutter.animationmode.
-  // The only required property is 'opacity', even if it transitions from 1.0 to 1.0. The
-  // current value of the opacity transition is passed as uProgress to the shader.
-  // Tweaking the actor's scale during the transition only works properly for GNOME 3.38+.
-
-  // For this effect, windows are set to twice their original size, so that we have
-  // some space to draw the animation. We also set the animation mode to "Linear".
-  static tweakTransition(actor, settings, forOpening) {
-    return {
-      'opacity': {from: 255, to: 255, mode: 1},
-      'scale-x': {from: 2.0, to: 2.0, mode: 1},
-      'scale-y': {from: 2.0, to: 2.0, mode: 1}
-    };
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  static getActorScale(settings) {
+    return {x: 2.0, y: 2.0};
   }
 
   // This is called from extension.js if the extension is disabled. This should free all

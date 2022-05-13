@@ -1,4 +1,6 @@
-vec2 masks       = getMasks();
+float progress = easeOutQuad(uProgress);
+
+vec2 masks       = getMasks(progress);
 vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
@@ -10,7 +12,7 @@ if (windowColor.a > 0) {
 cogl_color_out.rgb = mix(uColor, windowColor.rgb, 0.2 * masks.y + 0.8);
 cogl_color_out.a   = windowColor.a * masks.y;
 
-vec2 scaledUV = (cogl_tex_coord_in[0].st - 0.5) * (1.0 + 0.1 * uProgress);
+vec2 scaledUV = (cogl_tex_coord_in[0].st - 0.5) * (1.0 + 0.1 * progress);
 scaledUV /= uScale;
 
 // Add molecule particles.

@@ -4,6 +4,7 @@
 #include "common/uniforms.glsl"
 #include "common/noise.glsl"
 #include "common/edgeMask.glsl"
+#include "common/easing.glsl"
 
 uniform vec3 uColor;
 uniform float uScale;
@@ -16,11 +17,11 @@ const float EDGE_FADE_WIDTH = 50;
 // This method returns two values:
 //  result.x: A mask for the particles.
 //  result.y: The opacity of the fading window.
-vec2 getMasks() {
-  float fadeInProgress  = clamp(uProgress / FADE_IN_TIME, 0, 1);
-  float fadeOutProgress = clamp((uProgress - FADE_IN_TIME) / FADE_OUT_TIME, 0, 1);
+vec2 getMasks(float progress) {
+  float fadeInProgress  = clamp(progress / FADE_IN_TIME, 0, 1);
+  float fadeOutProgress = clamp((progress - FADE_IN_TIME) / FADE_OUT_TIME, 0, 1);
   float heartProgress =
-    clamp((uProgress - (1.0 - HEART_FADE_TIME)) / HEART_FADE_TIME, 0, 1);
+    clamp((progress - (1.0 - HEART_FADE_TIME)) / HEART_FADE_TIME, 0, 1);
 
   // Compute mask for the "atom" particles.
   float dist     = length(cogl_tex_coord_in[0].st - 0.5) * 4.0;

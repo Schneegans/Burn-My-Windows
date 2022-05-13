@@ -4,6 +4,7 @@
 #include "common/uniforms.glsl"
 #include "common/noise.glsl"
 #include "common/compositing.glsl"
+#include "common/easing.glsl"
 
 // See assets/README.md for how this texture was created.
 uniform sampler2D uClawTexture;

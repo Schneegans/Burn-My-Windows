@@ -416,18 +416,24 @@ class Extension {
     const testMode = this._settings.get_boolean('test-mode');
 
     // The following is used to tweak the ongoing transitions of a window actor. Usually
-    // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we allow
-    // modifications to this behavior by the effects.
-    const config = effect.tweakTransition(actor, this._settings, forOpening);
+    // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
+    // the transitions so that nothing changes. The window stays opaque and is scaled to
+    // actorScale.
+    const actorScale = effect.getActorScale(this._settings);
+
+    // To make things deterministic during testing, we set the effect duration to 5
+    // seconds.
     const duration =
       testMode ? 5000 : this._settings.get_int(effect.getNick() + '-animation-time');
 
     // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
 
-    // This goes through all properties given in the config object and tweaks any ongoing
-    // transitions accordingly. If there is no ongoing transition for a given property, a
-    // new one is set up.
+
+    // We tweak the opacity and scale of the actor. If there is no ongoing transition for
+    // a property, a new one is set up.
+    const config = {'opacity': 255, 'scale-x': actorScale.x, 'scale-y': actorScale.y};
+
     for (const property in config) {
       let transition = actor.get_transition(property);
 
@@ -450,11 +456,10 @@ class Extension {
       // Tweak the transition according to the config object. For some reason, there are
       // rare cases, where no transition is set up. This happens from time to time...
       if (transition) {
-        const middle = (config[property].to + config[property].from) / 2;
         transition.set_duration(duration);
-        transition.set_to(testMode ? middle : config[property].to);
-        transition.set_from(testMode ? middle : config[property].from);
-        transition.set_progress_mode(config[property].mode);
+        transition.set_to(config[property]);
+        transition.set_from(config[property]);
+        transition.set_progress_mode(Clutter.AnimationMode.LINEAR);
       }
     }
 

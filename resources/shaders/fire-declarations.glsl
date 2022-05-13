@@ -5,6 +5,7 @@
 #include "common/compositing.glsl"
 #include "common/edgeMask.glsl"
 #include "common/noise.glsl"
+#include "common/easing.glsl"
 
 uniform bool u3DNoise;
 uniform float uScale;
@@ -50,8 +51,10 @@ vec4 getFireColor(float v) {
 // fadeWidth:     The relative size of the window-hiding gradient in [0..1].
 // edgeFadeWidth: The pixel width of the effect fading range at the edges of the window.
 vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
-  float burnProgress      = clamp(uProgress / hideTime, 0, 1);
-  float afterBurnProgress = clamp((uProgress - hideTime) / (1 - hideTime), 0, 1);
+  float progress = easeOutQuad(uProgress);
+
+  float burnProgress      = clamp(progress / hideTime, 0, 1);
+  float afterBurnProgress = clamp((progress - hideTime) / (1 - hideTime), 0, 1);
 
   // Gradient from top to bottom.
   float t = cogl_tex_coord_in[0].t * (1 - fadeWidth);
@@ -63,7 +66,7 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
   float effectMask = clamp(t * (1 - windowMask) / burnProgress, 0, 1);
 
   // Fade-out when the window burned down.
-  if (uProgress > hideTime) {
+  if (progress > hideTime) {
     float fade = sqrt(1 - afterBurnProgress * afterBurnProgress);
     effectMask *= mix(1, 1 - t, afterBurnProgress) * fade;
   }

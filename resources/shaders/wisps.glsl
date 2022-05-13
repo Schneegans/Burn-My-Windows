@@ -1,7 +1,11 @@
-float progress = uForOpening ? 1.0 - uProgress : uProgress;
+float progress = uForOpening ? 1.0 - easeOutQuad(uProgress) : easeOutQuad(uProgress);
+
+// Scale down the window slightly.
+float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
+vec2 coords = cogl_tex_coord_in[0].st * (scale + 1.0) - scale * 0.5;
 
 // Get the color of the window.
-cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+cogl_color_out = texture2D(uTexture, coords);
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
 if (cogl_color_out.a > 0) {

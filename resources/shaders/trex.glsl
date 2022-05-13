@@ -1,10 +1,14 @@
-float progress = uForOpening ? 1.0 - uProgress : uProgress;
+float progress = uForOpening ? 1.0 - easeOutQuad(uProgress) : easeOutQuad(uProgress);
 
 // Warp the texture coordinates to create a blow-up effect.
 vec2 coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
 float dist  = length(coords);
 coords      = (coords / dist * pow(dist, 1.0 + uWarpIntensity)) * 0.5 + 0.5;
 coords      = mix(cogl_tex_coord_in[0].st, coords, progress);
+
+// Scale down the window according to the warp.
+float scale = 0.5 * uWarpIntensity * (1.0 - progress);
+coords      = coords * (scale + 1.0) - scale * 0.5;
 
 // Accumulate several random scratches. The color in the scratch map refers to the
 // relative time when the respective part will become invisible. Therefore we can

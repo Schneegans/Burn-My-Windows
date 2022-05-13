@@ -4,6 +4,7 @@
 #include "common/uniforms.glsl"
 #include "common/noise.glsl"
 #include "common/edgeMask.glsl"
+#include "common/easing.glsl"
 
 uniform vec3 uColor;
 uniform float uScale;
@@ -18,10 +19,10 @@ const float EDGE_FADE    = 50;
 //  result.y: A mask for the streaks which follow the shower particles.
 //  result.z: A mask for the final "atom" particles.
 //  result.w: The opacity of the fading window.
-vec4 getMasks() {
-  float showerProgress = uProgress / SHOWER_TIME;
-  float streakProgress = clamp((uProgress - SHOWER_TIME) / STREAK_TIME, 0, 1);
-  float fadeProgress   = clamp((uProgress - SHOWER_TIME) / (1.0 - SHOWER_TIME), 0, 1);
+vec4 getMasks(float progress) {
+  float showerProgress = progress / SHOWER_TIME;
+  float streakProgress = clamp((progress - SHOWER_TIME) / STREAK_TIME, 0, 1);
+  float fadeProgress   = clamp((progress - SHOWER_TIME) / (1.0 - SHOWER_TIME), 0, 1);
 
   // Gradient from top to bottom.
   float t = cogl_tex_coord_in[0].t;

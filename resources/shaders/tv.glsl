@@ -1,4 +1,9 @@
-float progress = uForOpening ? 1.0 - uProgress : uProgress;
+float progress = uForOpening ? 1.0 - easeOutQuad(uProgress) : easeOutQuad(uProgress);
+
+// Scale down the window vertically.
+float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
+vec2 coords = cogl_tex_coord_in[0].st;
+coords.y    = coords.y * (scale + 1.0) - scale * 0.5;
 
 // All of these are in [0..1] during the different stages of the animation.
 // tb refers to the top-bottom animation.
@@ -9,11 +14,11 @@ float lrProgress = smoothstep(0, 1, clamp((progress - LR_DELAY) / LR_TIME, 0, 1)
 float ffProgress = smoothstep(0, 1, clamp((progress - 1.0 + FF_TIME) / FF_TIME, 0, 1));
 
 // This is a top-center-bottom gradient in [0..1..0]
-float tb = cogl_tex_coord_in[0].t * 2;
+float tb = coords.y * 2;
 tb       = tb < 1 ? tb : 2 - tb;
 
 // This is a left-center-right gradient in [0..1..0]
-float lr = cogl_tex_coord_in[0].s * 2;
+float lr = coords.x * 2;
 lr       = lr < 1 ? lr : 2 - lr;
 
 // Combine the progress values with the gradients to create the alpha masks.
@@ -24,7 +29,7 @@ float ffMask = 1 - smoothstep(0, 1, ffProgress);
 // Assemble the final alpha value.
 float mask = tbMask * lrMask * ffMask;
 
-cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+cogl_color_out = texture2D(uTexture, coords);
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
 if (cogl_color_out.a > 0) {
