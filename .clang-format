@@ -3,4 +3,5 @@ AlignConsecutiveAssignments: true
 AlignAfterOpenBracket: Align
 ContinuationIndentWidth: 2
 KeepEmptyLinesAtTheStartOfBlocks: true
+SortIncludes: false
 ColumnLimit: 90

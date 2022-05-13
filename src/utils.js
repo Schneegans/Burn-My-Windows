@@ -13,7 +13,8 @@
 
 'use strict';
 
-const {Gtk} = imports.gi;
+const {Gtk, Gio} = imports.gi;
+const ByteArray  = imports.byteArray;
 
 // Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
 // -2, and -1 are returned respectively.
@@ -89,4 +90,26 @@ function shellVersionIsAtLeast(major, minor) {
   }
 
   return false;
+}
+
+// This loads the file at 'path' contained in the extension's resources to a JavaScript
+// string.
+function loadStringResource(path) {
+  const data = Gio.resources_lookup_data(path, 0);
+  return ByteArray.toString(ByteArray.fromGBytes(data));
+}
+
+// This loads a GLSL file from the extension's resources to a JavaScript string. Any
+// #include statements in this file are replaced with the corresponding file contents.
+function loadGLSLResource(path) {
+  let code = loadStringResource(path);
+
+  // This regex matches either #include "..." or #include <...>. The part between the
+  // brackets is captured in the named "file" capture group.
+  code = code.replaceAll(/#include ["<](?<file>.+)[">]/g, (m, p1, p2, str, groups) => {
+    return loadStringResource('/shaders/' + groups.file);
+  });
+
+  // Add a trailing newline. Else the GLSL compiler complains...
+  return code + '\n';
 }

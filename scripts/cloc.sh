@@ -32,7 +32,7 @@ cd "$( cd "$( dirname "$0" )" && pwd )/.." || \
 
 # Run cloc - this counts code lines, blank lines and comment lines for the specified
 # languages. We are only interested in the summary, therefore the tail -1
-SUMMARY="$(cloc . --include-lang="JavaScript" --md | tail -1)"
+SUMMARY="$(cloc . --include-lang="JavaScript,GLSL" --md | tail -1)"
 
 # The $SUMMARY is one line of a markdown table and looks like this:
 # SUM:|101|3123|2238|10783
