@@ -204,7 +204,7 @@ if (utils.isInShellProcess()) {
       const code = utils.loadGLSLResource(`/shaders/${BrokenGlass.getNick()}.glsl`);
 
       // Match anything between the curly brackets of "void main() {...}".
-      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}', 'd');
+      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
       const match = regex.exec(code);
 
       const declarations = code.substr(0, match.index);
