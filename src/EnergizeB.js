@@ -51,8 +51,8 @@ var EnergizeB = class EnergizeB {
         const c = Clutter.Color.from_string(settings.get_string('energize-b-color'))[1];
 
         // clang-format off
-          shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
-          shader.set_uniform_float(shader._uScale, 1, [settings.get_double('energize-b-scale')]);
+        shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+        shader.set_uniform_float(shader._uScale, 1, [settings.get_double('energize-b-scale')]);
         // clang-format on
       });
     });

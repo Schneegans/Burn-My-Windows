@@ -65,12 +65,12 @@ var Hexagon = class Hexagon {
         const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
-          shader.set_uniform_float(shader._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);
-          shader.set_uniform_float(shader._uSeed,             2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-          shader.set_uniform_float(shader._uScale,            1, [settings.get_double('hexagon-scale')]);
-          shader.set_uniform_float(shader._uLineWidth,        1, [settings.get_double('hexagon-line-width')]);
-          shader.set_uniform_float(shader._uGlowColor,        4, [gc.red / 255, gc.green / 255, gc.blue / 255, gc.alpha / 255]);
-          shader.set_uniform_float(shader._uLineColor,        4, [lc.red / 255, lc.green / 255, lc.blue / 255, lc.alpha / 255]);
+        shader.set_uniform_float(shader._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);
+        shader.set_uniform_float(shader._uSeed,             2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+        shader.set_uniform_float(shader._uScale,            1, [settings.get_double('hexagon-scale')]);
+        shader.set_uniform_float(shader._uLineWidth,        1, [settings.get_double('hexagon-line-width')]);
+        shader.set_uniform_float(shader._uGlowColor,        4, [gc.red / 255, gc.green / 255, gc.blue / 255, gc.alpha / 255]);
+        shader.set_uniform_float(shader._uLineColor,        4, [lc.red / 255, lc.green / 255, lc.blue / 255, lc.alpha / 255]);
         // clang-format on
       });
     });
