@@ -82,7 +82,7 @@ var Matrix = class Matrix {
       // impossible under GNOME 3.3x as this.get_pipeline() is not available. It was
       // called get_target() back then but this is not wrapped in GJS.
       // https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-3-36/clutter/clutter/clutter-offscreen-effect.c#L598
-      shader.connect('paint-target', (shader) => {
+      shader.connect('update-animation', (shader) => {
         const pipeline = shader.get_pipeline();
 
         // Bind the font texture.

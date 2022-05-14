@@ -30,9 +30,17 @@ const utils          = Me.imports.src.utils;
 // binding does not work properly). However, there are two drawbacks: On the one hand,  //
 // the shader source code is cached statically - this mean if we want to have a         //
 // different shader, we have to derive a new class. Therefore, each effect has to       //
-// derive its own class from the class below. The other drawback is the hard-coded use  //
-// of straight alpha (as opposed to premultiplied). This makes the shaders a bit more   //
-// complicated than required.                                                           //
+// derive its own class from the class below. This is encapsulated in the               //
+// ShaderFactory, however it is some really awkward code. The other drawback is the     //
+// hard-coded use of straight alpha (as opposed to premultiplied). This makes the       //
+// shaders a bit more complicated than required.                                        //
+//                                                                                      //
+// The Shader fires two signals:                                                        //
+//   * begin-animation:    This is called each time a new animation is started. It can  //
+//                         be used to set uniform values which do not change during the //
+//                         animation.                                                   //
+//   * update-animation:   This is called at each frame during the animation. It can be //
+//                         used to set uniforms which change during the animation.      //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var Shader = GObject.registerClass(
@@ -40,29 +48,31 @@ var Shader = GObject.registerClass(
     Signals: {
       'begin-animation':
         {param_types: [Gio.Settings.$gtype, GObject.TYPE_BOOLEAN, Clutter.Actor.$gtype]},
-      'update-animation': {param_types: [GObject.TYPE_DOUBLE, GObject.TYPE_DOUBLE]},
-      'paint-target': {param_types: []},
+      'update-animation': {param_types: [GObject.TYPE_DOUBLE, GObject.TYPE_DOUBLE]}
     }
   },
   class Shader extends Shell.GLSLEffect {  // --------------------------------------------
-    // The constructor is used to store all required uniform locations. Make sure to chain
-    // up to this base constructor before trying to access the uniform locations! It
-    // automagically loads the shader's source code from the resource file
-    // resources/shaders/<nick>.glsl resolving any #includes in this file.
-    _init(params) {
-      this._nick = params.nick;
+    // The constructor automagically loads the shader's source code (in
+    // vfunc_build_pipeline()) from the resource file resources/shaders/<nick>.glsl
+    // resolving any #includes in this file.
+    _init(nick) {
+      this._nick = nick;
 
       // This will call vfunc_build_pipeline().
       super._init();
 
+      // These will be updated during the animation.
+      this._progress = 0;
+      this._time     = 0;
+
+      // Store standard uniform locations.
       this._uForOpening = this.get_uniform_location('uForOpening');
       this._uProgress   = this.get_uniform_location('uProgress');
       this._uTime       = this.get_uniform_location('uTime');
       this._uSize       = this.get_uniform_location('uSize');
     }
 
-    // This is called each time the shader is used. This can be used to retrieve the
-    // configuration from the settings and update all uniforms accordingly.
+    // This is called once each time the shader is used.
     beginAnimation(settings, forOpening, actor) {
       this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
@@ -70,18 +80,24 @@ var Shader = GObject.registerClass(
       this.emit('begin-animation', settings, forOpening, actor);
     }
 
-    // This is called at each frame during the animation. This can be used to update
-    // uniforms which need to change each frame.
+    // This is called at each frame during the animation.
     updateAnimation(progress, time) {
       this.set_uniform_float(this._uProgress, 1, [progress]);
       this.set_uniform_float(this._uTime, 1, [time]);
 
-      this.emit('update-animation', progress, time);
+      // Store the current time and progress values. The corresponding signal is emitted a
+      // but later in vfunc_paint_target.
+      this._progress = progress;
+      this._time     = time;
     }
 
     // This is called by the constructor. This means, it's only called when the
     // effect is used for the first time.
     vfunc_build_pipeline() {
+
+      // Shell.GLSLEffect requires the declarations and the main source code as separate
+      // strings. As it's more convenient to store the in one GLSL file, we use a regex
+      // here to split the source code in two parts.
       const code = this._loadGLSLResource(`/shaders/${this._nick}.glsl`);
 
       // Match anything between the curly brackets of "void main() {...}".
@@ -94,9 +110,10 @@ var Shader = GObject.registerClass(
       this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
     }
 
-    // This is overridden to bind textures for drawing.
+    // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
+    // the handler. This could still be null if called from the updateAnimation() above.
     vfunc_paint_target(node, paint_context) {
-      this.emit('paint-target');
+      this.emit('update-animation', this._progress, this._time);
       super.vfunc_paint_target(node, paint_context);
     }
 
