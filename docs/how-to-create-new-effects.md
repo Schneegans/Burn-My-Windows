@@ -77,11 +77,55 @@ Just remember to replace `simple-fade` with your custom name!
 
 ### 2. Creating the Effect Class
 
-You will have to create a new file called `src/SimpleFade.js` and paste the following code to it.
+You will have to create a new GLSL file called `resources/shaders/simple-fade.glsl` and a new JavaScript source file called `src/SimpleFade.js`.
+Simply paste the following source code to the respective file.
 Please study this code carefully, all of it is explained with inline comments.
 
 <details>
-  <summary>Expand this to show the code.</summary>
+  <summary>Expand this to show the GLSL code.</summary>
+
+```glsl
+// The code below injects some standard uniforms which will be updated during the
+// animation. This includes:
+// bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
+// sampler2D uTexture:    Contains the texture of the window.
+// float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
+// float     uTime:       A steadily increasing value in seconds.
+// vec2      uSize:       The size of uTexture in pixels.
+#include "common/uniforms.glsl"
+
+// The width of the fading effect is loaded from the settings.
+uniform float uFadeWidth;
+
+void main() {
+  // Get the color from the window texture.
+  cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+
+  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+  if (cogl_color_out.a > 0) {
+    cogl_color_out.rgb /= cogl_color_out.a;
+  }
+
+  // Radial distance from window edge to the window's center.
+  float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
+
+  // This gradually dissolves from [1..0] from the outside to the center. We
+  // switch the direction for opening and closing.
+  float progress = uForOpening ? 1.0 - uProgress : uProgress;
+  float mask = (1.0 - progress * (1.0 + uFadeWidth) - dist + uFadeWidth) / uFadeWidth;
+
+  // Make the mask smoother.
+  mask = smoothstep(0, 1, mask);
+
+  // Apply the mask to the output.
+  cogl_color_out.a *= mask;
+}
+```
+
+</details>
+
+<details>
+  <summary>Expand this to show the JavaScript code.</summary>
 
 ```javascript
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -106,24 +150,40 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
+const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect ...                                                                      //
 // <- Please add a description of your effect here ->                                   //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file. When this
-// effect is used for the first time, an instance of this shader class is created. Once
-// the effect is finished, the shader will be stored in the freeShaders array and will
-// then be reused if a new shader is requested. ShaderClass which will be used whenever
-// this effect is used.
-let ShaderClass = null;
-let freeShaders = [];
-
-// The effect class is completely static. It can be used to get some metadata (like the
-// effect's name or supported GNOME Shell versions), to initialize the respective page of
-// the settings dialog, as well as to create the actual shader for the effect.
+// The effect class can be used to get some metadata (like the effect's name or supported
+// GNOME Shell versions), to initialize the respective page of the settings dialog, as
+// well as to create the actual shader for the effect.
 var SimpleFade = class SimpleFade {
+
+  // The constructor creates a ShaderFactory which will be used by extension.js to create
+  // shader instances for this effect. The shaders will be automagically created using the
+  // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
+  // newly created shader instance.
+  constructor() {
+    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
+      // We import Clutter in this function as it is not available in the preferences
+      // process. This creator function of the ShaderFactory is only called within GNOME
+      // Shell's process.
+      const Clutter = imports.gi.Clutter;
+
+      // Store uniform locations of newly created shaders.
+      shader._uForOpening = shader.get_uniform_location('uForOpening');
+      shader._uFadeWidth  = shader.get_uniform_location('uFadeWidth');
+
+      // Write all uniform values at the start of each animation.
+      shader.connect('begin-animation', (shader, settings) => {
+        shader.set_uniform_float(shader._uForOpening, 1, [forOpening]);
+        shader.set_uniform_float(shader._uFadeWidth, 1, [settings.get_double('simple-fade-width')]);
+      });
+    });
+  }
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -158,104 +218,12 @@ var SimpleFade = class SimpleFade {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is opened or closed with this
-  // effect. It returns an instance of the shader class, trying to reuse previously
-  // created shaders.
-  getShader(actor, settings, forOpening) {
-    let shader;
-
-    if (freeShaders.length == 0) {
-      shader = new ShaderClass();
-    } else {
-      shader = freeShaders.pop();
-    }
-
-    shader.updateAnimation(actor, settings, forOpening);
-
-    return shader;
-  }
-
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
   getActorScale(settings) {
     return {x: 1.0, y: 1.0};
   }
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// The shader class for this effect will only be registered in GNOME Shell's process    //
-// (not in the preferences process). It's done this way as Clutter may not be installed //
-// on the system and therefore the preferences would crash.                             //
-//////////////////////////////////////////////////////////////////////////////////////////
-
-if (utils.isInShellProcess()) {
-
-  const Shell          = imports.gi.Shell;
-  const shaderSnippets = Me.imports.src.shaderSnippets;
-
-  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
-    _init(settings, forOpening) {
-      super._init({shader_type: Clutter.ShaderType.FRAGMENT_SHADER});
-
-      this._uForOpening = this.get_uniform_location('uForOpening');
-      this._uFadeWidth  = this.get_uniform_location('uFadeWidth');
-    }
-
-    // This is called each  time the shader is used. This can be used to retrieve the
-    // configuration from the settings and update all uniforms accordingly.
-    updateAnimation(actor, settings, forOpening) {
-      this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uFadeWidth, 1, [settings.get_double('simple-fade-width')]);
-    }
-
-    // This is called by extension.js when the shader is not used anymore. We will store
-    // this instance of the shader so that it can be re-used in th future.
-    free() {
-      freeShaders.push(this);
-    }
-
-    // This is called by the constructor. This means, it's only called when the effect
-    // is used for the first time.
-    vfunc_build_pipeline() {
-
-      const declarations = `
-        // The code below injects some standard uniforms which will be updated during the
-        // animation. This includes:
-        // bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
-        // sampler2D uTexture:    Contains the texture of the window.
-        // float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
-        // float     uTime:       A steadily increasing value in seconds.
-        // vec2      uSize:       The size of uTexture in pixels.
-        #include "common/uniforms.glsl"
-
-        // The width of the fading effect is loaded from the settings.
-        uniform float uFadeWidth;
-      `;
-
-      const code = `
-        // Get the color from the window texture.
-        vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
-
-        // Radial distance from window edge to the window's center.
-        float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
-
-        // This gradually dissolves from [1..0] from the outside to the center. We
-        // switch the direction for opening and closing.
-        float progress = uForOpening ? 1.0 - uProgress : uProgress;
-        float mask = (1.0 - progress * (1.0 + uFadeWidth) - dist + uFadeWidth) / uFadeWidth;
-
-        // Make the mask smoother.
-        mask = smoothstep(0, 1, mask);
-
-        // Set the final output color. This uses premultiplied alpha.
-        cogl_color_out = windowColor * mask;
-      `;
-
-      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, code, true);
-    };
-  });
 }
 ```
 
@@ -270,7 +238,7 @@ Like this:
 ```javascript
 const ALL_EFFECTS = [
   ...
-  Me.imports.src.SimpleFade.SimpleFade,
+  new Me.imports.src.SimpleFade.SimpleFade(),
   ...
 ];
 ```
