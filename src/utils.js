@@ -65,12 +65,6 @@ function getGTKString() {
   return isGTK4() ? 'gtk4' : 'gtk3';
 }
 
-// This method returns true if called in GNOME Shell's process, false if called in the
-// preferences process.
-function isInShellProcess() {
-  return window.global && global.stage;
-}
-
 // This method returns true if the current GNOME Shell version matches the given
 // arguments.
 function shellVersionIs(major, minor) {

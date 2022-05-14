@@ -30,21 +30,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
-// New effects must be registered here and in extension.js.
-const ALL_EFFECTS = [
-  new Me.imports.src.Apparition.Apparition(),
-  new Me.imports.src.BrokenGlass.BrokenGlass(),
-  new Me.imports.src.EnergizeA.EnergizeA(),
-  new Me.imports.src.EnergizeB.EnergizeB(),
-  new Me.imports.src.Fire.Fire(),
-  new Me.imports.src.Hexagon.Hexagon(),
-  new Me.imports.src.Matrix.Matrix(),
-  new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
-  new Me.imports.src.TRexAttack.TRexAttack(),
-  new Me.imports.src.TVEffect.TVEffect(),
-  new Me.imports.src.Wisps.Wisps(),
-];
-
 // This template widget class is defined at the bottom of this file.
 var BurnMyWindowsEffectPage = null;
 
@@ -59,6 +44,22 @@ var PreferencesDialog = class PreferencesDialog {
   // ------------------------------------------------------------ constructor / destructor
 
   constructor() {
+
+    // New effects must be registered here and in extension.js.
+    this._ALL_EFFECTS = [
+      new Me.imports.src.Apparition.Apparition(),
+      new Me.imports.src.BrokenGlass.BrokenGlass(),
+      new Me.imports.src.EnergizeA.EnergizeA(),
+      new Me.imports.src.EnergizeB.EnergizeB(),
+      new Me.imports.src.Fire.Fire(),
+      new Me.imports.src.Hexagon.Hexagon(),
+      new Me.imports.src.Matrix.Matrix(),
+      new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
+      new Me.imports.src.TRexAttack.TRexAttack(),
+      new Me.imports.src.TVEffect.TVEffect(),
+      new Me.imports.src.Wisps.Wisps(),
+    ];
+
     // Load all of our resources.
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
@@ -113,7 +114,7 @@ var PreferencesDialog = class PreferencesDialog {
       const group = new Adw.PreferencesGroup({title: _('Effect Options')});
       this.gtkBoxAppend(this._widget, group);
 
-      ALL_EFFECTS.forEach(effect => {
+      this._ALL_EFFECTS.forEach(effect => {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
@@ -186,7 +187,7 @@ var PreferencesDialog = class PreferencesDialog {
       this.gtkBoxAppend(this._widget, stack);
 
       // Add all other effect pages.
-      ALL_EFFECTS.forEach(effect => {
+      this._ALL_EFFECTS.forEach(effect => {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
@@ -302,7 +303,7 @@ var PreferencesDialog = class PreferencesDialog {
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('open-effects', group);
 
-        ALL_EFFECTS.forEach(effect => {
+        this._ALL_EFFECTS.forEach(effect => {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
             const nick       = effect.getNick();
@@ -324,7 +325,7 @@ var PreferencesDialog = class PreferencesDialog {
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('close-effects', group);
 
-        ALL_EFFECTS.forEach(effect => {
+        this._ALL_EFFECTS.forEach(effect => {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
             const nick       = effect.getNick();

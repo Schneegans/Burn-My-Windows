@@ -13,14 +13,14 @@
 
 'use strict';
 
-const {Gio, GObject} = imports.gi;
+const {Gio} = imports.gi;
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
-const Effect         = Me.imports.src.Effect.Effect;
+const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
@@ -33,7 +33,50 @@ const Effect         = Me.imports.src.Effect.Effect;
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Fire = class Fire extends Effect {
+var Fire = class Fire {
+
+
+  // The constructor creates a ShaderFactory which will be used by extension.js to create
+  // shader instances for this effect. The shaders will be automagically created using the
+  // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
+  // newly created shader instance.
+  constructor() {
+    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
+      // We import Clutter in this function as it is not available in the preferences
+      // process. This creator function of the ShaderFactory is only called within GNOME
+      // Shell's process.
+      const Clutter = imports.gi.Clutter;
+
+      // Store all uniform locations.
+      shader._uGradient = [
+        shader.get_uniform_location('uGradient1'),
+        shader.get_uniform_location('uGradient2'),
+        shader.get_uniform_location('uGradient3'),
+        shader.get_uniform_location('uGradient4'),
+        shader.get_uniform_location('uGradient5'),
+      ];
+
+      shader._u3DNoise       = shader.get_uniform_location('u3DNoise');
+      shader._uScale         = shader.get_uniform_location('uScale');
+      shader._uMovementSpeed = shader.get_uniform_location('uMovementSpeed');
+
+      // And update all uniforms at the start of each animation.
+      shader.connect('begin-animation', (shader, settings) => {
+        for (let i = 1; i <= 5; i++) {
+          const c = Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
+          shader.set_uniform_float(
+            shader._uGradient[i - 1], 4,
+            [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+        }
+
+        // clang-format off
+        shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
+        shader.set_uniform_float(shader._uScale,         1, [settings.get_double('flame-scale')]);
+        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
+        // clang-format on
+      });
+    });
+  }
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -94,61 +137,11 @@ var Fire = class Fire extends Effect {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called by the effect's base class whenever a new shader is required. Since
-  // this shader depends on classes by GNOME Shell, we register it locally in this method
-  // as this file is also included from the preferences dialog where those classes would
-  // not be available.
-  createShader() {
-
-    // Only register the shader class when this method is called for the first time.
-    if (!this._ShaderClass) {
-
-      const Clutter = imports.gi.Clutter;
-      const Shader  = Me.imports.src.Shader.Shader;
-
-      this._ShaderClass = GObject.registerClass({}, class ShaderClass extends Shader {
-        // We use the constructor of the shader to store all required uniform locations.
-        _init(effect) {
-          super._init(effect);
-
-          this._uGradient = [
-            this.get_uniform_location('uGradient1'),
-            this.get_uniform_location('uGradient2'),
-            this.get_uniform_location('uGradient3'),
-            this.get_uniform_location('uGradient4'),
-            this.get_uniform_location('uGradient5'),
-          ];
-
-          this._u3DNoise       = this.get_uniform_location('u3DNoise');
-          this._uScale         = this.get_uniform_location('uScale');
-          this._uMovementSpeed = this.get_uniform_location('uMovementSpeed');
-        }
-
-        // This is called once each  time the shader is used. This can be used to retrieve
-        // the configuration from the settings and update all uniforms accordingly.
-        beginAnimation(actor, settings, forOpening) {
-          super.beginAnimation(actor, settings, forOpening);
-
-          // Load the gradient values from the settings.
-          for (let i = 1; i <= 5; i++) {
-            const c =
-              Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
-            this.set_uniform_float(
-              this._uGradient[i - 1], 4,
-              [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
-          }
-
-          // clang-format off
-          this.set_uniform_float(this._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
-          this.set_uniform_float(this._uScale,         1, [settings.get_double('flame-scale')]);
-          this.set_uniform_float(this._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
-          // clang-format on
-        }
-      });
-    }
-
-    // Finally, return a new instance of the shader class.
-    return new this._ShaderClass(this);
+  // The getActorScale() is called from extension.js to adjust the actor's size during the
+  // animation. This is useful if the effect requires drawing something beyond the usual
+  // bounds of the actor. This only works for GNOME 3.38+.
+  getActorScale(settings) {
+    return {x: 1.0, y: 1.0};
   }
 
   // ----------------------------------------------------------------------- private stuff

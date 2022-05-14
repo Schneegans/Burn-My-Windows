@@ -13,17 +13,24 @@
 
 'use strict';
 
+const GObject = imports.gi.GObject;
+
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me             = imports.misc.extensionUtils.getCurrentExtension();
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is the base class for all effects of Burn-My-Windows. It provides the logic     //
 // required for creating shader instances and reusing them as much as possible.         //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var Effect = class Effect {
+var ShaderFactory = class ShaderFactory {
 
   // The _freeShaders array contains previously created shaders which are not currently in
   // use.
-  constructor() {
+  constructor(nick, setupFunc) {
     this._freeShaders = [];
+    this._nick        = nick;
+    this._setupFunc   = setupFunc;
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -32,32 +39,30 @@ var Effect = class Effect {
   // effect. It returns an instance of the shader class, trying to reuse previously
   // created shaders. If a new shader instance is required, it calls this.createShader().
   // This method must be defined be the derived class!
-  getShader(actor, settings, forOpening) {
+  getShader() {
     let shader;
 
     if (this._freeShaders.length == 0) {
-      shader = this.createShader(this);
+
+      const typeName = `BurnMyWindowsShader_${this._nick}`;
+
+      if (GObject.type_from_name(typeName) == null) {
+        GObject.registerClass({GTypeName: typeName},
+                              class Shader extends Me.imports.src.Shader.Shader {});
+      }
+
+      shader = GObject.Object.new(GObject.type_from_name(typeName), {'nick': this._nick});
+
+      shader.returnToFactory = () => {
+        this._freeShaders.push(shader);
+      };
+
+      this._setupFunc(shader);
+
     } else {
       shader = this._freeShaders.pop();
     }
 
-    shader.updateAnimation(actor, settings, forOpening);
-
     return shader;
-  }
-
-  // This is called from extension.js whenever a shader previously retrieved with
-  // getShader() is not used anymore.
-  freeShader(shader) {
-    this._freeShaders.push(shader);
-  }
-
-  // ------------------------------------- "virtual" methods - feel free to override them!
-
-  // The getActorScale() is called from extension.js to adjust the actor's size during the
-  // animation. Override this, if your effect requires drawing something beyond the usual
-  // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings) {
-    return {x: 1.0, y: 1.0};
   }
 }
