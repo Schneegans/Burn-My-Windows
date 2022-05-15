@@ -110,14 +110,12 @@ capture_effect() {
   set_setting "open-preview-effect" "${1}"
   set_setting "close-preview-effect" "${1}"
 
-  sleep 2
   do_in_pod gnome-extensions prefs "${EXTENSION}"
-  sleep 2
+  sleep 3
   capture "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png"
   send_keystroke "Alt+F4"
-  sleep 2
+  sleep 3
   capture "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png"
-  sleep 2
 }
 
 # ----------------------------------------------------- wait for the container to start up
