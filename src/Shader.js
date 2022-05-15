@@ -85,8 +85,6 @@ var Shader = GObject.registerClass(
       this.set_uniform_float(this._uProgress, 1, [progress]);
       this.set_uniform_float(this._uTime, 1, [time]);
 
-      utils.debug('updateAnimation ' + progress + ' ' + time);
-
       // Store the current time and progress values. The corresponding signal is emitted a
       // but later in vfunc_paint_target.
       this._progress = progress;
@@ -114,9 +112,9 @@ var Shader = GObject.registerClass(
 
     // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
     // the handler. This could still be null if called from the updateAnimation() above.
-    vfunc_paint_target(node, paint_context) {
+    vfunc_paint_target(...params) {
       this.emit('update-animation', this._progress, this._time);
-      super.vfunc_paint_target(node, paint_context);
+      super.vfunc_paint_target(...params);
     }
 
     // --------------------------------------------------------------------- private stuff
