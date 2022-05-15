@@ -494,7 +494,7 @@ class Extension {
     // Set other uniforms each frame.
     transition.connect('new-frame', (t) => {
       if (testMode) {
-        shader.updateAnimation(0.5, duration / 2);
+        shader.updateAnimation(0.5, 0.001 * duration * 0.5);
       } else {
         shader.updateAnimation(t.get_progress(), 0.001 * t.get_elapsed_time());
       }
