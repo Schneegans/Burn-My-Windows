@@ -491,14 +491,14 @@ class Extension {
     // Set one-time uniforms.
     shader.beginAnimation(this._settings, forOpening, actor);
 
-    // If not in test mode, we update uniforms at each frame.
-    if (testMode) {
-      shader.updateAnimation(0.5, duration / 2);
-    } else {
-      transition.connect('new-frame', (t) => {
+    // Set other uniforms each frame.
+    transition.connect('new-frame', (t) => {
+      if (testMode) {
+        shader.updateAnimation(0.5, duration / 2);
+      } else {
         shader.updateAnimation(t.get_progress(), 0.001 * t.get_elapsed_time());
-      });
-    }
+      }
+    });
 
     // Remove the effect if the animation finished or was interrupted.
     if (forOpening) {
