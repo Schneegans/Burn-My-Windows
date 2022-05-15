@@ -85,6 +85,8 @@ var Shader = GObject.registerClass(
       this.set_uniform_float(this._uProgress, 1, [progress]);
       this.set_uniform_float(this._uTime, 1, [time]);
 
+      utils.debug('updateAnimation ' + progress + ' ' + time);
+
       // Store the current time and progress values. The corresponding signal is emitted a
       // but later in vfunc_paint_target.
       this._progress = progress;
