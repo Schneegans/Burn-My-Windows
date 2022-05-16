@@ -4,8 +4,10 @@
 // uProgress:   A value which transitions from 0 to 1 during the entire animation.
 // uTime:       A steadily increasing value in seconds.
 // uSize:       The size of uTexture in pixels.
+// uPadding:    The empty area around the actual window (e.g. where the shadow is drawn).
 uniform bool uForOpening;
 uniform sampler2D uTexture;
 uniform float uProgress;
 uniform float uTime;
 uniform vec2 uSize;
+uniform float uPadding;

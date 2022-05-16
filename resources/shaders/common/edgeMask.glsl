@@ -11,11 +11,22 @@ float getEdgeMask(vec2 uv, vec2 maxUV, float fadeWidth) {
   return mask;
 }
 
-float getAbsoluteEdgeMask(float fadePixels) {
-  vec2 uv = cogl_tex_coord_in[0].st * uSize;
-  return getEdgeMask(uv, uSize, fadePixels);
+// Returns an edge mask which fades to zero at the boundaries of the actor. The width of
+// the fade zone is given in pixels. This uses the standard uniforms uSize and uPadding.
+// This means that the fading zone is not actually at the actors boundaries but at the
+// position of the window border in the texture.
+// The offset paramter controls whether the fading is placed inside the window borders
+// (offset = 0), ontop the window borders (offset = 0.5) or outside the window borders
+// (offset = 1).
+float getAbsoluteEdgeMask(float fadePixels, float offset) {
+  float padding = max(0, uPadding - fadePixels * offset);
+  vec2 uv       = cogl_tex_coord_in[0].st * uSize - padding;
+  return getEdgeMask(uv, uSize - 2.0 * padding, fadePixels);
 }
 
+// Returns an edge mask which fades to zero at the boundaries of the actor. The width of
+// the fade zone is given relative to the actor size. This neither uses uSize and
+// uPadding.
 float getRelativeEdgeMask(float fadeAmount) {
   vec2 uv = cogl_tex_coord_in[0].st;
   return getEdgeMask(uv, vec2(1.0), fadeAmount);

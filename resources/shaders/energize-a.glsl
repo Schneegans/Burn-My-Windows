@@ -30,7 +30,7 @@ vec2 getMasks(float progress) {
   atomMask *= smoothstep(1.0, 0.0, fadeOutProgress);
 
   // Fade-out the masks at the window edges.
-  float edgeFade = getAbsoluteEdgeMask(EDGE_FADE_WIDTH);
+  float edgeFade = getAbsoluteEdgeMask(EDGE_FADE_WIDTH, 0.5);
   atomMask *= edgeFade;
 
   float heartMask = getRelativeEdgeMask(0.5);

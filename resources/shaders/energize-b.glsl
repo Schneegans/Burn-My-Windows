@@ -47,7 +47,7 @@ vec4 getMasks(float progress) {
   streakMask = max(streakMask, showerMask);
 
   // Fade-out the masks at the window edges.
-  float edgeFade = getAbsoluteEdgeMask(EDGE_FADE);
+  float edgeFade = getAbsoluteEdgeMask(EDGE_FADE, 0.5);
   streakMask *= edgeFade;
   showerMask *= edgeFade;
 

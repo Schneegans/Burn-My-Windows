@@ -72,7 +72,7 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
   }
 
   // Fade at window borders.
-  effectMask *= getAbsoluteEdgeMask(edgeFadeWidth);
+  effectMask *= getAbsoluteEdgeMask(edgeFadeWidth, 0.5);
 
   if (uForOpening) {
     windowMask = 1.0 - windowMask;
