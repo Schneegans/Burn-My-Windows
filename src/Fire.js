@@ -13,13 +13,14 @@
 
 'use strict';
 
-const {Gio, GObject} = imports.gi;
+const {Gio} = imports.gi;
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
+const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
@@ -29,23 +30,58 @@ const utils          = Me.imports.src.utils;
 // there are a couple of moving gradients which fade-in or fade-out the fire effect.    //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// The shader class for this effect is registered further down in this file. When this
-// effect is used for the first time, an instance of this shader class is created. Once
-// the effect is finished, the shader will be stored in the freeShaders array and will
-// then be reused if a new shader is requested. ShaderClass which will be used whenever
-// this effect is used.
-let ShaderClass = null;
-let freeShaders = [];
-
-// The effect class is completely static. It can be used to get some metadata (like the
-// effect's name or supported GNOME Shell versions), to initialize the respective page of
-// the settings dialog, as well as to create the actual shader for the effect.
+// The effect class can be used to get some metadata (like the effect's name or supported
+// GNOME Shell versions), to initialize the respective page of the settings dialog, as
+// well as to create the actual shader for the effect.
 var Fire = class Fire {
+
+
+  // The constructor creates a ShaderFactory which will be used by extension.js to create
+  // shader instances for this effect. The shaders will be automagically created using the
+  // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
+  // newly created shader instance.
+  constructor() {
+    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
+      // We import Clutter in this function as it is not available in the preferences
+      // process. This creator function of the ShaderFactory is only called within GNOME
+      // Shell's process.
+      const Clutter = imports.gi.Clutter;
+
+      // Store all uniform locations.
+      shader._uGradient = [
+        shader.get_uniform_location('uGradient1'),
+        shader.get_uniform_location('uGradient2'),
+        shader.get_uniform_location('uGradient3'),
+        shader.get_uniform_location('uGradient4'),
+        shader.get_uniform_location('uGradient5'),
+      ];
+
+      shader._u3DNoise       = shader.get_uniform_location('u3DNoise');
+      shader._uScale         = shader.get_uniform_location('uScale');
+      shader._uMovementSpeed = shader.get_uniform_location('uMovementSpeed');
+
+      // And update all uniforms at the start of each animation.
+      shader.connect('begin-animation', (shader, settings) => {
+        for (let i = 1; i <= 5; i++) {
+          const c = Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
+          shader.set_uniform_float(
+            shader._uGradient[i - 1], 4,
+            [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+        }
+
+        // clang-format off
+        shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
+        shader.set_uniform_float(shader._uScale,         1, [settings.get_double('flame-scale')]);
+        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
+        // clang-format on
+      });
+    });
+  }
 
   // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
-  static getMinShellVersion() {
+  getMinShellVersion() {
     return [3, 36];
   }
 
@@ -53,22 +89,21 @@ var Fire = class Fire {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
-  static getNick() {
+  getNick() {
     return 'fire';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  static getLabel() {
+  getLabel() {
     return _('Fire');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog. It loads the settings page for this effect,
-  // binds all properties to the settings and appends the page to the main stack of the
-  // preferences dialog.
-  static getPreferences(dialog) {
+  // and binds all properties to the settings.
+  getPreferences(dialog) {
 
     // Add the settings page to the builder.
     dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Fire.ui`);
@@ -94,7 +129,7 @@ var Fire = class Fire {
     });
 
     // Initialize the fire-preset dropdown.
-    Fire._createFirePresets(dialog);
+    this._createFirePresets(dialog);
 
     // Finally, return the new settings page.
     return dialog.getBuilder().get_object('fire-prefs');
@@ -102,40 +137,17 @@ var Fire = class Fire {
 
   // ---------------------------------------------------------------- API for extension.js
 
-  // This is called from extension.js whenever a window is opened or closed with this
-  // effect. It returns an instance of the shader class, trying to reuse previously
-  // created shaders.
-  static getShader(actor, settings, forOpening) {
-    let shader;
-
-    if (freeShaders.length == 0) {
-      shader = new ShaderClass();
-    } else {
-      shader = freeShaders.pop();
-    }
-
-    shader.setUniforms(actor, settings, forOpening);
-
-    return shader;
-  }
-
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  static getActorScale(settings) {
+  getActorScale(settings) {
     return {x: 1.0, y: 1.0};
-  }
-
-  // This is called from extension.js if the extension is disabled. This should free all
-  // static resources.
-  static cleanUp() {
-    freeShaders = [];
   }
 
   // ----------------------------------------------------------------------- private stuff
 
   // This populates the preset dropdown menu for the fire options.
-  static _createFirePresets(dialog) {
+  _createFirePresets(dialog) {
     dialog.getBuilder().get_object('fire-prefs').connect('realize', (widget) => {
       const presets = [
         {
@@ -220,75 +232,4 @@ var Fire = class Fire {
       root.insert_action_group(groupName, group);
     });
   }
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-// The shader class for this effect will only be registered in GNOME Shell's process    //
-// (not in the preferences process). It's done this way as Clutter may not be installed //
-// on the system and therefore the preferences would crash.                             //
-//////////////////////////////////////////////////////////////////////////////////////////
-
-if (utils.isInShellProcess()) {
-
-  const {Clutter, Shell} = imports.gi;
-
-  ShaderClass = GObject.registerClass({}, class ShaderClass extends Shell.GLSLEffect {
-    // This is called when the effect is used for the first time. This can be used to
-    // store all required uniform locations.
-    _init() {
-      super._init();
-
-      this._uGradient = [
-        this.get_uniform_location('uGradient1'),
-        this.get_uniform_location('uGradient2'),
-        this.get_uniform_location('uGradient3'),
-        this.get_uniform_location('uGradient4'),
-        this.get_uniform_location('uGradient5'),
-      ];
-
-      this._u3DNoise       = this.get_uniform_location('u3DNoise');
-      this._uScale         = this.get_uniform_location('uScale');
-      this._uMovementSpeed = this.get_uniform_location('uMovementSpeed');
-    }
-
-    // This is called each time the effect is used. This can be used to retrieve the
-    // configuration from the settings and update all uniforms accordingly.
-    setUniforms(actor, settings, forOpening) {
-
-      // Load the gradient values from the settings.
-      for (let i = 1; i <= 5; i++) {
-        const c = Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
-        this.set_uniform_float(this._uGradient[i - 1], 4,
-                               [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
-      }
-
-      // clang-format off
-      this.set_uniform_float(this._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
-      this.set_uniform_float(this._uScale,         1, [settings.get_double('flame-scale')]);
-      this.set_uniform_float(this._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
-      // clang-format on
-    }
-
-    // This is called by extension.js when the shader is not used anymore. We will store
-    // this instance of the shader so that it can be re-used in th future.
-    free() {
-      freeShaders.push(this);
-    }
-
-    // This is called by the constructor. This means, it's only called when the effect
-    // is used for the first time.
-    vfunc_build_pipeline() {
-      const code = utils.loadGLSLResource(`/shaders/${Fire.getNick()}.glsl`);
-
-      // Match anything between the curly brackets of "void main() {...}".
-      const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
-      const match = regex.exec(code);
-
-      const declarations = code.substr(0, match.index);
-      const main         = match[1];
-
-      this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
-    }
-  });
 }

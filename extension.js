@@ -31,21 +31,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 
-// New effects must be registered here and in prefs.js.
-const ALL_EFFECTS = [
-  Me.imports.src.Apparition.Apparition,
-  Me.imports.src.BrokenGlass.BrokenGlass,
-  Me.imports.src.EnergizeA.EnergizeA,
-  Me.imports.src.EnergizeB.EnergizeB,
-  Me.imports.src.Fire.Fire,
-  Me.imports.src.Hexagon.Hexagon,
-  Me.imports.src.Matrix.Matrix,
-  Me.imports.src.SnapOfDisintegration.SnapOfDisintegration,
-  Me.imports.src.TRexAttack.TRexAttack,
-  Me.imports.src.TVEffect.TVEffect,
-  Me.imports.src.Wisps.Wisps,
-];
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
 // of effects. The effects are implemented using GLSL shaders which are applied to the  //
@@ -62,6 +47,21 @@ class Extension {
   // This function could be called after the extension is enabled, which could be done
   // from GNOME Tweaks, when you log in or when the screen is unlocked.
   enable() {
+
+    // New effects must be registered here and in prefs.js.
+    this._ALL_EFFECTS = [
+      new Me.imports.src.Apparition.Apparition(),
+      new Me.imports.src.BrokenGlass.BrokenGlass(),
+      new Me.imports.src.EnergizeA.EnergizeA(),
+      new Me.imports.src.EnergizeB.EnergizeB(),
+      new Me.imports.src.Fire.Fire(),
+      new Me.imports.src.Hexagon.Hexagon(),
+      new Me.imports.src.Matrix.Matrix(),
+      new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
+      new Me.imports.src.TRexAttack.TRexAttack(),
+      new Me.imports.src.TVEffect.TVEffect(),
+      new Me.imports.src.Wisps.Wisps(),
+    ];
 
     // Load all of our resources.
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
@@ -222,7 +222,7 @@ class Extension {
         const shader = actor.get_effect('burn-my-windows-effect');
         if (shader) {
           actor.remove_effect(shader);
-          shader.free();
+          shader.returnToFactory();
         }
       }
 
@@ -306,7 +306,7 @@ class Extension {
   disable() {
 
     // Free all effect resources.
-    ALL_EFFECTS.forEach(Effect => Effect.cleanUp());
+    this._ALL_EFFECTS = [];
 
     // Unregister our resources.
     Gio.resources_unregister(this._resources);
@@ -365,13 +365,13 @@ class Extension {
       return;
     }
 
-    // There is the weird case where an animation is already. This happens when a window
-    // is closed which has been created before the session was started (e.g. when GNOME
-    // Shell has been restarted in the meantime).
+    // There is the weird case where an animation is already ongoing. This happens when a
+    // window is closed which has been created before the session was started (e.g. when
+    // GNOME Shell has been restarted in the meantime).
     const oldShader = actor.get_effect('burn-my-windows-effect');
     if (oldShader) {
       actor.remove_effect(oldShader);
-      oldShader.free();
+      oldShader.returnToFactory();
     }
 
     // ------------------------------------------------------------------ choose an effect
@@ -381,9 +381,7 @@ class Extension {
 
     // First we check if an effect is to be previewed.
     if (previewNick != '') {
-      effect = ALL_EFFECTS.find(Effect => {
-        return Effect.getNick() == previewNick;
-      });
+      effect = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
 
       // Only preview the effect once.
       this._settings.set_string(action + '-preview-effect', '');
@@ -393,8 +391,8 @@ class Extension {
     else {
 
       // Therefore, we first create a list of all currently enabled effects.
-      const enabled = ALL_EFFECTS.filter(Effect => {
-        return this._settings.get_boolean(`${Effect.getNick()}-${action}-effect`);
+      const enabled = this._ALL_EFFECTS.filter(effect => {
+        return this._settings.get_boolean(`${effect.getNick()}-${action}-effect`);
       });
 
       // And then choose a random effect.
@@ -476,43 +474,41 @@ class Extension {
     // -------------------------------------------------------------------- add the shader
 
     // Now add a cool shader to our window actor!
-    const shader = effect.getShader(actor, this._settings, forOpening);
+    const shader = effect.shaderFactory.getShader();
 
-    if (shader) {
-      // There should always be an opacity transition going on...
-      const transition = actor.get_transition('opacity');
+    // There should always be an opacity transition going on...
+    const transition = actor.get_transition('opacity');
 
-      if (!transition) {
-        this._fixAnimationTimes(isDialogWindow, forOpening, null);
-        utils.debug('Cannot setup shader without opacity transition.')
-        return;
+    if (!transition) {
+      this._fixAnimationTimes(isDialogWindow, forOpening, null);
+      utils.debug('Cannot setup shader without opacity transition.')
+      return;
+    }
+
+    // Assign the effect to the window actor!
+    actor.add_effect_with_name('burn-my-windows-effect', shader);
+
+    // Set one-time uniforms.
+    shader.beginAnimation(this._settings, forOpening, actor);
+
+    // Set other uniforms each frame.
+    transition.connect('new-frame', (t) => {
+      if (testMode) {
+        shader.updateAnimation(0.5, 0.001 * duration * 0.5);
+      } else {
+        shader.updateAnimation(t.get_progress(), 0.001 * t.get_elapsed_time());
       }
+    });
 
-      actor.add_effect_with_name('burn-my-windows-effect', shader);
-
-      // Update uniforms at each frame.
-      transition.connect('new-frame', (t) => {
-        shader.set_uniform_float(shader.get_uniform_location('uForOpening'), 1,
-                                 [forOpening]);
-        shader.set_uniform_float(shader.get_uniform_location('uProgress'), 1,
-                                 [testMode ? 0.5 : t.get_progress()]);
-        shader.set_uniform_float(
-          shader.get_uniform_location('uTime'), 1,
-          [testMode ? duration / 2 : 0.001 * t.get_elapsed_time()]);
-        shader.set_uniform_float(shader.get_uniform_location('uSize'), 2,
-                                 [actor.width, actor.height]);
+    // Remove the effect if the animation finished or was interrupted.
+    if (forOpening) {
+      transition.connect('stopped', () => {
+        const oldShader = actor.get_effect('burn-my-windows-effect');
+        if (oldShader) {
+          actor.remove_effect(oldShader);
+          oldShader.returnToFactory();
+        }
       });
-
-      // Remove the effect if the animation finished or was interrupted.
-      if (forOpening) {
-        transition.connect('stopped', () => {
-          const oldShader = actor.get_effect('burn-my-windows-effect');
-          if (oldShader) {
-            actor.remove_effect(oldShader);
-            oldShader.free();
-          }
-        });
-      }
     }
 
     // Finally, ensure that all animation times are set properly so that other extensions

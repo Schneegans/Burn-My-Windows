@@ -13,8 +13,7 @@
 
 'use strict';
 
-const {Gtk, Gio} = imports.gi;
-const ByteArray  = imports.byteArray;
+const {Gtk} = imports.gi;
 
 // Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
 // -2, and -1 are returned respectively.
@@ -66,12 +65,6 @@ function getGTKString() {
   return isGTK4() ? 'gtk4' : 'gtk3';
 }
 
-// This method returns true if called in GNOME Shell's process, false if called in the
-// preferences process.
-function isInShellProcess() {
-  return window.global && global.stage;
-}
-
 // This method returns true if the current GNOME Shell version matches the given
 // arguments.
 function shellVersionIs(major, minor) {
@@ -90,28 +83,4 @@ function shellVersionIsAtLeast(major, minor) {
   }
 
   return false;
-}
-
-// This loads the file at 'path' contained in the extension's resources to a JavaScript
-// string.
-function loadStringResource(path) {
-  const data = Gio.resources_lookup_data(path, 0);
-  return ByteArray.toString(ByteArray.fromGBytes(data));
-}
-
-// This loads a GLSL file from the extension's resources to a JavaScript string. Any
-// #include statements in this file are replaced with the corresponding file contents.
-function loadGLSLResource(path) {
-  let code = loadStringResource(path);
-
-  // This regex matches either #include "..." or #include <...>. The part between the
-  // brackets is captured in the capture group.
-  const regex = RegExp('#include ["<](.+)[">]', 'g');
-
-  code = code.replace(regex, (m, file) => {
-    return loadStringResource('/shaders/' + file);
-  });
-
-  // Add a trailing newline. Else the GLSL compiler complains...
-  return code + '\n';
 }
