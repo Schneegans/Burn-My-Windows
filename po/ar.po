@@ -8,143 +8,147 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-05 09:22+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-05-17 19:18+0000\n"
+"Last-Translator: fawaz006 <fawaz27000@hotmail.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: prefs.js:112
 msgid "Effect Options"
-msgstr ""
+msgstr "خيارات التأثير"
 
 #: prefs.js:140
 msgid "Go Back"
-msgstr ""
+msgstr "عُد"
 
 #: prefs.js:182
 msgid "General Options"
-msgstr ""
+msgstr "خيارات عامة"
 
 #: prefs.js:276
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "الرعاة الذهبيون"
 
 #: prefs.js:279
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "الرعاة الفضيون"
 
 #: prefs.js:282
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "الرعاة البرونزيون"
 
 #: prefs.js:285
 msgid "Past Sponsors"
-msgstr ""
+msgstr "الرعاة السابقون"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:510
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "معاينة لـ %s"
 
 #: prefs.js:532
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "أغلق هذه النافذة لمعاينة التأثير!"
 
 #: src/BrokenGlass.js:57
 msgid "Broken Glass"
-msgstr ""
+msgstr "زجاج المكسور"
 
 #: src/TVEffect.js:56
 msgid "TV Effect"
-msgstr ""
+msgstr "تأثير التلفزيون"
 
 #: src/TRexAttack.js:56
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "هجوم تي ريكس"
 
 #: src/SnapOfDisintegration.js:60
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "الانفجار القطع"
 
 #: src/Wisps.js:55
 msgid "Wisps"
-msgstr ""
+msgstr "قطع"
 
 #: src/Fire.js:58
 msgid "Fire"
-msgstr ""
+msgstr "نار"
 
 #: src/Fire.js:130
 msgid "Default Fire"
-msgstr ""
+msgstr "النار الافتراضية"
 
 #: src/Fire.js:140
 msgid "Hell Fire"
-msgstr ""
+msgstr "نار حارقة"
 
 #: src/Fire.js:150
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "داكن وقذر"
 
 #: src/Fire.js:160
 msgid "Cold Breeze"
-msgstr ""
+msgstr "نسيم بارد"
 
 #: src/Fire.js:170
 msgid "Santa is Coming"
-msgstr ""
+msgstr "سانتا قادم"
 
 #: src/Hexagon.js:53
 msgid "Hexagon"
-msgstr ""
+msgstr "سداسي الزوايا"
 
 #: src/EnergizeA.js:54
 msgid "Energize A"
-msgstr ""
+msgstr "تنشيط أ"
 
 #: src/Apparition.js:57
 msgid "Apparition"
-msgstr ""
+msgstr "شبح"
 
 #: src/EnergizeB.js:54
 msgid "Energize B"
-msgstr ""
+msgstr "تنشيط ب"
 
 #: src/Matrix.js:58
 msgid "Matrix"
-msgstr ""
+msgstr "ماتركس"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr ""
+msgstr "قم بزيارة الصفحة الرئيسية"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
-msgstr ""
+msgstr "مشاهدة ملف Changelog"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr ""
+msgstr "الإبلاغ عن خلل"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
-msgstr ""
+msgstr "انشاء تأثير"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr ""
+msgstr "ترجم"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
-msgstr ""
+msgstr "تبرع"
 
 #: resources/ui/common/main-menu.ui:41
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "حول Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -157,7 +161,7 @@ msgstr ""
 #: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
 #: resources/ui/gtk3/Apparition.ui:63
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "المدة [م,ث]"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -196,7 +200,7 @@ msgstr ""
 #: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
 #: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "إعادة التعيين إلى القيمة الافتراضية"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
@@ -206,42 +210,42 @@ msgstr ""
 #: resources/ui/gtk3/Fire.ui:141 resources/ui/gtk3/EnergizeA.ui:91
 #: resources/ui/gtk3/Hexagon.ui:98 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
-msgstr ""
+msgstr "مقاس"
 
 #: resources/ui/gtk4/Matrix.ui:116 resources/ui/gtk4/Apparition.ui:70
 #: resources/ui/gtk3/Apparition.ui:112
 msgid "Randomness"
-msgstr ""
+msgstr "العشوائية"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "تجاوز رأسي"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
-msgstr ""
+msgstr "لون الممر"
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
-msgstr ""
+msgstr "لون الحافة"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr ""
+msgstr "الجاذبية"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "قوة النفخ"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "تتحطم من موقع المؤشر"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
-msgstr ""
+msgstr "ستنتقل القطع بعيدًا عن مكان وجود مؤشر الماوس عند إغلاق النافذة."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/SnapOfDisintegration.ui:116
 #: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
@@ -249,110 +253,111 @@ msgstr ""
 #: resources/ui/gtk3/TVEffect.ui:83 resources/ui/gtk3/EnergizeA.ui:139
 #: resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr ""
+msgstr "اللون"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr ""
+msgstr "الإعدادات المسبقة"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr ""
+msgstr "السرعة"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "ضوضاء ثلاثية الأبعاد"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr ""
+"يُنشئ حريقًا أكثر ديناميكية ولكنه يتطلب المزيد من طاقة وحدة معالجة الرسومات."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr ""
+msgstr "ميل"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "حجم خدش المخلب"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "عدد خدوش المخلب"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "تأثير الاعوجاج"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr ""
+msgstr "ألوان مضيئة"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
-msgstr ""
+msgstr "معاينة هذا التأثير"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "عرض خط الشبكة"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr ""
+msgstr "لون السطر"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
-msgstr ""
+msgstr "توهج اللون"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
-msgstr ""
+msgstr "مزج مضاف"
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "قد ترغب في تمكين هذا لسمات النوافذ المظلمة."
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "مرحبًا بك في Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr ""
+msgstr "إذا كنت تحب هذا الامتداد، فوصي به لأصدقائك :)"
 
 #: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
-msgstr ""
+msgstr "افتح نافذة التأثيرات"
 
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "إذا تم تحديد عدة خيارات، يتم اختيار واحد بشكل عشوائي."
 
 #: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
 #: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
 msgid "Choose Effects"
-msgstr ""
+msgstr "اختر التأثيرات"
 
 #: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
 msgid "Close Window Animation"
-msgstr ""
+msgstr "إغلاق التأثيرات للنافذة"
 
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "أضف أيضًا تأثيرات إلى الحوارات"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "شدة الدوران"
 
 #: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
 msgid "Shake Intensity"
-msgstr ""
+msgstr "شدة ألاهتزاز"
 
 #: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
 msgid "Suction Intensity"
-msgstr ""
+msgstr "شدة السحب"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr ""
+msgstr "اختر إعدادًا مسبقًا"
