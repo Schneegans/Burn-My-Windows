@@ -70,10 +70,17 @@ var Shader = GObject.registerClass(
       this._uProgress   = this.get_uniform_location('uProgress');
       this._uTime       = this.get_uniform_location('uTime');
       this._uSize       = this.get_uniform_location('uSize');
+      this._uPadding    = this.get_uniform_location('uPadding');
     }
 
     // This is called once each time the shader is used.
     beginAnimation(settings, forOpening, actor) {
+
+      // This is not necessarily symmetric, but I haven't figured out a way to
+      // get the actual values...
+      const padding = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
+
+      this.set_uniform_float(this._uPadding, 1, [padding]);
       this.set_uniform_float(this._uForOpening, 1, [forOpening]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 

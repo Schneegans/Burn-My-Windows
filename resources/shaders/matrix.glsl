@@ -52,7 +52,7 @@ vec2 getRain(vec2 fragCoord) {
   float windowAlpha = 1 - clamp(uSize.y * distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
 
   // Fade at window borders.
-  rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE);
+  rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE, 0.5);
 
   // Add some variation to the drop start and end position.
   float shorten =
