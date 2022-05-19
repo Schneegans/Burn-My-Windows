@@ -24,7 +24,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 // possible in order to avoid memory leaks.                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var ShaderFactory = class ShaderFactory {
+var ShaderFactory = class {
 
   // Creates a new ShaderFactory. Requires the nick of the effect and a callback function
   // which will be called whenever a new shader is created.

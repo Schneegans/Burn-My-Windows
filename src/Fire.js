@@ -33,7 +33,7 @@ const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Fire = class Fire {
+var Fire = class {
 
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
