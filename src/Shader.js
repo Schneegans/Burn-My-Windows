@@ -76,6 +76,10 @@ var Shader = GObject.registerClass(
     // This is called once each time the shader is used.
     beginAnimation(settings, forOpening, actor) {
 
+      // Reset progress values.
+      this._progress = 0;
+      this._time     = 0;
+
       // This is not necessarily symmetric, but I haven't figured out a way to
       // get the actual values...
       const padding = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
@@ -89,11 +93,8 @@ var Shader = GObject.registerClass(
 
     // This is called at each frame during the animation.
     updateAnimation(progress, time) {
-      this.set_uniform_float(this._uProgress, 1, [progress]);
-      this.set_uniform_float(this._uTime, 1, [time]);
-
-      // Store the current time and progress values. The corresponding signal is emitted a
-      // but later in vfunc_paint_target.
+      // Store the current time and progress values. The corresponding signal is emitted
+      // each frame in vfunc_paint_target.
       this._progress = progress;
       this._time     = time;
     }
@@ -121,6 +122,8 @@ var Shader = GObject.registerClass(
     // the handler. This could still be null if called from the updateAnimation() above.
     vfunc_paint_target(...params) {
       this.emit('update-animation', this._progress, this._time);
+      this.set_uniform_float(this._uProgress, 1, [this._progress]);
+      this.set_uniform_float(this._uTime, 1, [this._time]);
       super.vfunc_paint_target(...params);
     }
 
