@@ -6,9 +6,9 @@
 
 #### Enhancements
 
-* The standard uniforms of all shaders have been updated: The window size is now passed as a `vec2` and there is a new `bool uForOpening` which is set to `true` if a window-open animation is ongoing, to `false` otherwise.
+* The shaders are now aware of the actual window size (e.g. excluding the area where the shadow is drawn). For instance, this **fixes the drawing of the effects outside the window bounds** for `libadwaita` apps.
 * Refactored how the size and opacity transitions of the window actors are set up. Effects can now only specify a desired actor scale which will not change during the animation. All dynamic scaling and fading must be implemented in the shaders now.
-* The shaders are now aware of the actual window size (e.g. excluding the area where the shadow is drawn). For instance, this fixes the drawing of the effects outside the window bounds for `libadwaita` apps.
+* The standard uniforms of all shaders have been updated: The window size is now passed as a `vec2` and there is a new `bool uForOpening` which is set to `true` if a window-open animation is ongoing, to `false` otherwise.
 
 #### Bug Fixes
 
