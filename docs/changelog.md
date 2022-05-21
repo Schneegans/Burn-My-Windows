@@ -2,7 +2,7 @@
 
 ## [Burn My Windows 16](https://github.com/schneegans/Burn-My-Windows/releases/tag/v16)
 
-**Release Date:** TBD
+**Release Date:** 2022-05-21
 
 #### Enhancements
 
