@@ -169,18 +169,12 @@ var SimpleFade = class {
   // newly created shader instance.
   constructor() {
     this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
-      // We import Clutter in this function as it is not available in the preferences
-      // process. This creator function of the ShaderFactory is only called within GNOME
-      // Shell's process.
-      const Clutter = imports.gi.Clutter;
 
       // Store uniform locations of newly created shaders.
-      shader._uForOpening = shader.get_uniform_location('uForOpening');
-      shader._uFadeWidth  = shader.get_uniform_location('uFadeWidth');
+      shader._uFadeWidth = shader.get_uniform_location('uFadeWidth');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        shader.set_uniform_float(shader._uForOpening, 1, [forOpening]);
         shader.set_uniform_float(shader._uFadeWidth, 1, [settings.get_double('simple-fade-width')]);
       });
     });
