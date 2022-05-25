@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 17](https://github.com/schneegans/Burn-My-Windows/releases/tag/v17)
+
+**Release Date:** TBD
+
+#### New Features
+
+* An option has been added which allows to automatically disable all effects if running on battery power.
+
 ## [Burn My Windows 16](https://github.com/schneegans/Burn-My-Windows/releases/tag/v16)
 
 **Release Date:** 2022-05-21
