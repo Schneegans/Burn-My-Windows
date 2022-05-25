@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-05 09:22+0200\n"
+"POT-Creation-Date: 2022-05-25 12:59+0200\n"
 "PO-Revision-Date: 2022-05-01 23:10+0000\n"
 "Last-Translator: matb <perso@mathieu-bousquet.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -19,105 +19,105 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.12.1\n"
 
-#: prefs.js:112
+#: prefs.js:113
 msgid "Effect Options"
 msgstr "Options de l'effet"
 
-#: prefs.js:140
+#: prefs.js:141
 msgid "Go Back"
 msgstr "Retour"
 
-#: prefs.js:182
+#: prefs.js:183
 msgid "General Options"
 msgstr "Options générales"
 
-#: prefs.js:276
+#: prefs.js:277
 msgid "Gold Sponsors"
 msgstr "Sponsors Or"
 
-#: prefs.js:279
+#: prefs.js:280
 msgid "Silver Sponsors"
 msgstr "Sponsors Argent"
 
-#: prefs.js:282
+#: prefs.js:283
 msgid "Bronze Sponsors"
 msgstr "Sponsors Bronze"
 
-#: prefs.js:285
+#: prefs.js:286
 msgid "Past Sponsors"
 msgstr "Anciens Sponsors"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:510
+#: prefs.js:509
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Aperçu pour %s"
 
-#: prefs.js:532
+#: prefs.js:531
 msgid "Close this Window to Preview the Effect!"
 msgstr "Fermez cette fenêtre pour un aperçu de l'effet !"
 
-#: src/BrokenGlass.js:57
+#: src/BrokenGlass.js:138
 msgid "Broken Glass"
 msgstr "Verre brisé"
 
-#: src/TVEffect.js:56
+#: src/TVEffect.js:77
 msgid "TV Effect"
 msgstr "Effet TV"
 
-#: src/TRexAttack.js:56
+#: src/TRexAttack.js:115
 msgid "T-Rex Attack"
 msgstr "Attaque de T-Rex"
 
-#: src/SnapOfDisintegration.js:60
+#: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
 msgstr "Désintégration"
 
-#: src/Wisps.js:55
+#: src/Wisps.js:85
 msgid "Wisps"
 msgstr "Feux follets"
 
-#: src/Fire.js:58
+#: src/Fire.js:99
 msgid "Fire"
 msgstr "Feu"
 
-#: src/Fire.js:130
+#: src/Fire.js:154
 msgid "Default Fire"
 msgstr "Feu par défaut"
 
-#: src/Fire.js:140
+#: src/Fire.js:164
 msgid "Hell Fire"
 msgstr "Feu de l'enfer"
 
-#: src/Fire.js:150
+#: src/Fire.js:174
 msgid "Dark and Smutty"
 msgstr "Sombre et ténébreux"
 
-#: src/Fire.js:160
+#: src/Fire.js:184
 msgid "Cold Breeze"
 msgstr "Brise froide"
 
-#: src/Fire.js:170
+#: src/Fire.js:194
 msgid "Santa is Coming"
 msgstr "Le Père Noël arrive"
 
-#: src/Hexagon.js:53
+#: src/Hexagon.js:97
 msgid "Hexagon"
 msgstr "Hexagone"
 
-#: src/EnergizeA.js:54
+#: src/EnergizeA.js:79
 msgid "Energize A"
 msgstr "Énergie A"
 
-#: src/Apparition.js:57
+#: src/Apparition.js:80
 msgid "Apparition"
 msgstr "Apparition"
 
-#: src/EnergizeB.js:54
+#: src/EnergizeB.js:80
 msgid "Energize B"
 msgstr "Énergie B"
 
-#: src/Matrix.js:58
+#: src/Matrix.js:113
 msgid "Matrix"
 msgstr "Matrix"
 
@@ -181,21 +181,22 @@ msgstr "Durée de l'animation (ms)"
 #: resources/ui/gtk4/Hexagon.ui:178 resources/ui/gtk4/Hexagon.ui:212
 #: resources/ui/gtk4/Hexagon.ui:265 resources/ui/gtk4/EnergizeB.ui:52
 #: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
-#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk4/Apparition.ui:52
-#: resources/ui/gtk4/Apparition.ui:98 resources/ui/gtk4/Apparition.ui:144
-#: resources/ui/gtk4/Apparition.ui:190 resources/ui/gtk4/Apparition.ui:236
-#: resources/ui/gtk3/Wisps.ui:68 resources/ui/gtk3/Wisps.ui:117
-#: resources/ui/gtk3/Wisps.ui:160 resources/ui/gtk3/Fire.ui:119
-#: resources/ui/gtk3/Fire.ui:167 resources/ui/gtk3/Fire.ui:215
-#: resources/ui/gtk3/Fire.ui:277 resources/ui/gtk3/Fire.ui:345
-#: resources/ui/gtk3/TVEffect.ui:61 resources/ui/gtk3/TVEffect.ui:104
-#: resources/ui/gtk3/EnergizeA.ui:68 resources/ui/gtk3/EnergizeA.ui:117
-#: resources/ui/gtk3/EnergizeA.ui:160 resources/ui/gtk3/Hexagon.ui:75
-#: resources/ui/gtk3/Hexagon.ui:124 resources/ui/gtk3/Hexagon.ui:173
-#: resources/ui/gtk3/Hexagon.ui:216 resources/ui/gtk3/Hexagon.ui:259
-#: resources/ui/gtk3/Hexagon.ui:321 resources/ui/gtk3/EnergizeB.ui:68
-#: resources/ui/gtk3/EnergizeB.ui:117 resources/ui/gtk3/EnergizeB.ui:160
-#: resources/ui/gtk3/prefs.ui:219 resources/ui/gtk3/Apparition.ui:89
+#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk4/prefs.ui:200
+#: resources/ui/gtk4/Apparition.ui:52 resources/ui/gtk4/Apparition.ui:98
+#: resources/ui/gtk4/Apparition.ui:144 resources/ui/gtk4/Apparition.ui:190
+#: resources/ui/gtk4/Apparition.ui:236 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
+#: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
+#: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
+#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/TVEffect.ui:61
+#: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
+#: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
+#: resources/ui/gtk3/Hexagon.ui:75 resources/ui/gtk3/Hexagon.ui:124
+#: resources/ui/gtk3/Hexagon.ui:173 resources/ui/gtk3/Hexagon.ui:216
+#: resources/ui/gtk3/Hexagon.ui:259 resources/ui/gtk3/Hexagon.ui:321
+#: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
+#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
+#: resources/ui/gtk3/prefs.ui:263 resources/ui/gtk3/Apparition.ui:89
 #: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
 #: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
 msgid "Reset to Default Value"
@@ -347,6 +348,10 @@ msgstr "Animation de fermeture de fenêtre"
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
 msgstr "Appliquer également les effets aux boîtes de dialogue"
+
+#: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
+msgid "Disable on Battery Power"
+msgstr ""
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
