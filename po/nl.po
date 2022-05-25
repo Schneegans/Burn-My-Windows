@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-25 12:59+0200\n"
-"PO-Revision-Date: 2022-04-05 18:37+0000\n"
+"PO-Revision-Date: 2022-05-26 17:20+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: prefs.js:113
 msgid "Effect Options"
@@ -350,7 +350,7 @@ msgstr "Dialoogvensters ook voorzien van effecten"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
 msgid "Disable on Battery Power"
-msgstr ""
+msgstr "Uitschakelen bij gebruik van accu"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
