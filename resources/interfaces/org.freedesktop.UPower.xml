@@ -1,0 +1,6 @@
+<node>
+    <interface name="org.freedesktop.UPower">
+        <property name="OnBattery" type="b" access="read" />
+    </interface>
+</node>
+  
