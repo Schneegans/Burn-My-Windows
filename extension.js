@@ -73,6 +73,12 @@ class Extension {
     // We will use extensionThis to refer to the extension inside the patched methods.
     const extensionThis = this;
 
+    // This is used to get the battery state.
+    const UPowerProxy = Gio.DBusProxy.makeProxyWrapper(
+      utils.getStringResource('/interfaces/org.freedesktop.UPower.xml'));
+    this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
+                                        '/org/freedesktop/UPower');
+
     // We will monkey-patch these methods. Let's store the original ones.
     this._origAddWindowClone        = Workspace.prototype._addWindowClone;
     this._origWindowRemoved         = Workspace.prototype._windowRemoved;
@@ -361,6 +367,13 @@ class Extension {
     const previewNick = this._settings.get_string(action + '-preview-effect');
 
     if (isDialogWindow && !shouldDestroyDialogs && previewNick == '') {
+      this._fixAnimationTimes(isDialogWindow, forOpening, null);
+      return;
+    }
+
+    // We may have to do nothing if running on battery power.
+    if (this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery &&
+        previewNick == '') {
       this._fixAnimationTimes(isDialogWindow, forOpening, null);
       return;
     }

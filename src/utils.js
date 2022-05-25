@@ -13,7 +13,8 @@
 
 'use strict';
 
-const {Gtk} = imports.gi;
+const {Gtk, Gio} = imports.gi;
+const ByteArray  = imports.byteArray;
 
 // Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
 // -2, and -1 are returned respectively.
@@ -83,4 +84,11 @@ function shellVersionIsAtLeast(major, minor) {
   }
 
   return false;
+}
+
+// Reads the contents of a file contained in the global resources archive. The data
+// is returned as a string.
+function getStringResource(path) {
+  const data = Gio.resources_lookup_data(path, 0);
+  return ByteArray.toString(ByteArray.fromGBytes(data));
 }

@@ -13,6 +13,12 @@
       <description>Set to true to burn dialogs as well.</description>
     </key>
 
+    <key name="disable-on-battery" type="b">
+      <default>false</default>
+      <summary>Disable on Battery</summary>
+      <description>Enable effects only if plugged in.</description>
+    </key>
+
     <key name="close-preview-effect" type="s">
       <default>""</default>
       <summary>Close Preview Effect</summary>

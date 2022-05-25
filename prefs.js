@@ -14,7 +14,6 @@
 'use strict';
 
 const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
-const ByteArray                      = imports.byteArray;
 
 // libadwaita is available starting with GNOME Shell 42.
 let Adw = null;
@@ -95,7 +94,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
-
+    this.bindSwitch('disable-on-battery');
 
     // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
     // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We
@@ -460,9 +459,7 @@ var PreferencesDialog = class PreferencesDialog {
   // Reads the contents of a JSON file contained in the global resources archive. The data
   // is parsed and returned as a JavaScript object / array.
   _getJSONResource(path) {
-    const data   = Gio.resources_lookup_data(path, 0);
-    const string = ByteArray.toString(ByteArray.fromGBytes(data));
-    return JSON.parse(string);
+    return JSON.parse(utils.getStringResource(path));
   }
 
   // This traverses the widget tree below the given parent recursively and returns the
