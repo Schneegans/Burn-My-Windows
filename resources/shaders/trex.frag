@@ -1,10 +1,17 @@
-// Inject some common shader snippets. It is only possible to include glsl files from the
-// "common" directory. Also, the files in the "common" directory are not allowed to
-// include any further files.
-#include "common/uniforms.glsl"
-#include "common/noise.glsl"
-#include "common/compositing.glsl"
-#include "common/easing.glsl"
+//////////////////////////////////////////////////////////////////////////////////////////
+//          )                                                   (                       //
+//       ( /(   (  (               )    (       (  (  (         )\ )    (  (            //
+//       )\()) ))\ )(   (         (     )\ )    )\))( )\  (    (()/( (  )\))(  (        //
+//      ((_)\ /((_|()\  )\ )      )\  '(()/(   ((_)()((_) )\ )  ((_)))\((_)()\ )\       //
+//      | |(_|_))( ((_)_(_/(    _((_))  )(_))  _(()((_|_)_(_/(  _| |((_)(()((_|(_)      //
+//      | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<      //
+//      |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/      //
+//                                 |__/                                                 //
+//                       Copyright (c) 2021 Simon Schneegans                            //
+//          Released under the GPLv3 or later. See LICENSE file for details.            //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// The content from common.glsl is automatically prepended to each shader effect.
 
 // See assets/README.md for how this texture was created.
 uniform sampler2D uClawTexture;
