@@ -77,7 +77,7 @@ Just remember to replace `simple-fade` with your custom name!
 
 ### 2. Creating the Effect Class
 
-You will have to create a new GLSL file called `resources/shaders/simple-fade.glsl` and a new JavaScript source file called `src/SimpleFade.js`.
+You will have to create a new GLSL file called `resources/shaders/simple-fade.frag` and a new JavaScript source file called `src/SimpleFade.js`.
 Simply paste the following source code to the respective file.
 Please study this code carefully, all of it is explained with inline comments.
 

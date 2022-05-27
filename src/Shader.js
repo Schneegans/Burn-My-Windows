@@ -106,7 +106,7 @@ var Shader = GObject.registerClass(
       // Shell.GLSLEffect requires the declarations and the main source code as separate
       // strings. As it's more convenient to store the in one GLSL file, we use a regex
       // here to split the source code in two parts.
-      const code = this._loadShaderResource(`/shaders/${this._nick}.glsl`);
+      const code = this._loadShaderResource(`/shaders/${this._nick}.frag`);
 
       // Match anything between the curly brackets of "void main() {...}".
       const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
