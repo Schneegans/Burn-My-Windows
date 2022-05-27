@@ -85,15 +85,14 @@ Please study this code carefully, all of it is explained with inline comments.
   <summary>Expand this to show the GLSL code.</summary>
 
 ```glsl
-// The code below injects some standard uniforms which will be updated during the
-// animation. This includes:
+// The content from common.glsl is automatically prepended to each shader effect. This
+// provides some standard uniforms which will be updated during the animation.
 // bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
 // sampler2D uTexture:    Contains the texture of the window.
 // float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
 // float     uTime:       A steadily increasing value in seconds.
 // vec2      uSize:       The size of uTexture in pixels.
 // float     uPadding:    The empty area around the actual window (e.g. where the shadow is drawn).
-#include "common/uniforms.glsl"
 
 // The width of the fading effect is loaded from the settings.
 uniform float uFadeWidth;
