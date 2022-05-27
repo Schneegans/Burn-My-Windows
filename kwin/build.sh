@@ -24,9 +24,13 @@ BUILD_DIR="_build"
 
 mkdir -p "${BUILD_DIR}"
 
+# $1: The nick of the effect (e.g. "tv")
+# $2: The name of the effect (e.g. "TV Effect")
+# $3: A short description of the effect
 generate() {
   cp -r "kwin4_effect_$1" "${BUILD_DIR}"
 
+  # Create resource directories.
   mkdir -p "${BUILD_DIR}/kwin4_effect_$1/contents/shaders"
   mkdir -p "${BUILD_DIR}/kwin4_effect_$1/contents/code"
 
@@ -36,7 +40,9 @@ generate() {
   sed -e "s;%NICK%;$1;g" -e "s;%NAME%;$2;g" -e "s;%DESCRIPTION%;$3;g" \
     main.js.in > "${BUILD_DIR}/kwin4_effect_$1/contents/code/main.js"
 
+  SHADER="${BUILD_DIR}/kwin4_effect_$1/contents/shaders/$1.glsl"
+  cp "../resources/shaders/$1.glsl" $SHADER
 }
 
-generate "tv" "TV" "Make windows close like turning off a TV"
+generate "tv" "TV Effect" "Make windows close like turning off a TV"
 # generate "fire" "Fire" "Make windows burn"
