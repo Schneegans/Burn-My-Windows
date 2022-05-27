@@ -106,7 +106,7 @@ var Shader = GObject.registerClass(
       // Shell.GLSLEffect requires the declarations and the main source code as separate
       // strings. As it's more convenient to store the in one GLSL file, we use a regex
       // here to split the source code in two parts.
-      const code = this._loadGLSLResource(`/shaders/${this._nick}.glsl`);
+      const code = this._loadShaderResource(`/shaders/${this._nick}.frag`);
 
       // Match anything between the curly brackets of "void main() {...}".
       const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
@@ -136,20 +136,13 @@ var Shader = GObject.registerClass(
       return ByteArray.toString(ByteArray.fromGBytes(data));
     }
 
-    // This loads a GLSL file from the extension's resources to a JavaScript string. Any
-    // #include statements in this file are replaced with the corresponding file contents.
-    _loadGLSLResource(path) {
-      let code = this._loadStringResource(path);
-
-      // This regex matches either #include "..." or #include <...>. The part between the
-      // brackets is captured in the capture group.
-      const regex = RegExp('#include ["<](.+)[">]', 'g');
-
-      code = code.replace(regex, (m, file) => {
-        return this._loadStringResource('/shaders/' + file);
-      });
+    // This loads a GLSL file from the extension's resources to a JavaScript string. The
+    // code from "common.glsl" is prepended automatically.
+    _loadShaderResource(path) {
+      let common = this._loadStringResource('/shaders/common.glsl');
+      let code   = this._loadStringResource(path);
 
       // Add a trailing newline. Else the GLSL compiler complains...
-      return code + '\n';
+      return common + '\n' + code + '\n';
     }
   });
