@@ -8,6 +8,10 @@
 
 * An option has been added which allows to automatically disable all effects if running on battery power.
 
+#### Enhancements
+
+* The shader include system has been simplified. There's now just one "common.glsl" which is automatically loaded into each shader.
+
 ## [Burn My Windows 16](https://github.com/schneegans/Burn-My-Windows/releases/tag/v16)
 
 **Release Date:** 2022-05-21
