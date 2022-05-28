@@ -332,48 +332,48 @@
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!-- Burn Options                                                            -->
+    <!-- Incinerate Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="burn-close-effect" type="b">
+    <key name="incinerate-close-effect" type="b">
       <default>false</default>
-      <summary>Burn Close Effect</summary>
-      <description>Use the Burn effect for window closing.</description>
+      <summary>Incinerate Close Effect</summary>
+      <description>Use the Incinerate effect for window closing.</description>
     </key>
 
-    <key name="burn-open-effect" type="b">
+    <key name="incinerate-open-effect" type="b">
       <default>false</default>
-      <summary>Burn Open Effect</summary>
-      <description>Use the Burn effect for window opening.</description>
+      <summary>Incinerate Open Effect</summary>
+      <description>Use the Incinerate effect for window opening.</description>
     </key>
 
-    <key name="burn-animation-time" type="i">
+    <key name="incinerate-animation-time" type="i">
       <default>2000</default>
-      <summary>Burn Animation Time</summary>
-      <description>The time the Burn effect takes.</description>
+      <summary>Incinerate Animation Time</summary>
+      <description>The time the Incinerate effect takes.</description>
     </key>
 
-    <key name="burn-scale" type="d">
+    <key name="incinerate-scale" type="d">
       <default>1.0</default>
-      <summary>Burn Scale</summary>
+      <summary>Incinerate Scale</summary>
       <description>The scale of the effect.</description>
     </key>
 
-    <key name="burn-width" type="d">
+    <key name="incinerate-width" type="d">
       <default>1.0</default>
-      <summary>Burn Width</summary>
+      <summary>Incinerate Width</summary>
       <description>The width of the effect.</description>
     </key>
 
-    <key name="burn-turbulence" type="d">
+    <key name="incinerate-turbulence" type="d">
       <default>0.15</default>
-      <summary>Burn Turbulence</summary>
+      <summary>Incinerate Turbulence</summary>
       <description>The turbulence of the effect.</description>
     </key>
 
-    <key name="burn-color" type="s">
+    <key name="incinerate-color" type="s">
       <default>"rgb(255, 200, 50)"</default>
-      <summary>Burn Color</summary>
+      <summary>Incinerate Color</summary>
       <description>The color of the effect.</description>
     </key>
 

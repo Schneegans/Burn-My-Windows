@@ -29,7 +29,7 @@ const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Burn = class {
+var Incinerate = class {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
@@ -51,7 +51,7 @@ var Burn = class {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        const c = Clutter.Color.from_string(settings.get_string('burn-color'))[1];
+        const c = Clutter.Color.from_string(settings.get_string('incinerate-color'))[1];
 
         // If we are currently performing integration test, the animation uses a fixed
         // seed.
@@ -60,9 +60,9 @@ var Burn = class {
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
         shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
-        shader.set_uniform_float(shader._uWidth, 1, [settings.get_double('burn-width')]);
-        shader.set_uniform_float(shader._uScale, 1, [settings.get_double('burn-scale')]);
-        shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('burn-turbulence')]);
+        shader.set_uniform_float(shader._uWidth, 1, [settings.get_double('incinerate-width')]);
+        shader.set_uniform_float(shader._uScale, 1, [settings.get_double('incinerate-scale')]);
+        shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('incinerate-turbulence')]);
         // clang-format on
       });
     });
@@ -70,9 +70,9 @@ var Burn = class {
 
   // ---------------------------------------------------------------------------- metadata
 
-  // The effect is available on all GNOME Shell versions supported by this extension.
+  // This effect is only available on GNOME Shell 40+.
   getMinShellVersion() {
-    return [3, 36];
+    return [40, 0];
   }
 
   // This will be called in various places where a unique identifier for this effect is
@@ -80,13 +80,13 @@ var Burn = class {
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
-    return 'burn';
+    return 'incinerate';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   getLabel() {
-    return _('Burn');
+    return _('Incinerate');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -96,17 +96,17 @@ var Burn = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Burn.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Incinerate.ui`);
 
     // Bind all properties.
-    dialog.bindAdjustment('burn-animation-time');
-    dialog.bindAdjustment('burn-width');
-    dialog.bindAdjustment('burn-scale');
-    dialog.bindAdjustment('burn-turbulence');
-    dialog.bindColorButton('burn-color');
+    dialog.bindAdjustment('incinerate-animation-time');
+    dialog.bindAdjustment('incinerate-width');
+    dialog.bindAdjustment('incinerate-scale');
+    dialog.bindAdjustment('incinerate-turbulence');
+    dialog.bindColorButton('incinerate-color');
 
     // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('burn-prefs');
+    return dialog.getBuilder().get_object('incinerate-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

@@ -52,11 +52,11 @@ class Extension {
     this._ALL_EFFECTS = [
       new Me.imports.src.Apparition.Apparition(),
       new Me.imports.src.BrokenGlass.BrokenGlass(),
-      new Me.imports.src.Burn.Burn(),
       new Me.imports.src.EnergizeA.EnergizeA(),
       new Me.imports.src.EnergizeB.EnergizeB(),
       new Me.imports.src.Fire.Fire(),
       new Me.imports.src.Hexagon.Hexagon(),
+      new Me.imports.src.Incinerate.Incinerate(),
       new Me.imports.src.Matrix.Matrix(),
       new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
       new Me.imports.src.TRexAttack.TRexAttack(),
