@@ -68,7 +68,7 @@ void main() {
 
   // Add some smooth noise to the progress so that not every tile behaves the
   // same.
-  float noise = simplex2D(cogl_tex_coord_in[0].st + uSeed);
+  float noise = simplex2D(iTexCoord.st + uSeed);
   progress    = clamp(mix(noise - 1.0, noise + 1.0, progress), 0.0, 1.0);
 
   // glowProgress fades in in the first half of the animation, tileProgress fades
@@ -77,23 +77,23 @@ void main() {
   float tileProgress = smoothstep(0, 1, clamp((progress - 0.5) / 0.5, 0, 1));
 
   vec2 texScale = 0.1 * uSize / uScale;
-  vec4 hex      = getHexagons(cogl_tex_coord_in[0].st * texScale);
+  vec4 hex      = getHexagons(iTexCoord.st * texScale);
 
   if (tileProgress > hex.z) {
 
     // Crop outer parts of the shrinking tiles.
-    cogl_color_out.a = 0.0;
+    oColor.a = 0.0;
 
   } else {
 
     // Make the tiles shrink by offsetting the texture lookup towards the edge
     // of the cell.
     vec2 lookupOffset = tileProgress * hex.xy / texScale / (1.0 - tileProgress);
-    cogl_color_out    = texture2D(uTexture, cogl_tex_coord_in[0].st + lookupOffset);
+    oColor            = texture2D(uTexture, iTexCoord.st + lookupOffset);
 
     // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-    if (cogl_color_out.a > 0) {
-      cogl_color_out.rgb /= cogl_color_out.a;
+    if (oColor.a > 0) {
+      oColor.rgb /= oColor.a;
     }
 
     vec4 glow = uGlowColor;
@@ -111,15 +111,15 @@ void main() {
     line.a *= glowProgress;
 
     // Do not add the hexagon lines onto transparent parts of the window.
-    glow *= cogl_color_out.a;
-    line *= cogl_color_out.a;
+    glow *= oColor.a;
+    line *= oColor.a;
 
     if (uAdditiveBlending) {
-      cogl_color_out.rgb += glow.rgb * glow.a;
-      cogl_color_out.rgb += line.rgb * line.a;
+      oColor.rgb += glow.rgb * glow.a;
+      oColor.rgb += line.rgb * line.a;
     } else {
-      cogl_color_out.rgb = mix(cogl_color_out.rgb, glow.rgb, glow.a);
-      cogl_color_out.rgb = mix(cogl_color_out.rgb, line.rgb, line.a);
+      oColor.rgb = mix(oColor.rgb, glow.rgb, glow.a);
+      oColor.rgb = mix(oColor.rgb, line.rgb, line.a);
     }
   }
 }

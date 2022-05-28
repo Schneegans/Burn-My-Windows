@@ -68,18 +68,18 @@ void main() {
 
   // Scale down the window slightly.
   float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
-  vec2 coords = cogl_tex_coord_in[0].st * (scale + 1.0) - scale * 0.5;
+  vec2 coords = iTexCoord.st * (scale + 1.0) - scale * 0.5;
 
   // Get the color of the window.
-  cogl_color_out = texture2D(uTexture, coords);
+  oColor = texture2D(uTexture, coords);
 
   // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
+  if (oColor.a > 0) {
+    oColor.rgb /= oColor.a;
   }
 
   // Compute several layers of moving wisps.
-  vec2 uv = (cogl_tex_coord_in[0].st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
+  vec2 uv = (iTexCoord.st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
   uv /= uScale;
   float wisps = 0;
   for (int i = 0; i < WISPS_LAYERS; ++i) {
@@ -99,15 +99,15 @@ void main() {
   float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * uSize / 250) - 1.0));
   float windowMask = 1.0 - (windowOut < 0.5 ? mix(0.0, noise, windowOut * 2.0)
                                             : mix(noise, 1.0, windowOut * 2.0 - 1.0));
-  cogl_color_out.a *= windowMask * mask;
+  oColor.a *= windowMask * mask;
 
   // Add the wisps.
   vec4 wispColor = wisps * vec4(uColor, min(wispsIn, 1.0 - wispsOut) * mask);
-  cogl_color_out = alphaOver(cogl_color_out, wispColor);
+  oColor         = alphaOver(oColor, wispColor);
 
   // These are pretty useful for understanding how this works.
-  // cogl_color_out = vec4(vec3(windowMask), 1.0);
-  // cogl_color_out = vec4(vec3(wisps), 1.0);
-  // cogl_color_out = vec4(vec3(noise), 1.0);
-  // cogl_color_out = vec4(vec3(mask*min(wispsIn, 1.0 - wispsOut)), 1.0);
+  // oColor = vec4(vec3(windowMask), 1.0);
+  // oColor = vec4(vec3(wisps), 1.0);
+  // oColor = vec4(vec3(noise), 1.0);
+  // oColor = vec4(vec3(mask*min(wispsIn, 1.0 - wispsOut)), 1.0);
 }

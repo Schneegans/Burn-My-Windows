@@ -27,7 +27,7 @@ void main() {
 
   // Scale down the window vertically.
   float scale = 1.0 / mix(1.0, SCALING, progress) - 1.0;
-  vec2 coords = cogl_tex_coord_in[0].st;
+  vec2 coords = iTexCoord.st;
   coords.y    = coords.y * (scale + 1.0) - scale * 0.5;
 
   // All of these are in [0..1] during the different stages of the animation.
@@ -54,20 +54,19 @@ void main() {
   // Assemble the final alpha value.
   float mask = tbMask * lrMask * ffMask;
 
-  cogl_color_out = texture2D(uTexture, coords);
+  oColor = texture2D(uTexture, coords);
 
   // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
+  if (oColor.a > 0) {
+    oColor.rgb /= oColor.a;
   }
 
-  cogl_color_out.rgb =
-    mix(cogl_color_out.rgb, uColor * cogl_color_out.a, smoothstep(0, 1, progress));
-  cogl_color_out.a *= mask;
+  oColor.rgb = mix(oColor.rgb, uColor * oColor.a, smoothstep(0, 1, progress));
+  oColor.a *= mask;
 
   // These are pretty useful for understanding how this works.
-  // cogl_color_out = vec4(vec3(tbMask), 1);
-  // cogl_color_out = vec4(vec3(lrMask), 1);
-  // cogl_color_out = vec4(vec3(ffMask), 1);
-  // cogl_color_out = vec4(vec3(mask), 1);
+  // oColor = vec4(vec3(tbMask), 1);
+  // oColor = vec4(vec3(lrMask), 1);
+  // oColor = vec4(vec3(ffMask), 1);
+  // oColor = vec4(vec3(mask), 1);
 }

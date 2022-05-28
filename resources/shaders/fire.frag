@@ -63,7 +63,7 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
   float afterBurnProgress = clamp((progress - hideTime) / (1 - hideTime), 0, 1);
 
   // Gradient from top to bottom.
-  float t = cogl_tex_coord_in[0].t * (1 - fadeWidth);
+  float t = iTexCoord.t * (1 - fadeWidth);
 
   // Visible part of the window. Gradually dissolves towards the bottom.
   float windowMask = 1 - clamp((burnProgress - t) / fadeWidth, 0, 1);
@@ -89,7 +89,7 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
 
 void main() {
   // Get a noise value which moves vertically in time.
-  vec2 uv = cogl_tex_coord_in[0].st * uSize / vec2(400, 600) / uScale;
+  vec2 uv = iTexCoord.st * uSize / vec2(400, 600) / uScale;
   uv.y += uTime * uMovementSpeed;
 
   float noise = u3DNoise ? simplex3DFractal(vec3(uv * 4.0, uTime * uMovementSpeed * 1.5))
@@ -103,21 +103,21 @@ void main() {
   vec4 fire = getFireColor(noise);
 
   // Get the window texture.
-  cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+  oColor = texture2D(uTexture, iTexCoord.st);
 
   // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
+  if (oColor.a > 0) {
+    oColor.rgb /= oColor.a;
   }
 
   // Fade the window according to the effect mask.
-  cogl_color_out.a *= effectMask.x;
+  oColor.a *= effectMask.x;
 
   // Add the fire to the window.
-  cogl_color_out = alphaOver(cogl_color_out, fire);
+  oColor = alphaOver(oColor, fire);
 
   // These are pretty useful for understanding how this works.
-  // cogl_color_out = vec4(vec3(noise), 1);
-  // cogl_color_out = vec4(vec3(effectMask.x), 1);
-  // cogl_color_out = vec4(vec3(effectMask.y), 1);
+  // oColor = vec4(vec3(noise), 1);
+  // oColor = vec4(vec3(effectMask.x), 1);
+  // oColor = vec4(vec3(effectMask.y), 1);
 }

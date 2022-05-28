@@ -47,13 +47,13 @@ float getText(vec2 fragCoord) {
 // to one below each drop and to zero above it. This second value is used for fading
 // the window texture.
 vec2 getRain(vec2 fragCoord) {
-  float column = cogl_tex_coord_in[0].x * uSize.x;
+  float column = iTexCoord.x * uSize.x;
   column -= mod(column, uLetterSize);
 
   float delay = fract(sin(column) * 78.233) * mix(0.0, 1.0, uRandomness);
   float speed = fract(cos(column) * 12.989) * mix(0.0, 0.3, uRandomness) + 1.5;
 
-  float distToDrop = (uProgress * 2 - delay) * speed - cogl_tex_coord_in[0].y;
+  float distToDrop = (uProgress * 2 - delay) * speed - iTexCoord.y;
 
   float rainAlpha   = distToDrop >= 0 ? exp(-distToDrop / TRAIL_LENGTH) : 0;
   float windowAlpha = 1 - clamp(uSize.y * distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
@@ -64,8 +64,8 @@ vec2 getRain(vec2 fragCoord) {
   // Add some variation to the drop start and end position.
   float shorten =
     fract(sin(column + 42.0) * 33.423) * mix(0.0, uOverShoot * 0.25, uRandomness);
-  rainAlpha *= smoothstep(0, 1, clamp(cogl_tex_coord_in[0].y / shorten, 0, 1));
-  rainAlpha *= smoothstep(0, 1, clamp((1.0 - cogl_tex_coord_in[0].y) / shorten, 0, 1));
+  rainAlpha *= smoothstep(0, 1, clamp(iTexCoord.y / shorten, 0, 1));
+  rainAlpha *= smoothstep(0, 1, clamp((1.0 - iTexCoord.y) / shorten, 0, 1));
 
   if (uForOpening) {
     windowAlpha = 1.0 - windowAlpha;
@@ -75,7 +75,7 @@ vec2 getRain(vec2 fragCoord) {
 }
 
 void main() {
-  vec2 coords = cogl_tex_coord_in[0].st;
+  vec2 coords = iTexCoord.st;
   coords.y    = coords.y * (uOverShoot + 1.0) - uOverShoot * 0.5;
 
   // Get a cool matrix effect. See comments for those methods above.
@@ -83,15 +83,15 @@ void main() {
   float textMask = getText(coords);
 
   // Get the window texture.
-  cogl_color_out = texture2D(uTexture, coords);
+  oColor = texture2D(uTexture, coords);
 
   // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
+  if (oColor.a > 0) {
+    oColor.rgb /= oColor.a;
   }
 
   // Fade the window according to the effect mask.
-  cogl_color_out.a *= rainMask.y;
+  oColor.a *= rainMask.y;
 
   // This is used to fade out the remaining trails in the end.
   float finalFade =
@@ -99,12 +99,12 @@ void main() {
   float rainAlpha = finalFade * rainMask.x;
 
   // Add the matrix effect to the window.
-  vec4 text      = vec4(mix(uTrailColor, uTipColor, min(1, pow(rainAlpha + 0.1, 4))),
+  vec4 text = vec4(mix(uTrailColor, uTipColor, min(1, pow(rainAlpha + 0.1, 4))),
                    rainAlpha * textMask);
-  cogl_color_out = alphaOver(cogl_color_out, text);
+  oColor    = alphaOver(oColor, text);
 
   // These are pretty useful for understanding how this works.
-  // cogl_color_out = vec4(vec3(textMask), 1);
-  // cogl_color_out = vec4(vec3(rainMask.x), 1);
-  // cogl_color_out = vec4(vec3(rainMask.y), 1);
+  // oColor = vec4(vec3(textMask), 1);
+  // oColor = vec4(vec3(rainMask.x), 1);
+  // oColor = vec4(vec3(rainMask.y), 1);
 }

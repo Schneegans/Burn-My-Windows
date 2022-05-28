@@ -31,7 +31,7 @@ vec2 getMasks(float progress) {
     clamp((progress - (1.0 - HEART_FADE_TIME)) / HEART_FADE_TIME, 0, 1);
 
   // Compute mask for the "atom" particles.
-  float dist     = length(cogl_tex_coord_in[0].st - 0.5) * 4.0;
+  float dist     = length(iTexCoord.st - 0.5) * 4.0;
   float atomMask = smoothstep(0.0, 1.0, (fadeInProgress * 2.0 - dist + 1.0));
   atomMask *= fadeInProgress;
   atomMask *= smoothstep(1.0, 0.0, fadeOutProgress);
@@ -60,7 +60,7 @@ void main() {
   float progress = easeOutQuad(uProgress);
 
   vec2 masks       = getMasks(progress);
-  vec4 windowColor = texture2D(uTexture, cogl_tex_coord_in[0].st);
+  vec4 windowColor = texture2D(uTexture, iTexCoord.st);
 
   // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
   if (windowColor.a > 0) {
@@ -68,10 +68,10 @@ void main() {
   }
 
   // Dissolve window to effect color / transparency.
-  cogl_color_out.rgb = mix(uColor, windowColor.rgb, 0.2 * masks.y + 0.8);
-  cogl_color_out.a   = windowColor.a * masks.y;
+  oColor.rgb = mix(uColor, windowColor.rgb, 0.2 * masks.y + 0.8);
+  oColor.a   = windowColor.a * masks.y;
 
-  vec2 scaledUV = (cogl_tex_coord_in[0].st - 0.5) * (1.0 + 0.1 * progress);
+  vec2 scaledUV = (iTexCoord.st - 0.5) * (1.0 + 0.1 * progress);
   scaledUV /= uScale;
 
   // Add molecule particles.
@@ -86,12 +86,12 @@ void main() {
     particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms) - 1.0), 2);
   }
 
-  cogl_color_out.rgb += uColor * particles * masks.x;
-  cogl_color_out.a += particles * masks.x;
+  oColor.rgb += uColor * particles * masks.x;
+  oColor.a += particles * masks.x;
 
   // These are pretty useful for understanding how this works.
-  // cogl_color_out = vec4(masks, 0.0, 1.0);
-  // cogl_color_out = vec4(vec3(masks.x), 1.0);
-  // cogl_color_out = vec4(vec3(masks.y), 1.0);
-  // cogl_color_out = vec4(vec3(particles), 1.0);
+  // oColor = vec4(masks, 0.0, 1.0);
+  // oColor = vec4(vec3(masks.x), 1.0);
+  // oColor = vec4(vec3(masks.y), 1.0);
+  // oColor = vec4(vec3(particles), 1.0);
 }

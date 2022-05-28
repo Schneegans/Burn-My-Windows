@@ -86,7 +86,9 @@ Please study this code carefully, all of it is explained with inline comments.
 
 ```glsl
 // The content from common.glsl is automatically prepended to each shader effect. This
-// provides some standard uniforms which will be updated during the animation.
+// provides the standard input "vec2 iTexCoord", the standard output "vec4 oColor" as well
+// as some standard uniforms which will be updated during the animation:
+
 // bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
 // sampler2D uTexture:    Contains the texture of the window.
 // float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
@@ -99,15 +101,15 @@ uniform float uFadeWidth;
 
 void main() {
   // Get the color from the window texture.
-  cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
+  oColor = texture2D(uTexture, iTexCoord.st);
 
   // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
+  if (oColor.a > 0) {
+    oColor.rgb /= oColor.a;
   }
 
   // Radial distance from window edge to the window's center.
-  float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
+  float dist = length(iTexCoord.st - 0.5) * 2.0 / sqrt(2.0);
 
   // This gradually dissolves from [1..0] from the outside to the center. We
   // switch the direction for opening and closing.
@@ -118,7 +120,7 @@ void main() {
   mask = smoothstep(0, 1, mask);
 
   // Apply the mask to the output.
-  cogl_color_out.a *= mask;
+  oColor.a *= mask;
 }
 ```
 

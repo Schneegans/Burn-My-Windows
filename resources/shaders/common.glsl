@@ -23,12 +23,36 @@
 // uTime:       A steadily increasing value in seconds.
 // uSize:       The size of uTexture in pixels.
 // uPadding:    The empty area around the actual window (e.g. where the shadow is drawn).
+
+#ifdef KWIN
+
+uniform bool uForOpening;
+uniform sampler2D uTexture;
+uniform float animationProgress;
+// uniform float uTime;
+// uniform vec2 uSize;
+// uniform float uPadding;
+
+in vec2 texcoord0;
+out vec4 fragColor;
+
+#define uProgress animationProgress
+#define iTexCoord texcoord0
+#define oColor fragColor
+
+#else
+
 uniform bool uForOpening;
 uniform sampler2D uTexture;
 uniform float uProgress;
 uniform float uTime;
 uniform vec2 uSize;
 uniform float uPadding;
+
+#define iTexCoord cogl_tex_coord_in[0]
+#define oColor cogl_color_out
+
+#endif
 
 // ----------------------------------------------------------------- compositing operators
 
@@ -71,7 +95,7 @@ float getEdgeMask(vec2 uv, vec2 maxUV, float fadeWidth) {
 // (offset = 1).
 float getAbsoluteEdgeMask(float fadePixels, float offset) {
   float padding = max(0, uPadding - fadePixels * offset);
-  vec2 uv       = cogl_tex_coord_in[0].st * uSize - padding;
+  vec2 uv       = iTexCoord.st * uSize - padding;
   return getEdgeMask(uv, uSize - 2.0 * padding, fadePixels);
 }
 
@@ -79,7 +103,7 @@ float getAbsoluteEdgeMask(float fadePixels, float offset) {
 // the fade zone is given relative to the actor size. This neither uses uSize and
 // uPadding.
 float getRelativeEdgeMask(float fadeAmount) {
-  vec2 uv = cogl_tex_coord_in[0].st;
+  vec2 uv = iTexCoord.st;
   return getEdgeMask(uv, vec2(1.0), fadeAmount);
 }
 

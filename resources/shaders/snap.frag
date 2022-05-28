@@ -29,16 +29,16 @@ void main() {
   // We simply inverse the progress for opening windows.
   float progress = uForOpening ? uProgress : 1.0 - uProgress;
 
-  float gradient = cogl_tex_coord_in[0].t * ACTOR_SCALE - PADDING;
+  float gradient = iTexCoord.t * ACTOR_SCALE - PADDING;
   progress       = 2.0 - gradient - 2.0 * progress;
-  progress = progress + 0.25 - 0.5 * simplex2D((cogl_tex_coord_in[0].st + uSeed) * 2.0);
-  progress = pow(max(0, progress), 2.0);
+  progress       = progress + 0.25 - 0.5 * simplex2D((iTexCoord.st + uSeed) * 2.0);
+  progress       = pow(max(0, progress), 2.0);
 
   // This may help you to understand how this effect works.
-  // cogl_color_out = vec4(progress, 0, 0, 0);
+  // oColor = vec4(progress, 0, 0, 0);
   // return;
 
-  cogl_color_out = vec4(0, 0, 0, 0);
+  oColor = vec4(0, 0, 0, 0);
 
   for (float i = 0; i < DUST_LAYERS; ++i) {
 
@@ -49,7 +49,7 @@ void main() {
     direction      = rotate(direction, angle);
 
     // Flip direction for one side of the window.
-    vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING - 0.5;
+    vec2 coords = iTexCoord.st * ACTOR_SCALE - PADDING - 0.5;
     if (getWinding(direction, coords) > 0) {
       direction *= -1;
     }
@@ -93,7 +93,7 @@ void main() {
 
       // Dissolve and blend the layers.
       if (dustMap.x - progress > 0) {
-        cogl_color_out = windowColor;
+        oColor = windowColor;
       }
     }
   }
