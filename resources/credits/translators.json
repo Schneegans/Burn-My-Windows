@@ -4,7 +4,7 @@
       [
         "epost@anotheragency.no",
         "Allan Nordh\u00f8y",
-        3
+        50
       ]
     ]
   },
@@ -13,12 +13,40 @@
       [
         "vistausss@fastmail.com",
         "Heimen Stoffels",
-        65
+        76
+      ]
+    ]
+  },
+  {
+    "Swedish": [
+      [
+        "obslsessed@duck.com",
+        "obslsessed",
+        1
+      ],
+      [
+        "swedishsailfishosuser@tutanota.com",
+        "Kristoffer Grundstr\u00f6m",
+        57
+      ]
+    ]
+  },
+  {
+    "Finnish": [
+      [
+        "jiri.gronroos@iki.fi",
+        "Jiri Gr\u00f6nroos",
+        57
       ]
     ]
   },
   {
     "Russian": [
+      [
+        "eg.ermakov2016@yandex.ru",
+        "\u0415\u0433\u043e\u0440 \u0415\u0440\u043c\u0430\u043a\u043e\u0432",
+        31
+      ],
       [
         "franigoyt@gmail.com",
         "ANIGO R. (AR)",
@@ -36,11 +64,20 @@
     ]
   },
   {
+    "Arabic": [
+      [
+        "fawaz27000@hotmail.com",
+        "fawaz006",
+        79
+      ]
+    ]
+  },
+  {
     "Turkish": [
       [
         "muhaaliss@pm.me",
         "Muha Aliss",
-        57
+        61
       ]
     ]
   },
@@ -54,7 +91,7 @@
       [
         "albano_battistella@hotmail.com",
         "albanobattistella",
-        63
+        74
       ]
     ]
   },
@@ -64,6 +101,11 @@
         "lyuutau@outlook.com",
         "\u5218\u97ec",
         36
+      ],
+      [
+        "poonsters6@gmail.com",
+        "merelymyself",
+        41
       ]
     ]
   },
@@ -72,12 +114,17 @@
       [
         "code@simonschneegans.de",
         "Simon Schneegans",
-        59
+        70
       ]
     ]
   },
   {
     "French": [
+      [
+        "mathieu.bousquet2@gmail.com",
+        "Mathieu B.",
+        9
+      ],
       [
         "redxxiii@zaclys.net",
         "Reda",
@@ -86,21 +133,35 @@
       [
         "theo.remon+weblate@uswery.eu",
         "Th\u00e9o Remon",
-        24
+        30
       ],
       [
         "bonnemainsnathan@gmail.com",
         "Nathan",
-        42
+        45
+      ]
+    ]
+  },
+  {
+    "Korean": [
+      [
+        "darkcircle.0426@gmail.com",
+        "Seong-ho Cho",
+        72
       ]
     ]
   },
   {
     "Spanish": [
       [
-        "ulicesah@gmail.com",
+        "dev.n47os@aleeas.com",
         "Ulices",
         7
+      ],
+      [
+        "andres.segarra.aparicio@gmail.com",
+        "Andres Segarra",
+        10
       ],
       [
         "fitojb@ubuntu.com",
@@ -110,7 +171,7 @@
       [
         "oscfdezdz@tuta.io",
         "\u00d3scar Fern\u00e1ndez D\u00edaz",
-        55
+        58
       ]
     ]
   }

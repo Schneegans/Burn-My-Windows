@@ -8,146 +8,146 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-25 12:59+0200\n"
-"PO-Revision-Date: 2022-04-08 07:11+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://hosted.weblate.org/projects/burn-my-windows/"
-"core/fi/>\n"
-"Language: fi\n"
+"PO-Revision-Date: 2022-05-23 08:18+0000\n"
+"Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/ko/>\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 #: prefs.js:113
 msgid "Effect Options"
-msgstr "Tehostevalinnat"
+msgstr "효과 옵션"
 
 #: prefs.js:141
 msgid "Go Back"
-msgstr "Takaisin"
+msgstr "뒤로 가기"
 
 #: prefs.js:183
 msgid "General Options"
-msgstr "Yleiset asetukset"
+msgstr "일반 옵션"
 
 #: prefs.js:277
 msgid "Gold Sponsors"
-msgstr "Kultasponsorit"
+msgstr "골드 스폰서"
 
 #: prefs.js:280
 msgid "Silver Sponsors"
-msgstr "Hopeasponsorit"
+msgstr "실버 스폰서"
 
 #: prefs.js:283
 msgid "Bronze Sponsors"
-msgstr "Pronssisponsorit"
+msgstr "브론즈 스폰서"
 
 #: prefs.js:286
 msgid "Past Sponsors"
-msgstr "Aiemmat sponsorit"
+msgstr "이전 스폰서"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:509
 #, javascript-format
 msgid "Preview for %s"
-msgstr "Esikatselu tehosteelle %s"
+msgstr "%s 미리 보기"
 
 #: prefs.js:531
 msgid "Close this Window to Preview the Effect!"
-msgstr "Sulje tämä ikkuna esikatsellaksesi tehosteen!"
+msgstr "이 창을 닫아 효과를 확인해보세요!"
 
 #: src/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr "Rikkoutunut lasi"
+msgstr "유리 깨짐"
 
 #: src/TVEffect.js:77
 msgid "TV Effect"
-msgstr "TV-tehoste"
+msgstr "TV 효과"
 
 #: src/TRexAttack.js:115
 msgid "T-Rex Attack"
-msgstr "T-Rexin hyökkäys"
+msgstr "티라노 공격"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
-msgstr "Hajoamisen napsahdus"
+msgstr "해체 영상"
 
 #: src/Wisps.js:85
 msgid "Wisps"
-msgstr "Häiveet"
+msgstr "도깨비불"
 
 #: src/Fire.js:99
 msgid "Fire"
-msgstr "Tuli"
+msgstr "화염"
 
 #: src/Fire.js:154
 msgid "Default Fire"
-msgstr "Oletustuli"
+msgstr "기본 화염"
 
 #: src/Fire.js:164
 msgid "Hell Fire"
-msgstr "Helvetintuli"
+msgstr "지옥 화염"
 
 #: src/Fire.js:174
 msgid "Dark and Smutty"
-msgstr "Tumma ja likainen"
+msgstr "어둡고 찝찝함"
 
 #: src/Fire.js:184
 msgid "Cold Breeze"
-msgstr "Kylmän tuulahdus"
+msgstr "냉랭한 바람"
 
 #: src/Fire.js:194
 msgid "Santa is Coming"
-msgstr "Pukki saapuu"
+msgstr "산타의 방문"
 
 #: src/Hexagon.js:97
 msgid "Hexagon"
-msgstr "Kuusikulmio"
+msgstr "육각형"
 
 #: src/EnergizeA.js:79
 msgid "Energize A"
-msgstr ""
+msgstr "에너자이즈 A"
 
 #: src/Apparition.js:80
 msgid "Apparition"
-msgstr "Ilmestys"
+msgstr "혼령"
 
 #: src/EnergizeB.js:80
 msgid "Energize B"
-msgstr ""
+msgstr "에너자이즈 B"
 
 #: src/Matrix.js:113
 msgid "Matrix"
-msgstr "Matriisi"
+msgstr "매트릭스"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr "Käy verkkosivulla"
+msgstr "홈페이지 방문"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
-msgstr "Näytä muutosloki"
+msgstr "변경 이력 보기"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "Report a Bug"
-msgstr "Ilmoita ongelmasta"
+msgstr "버그 보고"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
-msgstr "Luo tehoste"
+msgstr "효과 만들기"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
-msgstr "Käännä"
+msgstr "번역"
 
 #: resources/ui/common/main-menu.ui:28
 msgid "Donate"
-msgstr "Lahjoita"
+msgstr "기부"
 
 #: resources/ui/common/main-menu.ui:41
 msgid "About Burn-My-Windows"
-msgstr "Tietoja - Burn-My-Windows"
+msgstr "Burn-My-Windows 정보"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
@@ -160,7 +160,7 @@ msgstr "Tietoja - Burn-My-Windows"
 #: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
 #: resources/ui/gtk3/Apparition.ui:63
 msgid "Animation Time [ms]"
-msgstr "Animaatioaika [ms]"
+msgstr "애니메이션 시간 [ms]"
 
 #: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
 #: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
@@ -200,7 +200,7 @@ msgstr "Animaatioaika [ms]"
 #: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
 #: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
 msgid "Reset to Default Value"
-msgstr "Palauta oletusarvoon"
+msgstr "기본값으로 초기화"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
 #: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
@@ -210,43 +210,42 @@ msgstr "Palauta oletusarvoon"
 #: resources/ui/gtk3/Fire.ui:141 resources/ui/gtk3/EnergizeA.ui:91
 #: resources/ui/gtk3/Hexagon.ui:98 resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
-msgstr "Skaala"
+msgstr "비율 조정"
 
 #: resources/ui/gtk4/Matrix.ui:116 resources/ui/gtk4/Apparition.ui:70
 #: resources/ui/gtk3/Apparition.ui:112
 msgid "Randomness"
-msgstr "Satunnaisuus"
+msgstr "임의성 지수"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr "Pystysuora ylitys"
+msgstr "수직 오버슈팅"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
-msgstr "Polun väri"
+msgstr "끌림 자국 색상"
 
 #: resources/ui/gtk4/Matrix.ui:242
 msgid "Tip Color"
-msgstr "Vihjeen väri"
+msgstr "끄트머리 색상"
 
 #: resources/ui/gtk4/BrokenGlass.ui:116
 msgid "Gravity"
-msgstr "Painovoima"
+msgstr "중력계수"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr ""
+msgstr "타격 강도"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr "Särkyminen osoittimen sijainnista"
+msgstr "포인터 위치에서 깨짐"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
-msgstr ""
-"Sirpaleet lentävät kauas hiiren osoittimen sijainnista kun suljet ikkunan."
+msgstr "창을 닫을 때 마우스 포인터 위치에서 조각이 날아갑니다."
 
 #: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/SnapOfDisintegration.ui:116
 #: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
@@ -254,97 +253,97 @@ msgstr ""
 #: resources/ui/gtk3/TVEffect.ui:83 resources/ui/gtk3/EnergizeA.ui:139
 #: resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
-msgstr "Väri"
+msgstr "색상"
 
 #: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
 msgid "Presets"
-msgstr "Esiasetukset"
+msgstr "사전설정"
 
 #: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
 msgid "Speed"
-msgstr "Nopeus"
+msgstr "속도"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr ""
+msgstr "3차원 잡티"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "좀 더 역동적인 화염을 만들지만 더 많은 GPU 성능이 필요합니다."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr "Liukuväri"
+msgstr "그레디언트"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr "Kynnenraapaisun skaala"
+msgstr "발톱 자국 크기 비율"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr "Kynnenraapaisujen määrä"
+msgstr "발톱 자국 갯수"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "왜곡 효과"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr ""
+msgstr "번쩍임 색상"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
-msgstr "Esikatsele tämä tehoste"
+msgstr "이 효과 미리 보기"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "도형 선 굵기"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr "Viivan väri"
+msgstr "선 색상"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
-msgstr "Hehkun väri"
+msgstr "불빛 색상"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
-msgstr ""
+msgstr "혼합 효과"
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "어두운 창 테마에서 사용하시면 좋습니다."
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
-msgstr "Tervetuloa, tämä on Burn-My-Windows!"
+msgstr "Burn-My-Windows 사용을 환영해요!"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr "Jos pidä tästä laajennuksesta, suosittele sitä kavereillesi :)"
+msgstr "이 확장 기능이 맘에 든다면 친구에게 추천해주세요 :)"
 
 #: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
-msgstr "Ikkunan avaamisen animaatio"
+msgstr "창 열기 애니메이션"
 
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Jos useita on valittu, yksi valitaan satunnaisesti."
+msgstr "여러 항목을 선택하면 그 중 하나를 임의로 선택합니다."
 
 #: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
 #: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
 msgid "Choose Effects"
-msgstr "Valitse tehosteet"
+msgstr "효과 선택"
 
 #: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
 msgid "Close Window Animation"
-msgstr "Ikkunan sulkemisen animaatio"
+msgstr "창 닫기 애니메이션"
 
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
-msgstr "Lisää tehosteet myös dialogi-ikkunoihin"
+msgstr "대화상자에도 효과 추가"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
 msgid "Disable on Battery Power"
@@ -352,16 +351,16 @@ msgstr ""
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "회전 강도"
 
 #: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
 msgid "Shake Intensity"
-msgstr ""
+msgstr "떨림 강도"
 
 #: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
 msgid "Suction Intensity"
-msgstr ""
+msgstr "흡입 강도"
 
 #: resources/ui/gtk3/Fire.ui:63
 msgid "Choose a Preset"
-msgstr "Valitse esiasetus"
+msgstr "사전설정 선택"
