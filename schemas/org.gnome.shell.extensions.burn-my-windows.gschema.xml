@@ -348,7 +348,7 @@
     </key>
 
     <key name="incinerate-animation-time" type="i">
-      <default>2000</default>
+      <default>3500</default>
       <summary>Incinerate Animation Time</summary>
       <description>The time the Incinerate effect takes.</description>
     </key>
@@ -366,7 +366,7 @@
     </key>
 
     <key name="incinerate-turbulence" type="d">
-      <default>0.15</default>
+      <default>0.2</default>
       <summary>Incinerate Turbulence</summary>
       <description>The turbulence of the effect.</description>
     </key>
