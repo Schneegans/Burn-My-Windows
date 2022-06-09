@@ -17,7 +17,7 @@ const blacklist = [
     "ksplashqml ksplashqml"
 ];
 
-class %NICK%Effect {
+class BMW%NICK%Effect {
     constructor() {
         effect.configChanged.connect(this.loadConfig.bind(this));
         effect.animationEnded.connect(this.cleanupForcedRoles.bind(this));
@@ -35,7 +35,7 @@ class %NICK%Effect {
         const duration = effect.readConfig("Duration", defaultDuration) || defaultDuration;
         this.duration = animationTime(duration);
 
-        effect.setUniform(this.shader, "uEffectColor", effect.readConfig("Color", "white"));
+        effect.setUniform(this.shader, "uColor", effect.readConfig("Color", "white"));
     }
 
     static isScaleWindow(window) {
@@ -121,7 +121,7 @@ class %NICK%Effect {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!%NICK%Effect.isScaleWindow(window)) {
+        if (!BMW%NICK%Effect.isScaleWindow(window)) {
             return;
         }
         if (!window.visible || window.skipsCloseAnimation) {
@@ -168,4 +168,4 @@ class %NICK%Effect {
     }
 }
 
-new %NICK%Effect();
+new BMW%NICK%Effect();
