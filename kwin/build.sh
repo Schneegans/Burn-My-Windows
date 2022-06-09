@@ -38,7 +38,7 @@ generate() {
   cp "kwin4_effect_$1/main.xml" "${BUILD_DIR}/kwin4_effect_$1/contents/config"
   cp "kwin4_effect_$1/config.ui" "${BUILD_DIR}/kwin4_effect_$1/contents/ui"
 
-  perl -pe "s/%LOAD_CONFIG%/`cat kwin4_effect_$1/loadConfig.js | tr '/' '\f' `/g;" \
+  perl -pe "s/%LOAD_CONFIG%/$(tr '/' '\f' < "kwin4_effect_$1/loadConfig.js")/g;" \
        main.js.in | tr '\f' '/' > "${BUILD_DIR}/kwin4_effect_$1/contents/code/main.js"
 
   perl -pi -e "s/%NICK%/$1/g;" "${BUILD_DIR}/kwin4_effect_$1/contents/code/main.js"
