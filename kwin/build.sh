@@ -26,19 +26,26 @@ mkdir -p "${BUILD_DIR}"
 
 # $1: The nick of the effect (e.g. "tv")
 # $2: The name of the effect (e.g. "TV Effect")
-# $3: A short description of the effect
+# $3: A short description of the effect (e.g. "Make windows close like turning off a TV")
 generate() {
-  cp -r "kwin4_effect_$1" "${BUILD_DIR}"
 
   # Create resource directories.
   mkdir -p "${BUILD_DIR}/kwin4_effect_$1/contents/shaders"
   mkdir -p "${BUILD_DIR}/kwin4_effect_$1/contents/code"
+  mkdir -p "${BUILD_DIR}/kwin4_effect_$1/contents/config"
+  mkdir -p "${BUILD_DIR}/kwin4_effect_$1/contents/ui"
 
-  sed -e "s;%NICK%;$1;g" -e "s;%NAME%;$2;g" -e "s;%DESCRIPTION%;$3;g" \
-    metadata.desktop.in > "${BUILD_DIR}/kwin4_effect_$1/metadata.desktop"
+  cp "kwin4_effect_$1/main.xml" "${BUILD_DIR}/kwin4_effect_$1/contents/config"
+  cp "kwin4_effect_$1/config.ui" "${BUILD_DIR}/kwin4_effect_$1/contents/ui"
 
-  sed -e "s;%NICK%;$1;g" -e "s;%NAME%;$2;g" -e "s;%DESCRIPTION%;$3;g" \
-    main.js.in > "${BUILD_DIR}/kwin4_effect_$1/contents/code/main.js"
+  perl -pe "s/%LOAD_CONFIG%/`cat kwin4_effect_$1/loadConfig.js | tr '/' '\f' `/g;" \
+       main.js.in | tr '\f' '/' > "${BUILD_DIR}/kwin4_effect_$1/contents/code/main.js"
+
+  perl -pi -e "s/%NICK%/$1/g;" "${BUILD_DIR}/kwin4_effect_$1/contents/code/main.js"
+
+  perl -pe "s/%NICK%/$1/g;" metadata.desktop.in > "${BUILD_DIR}/kwin4_effect_$1/metadata.desktop"
+  perl -pi -e "s/%NAME%/$2/g;" "${BUILD_DIR}/kwin4_effect_$1/metadata.desktop"
+  perl -pi -e "s/%DESCRIPTION%/$3/g;" "${BUILD_DIR}/kwin4_effect_$1/metadata.desktop"
 
   {
     echo "#version 140"

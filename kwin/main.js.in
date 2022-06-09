@@ -30,13 +30,7 @@ class BMW%NICK%Effect {
         this.loadConfig();
     }
 
-    loadConfig() {
-        const defaultDuration = 1000;
-        const duration = effect.readConfig("Duration", defaultDuration) || defaultDuration;
-        this.duration = animationTime(duration);
-
-        effect.setUniform(this.shader, "uColor", effect.readConfig("Color", "white"));
-    }
+    %LOAD_CONFIG%
 
     static isScaleWindow(window) {
         // We don't want to animate most of plasmashell's windows, yet, some
