@@ -17,7 +17,7 @@ const blacklist = [
     "ksplashqml ksplashqml"
 ];
 
-class Effect {
+class %NICK%Effect {
     constructor() {
         effect.configChanged.connect(this.loadConfig.bind(this));
         effect.animationEnded.connect(this.cleanupForcedRoles.bind(this));
@@ -121,7 +121,7 @@ class Effect {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!Effect.isScaleWindow(window)) {
+        if (!%NICK%Effect.isScaleWindow(window)) {
             return;
         }
         if (!window.visible || window.skipsCloseAnimation) {
@@ -168,4 +168,4 @@ class Effect {
     }
 }
 
-new Effect();
+new %NICK%Effect();
