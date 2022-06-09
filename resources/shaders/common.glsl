@@ -29,7 +29,7 @@
 
 // Furthermore, there is the global input "vec2 iTexCoord" and the output "vec4 oColor".
 
-#ifdef KWIN  // --------------------------------------------------------------------------
+#if defined(KWIN)  // --------------------------------------------------------------------
 
 uniform float forOpening;
 uniform sampler2D sampler;
@@ -43,13 +43,13 @@ bool uForOpening = forOpening == 1.0;
 in vec2 texcoord0;
 out vec4 fragColor;
 
-#define uTexture sampler;
+#define uTexture sampler
 #define uProgress animationProgress
 #define uPadding 0.0
 #define iTexCoord texcoord0
 #define oColor fragColor
 
-#elif KWIN_LEGACY  // --------------------------------------------------------------------
+#elif defined(KWIN_LEGACY)  // -----------------------------------------------------------
 
 uniform float forOpening;
 uniform sampler2D sampler;
@@ -62,11 +62,11 @@ bool uForOpening = forOpening == 1.0;
 
 varying vec2 texcoord0;
 
-#define uTexture sampler;
+#define uTexture sampler
 #define uProgress animationProgress
 #define uPadding 0.0
 #define iTexCoord texcoord0
-#define oColor gl_fragColor
+#define oColor gl_FragColor
 
 #else  // GNOME --------------------------------------------------------------------------
 
@@ -99,7 +99,7 @@ vec4 alphaOver(vec4 under, vec4 over) {
 // Taken from here:
 // https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
 
-float easeOutQuad(float x) { return -1.0 * x * (x - 2); }
+float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
 
 // --------------------------------------------------------------------- edge mask helpers
 
@@ -108,10 +108,10 @@ float easeOutQuad(float x) { return -1.0 * x * (x - 2); }
 // pixels and one which takes this as a percentage.
 float getEdgeMask(vec2 uv, vec2 maxUV, float fadeWidth) {
   float mask = 1.0;
-  mask *= smoothstep(0, 1, clamp(uv.x / fadeWidth, 0, 1));
-  mask *= smoothstep(0, 1, clamp(uv.y / fadeWidth, 0, 1));
-  mask *= smoothstep(0, 1, clamp((maxUV.x - uv.x) / fadeWidth, 0, 1));
-  mask *= smoothstep(0, 1, clamp((maxUV.y - uv.y) / fadeWidth, 0, 1));
+  mask *= smoothstep(0.0, 1.0, clamp(uv.x / fadeWidth, 0.0, 1.0));
+  mask *= smoothstep(0.0, 1.0, clamp(uv.y / fadeWidth, 0.0, 1.0));
+  mask *= smoothstep(0.0, 1.0, clamp((maxUV.x - uv.x) / fadeWidth, 0.0, 1.0));
+  mask *= smoothstep(0.0, 1.0, clamp((maxUV.y - uv.y) / fadeWidth, 0.0, 1.0));
 
   return mask;
 }
@@ -124,7 +124,7 @@ float getEdgeMask(vec2 uv, vec2 maxUV, float fadeWidth) {
 // (offset = 0), ontop the window borders (offset = 0.5) or outside the window borders
 // (offset = 1).
 float getAbsoluteEdgeMask(float fadePixels, float offset) {
-  float padding = max(0, uPadding - fadePixels * offset);
+  float padding = max(0.0, uPadding - fadePixels * offset);
   vec2 uv       = iTexCoord.st * uSize - padding;
   return getEdgeMask(uv, uSize - 2.0 * padding, fadePixels);
 }
