@@ -1,8 +1,7 @@
 /*
-    KWin - the KDE window manager
-    This file is part of the KDE project.
+    This file is part of the Burn-My-Windows project.
 
-    SPDX-FileCopyrightText: 2018, 2021, 2022 Vlad Zahorodnii <vlad.zahorodnii@kde.org>, Martin Flöser <mgraesslin@kde.org>, Simon Schneegans
+    SPDX-FileCopyrightText: 2018, 2021, 2022 Vlad Zahorodnii <vlad.zahorodnii@kde.org>, Martin Flöser <mgraesslin@kde.org>, Simon Schneegans <code@simonschneegans.de>
 
     SPDX-License-Identifier: GPL-3.0-or-later
 */
@@ -26,7 +25,7 @@ class Effect {
         effects.windowClosed.connect(this.slotWindowClosed.bind(this));
         effects.windowDataChanged.connect(this.slotWindowDataChanged.bind(this));
 
-        this.shader = effect.addShader(Effect.MapTexture, "%NICK%.frag");
+        this.shader = effect.addFragmentShader(Effect.MapTexture, "%NICK%.frag");
 
         this.loadConfig();
     }
@@ -109,7 +108,7 @@ class Effect {
             animations: [
                 {
                     type: Effect.ShaderUniform,
-                    shader: this.shader,
+                    fragmentShader: this.shader,
                     uniform: "uForOpening",
                     from: 1.0,
                     to: 1.0
@@ -143,7 +142,7 @@ class Effect {
             animations: [
                 {
                     type: Effect.ShaderUniform,
-                    shader: this.shader,
+                    fragmentShader: this.shader,
                     uniform: "uForOpening",
                     from: 0.0,
                     to: 0.0

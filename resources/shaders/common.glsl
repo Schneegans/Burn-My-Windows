@@ -17,31 +17,60 @@
 
 // --------------------------------------------------------------------- standard uniforms
 
-// uForOpening: True if a window-open animation is ongoing, false otherwise.
-// uTexture:    Contains the texture of the window.
-// uProgress:   A value which transitions from 0 to 1 during the entire animation.
-// uTime:       A steadily increasing value in seconds.
-// uSize:       The size of uTexture in pixels.
-// uPadding:    The empty area around the actual window (e.g. where the shadow is drawn).
+// Each shader can access these standard uniforms:
 
-#ifdef KWIN
+// bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
+// sampler2D uTexture:    Contains the texture of the window.
+// float     uProgress:   A value which transitions from 0 to 1 during the animation.
+// float     uTime:       A steadily increasing value in seconds.
+// vec2      uSize:       The size of uTexture in pixels.
+// float     uPadding:    The empty area around the actual window (e.g. where the shadow
+//                        is drawn). For now, this will only be set on GNOME.
 
-uniform bool uForOpening;
-uniform sampler2D uTexture;
+// Furthermore, there is the global input "vec2 iTexCoord" and the output "vec4 oColor".
+
+#ifdef KWIN  // --------------------------------------------------------------------------
+
+uniform float forOpening;
+uniform sampler2D sampler;
+uniform float textureWidth;
+uniform float textureHeight;
 uniform float animationProgress;
-// uniform float uTime;
-// uniform vec2 uSize;
-// uniform float uPadding;
+
+vec2 uSize       = vec2(textureWidth, textureHeight);
+bool uForOpening = forOpening == 1.0;
 
 in vec2 texcoord0;
 out vec4 fragColor;
 
+#define uTexture sampler;
 #define uProgress animationProgress
+#define uPadding 0.0
 #define iTexCoord texcoord0
 #define oColor fragColor
 
-#else
+#elif KWIN_LEGACY  // --------------------------------------------------------------------
 
+uniform float forOpening;
+uniform sampler2D sampler;
+uniform float textureWidth;
+uniform float textureHeight;
+uniform float animationProgress;
+
+vec2 uSize       = vec2(textureWidth, textureHeight);
+bool uForOpening = forOpening == 1.0;
+
+varying vec2 texcoord0;
+
+#define uTexture sampler;
+#define uProgress animationProgress
+#define uPadding 0.0
+#define iTexCoord texcoord0
+#define oColor gl_fragColor
+
+#else  // GNOME --------------------------------------------------------------------------
+
+// On GNOME, the uniforms are just normal uniforms.
 uniform bool uForOpening;
 uniform sampler2D uTexture;
 uniform float uProgress;
@@ -49,10 +78,11 @@ uniform float uTime;
 uniform vec2 uSize;
 uniform float uPadding;
 
+// On GNOME, we set iTexCoord and oColor to be aliases for the cogl variables.
 #define iTexCoord cogl_tex_coord_in[0]
 #define oColor cogl_color_out
 
-#endif
+#endif  // -------------------------------------------------------------------------------
 
 // ----------------------------------------------------------------- compositing operators
 
