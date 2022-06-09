@@ -91,7 +91,7 @@ class BMW%NICK%Effect {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!Effect.isScaleWindow(window)) {
+        if (!BMW%NICK%Effect.isScaleWindow(window)) {
             return;
         }
         if (!window.visible) {
