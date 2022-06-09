@@ -54,14 +54,8 @@ void main() {
   // Assemble the final alpha value.
   float mask = tbMask * lrMask * ffMask;
 
-  oColor = texture2D(uTexture, coords);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0.0) {
-    oColor.rgb /= oColor.a;
-  }
-
-  oColor.rgb = mix(oColor.rgb, uColor.rgb * oColor.a, smoothstep(0.0, 1.0, prog));
+  vec4 oColor = getInputColor(coords);
+  oColor.rgb  = mix(oColor.rgb, uColor.rgb * oColor.a, smoothstep(0.0, 1.0, prog));
   oColor.a *= mask;
 
   // These are pretty useful for understanding how this works.
@@ -69,4 +63,6 @@ void main() {
   // oColor = vec4(vec3(lrMask), 1);
   // oColor = vec4(vec3(ffMask), 1);
   // oColor = vec4(vec3(mask), 1);
+
+  setOutputColor(oColor);
 }

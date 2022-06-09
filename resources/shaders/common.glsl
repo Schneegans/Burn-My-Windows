@@ -17,17 +17,21 @@
 
 // --------------------------------------------------------------------- standard uniforms
 
-// Each shader can access these standard uniforms:
+// Each shader can access these standard input values:
 
-// bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
-// sampler2D uTexture:    Contains the texture of the window.
-// float     uProgress:   A value which transitions from 0 to 1 during the animation.
-// float     uTime:       A steadily increasing value in seconds.
-// vec2      uSize:       The size of uTexture in pixels.
-// float     uPadding:    The empty area around the actual window (e.g. where the shadow
-//                        is drawn). For now, this will only be set on GNOME.
+// vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
+// bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
+// float uProgress:   A value which transitions from 0 to 1 during the animation.
+// float uTime:       A steadily increasing value in seconds.
+// vec2  uSize:       The size of uTexture in pixels.
+// float uPadding:    The empty area around the actual window (e.g. where the shadow
+//                    is drawn). For now, this will only be set on GNOME.
 
-// Furthermore, there is the global input "vec2 iTexCoord" and the output "vec4 oColor".
+// Furthermore, there are two global methods for reading the window input color and
+// setting the shader output color. Both methods assume straight alpha:
+
+// vec4 getInputColor(vec2 coords)
+// void setOutputColor(vec4 outColor)
 
 #if defined(KWIN)  // --------------------------------------------------------------------
 
@@ -43,11 +47,23 @@ bool uForOpening = forOpening == 1.0;
 in vec2 texcoord0;
 out vec4 fragColor;
 
-#define uTexture sampler
 #define uProgress animationProgress
 #define uPadding 0.0
 #define iTexCoord texcoord0
-#define oColor fragColor
+
+vec4 getInputColor(vec2 coords) {
+  vec4 color = texture2D(sampler, coords);
+
+  if (color.a > 0.0) {
+    color.rgb /= color.a;
+  }
+
+  return color;
+}
+
+void setOutputColor(vec4 outColor) {
+  fragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+}
 
 #elif defined(KWIN_LEGACY)  // -----------------------------------------------------------
 
@@ -62,11 +78,23 @@ bool uForOpening = forOpening == 1.0;
 
 varying vec2 texcoord0;
 
-#define uTexture sampler
 #define uProgress animationProgress
 #define uPadding 0.0
 #define iTexCoord texcoord0
-#define oColor gl_FragColor
+
+vec4 getInputColor(vec2 coords) {
+  vec4 color = texture2D(sampler, coords);
+
+  if (color.a > 0.0) {
+    color.rgb /= color.a;
+  }
+
+  return color;
+}
+
+void setOutputColor(vec4 outColor) {
+  gl_FragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+}
 
 #else  // GNOME --------------------------------------------------------------------------
 
@@ -80,7 +108,19 @@ uniform float uPadding;
 
 // On GNOME, we set iTexCoord and oColor to be aliases for the cogl variables.
 #define iTexCoord cogl_tex_coord_in[0]
-#define oColor cogl_color_out
+
+// Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
+vec4 getInputColor(vec2 coords) {
+  vec4 color = texture2D(uTexture, coords);
+
+  if (color.a > 0.0) {
+    color.rgb /= color.a;
+  }
+
+  return color;
+}
+
+void setOutputColor(vec4 outColor) { cogl_color_out = outColor; }
 
 #endif  // -------------------------------------------------------------------------------
 
