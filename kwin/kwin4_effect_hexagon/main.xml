@@ -13,10 +13,10 @@
       <default>2</default>
     </entry>
     <entry name="LineColor" type="Color">
-      <default>#C8FFFF88</default>
+      <default>#80C8FFFF</default>
     </entry>
     <entry name="GlowColor" type="Color">
-      <default>#1450FF88</default>
+      <default>#801450FF</default>
     </entry>
     <entry name="AdditiveBlending" type="Bool">
       <default>true</default>
