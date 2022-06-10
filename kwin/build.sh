@@ -105,10 +105,10 @@ generate() {
   tar -C "$BUILD_DIR" -czf "$DIR_NAME.tar.gz" "$DIR_NAME"
 }
 
-generate "apparition" "Apparition [BMW]" "This effect hides your windows by violently sucking them into the void of magic"
-generate "energize-a" "Energize A [BMW]" "Beam your windows away"
-generate "energize-b" "Energize B [BMW]" "Using different transporter technology results in an alternative visual effect"
-generate "hexagon"    "Hexagon [BMW]"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
-generate "tv"         "TV Effect [BMW]"  "Make windows close like turning off a TV"
-generate "wisps"      "Wisps [BMW]"      "Let your windows be carried away to the realm of dreams by these little fairies"
-# generate "fire" "Fire" "Make windows burn"
+generate "apparition" "[BMW] Apparition" "This effect hides your windows by violently sucking them into the void of magic"
+generate "energize-a" "[BMW] Energize A" "Beam your windows away"
+generate "energize-b" "[BMW] Energize B" "Using different transporter technology results in an alternative visual effect"
+generate "fire"       "[BMW] Fire"       "The classic effect inspired by Compiz"
+generate "hexagon"    "[BMW] Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
+generate "tv"         "[BMW] TV Effect"  "Make windows close like turning off a TV"
+generate "wisps"      "[BMW] Wisps"      "Let your windows be carried away to the realm of dreams by these little fairies"

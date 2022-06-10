@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name="" />
+  <group name="">
+    <entry name="Duration" type="UInt">
+      <default>1500</default>
+    </entry>
+    <entry name="Scale" type="Double">
+      <default>1</default>
+    </entry>
+    <entry name="MovementSpeed" type="Double">
+      <default>0.5</default>
+    </entry>
+    <entry name="Gradient1" type="Color">
+      <default>#4c331900</default>
+    </entry>
+    <entry name="Gradient2" type="Color">
+      <default>b4371ea0</default>
+    </entry>
+    <entry name="Gradient3" type="Color">
+      <default>#ff4c26b5</default>
+    </entry>
+    <entry name="Gradient4" type="Color">
+      <default>#ffa619ff</default>
+    </entry>
+    <entry name="Gradient5" type="Color">
+      <default>#ffffffff</default>
+    </entry>
+    <entry name="3DNoise" type="Bool">
+      <default>false</default>
+    </entry>
+  </group>
+</kcfg>
