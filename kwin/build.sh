@@ -105,6 +105,7 @@ generate() {
   tar -C "$BUILD_DIR" -czf "$DIR_NAME.tar.gz" "$DIR_NAME"
 }
 
+generate "apparition" "Apparition" "This effect hides your windows by violently sucking them into the void of magic"
 generate "energize-a" "Energize A" "Beam your windows away"
 generate "energize-b" "Energize B" "Using different transporter technology results in an alternative visual effect"
 generate "hexagon"    "Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"

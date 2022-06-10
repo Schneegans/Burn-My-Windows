@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name="" />
+  <group name="">
+    <entry name="Duration" type="UInt">
+      <default>300</default>
+    </entry>
+    <entry name="uShake" type="Double">
+      <default>3</default>
+    </entry>
+    <entry name="uTwirl" type="Double">
+      <default>5</default>
+    </entry>
+    <entry name="uSuction" type="Double">
+      <default>0.75</default>
+    </entry>
+    <entry name="uRandomness" type="Double">
+      <default>0.5</default>
+    </entry>
+  </group>
+</kcfg>
