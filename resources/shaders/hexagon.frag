@@ -20,7 +20,7 @@ uniform float uLineWidth;
 uniform vec4 uGlowColor;
 uniform vec4 uLineColor;
 
-// This methods generates a procedural hexagonal pattern. It returns four values:
+// This method generates a procedural hexagonal pattern. It returns four values:
 // result.xy: This contains cell-relative coordinates for the given point.
 //            [0, 0] is in the center of a cell, [0, 1] at the upper edge,
 //            [sqrt(4.0 / 3.0), 0] at the right tip and so on.
