@@ -4,7 +4,7 @@
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
-      <default>0</default>
+      <default>2000</default>
     </entry>
     <entry name="Scale" type="Double">
       <default>1</default>

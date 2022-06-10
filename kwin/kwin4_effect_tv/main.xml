@@ -4,7 +4,7 @@
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
-      <default>0</default>
+      <default>400</default>
     </entry>
     <entry name="Color" type="Color">
       <default>255,255,255</default>
