@@ -13,6 +13,10 @@
 #           Released under the GPLv3 or later. See LICENSE file for details.             #
 # -------------------------------------------------------------------------------------- #
 
+
+# This scripts takes the shaders of Burn-My-Windows as well as some other input files from
+# the directories next to this script and creates effect for KDE's Kwin.
+
 # Exit the script when one command fails.
 set -e
 
@@ -20,22 +24,25 @@ set -e
 cd "$( cd "$( dirname "$0" )" && pwd )" || \
   { echo "ERROR: Could not find kwin directory."; exit 1; }
 
+# We will store the effect directories in this directory.
 BUILD_DIR="_build"
 
+# Create it if it's not there yet.
 mkdir -p "$BUILD_DIR"
 
+# This method is called one for each effect. The parameters are as follows:
 # $1: The nick of the effect (e.g. "energize-a")
 # $2: The name of the effect (e.g. "Energize A")
 # $3: A short description of the effect (e.g. "Beam your windows away")
 generate() {
 
-  # Use the nick for the effect's directory name by replacing dashes by underscoares.
+  # We use the nick for the effect's directory name by replacing dashes with underscoares.
   DIR_NAME="kwin4_effect_$(echo "$1" | tr '-' '_')"
 
-  # Transform to CamelCase for the JavaScript class.
+  # We transform the nick to CamelCase for the JavaScript class name.
   EFFECT_CLASS="BurnMyWindows$(sed -r 's/(^|-)(\w)/\U\2/g' <<<"$1")Effect"
 
-  # Create resource directories.
+  # Now create all required resource directories.
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/shaders"
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/code"
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/config"
@@ -51,14 +58,19 @@ generate() {
     cp "$1/config.ui" "$BUILD_DIR/$DIR_NAME/contents/ui"
   fi
 
-
+  # Now we create the effect's JavaScript source file. This is done by taking main.js.in
+  # and replacing some placeholders with effect-specific files and values. 
   ON_SETTINGS_CHANGE=""
   ON_ANIMATION_BEGIN=""
 
+  # If the effect's directory contains a onSettingsChanged.js, we replace the
+  # corresponding placeholder with it's content. We replace all occurences of / temporily
+  # so that the REGEX works.
   if [ -f "$1/onSettingsChanged.js" ]; then
     ON_SETTINGS_CHANGE=$(tr '/' '\f' < "$1/onSettingsChanged.js")
   fi
 
+  # Similarily, we will inject the contents of onAnimationBegin.js.
   if [ -f "$1/onAnimationBegin.js" ]; then
     ON_ANIMATION_BEGIN=$(tr '/' '\f' < "$1/onAnimationBegin.js")
   fi
@@ -70,12 +82,16 @@ generate() {
   perl -pi -e "s/%SHADER_NAME%/$1/g;"                         "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   perl -pi -e "s/\f/\//g;"                                    "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
 
+  # Now create the metadata.desktop file. Again, we replace some placeholders.
   cp metadata.desktop.in "$BUILD_DIR/$DIR_NAME/metadata.desktop"
   perl -pi -e "s/%ICON%/$1/g;"            "$BUILD_DIR/$DIR_NAME/metadata.desktop"
   perl -pi -e "s/%NAME%/$2/g;"            "$BUILD_DIR/$DIR_NAME/metadata.desktop"
   perl -pi -e "s/%DESCRIPTION%/$3/g;"     "$BUILD_DIR/$DIR_NAME/metadata.desktop"
   perl -pi -e "s/%DIR_NAME%/$DIR_NAME/g;" "$BUILD_DIR/$DIR_NAME/metadata.desktop"
 
+  # Now create the two required shader files. We prepend the common.glsl to each shader.
+  # We also define KWIN and KWIN_LEGACY. The code in common.glsl takes some different
+  # paths based on these defines.
   {
     echo "#version 140"
     echo "#define KWIN"
@@ -101,10 +117,11 @@ generate() {
       clang-format -i "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   fi
 
-  # Create an archive for the effect.
+  # Finally, create an archive for the effect.
   tar -C "$BUILD_DIR" -czf "$DIR_NAME.tar.gz" "$DIR_NAME"
 }
 
+# Now run the above method for all supported effects.
 generate "apparition" "[BMW] Apparition" "This effect hides your windows by violently sucking them into the void of magic"
 generate "energize-a" "[BMW] Energize A" "Beam your windows away"
 generate "energize-b" "[BMW] Energize B" "Using different transporter technology results in an alternative visual effect"
