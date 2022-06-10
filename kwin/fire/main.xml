@@ -13,16 +13,16 @@
       <default>0.5</default>
     </entry>
     <entry name="Gradient1" type="Color">
-      <default>#4c331900</default>
+      <default>#004c3319</default>
     </entry>
     <entry name="Gradient2" type="Color">
-      <default>b4371ea0</default>
+      <default>#a0b4371e</default>
     </entry>
     <entry name="Gradient3" type="Color">
-      <default>#ff4c26b5</default>
+      <default>#b5ff4c26</default>
     </entry>
     <entry name="Gradient4" type="Color">
-      <default>#ffa619ff</default>
+      <default>#ffffa619</default>
     </entry>
     <entry name="Gradient5" type="Color">
       <default>#ffffffff</default>

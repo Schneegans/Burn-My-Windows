@@ -29,8 +29,19 @@ const float HIDE_TIME  = 0.4;
 
 // This maps the input value from [0..1] to a color from the gradient.
 vec4 getFireColor(float v) {
-  const float steps[5] = float[](0.0, 0.2, 0.35, 0.5, 0.8);
-  vec4 colors[5] = vec4[](uGradient1, uGradient2, uGradient3, uGradient4, uGradient5);
+  float steps[5];
+  steps[0] = 0.0;
+  steps[1] = 0.2;
+  steps[2] = 0.35;
+  steps[3] = 0.5;
+  steps[4] = 0.8;
+
+  vec4 colors[5];
+  colors[0] = uGradient1;
+  colors[1] = uGradient2;
+  colors[2] = uGradient3;
+  colors[3] = uGradient4;
+  colors[4] = uGradient5;
 
   if (v < steps[0]) {
     return colors[0];
