@@ -91,7 +91,7 @@ Please study this code carefully, all of it is explained with inline comments.
 // vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
 // bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
 // float uProgress:   A value which transitions from 0 to 1 during the animation.
-// float uTime:       A steadily increasing value in seconds.
+// float uDuration:   The duration of the current animation in seconds.
 // vec2  uSize:       The size of uTexture in pixels.
 // float uPadding:    The empty area around the actual window (e.g. where the shadow
 //                    is drawn). For now, this will only be set on GNOME.

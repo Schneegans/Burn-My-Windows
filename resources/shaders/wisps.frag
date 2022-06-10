@@ -47,7 +47,8 @@ float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
   float radius    = mix(0.5, 1.0, hash12(cellID * seed * 19.1249)) * WISPS_RADIUS;
   float roundness = mix(-1.0, 1.0, hash12(cellID * seed * 7.51949));
 
-  vec2 offset = vec2(sin(speed * (uTime + 1)) * roundness, cos(speed * (uTime + 1)));
+  vec2 offset = vec2(sin(speed * (uProgress * uDuration + 1)) * roundness,
+                     cos(speed * (uProgress * uDuration + 1)));
   offset *= 0.5 - 0.5 * radius / gridSize;
   offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
                 offset.x * sin(rotation) + offset.y * cos(rotation));

@@ -100,7 +100,7 @@ void main() {
   // Add glimmering atoms.
   vec2 atomUV = iTexCoord.st + vec2(0, -0.025 * progress / SHOWER_TIME);
   atomUV *= 0.2 * uSize / uScale;
-  float atoms = pow((simplex3D(vec3(atomUV, uTime))), 5.0);
+  float atoms = pow((simplex3D(vec3(atomUV, uProgress * uDuration))), 5.0);
   oColor.rgb += uColor * atoms * masks.z;
   oColor.a += atoms * masks.z;
 

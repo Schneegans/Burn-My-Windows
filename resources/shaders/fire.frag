@@ -90,10 +90,12 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
 void main() {
   // Get a noise value which moves vertically in time.
   vec2 uv = iTexCoord.st * uSize / vec2(400, 600) / uScale;
-  uv.y += uTime * uMovementSpeed;
+  uv.y += uProgress * uDuration * uMovementSpeed;
 
-  float noise = u3DNoise ? simplex3DFractal(vec3(uv * 4.0, uTime * uMovementSpeed * 1.5))
-                         : simplex2DFractal(uv * 4.0);
+  float noise =
+    u3DNoise
+      ? simplex3DFractal(vec3(uv * 4.0, uProgress * uDuration * uMovementSpeed * 1.5))
+      : simplex2DFractal(uv * 4.0);
 
   // Modulate noise by effect mask.
   vec2 effectMask = effectMask(HIDE_TIME, FADE_WIDTH, EDGE_FADE);

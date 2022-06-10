@@ -36,7 +36,7 @@ float getText(vec2 fragCoord) {
 
   // Choose random letter.
   uv += floor(hash22(floor(hash22(block) * vec2(12.9898, 78.233) +
-                           LETTER_FLICKER_SPEED * uTime + 42.254)) *
+                           LETTER_FLICKER_SPEED * uProgress * uDuration + 42.254)) *
               LETTER_TILES);
 
   return texture2D(uFontTexture, uv / LETTER_TILES).r;

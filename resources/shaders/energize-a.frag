@@ -70,14 +70,14 @@ void main() {
   scaledUV /= uScale;
 
   // Add molecule particles.
-  vec2 uv = scaledUV + vec2(0, 0.1 * uTime);
+  vec2 uv = scaledUV + vec2(0, 0.1 * uProgress * uDuration);
   uv *= 0.010598 * vec2(0.5 * uSize.x, uSize.y);
-  float particles = 0.2 * pow((simplex3D(vec3(uv, 0.0 * uTime))), 3.0);
+  float particles = 0.2 * pow((simplex3D(vec3(uv, 0.0 * uProgress * uDuration))), 3.0);
 
   // Add more molecule particles.
   for (int i = 1; i <= 3; ++i) {
     vec2 uv     = scaledUV * 0.12154 / pow(1.5, i) * uSize;
-    float atoms = simplex3D(vec3(uv, 2.0 * uTime / i));
+    float atoms = simplex3D(vec3(uv, 2.0 * uProgress * uDuration / i));
     particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms) - 1.0), 2);
   }
 

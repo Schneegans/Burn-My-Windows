@@ -22,7 +22,7 @@
 // vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
 // bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
 // float uProgress:   A value which transitions from 0 to 1 during the animation.
-// float uTime:       A steadily increasing value in seconds.
+// float uDuration:   The duration of the current animation in seconds.
 // vec2  uSize:       The size of uTexture in pixels.
 // float uPadding:    The empty area around the actual window (e.g. where the shadow
 //                    is drawn). For now, this will only be set on GNOME.
@@ -37,6 +37,7 @@
 
 uniform float forOpening;
 uniform sampler2D sampler;
+uniform float uDuration;
 uniform float textureWidth;
 uniform float textureHeight;
 uniform float animationProgress;
@@ -69,6 +70,7 @@ void setOutputColor(vec4 outColor) {
 
 uniform float forOpening;
 uniform sampler2D sampler;
+uniform float uDuration;
 uniform float textureWidth;
 uniform float textureHeight;
 uniform float animationProgress;
@@ -102,7 +104,7 @@ void setOutputColor(vec4 outColor) {
 uniform bool uForOpening;
 uniform sampler2D uTexture;
 uniform float uProgress;
-uniform float uTime;
+uniform float uDuration;
 uniform vec2 uSize;
 uniform float uPadding;
 
