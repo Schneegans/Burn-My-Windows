@@ -32,7 +32,6 @@ class %EFFECT_CLASS% {
 
     loadConfig() {
         this.duration = animationTime(effect.readConfig('Duration', 1000));
-        effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
 
         %ON_SETTINGS_CHANGE%
     }
