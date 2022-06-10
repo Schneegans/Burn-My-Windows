@@ -30,10 +30,10 @@ mkdir -p "$BUILD_DIR"
 generate() {
 
   # Use the nick for the effect's directory name by replacing dashes by underscoares.
-  DIR_NAME="kwin4_effect_$(echo $1 | tr '-' '_')"
+  DIR_NAME="kwin4_effect_$(echo "$1" | tr '-' '_')"
 
   # Use the name of the effect for the JavaScript class name by removing all spaces.
-  EFFECT_CLASS="BurnMyWindows$(echo $2 | tr -d ' ')"
+  EFFECT_CLASS="BurnMyWindows$(echo "$2" | tr -d ' ')"
 
   # Create resource directories.
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/shaders"
