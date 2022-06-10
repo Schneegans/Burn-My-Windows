@@ -42,18 +42,17 @@ uniform int textureWidth;
 uniform int textureHeight;
 uniform float animationProgress;
 
-vec2 uSize       = vec2(textureWidth, textureHeight);
-bool uForOpening = forOpening == 1.0;
-
 in vec2 texcoord0;
 out vec4 fragColor;
 
-#define uProgress animationProgress
-#define uPadding 0.0
-#define iTexCoord texcoord0
+vec2 uSize       = vec2(textureWidth, textureHeight);
+bool uForOpening = forOpening == 1.0;
+vec2 iTexCoord   = vec2(texcoord0.x, 1.0 - texcoord0.y);
+float uProgress  = animationProgress;
+float uPadding   = 0.0;
 
 vec4 getInputColor(vec2 coords) {
-  vec4 color = texture2D(sampler, coords);
+  vec4 color = texture2D(sampler, vec2(coords.x, 1.0 - coords.y));
 
   if (color.a > 0.0) {
     color.rgb /= color.a;
@@ -75,17 +74,16 @@ uniform int textureWidth;
 uniform int textureHeight;
 uniform float animationProgress;
 
-vec2 uSize       = vec2(textureWidth, textureHeight);
-bool uForOpening = forOpening == 1.0;
-
 varying vec2 texcoord0;
 
-#define uProgress animationProgress
-#define uPadding 0.0
-#define iTexCoord texcoord0
+vec2 uSize       = vec2(textureWidth, textureHeight);
+bool uForOpening = forOpening == 1.0;
+vec2 iTexCoord   = vec2(texcoord0.x, 1.0 - texcoord0.y);
+float uProgress  = animationProgress;
+float uPadding   = 0.0;
 
 vec4 getInputColor(vec2 coords) {
-  vec4 color = texture2D(sampler, coords);
+  vec4 color = texture2D(sampler, vec2(coords.x, 1.0 - coords.y));
 
   if (color.a > 0.0) {
     color.rgb /= color.a;
