@@ -34,11 +34,7 @@ void main() {
   progress       = progress + 0.25 - 0.5 * simplex2D((iTexCoord.st + uSeed) * 2.0);
   progress       = pow(max(0, progress), 2.0);
 
-  // This may help you to understand how this effect works.
-  // oColor = vec4(progress, 0, 0, 0);
-  // return;
-
-  oColor = vec4(0, 0, 0, 0);
+  vec4 oColor = vec4(0.0);
 
   for (float i = 0; i < DUST_LAYERS; ++i) {
 
@@ -80,12 +76,7 @@ void main() {
     if (dustGroup == i) {
 
       // Get the window color.
-      vec4 windowColor = texture2D(uTexture, coords + 0.5);
-
-      // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-      if (windowColor.a > 0) {
-        windowColor.rgb /= windowColor.a;
-      }
+      vec4 windowColor = getInputColor(coords + 0.5);
 
       // Fade the window color to uDustColor.
       vec3 dustColor  = mix(windowColor.rgb, uDustColor.rgb, uDustColor.a);
@@ -97,4 +88,9 @@ void main() {
       }
     }
   }
+
+  // This may help you to understand how this effect works.
+  // oColor = vec4(progress, 0, 0, 0);
+
+  setOutputColor(oColor);
 }

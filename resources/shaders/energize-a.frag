@@ -59,17 +59,12 @@ vec2 getMasks(float progress) {
 void main() {
   float progress = easeOutQuad(uProgress);
 
-  vec2 masks       = getMasks(progress);
-  vec4 windowColor = texture2D(uTexture, iTexCoord.st);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (windowColor.a > 0) {
-    windowColor.rgb /= windowColor.a;
-  }
+  vec2 masks  = getMasks(progress);
+  vec4 oColor = getInputColor(iTexCoord.st);
 
   // Dissolve window to effect color / transparency.
-  oColor.rgb = mix(uColor, windowColor.rgb, 0.2 * masks.y + 0.8);
-  oColor.a   = windowColor.a * masks.y;
+  oColor.rgb = mix(uColor, oColor.rgb, 0.2 * masks.y + 0.8);
+  oColor.a   = oColor.a * masks.y;
 
   vec2 scaledUV = (iTexCoord.st - 0.5) * (1.0 + 0.1 * progress);
   scaledUV /= uScale;
@@ -94,4 +89,6 @@ void main() {
   // oColor = vec4(vec3(masks.x), 1.0);
   // oColor = vec4(vec3(masks.y), 1.0);
   // oColor = vec4(vec3(particles), 1.0);
+
+  setOutputColor(oColor);
 }

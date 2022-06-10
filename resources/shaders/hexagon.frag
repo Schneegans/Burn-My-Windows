@@ -79,22 +79,15 @@ void main() {
   vec2 texScale = 0.1 * uSize / uScale;
   vec4 hex      = getHexagons(iTexCoord.st * texScale);
 
-  if (tileProgress > hex.z) {
+  vec4 oColor = vec4(0.0);
 
-    // Crop outer parts of the shrinking tiles.
-    oColor.a = 0.0;
-
-  } else {
+  // Crop outer parts of the shrinking tiles.
+  if (tileProgress < hex.z) {
 
     // Make the tiles shrink by offsetting the texture lookup towards the edge
     // of the cell.
     vec2 lookupOffset = tileProgress * hex.xy / texScale / (1.0 - tileProgress);
-    oColor            = texture2D(uTexture, iTexCoord.st + lookupOffset);
-
-    // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-    if (oColor.a > 0) {
-      oColor.rgb /= oColor.a;
-    }
+    oColor            = getInputColor(iTexCoord.st + lookupOffset);
 
     vec4 glow = uGlowColor;
     vec4 line = uLineColor;
@@ -122,4 +115,6 @@ void main() {
       oColor.rgb = mix(oColor.rgb, line.rgb, line.a);
     }
   }
+
+  setOutputColor(oColor);
 }

@@ -83,12 +83,7 @@ void main() {
   float textMask = getText(coords);
 
   // Get the window texture.
-  oColor = texture2D(uTexture, coords);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
+  vec4 oColor = getInputColor(coords);
 
   // Fade the window according to the effect mask.
   oColor.a *= rainMask.y;
@@ -107,4 +102,6 @@ void main() {
   // oColor = vec4(vec3(textMask), 1);
   // oColor = vec4(vec3(rainMask.x), 1);
   // oColor = vec4(vec3(rainMask.y), 1);
+
+  setOutputColor(oColor);
 }

@@ -76,17 +76,12 @@ vec4 getMasks(float progress) {
 void main() {
   float progress = easeOutQuad(uProgress);
 
-  vec4 masks       = getMasks(progress);
-  vec4 windowColor = texture2D(uTexture, iTexCoord.st);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (windowColor.a > 0) {
-    windowColor.rgb /= windowColor.a;
-  }
+  vec4 masks  = getMasks(progress);
+  vec4 oColor = getInputColor(iTexCoord.st);
 
   // Dissolve window to effect color / transparency.
-  oColor.rgb = mix(uColor, windowColor.rgb, 0.5 * masks.w + 0.5);
-  oColor.a   = windowColor.a * masks.w;
+  oColor.rgb = mix(uColor, oColor.rgb, 0.5 * masks.w + 0.5);
+  oColor.a   = oColor.a * masks.w;
 
   // Add leading shower particles.
   vec2 showerUV = iTexCoord.st + vec2(0, -0.7 * progress / SHOWER_TIME);
@@ -118,4 +113,6 @@ void main() {
   // oColor = vec4(vec3(shower), 1.0);
   // oColor = vec4(vec3(streaks), 1.0);
   // oColor = vec4(vec3(atoms), 1.0);
+
+  setOutputColor(oColor);
 }

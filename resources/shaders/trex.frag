@@ -90,12 +90,7 @@ void main() {
   // Get the window texture. We shift the texture lookup by the local derivative of
   // the claw texture in order to mimic some folding distortion.
   vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
-  oColor      = texture2D(uTexture, coords + offset);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
+  vec4 oColor = getInputColor(coords + offset);
 
   // Add colorful flashes.
   float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1;
@@ -120,4 +115,6 @@ void main() {
   // These are pretty useful for understanding how this works.
   // oColor = vec4(vec3(flashIntensity), 1);
   // oColor = vec4(vec3(scratchMap), 1);
+
+  setOutputColor(oColor);
 }

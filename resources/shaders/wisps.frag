@@ -71,12 +71,7 @@ void main() {
   vec2 coords = iTexCoord.st * (scale + 1.0) - scale * 0.5;
 
   // Get the color of the window.
-  oColor = texture2D(uTexture, coords);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
+  vec4 oColor = getInputColor(coords);
 
   // Compute several layers of moving wisps.
   vec2 uv = (iTexCoord.st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
@@ -110,4 +105,6 @@ void main() {
   // oColor = vec4(vec3(wisps), 1.0);
   // oColor = vec4(vec3(noise), 1.0);
   // oColor = vec4(vec3(mask*min(wispsIn, 1.0 - wispsOut)), 1.0);
+
+  setOutputColor(oColor);
 }

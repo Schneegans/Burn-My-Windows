@@ -48,12 +48,8 @@ void main() {
   float c     = cos(angle);
   coords      = vec2(dot(coords, vec2(c, -s)), dot(coords, vec2(s, c)));
 
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  oColor = texture2D(uTexture, coords + center);
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
-
   // Fade out the window texture.
+  vec4 oColor = getInputColor(coords + center);
   oColor.a *= 1.0 - progress;
+  setOutputColor(oColor);
 }

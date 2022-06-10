@@ -103,12 +103,7 @@ void main() {
   vec4 fire = getFireColor(noise);
 
   // Get the window texture.
-  oColor = texture2D(uTexture, iTexCoord.st);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
+  vec4 oColor = getInputColor(iTexCoord.st);
 
   // Fade the window according to the effect mask.
   oColor.a *= effectMask.x;
@@ -120,4 +115,6 @@ void main() {
   // oColor = vec4(vec3(noise), 1);
   // oColor = vec4(vec3(effectMask.x), 1);
   // oColor = vec4(vec3(effectMask.y), 1);
+
+  setOutputColor(oColor);
 }

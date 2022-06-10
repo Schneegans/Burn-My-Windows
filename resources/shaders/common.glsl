@@ -106,7 +106,7 @@ uniform float uTime;
 uniform vec2 uSize;
 uniform float uPadding;
 
-// On GNOME, we set iTexCoord and oColor to be aliases for the cogl variables.
+// On GNOME, we set iTexCoord to be an alias for the cogl variables.
 #define iTexCoord cogl_tex_coord_in[0]
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.

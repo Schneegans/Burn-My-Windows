@@ -25,7 +25,7 @@ const float ACTOR_SCALE  = 2.0;
 const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
 
 void main() {
-  oColor = vec4(0, 0, 0, 0);
+  vec4 oColor = vec4(0, 0, 0, 0);
 
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
@@ -66,12 +66,9 @@ void main() {
     float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
 
     if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2)) > 0) {
-      oColor = texture2D(uTexture, coords);
+      oColor = getInputColor(coords);
     }
   }
 
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
+  setOutputColor(oColor);
 }
