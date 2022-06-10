@@ -28,12 +28,9 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="KColorCombo" name="kcfg_Color">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <widget class="KColorButton" name="kcfg_Color">
+     <property name="alphaChannelEnabled">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -64,9 +61,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KColorCombo</class>
-   <extends>QComboBox</extends>
-   <header>kcolorcombo.h</header>
+   <class>KColorButton</class>
+   <extends>QPushButton</extends>
+   <header>kcolorbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources />
