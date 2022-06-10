@@ -17,7 +17,7 @@ const blacklist = [
     "ksplashqml ksplashqml"
 ];
 
-class BMW%NICK%Effect {
+class %EFFECT_CLASS% {
     constructor() {
         effect.configChanged.connect(this.loadConfig.bind(this));
         effect.animationEnded.connect(this.cleanupForcedRoles.bind(this));
@@ -25,7 +25,7 @@ class BMW%NICK%Effect {
         effects.windowClosed.connect(this.slotWindowClosed.bind(this));
         effects.windowDataChanged.connect(this.slotWindowDataChanged.bind(this));
 
-        this.shader = effect.addFragmentShader(Effect.MapTexture, "%NICK%.frag");
+        this.shader = effect.addFragmentShader(Effect.MapTexture, "%SHADER_NAME%.frag");
 
         this.loadConfig();
     }
@@ -85,7 +85,7 @@ class BMW%NICK%Effect {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!BMW%NICK%Effect.isScaleWindow(window)) {
+        if (!%EFFECT_CLASS%.isScaleWindow(window)) {
             return;
         }
         if (!window.visible) {
@@ -122,7 +122,7 @@ class BMW%NICK%Effect {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!BMW%NICK%Effect.isScaleWindow(window)) {
+        if (!%EFFECT_CLASS%.isScaleWindow(window)) {
             return;
         }
         if (!window.visible || window.skipsCloseAnimation) {
@@ -176,4 +176,4 @@ class BMW%NICK%Effect {
     }
 }
 
-new BMW%NICK%Effect();
+new %EFFECT_CLASS%();
