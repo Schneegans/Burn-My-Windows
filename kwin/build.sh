@@ -102,7 +102,7 @@ generate() {
   fi
 
   # Create an archive for the effect.
-  tar -C "$BUILD_DIR" -czf $DIR_NAME.tar.gz "$DIR_NAME"
+  tar -C "$BUILD_DIR" -czf "$DIR_NAME.tar.gz" "$DIR_NAME"
 }
 
 generate "energize-a" "Energize A" "Beam your windows away"
