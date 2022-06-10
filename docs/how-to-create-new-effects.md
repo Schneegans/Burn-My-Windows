@@ -86,27 +86,28 @@ Please study this code carefully, all of it is explained with inline comments.
 
 ```glsl
 // The content from common.glsl is automatically prepended to each shader effect. This
-// provides the standard input "vec2 iTexCoord", the standard output "vec4 oColor" as well
-// as some standard uniforms which will be updated during the animation:
+// provides the standard input:
 
-// bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
-// sampler2D uTexture:    Contains the texture of the window.
-// float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
-// float     uTime:       A steadily increasing value in seconds.
-// vec2      uSize:       The size of uTexture in pixels.
-// float     uPadding:    The empty area around the actual window (e.g. where the shadow is drawn).
+// vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
+// bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
+// float uProgress:   A value which transitions from 0 to 1 during the animation.
+// float uTime:       A steadily increasing value in seconds.
+// vec2  uSize:       The size of uTexture in pixels.
+// float uPadding:    The empty area around the actual window (e.g. where the shadow
+//                    is drawn). For now, this will only be set on GNOME.
+
+// Furthermore, there are two global methods for reading the window input color and
+// setting the shader output color. Both methods assume straight alpha:
+
+// vec4 getInputColor(vec2 coords)
+// void setOutputColor(vec4 outColor)
 
 // The width of the fading effect is loaded from the settings.
 uniform float uFadeWidth;
 
 void main() {
   // Get the color from the window texture.
-  oColor = texture2D(uTexture, iTexCoord.st);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (oColor.a > 0) {
-    oColor.rgb /= oColor.a;
-  }
+  vec4 oColor = getInputColor(iTexCoord.st);
 
   // Radial distance from window edge to the window's center.
   float dist = length(iTexCoord.st - 0.5) * 2.0 / sqrt(2.0);
@@ -121,6 +122,8 @@ void main() {
 
   // Apply the mask to the output.
   oColor.a *= mask;
+
+  setOutputColor(oColor);
 }
 ```
 
