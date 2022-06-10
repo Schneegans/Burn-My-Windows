@@ -20,7 +20,7 @@ uniform float uScale;
 const float WISPS_RADIUS    = 20.0;
 const float WISPS_SPEED     = 10.0;
 const float WISPS_SPACING   = 40.0 + WISPS_RADIUS;
-const int WISPS_LAYERS      = 8;
+const float WISPS_LAYERS    = 8.0;
 const float WISPS_IN_TIME   = 0.5;
 const float WINDOW_OUT_TIME = 1.0;
 const float SCALING         = 0.9;
@@ -78,8 +78,8 @@ void main() {
   vec2 uv = (iTexCoord.st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
   uv /= uScale;
   float wisps = 0.0;
-  for (float i = 0; i < WISPS_LAYERS; ++i) {
-    wisps += getWisps(uv * 0.3, WISPS_SPACING, uSeed * (i + 1));
+  for (float i = 0.0; i < WISPS_LAYERS; ++i) {
+    wisps += getWisps(uv * 0.3, WISPS_SPACING, uSeed * (i + 1.0));
   }
 
   // Compute shrinking edge mask.
@@ -92,7 +92,8 @@ void main() {
   float windowOut = smoothstep(0.0, 1.0, clamp(progress / WINDOW_OUT_TIME, 0.0, 1.0));
 
   // Use a noise function to dissolve the window.
-  float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * uSize / 250) - 1.0));
+  float noise =
+    smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * uSize / 250.0) - 1.0));
   float windowMask = 1.0 - (windowOut < 0.5 ? mix(0.0, noise, windowOut * 2.0)
                                             : mix(noise, 1.0, windowOut * 2.0 - 1.0));
   oColor.a *= windowMask * mask;
