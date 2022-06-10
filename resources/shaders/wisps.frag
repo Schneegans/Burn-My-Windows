@@ -47,8 +47,8 @@ float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
   float radius    = mix(0.5, 1.0, hash12(cellID * seed * 19.1249)) * WISPS_RADIUS;
   float roundness = mix(-1.0, 1.0, hash12(cellID * seed * 7.51949));
 
-  vec2 offset = vec2(sin(speed * (uProgress * uDuration + 1)) * roundness,
-                     cos(speed * (uProgress * uDuration + 1)));
+  vec2 offset = vec2(sin(speed * (uProgress * uDuration + 1.0)) * roundness,
+                     cos(speed * (uProgress * uDuration + 1.0)));
   offset *= 0.5 - 0.5 * radius / gridSize;
   offset = vec2(offset.x * cos(rotation) - offset.y * sin(rotation),
                 offset.x * sin(rotation) + offset.y * cos(rotation));
@@ -58,7 +58,7 @@ float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
   // Use distance to center of shifted / rotated UV coordinates to draw a glaring point.
   float dist = length(cellUV - 0.5) * gridSize / radius;
   if (dist < 1.0) {
-    return min(5, 0.01 / pow(dist, 2.0));
+    return min(5.0, 0.01 / pow(dist, 2.0));
   }
 
   return 0.0;
@@ -78,7 +78,7 @@ void main() {
   vec2 uv = (iTexCoord.st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
   uv /= uScale;
   float wisps = 0.0;
-  for (int i = 0; i < WISPS_LAYERS; ++i) {
+  for (float i = 0; i < WISPS_LAYERS; ++i) {
     wisps += getWisps(uv * 0.3, WISPS_SPACING, uSeed * (i + 1));
   }
 
