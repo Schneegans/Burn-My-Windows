@@ -33,7 +33,7 @@ generate() {
   DIR_NAME="kwin4_effect_$(echo "$1" | tr '-' '_')"
 
   # Use the name of the effect for the JavaScript class name by removing all spaces.
-  EFFECT_CLASS="BurnMyWindows$(echo "$2" | tr -d ' ')"
+  EFFECT_CLASS="BurnMyWindows$(echo "$2" | tr -d ' ')Effect"
 
   # Create resource directories.
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/shaders"
@@ -42,25 +42,25 @@ generate() {
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/ui"
 
   # Copy the config file if it exists.
-  if [ -f "$DIR_NAME/main.xml" ]; then
-    cp "$DIR_NAME/main.xml" "$BUILD_DIR/$DIR_NAME/contents/config"
+  if [ -f "$1/main.xml" ]; then
+    cp "$1/main.xml" "$BUILD_DIR/$DIR_NAME/contents/config"
   fi
 
   # Copy the ui file if it exists.
-  if [ -f "$DIR_NAME/config.ui" ]; then
-    cp "$DIR_NAME/config.ui" "$BUILD_DIR/$DIR_NAME/contents/ui"
+  if [ -f "$1/config.ui" ]; then
+    cp "$1/config.ui" "$BUILD_DIR/$DIR_NAME/contents/ui"
   fi
 
 
   ON_SETTINGS_CHANGE=""
   ON_ANIMATION_BEGIN=""
 
-  if [ -f "$DIR_NAME/onSettingsChanged.js" ]; then
-    ON_SETTINGS_CHANGE=$(tr '/' '\f' < "$DIR_NAME/onSettingsChanged.js")
+  if [ -f "$1/onSettingsChanged.js" ]; then
+    ON_SETTINGS_CHANGE=$(tr '/' '\f' < "$1/onSettingsChanged.js")
   fi
 
-  if [ -f "$DIR_NAME/onAnimationBegin.js" ]; then
-    ON_ANIMATION_BEGIN=$(tr '/' '\f' < "$DIR_NAME/onAnimationBegin.js")
+  if [ -f "$1/onAnimationBegin.js" ]; then
+    ON_ANIMATION_BEGIN=$(tr '/' '\f' < "$1/onAnimationBegin.js")
   fi
 
   cp main.js.in "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
@@ -96,6 +96,13 @@ generate() {
   } > "$BUILD_DIR/$DIR_NAME/contents/shaders/$1.frag"
 
   # If clang-format is installed, try to beauty the code a bit.
+  if command -v clang-format &> /dev/null
+  then
+      clang-format -i "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  fi
+
+  # Create an archive for the effect.
+  tar -C "$BUILD_DIR" -czf $DIR_NAME.tar.gz "$DIR_NAME"
 }
 
 generate "energize-a" "Energize A" "Beam your windows away"
