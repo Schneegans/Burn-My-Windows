@@ -41,15 +41,34 @@ generate() {
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/config"
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/ui"
 
-  # Copy the config and ui files.
-  cp "$DIR_NAME/main.xml" "$BUILD_DIR/$DIR_NAME/contents/config"
-  cp "$DIR_NAME/config.ui" "$BUILD_DIR/$DIR_NAME/contents/ui"
+  # Copy the config file if it exists.
+  if [ -f "$DIR_NAME/main.xml" ]; then
+    cp "$DIR_NAME/main.xml" "$BUILD_DIR/$DIR_NAME/contents/config"
+  fi
 
-  perl -pe "s/%LOAD_CONFIG%/$(tr '/' '\f' < "$DIR_NAME/loadConfig.js")/g;" \
-       main.js.in | tr '\f' '/' > "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  # Copy the ui file if it exists.
+  if [ -f "$DIR_NAME/config.ui" ]; then
+    cp "$DIR_NAME/config.ui" "$BUILD_DIR/$DIR_NAME/contents/ui"
+  fi
 
-  perl -pi -e "s/%EFFECT_CLASS%/$EFFECT_CLASS/g;" "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
-  perl -pi -e "s/%SHADER_NAME%/$1/g;"             "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+
+  ON_SETTINGS_CHANGE=""
+  ON_ANIMATION_BEGIN=""
+
+  if [ -f "$DIR_NAME/onSettingsChanged.js" ]; then
+    ON_SETTINGS_CHANGE=$(tr '/' '\f' < "$DIR_NAME/onSettingsChanged.js")
+  fi
+
+  if [ -f "$DIR_NAME/onAnimationBegin.js" ]; then
+    ON_ANIMATION_BEGIN=$(tr '/' '\f' < "$DIR_NAME/onAnimationBegin.js")
+  fi
+
+  cp main.js.in "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  perl -pi -e "s/%ON_SETTINGS_CHANGE%/$ON_SETTINGS_CHANGE/g;" "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  perl -pi -e "s/%ON_ANIMATION_BEGIN%/$ON_ANIMATION_BEGIN/g;" "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  perl -pi -e "s/%EFFECT_CLASS%/$EFFECT_CLASS/g;"             "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  perl -pi -e "s/%SHADER_NAME%/$1/g;"                         "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  perl -pi -e "s/\f/\//g;"                                    "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
 
   cp metadata.desktop.in "$BUILD_DIR/$DIR_NAME/metadata.desktop"
   perl -pi -e "s/%ICON%/$1/g;"            "$BUILD_DIR/$DIR_NAME/metadata.desktop"
@@ -75,9 +94,12 @@ generate() {
     cat "../resources/shaders/common.glsl"
     cat "../resources/shaders/$1.frag"
   } > "$BUILD_DIR/$DIR_NAME/contents/shaders/$1.frag"
+
+  # If clang-format is installed, try to beauty the code a bit.
 }
 
-generate "tv" "TV Effect" "Make windows close like turning off a TV"
 generate "energize-a" "Energize A" "Beam your windows away"
 generate "energize-b" "Energize B" "Using different transporter technology results in an alternative visual effect"
+generate "hexagon"    "Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
+generate "tv"         "TV Effect"  "Make windows close like turning off a TV"
 # generate "fire" "Fire" "Make windows burn"

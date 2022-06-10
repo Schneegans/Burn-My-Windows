@@ -33,23 +33,22 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
+uniform bool uForOpening;
+uniform float uProgress;
+uniform float uDuration;
+
 #if defined(KWIN)  // --------------------------------------------------------------------
 
-uniform float forOpening;
 uniform sampler2D sampler;
-uniform float uDuration;
 uniform int textureWidth;
 uniform int textureHeight;
-uniform float animationProgress;
 
 in vec2 texcoord0;
 out vec4 fragColor;
 
-vec2 uSize       = vec2(textureWidth, textureHeight);
-bool uForOpening = forOpening == 1.0;
-vec2 iTexCoord   = vec2(texcoord0.x, 1.0 - texcoord0.y);
-float uProgress  = animationProgress;
-float uPadding   = 0.0;
+vec2 uSize     = vec2(textureWidth, textureHeight);
+vec2 iTexCoord = vec2(texcoord0.x, 1.0 - texcoord0.y);
+float uPadding = 0.0;
 
 vec4 getInputColor(vec2 coords) {
   vec4 color = texture2D(sampler, vec2(coords.x, 1.0 - coords.y));
@@ -67,20 +66,15 @@ void setOutputColor(vec4 outColor) {
 
 #elif defined(KWIN_LEGACY)  // -----------------------------------------------------------
 
-uniform float forOpening;
 uniform sampler2D sampler;
-uniform float uDuration;
 uniform int textureWidth;
 uniform int textureHeight;
-uniform float animationProgress;
 
 varying vec2 texcoord0;
 
-vec2 uSize       = vec2(textureWidth, textureHeight);
-bool uForOpening = forOpening == 1.0;
-vec2 iTexCoord   = vec2(texcoord0.x, 1.0 - texcoord0.y);
-float uProgress  = animationProgress;
-float uPadding   = 0.0;
+vec2 uSize     = vec2(textureWidth, textureHeight);
+vec2 iTexCoord = vec2(texcoord0.x, 1.0 - texcoord0.y);
+float uPadding = 0.0;
 
 vec4 getInputColor(vec2 coords) {
   vec4 color = texture2D(sampler, vec2(coords.x, 1.0 - coords.y));
@@ -99,10 +93,7 @@ void setOutputColor(vec4 outColor) {
 #else  // GNOME --------------------------------------------------------------------------
 
 // On GNOME, the uniforms are just normal uniforms.
-uniform bool uForOpening;
 uniform sampler2D uTexture;
-uniform float uProgress;
-uniform float uDuration;
 uniform vec2 uSize;
 uniform float uPadding;
 

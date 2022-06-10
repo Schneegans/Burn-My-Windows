@@ -30,7 +30,12 @@ class %EFFECT_CLASS% {
         this.loadConfig();
     }
 
-    %LOAD_CONFIG%
+    loadConfig() {
+        this.duration = animationTime(effect.readConfig('Duration', 1000));
+        effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
+
+        %ON_SETTINGS_CHANGE%
+    }
 
     static isScaleWindow(window) {
         // We don't want to animate most of plasmashell's windows, yet, some
@@ -95,6 +100,11 @@ class %EFFECT_CLASS% {
             return;
         }
         this.setupForcedRoles(window);
+
+        effect.setUniform(this.shader, 'uForOpening', 1.0);
+
+        %ON_ANIMATION_BEGIN%
+
         window.scaleInAnimation = animate({
             window: window,
             curve: QEasingCurve.Linear,
@@ -103,16 +113,9 @@ class %EFFECT_CLASS% {
                 {
                     type: Effect.ShaderUniform,
                     fragmentShader: this.shader,
-                    uniform: "forOpening",
-                    from: 1.0,
+                    uniform: "uProgress",
+                    from: 0.0,
                     to: 1.0
-                },
-                {
-                    type: Effect.ShaderUniform,
-                    fragmentShader: this.shader,
-                    uniform: "uDuration",
-                    from: this.duration * 0.001,
-                    to: this.duration * 0.001
                 }
             ]
         });
@@ -136,6 +139,11 @@ class %EFFECT_CLASS% {
             delete window.scaleInAnimation;
         }
         this.setupForcedRoles(window);
+
+        effect.setUniform(this.shader, 'uForOpening', 0.0);
+
+        %ON_ANIMATION_BEGIN%
+
         window.scaleOutAnimation = animate({
             window: window,
             curve: QEasingCurve.Linear,
@@ -144,16 +152,9 @@ class %EFFECT_CLASS% {
                 {
                     type: Effect.ShaderUniform,
                     fragmentShader: this.shader,
-                    uniform: "forOpening",
+                    uniform: "uProgress",
                     from: 0.0,
-                    to: 0.0
-                },
-                {
-                    type: Effect.ShaderUniform,
-                    fragmentShader: this.shader,
-                    uniform: "uDuration",
-                    from: this.duration * 0.001,
-                    to: this.duration * 0.001
+                    to: 1.0
                 }
             ]
         });
