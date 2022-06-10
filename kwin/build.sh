@@ -32,8 +32,8 @@ generate() {
   # Use the nick for the effect's directory name by replacing dashes by underscoares.
   DIR_NAME="kwin4_effect_$(echo "$1" | tr '-' '_')"
 
-  # Use the name of the effect for the JavaScript class name by removing all spaces.
-  EFFECT_CLASS="BurnMyWindows$(echo "$2" | tr -d ' ')Effect"
+  # Transform to CamelCase for the JavaScript class.
+  EFFECT_CLASS="BurnMyWindows$(sed -r 's/(^|-)(\w)/\U\2/g' <<<"$1")Effect"
 
   # Create resource directories.
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/shaders"
@@ -105,10 +105,10 @@ generate() {
   tar -C "$BUILD_DIR" -czf "$DIR_NAME.tar.gz" "$DIR_NAME"
 }
 
-generate "apparition" "Apparition" "This effect hides your windows by violently sucking them into the void of magic"
-generate "energize-a" "Energize A" "Beam your windows away"
-generate "energize-b" "Energize B" "Using different transporter technology results in an alternative visual effect"
-generate "hexagon"    "Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
-generate "tv"         "TV Effect"  "Make windows close like turning off a TV"
-generate "wisps"      "Wisps"      "Let your windows be carried away to the realm of dreams by these little fairies"
+generate "apparition" "Apparition [BMW]" "This effect hides your windows by violently sucking them into the void of magic"
+generate "energize-a" "Energize A [BMW]" "Beam your windows away"
+generate "energize-b" "Energize B [BMW]" "Using different transporter technology results in an alternative visual effect"
+generate "hexagon"    "Hexagon [BMW]"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
+generate "tv"         "TV Effect [BMW]"  "Make windows close like turning off a TV"
+generate "wisps"      "Wisps [BMW]"      "Let your windows be carried away to the realm of dreams by these little fairies"
 # generate "fire" "Fire" "Make windows burn"
