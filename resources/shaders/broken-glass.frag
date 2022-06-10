@@ -20,12 +20,12 @@ uniform float uShardScale;
 uniform float uBlowForce;
 uniform float uGravity;
 
-const float SHARD_LAYERS = 5;
+const float SHARD_LAYERS = 5.0;
 const float ACTOR_SCALE  = 2.0;
 const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
 
 void main() {
-  vec4 oColor = vec4(0, 0, 0, 0);
+  vec4 oColor = vec4(0.0);
 
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
@@ -41,7 +41,7 @@ void main() {
     coords -= uEpicenter;
 
     // Scale each layer a bit differently.
-    coords /= mix(1.0, 1.0 + uBlowForce * (i + 2) / SHARD_LAYERS, progress);
+    coords /= mix(1.0, 1.0 + uBlowForce * (i + 2.0) / SHARD_LAYERS, progress);
 
     // Rotate each layer a bit differently.
     float rotation = (mod(i, 2.0) - 0.5) * 0.2 * progress;
@@ -65,7 +65,7 @@ void main() {
     // the bin of the current shard.
     float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
 
-    if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2)) > 0) {
+    if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2)) > 0.0) {
       oColor = getInputColor(coords);
     }
   }

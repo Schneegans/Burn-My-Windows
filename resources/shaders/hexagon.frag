@@ -73,8 +73,8 @@ void main() {
 
   // glowProgress fades in in the first half of the animation, tileProgress fades
   // in in the second half.
-  float glowProgress = smoothstep(0, 1, clamp(progress / 0.5, 0, 1));
-  float tileProgress = smoothstep(0, 1, clamp((progress - 0.5) / 0.5, 0, 1));
+  float glowProgress = smoothstep(0.0, 1.0, clamp(progress / 0.5, 0.0, 1.0));
+  float tileProgress = smoothstep(0.0, 1.0, clamp((progress - 0.5) / 0.5, 0.0, 1.0));
 
   vec2 texScale = 0.1 * uSize / uScale;
   vec4 hex      = getHexagons(iTexCoord.st * texScale);

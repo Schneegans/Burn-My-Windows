@@ -28,22 +28,22 @@ const float EDGE_FADE    = 50;
 //  result.w: The opacity of the fading window.
 vec4 getMasks(float progress) {
   float showerProgress = progress / SHOWER_TIME;
-  float streakProgress = clamp((progress - SHOWER_TIME) / STREAK_TIME, 0, 1);
-  float fadeProgress   = clamp((progress - SHOWER_TIME) / (1.0 - SHOWER_TIME), 0, 1);
+  float streakProgress = clamp((progress - SHOWER_TIME) / STREAK_TIME, 0.0, 1.0);
+  float fadeProgress   = clamp((progress - SHOWER_TIME) / (1.0 - SHOWER_TIME), 0.0, 1.0);
 
   // Gradient from top to bottom.
   float t = iTexCoord.t;
 
   // A smooth gradient which moves to the bottom within the showerProgress.
   float showerMask =
-    smoothstep(1, 0, abs(showerProgress - t - SHOWER_WIDTH) / SHOWER_WIDTH);
+    smoothstep(1.0, 0.0, abs(showerProgress - t - SHOWER_WIDTH) / SHOWER_WIDTH);
 
   // This is 1 above the streak mask.
-  float streakMask = (showerProgress - t - SHOWER_WIDTH) > 0 ? 1 : 0;
+  float streakMask = (showerProgress - t - SHOWER_WIDTH) > 0.0 ? 1.0 : 0.0;
 
   // Compute mask for the "atom" particles.
   float atomMask = getRelativeEdgeMask(0.2);
-  atomMask       = max(0, atomMask - showerMask);
+  atomMask       = max(0.0, atomMask - showerMask);
   atomMask *= streakMask;
   atomMask *= sqrt(1 - fadeProgress * fadeProgress);
 
@@ -84,21 +84,21 @@ void main() {
   oColor.a   = oColor.a * masks.w;
 
   // Add leading shower particles.
-  vec2 showerUV = iTexCoord.st + vec2(0, -0.7 * progress / SHOWER_TIME);
+  vec2 showerUV = iTexCoord.st + vec2(0.0, -0.7 * progress / SHOWER_TIME);
   showerUV *= 0.02 * uSize / uScale;
   float shower = pow(simplex2D(showerUV), 10.0);
   oColor.rgb += uColor * shower * masks.x;
   oColor.a += shower * masks.x;
 
   // Add trailing streak lines.
-  vec2 streakUV = iTexCoord.st + vec2(0, -progress / SHOWER_TIME);
+  vec2 streakUV = iTexCoord.st + vec2(0.0, -progress / SHOWER_TIME);
   streakUV *= vec2(0.05 * uSize.x, 0.001 * uSize.y) / uScale;
   float streaks = simplex2DFractal(streakUV) * 0.5;
   oColor.rgb += uColor * streaks * masks.y;
   oColor.a += streaks * masks.y;
 
   // Add glimmering atoms.
-  vec2 atomUV = iTexCoord.st + vec2(0, -0.025 * progress / SHOWER_TIME);
+  vec2 atomUV = iTexCoord.st + vec2(0.0, -0.025 * progress / SHOWER_TIME);
   atomUV *= 0.2 * uSize / uScale;
   float atoms = pow((simplex3D(vec3(atomUV, uProgress * uDuration))), 5.0);
   oColor.rgb += uColor * atoms * masks.z;

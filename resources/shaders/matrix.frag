@@ -21,8 +21,8 @@ uniform float uRandomness;
 uniform float uOverShoot;
 
 // These may be configurable in the future.
-const float EDGE_FADE             = 30;
-const float FADE_WIDTH            = 150;
+const float EDGE_FADE             = 30.0;
+const float FADE_WIDTH            = 150.0;
 const float TRAIL_LENGTH          = 0.2;
 const float FINAL_FADE_START_TIME = 0.8;
 const float LETTER_TILES          = 16.0;
@@ -55,8 +55,8 @@ vec2 getRain(vec2 fragCoord) {
 
   float distToDrop = (uProgress * 2 - delay) * speed - iTexCoord.y;
 
-  float rainAlpha   = distToDrop >= 0 ? exp(-distToDrop / TRAIL_LENGTH) : 0;
-  float windowAlpha = 1 - clamp(uSize.y * distToDrop, 0, FADE_WIDTH) / FADE_WIDTH;
+  float rainAlpha   = distToDrop >= 0.0 ? exp(-distToDrop / TRAIL_LENGTH) : 0.0;
+  float windowAlpha = 1.0 - clamp(uSize.y * distToDrop, 0.0, FADE_WIDTH) / FADE_WIDTH;
 
   // Fade at window borders.
   rainAlpha *= getAbsoluteEdgeMask(EDGE_FADE, 0.5);
@@ -64,8 +64,8 @@ vec2 getRain(vec2 fragCoord) {
   // Add some variation to the drop start and end position.
   float shorten =
     fract(sin(column + 42.0) * 33.423) * mix(0.0, uOverShoot * 0.25, uRandomness);
-  rainAlpha *= smoothstep(0, 1, clamp(iTexCoord.y / shorten, 0, 1));
-  rainAlpha *= smoothstep(0, 1, clamp((1.0 - iTexCoord.y) / shorten, 0, 1));
+  rainAlpha *= smoothstep(0.0, 1.0, clamp(iTexCoord.y / shorten, 0.0, 1.0));
+  rainAlpha *= smoothstep(0.0, 1.0, clamp((1.0 - iTexCoord.y) / shorten, 0.0, 1.0));
 
   if (uForOpening) {
     windowAlpha = 1.0 - windowAlpha;
@@ -90,11 +90,12 @@ void main() {
 
   // This is used to fade out the remaining trails in the end.
   float finalFade =
-    1 - clamp((uProgress - FINAL_FADE_START_TIME) / (1 - FINAL_FADE_START_TIME), 0, 1);
+    1 -
+    clamp((uProgress - FINAL_FADE_START_TIME) / (1.0 - FINAL_FADE_START_TIME), 0.0, 1.0);
   float rainAlpha = finalFade * rainMask.x;
 
   // Add the matrix effect to the window.
-  vec4 text = vec4(mix(uTrailColor, uTipColor, min(1, pow(rainAlpha + 0.1, 4))),
+  vec4 text = vec4(mix(uTrailColor, uTipColor, min(1.0, pow(rainAlpha + 0.1, 4.0))),
                    rainAlpha * textMask);
   oColor    = alphaOver(oColor, text);
 

@@ -25,10 +25,10 @@ const float EDGE_FADE_WIDTH = 50;
 //  result.x: A mask for the particles.
 //  result.y: The opacity of the fading window.
 vec2 getMasks(float progress) {
-  float fadeInProgress  = clamp(progress / FADE_IN_TIME, 0, 1);
-  float fadeOutProgress = clamp((progress - FADE_IN_TIME) / FADE_OUT_TIME, 0, 1);
+  float fadeInProgress  = clamp(progress / FADE_IN_TIME, 0.0, 1.0);
+  float fadeOutProgress = clamp((progress - FADE_IN_TIME) / FADE_OUT_TIME, 0.0, 1.0);
   float heartProgress =
-    clamp((progress - (1.0 - HEART_FADE_TIME)) / HEART_FADE_TIME, 0, 1);
+    clamp((progress - (1.0 - HEART_FADE_TIME)) / HEART_FADE_TIME, 0.0, 1.0);
 
   // Compute mask for the "atom" particles.
   float dist     = length(iTexCoord.st - 0.5) * 4.0;
@@ -41,10 +41,10 @@ vec2 getMasks(float progress) {
   atomMask *= edgeFade;
 
   float heartMask = getRelativeEdgeMask(0.5);
-  heartMask       = 3.0 * pow(heartMask, 5);
+  heartMask       = 3.0 * pow(heartMask, 5.0);
   heartMask *= fadeOutProgress;
   heartMask *= 1.0 - heartProgress;
-  atomMask = clamp(heartMask + atomMask, 0, 1);
+  atomMask = clamp(heartMask + atomMask, 0.0, 1.0);
 
   // Compute fading window opacity.
   float windowMask = pow(1.0 - fadeOutProgress, 2.0);
@@ -70,7 +70,7 @@ void main() {
   scaledUV /= uScale;
 
   // Add molecule particles.
-  vec2 uv = scaledUV + vec2(0, 0.1 * uProgress * uDuration);
+  vec2 uv = scaledUV + vec2(0.0, 0.1 * uProgress * uDuration);
   uv *= 0.010598 * vec2(0.5 * uSize.x, uSize.y);
   float particles = 0.2 * pow((simplex3D(vec3(uv, 0.0 * uProgress * uDuration))), 3.0);
 
@@ -78,7 +78,7 @@ void main() {
   for (int i = 1; i <= 3; ++i) {
     vec2 uv     = scaledUV * 0.12154 / pow(1.5, i) * uSize;
     float atoms = simplex3D(vec3(uv, 2.0 * uProgress * uDuration / i));
-    particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms) - 1.0), 2);
+    particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms) - 1.0), 2.0);
   }
 
   oColor.rgb += uColor * particles * masks.x;

@@ -23,7 +23,7 @@ uniform vec4 uGradient4;
 uniform vec4 uGradient5;
 
 // These may be configurable in the future.
-const float EDGE_FADE  = 70;
+const float EDGE_FADE  = 70.0;
 const float FADE_WIDTH = 0.1;
 const float HIDE_TIME  = 0.4;
 
@@ -59,22 +59,22 @@ vec4 getFireColor(float v) {
 vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
   float progress = easeOutQuad(uProgress);
 
-  float burnProgress      = clamp(progress / hideTime, 0, 1);
-  float afterBurnProgress = clamp((progress - hideTime) / (1 - hideTime), 0, 1);
+  float burnProgress      = clamp(progress / hideTime, 0.0, 1.0);
+  float afterBurnProgress = clamp((progress - hideTime) / (1.0 - hideTime), 0.0, 1.0);
 
   // Gradient from top to bottom.
-  float t = iTexCoord.t * (1 - fadeWidth);
+  float t = iTexCoord.t * (1.0 - fadeWidth);
 
   // Visible part of the window. Gradually dissolves towards the bottom.
-  float windowMask = 1 - clamp((burnProgress - t) / fadeWidth, 0, 1);
+  float windowMask = 1.0 - clamp((burnProgress - t) / fadeWidth, 0.0, 1.0);
 
   // Gradient from top burning window.
-  float effectMask = clamp(t * (1 - windowMask) / burnProgress, 0, 1);
+  float effectMask = clamp(t * (1.0 - windowMask) / burnProgress, 0.0, 1.0);
 
   // Fade-out when the window burned down.
   if (progress > hideTime) {
-    float fade = sqrt(1 - afterBurnProgress * afterBurnProgress);
-    effectMask *= mix(1, 1 - t, afterBurnProgress) * fade;
+    float fade = sqrt(1.0 - afterBurnProgress * afterBurnProgress);
+    effectMask *= mix(1.0, 1.0 - t, afterBurnProgress) * fade;
   }
 
   // Fade at window borders.

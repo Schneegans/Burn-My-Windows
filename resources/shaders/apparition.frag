@@ -39,7 +39,7 @@ void main() {
     progress * 0.05 * uShake * cos((progress + uSeed.y) * (1.0 + uSeed.y) * uShake);
 
   // "Suck" the texture into the center.
-  float dist = length(coords) / sqrt(2);
+  float dist = length(coords) / sqrt(2.0);
   coords += progress * coords / dist * 0.5 * uSuction;
 
   // Apply some whirling.

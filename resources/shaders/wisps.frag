@@ -19,7 +19,7 @@ uniform float uScale;
 
 const float WISPS_RADIUS    = 20.0;
 const float WISPS_SPEED     = 10.0;
-const float WISPS_SPACING   = 40 + WISPS_RADIUS;
+const float WISPS_SPACING   = 40.0 + WISPS_RADIUS;
 const int WISPS_LAYERS      = 8;
 const float WISPS_IN_TIME   = 0.5;
 const float WINDOW_OUT_TIME = 1.0;
@@ -36,7 +36,7 @@ float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
   coords /= gridSize;
 
   // Get grid cell coordinates in [0..1].
-  vec2 cellUV = mod(coords, vec2(1));
+  vec2 cellUV = mod(coords, vec2(1.0));
 
   // This is unique for each cell.
   vec2 cellID = coords - cellUV + vec2(362.456);
@@ -77,7 +77,7 @@ void main() {
   // Compute several layers of moving wisps.
   vec2 uv = (iTexCoord.st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
   uv /= uScale;
-  float wisps = 0;
+  float wisps = 0.0;
   for (int i = 0; i < WISPS_LAYERS; ++i) {
     wisps += getWisps(uv * 0.3, WISPS_SPACING, uSeed * (i + 1));
   }
@@ -86,10 +86,10 @@ void main() {
   float mask = getRelativeEdgeMask(mix(0.01, 0.5, progress));
 
   // Compute three different progress values.
-  float wispsIn = smoothstep(0, 1, clamp(progress / WISPS_IN_TIME, 0, 1));
-  float wispsOut =
-    smoothstep(0, 1, clamp((progress - WISPS_IN_TIME) / (1.0 - WISPS_IN_TIME), 0, 1));
-  float windowOut = smoothstep(0, 1, clamp(progress / WINDOW_OUT_TIME, 0, 1));
+  float wispsIn  = smoothstep(0.0, 1.0, clamp(progress / WISPS_IN_TIME, 0.0, 1.0));
+  float wispsOut = smoothstep(
+    0.0, 1.0, clamp((progress - WISPS_IN_TIME) / (1.0 - WISPS_IN_TIME), 0.0, 1.0));
+  float windowOut = smoothstep(0.0, 1.0, clamp(progress / WINDOW_OUT_TIME, 0.0, 1.0));
 
   // Use a noise function to dissolve the window.
   float noise = smoothstep(1.0, 0.0, abs(2.0 * simplex2DFractal(uv * uSize / 250) - 1.0));

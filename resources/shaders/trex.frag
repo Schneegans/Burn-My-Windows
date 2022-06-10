@@ -41,7 +41,7 @@ vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
   coords *= gridScale;
 
   // Get grid cell coordinates in [0..1].
-  vec2 cellUV = mod(coords, vec2(1));
+  vec2 cellUV = mod(coords, vec2(1.0));
 
   // This is unique for each cell.
   vec2 cellID = coords - cellUV + vec2(362.456);
@@ -61,7 +61,7 @@ vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
   cellUV += 0.5;
 
   // Clamp resulting coordinates.
-  return clamp(cellUV, vec2(0), vec2(1));
+  return clamp(cellUV, vec2(0.0), vec2(1.0));
 }
 
 void main() {
@@ -84,7 +84,7 @@ void main() {
   for (int i = 0; i < uNumClaws; ++i) {
     vec2 uv     = getClawUV(coords, 1.0 / uClawSize, uSeed * (i + 1));
     float delay = i / uNumClaws * MAX_SPAWN_TIME;
-    scratchMap  = min(scratchMap, clamp(texture2D(uClawTexture, uv).r + delay, 0, 1));
+    scratchMap  = min(scratchMap, clamp(texture2D(uClawTexture, uv).r + delay, 0.0, 1.0));
   }
 
   // Get the window texture. We shift the texture lookup by the local derivative of
@@ -93,9 +93,9 @@ void main() {
   vec4 oColor = getInputColor(coords + offset);
 
   // Add colorful flashes.
-  float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1;
-  if (flashIntensity < 0 || flashIntensity >= 1) {
-    flashIntensity = 0;
+  float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1.0;
+  if (flashIntensity < 0.0 || flashIntensity >= 1.0) {
+    flashIntensity = 0.0;
   }
 
   // Hide flashes where there is now window.
@@ -103,14 +103,14 @@ void main() {
   flash.a *= flashIntensity * oColor.a * (1.0 - progress);
 
   // Hide scratched out parts.
-  oColor.a *= (scratchMap > progress ? 1 : 0);
+  oColor.a *= (scratchMap > progress ? 1.0 : 0.0);
 
   // Add flash color.
   oColor = alphaOver(oColor, flash);
 
   // Fade out the remaining shards.
-  float fadeProgress = smoothstep(0, 1, (progress - 1.0 + FF_TIME) / FF_TIME);
-  oColor.a *= sqrt(1 - fadeProgress * fadeProgress);
+  float fadeProgress = smoothstep(0.0, 1.0, (progress - 1.0 + FF_TIME) / FF_TIME);
+  oColor.a *= sqrt(1.0 - fadeProgress * fadeProgress);
 
   // These are pretty useful for understanding how this works.
   // oColor = vec4(vec3(flashIntensity), 1);
