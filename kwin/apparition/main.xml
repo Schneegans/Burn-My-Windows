@@ -6,16 +6,16 @@
     <entry name="Duration" type="UInt">
       <default>300</default>
     </entry>
-    <entry name="uShake" type="Double">
+    <entry name="Shake" type="Double">
       <default>3</default>
     </entry>
-    <entry name="uTwirl" type="Double">
+    <entry name="Twirl" type="Double">
       <default>5</default>
     </entry>
-    <entry name="uSuction" type="Double">
+    <entry name="Suction" type="Double">
       <default>0.75</default>
     </entry>
-    <entry name="uRandomness" type="Double">
+    <entry name="Randomness" type="Double">
       <default>0.5</default>
     </entry>
   </group>
