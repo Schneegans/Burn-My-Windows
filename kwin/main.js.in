@@ -111,8 +111,8 @@ class %EFFECT_CLASS% {
                     type: Effect.ShaderUniform,
                     fragmentShader: this.shader,
                     uniform: "uDuration",
-                    from: this.duration,
-                    to: this.duration
+                    from: this.duration * 0.001,
+                    to: this.duration * 0.001
                 }
             ]
         });
@@ -152,8 +152,8 @@ class %EFFECT_CLASS% {
                     type: Effect.ShaderUniform,
                     fragmentShader: this.shader,
                     uniform: "uDuration",
-                    from: this.duration,
-                    to: this.duration
+                    from: this.duration * 0.001,
+                    to: this.duration * 0.001
                 }
             ]
         });
