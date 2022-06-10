@@ -13,13 +13,13 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform vec3 uColor;
+uniform vec4 uColor;
 uniform float uScale;
 
 const float SHOWER_TIME  = 0.3;
 const float SHOWER_WIDTH = 0.3;
 const float STREAK_TIME  = 0.6;
-const float EDGE_FADE    = 50;
+const float EDGE_FADE    = 50.0;
 
 // This method returns four values:
 //  result.x: A mask for the particles which lead the shower.
@@ -80,28 +80,28 @@ void main() {
   vec4 oColor = getInputColor(iTexCoord.st);
 
   // Dissolve window to effect color / transparency.
-  oColor.rgb = mix(uColor, oColor.rgb, 0.5 * masks.w + 0.5);
+  oColor.rgb = mix(uColor.rgb, oColor.rgb, 0.5 * masks.w + 0.5);
   oColor.a   = oColor.a * masks.w;
 
   // Add leading shower particles.
   vec2 showerUV = iTexCoord.st + vec2(0.0, -0.7 * progress / SHOWER_TIME);
   showerUV *= 0.02 * uSize / uScale;
   float shower = pow(simplex2D(showerUV), 10.0);
-  oColor.rgb += uColor * shower * masks.x;
+  oColor.rgb += uColor.rgb * shower * masks.x;
   oColor.a += shower * masks.x;
 
   // Add trailing streak lines.
   vec2 streakUV = iTexCoord.st + vec2(0.0, -progress / SHOWER_TIME);
   streakUV *= vec2(0.05 * uSize.x, 0.001 * uSize.y) / uScale;
   float streaks = simplex2DFractal(streakUV) * 0.5;
-  oColor.rgb += uColor * streaks * masks.y;
+  oColor.rgb += uColor.rgb * streaks * masks.y;
   oColor.a += streaks * masks.y;
 
   // Add glimmering atoms.
   vec2 atomUV = iTexCoord.st + vec2(0.0, -0.025 * progress / SHOWER_TIME);
   atomUV *= 0.2 * uSize / uScale;
   float atoms = pow((simplex3D(vec3(atomUV, uProgress * uDuration))), 5.0);
-  oColor.rgb += uColor * atoms * masks.z;
+  oColor.rgb += uColor.rgb * atoms * masks.z;
   oColor.a += atoms * masks.z;
 
   // These are pretty useful for understanding how this works.

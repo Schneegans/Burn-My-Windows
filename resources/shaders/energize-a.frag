@@ -13,13 +13,13 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform vec3 uColor;
+uniform vec4 uColor;
 uniform float uScale;
 
 const float FADE_IN_TIME    = 0.3;
 const float FADE_OUT_TIME   = 0.6;
 const float HEART_FADE_TIME = 0.3;
-const float EDGE_FADE_WIDTH = 50;
+const float EDGE_FADE_WIDTH = 50.0;
 
 // This method returns two values:
 //  result.x: A mask for the particles.
@@ -63,7 +63,7 @@ void main() {
   vec4 oColor = getInputColor(iTexCoord.st);
 
   // Dissolve window to effect color / transparency.
-  oColor.rgb = mix(uColor, oColor.rgb, 0.2 * masks.y + 0.8);
+  oColor.rgb = mix(uColor.rgb, oColor.rgb, 0.2 * masks.y + 0.8);
   oColor.a   = oColor.a * masks.y;
 
   vec2 scaledUV = (iTexCoord.st - 0.5) * (1.0 + 0.1 * progress);
@@ -75,13 +75,13 @@ void main() {
   float particles = 0.2 * pow((simplex3D(vec3(uv, 0.0 * uProgress * uDuration))), 3.0);
 
   // Add more molecule particles.
-  for (int i = 1; i <= 3; ++i) {
+  for (float i = 1.0; i <= 3.0; ++i) {
     vec2 uv     = scaledUV * 0.12154 / pow(1.5, i) * uSize;
     float atoms = simplex3D(vec3(uv, 2.0 * uProgress * uDuration / i));
     particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms) - 1.0), 2.0);
   }
 
-  oColor.rgb += uColor * particles * masks.x;
+  oColor.rgb += uColor.rgb * particles * masks.x;
   oColor.a += particles * masks.x;
 
   // These are pretty useful for understanding how this works.
