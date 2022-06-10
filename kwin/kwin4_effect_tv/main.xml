@@ -7,7 +7,7 @@
       <default>400</default>
     </entry>
     <entry name="Color" type="Color">
-      <default>255,255,255</default>
+      <default>#ffffff</default>
     </entry>
   </group>
 </kcfg>
