@@ -79,4 +79,5 @@ generate() {
 
 generate "tv" "TV Effect" "Make windows close like turning off a TV"
 generate "energize-a" "Energize A" "Beam your windows away"
+generate "energize-b" "Energize B" "sing different transporter technology results in an alternative visual effect"
 # generate "fire" "Fire" "Make windows burn"
