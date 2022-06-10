@@ -31,10 +31,10 @@ uniform vec4 uLineColor;
 vec4 getHexagons(vec2 p) {
 
   // Length of a cell's edge.
-  const float edgeLength = sqrt(4.0 / 3.0);
+  float edgeLength = sqrt(4.0 / 3.0);
 
   // The hexgrid repeats after this distance.
-  const vec2 scale = vec2(3.0 * edgeLength, 2.0);
+  vec2 scale = vec2(3.0 * edgeLength, 2.0);
 
   // This is a repeating grid of scale-sized cells. Y-values are in the
   // interval [-1...1], X-value in [-1.5*edgeLength...1.5*edgeLength].
