@@ -38,8 +38,8 @@
 uniform float forOpening;
 uniform sampler2D sampler;
 uniform float uDuration;
-uniform float textureWidth;
-uniform float textureHeight;
+uniform int textureWidth;
+uniform int textureHeight;
 uniform float animationProgress;
 
 vec2 uSize       = vec2(textureWidth, textureHeight);
@@ -71,8 +71,8 @@ void setOutputColor(vec4 outColor) {
 uniform float forOpening;
 uniform sampler2D sampler;
 uniform float uDuration;
-uniform float textureWidth;
-uniform float textureHeight;
+uniform int textureWidth;
+uniform int textureHeight;
 uniform float animationProgress;
 
 vec2 uSize       = vec2(textureWidth, textureHeight);
