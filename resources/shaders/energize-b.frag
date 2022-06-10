@@ -45,7 +45,7 @@ vec4 getMasks(float progress) {
   float atomMask = getRelativeEdgeMask(0.2);
   atomMask       = max(0.0, atomMask - showerMask);
   atomMask *= streakMask;
-  atomMask *= sqrt(1 - fadeProgress * fadeProgress);
+  atomMask *= sqrt(1.0 - fadeProgress * fadeProgress);
 
   // Make some particles visible in the streaks.
   showerMask += 0.05 * streakMask;
