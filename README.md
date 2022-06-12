@@ -3,6 +3,7 @@
 </p>
 
 <h1 align="center">🔥 Set GNOME Shell on Fire!</h1>
+<p align="center">(and KWin as well)</p>
 
 <p align="center">
 <a href="https://extensions.gnome.org/extension/4679/burn-my-windows/"><img src="https://img.shields.io/badge/Download-extensions.gnome.org-e67f4d.svg?logo=gnome&logoColor=lightgrey&labelColor=303030" /></a><br/>
@@ -13,26 +14,51 @@
 <a href="scripts/cloc.sh"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Schneegans/8cf45f23253ff09b21196e7271378762/raw/comments.json" /></a>
 </p>
 
-When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/), many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
+When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/) for GNOME, many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
 
-For a list of things changed in previous releases, you can have a look at the [changelog](docs/changelog.md)!
-
+Burn-My-Windows is not only available for **GNOME** but also includes some basic support for **KDE Plasma's KWin**.
+Further down in this file you'll find installation instructions for both.
 
 Effect | Preview
 -----|--------
-**Apparition** <br> This effect hides your windows by violently sucking them into the void of magic! <br><br> _Only available in GNOME Shell 3.38+_ | <img src ="docs/pics/apparition.gif" />
-**Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/glass.gif" />
+**Apparition** <br> This effect hides your windows by violently sucking them into the void of magic! | <img src ="docs/pics/apparition.gif" />
+**Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!| <img src ="docs/pics/glass.gif" />
 **Energize A** <br> Beam your windows away! | <img src ="docs/pics/energizeA.gif" />
 **Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energizeB.gif" />
 **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
 **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi. | <img src ="docs/pics/hexagon.gif" />
-**Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable. <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/matrix.gif" />
-**Snap of Disintegration** <br> Dissolve your windows into a cloud of dust. <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/snap.gif" />
-**T-Rex Attack** <br> Destroy your windows with a series of violent slashes! <br><br> _Only available in GNOME Shell 40+_ | <img src ="docs/pics/trex.gif" />
+**Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.| <img src ="docs/pics/matrix.gif" />
+**Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.| <img src ="docs/pics/snap.gif" />
+**T-Rex Attack** <br> Destroy your windows with a series of violent slashes!| <img src ="docs/pics/trex.gif" />
 **TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
 **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies! | <img src ="docs/pics/wisps.gif" />
 **Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md)
+
+## ✅ Supported Versions
+
+Not every effect is available on each version of GNOME or KWin.
+Below is a table which summarizes the current availability for all effects.
+
+<table width="100%">
+<tr>
+<td></td>
+<td colspan="5"><strong>GNOME</strong></td>
+<td colspan="1"><strong>KWin</strong></td>
+</tr>
+<tr><td></td>                        <td>3.36</td><td>3.38</td><td>40</td><td>41</td><td>42</td><td>5.25</td></tr>
+<tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
+<tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
+<tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
+<tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
+<tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
+<tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+</table>
 
 
 ## 💞 These People _love_ this Extension
@@ -68,9 +94,9 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 
 Do you want to show that you love it too? You may <a href="https://github.com/sponsors/Schneegans">become a sponsor for as little as 1$ / month</a>!
-If you like this extension, you may also want to try one of my other extensions: [🧊 Desktop-Cube](https://github.com/Schneegans/Desktop-Cube) or [🍰 Fly-Pie](https://github.com/Schneegans/Fly-Pie/)!
+If you like this extension, you may also want to try one of my other GNOME extensions: [🧊 Desktop-Cube](https://github.com/Schneegans/Desktop-Cube) or [🍰 Fly-Pie](https://github.com/Schneegans/Fly-Pie/)!
 
-## ⬇️ Installation
+## ⬇️ Installation (GNOME)
 
 You can either install the Burn-My-Windows extension from extensions.gnome.org (a), download a stable release
 from GitHub (b) or clone the latest version directly with `git` (c).
@@ -128,6 +154,50 @@ Then you can enable the extension with the *Gnome Tweak Tool*, the *Extensions* 
 ```bash
 gnome-extensions enable burn-my-windows@schneegans.github.com
 ```
+
+## ⬇️ Installation (KWin)
+
+
+You can either download a stable version from GitHub (a) or clone the latest version directly with `git` (b).
+
+### a) Downloading a Stable Release
+
+Execute this command to download the latest stable release:
+
+```bash
+wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin4.zip
+```
+
+Install it by executing the following commands.
+
+```bash
+mkdir -p ~/.local/share/kwin/effects
+unzip burn_my_windows_kwin4.zip -d ~/.local/share/kwin/effects
+```
+
+Then select the desired effects in the system settings under "Desktop Effects".
+
+
+### b) Cloning the Latest Version with `git`
+
+Execute the clone command below where you want to have the source code of the extension.
+
+```bash
+git clone https://github.com/Schneegans/Burn-My-Windows.git
+cd Burn-My-Windows
+```
+
+Now you will have to build the effects and copy them to your KWin effect directory.
+
+```bash
+./kwin/build.sh
+mkdir -p ~/.local/share/kwin/effects
+cp -r kwin/_build/* ~/.local/share/kwin/effects
+```
+
+That's it!
+You can now select the desired effects in the system settings under "Desktop Effects".
+
 
 ## :octocat: I want to contribute!
 
