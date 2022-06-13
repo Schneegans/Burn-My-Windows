@@ -48,7 +48,7 @@ class %EFFECT_CLASS% {
     // settings. This method will return an array of three floating point values [r, g, b]
     // regardless of whether the settings key actually refers to an argb hex string.
     readRGBConfig(key) {
-        const color = readRGBAConfig(key);
+        const color = this.readRGBAConfig(key);
         color.pop();
         return color;
     }
