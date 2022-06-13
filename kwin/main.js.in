@@ -30,6 +30,29 @@ class %EFFECT_CLASS% {
         this.loadConfig();
     }
 
+    // A small helper which can be used to read a hex color string (e.g. #ff3244) from the
+    // settings. This method will return an array of four floating point values
+    // [r, g, b, a]. If the settings key only refers to an rgb value, the alpha component
+    // will be set to 1.0.
+    readRGBAConfig(key) {
+        const color = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?([a-f\d]{2})?$/i
+                        .exec(effect.readConfig(key, '#ffffff'))
+                        .slice(1)
+                        .filter(x => x !== undefined)
+                        .map(x => parseInt(x, 16) / 255);
+        return color.length == 3 ? [color[0], color[1], color[2], 1.0] :
+                                [color[1], color[2], color[3], color[0]];
+    }
+
+    // A small helper which can be used to read a hex color string (e.g. #ff3244) from the
+    // settings. This method will return an array of three floating point values [r, g, b]
+    // regardless of whether the settings key actually refers to an argb hex string.
+    readRGBConfig(key) {
+        const color = readRGBAConfig(key);
+        color.pop();
+        return color;
+    }
+
     loadConfig() {
         this.duration = animationTime(effect.readConfig('Duration', 1000));
 
