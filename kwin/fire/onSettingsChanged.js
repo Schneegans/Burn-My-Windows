@@ -7,8 +7,8 @@ effect.setUniform(this.shader, 'u3DNoise',
                   effect.readConfig('3DNoise', true) ? 1.0 : 0.0);
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
 effect.setUniform(this.shader, 'uMovementSpeed', effect.readConfig('MovementSpeed', 1.0));
-effect.setUniform(this.shader, 'uGradient1', effect.readConfig('Gradient1', 'white'));
-effect.setUniform(this.shader, 'uGradient2', effect.readConfig('Gradient2', 'white'));
-effect.setUniform(this.shader, 'uGradient3', effect.readConfig('Gradient3', 'white'));
-effect.setUniform(this.shader, 'uGradient4', effect.readConfig('Gradient4', 'white'));
-effect.setUniform(this.shader, 'uGradient5', effect.readConfig('Gradient5', 'white'));
+effect.setUniform(this.shader, 'uGradient1', this.readRGBAConfig('Gradient1'));
+effect.setUniform(this.shader, 'uGradient2', this.readRGBAConfig('Gradient2'));
+effect.setUniform(this.shader, 'uGradient3', this.readRGBAConfig('Gradient3'));
+effect.setUniform(this.shader, 'uGradient4', this.readRGBAConfig('Gradient4'));
+effect.setUniform(this.shader, 'uGradient5', this.readRGBAConfig('Gradient5'));

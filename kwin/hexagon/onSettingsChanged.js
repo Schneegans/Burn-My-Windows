@@ -6,5 +6,5 @@ effect.setUniform(this.shader, 'uAdditiveBlending',
                   effect.readConfig('AdditiveBlending', true) ? 1.0 : 0.0);
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
 effect.setUniform(this.shader, 'uLineWidth', effect.readConfig('LineWidth', 1.0));
-effect.setUniform(this.shader, 'uGlowColor', effect.readConfig('GlowColor', 'white'));
-effect.setUniform(this.shader, 'uLineColor', effect.readConfig('LineColor', 'white'));
+effect.setUniform(this.shader, 'uGlowColor', this.readRGBAConfig('GlowColor'));
+effect.setUniform(this.shader, 'uLineColor', this.readRGBAConfig('LineColor'));
