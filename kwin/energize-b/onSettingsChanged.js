@@ -3,5 +3,5 @@
 // the effect.
 
 effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
-effect.setUniform(this.shader, 'uColor', effect.readConfig('Color', 'white'));
+effect.setUniform(this.shader, 'uColor', this.readRGBConfig('Color'));
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
