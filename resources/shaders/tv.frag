@@ -13,7 +13,7 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform vec4 uColor;
+uniform vec3 uColor;
 
 const float BLUR_WIDTH = 0.01;  // Width of the gradients.
 const float TB_TIME    = 0.7;   // Relative time for the top/bottom animation.
@@ -55,7 +55,7 @@ void main() {
   float mask = tbMask * lrMask * ffMask;
 
   vec4 oColor = getInputColor(coords);
-  oColor.rgb  = mix(oColor.rgb, uColor.rgb * oColor.a, smoothstep(0.0, 1.0, prog));
+  oColor.rgb  = mix(oColor.rgb, uColor * oColor.a, smoothstep(0.0, 1.0, prog));
   oColor.a *= mask;
 
   // These are pretty useful for understanding how this works.
