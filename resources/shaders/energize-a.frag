@@ -13,7 +13,7 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform vec4 uColor;
+uniform vec3 uColor;
 uniform float uScale;
 
 const float FADE_IN_TIME    = 0.3;
@@ -63,7 +63,7 @@ void main() {
   vec4 oColor = getInputColor(iTexCoord.st);
 
   // Dissolve window to effect color / transparency.
-  oColor.rgb = mix(uColor.rgb, oColor.rgb, 0.2 * masks.y + 0.8);
+  oColor.rgb = mix(uColor, oColor.rgb, 0.2 * masks.y + 0.8);
   oColor.a   = oColor.a * masks.y;
 
   vec2 scaledUV = (iTexCoord.st - 0.5) * (1.0 + 0.1 * progress);
@@ -81,7 +81,7 @@ void main() {
     particles += 0.5 * pow(0.2 * (1.0 / (1.0 - atoms) - 1.0), 2.0);
   }
 
-  oColor.rgb += uColor.rgb * particles * masks.x;
+  oColor.rgb += uColor * particles * masks.x;
   oColor.a += particles * masks.x;
 
   // These are pretty useful for understanding how this works.
