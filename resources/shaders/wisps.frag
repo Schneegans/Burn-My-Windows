@@ -14,7 +14,7 @@
 // The content from common.glsl is automatically prepended to each shader effect.
 
 uniform vec2 uSeed;
-uniform vec4 uColor;
+uniform vec3 uColor;
 uniform float uScale;
 
 const float WISPS_RADIUS    = 20.0;
@@ -99,7 +99,7 @@ void main() {
   oColor.a *= windowMask * mask;
 
   // Add the wisps.
-  vec4 wispColor = wisps * vec4(uColor.rgb, min(wispsIn, 1.0 - wispsOut) * mask);
+  vec4 wispColor = wisps * vec4(uColor, min(wispsIn, 1.0 - wispsOut) * mask);
   oColor         = alphaOver(oColor, wispColor);
 
   // These are pretty useful for understanding how this works.
