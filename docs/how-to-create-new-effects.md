@@ -3,6 +3,8 @@
 The extension is very modular and with a bit of creativity and GLSL knowledge, you can easily create your own effects.
 If you are happy with your results, please open a pull request so that we can include your effect in the next version of Burn-My-Windows!
 
+_:warning: For now, this guide is only for GNOME Shell (and not for KWin). As soon as the API for KWin is more stable, this guide will be updated._
+
 ### Before you Start
 
 First you should [fork the repository](https://github.com/Schneegans/Burn-My-Windows/fork) and clone it to your PC.
