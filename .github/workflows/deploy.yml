@@ -28,7 +28,7 @@ jobs:
         overwrite: true
 
   kwin_bundle:
-    name: Bundle Kwin Effect
+    name: Bundle KWin Effect
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
