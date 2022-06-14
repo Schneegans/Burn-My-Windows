@@ -116,9 +116,6 @@ generate() {
   then
       clang-format -i "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   fi
-
-  # Finally, create an archive for the effect.
-  tar -C "$BUILD_DIR" -czf "$DIR_NAME.tar.gz" "$DIR_NAME"
 }
 
 # Now run the above method for all supported effects.
@@ -129,3 +126,7 @@ generate "fire"       "[BMW] Fire"       "The classic effect inspired by Compiz"
 generate "hexagon"    "[BMW] Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
 generate "tv"         "[BMW] TV Effect"  "Make windows close like turning off a TV"
 generate "wisps"      "[BMW] Wisps"      "Let your windows be carried away to the realm of dreams by these little fairies"
+
+# Finally, create an archive for the effects.
+# shellcheck disable=SC2046
+tar -cjf "burn_my_windows_kwin4.tar.gz" -C "$BUILD_DIR" $(ls "$BUILD_DIR")
