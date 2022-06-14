@@ -172,7 +172,7 @@ Install it by executing the following commands.
 
 ```bash
 mkdir -p ~/.local/share/kwin/effects
-unzip burn_my_windows_kwin4.zip -d ~/.local/share/kwin/effects
+tar -xf burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
 ```
 
 Then select the desired effects in the system settings under "Desktop Effects".
