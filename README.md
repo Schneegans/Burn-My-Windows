@@ -165,7 +165,7 @@ You can either download a stable version from GitHub (a) or clone the latest ver
 Execute this command to download the latest stable release:
 
 ```bash
-wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin4.zip
+wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin4.tar.gz
 ```
 
 Install it by executing the following commands.
