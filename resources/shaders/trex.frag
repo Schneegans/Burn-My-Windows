@@ -41,7 +41,7 @@ vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
   coords *= gridScale;
 
   // Get grid cell coordinates in [0..1].
-  vec2 cellUV = mod(coords, vec2(1));
+  vec2 cellUV = mod(coords, vec2(1.0));
 
   // This is unique for each cell.
   vec2 cellID = coords - cellUV + vec2(362.456);
@@ -61,17 +61,17 @@ vec2 getClawUV(vec2 texCoords, float gridScale, vec2 seed) {
   cellUV += 0.5;
 
   // Clamp resulting coordinates.
-  return clamp(cellUV, vec2(0), vec2(1));
+  return clamp(cellUV, vec2(0.0), vec2(1.0));
 }
 
 void main() {
   float progress = uForOpening ? 1.0 - easeOutQuad(uProgress) : easeOutQuad(uProgress);
 
   // Warp the texture coordinates to create a blow-up effect.
-  vec2 coords = cogl_tex_coord_in[0].st * 2.0 - 1.0;
+  vec2 coords = iTexCoord.st * 2.0 - 1.0;
   float dist  = length(coords);
   coords      = (coords / dist * pow(dist, 1.0 + uWarpIntensity)) * 0.5 + 0.5;
-  coords      = mix(cogl_tex_coord_in[0].st, coords, progress);
+  coords      = mix(iTexCoord.st, coords, progress);
 
   // Scale down the window according to the warp.
   float scale = 0.5 * uWarpIntensity * (1.0 - progress);
@@ -84,40 +84,37 @@ void main() {
   for (int i = 0; i < uNumClaws; ++i) {
     vec2 uv     = getClawUV(coords, 1.0 / uClawSize, uSeed * (i + 1));
     float delay = i / uNumClaws * MAX_SPAWN_TIME;
-    scratchMap  = min(scratchMap, clamp(texture2D(uClawTexture, uv).r + delay, 0, 1));
+    scratchMap  = min(scratchMap, clamp(texture2D(uClawTexture, uv).r + delay, 0.0, 1.0));
   }
 
   // Get the window texture. We shift the texture lookup by the local derivative of
   // the claw texture in order to mimic some folding distortion.
-  vec2 offset    = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
-  cogl_color_out = texture2D(uTexture, coords + offset);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
-  }
+  vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
+  vec4 oColor = getInputColor(coords + offset);
 
   // Add colorful flashes.
-  float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1;
-  if (flashIntensity < 0 || flashIntensity >= 1) {
-    flashIntensity = 0;
+  float flashIntensity = 1.0 / FLASH_INTENSITY * (scratchMap - progress) + 1.0;
+  if (flashIntensity < 0.0 || flashIntensity >= 1.0) {
+    flashIntensity = 0.0;
   }
 
   // Hide flashes where there is now window.
   vec4 flash = uFlashColor;
-  flash.a *= flashIntensity * cogl_color_out.a * (1.0 - progress);
+  flash.a *= flashIntensity * oColor.a * (1.0 - progress);
 
   // Hide scratched out parts.
-  cogl_color_out.a *= (scratchMap > progress ? 1 : 0);
+  oColor.a *= (scratchMap > progress ? 1.0 : 0.0);
 
   // Add flash color.
-  cogl_color_out = alphaOver(cogl_color_out, flash);
+  oColor = alphaOver(oColor, flash);
 
   // Fade out the remaining shards.
-  float fadeProgress = smoothstep(0, 1, (progress - 1.0 + FF_TIME) / FF_TIME);
-  cogl_color_out.a *= sqrt(1 - fadeProgress * fadeProgress);
+  float fadeProgress = smoothstep(0.0, 1.0, (progress - 1.0 + FF_TIME) / FF_TIME);
+  oColor.a *= sqrt(1.0 - fadeProgress * fadeProgress);
 
   // These are pretty useful for understanding how this works.
-  // cogl_color_out = vec4(vec3(flashIntensity), 1);
-  // cogl_color_out = vec4(vec3(scratchMap), 1);
+  // oColor = vec4(vec3(flashIntensity), 1);
+  // oColor = vec4(vec3(scratchMap), 1);
+
+  setOutputColor(oColor);
 }

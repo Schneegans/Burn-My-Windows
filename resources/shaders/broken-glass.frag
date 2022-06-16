@@ -20,12 +20,12 @@ uniform float uShardScale;
 uniform float uBlowForce;
 uniform float uGravity;
 
-const float SHARD_LAYERS = 5;
+const float SHARD_LAYERS = 5.0;
 const float ACTOR_SCALE  = 2.0;
 const float PADDING      = ACTOR_SCALE / 2.0 - 0.5;
 
 void main() {
-  cogl_color_out = vec4(0, 0, 0, 0);
+  vec4 oColor = vec4(0.0);
 
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
@@ -35,13 +35,13 @@ void main() {
     // To enable drawing shards outside of the window bounds, the actor was scaled
     // by ACTOR_SCALE. Here we scale and move the texture coordinates so that the
     // window gets drawn at the correct position again.
-    vec2 coords = cogl_tex_coord_in[0].st * ACTOR_SCALE - PADDING;
+    vec2 coords = iTexCoord.st * ACTOR_SCALE - PADDING;
 
     // Scale and rotate around our epicenter.
     coords -= uEpicenter;
 
     // Scale each layer a bit differently.
-    coords /= mix(1.0, 1.0 + uBlowForce * (i + 2) / SHARD_LAYERS, progress);
+    coords /= mix(1.0, 1.0 + uBlowForce * (i + 2.0) / SHARD_LAYERS, progress);
 
     // Rotate each layer a bit differently.
     float rotation = (mod(i, 2.0) - 0.5) * 0.2 * progress;
@@ -65,13 +65,10 @@ void main() {
     // the bin of the current shard.
     float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
 
-    if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2)) > 0) {
-      cogl_color_out = texture2D(uTexture, coords);
+    if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2)) > 0.0) {
+      oColor = getInputColor(coords);
     }
   }
 
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
-  }
+  setOutputColor(oColor);
 }

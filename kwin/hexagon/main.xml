@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name="" />
+  <group name="">
+    <entry name="Duration" type="UInt">
+      <default>1500</default>
+    </entry>
+    <entry name="Scale" type="Double">
+      <default>3</default>
+    </entry>
+    <entry name="LineWidth" type="Double">
+      <default>2</default>
+    </entry>
+    <entry name="LineColor" type="Color">
+      <default>#80C8FFFF</default>
+    </entry>
+    <entry name="GlowColor" type="Color">
+      <default>#801450FF</default>
+    </entry>
+    <entry name="AdditiveBlending" type="Bool">
+      <default>true</default>
+    </entry>
+  </group>
+</kcfg>

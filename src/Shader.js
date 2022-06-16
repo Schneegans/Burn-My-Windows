@@ -48,7 +48,7 @@ var Shader = GObject.registerClass(
     Signals: {
       'begin-animation':
         {param_types: [Gio.Settings.$gtype, GObject.TYPE_BOOLEAN, Clutter.Actor.$gtype]},
-      'update-animation': {param_types: [GObject.TYPE_DOUBLE, GObject.TYPE_DOUBLE]}
+      'update-animation': {param_types: [GObject.TYPE_DOUBLE]}
     }
   },
   class Shader extends Shell.GLSLEffect {  // --------------------------------------------
@@ -68,17 +68,16 @@ var Shader = GObject.registerClass(
       // Store standard uniform locations.
       this._uForOpening = this.get_uniform_location('uForOpening');
       this._uProgress   = this.get_uniform_location('uProgress');
-      this._uTime       = this.get_uniform_location('uTime');
+      this._uDuration   = this.get_uniform_location('uDuration');
       this._uSize       = this.get_uniform_location('uSize');
       this._uPadding    = this.get_uniform_location('uPadding');
     }
 
     // This is called once each time the shader is used.
-    beginAnimation(settings, forOpening, actor) {
+    beginAnimation(settings, forOpening, duration, actor) {
 
-      // Reset progress values.
+      // Reset progress value.
       this._progress = 0;
-      this._time     = 0;
 
       // This is not necessarily symmetric, but I haven't figured out a way to
       // get the actual values...
@@ -86,17 +85,18 @@ var Shader = GObject.registerClass(
 
       this.set_uniform_float(this._uPadding, 1, [padding]);
       this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uDuration, 1, [duration]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 
       this.emit('begin-animation', settings, forOpening, actor);
     }
 
     // This is called at each frame during the animation.
-    updateAnimation(progress, time) {
-      // Store the current time and progress values. The corresponding signal is emitted
-      // each frame in vfunc_paint_target.
+    updateAnimation(progress) {
+      // Store the current progress value. The corresponding signal is emitted each frame
+      // in vfunc_paint_target. We do not emit it here, as the pipeline which may be used
+      // by handlers must not have been created yet.
       this._progress = progress;
-      this._time     = time;
     }
 
     // This is called by the constructor. This means, it's only called when the
@@ -121,9 +121,8 @@ var Shader = GObject.registerClass(
     // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
     // the handler. This could still be null if called from the updateAnimation() above.
     vfunc_paint_target(...params) {
-      this.emit('update-animation', this._progress, this._time);
+      this.emit('update-animation', this._progress);
       this.set_uniform_float(this._uProgress, 1, [this._progress]);
-      this.set_uniform_float(this._uTime, 1, [this._time]);
       super.vfunc_paint_target(...params);
     }
 

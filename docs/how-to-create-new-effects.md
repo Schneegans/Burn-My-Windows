@@ -3,6 +3,8 @@
 The extension is very modular and with a bit of creativity and GLSL knowledge, you can easily create your own effects.
 If you are happy with your results, please open a pull request so that we can include your effect in the next version of Burn-My-Windows!
 
+_:warning: For now, this guide is only for GNOME Shell (and not for KWin). As soon as the API for KWin is more stable, this guide will be updated._
+
 ### Before you Start
 
 First you should [fork the repository](https://github.com/Schneegans/Burn-My-Windows/fork) and clone it to your PC.
@@ -86,28 +88,31 @@ Please study this code carefully, all of it is explained with inline comments.
 
 ```glsl
 // The content from common.glsl is automatically prepended to each shader effect. This
-// provides some standard uniforms which will be updated during the animation.
-// bool      uForOpening: True if a window-open animation is ongoing, false otherwise.
-// sampler2D uTexture:    Contains the texture of the window.
-// float     uProgress:   A value which transitions from 0 to 1 during the entire animation.
-// float     uTime:       A steadily increasing value in seconds.
-// vec2      uSize:       The size of uTexture in pixels.
-// float     uPadding:    The empty area around the actual window (e.g. where the shadow is drawn).
+// provides the standard input:
+
+// vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
+// bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
+// float uProgress:   A value which transitions from 0 to 1 during the animation.
+// float uDuration:   The duration of the current animation in seconds.
+// vec2  uSize:       The size of uTexture in pixels.
+// float uPadding:    The empty area around the actual window (e.g. where the shadow
+//                    is drawn). For now, this will only be set on GNOME.
+
+// Furthermore, there are two global methods for reading the window input color and
+// setting the shader output color. Both methods assume straight alpha:
+
+// vec4 getInputColor(vec2 coords)
+// void setOutputColor(vec4 outColor)
 
 // The width of the fading effect is loaded from the settings.
 uniform float uFadeWidth;
 
 void main() {
   // Get the color from the window texture.
-  cogl_color_out = texture2D(uTexture, cogl_tex_coord_in[0].st);
-
-  // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-  if (cogl_color_out.a > 0) {
-    cogl_color_out.rgb /= cogl_color_out.a;
-  }
+  vec4 oColor = getInputColor(iTexCoord.st);
 
   // Radial distance from window edge to the window's center.
-  float dist = length(cogl_tex_coord_in[0].st - 0.5) * 2.0 / sqrt(2.0);
+  float dist = length(iTexCoord.st - 0.5) * 2.0 / sqrt(2.0);
 
   // This gradually dissolves from [1..0] from the outside to the center. We
   // switch the direction for opening and closing.
@@ -118,7 +123,9 @@ void main() {
   mask = smoothstep(0, 1, mask);
 
   // Apply the mask to the output.
-  cogl_color_out.a *= mask;
+  oColor.a *= mask;
+
+  setOutputColor(oColor);
 }
 ```
 
