@@ -119,7 +119,11 @@ generate() {
 }
 
 # Now run the above method for all supported effects.
-generate "apparition" "[BMW] Apparition" "This effect hides your windows by violently sucking them into the void of magic"
+
+# The apparition effect is disabled for now. I have not yet found a way to upscale the
+# window canvas during the animation.
+#generate "apparition" "[BMW] Apparition" "This effect hides your windows by violently sucking them into the void of magic"
+
 generate "energize-a" "[BMW] Energize A" "Beam your windows away"
 generate "energize-b" "[BMW] Energize B" "Using different transporter technology results in an alternative visual effect"
 generate "fire"       "[BMW] Fire"       "The classic effect inspired by Compiz"
