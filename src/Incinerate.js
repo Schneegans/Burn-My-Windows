@@ -39,18 +39,9 @@ var Incinerate = class {
     this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
       // We import these modules in this function as they are not available in the
       // preferences process. This callback is only called within GNOME Shell's process.
-      const {Clutter, GdkPixbuf, Cogl} = imports.gi;
-
-      // Create the texture in the first call.
-      if (!this._ashTexture) {
-        const ashData    = GdkPixbuf.Pixbuf.new_from_resource('/img/dust.png');
-        this._ashTexture = new Clutter.Image();
-        this._ashTexture.set_data(ashData.get_pixels(), Cogl.PixelFormat.RGB_888,
-                                  ashData.width, ashData.height, ashData.rowstride);
-      }
+      const {Clutter} = imports.gi;
 
       // Store uniform locations of newly created shaders.
-      shader._uAshTexture = shader.get_uniform_location('uAshTexture');
       shader._uSeed       = shader.get_uniform_location('uSeed');
       shader._uColor      = shader.get_uniform_location('uColor');
       shader._uWidth      = shader.get_uniform_location('uWidth');
@@ -73,23 +64,6 @@ var Incinerate = class {
         shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('incinerate-turbulence')]);
         // clang-format on
       });
-
-      // This is required to bind the ash texture for drawing. Sadly, this seems to be
-      // impossible under GNOME 3.3x as this.get_pipeline() is not available. It was
-      // called get_target() back then but this is not wrapped in GJS.
-      // https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-3-36/clutter/clutter/clutter-offscreen-effect.c#L598
-      shader.connect('update-animation', (shader) => {
-        const pipeline = shader.get_pipeline();
-
-        // Use linear filtering for the window texture.
-        pipeline.set_layer_filters(0, Cogl.PipelineFilter.LINEAR,
-                                   Cogl.PipelineFilter.LINEAR);
-
-        // Bind the ash texture.
-        pipeline.set_layer_texture(1, this._ashTexture.get_texture());
-        pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
-        pipeline.set_uniform_1i(shader._uAshTexture, 1);
-      });
     });
   }
 
@@ -97,7 +71,7 @@ var Incinerate = class {
 
   // This effect is only available on GNOME Shell 40+.
   getMinShellVersion() {
-    return [40, 0];
+    return [3, 36];
   }
 
   // This will be called in various places where a unique identifier for this effect is

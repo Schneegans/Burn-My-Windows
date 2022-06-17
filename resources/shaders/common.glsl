@@ -124,6 +124,17 @@ vec4 alphaOver(vec4 under, vec4 over) {
   return vec4((over.rgb * over.a + under.rgb * under.a * (1.0 - over.a)) / alpha, alpha);
 }
 
+// ------------------------------------------------------------------------- color helpers
+
+// Maps the given value from [0..1] to the given colors.
+vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
+  if (val < 0.5) {
+    return mix(shadows, midtones, smoothstep(0, 1, val * 2.0));
+  }
+
+  return mix(midtones, highlights, smoothstep(0, 1, val * 2.0 - 1.0));
+}
+
 // ---------------------------------------------------------------------- easing functions
 
 // Here are some basic easing function. More can be added if required!
