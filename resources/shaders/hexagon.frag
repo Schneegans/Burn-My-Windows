@@ -20,7 +20,7 @@ uniform float uLineWidth;
 uniform vec4 uGlowColor;
 uniform vec4 uLineColor;
 
-// This methods generates a procedural hexagonal pattern. It returns four values:
+// This method generates a procedural hexagonal pattern. It returns four values:
 // result.xy: This contains cell-relative coordinates for the given point.
 //            [0, 0] is in the center of a cell, [0, 1] at the upper edge,
 //            [sqrt(4.0 / 3.0), 0] at the right tip and so on.
@@ -31,10 +31,10 @@ uniform vec4 uLineColor;
 vec4 getHexagons(vec2 p) {
 
   // Length of a cell's edge.
-  const float edgeLength = sqrt(4.0 / 3.0);
+  float edgeLength = sqrt(4.0 / 3.0);
 
   // The hexgrid repeats after this distance.
-  const vec2 scale = vec2(3.0 * edgeLength, 2.0);
+  vec2 scale = vec2(3.0 * edgeLength, 2.0);
 
   // This is a repeating grid of scale-sized cells. Y-values are in the
   // interval [-1...1], X-value in [-1.5*edgeLength...1.5*edgeLength].
@@ -68,33 +68,26 @@ void main() {
 
   // Add some smooth noise to the progress so that not every tile behaves the
   // same.
-  float noise = simplex2D(cogl_tex_coord_in[0].st + uSeed);
+  float noise = simplex2D(iTexCoord.st + uSeed);
   progress    = clamp(mix(noise - 1.0, noise + 1.0, progress), 0.0, 1.0);
 
   // glowProgress fades in in the first half of the animation, tileProgress fades
   // in in the second half.
-  float glowProgress = smoothstep(0, 1, clamp(progress / 0.5, 0, 1));
-  float tileProgress = smoothstep(0, 1, clamp((progress - 0.5) / 0.5, 0, 1));
+  float glowProgress = smoothstep(0.0, 1.0, clamp(progress / 0.5, 0.0, 1.0));
+  float tileProgress = smoothstep(0.0, 1.0, clamp((progress - 0.5) / 0.5, 0.0, 1.0));
 
   vec2 texScale = 0.1 * uSize / uScale;
-  vec4 hex      = getHexagons(cogl_tex_coord_in[0].st * texScale);
+  vec4 hex      = getHexagons(iTexCoord.st * texScale);
 
-  if (tileProgress > hex.z) {
+  vec4 oColor = vec4(0.0);
 
-    // Crop outer parts of the shrinking tiles.
-    cogl_color_out.a = 0.0;
-
-  } else {
+  // Crop outer parts of the shrinking tiles.
+  if (tileProgress < hex.z) {
 
     // Make the tiles shrink by offsetting the texture lookup towards the edge
     // of the cell.
     vec2 lookupOffset = tileProgress * hex.xy / texScale / (1.0 - tileProgress);
-    cogl_color_out    = texture2D(uTexture, cogl_tex_coord_in[0].st + lookupOffset);
-
-    // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
-    if (cogl_color_out.a > 0) {
-      cogl_color_out.rgb /= cogl_color_out.a;
-    }
+    oColor            = getInputColor(iTexCoord.st + lookupOffset);
 
     vec4 glow = uGlowColor;
     vec4 line = uLineColor;
@@ -111,15 +104,17 @@ void main() {
     line.a *= glowProgress;
 
     // Do not add the hexagon lines onto transparent parts of the window.
-    glow *= cogl_color_out.a;
-    line *= cogl_color_out.a;
+    glow *= oColor.a;
+    line *= oColor.a;
 
     if (uAdditiveBlending) {
-      cogl_color_out.rgb += glow.rgb * glow.a;
-      cogl_color_out.rgb += line.rgb * line.a;
+      oColor.rgb += glow.rgb * glow.a;
+      oColor.rgb += line.rgb * line.a;
     } else {
-      cogl_color_out.rgb = mix(cogl_color_out.rgb, glow.rgb, glow.a);
-      cogl_color_out.rgb = mix(cogl_color_out.rgb, line.rgb, line.a);
+      oColor.rgb = mix(oColor.rgb, glow.rgb, glow.a);
+      oColor.rgb = mix(oColor.rgb, line.rgb, line.a);
     }
   }
+
+  setOutputColor(oColor);
 }

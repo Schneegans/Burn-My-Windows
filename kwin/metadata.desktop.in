@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name=%NAME%
+Icon=preferences-system-windows-effect-%ICON%
+Comment=%DESCRIPTION%
+
+Type=Service
+X-KDE-ServiceTypes=KWin/Effect,KCModule
+X-KDE-PluginInfo-Author=Vlad Zahorodnii, Martin Flöser, Simon Schneegans
+X-KDE-PluginInfo-Email=vlad.zahorodnii@kde.org, mgraesslin@kde.org, code@simonschneegans.de
+X-KDE-PluginInfo-Name=%DIR_NAME%
+X-KDE-PluginInfo-Version=1
+X-KDE-PluginInfo-Category=Window Open/Close Animation
+X-KDE-PluginInfo-License=GPLv3
+X-KDE-PluginInfo-EnabledByDefault=false
+X-KDE-Ordering=60
+X-Plasma-API=javascript
+X-Plasma-MainScript=code/main.js
+X-KDE-PluginKeyword=%DIR_NAME%
+X-KDE-Library=kcm_kwin4_genericscripted
+X-KWin-Config-TranslationDomain=kwin_effects
+X-KWin-Exclusive-Category=toplevel-open-close-animation
