@@ -20,17 +20,11 @@ uniform float uScale;
 uniform float uTurbulence;
 
 const float SCORCH_WIDTH = 0.1;
+const float BURN_WIDTH   = 0.02;
 const float SMOKE_WIDTH  = 0.6;
 
 vec4 getFireColor(float val) {
   return vec4(tritone(val, vec3(0.0), vec3(1.0, 0.8, 0.6), vec3(1.0)), val);
-}
-
-float getMask(vec2 uv) {
-  float noise    = simplex2DFractal(uv * 0.005 + uSeed);
-  float gradient = rotate(cogl_tex_coord_in[0].st - 0.5, uSeed.x * 2.0 * 3.141).x + 0.5;
-
-  return mix(gradient, noise, 0.15);
 }
 
 void main() {
@@ -39,9 +33,14 @@ void main() {
   vec2 scorchRange    = uForOpening ? vec2(hideThreshold - SCORCH_WIDTH, hideThreshold)
                                     : vec2(hideThreshold, hideThreshold + SCORCH_WIDTH);
   vec2 smokeRange     = vec2(hideThreshold - SMOKE_WIDTH, hideThreshold);
+  vec2 burnRange      = vec2(hideThreshold - BURN_WIDTH, hideThreshold + BURN_WIDTH);
 
-  vec2 uv    = cogl_tex_coord_in[0].st / uScale * uSize;
-  float mask = getMask(uv);
+  vec2 uv = cogl_tex_coord_in[0].st / uScale * uSize;
+
+  float noise    = simplex2DFractal(uv * 0.005 + uSeed);
+  float gradient = rotate(cogl_tex_coord_in[0].st - 0.5, uSeed.x * 2.0 * 3.141).x + 0.5;
+
+  float mask = mix(gradient, noise, 0.15);
 
   vec2 distort = vec2(0.0);
 
@@ -56,19 +55,7 @@ void main() {
 
   vec4 oColor = getInputColor(cogl_tex_coord_in[0].st + distort);
 
-  float xNoise        = simplex2D(uv * 0.05 + uSeed * 10.0 + 0.0) - 0.5;
-  float yNoise        = simplex2D(uv * 0.05 + uSeed * 10.0 + uDuration * uProgress) - 0.5;
-  float maskDistorted = getMask(uv + vec2(xNoise, yNoise) * 50.0);
-
-  float a        = mask > hideThreshold ? 1.0 : 0.0;
-  float b        = maskDistorted > hideThreshold ? 1.0 : 0.0;
-  float fireEdge = clamp(a - b, 0, 1) * oColor.a;
-
-  if (uForOpening && mask > smokeRange.y) {
-    oColor = vec4(0.0);
-  }
-
-  if (!uForOpening && mask < smokeRange.y) {
+  if ((uForOpening && mask > smokeRange.y) || (!uForOpening && mask < smokeRange.y)) {
     oColor = vec4(0.0);
   }
 
@@ -78,7 +65,6 @@ void main() {
     simplex2DFractal(uv * 0.01 + uSeed - smoke * smoke * vec2(0.0, 0.1 * uDuration));
   float emberNoise =
     simplex2DFractal(uv * 0.075 + uSeed - smoke * vec2(0.0, 0.5 * uDuration));
-  fireEdge = fireEdge * pow(emberNoise + 0.4, 4.0);
 
   if (smokeRange.x < mask && mask < smokeRange.y) {
 
@@ -99,7 +85,11 @@ void main() {
     oColor.rgb = mix(oColor.rgb, mix(oColor.rgb, vec3(0.1, 0.05, 0.02), 0.4), scorch);
   }
 
-  oColor = alphaOver(oColor, getFireColor(fireEdge));
+  if (burnRange.x < mask && mask < burnRange.y) {
+    float fireEdge = smoothstep(1, 0, abs(mask - hideThreshold) / BURN_WIDTH) * oColor.a;
+    fireEdge       = fireEdge * pow(emberNoise + 0.4, 4.0);
+    oColor         = alphaOver(oColor, getFireColor(fireEdge));
+  }
 
   setOutputColor(oColor);
 }
