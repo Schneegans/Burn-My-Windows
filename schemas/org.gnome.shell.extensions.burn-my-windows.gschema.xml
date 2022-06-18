@@ -348,7 +348,7 @@
     </key>
 
     <key name="incinerate-animation-time" type="i">
-      <default>3500</default>
+      <default>1750</default>
       <summary>Incinerate Animation Time</summary>
       <description>The time the Incinerate effect takes.</description>
     </key>
@@ -372,7 +372,7 @@
     </key>
 
     <key name="incinerate-color" type="s">
-      <default>"rgb(255, 200, 50)"</default>
+      <default>"rgb(255, 180, 127)"</default>
       <summary>Incinerate Color</summary>
       <description>The color of the effect.</description>
     </key>
