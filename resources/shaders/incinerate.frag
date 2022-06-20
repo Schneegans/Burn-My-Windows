@@ -36,14 +36,14 @@ void main() {
   vec2 flameRange     = vec2(hideThreshold - FLAME_WIDTH, hideThreshold);
   vec2 smokeRange     = vec2(hideThreshold - SMOKE_WIDTH, hideThreshold);
 
-  vec2 uv = iTexcoord / uScale * uSize;
+  vec2 uv = iTexCoord / uScale * uSize;
 
   float smokeNoise =
     simplex2DFractal(uv * 0.01 + uSeed + uProgress * vec2(0.0, 0.3 * uDuration));
 
   vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
                                    : vec2(floor(uSeed.x + 0.5), uSeed.y);
-  float circle = length(iTexcoord - center);
+  float circle = length(iTexCoord - center);
   float mask   = mix(circle, smokeNoise, 0.2 * uTurbulence * uScale);
 
   float smokeMask =
@@ -64,7 +64,7 @@ void main() {
     distort = vec2(dFdx(mask), dFdy(mask)) * scorchMask * 5.0;
   }
 
-  vec4 oColor = getInputColor(iTexcoord + distort);
+  vec4 oColor = getInputColor(iTexCoord + distort);
 
   // Hide after buring zone has passed.
   if ((uForOpening && mask > smokeRange.y) || (!uForOpening && mask < smokeRange.y)) {
