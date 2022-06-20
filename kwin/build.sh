@@ -128,6 +128,7 @@ generate "energize-a" "[BMW] Energize A" "Beam your windows away"
 generate "energize-b" "[BMW] Energize B" "Using different transporter technology results in an alternative visual effect"
 generate "fire"       "[BMW] Fire"       "The classic effect inspired by Compiz"
 generate "hexagon"    "[BMW] Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
+generate "incinerate" "[BMW] Incinerate" "A less snappy but definitely more fancy take on the fire effect"
 generate "tv"         "[BMW] TV Effect"  "Make windows close like turning off a TV"
 generate "wisps"      "[BMW] Wisps"      "Let your windows be carried away to the realm of dreams by these little fairies"
 
