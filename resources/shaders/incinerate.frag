@@ -16,19 +16,18 @@
 uniform vec2 uSeed;
 uniform vec3 uColor;
 uniform float uScale;
-// uniform float uWidth;
 uniform float uTurbulence;
-
-const float SCORCH_WIDTH = 0.1;
-const float BURN_WIDTH   = 0.02;
-const float SMOKE_WIDTH  = 0.6;
-const float FLAME_WIDTH  = 0.1;
 
 vec4 getFireColor(float val) {
   return vec4(tritone(val, vec3(0.0), uColor, vec3(1.0)), val);
 }
 
 void main() {
+
+  float SCORCH_WIDTH = 0.15 * uScale;
+  float BURN_WIDTH   = 0.02 * uScale;
+  float SMOKE_WIDTH  = 0.6 * uScale;
+  float FLAME_WIDTH  = 0.15 * uScale;
 
   float hideThreshold = mix(-SCORCH_WIDTH, 1.0 + SMOKE_WIDTH, uProgress);
   vec2 scorchRange    = uForOpening ? vec2(hideThreshold - SCORCH_WIDTH, hideThreshold)
@@ -39,17 +38,30 @@ void main() {
 
   vec2 uv = cogl_tex_coord_in[0].st / uScale * uSize;
 
-  float noise    = simplex2DFractal(uv * 0.005 + uSeed);
-  float gradient = rotate(cogl_tex_coord_in[0].st - 0.5, uSeed.x * 2.0 * 3.141).x + 0.5;
+  float smokeNoise =
+    simplex2DFractal(uv * 0.01 + uSeed + uProgress * vec2(0.0, 0.3 * uDuration));
 
-  float mask = mix(gradient, noise, 0.15);
+  vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
+                                   : vec2(floor(uSeed.x + 0.5), uSeed.y);
+  float circle = length(cogl_tex_coord_in[0].st - center);
+  float mask   = mix(circle, smokeNoise, 0.2 * uTurbulence * uScale);
+
+  float smokeMask =
+    smoothstep(0, 1, (mask - smokeRange.x) / SMOKE_WIDTH) * getRelativeEdgeMask(0.2);
+  float flameMask =
+    smoothstep(0, 1, (mask - flameRange.x) / FLAME_WIDTH) * getRelativeEdgeMask(0.1);
+  float fireMask   = smoothstep(1, 0, abs(mask - hideThreshold) / BURN_WIDTH);
+  float scorchMask = smoothstep(1, 0, (mask - scorchRange.x) / SCORCH_WIDTH);
+
+  if (uForOpening) {
+    scorchMask = 1.0 - scorchMask;
+  }
 
   // Now we retrieve the window color. We add some distortion in the scorch zone.
   vec2 distort = vec2(0.0);
 
-  if ((uForOpening && mask > scorchRange.x) || (!uForOpening && mask <= scorchRange.y)) {
-    distort =
-      0.5 * vec2(dFdx(mask), dFdy(mask)) * (scorchRange.y - mask) / SCORCH_WIDTH * 5.0;
+  if ((uForOpening && mask >= scorchRange.x) || (!uForOpening && mask <= scorchRange.y)) {
+    distort = vec2(dFdx(mask), dFdy(mask)) * scorchMask * 5.0;
   }
 
   vec4 oColor = getInputColor(cogl_tex_coord_in[0].st + distort);
@@ -59,54 +71,39 @@ void main() {
     oColor = vec4(0.0);
   }
 
-  float smokeMask =
-    smoothstep(0, 1, (mask - smokeRange.x) / SMOKE_WIDTH) * getRelativeEdgeMask(0.1);
-
-  float smokeNoise = simplex2DFractal(uv * 0.01 + uSeed -
-                                      smokeMask * smokeMask * vec2(0.0, 0.1 * uDuration));
-
-  float flameNoise =
-    simplex2DFractal(uv * 0.02 + uSeed - smokeNoise * vec2(0.0, 1.0 * uDuration) -
-                     vec2(0.0, uProgress * uDuration));
-  float emberNoise =
-    simplex2DFractal(uv * 0.075 + uSeed - smokeMask * vec2(0.0, 0.2 * uDuration));
-
+  // Add smoke and embers.
   if (smokeRange.x < mask && mask < smokeRange.y) {
-
     float smoke = smokeMask * smokeNoise;
     oColor      = alphaOver(oColor, vec4(0.5 * vec3(smoke), smoke));
 
+    float emberNoise = simplex2DFractal(
+      uv * 0.05 + uSeed - smokeNoise * vec2(0.0, 0.3 * smokeMask * uDuration));
     float embers = clamp(pow(emberNoise + 0.3, 100.0), 0.0, 2.0) * smoke;
-    // embers += clamp(pow(emberNoise + 0.32, 10.0), 0.0, 2.0) * smoke;
     oColor += getFireColor(embers);
-  }
-
-  if (flameRange.x < mask && mask < flameRange.y) {
-
-    float flameMask =
-      smoothstep(0, 1, (mask - flameRange.x) / FLAME_WIDTH) * getRelativeEdgeMask(0.1);
-
-    float flame = clamp(pow(flameNoise + 0.3, 20.0), 0.0, 2.0) * flameMask;
-    flame += clamp(pow(flameNoise + 0.8, 5.0), 0.0, 2.0) * flameMask * 0.1;
-    oColor += getFireColor(flame);
   }
 
   // Add scorch effect.
   if (scorchRange.x < mask && mask < scorchRange.y) {
-    float scorch = smoothstep(1, 0, (mask - scorchRange.x) / SCORCH_WIDTH);
-
-    if (uForOpening) {
-      scorch = 1.0 - scorch;
-    }
-
-    oColor.rgb = mix(oColor.rgb, mix(oColor.rgb, vec3(0.1, 0.05, 0.02), 0.4), scorch);
+    oColor.rgb = mix(oColor.rgb, mix(oColor.rgb, vec3(0.1, 0.05, 0.02), 0.4), scorchMask);
   }
 
-  // Add burning edge.
-  if (burnRange.x < mask && mask < burnRange.y) {
-    float fireEdge = smoothstep(1, 0, abs(mask - hideThreshold) / BURN_WIDTH) * oColor.a;
-    fireEdge       = fireEdge * pow(flameNoise + 0.4, 4.0);
-    oColor += getFireColor(fireEdge * oColor.a);
+  // Add trailing flames.
+  if (min(burnRange.x, flameRange.x) < mask && mask < max(burnRange.y, flameRange.y)) {
+    float flameNoise =
+      simplex2DFractal(uv * 0.02 + uSeed + smokeNoise * vec2(0.0, 1.0 * uDuration) +
+                       vec2(0.0, uProgress * uDuration));
+
+    if (flameRange.x < mask && mask < flameRange.y) {
+      float flame = clamp(pow(flameNoise + 0.3, 20.0), 0.0, 2.0) * flameMask;
+      flame += clamp(pow(flameNoise + 0.4, 10.0), 0.0, 2.0) * flameMask * flameMask * 0.1;
+      oColor += getFireColor(flame);
+    }
+
+    // Add burning edge.
+    if (burnRange.x < mask && mask < burnRange.y) {
+      float fire = fireMask * pow(flameNoise + 0.4, 4.0) * oColor.a;
+      oColor += getFireColor(fire);
+    }
   }
 
   setOutputColor(oColor);

@@ -44,7 +44,6 @@ var Incinerate = class {
       // Store uniform locations of newly created shaders.
       shader._uSeed       = shader.get_uniform_location('uSeed');
       shader._uColor      = shader.get_uniform_location('uColor');
-      shader._uWidth      = shader.get_uniform_location('uWidth');
       shader._uScale      = shader.get_uniform_location('uScale');
       shader._uTurbulence = shader.get_uniform_location('uTurbulence');
 
@@ -59,7 +58,6 @@ var Incinerate = class {
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
         shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
-        shader.set_uniform_float(shader._uWidth, 1, [settings.get_double('incinerate-width')]);
         shader.set_uniform_float(shader._uScale, 1, [settings.get_double('incinerate-scale')]);
         shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('incinerate-turbulence')]);
         // clang-format on
@@ -99,7 +97,6 @@ var Incinerate = class {
 
     // Bind all properties.
     dialog.bindAdjustment('incinerate-animation-time');
-    dialog.bindAdjustment('incinerate-width');
     dialog.bindAdjustment('incinerate-scale');
     dialog.bindAdjustment('incinerate-turbulence');
     dialog.bindColorButton('incinerate-color');
