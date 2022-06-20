@@ -129,10 +129,10 @@ vec4 alphaOver(vec4 under, vec4 over) {
 // Maps the given value from [0..1] to the given colors.
 vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
   if (val < 0.5) {
-    return mix(shadows, midtones, smoothstep(0, 1, val * 2.0));
+    return mix(shadows, midtones, smoothstep(0.0, 1.0, val * 2.0));
   }
 
-  return mix(midtones, highlights, smoothstep(0, 1, val * 2.0 - 1.0));
+  return mix(midtones, highlights, smoothstep(0.0, 1.0, val * 2.0 - 1.0));
 }
 
 // ---------------------------------------------------------------------- easing functions
