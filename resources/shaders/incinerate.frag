@@ -47,11 +47,11 @@ void main() {
   float mask   = mix(circle, smokeNoise, 0.2 * uTurbulence * uScale);
 
   float smokeMask =
-    smoothstep(0, 1, (mask - smokeRange.x) / SMOKE_WIDTH) * getRelativeEdgeMask(0.2);
+    smoothstep(0.0, 1.0, (mask - smokeRange.x) / SMOKE_WIDTH) * getRelativeEdgeMask(0.2);
   float flameMask =
-    smoothstep(0, 1, (mask - flameRange.x) / FLAME_WIDTH) * getRelativeEdgeMask(0.1);
-  float fireMask   = smoothstep(1, 0, abs(mask - hideThreshold) / BURN_WIDTH);
-  float scorchMask = smoothstep(1, 0, (mask - scorchRange.x) / SCORCH_WIDTH);
+    smoothstep(0.0, 1.0, (mask - flameRange.x) / FLAME_WIDTH) * getRelativeEdgeMask(0.1);
+  float fireMask   = smoothstep(1.0, 0.0, abs(mask - hideThreshold) / BURN_WIDTH);
+  float scorchMask = smoothstep(1.0, 0.0, (mask - scorchRange.x) / SCORCH_WIDTH);
 
   if (uForOpening) {
     scorchMask = 1.0 - scorchMask;
