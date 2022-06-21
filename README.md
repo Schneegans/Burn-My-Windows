@@ -87,6 +87,7 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
+  <a href="https://github.com/wolfyrion">@wolfyrion</a><br>
   <a href="https://github.com/MrTomRod">@MrTomRod</a><br>
   Pouhiou<br>
   DAPREMONT Christophe<br>
