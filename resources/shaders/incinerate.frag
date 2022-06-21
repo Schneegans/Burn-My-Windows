@@ -44,7 +44,8 @@ void main() {
   vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
                                    : vec2(floor(uSeed.x + 0.5), uSeed.y);
   float circle = length(iTexCoord - center);
-  float mask   = mix(circle, smokeNoise, 0.35 * uTurbulence * uScale);
+  float mask =
+    mix(circle, smokeNoise, 200.0 * uTurbulence * uScale / max(uSize.x, uSize.y));
 
   float smokeMask = smoothstep(0.0, 1.0, (mask - smokeRange.x) / SMOKE_WIDTH) *
                     getAbsoluteEdgeMask(100.0, 0.3);

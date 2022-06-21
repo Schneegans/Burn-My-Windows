@@ -10,7 +10,7 @@
       <default>1</default>
     </entry>
     <entry name="Turbulence" type="Double">
-      <default>0.2</default>
+      <default>0.3</default>
     </entry>
     <entry name="Color" type="Color">
       <default>#ffb47f</default>

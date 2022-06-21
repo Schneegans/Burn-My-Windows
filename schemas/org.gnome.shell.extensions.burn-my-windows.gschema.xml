@@ -360,7 +360,7 @@
     </key>
 
     <key name="incinerate-turbulence" type="d">
-      <default>0.2</default>
+      <default>0.3</default>
       <summary>Incinerate Turbulence</summary>
       <description>The turbulence of the effect.</description>
     </key>
