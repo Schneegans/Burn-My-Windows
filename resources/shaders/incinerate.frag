@@ -18,32 +18,69 @@ uniform vec3 uColor;
 uniform float uScale;
 uniform float uTurbulence;
 
+// This maps a given value in [0..1] to a color from the rgba color ramp
+// [transparent black ... semi-transparent uColor ... opaque white].
 vec4 getFireColor(float val) {
   return vec4(tritone(val, vec3(0.0), uColor, vec3(1.0)), val);
 }
 
 void main() {
 
+  // The burning fire edge is composed of multiple regions. The width of all regions is
+  // defined below. If a window is closed and the burning direction happens to be from top
+  // to bottom, the different zones are arragned like this:
+  //
+  //   .      .    .      .   ^
+  //      .  :     .:   .     |  smokeRange: In this zone, smoke and little ember
+  //   . :  : .. :   :  .     |              particles are drawn.
+  //     : .  .:.:  .:  :..   |
+  //   ...:: ..: :: : .  ..   |
+  //    :: )  .. : : ..: : .  |  ^
+  //    ( /(   (  (  . .::.   |  |  flameRange: Flames are drawn in this zone.
+  //    )\()) ))\ )( . (  .   |  |
+  //   ((_)\ /((_|()\  )\ )   |  |                                     ^
+  //   | |(_|_))( ((_)_(_/(   v  v                                     | burnRange: In
+  //   /////////////////////  <- hideThreshold: From here on,          | this zone, a
+  //   | / / / / / / / / / |  ^                 the window is hidden.  | firery edge is
+  //   |  /  /  /  /  /  / |  |                                        v drawn.
+  //   | /   /   /   /   / |  v  scorchRange: The window becomes
+  //   |                   |                  brownish and a subtle
+  //   |                   |                  heat distortion effect
+  //   |                   |                  kicks in.
+  //   |                   |
+  //   \___________________/
+  //
+  // If a window is opened, the window texture is visible on the other side of the
+  // hideThreshold and the scorchRange is also flipped to the other side (so it is drawn
+  // below the flames and the smoke).
+
+  // All widths depend on the configured scale of the effect.
   float SCORCH_WIDTH = 0.2 * uScale;
   float BURN_WIDTH   = 0.03 * uScale;
   float SMOKE_WIDTH  = 0.9 * uScale;
   float FLAME_WIDTH  = 0.2 * uScale;
 
-  float hideThreshold = mix(-SCORCH_WIDTH, 1.0 + SMOKE_WIDTH, uProgress);
-  vec2 scorchRange    = uForOpening ? vec2(hideThreshold - SCORCH_WIDTH, hideThreshold)
-                                    : vec2(hideThreshold, hideThreshold + SCORCH_WIDTH);
-  vec2 burnRange      = vec2(hideThreshold - BURN_WIDTH, hideThreshold + BURN_WIDTH);
-  vec2 flameRange     = vec2(hideThreshold - FLAME_WIDTH, hideThreshold);
-  vec2 smokeRange     = vec2(hideThreshold - SMOKE_WIDTH, hideThreshold);
+  // During the animation, the hideThreshold transitions from a small value to a larger
+  // value, so that all the above ranges are covered.
+  float hideThreshold =
+    mix(uForOpening ? 0.0 : -SCORCH_WIDTH, 1.0 + SMOKE_WIDTH, uProgress);
 
-  vec2 uv = iTexCoord / uScale * uSize / 1.5;
-
-  float smokeNoise =
-    simplex2DFractal(uv * 0.01 + uSeed + uProgress * vec2(0.0, 0.3 * uDuration));
+  // The individual ranges are now given by the current hideThreshold and the widths of
+  // the zones.
+  vec2 scorchRange = uForOpening ? vec2(hideThreshold - SCORCH_WIDTH, hideThreshold)
+                                 : vec2(hideThreshold, hideThreshold + SCORCH_WIDTH);
+  vec2 burnRange   = vec2(hideThreshold - BURN_WIDTH, hideThreshold + BURN_WIDTH);
+  vec2 flameRange  = vec2(hideThreshold - FLAME_WIDTH, hideThreshold);
+  vec2 smokeRange  = vec2(hideThreshold - SMOKE_WIDTH, hideThreshold);
 
   vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
                                    : vec2(floor(uSeed.x + 0.5), uSeed.y);
   float circle = length(iTexCoord - center);
+
+  vec2 uv = iTexCoord / uScale * uSize / 1.5;
+  float smokeNoise =
+    simplex2DFractal(uv * 0.01 + uSeed + uProgress * vec2(0.0, 0.3 * uDuration));
+
   float mask =
     mix(circle, smokeNoise, 200.0 * uTurbulence * uScale / max(uSize.x, uSize.y));
 

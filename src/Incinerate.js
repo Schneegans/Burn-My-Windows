@@ -23,7 +23,8 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This effect looks a bit like the transporter effect from TOS.                        //
+// This effect burns windows to ashes. The fire starts at a random position at the      //
+// window's boundary and then burns through the window in a circular shape.             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
@@ -67,7 +68,7 @@ var Incinerate = class {
 
   // ---------------------------------------------------------------------------- metadata
 
-  // This effect is only available on GNOME Shell 40+.
+  // This effect is available on all supported GNOME Shell versions.
   getMinShellVersion() {
     return [3, 36];
   }
