@@ -47,19 +47,19 @@ Below is a table which summarizes the current availability for all effects.
 <td colspan="5"><strong>GNOME</strong></td>
 <td colspan="1"><strong>KWin</strong></td>
 </tr>
-<tr><td></td>                        <td>3.36</td><td>3.38</td><td>40</td><td>41</td><td>42</td><td>5.25</td></tr>
-<tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
-<tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
-<tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-<tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-<tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-<tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-<tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-<tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
-<tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
-<tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td></tr>
-<tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-<tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+<tr><td></td>                        <td>3.36</td><td>3.38</td><td>40</td><td>41</td><td>42</td><td>5.25.0</td></tr>
+<tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 </table>
 
 
