@@ -24,10 +24,10 @@ vec4 getFireColor(float val) {
 
 void main() {
 
-  float SCORCH_WIDTH = 0.15 * uScale;
-  float BURN_WIDTH   = 0.02 * uScale;
-  float SMOKE_WIDTH  = 0.6 * uScale;
-  float FLAME_WIDTH  = 0.15 * uScale;
+  float SCORCH_WIDTH = 0.2 * uScale;
+  float BURN_WIDTH   = 0.03 * uScale;
+  float SMOKE_WIDTH  = 0.9 * uScale;
+  float FLAME_WIDTH  = 0.2 * uScale;
 
   float hideThreshold = mix(-SCORCH_WIDTH, 1.0 + SMOKE_WIDTH, uProgress);
   vec2 scorchRange    = uForOpening ? vec2(hideThreshold - SCORCH_WIDTH, hideThreshold)
@@ -36,7 +36,7 @@ void main() {
   vec2 flameRange     = vec2(hideThreshold - FLAME_WIDTH, hideThreshold);
   vec2 smokeRange     = vec2(hideThreshold - SMOKE_WIDTH, hideThreshold);
 
-  vec2 uv = iTexCoord / uScale * uSize;
+  vec2 uv = iTexCoord / uScale * uSize / 1.5;
 
   float smokeNoise =
     simplex2DFractal(uv * 0.01 + uSeed + uProgress * vec2(0.0, 0.3 * uDuration));
@@ -44,12 +44,12 @@ void main() {
   vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
                                    : vec2(floor(uSeed.x + 0.5), uSeed.y);
   float circle = length(iTexCoord - center);
-  float mask   = mix(circle, smokeNoise, 0.2 * uTurbulence * uScale);
+  float mask   = mix(circle, smokeNoise, 0.35 * uTurbulence * uScale);
 
-  float smokeMask =
-    smoothstep(0.0, 1.0, (mask - smokeRange.x) / SMOKE_WIDTH) * getRelativeEdgeMask(0.2);
-  float flameMask =
-    smoothstep(0.0, 1.0, (mask - flameRange.x) / FLAME_WIDTH) * getRelativeEdgeMask(0.1);
+  float smokeMask = smoothstep(0.0, 1.0, (mask - smokeRange.x) / SMOKE_WIDTH) *
+                    getAbsoluteEdgeMask(100.0, 0.3);
+  float flameMask = smoothstep(0.0, 1.0, (mask - flameRange.x) / FLAME_WIDTH) *
+                    getAbsoluteEdgeMask(20.0, 0.0);
   float fireMask   = smoothstep(1.0, 0.0, abs(mask - hideThreshold) / BURN_WIDTH);
   float scorchMask = smoothstep(1.0, 0.0, (mask - scorchRange.x) / SCORCH_WIDTH);
 
