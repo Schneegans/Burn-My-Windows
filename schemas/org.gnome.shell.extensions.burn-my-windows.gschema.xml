@@ -332,6 +332,46 @@
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Incinerate Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="incinerate-close-effect" type="b">
+      <default>false</default>
+      <summary>Incinerate Close Effect</summary>
+      <description>Use the Incinerate effect for window closing.</description>
+    </key>
+
+    <key name="incinerate-open-effect" type="b">
+      <default>false</default>
+      <summary>Incinerate Open Effect</summary>
+      <description>Use the Incinerate effect for window opening.</description>
+    </key>
+
+    <key name="incinerate-animation-time" type="i">
+      <default>2000</default>
+      <summary>Incinerate Animation Time</summary>
+      <description>The time the Incinerate effect takes.</description>
+    </key>
+
+    <key name="incinerate-scale" type="d">
+      <default>1.0</default>
+      <summary>Incinerate Scale</summary>
+      <description>The scale of the effect.</description>
+    </key>
+
+    <key name="incinerate-turbulence" type="d">
+      <default>0.3</default>
+      <summary>Incinerate Turbulence</summary>
+      <description>The turbulence of the effect.</description>
+    </key>
+
+    <key name="incinerate-color" type="s">
+      <default>"rgb(255, 180, 127)"</default>
+      <summary>Incinerate Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Energize A Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 

@@ -6,6 +6,7 @@
 
 #### New Features
 
+* **New Effect: Incinerate.** This is a completely new take on the fire effect. It is a bit more demanding in terms of GPU power, but at the same time it looks much more awesome!
 * **Initial KDE Support.** Thanks to the [awesome work](https://invent.kde.org/plasma/kwin/-/merge_requests/2227) of Martin Flöser, it has become possible to port some of its effects to KDE Plasma! For now, only the most simple effects can be ported, but hopefully this list can be improved in the future.
 * An option has been added which allows to automatically disable all effects if running on battery power.
 

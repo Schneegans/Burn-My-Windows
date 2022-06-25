@@ -170,6 +170,7 @@ capture_effect "energize-a"
 capture_effect "energize-b"
 capture_effect "fire"
 capture_effect "hexagon"
+capture_effect "incinerate"
 capture_effect "tv"
 capture_effect "wisps"
 

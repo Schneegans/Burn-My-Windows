@@ -56,6 +56,7 @@ class Extension {
       new Me.imports.src.EnergizeB.EnergizeB(),
       new Me.imports.src.Fire.Fire(),
       new Me.imports.src.Hexagon.Hexagon(),
+      new Me.imports.src.Incinerate.Incinerate(),
       new Me.imports.src.Matrix.Matrix(),
       new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
       new Me.imports.src.TRexAttack.TRexAttack(),

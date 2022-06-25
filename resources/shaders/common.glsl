@@ -98,7 +98,7 @@ uniform vec2 uSize;
 uniform float uPadding;
 
 // On GNOME, we set iTexCoord to be an alias for the cogl variables.
-#define iTexCoord cogl_tex_coord_in[0]
+vec2 iTexCoord = cogl_tex_coord_in[0].st;
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
 vec4 getInputColor(vec2 coords) {
@@ -122,6 +122,17 @@ void setOutputColor(vec4 outColor) { cogl_color_out = outColor; }
 vec4 alphaOver(vec4 under, vec4 over) {
   float alpha = over.a + under.a * (1.0 - over.a);
   return vec4((over.rgb * over.a + under.rgb * under.a * (1.0 - over.a)) / alpha, alpha);
+}
+
+// ------------------------------------------------------------------------- color helpers
+
+// Maps the given value from [0..1] to the given colors.
+vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
+  if (val < 0.5) {
+    return mix(shadows, midtones, smoothstep(0.0, 1.0, val * 2.0));
+  }
+
+  return mix(midtones, highlights, smoothstep(0.0, 1.0, val * 2.0 - 1.0));
 }
 
 // ---------------------------------------------------------------------- easing functions
