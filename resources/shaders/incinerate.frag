@@ -73,6 +73,10 @@ void main() {
   vec2 flameRange  = vec2(hideThreshold - FLAME_WIDTH, hideThreshold);
   vec2 smokeRange  = vec2(hideThreshold - SMOKE_WIDTH, hideThreshold);
 
+  // Now we compute a 2D gradient in [0..1] which covers the entire window. The dark
+  // regions will be burned first, the bright regions in the end. We mix a radial gradient
+  // with some noise. The center of the radial gradient is positioned somewhere at the
+  // window boundary.
   vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
                                    : vec2(floor(uSeed.x + 0.5), uSeed.y);
   float circle = length(iTexCoord - center);
@@ -81,36 +85,41 @@ void main() {
   float smokeNoise =
     simplex2DFractal(uv * 0.01 + uSeed + uProgress * vec2(0.0, 0.3 * uDuration));
 
-  float mask =
+  float gradient =
     mix(circle, smokeNoise, 200.0 * uTurbulence * uScale / max(uSize.x, uSize.y));
 
-  float smokeMask = smoothstep(0.0, 1.0, (mask - smokeRange.x) / SMOKE_WIDTH) *
+  // Now, based on the gradient and the ranges, we can compute masks for the individual
+  // zones.
+  float smokeMask = smoothstep(0.0, 1.0, (gradient - smokeRange.x) / SMOKE_WIDTH) *
                     getAbsoluteEdgeMask(100.0, 0.3);
-  float flameMask = smoothstep(0.0, 1.0, (mask - flameRange.x) / FLAME_WIDTH) *
+  float flameMask = smoothstep(0.0, 1.0, (gradient - flameRange.x) / FLAME_WIDTH) *
                     getAbsoluteEdgeMask(20.0, 0.0);
-  float fireMask   = smoothstep(1.0, 0.0, abs(mask - hideThreshold) / BURN_WIDTH);
-  float scorchMask = smoothstep(1.0, 0.0, (mask - scorchRange.x) / SCORCH_WIDTH);
+  float fireMask   = smoothstep(1.0, 0.0, abs(gradient - hideThreshold) / BURN_WIDTH);
+  float scorchMask = smoothstep(1.0, 0.0, (gradient - scorchRange.x) / SCORCH_WIDTH);
 
   if (uForOpening) {
     scorchMask = 1.0 - scorchMask;
   }
 
-  // Now we retrieve the window color. We add some distortion in the scorch zone.
-  vec2 distort = vec2(0.0);
+  // Now we retrieve the window color. We only show the window when the burning edge has
+  // passed.
+  vec4 oColor = vec4(0.0);
 
-  if ((uForOpening && mask >= scorchRange.x) || (!uForOpening && mask <= scorchRange.y)) {
-    distort = vec2(dFdx(mask), dFdy(mask)) * scorchMask * 5.0;
-  }
+  if ((!uForOpening && gradient > hideThreshold) ||
+      (uForOpening && gradient < hideThreshold)) {
 
-  vec4 oColor = getInputColor(iTexCoord + distort);
+    //  We add some distortion in the scorch zone
+    vec2 distort = vec2(0.0);
 
-  // Hide after buring zone has passed.
-  if ((uForOpening && mask > smokeRange.y) || (!uForOpening && mask < smokeRange.y)) {
-    oColor = vec4(0.0);
+    if (scorchRange.x < gradient && gradient < scorchRange.y) {
+      distort = vec2(dFdx(gradient), dFdy(gradient)) * scorchMask * 5.0;
+    }
+
+    oColor = getInputColor(iTexCoord + distort);
   }
 
   // Add smoke and embers.
-  if (smokeRange.x < mask && mask < smokeRange.y) {
+  if (smokeRange.x < gradient && gradient < smokeRange.y) {
     float smoke = smokeMask * smokeNoise;
     oColor      = alphaOver(oColor, vec4(0.5 * vec3(smoke), smoke));
 
@@ -121,24 +130,25 @@ void main() {
   }
 
   // Add scorch effect.
-  if (scorchRange.x < mask && mask < scorchRange.y) {
+  if (scorchRange.x < gradient && gradient < scorchRange.y) {
     oColor.rgb = mix(oColor.rgb, mix(oColor.rgb, vec3(0.1, 0.05, 0.02), 0.4), scorchMask);
   }
 
   // Add trailing flames.
-  if (min(burnRange.x, flameRange.x) < mask && mask < max(burnRange.y, flameRange.y)) {
+  if (min(burnRange.x, flameRange.x) < gradient &&
+      gradient < max(burnRange.y, flameRange.y)) {
     float flameNoise =
       simplex2DFractal(uv * 0.02 + uSeed + smokeNoise * vec2(0.0, 1.0 * uDuration) +
                        vec2(0.0, uProgress * uDuration));
 
-    if (flameRange.x < mask && mask < flameRange.y) {
+    if (flameRange.x < gradient && gradient < flameRange.y) {
       float flame = clamp(pow(flameNoise + 0.3, 20.0), 0.0, 2.0) * flameMask;
       flame += clamp(pow(flameNoise + 0.4, 10.0), 0.0, 2.0) * flameMask * flameMask * 0.1;
       oColor += getFireColor(flame);
     }
 
     // Add burning edge.
-    if (burnRange.x < mask && mask < burnRange.y) {
+    if (burnRange.x < gradient && gradient < burnRange.y) {
       float fire = fireMask * pow(flameNoise + 0.4, 4.0) * oColor.a;
       oColor += getFireColor(fire);
     }
