@@ -86,7 +86,7 @@ jobs:
           - '35'
           - '36'
         session:
-          #- 'gnome-xsession' Disabled for now as it miraculously fails on GitHub. Locally, all tests pass...
+          - 'gnome-xsession'
           - 'gnome-wayland-nested'
     steps:
     - uses: actions/checkout@v2
