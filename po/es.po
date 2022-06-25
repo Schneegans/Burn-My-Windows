@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 12:59+0200\n"
+"POT-Creation-Date: 2022-06-25 05:04+0200\n"
 "PO-Revision-Date: 2022-06-08 14:14+0000\n"
 "Last-Translator: Ulices <dev.n47os@aleeas.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -19,41 +19,41 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.13-dev\n"
 
-#: prefs.js:113
+#: prefs.js:114
 msgid "Effect Options"
 msgstr "Opciones de efecto"
 
-#: prefs.js:141
+#: prefs.js:142
 msgid "Go Back"
 msgstr "Volver"
 
-#: prefs.js:183
+#: prefs.js:184
 msgid "General Options"
 msgstr "Opciones generales"
 
-#: prefs.js:277
+#: prefs.js:278
 msgid "Gold Sponsors"
 msgstr "Patrocinadores de oro"
 
-#: prefs.js:280
+#: prefs.js:281
 msgid "Silver Sponsors"
 msgstr "Patrocinadores de plata"
 
-#: prefs.js:283
+#: prefs.js:284
 msgid "Bronze Sponsors"
 msgstr "Patrocinadores de bronce"
 
-#: prefs.js:286
+#: prefs.js:287
 msgid "Past Sponsors"
 msgstr "Patrocinadores anteriores"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:509
+#: prefs.js:510
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Previsualización de %s"
 
-#: prefs.js:531
+#: prefs.js:532
 msgid "Close this Window to Preview the Effect!"
 msgstr "¡Cierre esta ventana para ver el efecto!"
 
@@ -72,6 +72,10 @@ msgstr "Ataque de T-Rex"
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
 msgstr "Chasquido de desintegración"
+
+#: src/Incinerate.js:87
+msgid "Incinerate"
+msgstr ""
 
 #: src/Wisps.js:85
 msgid "Wisps"
@@ -150,15 +154,15 @@ msgid "About Burn-My-Windows"
 msgstr "Acerca de Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
-#: resources/ui/gtk4/Wisps.ui:24 resources/ui/gtk4/Fire.ui:49
-#: resources/ui/gtk4/SnapOfDisintegration.ui:24
+#: resources/ui/gtk4/Incinerate.ui:24 resources/ui/gtk4/Wisps.ui:24
+#: resources/ui/gtk4/Fire.ui:49 resources/ui/gtk4/SnapOfDisintegration.ui:24
 #: resources/ui/gtk4/TRexAttack.ui:24 resources/ui/gtk4/TVEffect.ui:24
 #: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/Hexagon.ui:24
 #: resources/ui/gtk4/EnergizeB.ui:24 resources/ui/gtk4/Apparition.ui:24
-#: resources/ui/gtk3/Wisps.ui:42 resources/ui/gtk3/Fire.ui:93
-#: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
-#: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
-#: resources/ui/gtk3/Apparition.ui:63
+#: resources/ui/gtk3/Incinerate.ui:49 resources/ui/gtk3/Wisps.ui:42
+#: resources/ui/gtk3/Fire.ui:93 resources/ui/gtk3/TVEffect.ui:35
+#: resources/ui/gtk3/EnergizeA.ui:42 resources/ui/gtk3/Hexagon.ui:49
+#: resources/ui/gtk3/EnergizeB.ui:42 resources/ui/gtk3/Apparition.ui:63
 msgid "Animation Time [ms]"
 msgstr "Tiempo de animación [ms]"
 
@@ -167,7 +171,9 @@ msgstr "Tiempo de animación [ms]"
 #: resources/ui/gtk4/Matrix.ui:224 resources/ui/gtk4/Matrix.ui:258
 #: resources/ui/gtk4/BrokenGlass.ui:52 resources/ui/gtk4/BrokenGlass.ui:98
 #: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
-#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Wisps.ui:52
+#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Incinerate.ui:52
+#: resources/ui/gtk4/Incinerate.ui:98 resources/ui/gtk4/Incinerate.ui:144
+#: resources/ui/gtk4/Incinerate.ui:178 resources/ui/gtk4/Wisps.ui:52
 #: resources/ui/gtk4/Wisps.ui:98 resources/ui/gtk4/Wisps.ui:132
 #: resources/ui/gtk4/Fire.ui:77 resources/ui/gtk4/Fire.ui:123
 #: resources/ui/gtk4/Fire.ui:169 resources/ui/gtk4/Fire.ui:222
@@ -184,7 +190,9 @@ msgstr "Tiempo de animación [ms]"
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk4/prefs.ui:200
 #: resources/ui/gtk4/Apparition.ui:52 resources/ui/gtk4/Apparition.ui:98
 #: resources/ui/gtk4/Apparition.ui:144 resources/ui/gtk4/Apparition.ui:190
-#: resources/ui/gtk4/Apparition.ui:236 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk4/Apparition.ui:236 resources/ui/gtk3/Incinerate.ui:75
+#: resources/ui/gtk3/Incinerate.ui:124 resources/ui/gtk3/Incinerate.ui:173
+#: resources/ui/gtk3/Incinerate.ui:216 resources/ui/gtk3/Wisps.ui:68
 #: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
 #: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
 #: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
@@ -203,12 +211,13 @@ msgid "Reset to Default Value"
 msgstr "Restablecer al valor predeterminado"
 
 #: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
-#: resources/ui/gtk4/Wisps.ui:70 resources/ui/gtk4/Fire.ui:95
-#: resources/ui/gtk4/SnapOfDisintegration.ui:70
+#: resources/ui/gtk4/Incinerate.ui:70 resources/ui/gtk4/Wisps.ui:70
+#: resources/ui/gtk4/Fire.ui:95 resources/ui/gtk4/SnapOfDisintegration.ui:70
 #: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/Hexagon.ui:70
-#: resources/ui/gtk4/EnergizeB.ui:70 resources/ui/gtk3/Wisps.ui:91
-#: resources/ui/gtk3/Fire.ui:141 resources/ui/gtk3/EnergizeA.ui:91
-#: resources/ui/gtk3/Hexagon.ui:98 resources/ui/gtk3/EnergizeB.ui:91
+#: resources/ui/gtk4/EnergizeB.ui:70 resources/ui/gtk3/Incinerate.ui:98
+#: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
+#: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/Hexagon.ui:98
+#: resources/ui/gtk3/EnergizeB.ui:91
 msgid "Scale"
 msgstr "Escala"
 
@@ -249,11 +258,16 @@ msgstr ""
 "Los fragmentos saldrán volando desde donde estaba el puntero del ratón al "
 "cerrar la ventana."
 
-#: resources/ui/gtk4/Wisps.ui:116 resources/ui/gtk4/SnapOfDisintegration.ui:116
+#: resources/ui/gtk4/Incinerate.ui:116 resources/ui/gtk3/Incinerate.ui:147
+msgid "Turbulence"
+msgstr ""
+
+#: resources/ui/gtk4/Incinerate.ui:162 resources/ui/gtk4/Wisps.ui:116
+#: resources/ui/gtk4/SnapOfDisintegration.ui:116
 #: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
-#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Wisps.ui:139
-#: resources/ui/gtk3/TVEffect.ui:83 resources/ui/gtk3/EnergizeA.ui:139
-#: resources/ui/gtk3/EnergizeB.ui:139
+#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Incinerate.ui:195
+#: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
+#: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
 msgstr "Color"
 
