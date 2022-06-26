@@ -12,6 +12,7 @@
 
 #### Enhancements
 
+* Many translation updates, including a completely new Persian, Polish, and Slovak translation. A BIG THANKS to all translators!
 * The shader include system has been simplified. There's now just one "common.glsl" which is automatically loaded into each shader.
 
 ## [Burn My Windows 16](https://github.com/schneegans/Burn-My-Windows/releases/tag/v16)
