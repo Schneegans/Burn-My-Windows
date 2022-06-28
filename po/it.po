@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
-"PO-Revision-Date: 2022-05-27 18:20+0000\n"
+"PO-Revision-Date: 2022-06-29 17:16+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: prefs.js:114
 msgid "Effect Options"
@@ -75,7 +75,7 @@ msgstr "Scatto di disintegrazione"
 
 #: src/Incinerate.js:87
 msgid "Incinerate"
-msgstr ""
+msgstr "Incenerire"
 
 #: src/Wisps.js:85
 msgid "Wisps"
@@ -260,7 +260,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Incinerate.ui:116 resources/ui/gtk3/Incinerate.ui:147
 msgid "Turbulence"
-msgstr ""
+msgstr "Turbolenza"
 
 #: resources/ui/gtk4/Incinerate.ui:162 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
