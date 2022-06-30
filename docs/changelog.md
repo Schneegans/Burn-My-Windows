@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 18](https://github.com/schneegans/Burn-My-Windows/releases/tag/v18)
+
+**Release Date:** 2022-06-30
+
+#### Fixes
+
+* The GNOME extension package now does not include the KWin JavaScript files anymore.
+
 ## [Burn My Windows 17](https://github.com/schneegans/Burn-My-Windows/releases/tag/v17)
 
 **Release Date:** 2022-06-30
