@@ -2,7 +2,7 @@
 
 ## [Burn My Windows 17](https://github.com/schneegans/Burn-My-Windows/releases/tag/v17)
 
-**Release Date:** TBD
+**Release Date:** 2022-06-30
 
 #### New Features
 
