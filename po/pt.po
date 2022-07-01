@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
-"PO-Revision-Date: 2022-07-01 20:48+0000\n"
-"Last-Translator: KrulesExGamer <pedro.hvn.2018@gmail.com>\n"
+"PO-Revision-Date: 2022-07-01 21:16+0000\n"
+"Last-Translator: dyegoaurelio <dyegoaurelio@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/"
 "burn-my-windows/core/pt/>\n"
 "Language: pt\n"
@@ -71,7 +71,7 @@ msgstr "Ataque de T-Rex"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
-msgstr "Estalo da Desintegração"
+msgstr "O Estalo da Desintegração"
 
 #: src/Incinerate.js:87
 msgid "Incinerate"
@@ -99,7 +99,7 @@ msgstr "Sombrio e Sujo"
 
 #: src/Fire.js:184
 msgid "Cold Breeze"
-msgstr "Brisa Gélida"
+msgstr "Brisa Gelada"
 
 #: src/Fire.js:194
 msgid "Santa is Coming"
@@ -127,7 +127,7 @@ msgstr "Matrix"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
-msgstr "Visite a Página Principal"
+msgstr "Visite o Site"
 
 #: resources/ui/common/main-menu.ui:10
 msgid "View Changelog"
@@ -151,7 +151,7 @@ msgstr "Doê"
 
 #: resources/ui/common/main-menu.ui:41
 msgid "About Burn-My-Windows"
-msgstr "Sobre Burn-My-Windows"
+msgstr "Sobre o Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Incinerate.ui:24 resources/ui/gtk4/Wisps.ui:24
@@ -228,7 +228,7 @@ msgstr "Aleatoriedade"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr "Extensão Vertical"
+msgstr "Excedente Vertical"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
@@ -301,11 +301,11 @@ msgstr "Quantidade de Rasgos das Garras"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr "Efeito de Distorsão"
+msgstr "Efeito de Distorção"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr "Cor do Brilho"
+msgstr "Cor do Brilho da Garra"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
@@ -337,16 +337,16 @@ msgstr "Bem-vindo a Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr "Se você gostou dessa extensão, recomende ela para os seus amigos :)"
+msgstr "Se você gostou dessa extensão, recomende ela para seus amigos :)"
 
 #: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
-msgstr "Animação de Abrir Janela"
+msgstr "Animação ao Abrir Janela"
 
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Se mais de um estiver selecionado, um aleatório será escolhido."
+msgstr "Se mais de uma estiver selecionada, uma aleatória será escolhida."
 
 #: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
 #: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
@@ -355,11 +355,11 @@ msgstr "Efeitos Escolhidos"
 
 #: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
 msgid "Close Window Animation"
-msgstr "Animação de Fechar Janela"
+msgstr "Animação ao Fechar Janela"
 
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
-msgstr "Adicionar Efeitos ao Diálogos Também"
+msgstr "Adicionar Efeitos aos Diálogos Também"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
 msgid "Disable on Battery Power"
