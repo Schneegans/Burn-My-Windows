@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
-"PO-Revision-Date: 2022-07-02 21:20+0000\n"
-"Last-Translator: Jorge C <jorgec2005@gmail.com>\n"
+"PO-Revision-Date: 2022-07-06 13:20+0000\n"
+"Last-Translator: Óscar Fernández Díaz <oscfdezdz@tuta.io>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
 "Language: es\n"
@@ -33,7 +33,7 @@ msgstr "Opciones generales"
 
 #: prefs.js:278
 msgid "Gold Sponsors"
-msgstr "Patrocinadores  Oro"
+msgstr "Patrocinadores Oro"
 
 #: prefs.js:281
 msgid "Silver Sponsors"
