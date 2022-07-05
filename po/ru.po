@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
-"PO-Revision-Date: 2022-04-13 13:09+0000\n"
-"Last-Translator: Егор Ермаков <eg.ermakov2016@gmail.com>\n"
+"PO-Revision-Date: 2022-07-06 13:20+0000\n"
+"Last-Translator: Егор Ермаков <eg.ermakov2016@yandex.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.12-dev\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 
 #: prefs.js:114
 msgid "Effect Options"
@@ -72,11 +72,11 @@ msgstr "Атака тираннозавра"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Щелчок распада"
 
 #: src/Incinerate.js:87
 msgid "Incinerate"
-msgstr ""
+msgstr "Сжигание"
 
 #: src/Wisps.js:85
 msgid "Wisps"
@@ -261,7 +261,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Incinerate.ui:116 resources/ui/gtk3/Incinerate.ui:147
 msgid "Turbulence"
-msgstr ""
+msgstr "Турбулентность"
 
 #: resources/ui/gtk4/Incinerate.ui:162 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -326,7 +326,7 @@ msgstr "Цвет свечения"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
-msgstr ""
+msgstr "Аддитивное смешивание"
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
@@ -364,7 +364,7 @@ msgstr "Также добавить эффекты к диалогам"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
 msgid "Disable on Battery Power"
-msgstr ""
+msgstr "Отключать при питании от батареи"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
