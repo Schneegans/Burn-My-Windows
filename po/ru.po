@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
-"PO-Revision-Date: 2022-07-06 13:20+0000\n"
+"PO-Revision-Date: 2022-07-09 05:03+0000\n"
 "Last-Translator: Егор Ермаков <eg.ermakov2016@yandex.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
@@ -116,7 +116,7 @@ msgstr "Энергия A"
 
 #: src/Apparition.js:80
 msgid "Apparition"
-msgstr ""
+msgstr "Привидение"
 
 #: src/EnergizeB.js:80
 msgid "Energize B"
