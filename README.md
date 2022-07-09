@@ -69,6 +69,7 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
+  Maxence Sebald<br>
   <a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
 </p>
 
