@@ -229,6 +229,7 @@ class Extension {
         const shader = actor.get_effect('burn-my-windows-effect');
         if (shader) {
           actor.remove_effect(shader);
+          shader.endAnimation();
           shader.returnToFactory();
         }
       }
@@ -385,6 +386,7 @@ class Extension {
     const oldShader = actor.get_effect('burn-my-windows-effect');
     if (oldShader) {
       actor.remove_effect(oldShader);
+      oldShader.endAnimation();
       oldShader.returnToFactory();
     }
 
@@ -520,6 +522,7 @@ class Extension {
         const oldShader = actor.get_effect('burn-my-windows-effect');
         if (oldShader) {
           actor.remove_effect(oldShader);
+          oldShader.endAnimation();
           oldShader.returnToFactory();
         }
       });
