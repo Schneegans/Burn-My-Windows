@@ -17,6 +17,7 @@ uniform vec2 uSeed;
 uniform vec3 uColor;
 uniform float uScale;
 uniform float uTurbulence;
+uniform vec2 uStartPos;
 
 // This maps a given value in [0..1] to a color from the rgba color ramp
 // [transparent black ... semi-transparent uColor ... opaque white].
@@ -75,11 +76,8 @@ void main() {
 
   // Now we compute a 2D gradient in [0..1] which covers the entire window. The dark
   // regions will be burned first, the bright regions in the end. We mix a radial gradient
-  // with some noise. The center of the radial gradient is positioned somewhere at the
-  // window boundary.
-  vec2 center  = uSeed.x > uSeed.y ? vec2(uSeed.x, floor(uSeed.y + 0.5))
-                                   : vec2(floor(uSeed.x + 0.5), uSeed.y);
-  float circle = length(iTexCoord - center);
+  // with some noise. The center of the radial gradient is positioned at uStartPos.
+  float circle = length(iTexCoord - uStartPos);
 
   vec2 uv = iTexCoord / uScale * uSize / 1.5;
   float smokeNoise =
