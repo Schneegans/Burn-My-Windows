@@ -4,6 +4,10 @@
 
 **Release Date:** TBD
 
+#### New Features
+
+* On GNOME, the incinerate effect now uses the current mouse pointer position as starting position of the burn effect. The old random behaviour can be enabled in the settings.
+
 #### Enhancements
 
 * On GNOME, effects can now execute code whenever an animation ended. This is useful for cleaning up resources.
