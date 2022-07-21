@@ -6,11 +6,15 @@
 
 #### New Features
 
-* On GNOME, the incinerate effect now uses the current mouse pointer position as starting position of the burn effect. The old random behaviour can be enabled in the settings.
+* The incinerate effect now uses the current mouse pointer position as starting position of the burn effect. The old random behaviour can be enabled in the settings. This works both on GNOME and KDE.
 
 #### Enhancements
 
 * On GNOME, effects can now execute code whenever an animation ended. This is useful for cleaning up resources.
+
+#### Fixes
+
+* Fixed the effect configuration dialog of the Fire effect on KDE.
 
 ## [Burn My Windows 18](https://github.com/schneegans/Burn-My-Windows/releases/tag/v18)
 
