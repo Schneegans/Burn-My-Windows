@@ -1,5 +1,17 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 19](https://github.com/schneegans/Burn-My-Windows/releases/tag/v19)
+
+**Release Date:** TBD
+
+#### New Features
+
+* On GNOME, the incinerate effect now uses the current mouse pointer position as starting position of the burn effect. The old random behaviour can be enabled in the settings.
+
+#### Enhancements
+
+* On GNOME, effects can now execute code whenever an animation ended. This is useful for cleaning up resources.
+
 ## [Burn My Windows 18](https://github.com/schneegans/Burn-My-Windows/releases/tag/v18)
 
 **Release Date:** 2022-06-30

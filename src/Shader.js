@@ -48,7 +48,8 @@ var Shader = GObject.registerClass(
     Signals: {
       'begin-animation':
         {param_types: [Gio.Settings.$gtype, GObject.TYPE_BOOLEAN, Clutter.Actor.$gtype]},
-      'update-animation': {param_types: [GObject.TYPE_DOUBLE]}
+      'update-animation': {param_types: [GObject.TYPE_DOUBLE]},
+      'end-animation': {}
     }
   },
   class Shader extends Shell.GLSLEffect {  // --------------------------------------------
@@ -97,6 +98,12 @@ var Shader = GObject.registerClass(
       // in vfunc_paint_target. We do not emit it here, as the pipeline which may be used
       // by handlers must not have been created yet.
       this._progress = progress;
+    }
+
+    // This will just emit the end-animation signal. It can be used to clean up any
+    // resources required during the animation.
+    endAnimation() {
+      this.emit('end-animation');
     }
 
     // This is called by the constructor. This means, it's only called when the

@@ -371,6 +371,12 @@
       <description>The color of the effect.</description>
     </key>
 
+    <key name="incinerate-use-pointer" type="b">
+      <default>true</default>
+      <summary>Incinerate Use Pointer</summary>
+      <description>Use the pointer location for the incinerate effect.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Energize A Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
