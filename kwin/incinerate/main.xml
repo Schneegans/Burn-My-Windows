@@ -15,5 +15,8 @@
     <entry name="Color" type="Color">
       <default>#ffb47f</default>
     </entry>
+    <entry name="UsePointer" type="Bool">
+      <default>true</default>
+    </entry>
   </group>
 </kcfg>
