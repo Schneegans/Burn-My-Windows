@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
 "PO-Revision-Date: 2022-08-08 14:16+0000\n"
-"Last-Translator: obslsessed <obslsessed@duck.com>\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sv/>\n"
 "Language: sv\n"
@@ -75,7 +75,7 @@ msgstr "Sönderfallsknäppning"
 
 #: src/Incinerate.js:87
 msgid "Incinerate"
-msgstr ""
+msgstr "Bränna"
 
 #: src/Wisps.js:85
 msgid "Wisps"
@@ -248,7 +248,7 @@ msgstr "Blåskraft"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Spränga från muspekarens plats"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
 msgid ""
@@ -260,7 +260,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Incinerate.ui:116 resources/ui/gtk3/Incinerate.ui:147
 msgid "Turbulence"
-msgstr ""
+msgstr "Turbulens"
 
 #: resources/ui/gtk4/Incinerate.ui:162 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -289,15 +289,15 @@ msgstr "Skapar en mer dynamisk eld, men kräver mer GPU-kraft."
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
 msgid "Gradient"
-msgstr ""
+msgstr "Gradient"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Klo riva skala"
 
 #: resources/ui/gtk4/TRexAttack.ui:116
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Klo riva räknare"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
@@ -313,15 +313,15 @@ msgstr "Förhandsgranska den här effekten"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Mesh linjebredd"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr ""
+msgstr "Linje färg"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
-msgstr ""
+msgstr "Glöd färg"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
@@ -363,7 +363,7 @@ msgstr "Lägg också till effekter till dialogrutor"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
 msgid "Disable on Battery Power"
-msgstr ""
+msgstr "Inaktivera på batteriström"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
