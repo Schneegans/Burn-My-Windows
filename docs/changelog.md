@@ -12,6 +12,7 @@
 
 * Many translation updates, including a completely new Portuguese, Esperanto, and Hebrew translation. A BIG THANKS to all translators!
 * On GNOME, effects can now execute code whenever an animation ended. This is useful for cleaning up resources.
+* The KWin build script now generates a separate archive for each effect as well as a combined archive for all effects.
 
 #### Fixes
 

@@ -111,11 +111,14 @@ generate() {
     cat "../resources/shaders/$1.frag"
   } > "$BUILD_DIR/$DIR_NAME/contents/shaders/$1.frag"
 
-  # If clang-format is installed, try to beauty the code a bit.
+  # If clang-format is installed, try to beautify the code a bit.
   if command -v clang-format &> /dev/null
   then
       clang-format -i "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   fi
+
+  # Create an archive which can be uploaded to https://store.kde.org.
+  tar -cjf "$DIR_NAME.tar.gz" -C "$BUILD_DIR/$DIR_NAME" $(ls "$BUILD_DIR/$DIR_NAME")
 }
 
 # Now run the above method for all supported effects.

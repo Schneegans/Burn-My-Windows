@@ -161,8 +161,8 @@ Then you can enable the extension with the *Gnome Tweak Tool*, the *Extensions* 
 gnome-extensions enable burn-my-windows@schneegans.github.com
 ```
 
-## ⬇️ Installation (KWin)
 
+## ⬇️ Installation (KWin)
 
 You can either download a stable version from GitHub (a) or clone the latest version directly with `git` (b).
 
@@ -198,7 +198,7 @@ Now you will have to build the effects and copy them to your KWin effect directo
 ```bash
 ./kwin/build.sh
 mkdir -p ~/.local/share/kwin/effects
-cp -r kwin/_build/* ~/.local/share/kwin/effects
+tar -xf kwin/burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
 ```
 
 That's it!
