@@ -128,13 +128,13 @@ generate() {
 # window canvas during the animation.
 #generate "apparition" "[BMW] Apparition" "This effect hides your windows by violently sucking them into the void of magic"
 
-generate "energize-a" "[BMW] Energize A" "Beam your windows away"
-generate "energize-b" "[BMW] Energize B" "Using different transporter technology results in an alternative visual effect"
-generate "fire"       "[BMW] Fire"       "The classic effect inspired by Compiz"
-generate "hexagon"    "[BMW] Hexagon"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
-generate "incinerate" "[BMW] Incinerate" "A less snappy but definitely more fancy take on the fire effect"
-generate "tv"         "[BMW] TV Effect"  "Make windows close like turning off a TV"
-generate "wisps"      "[BMW] Wisps"      "Let your windows be carried away to the realm of dreams by these little fairies"
+generate "energize-a" "Energize A [Burn-My-Windows]" "Beam your windows away"
+generate "energize-b" "Energize B [Burn-My-Windows]" "Using different transporter technology results in an alternative visual effect"
+generate "fire"       "Fire [Burn-My-Windows]"       "The classic effect inspired by Compiz"
+generate "hexagon"    "Hexagon [Burn-My-Windows]"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
+generate "incinerate" "Incinerate [Burn-My-Windows]" "A less snappy but definitely more fancy take on the fire effect"
+generate "tv"         "TV Effect [Burn-My-Windows]"  "Make windows close like turning off a TV"
+generate "wisps"      "Wisps [Burn-My-Windows]"      "Let your windows be carried away to the realm of dreams by these little fairies"
 
 # Finally, create an archive for the effects.
 # shellcheck disable=SC2046
