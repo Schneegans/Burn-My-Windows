@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 20](https://github.com/schneegans/Burn-My-Windows/releases/tag/v20)
+
+**Release Date:** TBD
+
+#### Enhancements
+
+* Under KWin, the effects now use the same names as in the KDE store.
+
 ## [Burn My Windows 19](https://github.com/schneegans/Burn-My-Windows/releases/tag/v19)
 
 **Release Date:** 2022-08-18
