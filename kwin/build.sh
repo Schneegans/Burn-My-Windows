@@ -118,6 +118,7 @@ generate() {
   fi
 
   # Create an archive which can be uploaded to https://store.kde.org.
+  # shellcheck disable=SC2046
   tar -cjf "$DIR_NAME.tar.gz" -C "$BUILD_DIR/$DIR_NAME" $(ls "$BUILD_DIR/$DIR_NAME")
 }
 
