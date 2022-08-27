@@ -28,22 +28,24 @@ float getEdgeMask(vec2 uv, float fadeWidth) {
 }
 
 void main() {
-  // We simply inverse the progress for opening windows.
+  // We simply inverse the pixelation progress for opening windows.
   float pixelateProgress = uForOpening ? 0.9 - uProgress : uProgress;
+  float pixelSize        = max(1.0, ceil(uPixelSize * pixelateProgress + 1.0));
+  vec2 pixelGrid         = vec2(pixelSize) / uSize;
 
-  float pixelSize = max(1.0, ceil(uPixelSize * pixelateProgress + 1.0));
-  vec2 pixelGrid  = vec2(pixelSize) / uSize;
-
+  // Snap texcoords to pixel grid.
   vec2 texcoord = iTexCoord.st;
   texcoord.y    = texcoord.y * uActorScale + 0.5 - uActorScale * 0.5;
   texcoord -= mod(iTexCoord.st, pixelGrid);
   texcoord += pixelGrid * 0.5;
 
+  // The pixel columns move vertically. The offset is generated with a random noise
+  // function.
   float hScale = uHorizontalScale * uSize.x * 0.001;
-  float vScale = uVerticalScale * uSize.y * 0.00002 * uActorScale;
+  float noise  = simplex2DFractal(texcoord.xx * hScale) * 2.0 - 0.5;
 
-  float noise = simplex2DFractal(texcoord.xx * hScale) * 2.0 - 0.5;
-
+  // Shift the pixel columns vertically over time.
+  float vScale        = uVerticalScale * uSize.y * 0.00002 * uActorScale;
   float shiftProgress = uForOpening ? mix(-vScale - 1.0, 0.0, uProgress)
                                     : mix(-vScale, 1.0 + vScale, uProgress);
   float shift         = noise * vScale + shiftProgress;
@@ -56,6 +58,7 @@ void main() {
 
   vec4 oColor = getInputColor(texcoord);
 
+  // Fade window texture at the top and bottom.
   oColor.a *= getEdgeMask(iTexCoord.st, 0.1);
 
   setOutputColor(oColor);
