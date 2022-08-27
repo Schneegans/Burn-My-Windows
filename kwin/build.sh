@@ -133,6 +133,7 @@ generate "energize-b" "Energize B [Burn-My-Windows]" "Using different transporte
 generate "fire"       "Fire [Burn-My-Windows]"       "The classic effect inspired by Compiz"
 generate "hexagon"    "Hexagon [Burn-My-Windows]"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
 generate "incinerate" "Incinerate [Burn-My-Windows]" "A less snappy but definitely more fancy take on the fire effect"
+generate "pixelate"   "Pixelate [Burn-My-Windows]"   "Pixelate the window and randomly hide the pixels"
 generate "tv"         "TV Effect [Burn-My-Windows]"  "Make windows close like turning off a TV"
 generate "wisps"      "Wisps [Burn-My-Windows]"      "Let your windows be carried away to the realm of dreams by these little fairies"
 

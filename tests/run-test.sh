@@ -200,6 +200,7 @@ test_effect "energize-b"
 test_effect "fire"
 test_effect "hexagon"
 test_effect "incinerate"
+test_effect "pixelate"
 test_effect "tv"
 test_effect "wisps"
 
