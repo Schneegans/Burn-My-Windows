@@ -4,7 +4,7 @@
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
-      <default>1500</default>
+      <default>500</default>
     </entry>
     <entry name="Noise" type="UInt">
       <default>40</default>
