@@ -83,6 +83,41 @@
       <description>The amount of suction of the apparition effect.</description>
     </key>
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Pixelate Options                                                              -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="pixelate-close-effect" type="b">
+      <default>false</default>
+      <summary>Pixelate Close Effect</summary>
+      <description>Use the Pixelate effect for window closing.</description>
+    </key>
+
+    <key name="pixelate-open-effect" type="b">
+      <default>false</default>
+      <summary>Pixelate Open Effect</summary>
+      <description>Use the Pixelate effect for window opening.</description>
+    </key>
+
+    <key name="pixelate-animation-time" type="i">
+      <default>500</default>
+      <summary>Pixelate Animation Time</summary>
+      <description>The time the Pixelate effect takes.</description>
+    </key>
+
+    <key name="pixelate-noise" type="d">
+      <default>40</default>
+      <summary>Pixelate Noise</summary>
+      <description>The noise of the effect.</description>
+    </key>
+
+    <key name="pixelate-pixel-size" type="d">
+      <default>10</default>
+      <summary>Pixelate Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Doom Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

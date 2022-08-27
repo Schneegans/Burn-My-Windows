@@ -4,6 +4,10 @@
 
 **Release Date:** TBD
 
+#### New Features
+
+* **New Effect: Pixelate.** Pixelate your windows and randomly hide pixels until the entire window is gone.
+
 #### Enhancements
 
 * Under KWin, the effects now use the same names as in the KDE store.
