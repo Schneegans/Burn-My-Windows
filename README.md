@@ -164,9 +164,13 @@ gnome-extensions enable burn-my-windows@schneegans.github.com
 
 ## ⬇️ Installation (KWin)
 
-You can either download a stable version from GitHub (a) or clone the latest version directly with `git` (b).
+You can either download the effects from the KDE store (a), download a stable version from GitHub (b) or clone the latest version directly with `git` (c).
 
-### a) Downloading a Stable Release
+### a) Download from the [KDE Store](https://store.kde.org/p/1861183)
+
+You can directly get the effects from within your system settings. Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effetcs...".
+
+### b) Downloading a Stable Release
 
 Execute this command to download the latest stable release:
 
@@ -184,7 +188,7 @@ tar -xf burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
 Then select the desired effects in the system settings under "Desktop Effects".
 
 
-### b) Cloning the Latest Version with `git`
+### c) Cloning the Latest Version with `git`
 
 Execute the clone command below where you want to have the source code of the extension.
 
