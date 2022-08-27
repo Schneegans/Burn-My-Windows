@@ -30,6 +30,7 @@ Effect | Preview
 **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi. | <img src ="docs/pics/hexagon.gif" />
 **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect. | <img src ="docs/pics/incinerate.gif" />
 **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.| <img src ="docs/pics/matrix.gif" />
+**Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.| <img src ="docs/pics/pixelate.gif" />
 **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.| <img src ="docs/pics/snap.gif" />
 **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!| <img src ="docs/pics/trex.gif" />
 **TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
@@ -56,6 +57,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
