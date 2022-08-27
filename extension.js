@@ -52,6 +52,7 @@ class Extension {
     this._ALL_EFFECTS = [
       new Me.imports.src.Apparition.Apparition(),
       new Me.imports.src.BrokenGlass.BrokenGlass(),
+      new Me.imports.src.Doom.Doom(),
       new Me.imports.src.EnergizeA.EnergizeA(),
       new Me.imports.src.EnergizeB.EnergizeB(),
       new Me.imports.src.Fire.Fire(),
@@ -433,7 +434,7 @@ class Extension {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.getActorScale(this._settings);
+    const actorScale = effect.getActorScale(this._settings, actor);
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.

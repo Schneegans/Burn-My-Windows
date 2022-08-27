@@ -48,6 +48,7 @@ var PreferencesDialog = class PreferencesDialog {
     this._ALL_EFFECTS = [
       new Me.imports.src.Apparition.Apparition(),
       new Me.imports.src.BrokenGlass.BrokenGlass(),
+      new Me.imports.src.Doom.Doom(),
       new Me.imports.src.EnergizeA.EnergizeA(),
       new Me.imports.src.EnergizeB.EnergizeB(),
       new Me.imports.src.Fire.Fire(),
