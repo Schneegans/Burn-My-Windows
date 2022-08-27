@@ -18,6 +18,15 @@ uniform float uHorizontalScale;
 uniform float uVerticalScale;
 uniform float uPixelSize;
 
+// This method returns a mask which smoothly transitions towards zero when approaching
+// the window's top or bottom border.
+float getEdgeMask(vec2 uv, float fadeWidth) {
+  float mask = 1.0;
+  mask *= smoothstep(0.0, 1.0, clamp(uv.y / fadeWidth, 0.0, 1.0));
+  mask *= smoothstep(0.0, 1.0, clamp((1.0 - uv.y) / fadeWidth, 0.0, 1.0));
+  return mask;
+}
+
 void main() {
   // We simply inverse the progress for opening windows.
   float pixelateProgress = uForOpening ? 0.9 - uProgress : uProgress;
@@ -46,6 +55,8 @@ void main() {
   }
 
   vec4 oColor = getInputColor(texcoord);
+
+  oColor.a *= getEdgeMask(iTexCoord.st, 0.1);
 
   setOutputColor(oColor);
 }
