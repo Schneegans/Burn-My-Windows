@@ -19,8 +19,10 @@ uniform float uVerticalScale;
 uniform float uPixelSize;
 
 void main() {
+  // We simply inverse the progress for opening windows.
+  float pixelateProgress = uForOpening ? 0.9 - uProgress : uProgress;
 
-  float pixelSize = ceil(uPixelSize * uProgress + 1.0);
+  float pixelSize = max(1.0, ceil(uPixelSize * pixelateProgress + 1.0));
   vec2 pixelGrid  = vec2(pixelSize) / uSize;
 
   vec2 texcoord = iTexCoord.st;
@@ -29,12 +31,19 @@ void main() {
   texcoord += pixelGrid * 0.5;
 
   float hScale = uHorizontalScale * uSize.x * 0.001;
-  float vScale = uVerticalScale * uSize.y * 0.0001;
-  float shift  = max(simplex2DFractal(texcoord.xx * hScale) * vScale +
-                      (1.0 + vScale * 0.8) * uProgress - 0.8 * vScale,
-                    0.0);
+  float vScale = uVerticalScale * uSize.y * 0.00002 * uActorScale;
 
-  texcoord.y -= uActorScale * shift;
+  float noise = simplex2DFractal(texcoord.xx * hScale) * 2.0 - 0.5;
+
+  float shiftProgress = uForOpening ? mix(-vScale - 1.0, 0.0, uProgress)
+                                    : mix(-vScale, 1.0 + vScale, uProgress);
+  float shift         = noise * vScale + shiftProgress;
+
+  if (uForOpening) {
+    texcoord.y -= 0.5 * uActorScale * min(shift, 0.0);
+  } else {
+    texcoord.y -= 0.5 * uActorScale * max(shift, 0.0);
+  }
 
   vec4 oColor = getInputColor(texcoord);
 

@@ -100,7 +100,7 @@
     </key>
 
     <key name="doom-animation-time" type="i">
-      <default>1500</default>
+      <default>1000</default>
       <summary>Doom Animation Time</summary>
       <description>The time the Doom effect takes.</description>
     </key>

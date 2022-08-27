@@ -434,7 +434,7 @@ class Extension {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.getActorScale(this._settings, actor);
+    const actorScale = effect.getActorScale(this._settings, forOpening, actor);
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.

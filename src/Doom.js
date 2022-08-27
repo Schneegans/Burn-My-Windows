@@ -46,7 +46,10 @@ var Doom = class {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
+        // For this effect, we scale the actor vertically so that it covers the entire
+        // screen. This ensures that the melted window will not be cut off.
         let actorScale = 2.0 * Math.max(1.0, global.stage.height / actor.height);
+
         // clang-format off
         shader.set_uniform_float(shader._uActorScale,      1, [actorScale]);
         shader.set_uniform_float(shader._uHorizontalScale, 1, [settings.get_double('doom-horizontal-scale')]);
@@ -103,7 +106,9 @@ var Doom = class {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings, actor) {
+  // For this effect, we scale the actor vertically so that it covers the entire screen.
+  // This ensures that the melted window will not be cut off.
+  getActorScale(settings, forOpening, actor) {
     let actorScale = 2.0 * Math.max(1.0, global.stage.height / actor.height);
     return {x: 1.0, y: actorScale};
   }
