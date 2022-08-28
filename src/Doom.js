@@ -52,13 +52,13 @@ var Doom = class {
 
         // If we are currently performing integration test, nothing will be visible in the
         // test images as the animation has passed the center of the window already. To
-        // fix this, we set the scales to a pretty high value when performing tests.
+        // fix this, we set the actor scale to a fixed low value when performing tests.
         const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
         shader.set_uniform_float(shader._uActorScale,      1, [testMode ? 1.0 : actorScale]);
-        shader.set_uniform_float(shader._uHorizontalScale, 1, [testMode ? 50.0 : settings.get_double('doom-horizontal-scale')]);
-        shader.set_uniform_float(shader._uVerticalScale,   1, [testMode ? 200.0 : settings.get_double('doom-vertical-scale')]);
+        shader.set_uniform_float(shader._uHorizontalScale, 1, [settings.get_double('doom-horizontal-scale')]);
+        shader.set_uniform_float(shader._uVerticalScale,   1, [settings.get_double('doom-vertical-scale')]);
         shader.set_uniform_float(shader._uPixelSize,       1, [settings.get_double('doom-pixel-size')]);
         // clang-format on
       });
