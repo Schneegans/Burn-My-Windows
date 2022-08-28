@@ -4,13 +4,13 @@
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
-      <default>1000</default>
+      <default>500</default>
     </entry>
     <entry name="HorizontalScale" type="UInt">
       <default>10</default>
     </entry>
     <entry name="VerticalScale" type="UInt">
-      <default>10</default>
+      <default>50</default>
     </entry>
     <entry name="PixelSize" type="UInt">
       <default>10</default>
