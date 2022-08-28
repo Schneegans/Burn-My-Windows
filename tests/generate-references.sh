@@ -177,6 +177,7 @@ capture_effect "wisps"
 
 if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
   capture_effect "apparition"
+  capture_effect "doom"
 fi
 
 if [[ "${FEDORA_VERSION}" -gt 33 ]]; then

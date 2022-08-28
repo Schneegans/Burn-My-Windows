@@ -206,6 +206,7 @@ test_effect "wisps"
 
 if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
   test_effect "apparition"
+  test_effect "doom"
 fi
 
 if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
