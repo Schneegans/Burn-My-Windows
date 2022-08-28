@@ -105,10 +105,11 @@ fail() {
 compare_with_target() {
   echo "Looking for ${1} on the screen."
 
-  do_in_pod import -window root -crop $CROP out.png
-  podman cp "${POD}":/home/gnomeshell/out.png "${WORK_DIR}/out.png"
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${CROP} ${WORK_DIR}/out.png"
 
   DIFF=$(compare "${WORK_DIR}/out.png" "${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
+
+  echo $DIFF
 
   if (( $(echo "$DIFF < 0.9" |bc -l) )); then
     fail "${2}"
