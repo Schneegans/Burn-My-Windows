@@ -143,10 +143,10 @@ test_effect() {
 
   sleep 1
   do_in_pod gnome-extensions prefs "${EXTENSION}"
-  sleep 4
+  sleep 2
   compare_with_target "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
   send_keystroke "Alt+F4"
-  sleep 4
+  sleep 2
   compare_with_target "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
 }
 
