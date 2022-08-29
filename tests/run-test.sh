@@ -112,7 +112,7 @@ compare_with_target() {
 
   convert "${WORK_DIR}/screen.png" -crop ${CROP} "${WORK_DIR}/crop.png"
 
-  DIFF=$(compare "${WORK_DIR}/crop.png" "${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
+  DIFF=$(compare "${WORK_DIR}/crop.png" "tests/references/${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
 
   if (( $(echo "$DIFF < 0.9" |bc -l) )); then
     fail "${1}" "${2}"
@@ -148,10 +148,10 @@ test_effect() {
   sleep 1
   do_in_pod gnome-extensions prefs "${EXTENSION}"
   sleep 2
-  compare_with_target "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
+  compare_with_target "${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
   send_keystroke "Alt+F4"
   sleep 2
-  compare_with_target "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
+  compare_with_target "${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
 }
 
 # ----------------------------------------------------- wait for the container to start up
