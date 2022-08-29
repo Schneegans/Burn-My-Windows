@@ -93,7 +93,8 @@ do_in_pod() {
 # parameter), captures a screenshot to "fail.png" and stores a log in "fail.log".
 fail() {
   echo "${1}"
-  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command 'convert xwd:- fail.png'
+  mv "${WORK_DIR}/crop.png" .
+  mv "${WORK_DIR}/screen.png" .
   LOG=$(do_in_pod sudo journalctl)
   echo "${LOG}" > fail.log
   exit 1
@@ -105,11 +106,11 @@ fail() {
 compare_with_target() {
   echo "Looking for ${1} on the screen."
 
-  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${CROP} ${WORK_DIR}/out.png"
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- ${WORK_DIR}/screen.png"
 
-  DIFF=$(compare "${WORK_DIR}/out.png" "${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
+  convert "${WORK_DIR}/screen.png" -crop ${CROP} "${WORK_DIR}/crop.png"
 
-  echo $DIFF
+  DIFF=$(compare "${WORK_DIR}/crop.png" "${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
 
   if (( $(echo "$DIFF < 0.9" |bc -l) )); then
     fail "${2}"
