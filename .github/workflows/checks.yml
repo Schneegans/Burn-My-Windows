@@ -102,7 +102,4 @@ jobs:
       if: failure()
       with:
         name: log_${{ matrix.version }}_${{ matrix.session }}
-        path: |
-          fail.log
-          screen.png
-          crop.png
+        path: tests/output/

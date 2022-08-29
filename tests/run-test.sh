@@ -89,14 +89,16 @@ do_in_pod() {
   podman exec --user gnomeshell --workdir /home/gnomeshell "${POD}" set-env.sh "$@"
 }
 
-# This is called whenever a test fails. It prints an error message (given as first
-# parameter), captures a screenshot to "fail.png" and stores a log in "fail.log".
+# This is called whenever a test fails. It prints an error message (given as second
+# parameter), saves a current screenshot, the current cropped target and a log to
+# "tests/output/".
 fail() {
-  echo "${1}"
-  mv "${WORK_DIR}/crop.png" .
-  mv "${WORK_DIR}/screen.png" .
+  echo "${2}"
+  mkdir "tests/output"
+  mv "${WORK_DIR}/crop.png" "tests/output/${1}"
+  mv "${WORK_DIR}/screen.png" tests/output/
   LOG=$(do_in_pod sudo journalctl)
-  echo "${LOG}" > fail.log
+  echo "${LOG}" > tests/output/fail.log
   exit 1
 }
 
@@ -113,7 +115,7 @@ compare_with_target() {
   DIFF=$(compare "${WORK_DIR}/crop.png" "${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
 
   if (( $(echo "$DIFF < 0.9" |bc -l) )); then
-    fail "${2}"
+    fail "${1}" "${2}"
   fi
 }
 
