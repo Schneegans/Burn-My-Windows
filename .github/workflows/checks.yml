@@ -98,13 +98,11 @@ jobs:
       run: make
     - name: Test Burn-My-Windows
       run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       if: failure()
       with:
         name: log_${{ matrix.version }}_${{ matrix.session }}
-        path: fail.log
-    - uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: screen_${{ matrix.version }}_${{ matrix.session }}
-        path: fail.png
+        path: |
+          fail.log
+          screen.png
+          crop.png
