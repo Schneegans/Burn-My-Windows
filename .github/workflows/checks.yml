@@ -70,7 +70,7 @@ jobs:
 
   build:
     name: Run Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: >
       github.event_name == 'pull_request' ||
       ( contains(github.ref, 'main') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
@@ -86,7 +86,7 @@ jobs:
           - '35'
           - '36'
         session:
-          #- 'gnome-xsession' Disabled for now as it miraculously fails on GitHub. Locally, all tests pass...
+          - 'gnome-xsession'
           - 'gnome-wayland-nested'
     steps:
     - uses: actions/checkout@v2
