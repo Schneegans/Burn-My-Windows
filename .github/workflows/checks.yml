@@ -69,6 +69,26 @@ jobs:
           find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
 
   build:
+    name: Generate References
+    runs-on: ubuntu-22.04
+    if: >
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[generate-references]')
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download Dependencies
+      run: |
+        sudo apt update -qq
+        sudo apt install gettext -qq
+    - name: Build Burn-My-Windows
+      run: make
+    - name: Generate References
+      run: sudo make references
+    - uses: actions/upload-artifact@v3
+      with:
+        name: references
+        path: tests/references/
+
+  build:
     name: Run Tests
     runs-on: ubuntu-22.04
     if: >
@@ -101,5 +121,5 @@ jobs:
     - uses: actions/upload-artifact@v3
       if: failure()
       with:
-        name: log_${{ matrix.version }}_${{ matrix.session }}
+        name: result_${{ matrix.version }}_${{ matrix.session }}
         path: tests/output/
