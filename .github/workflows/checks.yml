@@ -68,7 +68,7 @@ jobs:
         run: |
           find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
 
-  build:
+  references:
     name: Generate References
     runs-on: ubuntu-22.04
     if: >
