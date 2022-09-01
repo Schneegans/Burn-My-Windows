@@ -181,25 +181,25 @@ send_keystroke "Alt+F4"
 echo "Entering test mode."
 set_setting "test-mode" true
 
-# capture_effect "energize-a"
-# capture_effect "energize-b"
-# capture_effect "fire"
-# capture_effect "hexagon"
-# capture_effect "incinerate"
-# capture_effect "pixelate"
-# capture_effect "tv"
-# capture_effect "wisps"
+capture_effect "energize-a"
+capture_effect "energize-b"
+capture_effect "fire"
+capture_effect "hexagon"
+capture_effect "incinerate"
+capture_effect "pixelate"
+capture_effect "tv"
+capture_effect "wisps"
 
 if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
-  # capture_effect "apparition"
+  capture_effect "apparition"
   capture_effect "doom"
 fi
 
-# if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
-#   capture_effect "trex"
-#   capture_effect "broken-glass"
-#   capture_effect "matrix"
-#   capture_effect "snap"
-# fi
+if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
+  capture_effect "trex"
+  capture_effect "broken-glass"
+  capture_effect "matrix"
+  capture_effect "snap"
+fi
 
 echo "All reference images generated successfully."
