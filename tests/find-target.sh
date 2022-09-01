@@ -62,8 +62,8 @@ function cleanup {
 trap cleanup EXIT
 
 # Reduce the size of the screen capture and the target to optimize the search performance.
-convert ${SCREEN} -resize $((100 / SCALE_FACTOR))% "${WORK_DIR}/screen_small.png"
-convert ${TARGET} -resize $((100 / SCALE_FACTOR))% "${WORK_DIR}/target_small.png"
+convert "${SCREEN}" -resize $((100 / SCALE_FACTOR))% "${WORK_DIR}/screen_small.png"
+convert "${TARGET}" -resize $((100 / SCALE_FACTOR))% "${WORK_DIR}/target_small.png"
 
 # Make a search on the reduced images.
 RESULT=$(compare -metric MSE -subimage-search \
@@ -104,7 +104,7 @@ convert "${SCREEN}" -crop ${CROP_WIDTH}x${CROP_HEIGHT}+${CROP_X}+${CROP_Y} \
         +repage "${WORK_DIR}/screen_cropped.png"
 
 # Search again on the full resolution.
-RESULT=$(compare -metric MSE -dissimilarity-threshold ${FUZZINESS} -subimage-search \
+RESULT=$(compare -metric MSE -dissimilarity-threshold "${FUZZINESS}" -subimage-search \
       "${WORK_DIR}/screen_cropped.png" "${TARGET}" "${WORK_DIR}/out.png" 2>&1)
 
 if [[ $RESULT == *"error"* ]]; then

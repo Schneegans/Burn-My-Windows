@@ -58,11 +58,6 @@ cd "$( cd "$( dirname "$0" )" && pwd )/.." || \
 IMAGE="ghcr.io/schneegans/gnome-shell-pod-${FEDORA_VERSION}"
 EXTENSION="burn-my-windows@schneegans.github.com"
 
-# All references images of the effects are captured at & cropped to this region
-# in the center of the screen. This is kind of arbitrary, but has been choosen so that
-# something is visible from each effect.
-CROP="100x100+910+480"
-
 # Run the container. For more info, visit https://github.com/Schneegans/gnome-shell-pod.
 POD=$(podman run --rm --cap-add=SYS_NICE --cap-add=IPC_LOCK -td "${IMAGE}")
 
