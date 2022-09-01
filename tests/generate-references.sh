@@ -57,7 +57,7 @@ EXTENSION="burn-my-windows@schneegans.github.com"
 # All references images of the effects are captured at & cropped to this region
 # in the center of the screen. This is kind of arbitrary, but has been choosen so that
 # something is visible from each effect.
-CROP="100x100+910+480"
+CROP="100x100+900+500"
 
 # Run the container. For more info, visit https://github.com/Schneegans/gnome-shell-pod.
 POD=$(podman run --rm --cap-add=SYS_NICE --cap-add=IPC_LOCK -td "${IMAGE}")
@@ -110,7 +110,8 @@ capture_effect() {
   set_setting "open-preview-effect" "${1}"
   set_setting "close-preview-effect" "${1}"
 
-  do_in_pod gnome-extensions prefs "${EXTENSION}"
+  sleep 1
+  do_in_pod gnome-terminal
   sleep 3
   capture "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png"
   send_keystroke "Alt+F4"
@@ -132,6 +133,11 @@ podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
 
 
+# ----------------------- install gnome-terminal (this is used for testing the animations)
+
+do_in_pod sudo dnf install -y gnome-terminal
+
+
 # ---------------------------------------------------------------------- start GNOME Shell
 
 # Starting with GNOME 40, there is a "Welcome Tour" dialog popping up at first launch.
@@ -140,6 +146,9 @@ if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   echo "Disabling welcome tour."
   do_in_pod gsettings set org.gnome.shell welcome-dialog-last-shown-version "999" || true
 fi
+
+# Make sure that new windows are opened in the center.
+do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
 echo "Starting $(do_in_pod gnome-shell --version)."
 do_in_pod systemctl --user start "${SESSION}@:99"
@@ -161,10 +170,16 @@ sleep 3
 
 # --------------------------------------------------------------------- capture the images
 
+# First we open the preferences and capture a portion of the dialog
+echo "Opening Preferences."
+do_in_pod gnome-extensions prefs "${EXTENSION}"
+sleep 3
+capture "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png"
+send_keystroke "Alt+F4"
+
 # The test mode ensures that the animations are "frozen" and do not change in time.
 echo "Entering test mode."
 set_setting "test-mode" true
-do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
 capture_effect "energize-a"
 capture_effect "energize-b"
@@ -177,6 +192,7 @@ capture_effect "wisps"
 
 if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
   capture_effect "apparition"
+  capture_effect "doom"
 fi
 
 if [[ "${FEDORA_VERSION}" -gt 33 ]]; then

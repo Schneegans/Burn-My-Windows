@@ -68,9 +68,29 @@ jobs:
         run: |
           find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
 
+  references:
+    name: Generate References
+    runs-on: ubuntu-22.04
+    if: >
+      github.event_name == 'push' && contains(github.event.head_commit.message, '[generate-references]')
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download Dependencies
+      run: |
+        sudo apt update -qq
+        sudo apt install gettext -qq
+    - name: Build Burn-My-Windows
+      run: make
+    - name: Generate References
+      run: sudo make references
+    - uses: actions/upload-artifact@v3
+      with:
+        name: references
+        path: tests/references/
+
   build:
     name: Run Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: >
       github.event_name == 'pull_request' ||
       ( contains(github.ref, 'main') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
@@ -86,25 +106,20 @@ jobs:
           - '35'
           - '36'
         session:
-          #- 'gnome-xsession' Disabled for now as it miraculously fails on GitHub. Locally, all tests pass...
+          - 'gnome-xsession'
           - 'gnome-wayland-nested'
     steps:
     - uses: actions/checkout@v2
     - name: Download Dependencies
       run: |
         sudo apt update -qq
-        sudo apt install gettext -qq
+        sudo apt install gettext imagemagick -qq
     - name: Build Burn-My-Windows
       run: make
     - name: Test Burn-My-Windows
       run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       if: failure()
       with:
-        name: log_${{ matrix.version }}_${{ matrix.session }}
-        path: fail.log
-    - uses: actions/upload-artifact@v2
-      if: failure()
-      with:
-        name: screen_${{ matrix.version }}_${{ matrix.session }}
-        path: fail.png
+        name: result_${{ matrix.version }}_${{ matrix.session }}
+        path: tests/output/

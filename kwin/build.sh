@@ -130,6 +130,7 @@ generate() {
 
 generate "energize-a" "Energize A [Burn-My-Windows]" "Beam your windows away"
 generate "energize-b" "Energize B [Burn-My-Windows]" "Using different transporter technology results in an alternative visual effect"
+generate "doom"       "Doom [Burn-My-Windows]"       "Melt your windows"
 generate "fire"       "Fire [Burn-My-Windows]"       "The classic effect inspired by Compiz"
 generate "hexagon"    "Hexagon [Burn-My-Windows]"    "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
 generate "incinerate" "Incinerate [Burn-My-Windows]" "A less snappy but definitely more fancy take on the fire effect"

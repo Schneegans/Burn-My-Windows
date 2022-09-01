@@ -119,6 +119,46 @@
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Doom Options                                                                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="doom-close-effect" type="b">
+      <default>false</default>
+      <summary>Doom Close Effect</summary>
+      <description>Use the Doom effect for window closing.</description>
+    </key>
+
+    <key name="doom-open-effect" type="b">
+      <default>false</default>
+      <summary>Doom Open Effect</summary>
+      <description>Use the Doom effect for window opening.</description>
+    </key>
+
+    <key name="doom-animation-time" type="i">
+      <default>1000</default>
+      <summary>Doom Animation Time</summary>
+      <description>The time the Doom effect takes.</description>
+    </key>
+
+    <key name="doom-horizontal-scale" type="d">
+      <default>10.0</default>
+      <summary>Doom Horizontal Scale</summary>
+      <description>The X scale of the effect.</description>
+    </key>
+
+    <key name="doom-vertical-scale" type="d">
+      <default>10.0</default>
+      <summary>Doom Vertical Scale</summary>
+      <description>The Y scale of the effect.</description>
+    </key>
+
+    <key name="doom-pixel-size" type="d">
+      <default>10</default>
+      <summary>Doom Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Fire Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 

@@ -24,6 +24,7 @@ Effect | Preview
 -----|--------
 **Apparition** <br> This effect hides your windows by violently sucking them into the void of magic! | <img src ="docs/pics/apparition.gif" />
 **Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!| <img src ="docs/pics/glass.gif" />
+**Doom** <br> Melt your windows. Inspired by the legendary screen transitions of the original Doom. | <img src ="docs/pics/doom.gif" />
 **Energize A** <br> Beam your windows away! | <img src ="docs/pics/energizeA.gif" />
 **Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energizeB.gif" />
 **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
@@ -51,6 +52,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td></td>                        <td>3.36</td><td>3.38</td><td>40</td><td>41</td><td>42</td><td>5.25.0</td></tr>
 <tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
+<tr><td>Doom</td>                    <td>  </td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>

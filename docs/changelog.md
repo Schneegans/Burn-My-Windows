@@ -6,11 +6,14 @@
 
 #### New Features
 
+* **New Effect: Doom.** Melt your windows. Inspired by the legendary screen transitions of the original Doom.
 * **New Effect: Pixelate.** Pixelate your windows and randomly hide pixels until the entire window is gone.
 
 #### Enhancements
 
 * Under KWin, the effects now use the same names as in the KDE store.
+* The continuous integration tests now use a fuzzy search for the images targets. This way, the test work again on X11 and Wayland.
+* A new GitHub Actions workflow has been added which is executed whenever a commit message includes the `[generate-references]` tag. This workflow re-creates all reference images for the continuous integration test.
 
 ## [Burn My Windows 19](https://github.com/schneegans/Burn-My-Windows/releases/tag/v19)
 
