@@ -57,8 +57,8 @@ var Doom = class {
 
         // clang-format off
         shader.set_uniform_float(shader._uActorScale,      1, [testMode ? 1.0 : actorScale]);
-        shader.set_uniform_float(shader._uHorizontalScale, 1, [settings.get_double('doom-horizontal-scale')]);
-        shader.set_uniform_float(shader._uVerticalScale,   1, [testMode ? 500.0 : settings.get_double('doom-vertical-scale')]);
+        shader.set_uniform_float(shader._uHorizontalScale, 1, [testMode ? 50.0 :settings.get_double('doom-horizontal-scale')]);
+        shader.set_uniform_float(shader._uVerticalScale,   1, [testMode ? 150.0 : settings.get_double('doom-vertical-scale')]);
         shader.set_uniform_float(shader._uPixelSize,       1, [settings.get_int('doom-pixel-size')]);
         // clang-format on
       });

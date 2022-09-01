@@ -119,6 +119,17 @@ compare_with_target() {
   fi
 }
 
+# This searches the virtual screen of the container for a given target image (first
+# parameter). If it is not found, an error message (second paramter) is printed and the
+# script exits via the fail() method above.
+find_target() {
+  echo "Searching for ${1} on the screen."
+  POS=$(do_in_pod find-target.sh "${1}") || true
+  if [[ -z "${POS}" ]]; then
+    fail "${2}"
+  fi
+}
+
 # This simulates the given keystroke in the container. Simply calling "xdotool key $1"
 # sometimes fails to be recognized. Maybe the default 12ms between key-down and key-up
 # are too short for xvfb...
@@ -145,14 +156,15 @@ test_effect() {
   set_setting "open-preview-effect" "${1}"
   set_setting "close-preview-effect" "${1}"
 
+  sleep 1
+  do_in_pod gnome-terminal
   sleep 3
-  do_in_pod gnome-extensions prefs "${EXTENSION}"
-  sleep 5
   compare_with_target "${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
   send_keystroke "Alt+F4"
-  sleep 5
+  sleep 3
   compare_with_target "${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
 }
+
 
 # ----------------------------------------------------- wait for the container to start up
 
@@ -167,6 +179,11 @@ podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
 
 
+# ----------------------- install gnome-terminal (this is used for testing the animations)
+
+do_in_pod sudo dnf install -y gnome-terminal
+
+
 # ---------------------------------------------------------------------- start GNOME Shell
 
 # Starting with GNOME 40, there is a "Welcome Tour" dialog popping up at first launch.
@@ -175,6 +192,9 @@ if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
   echo "Disabling welcome tour."
   do_in_pod gsettings set org.gnome.shell welcome-dialog-last-shown-version "999" || true
 fi
+
+# Make sure that new windows are opened in the center.
+do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
 echo "Starting $(do_in_pod gnome-shell --version)."
 do_in_pod systemctl --user start "${SESSION}@:99"
@@ -195,10 +215,17 @@ sleep 3
 
 # ---------------------------------------------------------------------- perform the tests
 
+# First we open the preferences and check whether the window is shown on screen by
+# searching for a small snippet of the preferences dialog.
+echo "Opening Preferences."
+do_in_pod gnome-extensions prefs "${EXTENSION}"
+sleep 3
+find_target "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png" "Failed to open preferences!"
+send_keystroke "Alt+F4"
+
 # The test mode ensures that the animations are "frozen" and do not change in time.
 echo "Entering test mode."
 set_setting "test-mode" true
-do_in_pod gsettings set org.gnome.mutter center-new-windows true
 
 test_effect "energize-a"
 test_effect "energize-b"
