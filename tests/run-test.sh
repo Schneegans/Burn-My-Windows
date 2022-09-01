@@ -94,29 +94,11 @@ do_in_pod() {
 # "tests/output/".
 fail() {
   echo "${2}"
-  mkdir "tests/output"
-  mv "${WORK_DIR}/crop.png" "tests/output/${1}"
-  mv "${WORK_DIR}/screen.png" tests/output/
+  mkdir -p "tests/output"
+  mv "${WORK_DIR}/screen.png" "tests/output/${1}"
   LOG=$(do_in_pod sudo journalctl)
   echo "${LOG}" > tests/output/fail.log
   exit 1
-}
-
-# This captures the center of the virtual screen in the container and cmopares it to the
-# given target image (first parameter). If it is not found, an error message (second
-# paramter) is printed and the script exits via the fail() method above.
-compare_with_target() {
-  echo "Looking for ${1} on the screen."
-
-  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- ${WORK_DIR}/screen.png"
-
-  convert "${WORK_DIR}/screen.png" -crop ${CROP} "${WORK_DIR}/crop.png"
-
-  DIFF=$(compare "${WORK_DIR}/crop.png" "tests/references/${1}" -metric NCC "${WORK_DIR}/diff.png" 2>&1) || true
-
-  if (( $(echo "$DIFF < 0.9" |bc -l) )); then
-    fail "${1}" "${2}"
-  fi
 }
 
 # This searches the virtual screen of the container for a given target image (first
@@ -124,9 +106,13 @@ compare_with_target() {
 # script exits via the fail() method above.
 find_target() {
   echo "Searching for ${1} on the screen."
-  POS=$(do_in_pod find-target.sh "${1}") || true
+
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- ${WORK_DIR}/screen.png"
+
+  POS=$(./tests/find-target.sh "${WORK_DIR}/screen.png" "tests/references/${1}") || true
+
   if [[ -z "${POS}" ]]; then
-    fail "${2}"
+    fail "${1}" "${2}"
   fi
 }
 
@@ -159,10 +145,10 @@ test_effect() {
   sleep 1
   do_in_pod gnome-terminal
   sleep 3
-  compare_with_target "${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
+  find_target "${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
   send_keystroke "Alt+F4"
   sleep 3
-  compare_with_target "${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
+  find_target "${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
 }
 
 
@@ -175,6 +161,7 @@ do_in_pod wait-user-bus.sh > /dev/null 2>&1
 # ----------------------------------------------------- install the to-be-tested extension
 
 echo "Installing extension."
+podman cp "tests/references" "${POD}:/home/gnomeshell/references"
 podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
 
@@ -220,7 +207,7 @@ sleep 3
 echo "Opening Preferences."
 do_in_pod gnome-extensions prefs "${EXTENSION}"
 sleep 3
-find_target "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png" "Failed to open preferences!"
+find_target "preferences-${SESSION}-${FEDORA_VERSION}.png" "Failed to open preferences!"
 send_keystroke "Alt+F4"
 
 # The test mode ensures that the animations are "frozen" and do not change in time.
