@@ -2,8 +2,8 @@
 // The code below is called whenever a window is closed or opened.
 
 let startPos = [
-  (effects.cursorPos.x - window.x) / window.width,
-  (effects.cursorPos.y - window.y) / window.height
+  Math.min(1.0, Math.max(0.0, (effects.cursorPos.x - window.x) / window.width)),
+  Math.min(1.0, Math.max(0.0, (effects.cursorPos.y - window.y) / window.height))
 ];
 
 effect.setUniform(this.shader, 'uStartPos', startPos);
