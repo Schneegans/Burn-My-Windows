@@ -118,6 +118,41 @@
       <description>The size of the maximum pixelation.</description>
     </key>
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Pixel Wheel Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="pixel-wheel-close-effect" type="b">
+      <default>false</default>
+      <summary>Pixel Wheel Close Effect</summary>
+      <description>Use the Pixel Wheel effect for window closing.</description>
+    </key>
+
+    <key name="pixel-wheel-open-effect" type="b">
+      <default>false</default>
+      <summary>Pixel Wheel Open Effect</summary>
+      <description>Use the Pixel Wheel effect for window opening.</description>
+    </key>
+
+    <key name="pixel-wheel-animation-time" type="i">
+      <default>300</default>
+      <summary>Pixel Wheel Animation Time</summary>
+      <description>The time the Pixel Wheel effect takes.</description>
+    </key>
+
+    <key name="pixel-wheel-spoke-count" type="i">
+      <default>12</default>
+      <summary>Pixel Wheel Spoke Count</summary>
+      <description>The number of sections in the wheel.</description>
+    </key>
+
+    <key name="pixel-wheel-pixel-size" type="d">
+      <default>10</default>
+      <summary>Pixel Wheel Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Doom Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -152,7 +187,7 @@
       <description>The Y scale of the effect.</description>
     </key>
 
-    <key name="doom-pixel-size" type="d">
+    <key name="doom-pixel-size" type="i">
       <default>10</default>
       <summary>Doom Pixel Size</summary>
       <description>The size of the maximum pixelation.</description>
