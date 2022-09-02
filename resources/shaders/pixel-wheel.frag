@@ -13,12 +13,12 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform float uNoise;
 uniform float uPixelSize;
+uniform float uSpokeCount;
 
 void main() {
   // We simply inverse the progress for opening windows.
-  float progress = uForOpening ? 1.0 - uProgress : uProgress;
+  float progress = smoothstep(0.0, 1.0, uForOpening ? 1.0 - uProgress : uProgress);
 
   // The current level of pixelation increases with the progress.
   float pixelSize = ceil(uPixelSize * progress + 1.0);
@@ -26,10 +26,20 @@ void main() {
   vec2 texcoord   = iTexCoord.st - mod(iTexCoord.st, pixelGrid) + pixelGrid * 0.5;
   vec4 oColor     = getInputColor(texcoord);
 
-  // Hide selected pixels based on some random noise.
-  float random = simplex2DFractal(texcoord * uNoise * uSize / 1000.0) * 1.5 - 0.25;
-  if (progress > random) {
-    oColor.a *= max(0.0, 1.0 - (progress - random) * 20.0);
+  // Now hide the spoke sections.
+  vec2 down    = vec2(0.0, 1.0);
+  vec2 fragDir = normalize(texcoord - 0.5);
+
+  // Compute angle to down direction.
+  float angle = 0.5 * acos(dot(down, fragDir)) / 3.14159265359;
+  if (fragDir.x < 0.0) {
+    angle = 1.0 - angle;
+  }
+
+  // Progressively hide the spokes.
+  float threshold = mod(angle * uSpokeCount, 1.0);
+  if (progress > threshold) {
+    oColor.a = 0.0;
   }
 
   setOutputColor(oColor);

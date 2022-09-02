@@ -23,14 +23,14 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This very simple effect pixelates the window texture and randomly hides pixels until //
-// the entire window is gone.                                                           //
+// This simple effect pixelates the window texture and hides the pixels in a wheel-like //
+// fashion.                                                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Pixelate = class {
+var PixelWheel = class {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
@@ -39,14 +39,14 @@ var Pixelate = class {
   constructor() {
     this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uNoise     = shader.get_uniform_location('uNoise');
-      shader._uPixelSize = shader.get_uniform_location('uPixelSize');
+      shader._uPixelSize  = shader.get_uniform_location('uPixelSize');
+      shader._uSpokeCount = shader.get_uniform_location('uSpokeCount');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         // clang-format off
-        shader.set_uniform_float(shader._uNoise,     1, [settings.get_double('pixelate-noise')]);
-        shader.set_uniform_float(shader._uPixelSize, 1, [settings.get_int('pixelate-pixel-size')]);
+        shader.set_uniform_float(shader._uPixelSize,  1, [settings.get_double('pixel-wheel-pixel-size')]);
+        shader.set_uniform_float(shader._uSpokeCount, 1, [settings.get_int('pixel-wheel-spoke-count')]);
         // clang-format on
       });
     });
@@ -64,13 +64,13 @@ var Pixelate = class {
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
-    return 'pixelate';
+    return 'pixel-wheel';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   getLabel() {
-    return _('Pixelate');
+    return _('Pixel Wheel');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -80,15 +80,15 @@ var Pixelate = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Pixelate.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/PixelWheel.ui`);
 
     // Bind all properties.
-    dialog.bindAdjustment('pixelate-animation-time');
-    dialog.bindAdjustment('pixelate-noise');
-    dialog.bindAdjustment('pixelate-pixel-size');
+    dialog.bindAdjustment('pixel-wheel-animation-time');
+    dialog.bindAdjustment('pixel-wheel-pixel-size');
+    dialog.bindAdjustment('pixel-wheel-spoke-count');
 
     // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('pixelate-prefs');
+    return dialog.getBuilder().get_object('pixel-wheel-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

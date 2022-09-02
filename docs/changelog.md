@@ -8,6 +8,8 @@
 
 * **New Effect: Doom.** Melt your windows. Inspired by the legendary screen transitions of the original Doom.
 * **New Effect: Pixelate.** Pixelate your windows and randomly hide pixels until the entire window is gone.
+* **New Effect: Pixel Wheel.** This simple effect pixelates the window and hides the pixels in a wheel-like fashion.
+* **New Effect: Pixel Wipe.** This effect pixelates the window and hides the pixels radially, starting from the pointer position.
 
 #### Enhancements
 
