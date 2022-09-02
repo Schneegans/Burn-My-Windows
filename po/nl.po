@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
-"PO-Revision-Date: 2022-06-27 13:20+0000\n"
-"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"PO-Revision-Date: 2022-09-02 19:42+0000\n"
+"Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: src/Apparition.js:80
 msgid "Apparition"
@@ -139,7 +139,7 @@ msgstr "%s-voorvertoning"
 
 #: prefs.js:536
 msgid "Close this Window to Preview the Effect!"
-msgstr "Sluit dit venster om het effect voor te vertonen."
+msgstr "Sluit dit venster om het effect voor te vertonen!"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
