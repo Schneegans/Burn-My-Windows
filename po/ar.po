@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-25 05:04+0200\n"
+"POT-Creation-Date: 2022-09-02 21:06+0200\n"
 "PO-Revision-Date: 2022-05-17 19:18+0000\n"
 "Last-Translator: fawaz006 <fawaz27000@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -20,67 +20,25 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 4.13-dev\n"
 
-#: prefs.js:114
-msgid "Effect Options"
-msgstr "خيارات التأثير"
-
-#: prefs.js:142
-msgid "Go Back"
-msgstr "عُد"
-
-#: prefs.js:184
-msgid "General Options"
-msgstr "خيارات عامة"
-
-#: prefs.js:278
-msgid "Gold Sponsors"
-msgstr "الرعاة الذهبيون"
-
-#: prefs.js:281
-msgid "Silver Sponsors"
-msgstr "الرعاة الفضيون"
-
-#: prefs.js:284
-msgid "Bronze Sponsors"
-msgstr "الرعاة البرونزيون"
-
-#: prefs.js:287
-msgid "Past Sponsors"
-msgstr "الرعاة السابقون"
-
-#. Translators: %s will be replaced by the effect's name.
-#: prefs.js:510
-#, javascript-format
-msgid "Preview for %s"
-msgstr "معاينة لـ %s"
-
-#: prefs.js:532
-msgid "Close this Window to Preview the Effect!"
-msgstr "أغلق هذه النافذة لمعاينة التأثير!"
+#: src/Apparition.js:80
+msgid "Apparition"
+msgstr "شبح"
 
 #: src/BrokenGlass.js:138
 msgid "Broken Glass"
 msgstr "زجاج المكسور"
 
-#: src/TVEffect.js:77
-msgid "TV Effect"
-msgstr "تأثير التلفزيون"
-
-#: src/TRexAttack.js:115
-msgid "T-Rex Attack"
-msgstr "هجوم تي ريكس"
-
-#: src/SnapOfDisintegration.js:117
-msgid "Snap of Disintegration"
-msgstr "الانفجار القطع"
-
-#: src/Incinerate.js:87
-msgid "Incinerate"
+#: src/Doom.js:87
+msgid "Doom"
 msgstr ""
 
-#: src/Wisps.js:85
-msgid "Wisps"
-msgstr "قطع"
+#: src/EnergizeA.js:79
+msgid "Energize A"
+msgstr "تنشيط أ"
+
+#: src/EnergizeB.js:80
+msgid "Energize B"
+msgstr "تنشيط ب"
 
 #: src/Fire.js:99
 msgid "Fire"
@@ -110,21 +68,79 @@ msgstr "سانتا قادم"
 msgid "Hexagon"
 msgstr "سداسي الزوايا"
 
-#: src/EnergizeA.js:79
-msgid "Energize A"
-msgstr "تنشيط أ"
-
-#: src/Apparition.js:80
-msgid "Apparition"
-msgstr "شبح"
-
-#: src/EnergizeB.js:80
-msgid "Energize B"
-msgstr "تنشيط ب"
+#: src/Incinerate.js:130
+msgid "Incinerate"
+msgstr ""
 
 #: src/Matrix.js:113
 msgid "Matrix"
 msgstr "ماتركس"
+
+#: src/Pixelate.js:73
+msgid "Pixelate"
+msgstr ""
+
+#: src/PixelWheel.js:73
+msgid "Pixel Wheel"
+msgstr ""
+
+#: src/PixelWipe.js:99
+msgid "Pixel Wipe"
+msgstr ""
+
+#: src/SnapOfDisintegration.js:117
+msgid "Snap of Disintegration"
+msgstr "الانفجار القطع"
+
+#: src/TRexAttack.js:115
+msgid "T-Rex Attack"
+msgstr "هجوم تي ريكس"
+
+#: src/TVEffect.js:77
+msgid "TV Effect"
+msgstr "تأثير التلفزيون"
+
+#: src/Wisps.js:85
+msgid "Wisps"
+msgstr "قطع"
+
+#: prefs.js:118
+msgid "Effect Options"
+msgstr "خيارات التأثير"
+
+#: prefs.js:146
+msgid "Go Back"
+msgstr "عُد"
+
+#: prefs.js:188
+msgid "General Options"
+msgstr "خيارات عامة"
+
+#: prefs.js:282
+msgid "Gold Sponsors"
+msgstr "الرعاة الذهبيون"
+
+#: prefs.js:285
+msgid "Silver Sponsors"
+msgstr "الرعاة الفضيون"
+
+#: prefs.js:288
+msgid "Bronze Sponsors"
+msgstr "الرعاة البرونزيون"
+
+#: prefs.js:291
+msgid "Past Sponsors"
+msgstr "الرعاة السابقون"
+
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:514
+#, javascript-format
+msgid "Preview for %s"
+msgstr "معاينة لـ %s"
+
+#: prefs.js:536
+msgid "Close this Window to Preview the Effect!"
+msgstr "أغلق هذه النافذة لمعاينة التأثير!"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
@@ -157,13 +173,17 @@ msgstr "حول Burn-My-Windows"
 #: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
 #: resources/ui/gtk4/Incinerate.ui:24 resources/ui/gtk4/Wisps.ui:24
 #: resources/ui/gtk4/Fire.ui:49 resources/ui/gtk4/SnapOfDisintegration.ui:24
-#: resources/ui/gtk4/TRexAttack.ui:24 resources/ui/gtk4/TVEffect.ui:24
-#: resources/ui/gtk4/EnergizeA.ui:24 resources/ui/gtk4/Hexagon.ui:24
-#: resources/ui/gtk4/EnergizeB.ui:24 resources/ui/gtk4/Apparition.ui:24
+#: resources/ui/gtk4/PixelWipe.ui:24 resources/ui/gtk4/TRexAttack.ui:24
+#: resources/ui/gtk4/PixelWheel.ui:24 resources/ui/gtk4/Doom.ui:24
+#: resources/ui/gtk4/TVEffect.ui:24 resources/ui/gtk4/EnergizeA.ui:24
+#: resources/ui/gtk4/Hexagon.ui:24 resources/ui/gtk4/EnergizeB.ui:24
+#: resources/ui/gtk4/Pixelate.ui:24 resources/ui/gtk4/Apparition.ui:24
 #: resources/ui/gtk3/Incinerate.ui:49 resources/ui/gtk3/Wisps.ui:42
-#: resources/ui/gtk3/Fire.ui:93 resources/ui/gtk3/TVEffect.ui:35
-#: resources/ui/gtk3/EnergizeA.ui:42 resources/ui/gtk3/Hexagon.ui:49
-#: resources/ui/gtk3/EnergizeB.ui:42 resources/ui/gtk3/Apparition.ui:63
+#: resources/ui/gtk3/Fire.ui:93 resources/ui/gtk3/PixelWipe.ui:49
+#: resources/ui/gtk3/PixelWheel.ui:49 resources/ui/gtk3/Doom.ui:56
+#: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
+#: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
+#: resources/ui/gtk3/Pixelate.ui:49 resources/ui/gtk3/Apparition.ui:63
 msgid "Animation Time [ms]"
 msgstr "المدة [م,ث]"
 
@@ -174,13 +194,18 @@ msgstr "المدة [م,ث]"
 #: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
 #: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Incinerate.ui:52
 #: resources/ui/gtk4/Incinerate.ui:98 resources/ui/gtk4/Incinerate.ui:144
-#: resources/ui/gtk4/Incinerate.ui:178 resources/ui/gtk4/Wisps.ui:52
-#: resources/ui/gtk4/Wisps.ui:98 resources/ui/gtk4/Wisps.ui:132
-#: resources/ui/gtk4/Fire.ui:77 resources/ui/gtk4/Fire.ui:123
-#: resources/ui/gtk4/Fire.ui:169 resources/ui/gtk4/Fire.ui:222
-#: resources/ui/gtk4/Fire.ui:280 resources/ui/gtk4/TRexAttack.ui:52
-#: resources/ui/gtk4/TRexAttack.ui:98 resources/ui/gtk4/TRexAttack.ui:144
-#: resources/ui/gtk4/TRexAttack.ui:190 resources/ui/gtk4/TRexAttack.ui:224
+#: resources/ui/gtk4/Incinerate.ui:197 resources/ui/gtk4/Incinerate.ui:231
+#: resources/ui/gtk4/Wisps.ui:52 resources/ui/gtk4/Wisps.ui:98
+#: resources/ui/gtk4/Wisps.ui:132 resources/ui/gtk4/Fire.ui:77
+#: resources/ui/gtk4/Fire.ui:123 resources/ui/gtk4/Fire.ui:169
+#: resources/ui/gtk4/Fire.ui:222 resources/ui/gtk4/Fire.ui:280
+#: resources/ui/gtk4/PixelWipe.ui:52 resources/ui/gtk4/PixelWipe.ui:98
+#: resources/ui/gtk4/TRexAttack.ui:52 resources/ui/gtk4/TRexAttack.ui:98
+#: resources/ui/gtk4/TRexAttack.ui:144 resources/ui/gtk4/TRexAttack.ui:190
+#: resources/ui/gtk4/TRexAttack.ui:224 resources/ui/gtk4/PixelWheel.ui:52
+#: resources/ui/gtk4/PixelWheel.ui:98 resources/ui/gtk4/PixelWheel.ui:144
+#: resources/ui/gtk4/Doom.ui:52 resources/ui/gtk4/Doom.ui:98
+#: resources/ui/gtk4/Doom.ui:144 resources/ui/gtk4/Doom.ui:190
 #: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
 #: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
 #: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/Hexagon.ui:52
@@ -188,23 +213,31 @@ msgstr "المدة [م,ث]"
 #: resources/ui/gtk4/Hexagon.ui:178 resources/ui/gtk4/Hexagon.ui:212
 #: resources/ui/gtk4/Hexagon.ui:265 resources/ui/gtk4/EnergizeB.ui:52
 #: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
-#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk4/prefs.ui:200
-#: resources/ui/gtk4/Apparition.ui:52 resources/ui/gtk4/Apparition.ui:98
-#: resources/ui/gtk4/Apparition.ui:144 resources/ui/gtk4/Apparition.ui:190
-#: resources/ui/gtk4/Apparition.ui:236 resources/ui/gtk3/Incinerate.ui:75
-#: resources/ui/gtk3/Incinerate.ui:124 resources/ui/gtk3/Incinerate.ui:173
-#: resources/ui/gtk3/Incinerate.ui:216 resources/ui/gtk3/Wisps.ui:68
+#: resources/ui/gtk4/Pixelate.ui:52 resources/ui/gtk4/Pixelate.ui:98
+#: resources/ui/gtk4/Pixelate.ui:144 resources/ui/gtk4/prefs.ui:166
+#: resources/ui/gtk4/prefs.ui:200 resources/ui/gtk4/Apparition.ui:52
+#: resources/ui/gtk4/Apparition.ui:98 resources/ui/gtk4/Apparition.ui:144
+#: resources/ui/gtk4/Apparition.ui:190 resources/ui/gtk4/Apparition.ui:236
+#: resources/ui/gtk3/Incinerate.ui:75 resources/ui/gtk3/Incinerate.ui:124
+#: resources/ui/gtk3/Incinerate.ui:173 resources/ui/gtk3/Incinerate.ui:235
+#: resources/ui/gtk3/Incinerate.ui:278 resources/ui/gtk3/Wisps.ui:68
 #: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
 #: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
 #: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
-#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/TVEffect.ui:61
-#: resources/ui/gtk3/TVEffect.ui:104 resources/ui/gtk3/EnergizeA.ui:68
-#: resources/ui/gtk3/EnergizeA.ui:117 resources/ui/gtk3/EnergizeA.ui:160
-#: resources/ui/gtk3/Hexagon.ui:75 resources/ui/gtk3/Hexagon.ui:124
-#: resources/ui/gtk3/Hexagon.ui:173 resources/ui/gtk3/Hexagon.ui:216
-#: resources/ui/gtk3/Hexagon.ui:259 resources/ui/gtk3/Hexagon.ui:321
-#: resources/ui/gtk3/EnergizeB.ui:68 resources/ui/gtk3/EnergizeB.ui:117
-#: resources/ui/gtk3/EnergizeB.ui:160 resources/ui/gtk3/prefs.ui:219
+#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/PixelWipe.ui:75
+#: resources/ui/gtk3/PixelWipe.ui:124 resources/ui/gtk3/PixelWheel.ui:75
+#: resources/ui/gtk3/PixelWheel.ui:124 resources/ui/gtk3/PixelWheel.ui:173
+#: resources/ui/gtk3/Doom.ui:82 resources/ui/gtk3/Doom.ui:131
+#: resources/ui/gtk3/Doom.ui:180 resources/ui/gtk3/Doom.ui:229
+#: resources/ui/gtk3/TVEffect.ui:61 resources/ui/gtk3/TVEffect.ui:104
+#: resources/ui/gtk3/EnergizeA.ui:68 resources/ui/gtk3/EnergizeA.ui:117
+#: resources/ui/gtk3/EnergizeA.ui:160 resources/ui/gtk3/Hexagon.ui:75
+#: resources/ui/gtk3/Hexagon.ui:124 resources/ui/gtk3/Hexagon.ui:173
+#: resources/ui/gtk3/Hexagon.ui:216 resources/ui/gtk3/Hexagon.ui:259
+#: resources/ui/gtk3/Hexagon.ui:321 resources/ui/gtk3/EnergizeB.ui:68
+#: resources/ui/gtk3/EnergizeB.ui:117 resources/ui/gtk3/EnergizeB.ui:160
+#: resources/ui/gtk3/Pixelate.ui:75 resources/ui/gtk3/Pixelate.ui:124
+#: resources/ui/gtk3/Pixelate.ui:173 resources/ui/gtk3/prefs.ui:219
 #: resources/ui/gtk3/prefs.ui:263 resources/ui/gtk3/Apparition.ui:89
 #: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
 #: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
@@ -261,10 +294,18 @@ msgstr "ستنتقل القطع بعيدًا عن مكان وجود مؤشر ا�
 msgid "Turbulence"
 msgstr ""
 
-#: resources/ui/gtk4/Incinerate.ui:162 resources/ui/gtk4/Wisps.ui:116
+#: resources/ui/gtk4/Incinerate.ui:166 resources/ui/gtk3/Incinerate.ui:199
+msgid "Start at Pointer"
+msgstr ""
+
+#: resources/ui/gtk4/Incinerate.ui:175 resources/ui/gtk3/Incinerate.ui:208
+msgid "If disabled, a random location will be chosen."
+msgstr ""
+
+#: resources/ui/gtk4/Incinerate.ui:215 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
 #: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
-#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Incinerate.ui:195
+#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Incinerate.ui:257
 #: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
 #: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
 msgid "Color"
@@ -291,6 +332,13 @@ msgstr ""
 msgid "Gradient"
 msgstr "ميل"
 
+#: resources/ui/gtk4/PixelWipe.ui:70 resources/ui/gtk4/PixelWheel.ui:116
+#: resources/ui/gtk4/Doom.ui:162 resources/ui/gtk4/Pixelate.ui:116
+#: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
+#: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
+msgid "Pixel Size"
+msgstr ""
+
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
 msgstr "حجم خدش المخلب"
@@ -307,9 +355,21 @@ msgstr "تأثير الاعوجاج"
 msgid "Flash Color"
 msgstr "ألوان مضيئة"
 
+#: resources/ui/gtk4/PixelWheel.ui:70 resources/ui/gtk3/PixelWheel.ui:98
+msgid "Spoke Count"
+msgstr ""
+
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
 msgstr "معاينة هذا التأثير"
+
+#: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
+msgid "Horizontal Scale"
+msgstr ""
+
+#: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
+msgid "Vertical Scale"
+msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
@@ -330,6 +390,10 @@ msgstr "مزج مضاف"
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
 msgstr "قد ترغب في تمكين هذا لسمات النوافذ المظلمة."
+
+#: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
+msgid "Noise"
+msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
