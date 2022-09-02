@@ -23,7 +23,7 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This very simple effect pixelates the window texture and hides it in a wheel-like    //
+// This simple effect pixelates the window texture and hides the pixels in a wheel-like //
 // fashion.                                                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 

@@ -23,8 +23,8 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This very simple effect pixelates the window texture and hides from left to right    //
-// (or any other direction).                                                            //
+// This effect pixelates the window texture and hides the pixels radially, starting     //
+// from the pointer position.                                                           //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
