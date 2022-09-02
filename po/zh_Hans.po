@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-06-25 05:04+0200\n"
-"PO-Revision-Date: 2022-07-14 04:21+0000\n"
-"Last-Translator: joe <ourmicroid@outlook.com>\n"
+"PO-Revision-Date: 2022-09-02 08:43+0000\n"
+"Last-Translator: aerowolf <aerowolf@tom.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "burn-my-windows/core/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: prefs.js:114
 msgid "Effect Options"
@@ -55,11 +55,11 @@ msgstr "%s 的预览"
 
 #: prefs.js:532
 msgid "Close this Window to Preview the Effect!"
-msgstr "关闭此窗口，预览效果!"
+msgstr "关闭此窗，预览效果!"
 
 #: src/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr "破碎的玻璃"
+msgstr "玻璃碎裂"
 
 #: src/TVEffect.js:77
 msgid "TV Effect"
@@ -71,60 +71,59 @@ msgstr "霸王龙攻击"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
-msgstr "瓦解效果"
+msgstr "碎片掉落"
 
 #: src/Incinerate.js:87
 msgid "Incinerate"
-msgstr ""
+msgstr "燃烧蔓开"
 
 #: src/Wisps.js:85
 msgid "Wisps"
-msgstr ""
+msgstr "精灵飞散"
 
 #: src/Fire.js:99
 msgid "Fire"
-msgstr "火烧效果"
+msgstr "烈火燃烧"
 
 #: src/Fire.js:154
 msgid "Default Fire"
-msgstr "普通火烧效果"
+msgstr "默认烈火燃烧效果"
 
 #: src/Fire.js:164
 msgid "Hell Fire"
 msgstr "地狱之火"
 
 #: src/Fire.js:174
-#, fuzzy
 msgid "Dark and Smutty"
-msgstr "黑暗和污秽"
+msgstr "暗黑之火"
 
 #: src/Fire.js:184
 msgid "Cold Breeze"
-msgstr "寒风"
+msgstr "冰火之舞"
 
 #: src/Fire.js:194
 msgid "Santa is Coming"
-msgstr "圣诞老人来了"
+msgstr "圣诞来临"
 
 #: src/Hexagon.js:97
 msgid "Hexagon"
-msgstr "六边形"
+msgstr "蜂巢拼图"
 
 #: src/EnergizeA.js:79
 msgid "Energize A"
-msgstr "瞬移效果A"
+msgstr "碎片融解A"
 
 #: src/Apparition.js:80
 msgid "Apparition"
-msgstr ""
+msgstr "幽灵旋风"
 
 #: src/EnergizeB.js:80
 msgid "Energize B"
-msgstr "瞬移效果B"
+msgstr "碎片融解B"
 
 #: src/Matrix.js:113
 msgid "Matrix"
-msgstr "矩阵"
+msgstr "骇客帝国"
 
 #: resources/ui/common/main-menu.ui:6
 msgid "Visit Homepage"
@@ -140,7 +139,7 @@ msgstr "报告错误"
 
 #: resources/ui/common/main-menu.ui:20
 msgid "Create an Effect"
-msgstr "创建效果"
+msgstr "创建特效"
 
 #: resources/ui/common/main-menu.ui:24
 msgid "Translate"
@@ -219,18 +218,17 @@ msgstr "重置为默认值"
 #: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
 #: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/Hexagon.ui:98
 #: resources/ui/gtk3/EnergizeB.ui:91
-#, fuzzy
 msgid "Scale"
-msgstr "规模"
+msgstr "比例"
 
 #: resources/ui/gtk4/Matrix.ui:116 resources/ui/gtk4/Apparition.ui:70
 #: resources/ui/gtk3/Apparition.ui:112
 msgid "Randomness"
-msgstr "随机性"
+msgstr "随机值"
 
 #: resources/ui/gtk4/Matrix.ui:162
 msgid "Vertical Overshooting"
-msgstr "垂直过冲"
+msgstr "紧身冲击"
 
 #: resources/ui/gtk4/Matrix.ui:208
 msgid "Trail Color"
@@ -246,22 +244,21 @@ msgstr "重力"
 
 #: resources/ui/gtk4/BrokenGlass.ui:162
 msgid "Blow Force"
-msgstr "砸破力"
+msgstr "弹拉力度"
 
 #: resources/ui/gtk4/BrokenGlass.ui:212
 msgid "Shatter From Pointer Location"
 msgstr "从光标位置破碎"
 
 #: resources/ui/gtk4/BrokenGlass.ui:221
-#, fuzzy
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
-msgstr "窗口的破碎会从光标位置而开始。"
+msgstr "窗口破碎效果将会从光标位置开始。"
 
 #: resources/ui/gtk4/Incinerate.ui:116 resources/ui/gtk3/Incinerate.ui:147
 msgid "Turbulence"
-msgstr ""
+msgstr "扰动"
 
 #: resources/ui/gtk4/Incinerate.ui:162 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -282,20 +279,17 @@ msgstr "速度"
 
 #: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
 msgid "3D Noise"
-msgstr "3D 噪点"
+msgstr "3D噪点"
 
 #: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
-#, fuzzy
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "火会更像真但显卡功耗会增加。"
+msgstr "创建更多动态火焰，但更耗费显卡资源。"
 
 #: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
-#, fuzzy
 msgid "Gradient"
-msgstr "渐变"
+msgstr "渐变色"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
-#, fuzzy
 msgid "Claw Scratch Scale"
 msgstr "爪痕大小"
 
@@ -305,83 +299,82 @@ msgstr "爪痕数量"
 
 #: resources/ui/gtk4/TRexAttack.ui:162
 msgid "Warp Effect"
-msgstr ""
+msgstr "扭曲效果"
 
 #: resources/ui/gtk4/TRexAttack.ui:208
 msgid "Flash Color"
-msgstr "爪痕颜色"
+msgstr "边缘颜色"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
-msgstr ""
+msgstr "预览特效"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "网格线宽"
 
 #: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
 msgid "Line Color"
-msgstr ""
+msgstr "线条颜色"
 
 #: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
 msgid "Glow Color"
-msgstr ""
+msgstr "光晕颜色"
 
 #: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
 msgid "Additive Blending"
-msgstr ""
+msgstr "叠加融合"
 
 #: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "在暗黑窗口主题中，您可能需要此特效。"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
-msgstr "欢迎来到Burn-My-Windows！"
+msgstr "欢迎使用Burn-My-Windows！"
 
 #: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr "如果你喜欢这个扩展，请将其推荐给您的朋友:)‎"
+msgstr "如果喜欢此扩展，请向朋友推荐:)‎"
 
 #: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
 msgid "Open Window Animation"
-msgstr ""
+msgstr "打开窗口动画"
 
 #: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
 #: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "如果多选，则每次随机。"
 
 #: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
 #: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
 msgid "Choose Effects"
-msgstr ""
+msgstr "选择特效"
 
 #: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
 msgid "Close Window Animation"
-msgstr ""
+msgstr "关闭窗口特效"
 
 #: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "对话框也使用特效"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
 msgid "Disable on Battery Power"
-msgstr ""
+msgstr "使用电池时禁用特效"
 
 #: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "扭曲力度"
 
 #: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
 msgid "Shake Intensity"
-msgstr ""
+msgstr "晃动力度"
 
 #: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
 msgid "Suction Intensity"
-msgstr ""
+msgstr "吃力力度"
 
 #: resources/ui/gtk3/Fire.ui:63
-#, fuzzy
 msgid "Choose a Preset"
-msgstr "选一个预设配置"
+msgstr "选预设配置"
