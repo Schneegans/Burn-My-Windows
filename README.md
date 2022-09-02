@@ -62,8 +62,8 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
-<tr><td>Pixel Wheel</td>                <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
-<tr><td>Pixel Wipe</td>                <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
