@@ -187,6 +187,8 @@ capture_effect "fire"
 capture_effect "hexagon"
 capture_effect "incinerate"
 capture_effect "pixelate"
+capture_effect "pixel-wheel"
+capture_effect "pixel-wipe"
 capture_effect "tv"
 capture_effect "wisps"
 
