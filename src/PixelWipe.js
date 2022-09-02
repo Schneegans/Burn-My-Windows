@@ -23,14 +23,14 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This very simple effect pixelates the window texture and randomly hides pixels until //
-// the entire window is gone.                                                           //
+// This very simple effect pixelates the window texture and hides from left to right    //
+// (or any other direction).                                                            //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Pixelate = class {
+var PixelWipe = class {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
@@ -39,15 +39,41 @@ var Pixelate = class {
   constructor() {
     this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uNoise     = shader.get_uniform_location('uNoise');
       shader._uPixelSize = shader.get_uniform_location('uPixelSize');
+      shader._uStartPos  = shader.get_uniform_location('uStartPos');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
+        // Because the actor position may change after the begin-animation signal is
+        // called, we set the uDirection uniform during the update callback.
+        this._startPointerPos = global.get_pointer();
+        this._actor           = actor;
+
         // clang-format off
-        shader.set_uniform_float(shader._uNoise,     1, [settings.get_double('pixelate-noise')]);
-        shader.set_uniform_float(shader._uPixelSize, 1, [settings.get_int('pixelate-pixel-size')]);
+        shader.set_uniform_float(shader._uPixelSize, 1, [settings.get_int('pixel-wipe-pixel-size')]);
         // clang-format on
+      });
+
+      // We set the uDirection uniform during the update callback as the actor position
+      // may not be set up properly before the begin animation callback.
+      shader.connect('update-animation', (shader) => {
+        if (this._startPointerPos) {
+          const [x, y]               = this._startPointerPos;
+          const [ok, localX, localY] = this._actor.transform_stage_point(x, y);
+
+          if (ok) {
+            let startPos = [
+              Math.max(0.0, Math.min(1.0, localX / this._actor.width)),
+              Math.max(0.0, Math.min(1.0, localY / this._actor.height))
+            ];
+            shader.set_uniform_float(shader._uStartPos, 2, startPos);
+          }
+        }
+      });
+
+      // Make sure to drop the reference to the actor.
+      shader.connect('end-animation', (shader) => {
+        shader._actor = null;
       });
     });
   }
@@ -64,13 +90,13 @@ var Pixelate = class {
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
-    return 'pixelate';
+    return 'pixel-wipe';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   getLabel() {
-    return _('Pixelate');
+    return _('Pixel Wipe');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -80,15 +106,14 @@ var Pixelate = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Pixelate.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/PixelWipe.ui`);
 
     // Bind all properties.
-    dialog.bindAdjustment('pixelate-animation-time');
-    dialog.bindAdjustment('pixelate-noise');
-    dialog.bindAdjustment('pixelate-pixel-size');
+    dialog.bindAdjustment('pixel-wipe-animation-time');
+    dialog.bindAdjustment('pixel-wipe-pixel-size');
 
     // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('pixelate-prefs');
+    return dialog.getBuilder().get_object('pixel-wipe-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

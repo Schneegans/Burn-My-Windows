@@ -27,9 +27,9 @@ void main() {
   vec4 oColor     = getInputColor(texcoord);
 
   // Hide selected pixels based on some random noise.
-  float random = simplex2DFractal(texcoord * uNoise * uSize / 1000.0);
-  if (random * 1.5 - 0.25 < progress) {
-    oColor.a = 0.0;
+  float random = simplex2DFractal(texcoord * uNoise * uSize / 1000.0) * 1.5 - 0.25;
+  if (progress > random) {
+    oColor.a *= max(0.0, 1.0 - (progress - random) * 20.0);
   }
 
   setOutputColor(oColor);

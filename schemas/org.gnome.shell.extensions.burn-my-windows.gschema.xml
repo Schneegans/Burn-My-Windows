@@ -112,12 +112,40 @@
       <description>The noise of the effect.</description>
     </key>
 
-    <key name="pixelate-pixel-size" type="d">
+    <key name="pixelate-pixel-size" type="i">
       <default>10</default>
       <summary>Pixelate Pixel Size</summary>
       <description>The size of the maximum pixelation.</description>
     </key>
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Pixel Wipe Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="pixel-wipe-close-effect" type="b">
+      <default>false</default>
+      <summary>Pixel Wipe Close Effect</summary>
+      <description>Use the Pixel Wipe effect for window closing.</description>
+    </key>
+
+    <key name="pixel-wipe-open-effect" type="b">
+      <default>false</default>
+      <summary>Pixel Wipe Open Effect</summary>
+      <description>Use the Pixel Wipe effect for window opening.</description>
+    </key>
+
+    <key name="pixel-wipe-animation-time" type="i">
+      <default>1000</default>
+      <summary>Pixel Wipe Animation Time</summary>
+      <description>The time the Pixel Wipe effect takes.</description>
+    </key>
+
+    <key name="pixel-wipe-pixel-size" type="i">
+      <default>10</default>
+      <summary>Pixel Wipe Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Pixel Wheel Options                                                            -->

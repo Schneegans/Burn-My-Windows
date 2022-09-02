@@ -14,11 +14,22 @@
 // The content from common.glsl is automatically prepended to each shader effect.
 
 uniform float uPixelSize;
-uniform float uSpokeCount;
+uniform vec2 uStartPos;
+
+const float FADE_WIDTH = 1.0;  // Width of the transition.
 
 void main() {
-  // We simply inverse the progress for opening windows.
-  float progress = smoothstep(0.0, 1.0, uForOpening ? 1.0 - uProgress : uProgress);
+
+  // Now we compute a 2D gradient in [0..1] which covers the entire window. The dark
+  // regions will be burned first, the bright regions in the end. We mix a radial gradient
+  // with some noise. The center of the radial gradient is positioned at uStartPos.
+  float circle = length(iTexCoord - uStartPos);
+
+  float progress = easeOutQuad(uProgress);
+  progress       = ((1.0 - progress) * (1.0 + FADE_WIDTH) - 1.0 + circle) / FADE_WIDTH;
+  progress       = smoothstep(0.0, 1.0, progress);
+
+  progress = uForOpening ? progress : 1.0 - progress;
 
   // The current level of pixelation increases with the progress.
   float pixelSize = ceil(uPixelSize * progress + 1.0);
@@ -26,21 +37,15 @@ void main() {
   vec2 texcoord   = iTexCoord.st - mod(iTexCoord.st, pixelGrid) + pixelGrid * 0.5;
   vec4 oColor     = getInputColor(texcoord);
 
-  // Now hide the spoke sections.
-  vec2 down    = vec2(0.0, 1.0);
-  vec2 fragDir = normalize(texcoord - 0.5);
-
-  // Compute angle to down direction.
-  float angle = 0.5 * acos(dot(down, fragDir)) / 3.14159265359;
-  if (fragDir.x < 0.0) {
-    angle = 1.0 - angle;
+  // Hide pixels in the transition zone.
+  float random = simplex2DFractal(texcoord * uSize / 20.0) * 1.5 - 0.25;
+  if (progress > random) {
+    oColor.a *= max(0.0, 1.0 - (progress - random) * 10.0);
   }
 
-  // Progressively hide the spokes.
-  float threshold = mod(angle * uSpokeCount, 1.0);
-  if (progress > threshold) {
-    oColor.a = 0.0;
-  }
+  // These are pretty useful for understanding how this works.
+  // oColor = vec4(progress, 0.0, 0.0, 1.0);
+  // oColor = vec4(random, 0.0, 0.0, 1.0);
 
   setOutputColor(oColor);
 }
