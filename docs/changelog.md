@@ -17,6 +17,11 @@
 * The continuous integration tests now use a fuzzy search for the images targets. This way, the test work again on X11 and Wayland.
 * A new GitHub Actions workflow has been added which is executed whenever a commit message includes the `[generate-references]` tag. This workflow re-creates all reference images for the continuous integration test.
 
+#### Bug Fixes
+
+* Fixed a bug which caused the Incinerate Effect to sometimes not show up properly on KWin if the "Start at pointer position" option was enabled.
+
+
 ## [Burn My Windows 19](https://github.com/schneegans/Burn-My-Windows/releases/tag/v19)
 
 **Release Date:** 2022-08-18
