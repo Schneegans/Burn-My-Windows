@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
-"PO-Revision-Date: 2022-06-30 22:19+0000\n"
+"PO-Revision-Date: 2022-09-11 10:17+0000\n"
 "Last-Translator: Mathieu B. <mathieu.bousquet2@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: src/Apparition.js:80
 msgid "Apparition"
@@ -29,7 +29,7 @@ msgstr "Verre brisé"
 
 #: src/Doom.js:87
 msgid "Doom"
-msgstr ""
+msgstr "Apocalypse"
 
 #: src/EnergizeA.js:79
 msgid "Energize A"
@@ -77,15 +77,15 @@ msgstr "Matrix"
 
 #: src/Pixelate.js:73
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelisé"
 
 #: src/PixelWheel.js:73
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Roue de Pixels"
 
 #: src/PixelWipe.js:99
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Effacement de Pixels"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
@@ -297,11 +297,11 @@ msgstr "Turbulence"
 
 #: resources/ui/gtk4/Incinerate.ui:166 resources/ui/gtk3/Incinerate.ui:199
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Débuter au pointeur"
 
 #: resources/ui/gtk4/Incinerate.ui:175 resources/ui/gtk3/Incinerate.ui:208
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Si désactivé, un emplacement aléatoire sera choisi."
 
 #: resources/ui/gtk4/Incinerate.ui:215 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -339,7 +339,7 @@ msgstr "Gradient"
 #: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
 #: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
 msgid "Pixel Size"
-msgstr ""
+msgstr "Taille des pixels"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -359,7 +359,7 @@ msgstr "Couleur du flash"
 
 #: resources/ui/gtk4/PixelWheel.ui:70 resources/ui/gtk3/PixelWheel.ui:98
 msgid "Spoke Count"
-msgstr ""
+msgstr "Nombre de rayons"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
@@ -367,11 +367,11 @@ msgstr "Voir l'aperçu de cet effet"
 
 #: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Échelle horizontale"
 
 #: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Échelle verticale"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
@@ -395,7 +395,7 @@ msgstr "Vous voudrez peut-être l'activer pour les thèmes de fenêtre sombre."
 
 #: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
 msgid "Noise"
-msgstr ""
+msgstr "Bruit"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
