@@ -2,7 +2,7 @@
 
 ## [Burn My Windows 20](https://github.com/schneegans/Burn-My-Windows/releases/tag/v20)
 
-**Release Date:** TBD
+**Release Date:** 2022-09-06
 
 #### New Features
 
