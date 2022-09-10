@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
-"PO-Revision-Date: 2022-07-01 21:16+0000\n"
-"Last-Translator: dyegoaurelio <dyegoaurelio@gmail.com>\n"
+"PO-Revision-Date: 2022-09-10 01:57+0000\n"
+"Last-Translator: pedroresende <pedroresende@mail.resende.biz>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/burn-my-"
 "windows/core/pt/>\n"
 "Language: pt\n"
@@ -297,11 +297,11 @@ msgstr "Turbulência"
 
 #: resources/ui/gtk4/Incinerate.ui:166 resources/ui/gtk3/Incinerate.ui:199
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Começar no Ponteiro"
 
 #: resources/ui/gtk4/Incinerate.ui:175 resources/ui/gtk3/Incinerate.ui:208
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Se desactivado, será escolhido um local aleatório."
 
 #: resources/ui/gtk4/Incinerate.ui:215 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -337,7 +337,7 @@ msgstr "Gradiente"
 #: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
 #: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
 msgid "Pixel Size"
-msgstr ""
+msgstr "Tamanho dos Pixeis"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -357,7 +357,7 @@ msgstr "Cor do Brilho da Garra"
 
 #: resources/ui/gtk4/PixelWheel.ui:70 resources/ui/gtk3/PixelWheel.ui:98
 msgid "Spoke Count"
-msgstr ""
+msgstr "Contagem de Raios"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
@@ -365,11 +365,11 @@ msgstr "Pré-visualize esse Efeito"
 
 #: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Escala Horizontal"
 
 #: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Escala Vertical"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
@@ -393,7 +393,7 @@ msgstr "Você talvez queira habilitar isso para janelas com temas escuros."
 
 #: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
 msgid "Noise"
-msgstr ""
+msgstr "Barulho"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
