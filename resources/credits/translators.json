@@ -4,12 +4,17 @@
       [
         "obslsessed@duck.com",
         "obslsessed",
-        1
+        5
+      ],
+      [
+        "droidbittin@gmail.com",
+        "Luna Jernberg",
+        10
       ],
       [
         "swedishsailfishosuser@tutanota.com",
         "Kristoffer Grundstr\u00f6m",
-        57
+        58
       ]
     ]
   },
@@ -37,7 +42,7 @@
       [
         "mathieu.bousquet2@gmail.com",
         "Mathieu B.",
-        13
+        27
       ],
       [
         "theo.remon+weblate@uswery.eu",
@@ -53,6 +58,11 @@
   },
   {
     "Spanish": [
+      [
+        "jorgec2005@gmail.com",
+        "Jorge C",
+        5
+      ],
       [
         "dev.n47os@aleeas.com",
         "Ulices",
@@ -71,7 +81,7 @@
       [
         "oscfdezdz@tuta.io",
         "\u00d3scar Fern\u00e1ndez D\u00edaz",
-        58
+        70
       ]
     ]
   },
@@ -79,8 +89,8 @@
     "Persian": [
       [
         "eshagh094@gmail.com",
-        "Eshagh Shahedany",
-        73
+        "Eshagh shahidani",
+        75
       ]
     ]
   },
@@ -89,7 +99,7 @@
       [
         "pwrzonca@gmail.com",
         "Pawe\u0142 Rzo\u0144ca",
-        72
+        75
       ]
     ]
   },
@@ -98,7 +108,7 @@
       [
         "darkcircle.0426@gmail.com",
         "Seong-ho Cho",
-        73
+        77
       ]
     ]
   },
@@ -112,7 +122,21 @@
     ]
   },
   {
+    "Lithuanian": [
+      [
+        "hazap@hotmail.com",
+        "Moo",
+        53
+      ]
+    ]
+  },
+  {
     "Chinese (Simplified)": [
+      [
+        "ourmicroid@outlook.com",
+        "joe",
+        4
+      ],
       [
         "lyuutau@outlook.com",
         "\u5218\u97ec",
@@ -122,11 +146,39 @@
         "poonsters6@gmail.com",
         "merelymyself",
         41
+      ],
+      [
+        "aerowolf@tom.com",
+        "aerowolf",
+        50
+      ]
+    ]
+  },
+  {
+    "Ukrainian": [
+      [
+        "yuridm@gmail.com",
+        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
+        55
+      ]
+    ]
+  },
+  {
+    "Esperanto": [
+      [
+        "phlostically@mailinator.com",
+        "phlostically",
+        76
       ]
     ]
   },
   {
     "Czech": [
+      [
+        "yuridm@gmail.com",
+        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
+        1
+      ],
       [
         "jose1711@gmail.com",
         "Jose Riha",
@@ -142,6 +194,11 @@
   {
     "Norwegian Bokm\u00e5l": [
       [
+        "code@simonschneegans.de",
+        "Simon Schneegans",
+        1
+      ],
+      [
         "epost@anotheragency.no",
         "Allan Nordh\u00f8y",
         50
@@ -151,9 +208,28 @@
   {
     "Arabic": [
       [
+        "yamen.malik2@gmail.com",
+        "Yamen Malik",
+        8
+      ],
+      [
         "fawaz27000@hotmail.com",
         "fawaz006",
         79
+      ]
+    ]
+  },
+  {
+    "Portuguese": [
+      [
+        "dyegoaurelio@gmail.com",
+        "dyegoaurelio",
+        12
+      ],
+      [
+        "pedro.hvn.2018@gmail.com",
+        "KrulesExGamer",
+        81
       ]
     ]
   },
@@ -167,7 +243,7 @@
       [
         "code@simonschneegans.de",
         "Simon Schneegans",
-        72
+        83
       ]
     ]
   },
@@ -176,7 +252,7 @@
       [
         "eg.ermakov2016@yandex.ru",
         "\u0415\u0433\u043e\u0440 \u0415\u0440\u043c\u0430\u043a\u043e\u0432",
-        31
+        37
       ],
       [
         "franigoyt@gmail.com",
@@ -186,11 +262,20 @@
     ]
   },
   {
+    "Azerbaijani": [
+      [
+        "xxmn77@gmail.com",
+        "X\u0259yyam Qocayev",
+        79
+      ]
+    ]
+  },
+  {
     "Slovak": [
       [
         "jose1711@gmail.com",
         "Jose Riha",
-        71
+        85
       ]
     ]
   },
@@ -204,11 +289,25 @@
     ]
   },
   {
+    "Hebrew": [
+      [
+        "hvusvvnkl12345@gmail.com",
+        "\u05d9\u05d4\u05d5\u05d3\u05d4 \u05d0\u05dc\u05d9\u05e1\u05e3",
+        40
+      ]
+    ]
+  },
+  {
     "Dutch": [
+      [
+        "code@simonschneegans.de",
+        "Simon Schneegans",
+        1
+      ],
       [
         "vistausss@fastmail.com",
         "Heimen Stoffels",
-        80
+        92
       ]
     ]
   }
