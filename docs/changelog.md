@@ -1,5 +1,13 @@
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 21](https://github.com/schneegans/Burn-My-Windows/releases/tag/v21)
+
+**Release Date:** TBD
+
+#### New Features
+
+* Added support for GNOME 43.
+
 ## [Burn My Windows 20](https://github.com/schneegans/Burn-My-Windows/releases/tag/v20)
 
 **Release Date:** 2022-09-06
