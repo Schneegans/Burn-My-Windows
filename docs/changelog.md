@@ -8,6 +8,10 @@
 
 * Added support for GNOME 43.
 
+#### Other Enhancements
+
+* Several new translations have been added, including a Lithuanian, Ukrainian, Esperanto, Portuguese, Azerbaijani, and Hebrew translation. Also, many other translations received updates. Thanks to all the translators!
+
 ## [Burn My Windows 20](https://github.com/schneegans/Burn-My-Windows/releases/tag/v20)
 
 **Release Date:** 2022-09-06
