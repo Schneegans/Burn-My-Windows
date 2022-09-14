@@ -2,7 +2,7 @@
 
 ## [Burn My Windows 21](https://github.com/schneegans/Burn-My-Windows/releases/tag/v21)
 
-**Release Date:** TBD
+**Release Date:** 2022-09-14
 
 #### New Features
 
