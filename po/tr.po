@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
 "PO-Revision-Date: 2022-09-16 14:17+0000\n"
-"Last-Translator: TCr3 <tcreeper.earth@gmail.com>\n"
+"Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/tr/>\n"
 "Language: tr\n"
@@ -101,7 +101,7 @@ msgstr "TV Efekti"
 
 #: src/Wisps.js:85
 msgid "Wisps"
-msgstr ""
+msgstr "Sihir"
 
 #: prefs.js:118
 msgid "Effect Options"
