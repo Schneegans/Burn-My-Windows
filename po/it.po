@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
-"PO-Revision-Date: 2022-06-29 17:16+0000\n"
+"PO-Revision-Date: 2022-09-17 15:21+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14.1-dev\n"
 
 #: src/Apparition.js:80
 msgid "Apparition"
@@ -77,7 +77,7 @@ msgstr "Matrix"
 
 #: src/Pixelate.js:73
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelato"
 
 #: src/PixelWheel.js:73
 msgid "Pixel Wheel"
@@ -301,7 +301,7 @@ msgstr ""
 
 #: resources/ui/gtk4/Incinerate.ui:175 resources/ui/gtk3/Incinerate.ui:208
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Se disattivato, verrà scelta una posizione casuale."
 
 #: resources/ui/gtk4/Incinerate.ui:215 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -337,7 +337,7 @@ msgstr "Gradiente"
 #: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
 #: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
 msgid "Pixel Size"
-msgstr ""
+msgstr "Dimensione pixel"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -365,11 +365,11 @@ msgstr "Anteprima di questo effetto"
 
 #: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Scala orizzontale"
 
 #: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Scala verticale"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
@@ -393,7 +393,7 @@ msgstr "Potresti abilitarlo per i temi delle finestre scure."
 
 #: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
 msgid "Noise"
-msgstr ""
+msgstr "Rumore"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
