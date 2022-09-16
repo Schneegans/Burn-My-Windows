@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: CC0-1.0
+
 name: Checks
 
 on:
@@ -14,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Download Clang-Format
         run: |
           sudo apt update -qq
@@ -26,18 +29,26 @@ jobs:
           DIFF=$(git diff)
           if [ ! -z "$DIFF" ]; then echo $DIFF && exit 1; fi
 
+  reuse:
+    name: Check Compliance with REUSE Specification
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: REUSE Compliance Check
+      uses: fsfe/reuse-action@v1
+
   comment_percentage:
     name: Check Comment Percentage
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
     steps:
       - name: Checkout Current Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: current
           ref: ${{ github.ref }}
       - name: Checkout Base Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: base
           ref: ${{ github.base_ref }}
@@ -63,7 +74,7 @@ jobs:
     name: Run ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Run ShellCheck
         run: |
           find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
@@ -74,7 +85,7 @@ jobs:
     if: >
       github.event_name == 'push' && contains(github.event.head_commit.message, '[generate-references]')
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Download Dependencies
       run: |
         sudo apt update -qq
@@ -109,7 +120,7 @@ jobs:
           - 'gnome-xsession'
           - 'gnome-wayland-nested'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Download Dependencies
       run: |
         sudo apt update -qq

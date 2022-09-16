@@ -1,4 +1,18 @@
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Changelog of the Burn-My-Windows Extension
+
+## [Burn My Windows 22](https://github.com/schneegans/Burn-My-Windows/releases/tag/v22)
+
+**Release Date:** TBD
+
+#### Other Enhancements
+
+* Burn-My-Windows now follows the [REUSE Specification](https://reuse.software/spec).
+
 
 ## [Burn My Windows 21](https://github.com/schneegans/Burn-My-Windows/releases/tag/v21)
 

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 <interface domain="burn-my-windows">
 
   <object class="GtkBox" id="pixelate-prefs">

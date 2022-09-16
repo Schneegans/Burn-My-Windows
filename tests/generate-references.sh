@@ -9,9 +9,10 @@
 #       | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<       #
 #       |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/       #
 #                                  |__/                                                  #
-#                        Copyright (c) 2021 Simon Schneegans                             #
-#           Released under the GPLv3 or later. See LICENSE file for details.             #
 # -------------------------------------------------------------------------------------- #
+
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: MIT
 
 # This script is used to generate the reference images required for the run-tests.sh
 # script. To do this, it installs the extension in a fedora-based container running GNOME

@@ -9,13 +9,10 @@
 #       | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<       #
 #       |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/       #
 #                                  |__/                                                  #
-#                        Copyright (c) 2021 Simon Schneegans                             #
-#           Released under the GPLv3 or later. See LICENSE file for details.             #
 # -------------------------------------------------------------------------------------- #
 
-
-# This script is based on a similar script from the Fly-Pie GNOME Shell extension which is
-# published under the MIT License (https://github.com/Schneegans/Fly-Pie).
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: MIT
 
 # This scripts counts the lines of code and comments in all JavaScript files.
 # The copyright-headers are substracted. It uses the command line tool "cloc".

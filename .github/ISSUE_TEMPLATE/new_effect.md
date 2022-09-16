@@ -1,4 +1,7 @@
 ---
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: CC-BY-4.0
+
 name: New Effect
 about: Suggest a new effect for the Burn-My-Windows Extension.
 title: ''

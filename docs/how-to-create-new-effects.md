@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # 🔥 Creating a new Effect for Burn-My-Windows
 
 The extension is very modular and with a bit of creativity and GLSL knowledge, you can easily create your own effects.
@@ -144,9 +149,10 @@ void main() {
 //      | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<      //
 //      |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/      //
 //                                 |__/                                                 //
-//                       Copyright (c) 2021 Simon Schneegans                            //
-//          Released under the GPLv3 or later. See LICENSE file for details.            //
 //////////////////////////////////////////////////////////////////////////////////////////
+
+// SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 'use strict';
 

@@ -1,4 +1,7 @@
 ---
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: CC-BY-4.0
+
 name: Bug Report
 about: Create a report to help us improve the Burn-My-Windows Extension!
 title: ''
