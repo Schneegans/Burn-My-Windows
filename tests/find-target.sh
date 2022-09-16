@@ -1,19 +1,31 @@
 #!/bin/bash
 
 # -------------------------------------------------------------------------------------- #
-# This script searches for a given image on the screen and prints the coordinates of the #
-# upper left corner to STDOUT if it's found. If the image is not found, an exit code     #
-# of 1 is returned.                                                                      #
-#                                                                                        #
-# -s scale_factor: In order to optimize the performance, both, the target image and the  #
-#                  screen capture is scaled down by 1 / scale_factor. Lower numbers can  #
-#                  help finding difficult targets but will also increase the calculation #
-#                  time. Reasonable values are [1...10], default is 4.                   #
-# -f fuzziness:    A mean-squared-error threshold under which a location is considered   #
-#                  to be a match. Default is 0.01. Increase this to make finding a       #
-#                  target more likely but also increase the possibility of false         #
-#                  positives.                                                            #
+#           )                                                   (                        #
+#        ( /(   (  (               )    (       (  (  (         )\ )    (  (             #
+#        )\()) ))\ )(   (         (     )\ )    )\))( )\  (    (()/( (  )\))(  (         #
+#       ((_)\ /((_|()\  )\ )      )\  '(()/(   ((_)()((_) )\ )  ((_)))\((_)()\ )\        #
+#       | |(_|_))( ((_)_(_/(    _((_))  )(_))  _(()((_|_)_(_/(  _| |((_)(()((_|(_)       #
+#       | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<       #
+#       |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/       #
+#                                  |__/                                                  #
 # -------------------------------------------------------------------------------------- #
+
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: MIT
+
+# This script searches for a given image on the screen and prints the coordinates of the
+# upper left corner to STDOUT if it's found. If the image is not found, an exit code
+# of 1 is returned.
+
+# -s scale_factor: In order to optimize the performance, both, the target image and the
+#                  screen capture is scaled down by 1 / scale_factor. Lower numbers can
+#                  help finding difficult targets but will also increase the calculation
+#                  time. Reasonable values are [1...10], default is 4.
+# -f fuzziness:    A mean-squared-error threshold under which a location is considered
+#                  to be a match. Default is 0.01. Increase this to make finding a
+#                  target more likely but also increase the possibility of false
+#                  positives.
 
 usage() {
   echo "Usage: $0 -s scale_factor -f fuzziness screen.png target.png" >&2

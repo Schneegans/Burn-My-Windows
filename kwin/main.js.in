@@ -1,10 +1,5 @@
-/*
-    This file is part of the Burn-My-Windows project.
-
-    SPDX-FileCopyrightText: 2018, 2021, 2022 Vlad Zahorodnii <vlad.zahorodnii@kde.org>, Martin Flöser <mgraesslin@kde.org>, Simon Schneegans <code@simonschneegans.de>
-
-    SPDX-License-Identifier: GPL-3.0-or-later
-*/
+// SPDX-FileCopyrightText: Vlad Zahorodnii <vlad.zahorodnii@kde.org>, Martin Flöser <mgraesslin@kde.org>, Simon Schneegans <code@simonschneegans.de>
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 "use strict";
 

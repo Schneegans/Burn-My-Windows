@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 <p align="center">
   <a href="https://www.youtube.com/watch?v=L2aaNF_rPHo"><img src ="docs/pics/teaser.jpg" /></a>
 </p>

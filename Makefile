@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-License-Identifier: MIT
+
 SHELL := /bin/bash
 
 # We define these here to make the makefile easier to port to another extension.
