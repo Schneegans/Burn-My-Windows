@@ -151,7 +151,7 @@ void main() {
 //                                 |__/                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+// SPDX-FileCopyrightText: Your Name <your@email.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 'use strict';
@@ -281,6 +281,12 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Your Name <your@email.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 <interface>
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
@@ -422,6 +428,12 @@ Remember to replace any occurrence of `simple-fade` with your effect's nick-name
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Your Name <your@email.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 <interface>
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
