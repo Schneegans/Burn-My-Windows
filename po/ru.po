@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
-"PO-Revision-Date: 2022-07-09 05:03+0000\n"
-"Last-Translator: Егор Ермаков <eg.ermakov2016@yandex.ru>\n"
+"PO-Revision-Date: 2022-09-23 00:15+0000\n"
+"Last-Translator: Мистер Перевод <sergei@racingrebel.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: src/Apparition.js:80
 msgid "Apparition"
@@ -30,7 +30,7 @@ msgstr "Разбитое стекло"
 
 #: src/Doom.js:87
 msgid "Doom"
-msgstr ""
+msgstr "кончина"
 
 #: src/EnergizeA.js:79
 msgid "Energize A"
@@ -78,15 +78,15 @@ msgstr "Матрица"
 
 #: src/Pixelate.js:73
 msgid "Pixelate"
-msgstr ""
+msgstr "Пикселяция"
 
 #: src/PixelWheel.js:73
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Кольцо пикселей"
 
 #: src/PixelWipe.js:99
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "вытирать пикселями"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
@@ -298,11 +298,11 @@ msgstr "Турбулентность"
 
 #: resources/ui/gtk4/Incinerate.ui:166 resources/ui/gtk3/Incinerate.ui:199
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Начинать от курсора"
 
 #: resources/ui/gtk4/Incinerate.ui:175 resources/ui/gtk3/Incinerate.ui:208
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Если не вклучен, случайное положение будет выбрано."
 
 #: resources/ui/gtk4/Incinerate.ui:215 resources/ui/gtk4/Wisps.ui:116
 #: resources/ui/gtk4/SnapOfDisintegration.ui:116
@@ -338,7 +338,7 @@ msgstr "Градиент"
 #: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
 #: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
 msgid "Pixel Size"
-msgstr ""
+msgstr "Размер пикселя"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -358,7 +358,7 @@ msgstr "Цвет вспышки"
 
 #: resources/ui/gtk4/PixelWheel.ui:70 resources/ui/gtk3/PixelWheel.ui:98
 msgid "Spoke Count"
-msgstr ""
+msgstr "Счёт Спици"
 
 #: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
 msgid "Preview this Effect"
@@ -366,11 +366,11 @@ msgstr "Предпросмотр этого эффекта"
 
 #: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Горизонтальная Шкала"
 
 #: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Вертикальная Шкала"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
@@ -394,7 +394,7 @@ msgstr "Возможно, вы захотите включить это для �
 
 #: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
 msgid "Noise"
-msgstr ""
+msgstr "Шум"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
