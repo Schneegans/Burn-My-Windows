@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-02 21:06+0200\n"
-"PO-Revision-Date: 2022-07-10 11:19+0000\n"
+"PO-Revision-Date: 2022-10-03 20:18+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
-"Language-Team: Esperanto <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/eo/>\n"
+"Language-Team: Esperanto <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/eo/>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #: src/Apparition.js:80
 msgid "Apparition"
@@ -29,7 +29,7 @@ msgstr "Rompita vitro"
 
 #: src/Doom.js:87
 msgid "Doom"
-msgstr ""
+msgstr "Pereo"
 
 #: src/EnergizeA.js:79
 msgid "Energize A"
@@ -77,15 +77,15 @@ msgstr "Matrico"
 
 #: src/Pixelate.js:73
 msgid "Pixelate"
-msgstr ""
+msgstr "Bilderigo"
 
 #: src/PixelWheel.js:73
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Bilderrado"
 
 #: src/PixelWipe.js:99
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Bildera viŝo"
 
 #: src/SnapOfDisintegration.js:117
 msgid "Snap of Disintegration"
@@ -337,7 +337,7 @@ msgstr "Gradiento"
 #: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
 #: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
 msgid "Pixel Size"
-msgstr ""
+msgstr "Grando de bildero"
 
 #: resources/ui/gtk4/TRexAttack.ui:70
 msgid "Claw Scratch Scale"
@@ -365,11 +365,11 @@ msgstr "Antaŭrigardi ĉi tiun efekton"
 
 #: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Horizontala skalo"
 
 #: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Vertikala skalo"
 
 #: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
 msgid "Mesh Line Width"
@@ -393,7 +393,7 @@ msgstr "Vi eble volas ŝalti ĉi tion por malhelaj etosoj."
 
 #: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
 msgid "Noise"
-msgstr ""
+msgstr "Bruo"
 
 #: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
 msgid "Welcome to Burn-My-Windows!"
