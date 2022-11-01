@@ -19,29 +19,29 @@ uniform float uSquish;
 uniform float uTilt;
 
 void main() {
+  // We reverse the progress for window opening.
   float progress = easeOutQuad(uProgress);
   progress       = uForOpening ? 1.0 - progress : progress;
 
+  // Put texture coordinate origin to center of window.
   vec2 coords = iTexCoord.st * 2.0 - 1.0;
 
+  // Scale image texture with progress.
   coords /= mix(1.0, uScale, progress);
 
+  // Squish image texture vertically.
   coords.y /= mix(1.0, (1.0 - uSquish), progress);
 
+  // 'Tilt' image texture around x-axis.
   coords.x /= mix(1.0, 1.0 - uTilt * coords.y, progress);
 
+  // Move texture coordinate center to corner again.
   coords = coords * 0.5 + 0.5;
 
   vec4 oColor = getInputColor(coords);
 
-  // Dissolve window to effect color / transparency.
+  // Dissolve window.
   oColor.a = oColor.a * (1.0 - progress);
-
-  // These are pretty useful for understanding how this works.
-  // oColor = vec4(masks, 0.0, 1.0);
-  // oColor = vec4(vec3(masks.x), 1.0);
-  // oColor = vec4(vec3(masks.y), 1.0);
-  // oColor = vec4(vec3(particles), 1.0);
 
   setOutputColor(oColor);
 }
