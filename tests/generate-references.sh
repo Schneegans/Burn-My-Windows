@@ -185,6 +185,7 @@ set_setting "test-mode" true
 capture_effect "energize-a"
 capture_effect "energize-b"
 capture_effect "fire"
+capture_effect "glide"
 capture_effect "hexagon"
 capture_effect "incinerate"
 capture_effect "pixelate"
