@@ -41,7 +41,7 @@ void main() {
   vec4 oColor = getInputColor(coords);
 
   // Dissolve window.
-  oColor.a = oColor.a * (1.0 - progress);
+  oColor.a = oColor.a * (uForOpening ? uProgress : pow(1.0 - uProgress, 2.0));
 
   setOutputColor(oColor);
 }
