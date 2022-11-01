@@ -9,6 +9,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### New Features
+
+* **New Effect: Glide.** A very subtle effect which simply fades the window and applies some 3D-like tilting and scaling.
+
 #### Other Enhancements
 
 * Burn-My-Windows now follows the [REUSE Specification](https://reuse.software/spec).
