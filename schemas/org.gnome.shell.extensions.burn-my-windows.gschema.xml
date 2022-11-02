@@ -314,7 +314,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="glide-animation-time" type="i">
-      <default>300</default>
+      <default>250</default>
       <summary>Glide Animation Time</summary>
       <description>The time the glide effect takes.</description>
     </key>
@@ -332,7 +332,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="glide-tilt" type="d">
-      <default>-0.4</default>
+      <default>-0.3</default>
       <summary>Glide Tilt</summary>
       <description>The amount of tilting.</description>
     </key>

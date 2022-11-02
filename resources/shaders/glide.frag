@@ -30,7 +30,7 @@ void main() {
   coords /= mix(1.0, uScale, progress);
 
   // Squish image texture vertically.
-  coords.y /= mix(1.0, (1.0 - uSquish), progress);
+  coords.y /= mix(1.0, (1.0 - 0.2 * uSquish), progress);
 
   // 'Tilt' image texture around x-axis.
   coords.x /= mix(1.0, 1.0 - 0.1 * uTilt * coords.y, progress);
