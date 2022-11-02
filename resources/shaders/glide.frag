@@ -33,7 +33,7 @@ void main() {
   coords.y /= mix(1.0, (1.0 - uSquish), progress);
 
   // 'Tilt' image texture around x-axis.
-  coords.x /= mix(1.0, 1.0 - uTilt * coords.y, progress);
+  coords.x /= mix(1.0, 1.0 - 0.1 * uTilt * coords.y, progress);
 
   // Move texture coordinate center to corner again.
   coords = coords * 0.5 + 0.5;
