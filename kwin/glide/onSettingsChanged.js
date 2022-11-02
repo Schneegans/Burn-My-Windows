@@ -5,7 +5,6 @@
 // The code below is called whenever the user changes something in the configuration of
 // the effect.
 
-effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
 effect.setUniform(this.shader, 'uSquish', effect.readConfig('Squish', 1.0));
 effect.setUniform(this.shader, 'uTilt', effect.readConfig('Tilt', 1.0));
