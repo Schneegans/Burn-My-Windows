@@ -46,7 +46,7 @@ var PixelWipe = class {
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
         // Because the actor position may change after the begin-animation signal is
-        // called, we set the uDirection uniform during the update callback.
+        // called, we set the uStartPos uniform during the update callback.
         this._startPointerPos = global.get_pointer();
         this._actor           = actor;
 
@@ -55,7 +55,7 @@ var PixelWipe = class {
         // clang-format on
       });
 
-      // We set the uDirection uniform during the update callback as the actor position
+      // We set the uStartPos uniform during the update callback as the actor position
       // may not be set up properly before the begin animation callback.
       shader.connect('update-animation', (shader) => {
         if (this._startPointerPos) {
