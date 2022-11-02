@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-02 21:06+0200\n"
+"POT-Creation-Date: 2022-11-02 22:09+0100\n"
 "PO-Revision-Date: 2022-09-02 19:42+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
-"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
-"burn-my-windows/core/nb_NO/>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/burn-my-"
+"windows/core/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,428 +19,446 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.14.1-dev\n"
 
-#: src/Apparition.js:80
+#: src/Apparition.js:81
 msgid "Apparition"
 msgstr ""
 
-#: src/BrokenGlass.js:138
+#: src/BrokenGlass.js:139
 #, fuzzy
 msgid "Broken Glass"
 msgstr "Knust glass"
 
-#: src/Doom.js:87
+#: src/Doom.js:88
 msgid "Doom"
 msgstr ""
 
-#: src/EnergizeA.js:79
+#: src/EnergizeA.js:80
 msgid "Energize A"
 msgstr ""
 
-#: src/EnergizeB.js:80
+#: src/EnergizeB.js:81
 msgid "Energize B"
 msgstr ""
 
-#: src/Fire.js:99
+#: src/Fire.js:100
 msgid "Fire"
 msgstr "Brann"
 
-#: src/Fire.js:154
+#: src/Fire.js:155
 msgid "Default Fire"
 msgstr "Forvalgt brann"
 
-#: src/Fire.js:164
+#: src/Fire.js:165
 msgid "Hell Fire"
 msgstr ""
 
-#: src/Fire.js:174
+#: src/Fire.js:175
 msgid "Dark and Smutty"
 msgstr ""
 
-#: src/Fire.js:184
+#: src/Fire.js:185
 msgid "Cold Breeze"
 msgstr "Kald bris"
 
-#: src/Fire.js:194
+#: src/Fire.js:195
 msgid "Santa is Coming"
 msgstr "Julenissen kommer"
 
-#: src/Hexagon.js:97
+#: src/Glide.js:76
+msgid "Glide"
+msgstr ""
+
+#: src/Hexagon.js:98
 msgid "Hexagon"
 msgstr "Heksagon"
 
-#: src/Incinerate.js:130
+#: src/Incinerate.js:131
 msgid "Incinerate"
 msgstr ""
 
-#: src/Matrix.js:113
+#: src/Matrix.js:114
 msgid "Matrix"
 msgstr ""
 
-#: src/Pixelate.js:73
+#: src/Pixelate.js:74
 msgid "Pixelate"
 msgstr ""
 
-#: src/PixelWheel.js:73
+#: src/PixelWheel.js:74
 msgid "Pixel Wheel"
 msgstr ""
 
-#: src/PixelWipe.js:99
+#: src/PixelWipe.js:100
 msgid "Pixel Wipe"
 msgstr ""
 
-#: src/SnapOfDisintegration.js:117
+#: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
 msgstr ""
 
-#: src/TRexAttack.js:115
+#: src/TRexAttack.js:116
 msgid "T-Rex Attack"
 msgstr "T-rex-angrep"
 
-#: src/TVEffect.js:77
+#: src/TVEffect.js:78
 msgid "TV Effect"
 msgstr "TV-effekt"
 
-#: src/Wisps.js:85
+#: src/Wisps.js:86
 msgid "Wisps"
 msgstr ""
 
-#: prefs.js:118
+#: prefs.js:120
 msgid "Effect Options"
 msgstr "Effektalternativer"
 
-#: prefs.js:146
+#: prefs.js:148
 msgid "Go Back"
 msgstr "Gå tilbake"
 
-#: prefs.js:188
+#: prefs.js:190
 msgid "General Options"
 msgstr "Generelle innstillinger"
 
-#: prefs.js:282
+#: prefs.js:284
 msgid "Gold Sponsors"
 msgstr "Gullsponsorer"
 
-#: prefs.js:285
+#: prefs.js:287
 msgid "Silver Sponsors"
 msgstr "Sølvsponsorer"
 
-#: prefs.js:288
+#: prefs.js:290
 msgid "Bronze Sponsors"
 msgstr "Bronsesponsorer"
 
-#: prefs.js:291
+#: prefs.js:293
 msgid "Past Sponsors"
 msgstr "Tidligere sponsorer"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:514
+#: prefs.js:516
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Forhåndsvisning for %s"
 
-#: prefs.js:536
+#: prefs.js:538
 msgid "Close this Window to Preview the Effect!"
 msgstr "Lukk dette vinduet for å forhåndsvise effekten!"
 
-#: resources/ui/common/main-menu.ui:6
+#: resources/ui/common/main-menu.ui:12
 msgid "Visit Homepage"
 msgstr "Besøk hjemmesiden"
 
-#: resources/ui/common/main-menu.ui:10
+#: resources/ui/common/main-menu.ui:16
 msgid "View Changelog"
 msgstr "Vis endringslogg"
 
-#: resources/ui/common/main-menu.ui:16
+#: resources/ui/common/main-menu.ui:22
 msgid "Report a Bug"
 msgstr "Rapporter en feil"
 
-#: resources/ui/common/main-menu.ui:20
+#: resources/ui/common/main-menu.ui:26
 msgid "Create an Effect"
 msgstr "Opprett en effekt"
 
-#: resources/ui/common/main-menu.ui:24
+#: resources/ui/common/main-menu.ui:30
 msgid "Translate"
 msgstr "Oversett"
 
-#: resources/ui/common/main-menu.ui:28
+#: resources/ui/common/main-menu.ui:34
 msgid "Donate"
 msgstr "Doner"
 
-#: resources/ui/common/main-menu.ui:41
+#: resources/ui/common/main-menu.ui:47
 msgid "About Burn-My-Windows"
 msgstr "Om"
 
-#: resources/ui/gtk4/Matrix.ui:24 resources/ui/gtk4/BrokenGlass.ui:24
-#: resources/ui/gtk4/Incinerate.ui:24 resources/ui/gtk4/Wisps.ui:24
-#: resources/ui/gtk4/Fire.ui:49 resources/ui/gtk4/SnapOfDisintegration.ui:24
-#: resources/ui/gtk4/PixelWipe.ui:24 resources/ui/gtk4/TRexAttack.ui:24
-#: resources/ui/gtk4/PixelWheel.ui:24 resources/ui/gtk4/Doom.ui:24
-#: resources/ui/gtk4/TVEffect.ui:24 resources/ui/gtk4/EnergizeA.ui:24
-#: resources/ui/gtk4/Hexagon.ui:24 resources/ui/gtk4/EnergizeB.ui:24
-#: resources/ui/gtk4/Pixelate.ui:24 resources/ui/gtk4/Apparition.ui:24
-#: resources/ui/gtk3/Incinerate.ui:49 resources/ui/gtk3/Wisps.ui:42
-#: resources/ui/gtk3/Fire.ui:93 resources/ui/gtk3/PixelWipe.ui:49
-#: resources/ui/gtk3/PixelWheel.ui:49 resources/ui/gtk3/Doom.ui:56
-#: resources/ui/gtk3/TVEffect.ui:35 resources/ui/gtk3/EnergizeA.ui:42
-#: resources/ui/gtk3/Hexagon.ui:49 resources/ui/gtk3/EnergizeB.ui:42
-#: resources/ui/gtk3/Pixelate.ui:49 resources/ui/gtk3/Apparition.ui:63
+#: resources/ui/gtk4/Matrix.ui:30 resources/ui/gtk4/BrokenGlass.ui:30
+#: resources/ui/gtk4/Incinerate.ui:30 resources/ui/gtk4/Wisps.ui:30
+#: resources/ui/gtk4/Fire.ui:55 resources/ui/gtk4/SnapOfDisintegration.ui:30
+#: resources/ui/gtk4/Glide.ui:30 resources/ui/gtk4/PixelWipe.ui:30
+#: resources/ui/gtk4/TRexAttack.ui:30 resources/ui/gtk4/PixelWheel.ui:30
+#: resources/ui/gtk4/Doom.ui:30 resources/ui/gtk4/TVEffect.ui:30
+#: resources/ui/gtk4/EnergizeA.ui:30 resources/ui/gtk4/Hexagon.ui:30
+#: resources/ui/gtk4/EnergizeB.ui:30 resources/ui/gtk4/Pixelate.ui:30
+#: resources/ui/gtk4/Apparition.ui:30 resources/ui/gtk3/Incinerate.ui:55
+#: resources/ui/gtk3/Wisps.ui:48 resources/ui/gtk3/Fire.ui:99
+#: resources/ui/gtk3/Glide.ui:62 resources/ui/gtk3/PixelWipe.ui:55
+#: resources/ui/gtk3/PixelWheel.ui:55 resources/ui/gtk3/Doom.ui:62
+#: resources/ui/gtk3/TVEffect.ui:41 resources/ui/gtk3/EnergizeA.ui:48
+#: resources/ui/gtk3/Hexagon.ui:55 resources/ui/gtk3/EnergizeB.ui:48
+#: resources/ui/gtk3/Pixelate.ui:55 resources/ui/gtk3/Apparition.ui:69
 msgid "Animation Time [ms]"
 msgstr "Animasjonstid [ms]"
 
-#: resources/ui/gtk4/Matrix.ui:52 resources/ui/gtk4/Matrix.ui:98
-#: resources/ui/gtk4/Matrix.ui:144 resources/ui/gtk4/Matrix.ui:190
-#: resources/ui/gtk4/Matrix.ui:224 resources/ui/gtk4/Matrix.ui:258
-#: resources/ui/gtk4/BrokenGlass.ui:52 resources/ui/gtk4/BrokenGlass.ui:98
-#: resources/ui/gtk4/BrokenGlass.ui:144 resources/ui/gtk4/BrokenGlass.ui:190
-#: resources/ui/gtk4/BrokenGlass.ui:244 resources/ui/gtk4/Incinerate.ui:52
-#: resources/ui/gtk4/Incinerate.ui:98 resources/ui/gtk4/Incinerate.ui:144
-#: resources/ui/gtk4/Incinerate.ui:197 resources/ui/gtk4/Incinerate.ui:231
-#: resources/ui/gtk4/Wisps.ui:52 resources/ui/gtk4/Wisps.ui:98
-#: resources/ui/gtk4/Wisps.ui:132 resources/ui/gtk4/Fire.ui:77
-#: resources/ui/gtk4/Fire.ui:123 resources/ui/gtk4/Fire.ui:169
-#: resources/ui/gtk4/Fire.ui:222 resources/ui/gtk4/Fire.ui:280
-#: resources/ui/gtk4/PixelWipe.ui:52 resources/ui/gtk4/PixelWipe.ui:98
-#: resources/ui/gtk4/TRexAttack.ui:52 resources/ui/gtk4/TRexAttack.ui:98
-#: resources/ui/gtk4/TRexAttack.ui:144 resources/ui/gtk4/TRexAttack.ui:190
-#: resources/ui/gtk4/TRexAttack.ui:224 resources/ui/gtk4/PixelWheel.ui:52
-#: resources/ui/gtk4/PixelWheel.ui:98 resources/ui/gtk4/PixelWheel.ui:144
-#: resources/ui/gtk4/Doom.ui:52 resources/ui/gtk4/Doom.ui:98
-#: resources/ui/gtk4/Doom.ui:144 resources/ui/gtk4/Doom.ui:190
-#: resources/ui/gtk4/TVEffect.ui:52 resources/ui/gtk4/TVEffect.ui:86
-#: resources/ui/gtk4/EnergizeA.ui:52 resources/ui/gtk4/EnergizeA.ui:98
-#: resources/ui/gtk4/EnergizeA.ui:132 resources/ui/gtk4/Hexagon.ui:52
-#: resources/ui/gtk4/Hexagon.ui:98 resources/ui/gtk4/Hexagon.ui:144
-#: resources/ui/gtk4/Hexagon.ui:178 resources/ui/gtk4/Hexagon.ui:212
-#: resources/ui/gtk4/Hexagon.ui:265 resources/ui/gtk4/EnergizeB.ui:52
-#: resources/ui/gtk4/EnergizeB.ui:98 resources/ui/gtk4/EnergizeB.ui:132
-#: resources/ui/gtk4/Pixelate.ui:52 resources/ui/gtk4/Pixelate.ui:98
-#: resources/ui/gtk4/Pixelate.ui:144 resources/ui/gtk4/prefs.ui:166
-#: resources/ui/gtk4/prefs.ui:200 resources/ui/gtk4/Apparition.ui:52
-#: resources/ui/gtk4/Apparition.ui:98 resources/ui/gtk4/Apparition.ui:144
-#: resources/ui/gtk4/Apparition.ui:190 resources/ui/gtk4/Apparition.ui:236
-#: resources/ui/gtk3/Incinerate.ui:75 resources/ui/gtk3/Incinerate.ui:124
-#: resources/ui/gtk3/Incinerate.ui:173 resources/ui/gtk3/Incinerate.ui:235
-#: resources/ui/gtk3/Incinerate.ui:278 resources/ui/gtk3/Wisps.ui:68
-#: resources/ui/gtk3/Wisps.ui:117 resources/ui/gtk3/Wisps.ui:160
-#: resources/ui/gtk3/Fire.ui:119 resources/ui/gtk3/Fire.ui:167
-#: resources/ui/gtk3/Fire.ui:215 resources/ui/gtk3/Fire.ui:277
-#: resources/ui/gtk3/Fire.ui:345 resources/ui/gtk3/PixelWipe.ui:75
-#: resources/ui/gtk3/PixelWipe.ui:124 resources/ui/gtk3/PixelWheel.ui:75
-#: resources/ui/gtk3/PixelWheel.ui:124 resources/ui/gtk3/PixelWheel.ui:173
-#: resources/ui/gtk3/Doom.ui:82 resources/ui/gtk3/Doom.ui:131
-#: resources/ui/gtk3/Doom.ui:180 resources/ui/gtk3/Doom.ui:229
-#: resources/ui/gtk3/TVEffect.ui:61 resources/ui/gtk3/TVEffect.ui:104
-#: resources/ui/gtk3/EnergizeA.ui:68 resources/ui/gtk3/EnergizeA.ui:117
-#: resources/ui/gtk3/EnergizeA.ui:160 resources/ui/gtk3/Hexagon.ui:75
-#: resources/ui/gtk3/Hexagon.ui:124 resources/ui/gtk3/Hexagon.ui:173
-#: resources/ui/gtk3/Hexagon.ui:216 resources/ui/gtk3/Hexagon.ui:259
-#: resources/ui/gtk3/Hexagon.ui:321 resources/ui/gtk3/EnergizeB.ui:68
-#: resources/ui/gtk3/EnergizeB.ui:117 resources/ui/gtk3/EnergizeB.ui:160
-#: resources/ui/gtk3/Pixelate.ui:75 resources/ui/gtk3/Pixelate.ui:124
-#: resources/ui/gtk3/Pixelate.ui:173 resources/ui/gtk3/prefs.ui:219
-#: resources/ui/gtk3/prefs.ui:263 resources/ui/gtk3/Apparition.ui:89
-#: resources/ui/gtk3/Apparition.ui:138 resources/ui/gtk3/Apparition.ui:187
-#: resources/ui/gtk3/Apparition.ui:236 resources/ui/gtk3/Apparition.ui:285
+#: resources/ui/gtk4/Matrix.ui:58 resources/ui/gtk4/Matrix.ui:104
+#: resources/ui/gtk4/Matrix.ui:150 resources/ui/gtk4/Matrix.ui:196
+#: resources/ui/gtk4/Matrix.ui:230 resources/ui/gtk4/Matrix.ui:264
+#: resources/ui/gtk4/BrokenGlass.ui:58 resources/ui/gtk4/BrokenGlass.ui:104
+#: resources/ui/gtk4/BrokenGlass.ui:150 resources/ui/gtk4/BrokenGlass.ui:196
+#: resources/ui/gtk4/BrokenGlass.ui:250 resources/ui/gtk4/Incinerate.ui:58
+#: resources/ui/gtk4/Incinerate.ui:104 resources/ui/gtk4/Incinerate.ui:150
+#: resources/ui/gtk4/Incinerate.ui:203 resources/ui/gtk4/Incinerate.ui:237
+#: resources/ui/gtk4/Wisps.ui:58 resources/ui/gtk4/Wisps.ui:104
+#: resources/ui/gtk4/Wisps.ui:138 resources/ui/gtk4/Fire.ui:83
+#: resources/ui/gtk4/Fire.ui:129 resources/ui/gtk4/Fire.ui:175
+#: resources/ui/gtk4/Fire.ui:228 resources/ui/gtk4/Fire.ui:286
+#: resources/ui/gtk4/Glide.ui:58 resources/ui/gtk4/Glide.ui:104
+#: resources/ui/gtk4/Glide.ui:150 resources/ui/gtk4/Glide.ui:196
+#: resources/ui/gtk4/PixelWipe.ui:58 resources/ui/gtk4/PixelWipe.ui:104
+#: resources/ui/gtk4/TRexAttack.ui:58 resources/ui/gtk4/TRexAttack.ui:104
+#: resources/ui/gtk4/TRexAttack.ui:150 resources/ui/gtk4/TRexAttack.ui:196
+#: resources/ui/gtk4/TRexAttack.ui:230 resources/ui/gtk4/PixelWheel.ui:58
+#: resources/ui/gtk4/PixelWheel.ui:104 resources/ui/gtk4/PixelWheel.ui:150
+#: resources/ui/gtk4/Doom.ui:58 resources/ui/gtk4/Doom.ui:104
+#: resources/ui/gtk4/Doom.ui:150 resources/ui/gtk4/Doom.ui:196
+#: resources/ui/gtk4/TVEffect.ui:58 resources/ui/gtk4/TVEffect.ui:92
+#: resources/ui/gtk4/EnergizeA.ui:58 resources/ui/gtk4/EnergizeA.ui:104
+#: resources/ui/gtk4/EnergizeA.ui:138 resources/ui/gtk4/Hexagon.ui:58
+#: resources/ui/gtk4/Hexagon.ui:104 resources/ui/gtk4/Hexagon.ui:150
+#: resources/ui/gtk4/Hexagon.ui:184 resources/ui/gtk4/Hexagon.ui:218
+#: resources/ui/gtk4/Hexagon.ui:271 resources/ui/gtk4/EnergizeB.ui:58
+#: resources/ui/gtk4/EnergizeB.ui:104 resources/ui/gtk4/EnergizeB.ui:138
+#: resources/ui/gtk4/Pixelate.ui:58 resources/ui/gtk4/Pixelate.ui:104
+#: resources/ui/gtk4/Pixelate.ui:150 resources/ui/gtk4/prefs.ui:172
+#: resources/ui/gtk4/prefs.ui:206 resources/ui/gtk4/Apparition.ui:58
+#: resources/ui/gtk4/Apparition.ui:104 resources/ui/gtk4/Apparition.ui:150
+#: resources/ui/gtk4/Apparition.ui:196 resources/ui/gtk4/Apparition.ui:242
+#: resources/ui/gtk3/Incinerate.ui:81 resources/ui/gtk3/Incinerate.ui:130
+#: resources/ui/gtk3/Incinerate.ui:179 resources/ui/gtk3/Incinerate.ui:241
+#: resources/ui/gtk3/Incinerate.ui:284 resources/ui/gtk3/Wisps.ui:74
+#: resources/ui/gtk3/Wisps.ui:123 resources/ui/gtk3/Wisps.ui:166
+#: resources/ui/gtk3/Fire.ui:125 resources/ui/gtk3/Fire.ui:173
+#: resources/ui/gtk3/Fire.ui:221 resources/ui/gtk3/Fire.ui:283
+#: resources/ui/gtk3/Fire.ui:351 resources/ui/gtk3/Glide.ui:88
+#: resources/ui/gtk3/Glide.ui:137 resources/ui/gtk3/Glide.ui:186
+#: resources/ui/gtk3/Glide.ui:235 resources/ui/gtk3/PixelWipe.ui:81
+#: resources/ui/gtk3/PixelWipe.ui:130 resources/ui/gtk3/PixelWheel.ui:81
+#: resources/ui/gtk3/PixelWheel.ui:130 resources/ui/gtk3/PixelWheel.ui:179
+#: resources/ui/gtk3/Doom.ui:88 resources/ui/gtk3/Doom.ui:137
+#: resources/ui/gtk3/Doom.ui:186 resources/ui/gtk3/Doom.ui:235
+#: resources/ui/gtk3/TVEffect.ui:67 resources/ui/gtk3/TVEffect.ui:110
+#: resources/ui/gtk3/EnergizeA.ui:74 resources/ui/gtk3/EnergizeA.ui:123
+#: resources/ui/gtk3/EnergizeA.ui:166 resources/ui/gtk3/Hexagon.ui:81
+#: resources/ui/gtk3/Hexagon.ui:130 resources/ui/gtk3/Hexagon.ui:179
+#: resources/ui/gtk3/Hexagon.ui:222 resources/ui/gtk3/Hexagon.ui:265
+#: resources/ui/gtk3/Hexagon.ui:327 resources/ui/gtk3/EnergizeB.ui:74
+#: resources/ui/gtk3/EnergizeB.ui:123 resources/ui/gtk3/EnergizeB.ui:166
+#: resources/ui/gtk3/Pixelate.ui:81 resources/ui/gtk3/Pixelate.ui:130
+#: resources/ui/gtk3/Pixelate.ui:179 resources/ui/gtk3/prefs.ui:225
+#: resources/ui/gtk3/prefs.ui:269 resources/ui/gtk3/Apparition.ui:95
+#: resources/ui/gtk3/Apparition.ui:144 resources/ui/gtk3/Apparition.ui:193
+#: resources/ui/gtk3/Apparition.ui:242 resources/ui/gtk3/Apparition.ui:291
 msgid "Reset to Default Value"
 msgstr "Tilbakestill til forvalgt verdi"
 
-#: resources/ui/gtk4/Matrix.ui:70 resources/ui/gtk4/BrokenGlass.ui:70
-#: resources/ui/gtk4/Incinerate.ui:70 resources/ui/gtk4/Wisps.ui:70
-#: resources/ui/gtk4/Fire.ui:95 resources/ui/gtk4/SnapOfDisintegration.ui:70
-#: resources/ui/gtk4/EnergizeA.ui:70 resources/ui/gtk4/Hexagon.ui:70
-#: resources/ui/gtk4/EnergizeB.ui:70 resources/ui/gtk3/Incinerate.ui:98
-#: resources/ui/gtk3/Wisps.ui:91 resources/ui/gtk3/Fire.ui:141
-#: resources/ui/gtk3/EnergizeA.ui:91 resources/ui/gtk3/Hexagon.ui:98
-#: resources/ui/gtk3/EnergizeB.ui:91
+#: resources/ui/gtk4/Matrix.ui:76 resources/ui/gtk4/BrokenGlass.ui:76
+#: resources/ui/gtk4/Incinerate.ui:76 resources/ui/gtk4/Wisps.ui:76
+#: resources/ui/gtk4/Fire.ui:101 resources/ui/gtk4/SnapOfDisintegration.ui:76
+#: resources/ui/gtk4/Glide.ui:76 resources/ui/gtk4/EnergizeA.ui:76
+#: resources/ui/gtk4/Hexagon.ui:76 resources/ui/gtk4/EnergizeB.ui:76
+#: resources/ui/gtk3/Incinerate.ui:104 resources/ui/gtk3/Wisps.ui:97
+#: resources/ui/gtk3/Fire.ui:147 resources/ui/gtk3/Glide.ui:111
+#: resources/ui/gtk3/EnergizeA.ui:97 resources/ui/gtk3/Hexagon.ui:104
+#: resources/ui/gtk3/EnergizeB.ui:97
 msgid "Scale"
 msgstr "Størrelse"
 
-#: resources/ui/gtk4/Matrix.ui:116 resources/ui/gtk4/Apparition.ui:70
-#: resources/ui/gtk3/Apparition.ui:112
+#: resources/ui/gtk4/Matrix.ui:122 resources/ui/gtk4/Apparition.ui:76
+#: resources/ui/gtk3/Apparition.ui:118
 msgid "Randomness"
 msgstr "Tilfeldighet"
 
-#: resources/ui/gtk4/Matrix.ui:162
+#: resources/ui/gtk4/Matrix.ui:168
 msgid "Vertical Overshooting"
 msgstr ""
 
-#: resources/ui/gtk4/Matrix.ui:208
+#: resources/ui/gtk4/Matrix.ui:214
 msgid "Trail Color"
 msgstr ""
 
-#: resources/ui/gtk4/Matrix.ui:242
+#: resources/ui/gtk4/Matrix.ui:248
 msgid "Tip Color"
 msgstr ""
 
-#: resources/ui/gtk4/BrokenGlass.ui:116
+#: resources/ui/gtk4/BrokenGlass.ui:122
 msgid "Gravity"
 msgstr "Tyngdekraft"
 
-#: resources/ui/gtk4/BrokenGlass.ui:162
+#: resources/ui/gtk4/BrokenGlass.ui:168
 msgid "Blow Force"
 msgstr "Slagkraft"
 
-#: resources/ui/gtk4/BrokenGlass.ui:212
+#: resources/ui/gtk4/BrokenGlass.ui:218
 msgid "Shatter From Pointer Location"
 msgstr "Knus fra pekerposisjon"
 
-#: resources/ui/gtk4/BrokenGlass.ui:221
+#: resources/ui/gtk4/BrokenGlass.ui:227
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr "Skårene flyr fra der musepekeren var da du lukket vinduet."
 
-#: resources/ui/gtk4/Incinerate.ui:116 resources/ui/gtk3/Incinerate.ui:147
+#: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
 msgid "Turbulence"
 msgstr ""
 
-#: resources/ui/gtk4/Incinerate.ui:166 resources/ui/gtk3/Incinerate.ui:199
+#: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 msgid "Start at Pointer"
 msgstr ""
 
-#: resources/ui/gtk4/Incinerate.ui:175 resources/ui/gtk3/Incinerate.ui:208
+#: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 msgid "If disabled, a random location will be chosen."
 msgstr ""
 
-#: resources/ui/gtk4/Incinerate.ui:215 resources/ui/gtk4/Wisps.ui:116
-#: resources/ui/gtk4/SnapOfDisintegration.ui:116
-#: resources/ui/gtk4/TVEffect.ui:70 resources/ui/gtk4/EnergizeA.ui:116
-#: resources/ui/gtk4/EnergizeB.ui:116 resources/ui/gtk3/Incinerate.ui:257
-#: resources/ui/gtk3/Wisps.ui:139 resources/ui/gtk3/TVEffect.ui:83
-#: resources/ui/gtk3/EnergizeA.ui:139 resources/ui/gtk3/EnergizeB.ui:139
+#: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
+#: resources/ui/gtk4/SnapOfDisintegration.ui:122
+#: resources/ui/gtk4/TVEffect.ui:76 resources/ui/gtk4/EnergizeA.ui:122
+#: resources/ui/gtk4/EnergizeB.ui:122 resources/ui/gtk3/Incinerate.ui:263
+#: resources/ui/gtk3/Wisps.ui:145 resources/ui/gtk3/TVEffect.ui:89
+#: resources/ui/gtk3/EnergizeA.ui:145 resources/ui/gtk3/EnergizeB.ui:145
 msgid "Color"
 msgstr "Farge"
 
-#: resources/ui/gtk4/Fire.ui:25 resources/ui/gtk3/Fire.ui:49
+#: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 msgid "Presets"
 msgstr "Forhåndsinnstillinger"
 
-#: resources/ui/gtk4/Fire.ui:141 resources/ui/gtk3/Fire.ui:189
+#: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk3/Fire.ui:195
 msgid "Speed"
 msgstr "Hastighet"
 
-#: resources/ui/gtk4/Fire.ui:191 resources/ui/gtk3/Fire.ui:241
+#: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
 msgid "3D Noise"
 msgstr "3D-støy"
 
-#: resources/ui/gtk4/Fire.ui:200 resources/ui/gtk3/Fire.ui:250
+#: resources/ui/gtk4/Fire.ui:206 resources/ui/gtk3/Fire.ui:256
 msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr "Mer dynamisk ild, men krever mer GPU-kraft."
 
-#: resources/ui/gtk4/Fire.ui:240 resources/ui/gtk3/Fire.ui:300
+#: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
 msgid "Gradient"
 msgstr ""
 
-#: resources/ui/gtk4/PixelWipe.ui:70 resources/ui/gtk4/PixelWheel.ui:116
-#: resources/ui/gtk4/Doom.ui:162 resources/ui/gtk4/Pixelate.ui:116
-#: resources/ui/gtk3/PixelWipe.ui:98 resources/ui/gtk3/PixelWheel.ui:147
-#: resources/ui/gtk3/Doom.ui:203 resources/ui/gtk3/Pixelate.ui:147
+#: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:160
+msgid "Squish"
+msgstr ""
+
+#: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:209
+msgid "Tilt"
+msgstr ""
+
+#: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
+#: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
+#: resources/ui/gtk3/PixelWipe.ui:104 resources/ui/gtk3/PixelWheel.ui:153
+#: resources/ui/gtk3/Doom.ui:209 resources/ui/gtk3/Pixelate.ui:153
 msgid "Pixel Size"
 msgstr ""
 
-#: resources/ui/gtk4/TRexAttack.ui:70
+#: resources/ui/gtk4/TRexAttack.ui:76
 msgid "Claw Scratch Scale"
 msgstr ""
 
-#: resources/ui/gtk4/TRexAttack.ui:116
+#: resources/ui/gtk4/TRexAttack.ui:122
 msgid "Claw Scratch Count"
 msgstr ""
 
-#: resources/ui/gtk4/TRexAttack.ui:162
+#: resources/ui/gtk4/TRexAttack.ui:168
 msgid "Warp Effect"
 msgstr ""
 
-#: resources/ui/gtk4/TRexAttack.ui:208
+#: resources/ui/gtk4/TRexAttack.ui:214
 msgid "Flash Color"
 msgstr ""
 
-#: resources/ui/gtk4/PixelWheel.ui:70 resources/ui/gtk3/PixelWheel.ui:98
+#: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 msgid "Spoke Count"
 msgstr ""
 
-#: resources/ui/gtk4/effectPage.ui:37 resources/ui/gtk3/effectPage.ui:37
+#: resources/ui/gtk4/effectPage.ui:43 resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this Effect"
 msgstr "Forhåndsvis denne effekten"
 
-#: resources/ui/gtk4/Doom.ui:70 resources/ui/gtk3/Doom.ui:105
+#: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 msgid "Horizontal Scale"
 msgstr ""
 
-#: resources/ui/gtk4/Doom.ui:116 resources/ui/gtk3/Doom.ui:154
+#: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
 msgid "Vertical Scale"
 msgstr ""
 
-#: resources/ui/gtk4/Hexagon.ui:116 resources/ui/gtk3/Hexagon.ui:147
+#: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 msgid "Mesh Line Width"
 msgstr ""
 
-#: resources/ui/gtk4/Hexagon.ui:162 resources/ui/gtk3/Hexagon.ui:195
+#: resources/ui/gtk4/Hexagon.ui:168 resources/ui/gtk3/Hexagon.ui:201
 msgid "Line Color"
 msgstr "Linjefarge"
 
-#: resources/ui/gtk4/Hexagon.ui:196 resources/ui/gtk3/Hexagon.ui:238
+#: resources/ui/gtk4/Hexagon.ui:202 resources/ui/gtk3/Hexagon.ui:244
 msgid "Glow Color"
 msgstr "Glødefarge"
 
-#: resources/ui/gtk4/Hexagon.ui:234 resources/ui/gtk3/Hexagon.ui:285
+#: resources/ui/gtk4/Hexagon.ui:240 resources/ui/gtk3/Hexagon.ui:291
 msgid "Additive Blending"
 msgstr ""
 
-#: resources/ui/gtk4/Hexagon.ui:243 resources/ui/gtk3/Hexagon.ui:294
+#: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
 msgid "You may want to enable this for dark window themes."
 msgstr ""
 
-#: resources/ui/gtk4/Pixelate.ui:70 resources/ui/gtk3/Pixelate.ui:98
+#: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
 msgid "Noise"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:28 resources/ui/gtk3/prefs.ui:35
+#: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
 msgid "Welcome to Burn-My-Windows!"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:39 resources/ui/gtk3/prefs.ui:46
+#: resources/ui/gtk4/prefs.ui:45 resources/ui/gtk3/prefs.ui:52
 msgid "If you like this extension, recommend it to your friends :)"
 msgstr "Hvis du liker denne utvidelsen kan du anbefale den til vennene dine :)"
 
-#: resources/ui/gtk4/prefs.ui:66 resources/ui/gtk3/prefs.ui:74
+#: resources/ui/gtk4/prefs.ui:72 resources/ui/gtk3/prefs.ui:80
 msgid "Open Window Animation"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:75 resources/ui/gtk4/prefs.ui:119
-#: resources/ui/gtk3/prefs.ui:83 resources/ui/gtk3/prefs.ui:147
+#: resources/ui/gtk4/prefs.ui:81 resources/ui/gtk4/prefs.ui:125
+#: resources/ui/gtk3/prefs.ui:89 resources/ui/gtk3/prefs.ui:153
 msgid "If multiple are selected, one is chosen randomly."
 msgstr "Hvis flere blir valgt, velges én tilfeldig."
 
-#: resources/ui/gtk4/prefs.ui:90 resources/ui/gtk4/prefs.ui:134
-#: resources/ui/gtk3/prefs.ui:104 resources/ui/gtk3/prefs.ui:168
+#: resources/ui/gtk4/prefs.ui:96 resources/ui/gtk4/prefs.ui:140
+#: resources/ui/gtk3/prefs.ui:110 resources/ui/gtk3/prefs.ui:174
 msgid "Choose Effects"
 msgstr "Velg effekter"
 
-#: resources/ui/gtk4/prefs.ui:110 resources/ui/gtk3/prefs.ui:138
+#: resources/ui/gtk4/prefs.ui:116 resources/ui/gtk3/prefs.ui:144
 msgid "Close Window Animation"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:150 resources/ui/gtk3/prefs.ui:198
+#: resources/ui/gtk4/prefs.ui:156 resources/ui/gtk3/prefs.ui:204
 msgid "Also Add Effects to Dialogs"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk3/prefs.ui:242
+#: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
 msgid "Disable on Battery Power"
 msgstr ""
 
-#: resources/ui/gtk4/Apparition.ui:116 resources/ui/gtk3/Apparition.ui:161
+#: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 msgid "Twirl Intensity"
 msgstr "Hvirvelintensitet"
 
-#: resources/ui/gtk4/Apparition.ui:162 resources/ui/gtk3/Apparition.ui:210
+#: resources/ui/gtk4/Apparition.ui:168 resources/ui/gtk3/Apparition.ui:216
 msgid "Shake Intensity"
 msgstr "Ristingsintensitet"
 
-#: resources/ui/gtk4/Apparition.ui:208 resources/ui/gtk3/Apparition.ui:259
+#: resources/ui/gtk4/Apparition.ui:214 resources/ui/gtk3/Apparition.ui:265
 msgid "Suction Intensity"
 msgstr "Sugeintensitet"
 
-#: resources/ui/gtk3/Fire.ui:63
+#: resources/ui/gtk3/Fire.ui:69
 msgid "Choose a Preset"
 msgstr "Velg en forhåndsinnstilling"
 
