@@ -53,6 +53,7 @@ var PreferencesDialog = class PreferencesDialog {
       new Me.imports.src.EnergizeA.EnergizeA(),
       new Me.imports.src.EnergizeB.EnergizeB(),
       new Me.imports.src.Fire.Fire(),
+      new Me.imports.src.Glide.Glide(),
       new Me.imports.src.Hexagon.Hexagon(),
       new Me.imports.src.Incinerate.Incinerate(),
       new Me.imports.src.Matrix.Matrix(),

@@ -183,13 +183,18 @@ float getRelativeEdgeMask(float fadeAmount) {
 
 // ------------------------------------------------------------------------------- 2D math
 
+// Returns the shortest distance between the given point and the line defined by "origin"
+// and "direction".
 float distToLine(vec2 origin, vec2 direction, vec2 point) {
   vec2 perpendicular = vec2(direction.y, -direction.x);
   return abs(dot(normalize(perpendicular), origin - point));
 }
 
+// Returns a positive number if a -> b forms a clockwise corner, or a negative number if
+// the corner is counter-clockwise.
 float getWinding(vec2 a, vec2 b) { return cross(vec3(a, 0.0), vec3(b, 0.0)).z; }
 
+// Rotates the given 2D vector a clockwise by the angle alpha (given in radians).
 vec2 rotate(vec2 a, float angle) {
   return vec2(a.x * cos(angle) - a.y * sin(angle), a.x * sin(angle) + a.y * cos(angle));
 }

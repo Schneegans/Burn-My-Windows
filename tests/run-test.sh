@@ -210,6 +210,7 @@ set_setting "test-mode" true
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
+test_effect "glide"
 test_effect "hexagon"
 test_effect "incinerate"
 test_effect "pixelate"

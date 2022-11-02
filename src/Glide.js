@@ -24,14 +24,13 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This effect pixelates the window texture and hides the pixels radially, starting     //
-// from the pointer position.                                                           //
+// This very simple effect fades the window to transparency with subtle 3D effects.     //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var PixelWipe = class {
+var Glide = class {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
@@ -40,44 +39,21 @@ var PixelWipe = class {
   constructor() {
     this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uPixelSize = shader.get_uniform_location('uPixelSize');
-      shader._uStartPos  = shader.get_uniform_location('uStartPos');
+      shader._uScale  = shader.get_uniform_location('uScale');
+      shader._uSquish = shader.get_uniform_location('uSquish');
+      shader._uTilt   = shader.get_uniform_location('uTilt');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
-        // Because the actor position may change after the begin-animation signal is
-        // called, we set the uStartPos uniform during the update callback.
-        this._startPointerPos = global.get_pointer();
-        this._actor           = actor;
-
+      shader.connect('begin-animation', (shader, settings) => {
         // clang-format off
-        shader.set_uniform_float(shader._uPixelSize, 1, [settings.get_int('pixel-wipe-pixel-size')]);
+        shader.set_uniform_float(shader._uScale, 1,  [settings.get_double('glide-scale')]);
+        shader.set_uniform_float(shader._uSquish, 1, [settings.get_double('glide-squish')]);
+        shader.set_uniform_float(shader._uTilt, 1,   [settings.get_double('glide-tilt')]);
         // clang-format on
-      });
-
-      // We set the uStartPos uniform during the update callback as the actor position
-      // may not be set up properly before the begin animation callback.
-      shader.connect('update-animation', (shader) => {
-        if (this._startPointerPos) {
-          const [x, y]               = this._startPointerPos;
-          const [ok, localX, localY] = this._actor.transform_stage_point(x, y);
-
-          if (ok) {
-            let startPos = [
-              Math.max(0.0, Math.min(1.0, localX / this._actor.width)),
-              Math.max(0.0, Math.min(1.0, localY / this._actor.height))
-            ];
-            shader.set_uniform_float(shader._uStartPos, 2, startPos);
-          }
-        }
-      });
-
-      // Make sure to drop the reference to the actor.
-      shader.connect('end-animation', (shader) => {
-        shader._actor = null;
       });
     });
   }
+
 
   // ---------------------------------------------------------------------------- metadata
 
@@ -91,13 +67,13 @@ var PixelWipe = class {
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
-    return 'pixel-wipe';
+    return 'glide';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   getLabel() {
-    return _('Pixel Wipe');
+    return _('Glide');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -107,14 +83,16 @@ var PixelWipe = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/PixelWipe.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Glide.ui`);
 
     // Bind all properties.
-    dialog.bindAdjustment('pixel-wipe-animation-time');
-    dialog.bindAdjustment('pixel-wipe-pixel-size');
+    dialog.bindAdjustment('glide-animation-time');
+    dialog.bindAdjustment('glide-scale');
+    dialog.bindAdjustment('glide-squish');
+    dialog.bindAdjustment('glide-tilt');
 
     // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('pixel-wipe-prefs');
+    return dialog.getBuilder().get_object('glide-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

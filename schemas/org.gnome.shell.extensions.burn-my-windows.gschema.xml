@@ -298,6 +298,46 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Glide Options                                                                 -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="glide-close-effect" type="b">
+      <default>true</default>
+      <summary>Glide Close Effect</summary>
+      <description>Use the glide effect for window closing.</description>
+    </key>
+
+    <key name="glide-open-effect" type="b">
+      <default>false</default>
+      <summary>Glide Open Effect</summary>
+      <description>Use the glide effect for window opening.</description>
+    </key>
+
+    <key name="glide-animation-time" type="i">
+      <default>250</default>
+      <summary>Glide Animation Time</summary>
+      <description>The time the glide effect takes.</description>
+    </key>
+
+    <key name="glide-scale" type="d">
+      <default>0.9</default>
+      <summary>Glide Scale</summary>
+      <description>The scale of the window.</description>
+    </key>
+
+    <key name="glide-squish" type="d">
+      <default>0.1</default>
+      <summary>Glide Squish</summary>
+      <description>The amount of squishing.</description>
+    </key>
+
+    <key name="glide-tilt" type="d">
+      <default>-0.3</default>
+      <summary>Glide Tilt</summary>
+      <description>The amount of tilting.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Matrix Options                                                                -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
