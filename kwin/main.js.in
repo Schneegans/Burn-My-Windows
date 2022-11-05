@@ -48,13 +48,16 @@ class %EFFECT_CLASS% {
         return color;
     }
 
+    // This is called when the effect is loaded and whenever the settings of the effect
+    // are changed by the user.
     loadConfig() {
         this.duration = animationTime(effect.readConfig('Duration', 1000));
 
         %ON_SETTINGS_CHANGE%
     }
 
-    static isScaleWindow(window) {
+    static shouldAnimateWindow(window) {
+
         // We don't want to animate most of plasmashell's windows, yet, some
         // of them we want to, for example, Task Manager Settings window.
         // The problem is that all those window share single window class.
@@ -107,7 +110,7 @@ class %EFFECT_CLASS% {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!%EFFECT_CLASS%.isScaleWindow(window)) {
+        if (!%EFFECT_CLASS%.shouldAnimateWindow(window)) {
             return;
         }
         if (!window.visible) {
@@ -122,7 +125,7 @@ class %EFFECT_CLASS% {
 
         %ON_ANIMATION_BEGIN%
 
-        window.scaleInAnimation = animate({
+        window.bmwInAnimation = animate({
             window: window,
             curve: QEasingCurve.Linear,
             duration: this.duration,
@@ -142,7 +145,7 @@ class %EFFECT_CLASS% {
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
-        if (!%EFFECT_CLASS%.isScaleWindow(window)) {
+        if (!%EFFECT_CLASS%.shouldAnimateWindow(window)) {
             return;
         }
         if (!window.visible || window.skipsCloseAnimation) {
@@ -151,9 +154,9 @@ class %EFFECT_CLASS% {
         if (effect.isGrabbed(window, Effect.WindowClosedGrabRole)) {
             return;
         }
-        if (window.scaleInAnimation) {
-            cancel(window.scaleInAnimation);
-            delete window.scaleInAnimation;
+        if (window.bmwInAnimation) {
+            cancel(window.bmwInAnimation);
+            delete window.bmwInAnimation;
         }
         this.setupForcedRoles(window);
 
@@ -161,7 +164,7 @@ class %EFFECT_CLASS% {
 
         %ON_ANIMATION_BEGIN%
 
-        window.scaleOutAnimation = animate({
+        window.bmwOutAnimation = animate({
             window: window,
             curve: QEasingCurve.Linear,
             duration: this.duration,
@@ -179,15 +182,15 @@ class %EFFECT_CLASS% {
 
     slotWindowDataChanged(window, role) {
         if (role == Effect.WindowAddedGrabRole) {
-            if (window.scaleInAnimation && effect.isGrabbed(window, role)) {
-                cancel(window.scaleInAnimation);
-                delete window.scaleInAnimation;
+            if (window.bmwInAnimation && effect.isGrabbed(window, role)) {
+                cancel(window.bmwInAnimation);
+                delete window.bmwInAnimation;
                 this.cleanupForcedRoles(window);
             }
         } else if (role == Effect.WindowClosedGrabRole) {
-            if (window.scaleOutAnimation && effect.isGrabbed(window, role)) {
-                cancel(window.scaleOutAnimation);
-                delete window.scaleOutAnimation;
+            if (window.bmwOutAnimation && effect.isGrabbed(window, role)) {
+                cancel(window.bmwOutAnimation);
+                delete window.bmwOutAnimation;
                 this.cleanupForcedRoles(window);
             }
         }
