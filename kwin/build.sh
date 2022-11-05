@@ -82,12 +82,12 @@ generate() {
   perl -pi -e "s/%SHADER_NAME%/$1/g;"                         "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   perl -pi -e "s/\f/\//g;"                                    "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
 
-  # Now create the metadata.desktop file. Again, we replace some placeholders.
-  cp metadata.desktop.in "$BUILD_DIR/$DIR_NAME/metadata.desktop"
-  perl -pi -e "s/%ICON%/$1/g;"            "$BUILD_DIR/$DIR_NAME/metadata.desktop"
-  perl -pi -e "s/%NAME%/$2/g;"            "$BUILD_DIR/$DIR_NAME/metadata.desktop"
-  perl -pi -e "s/%DESCRIPTION%/$3/g;"     "$BUILD_DIR/$DIR_NAME/metadata.desktop"
-  perl -pi -e "s/%DIR_NAME%/$DIR_NAME/g;" "$BUILD_DIR/$DIR_NAME/metadata.desktop"
+  # Now create the metadata.json file. Again, we replace some placeholders.
+  cp metadata.json.in "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%ICON%/$1/g;"            "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%NAME%/$2/g;"            "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%DESCRIPTION%/$3/g;"     "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%DIR_NAME%/$DIR_NAME/g;" "$BUILD_DIR/$DIR_NAME/metadata.json"
 
   # Now create the two required shader files. We prepend the common.glsl to each shader.
   # We also define KWIN and KWIN_LEGACY. The code in common.glsl takes some different

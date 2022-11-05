@@ -1,0 +1,28 @@
+{
+  "KPlugin": {
+     "Name": "%NAME%",
+     "Description": "%DESCRIPTION%",
+     "Icon": "preferences-system-windows-effect-%ICON%",
+     "Category": "Window Open/Close Animation",
+     "Authors": [ 
+        { "Name": "Simon Schneegans", "Email": "code@simonschneegans.de" },
+        { "Name": "Martin Flöser", "Email": "vlad.zahorodnii@kde.org" },
+        { "Name": "Aaron Seigo", "Email": "mgraesslin@kde.org" }
+     ],
+     "Id": "%DIR_NAME%",
+     "License": "GPLv3",
+     "Version": "1.0",
+     "EnabledByDefault": "false",
+     "Website": "https://github.com/Schneegans/Burn-My-Windows/",
+     "BugReportUrl": "https://github.com/Schneegans/Burn-My-Windows/issues",
+     "ServiceTypes": [
+       "KWin/Effect"
+     ]
+  },
+  "X-KDE-Ordering": "60",
+  "X-KDE-PluginKeyword": "%DIR_NAME%",
+  "X-KWin-Config-TranslationDomain": "kwin_effects",
+  "X-KWin-Exclusive-Category": "toplevel-open-close-animation",
+  "X-Plasma-API": "javascript",
+  "X-Plasma-MainScript": "code/main.js"
+}
