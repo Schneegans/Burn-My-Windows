@@ -84,8 +84,8 @@ generate() {
 
   # Now create the metadata.json file. Again, we replace some placeholders.
   cp metadata.json.in "$BUILD_DIR/$DIR_NAME/metadata.json"
-  perl -pi -e "s/%NAME%/$2/g;"            "$BUILD_DIR/$DIR_NAME/metadata.json"
   perl -pi -e "s/%ICON%/$1/g;"            "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%NAME%/$2/g;"            "$BUILD_DIR/$DIR_NAME/metadata.json"
   perl -pi -e "s/%DESCRIPTION%/$3/g;"     "$BUILD_DIR/$DIR_NAME/metadata.json"
   perl -pi -e "s/%DIR_NAME%/$DIR_NAME/g;" "$BUILD_DIR/$DIR_NAME/metadata.json"
 
