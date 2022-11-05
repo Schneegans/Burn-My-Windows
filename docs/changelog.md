@@ -16,7 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Other Enhancements
 
 * Burn-My-Windows now follows the [REUSE Specification](https://reuse.software/spec).
-
+* The KWin port of Burn-My-Windows now uses `metadata.json` files instead of the deprecated `metadata.desktop` format.
 
 ## [Burn My Windows 21](https://github.com/schneegans/Burn-My-Windows/releases/tag/v21)
 
