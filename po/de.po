@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-02 22:09+0100\n"
-"PO-Revision-Date: 2022-09-02 19:42+0000\n"
+"PO-Revision-Date: 2022-11-06 12:02+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -65,7 +65,7 @@ msgstr "Weihnachtsgrüße"
 
 #: src/Glide.js:76
 msgid "Glide"
-msgstr ""
+msgstr "Gleiten"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -345,11 +345,11 @@ msgstr "Farbverlauf"
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:160
 msgid "Squish"
-msgstr ""
+msgstr "Stauchen"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:209
 msgid "Tilt"
-msgstr ""
+msgstr "Neigen"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
