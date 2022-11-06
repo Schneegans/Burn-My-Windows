@@ -120,14 +120,31 @@ var PreferencesDialog = class PreferencesDialog {
       const group = new Adw.PreferencesGroup({title: _('Effect Options')});
       this.gtkBoxAppend(this._widget, group);
 
+      // This stores all expander rows for the effects. We use this to implement the
+      // accordion-functionality of the effect settings.
+      this._effectRows = [];
+
       this._ALL_EFFECTS.forEach(effect => {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
           const row = effect.getPreferences(this);
           row.set_title(effect.getLabel());
 
+          // Un-expand any previously expanded effect row. This way we ensure that there
+          // is only one expanded row at any time.
+          row.connect('notify::expanded', (currentRow) => {
+            if (currentRow.get_expanded()) {
+              this._effectRows.forEach(row => {
+                if (row != currentRow) {
+                  row.set_expanded(false);
+                }
+              });
+            }
+          });
+
+          // Show a preview of the effect with a button in the effect row.
           const previewButton = Gtk.Button.new_from_icon_name('eye-open-symbolic');
-          previewButton.add_css_class('flat');
+          previewButton.add_css_class('circular');
           previewButton.set_tooltip_text(_('Preview this Effect'));
           previewButton.set_valign(Gtk.Align.CENTER);
           row.add_prefix(previewButton);
@@ -137,6 +154,8 @@ var PreferencesDialog = class PreferencesDialog {
           });
 
           group.add(row);
+
+          this._effectRows.push(row);
         }
       });
 
