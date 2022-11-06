@@ -450,97 +450,55 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="GtkBox" id="simple-fade-prefs">
-    <property name="orientation">vertical</property>
+  <object class="AdwActionRow" id="simple-fade-prefs">
 
     <child>
-      <object class="GtkFrame">
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
-            <property name="show-separators">1</property>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">simple-fade-animation-time</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-simple-fade-animation-time">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
             <style>
-              <class name="rich-list" />
+              <class name="flat" />
             </style>
+          </object>
+        </child>
+      </object>
+    </child>
 
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Animation Time [ms]</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-animation-time</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-animation-time">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Fade Width</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-width</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-width">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Fade Width</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">simple-fade-width</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-simple-fade-width">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
           </object>
         </child>
       </object>

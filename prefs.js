@@ -116,54 +116,24 @@ var PreferencesDialog = class PreferencesDialog {
       const generalPrefs = this._builder.get_object('general-prefs');
       this.gtkBoxAppend(this._widget, generalPrefs);
 
-      // Then add a preferences group with action rows to open the effect subpages.
+      // Then add a preferences group with expander rows.
       const group = new Adw.PreferencesGroup({title: _('Effect Options')});
       this.gtkBoxAppend(this._widget, group);
 
       this._ALL_EFFECTS.forEach(effect => {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+          const row = effect.getPreferences(this);
+          row.set_title(effect.getLabel());
 
-          const row = new Adw.ActionRow({title: effect.getLabel(), activatable: true});
-          row.add_suffix(new Gtk.Image({icon_name: 'go-next-symbolic'}));
+          const previewButton = Gtk.Button.new_from_icon_name('eye-open-symbolic');
+          previewButton.add_css_class('flat');
+          previewButton.set_tooltip_text(_('Preview this Effect'));
+          previewButton.set_valign(Gtk.Align.CENTER);
+          row.add_prefix(previewButton);
 
-          // Open a subpage with the effect's settings.
-          row.connect('activated', () => {
-            const page         = new BurnMyWindowsEffectPage(effect, this);
-            page.valign        = Gtk.Align.CENTER;
-            page.margin_top    = 10;
-            page.margin_bottom = 10;
-            page.margin_start  = 10;
-            page.margin_end    = 10;
-
-            // Add the effect's preferences (if any).
-            const preferences = effect.getPreferences(this);
-            if (preferences) {
-              this.gtkBoxAppend(page, preferences);
-            }
-
-            // Add a button for back navigation.
-            const backButton = new Gtk.Button({
-              halign: Gtk.Align.CENTER,
-              label: _('Go Back'),
-            });
-            backButton.add_css_class('suggested-action');
-            backButton.add_css_class('pill-button');
-            backButton.connect('clicked', () => {
-              row.get_root().close_subpage();
-            });
-
-            this.gtkBoxAppend(page, backButton);
-
-            // Wrap the preferences group in an Adw.Clamp.
-            const clamp = new Adw.Clamp({
-              child: page,
-              maximum_size: 600,
-              tightening_threshold: 400,
-            });
-
-            // Open the subpage on click.
-            row.get_root().present_subpage(clamp);
+          previewButton.connect('clicked', () => {
+            this._previewEffect(effect);
           });
 
           group.add(row);
@@ -482,16 +452,73 @@ var PreferencesDialog = class PreferencesDialog {
     return null;
   }
 
+  // Opens a modal window using the given effect.
+  _previewEffect(effect) {
+
+    // Set the to-be-previewed effect.
+    this.getSettings().set_string('open-preview-effect', effect.getNick());
+    this.getSettings().set_string('close-preview-effect', effect.getNick());
+
+    // Make sure that the window.show() firther below "sees" this change.
+    Gio.Settings.sync();
+
+    // Create the preview-window.
+    const window = new Gtk.Window({
+      // Translators: %s will be replaced by the effect's name.
+      title: _('Preview for %s').replace('%s', effect.getLabel()),
+      default_width: 800,
+      default_height: 450,
+      modal: true,
+      transient_for: utils.isGTK4() ? this._widget.get_root() :
+                                      this._widget.get_toplevel()
+    });
+
+    // Add a header bar to the window.
+    if (utils.isGTK4()) {
+      const header = Gtk.HeaderBar.new();
+      window.set_titlebar(header);
+    }
+
+    const box = new Gtk.Box({
+      orientation: Gtk.Orientation.VERTICAL,
+      valign: Gtk.Align.CENTER,
+      spacing: 10,
+      margin_start: 50,
+      margin_end: 50
+    });
+
+    const label   = Gtk.Label.new(_('Close this Window to Preview the Effect!'));
+    label.wrap    = true;
+    label.justify = Gtk.Justification.CENTER;
+    label.get_style_context().add_class('large-title');
+
+    const image = new Gtk.Image({
+      icon_name: 'burn-my-windows-symbolic',
+      pixel_size: 128,
+    });
+
+    this.gtkBoxAppend(box, image);
+    this.gtkBoxAppend(box, label);
+
+    if (utils.isGTK4()) {
+      window.set_child(box);
+      window.show();
+    } else {
+      window.add(box);
+      window.show_all();
+    }
+  }
+
   // Initializes template widgets used by the preferences dialog.
   _registerCustomClasses() {
 
-    // Each effect page is based on a template widget. This template contains the title
-    // and the preview button.
-    if (GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
+    // On GTK3, each effect page is based on a template widget. This template contains the
+    // title and the preview button.
+    if (!utils.isGTK4() && GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
       BurnMyWindowsEffectPage = GObject.registerClass(
         {
           GTypeName: 'BurnMyWindowsEffectPage',
-          Template: `resource:///ui/${utils.getGTKString()}/effectPage.ui`,
+          Template: `resource:///ui/gtk3/effectPage.ui`,
           InternalChildren: ['label', 'button'],
         },
         class BurnMyWindowsEffectPage extends Gtk.Box {  // ------------------------------
@@ -503,58 +530,7 @@ var PreferencesDialog = class PreferencesDialog {
 
             // Open the preview window once the preview button is clicked.
             this._button.connect('clicked', () => {
-              // Set the to-be-previewed effect.
-              dialog.getSettings().set_string('open-preview-effect', effect.getNick());
-              dialog.getSettings().set_string('close-preview-effect', effect.getNick());
-
-              // Make sure that the window.show() firther below "sees" this change.
-              Gio.Settings.sync();
-
-              // Create the preview-window.
-              const window = new Gtk.Window({
-                // Translators: %s will be replaced by the effect's name.
-                title: _('Preview for %s').replace('%s', effect.getLabel()),
-                default_width: 800,
-                default_height: 450,
-                modal: true,
-                transient_for: utils.isGTK4() ? this._button.get_root() :
-                                                this._button.get_toplevel()
-              });
-
-              // Add a header bar to the window.
-              if (utils.isGTK4()) {
-                const header = Gtk.HeaderBar.new();
-                window.set_titlebar(header);
-              }
-
-              const box = new Gtk.Box({
-                orientation: Gtk.Orientation.VERTICAL,
-                valign: Gtk.Align.CENTER,
-                spacing: 10,
-                margin_start: 50,
-                margin_end: 50
-              });
-
-              const label = Gtk.Label.new(_('Close this Window to Preview the Effect!'));
-              label.wrap  = true;
-              label.justify = Gtk.Justification.CENTER;
-              label.get_style_context().add_class('large-title');
-
-              const image = new Gtk.Image({
-                icon_name: 'burn-my-windows-symbolic',
-                pixel_size: 128,
-              });
-
-              dialog.gtkBoxAppend(box, image);
-              dialog.gtkBoxAppend(box, label);
-
-              if (utils.isGTK4()) {
-                window.set_child(box);
-                window.show();
-              } else {
-                window.add(box);
-                window.show_all();
-              }
+              dialog._previewEffect(effect);
             });
           }
         });
