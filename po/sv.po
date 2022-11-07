@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 21:08+0100\n"
+"POT-Creation-Date: 2022-11-07 21:24+0100\n"
 "PO-Revision-Date: 2022-08-08 14:16+0000\n"
 "Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -111,7 +111,8 @@ msgstr "Feer"
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
@@ -449,10 +450,6 @@ msgstr "Färg för bränningen"
 msgid "Spoke Count"
 msgstr ""
 
-#: resources/ui/gtk4/effectPage.ui:43
-msgid "Preview this Effect"
-msgstr "Förhandsgranska den här effekten"
-
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
@@ -549,6 +546,9 @@ msgstr "Sugningens intensitet"
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "Välj en förinställning"
+
+#~ msgid "Preview this Effect"
+#~ msgstr "Förhandsgranska den här effekten"
 
 #~ msgid "Effect Options"
 #~ msgstr "Effektalternativ"

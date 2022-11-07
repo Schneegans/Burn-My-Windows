@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 21:08+0100\n"
+"POT-Creation-Date: 2022-11-07 21:24+0100\n"
 "PO-Revision-Date: 2022-10-12 22:26+0000\n"
 "Last-Translator: tamer dab <dabsantamer@yahoo.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -112,7 +112,8 @@ msgstr "قطع"
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
@@ -449,10 +450,6 @@ msgstr "ألوان مضيئة"
 msgid "Spoke Count"
 msgstr "عدد الشعاع"
 
-#: resources/ui/gtk4/effectPage.ui:43
-msgid "Preview this Effect"
-msgstr "معاينة هذا التأثير"
-
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
@@ -549,6 +546,9 @@ msgstr "شدة السحب"
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "اختر إعدادًا مسبقًا"
+
+#~ msgid "Preview this Effect"
+#~ msgstr "معاينة هذا التأثير"
 
 #~ msgid "Effect Options"
 #~ msgstr "خيارات التأثير"

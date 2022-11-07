@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 21:08+0100\n"
+"POT-Creation-Date: 2022-11-07 21:24+0100\n"
 "PO-Revision-Date: 2022-09-11 10:17+0000\n"
 "Last-Translator: Юрій Дмитренко <yuridm@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -111,7 +111,8 @@ msgstr "Obláčky"
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
@@ -448,10 +449,6 @@ msgstr "Barva blesku"
 msgid "Spoke Count"
 msgstr ""
 
-#: resources/ui/gtk4/effectPage.ui:43
-msgid "Preview this Effect"
-msgstr "Náhled efektu"
-
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
@@ -548,6 +545,9 @@ msgstr ""
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "Vyberte předvolbu"
+
+#~ msgid "Preview this Effect"
+#~ msgstr "Náhled efektu"
 
 #~ msgid "Via PayPal"
 #~ msgstr "skrze PayPal"
