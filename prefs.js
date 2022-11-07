@@ -129,8 +129,15 @@ var PreferencesDialog = class PreferencesDialog {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
           const row = effect.getPreferences(this);
-          row.set_title('<b>' + effect.getLabel() + '</b>');
-          row.set_use_markup(true);
+
+          // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
+          // not yet exist.
+          if (row.set_use_markup) {
+            row.set_title('<b>' + effect.getLabel() + '</b>');
+            row.set_use_markup(true);
+          } else {
+            row.set_title(effect.getLabel());
+          }
 
           // Un-expand any previously expanded effect row. This way we ensure that there
           // is only one expanded row at any time.
