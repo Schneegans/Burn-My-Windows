@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 22:09+0100\n"
+"POT-Creation-Date: 2022-11-07 21:08+0100\n"
 "PO-Revision-Date: 2022-08-23 04:16+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -108,40 +108,48 @@ msgid "Wisps"
 msgstr "도깨비불"
 
 #: prefs.js:120
-msgid "Effect Options"
-msgstr "효과 옵션"
+msgid "Effects"
+msgstr ""
 
-#: prefs.js:148
-msgid "Go Back"
-msgstr "뒤로 가기"
+#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+msgid "Preview this effect"
+msgstr ""
 
-#: prefs.js:190
+#: prefs.js:197
+msgid "Use this effect when opening windows"
+msgstr ""
+
+#: prefs.js:198
+msgid "Use this effect when closing windows"
+msgstr ""
+
+#: prefs.js:224
 msgid "General Options"
 msgstr "일반 옵션"
 
-#: prefs.js:284
+#: prefs.js:318
 msgid "Gold Sponsors"
 msgstr "골드 스폰서"
 
-#: prefs.js:287
+#: prefs.js:321
 msgid "Silver Sponsors"
 msgstr "실버 스폰서"
 
-#: prefs.js:290
+#: prefs.js:324
 msgid "Bronze Sponsors"
 msgstr "브론즈 스폰서"
 
-#: prefs.js:293
+#: prefs.js:327
 msgid "Past Sponsors"
 msgstr "이전 스폰서"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:516
+#: prefs.js:534
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s 미리 보기"
 
-#: prefs.js:538
+#: prefs.js:556
 msgid "Close this Window to Preview the Effect!"
 msgstr "이 창을 닫아 효과를 확인해보세요!"
 
@@ -188,6 +196,15 @@ msgstr "Burn-My-Windows 정보"
 #: resources/ui/gtk3/TVEffect.ui:41 resources/ui/gtk3/EnergizeA.ui:48
 #: resources/ui/gtk3/Hexagon.ui:55 resources/ui/gtk3/EnergizeB.ui:48
 #: resources/ui/gtk3/Pixelate.ui:55 resources/ui/gtk3/Apparition.ui:69
+#: resources/ui/adw/Matrix.ui:14 resources/ui/adw/BrokenGlass.ui:15
+#: resources/ui/adw/Incinerate.ui:14 resources/ui/adw/Wisps.ui:14
+#: resources/ui/adw/Fire.ui:30 resources/ui/adw/SnapOfDisintegration.ui:14
+#: resources/ui/adw/Glide.ui:14 resources/ui/adw/PixelWipe.ui:14
+#: resources/ui/adw/TRexAttack.ui:14 resources/ui/adw/PixelWheel.ui:14
+#: resources/ui/adw/Doom.ui:14 resources/ui/adw/TVEffect.ui:14
+#: resources/ui/adw/EnergizeA.ui:14 resources/ui/adw/Hexagon.ui:14
+#: resources/ui/adw/EnergizeB.ui:15 resources/ui/adw/Pixelate.ui:14
+#: resources/ui/adw/Apparition.ui:15
 msgid "Animation Time [ms]"
 msgstr "애니메이션 시간 [ms]"
 
@@ -249,6 +266,39 @@ msgstr "애니메이션 시간 [ms]"
 #: resources/ui/gtk3/prefs.ui:269 resources/ui/gtk3/Apparition.ui:95
 #: resources/ui/gtk3/Apparition.ui:144 resources/ui/gtk3/Apparition.ui:193
 #: resources/ui/gtk3/Apparition.ui:242 resources/ui/gtk3/Apparition.ui:291
+#: resources/ui/adw/Matrix.ui:36 resources/ui/adw/Matrix.ui:69
+#: resources/ui/adw/Matrix.ui:102 resources/ui/adw/Matrix.ui:135
+#: resources/ui/adw/Matrix.ui:160 resources/ui/adw/Matrix.ui:185
+#: resources/ui/adw/BrokenGlass.ui:37 resources/ui/adw/BrokenGlass.ui:70
+#: resources/ui/adw/BrokenGlass.ui:103 resources/ui/adw/BrokenGlass.ui:136
+#: resources/ui/adw/BrokenGlass.ui:159 resources/ui/adw/Incinerate.ui:36
+#: resources/ui/adw/Incinerate.ui:69 resources/ui/adw/Incinerate.ui:102
+#: resources/ui/adw/Incinerate.ui:125 resources/ui/adw/Incinerate.ui:150
+#: resources/ui/adw/Wisps.ui:36 resources/ui/adw/Wisps.ui:69
+#: resources/ui/adw/Wisps.ui:94 resources/ui/adw/Fire.ui:52
+#: resources/ui/adw/Fire.ui:85 resources/ui/adw/Fire.ui:118
+#: resources/ui/adw/Fire.ui:141 resources/ui/adw/Fire.ui:199
+#: resources/ui/adw/Glide.ui:36 resources/ui/adw/Glide.ui:69
+#: resources/ui/adw/Glide.ui:102 resources/ui/adw/Glide.ui:135
+#: resources/ui/adw/PixelWipe.ui:36 resources/ui/adw/PixelWipe.ui:69
+#: resources/ui/adw/TRexAttack.ui:36 resources/ui/adw/TRexAttack.ui:69
+#: resources/ui/adw/TRexAttack.ui:102 resources/ui/adw/TRexAttack.ui:135
+#: resources/ui/adw/TRexAttack.ui:160 resources/ui/adw/PixelWheel.ui:36
+#: resources/ui/adw/PixelWheel.ui:69 resources/ui/adw/PixelWheel.ui:102
+#: resources/ui/adw/Doom.ui:36 resources/ui/adw/Doom.ui:69
+#: resources/ui/adw/Doom.ui:102 resources/ui/adw/Doom.ui:135
+#: resources/ui/adw/TVEffect.ui:36 resources/ui/adw/TVEffect.ui:61
+#: resources/ui/adw/EnergizeA.ui:36 resources/ui/adw/EnergizeA.ui:69
+#: resources/ui/adw/EnergizeA.ui:94 resources/ui/adw/Hexagon.ui:36
+#: resources/ui/adw/Hexagon.ui:69 resources/ui/adw/Hexagon.ui:102
+#: resources/ui/adw/Hexagon.ui:127 resources/ui/adw/Hexagon.ui:152
+#: resources/ui/adw/Hexagon.ui:175 resources/ui/adw/EnergizeB.ui:37
+#: resources/ui/adw/EnergizeB.ui:70 resources/ui/adw/EnergizeB.ui:95
+#: resources/ui/adw/Pixelate.ui:36 resources/ui/adw/Pixelate.ui:69
+#: resources/ui/adw/Pixelate.ui:102 resources/ui/adw/prefs.ui:63
+#: resources/ui/adw/prefs.ui:85 resources/ui/adw/Apparition.ui:37
+#: resources/ui/adw/Apparition.ui:70 resources/ui/adw/Apparition.ui:103
+#: resources/ui/adw/Apparition.ui:136 resources/ui/adw/Apparition.ui:169
 msgid "Reset to Default Value"
 msgstr "기본값으로 초기화"
 
@@ -260,54 +310,63 @@ msgstr "기본값으로 초기화"
 #: resources/ui/gtk3/Incinerate.ui:104 resources/ui/gtk3/Wisps.ui:97
 #: resources/ui/gtk3/Fire.ui:147 resources/ui/gtk3/Glide.ui:111
 #: resources/ui/gtk3/EnergizeA.ui:97 resources/ui/gtk3/Hexagon.ui:104
-#: resources/ui/gtk3/EnergizeB.ui:97
+#: resources/ui/gtk3/EnergizeB.ui:97 resources/ui/adw/Matrix.ui:47
+#: resources/ui/adw/BrokenGlass.ui:48 resources/ui/adw/Incinerate.ui:47
+#: resources/ui/adw/Wisps.ui:47 resources/ui/adw/Fire.ui:63
+#: resources/ui/adw/SnapOfDisintegration.ui:47 resources/ui/adw/Glide.ui:47
+#: resources/ui/adw/EnergizeA.ui:47 resources/ui/adw/Hexagon.ui:47
+#: resources/ui/adw/EnergizeB.ui:48
 msgid "Scale"
 msgstr "비율 조정"
 
 #: resources/ui/gtk4/Matrix.ui:122 resources/ui/gtk4/Apparition.ui:76
-#: resources/ui/gtk3/Apparition.ui:118
+#: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
+#: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
 msgstr "임의성 지수"
 
-#: resources/ui/gtk4/Matrix.ui:168
+#: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
 msgstr "수직 오버슈팅"
 
-#: resources/ui/gtk4/Matrix.ui:214
+#: resources/ui/gtk4/Matrix.ui:214 resources/ui/adw/Matrix.ui:146
 msgid "Trail Color"
 msgstr "끌림 자국 색상"
 
-#: resources/ui/gtk4/Matrix.ui:248
+#: resources/ui/gtk4/Matrix.ui:248 resources/ui/adw/Matrix.ui:171
 msgid "Tip Color"
 msgstr "끄트머리 색상"
 
-#: resources/ui/gtk4/BrokenGlass.ui:122
+#: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
 msgstr "중력계수"
 
-#: resources/ui/gtk4/BrokenGlass.ui:168
+#: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
 msgstr "타격 강도"
 
-#: resources/ui/gtk4/BrokenGlass.ui:218
+#: resources/ui/gtk4/BrokenGlass.ui:218 resources/ui/adw/BrokenGlass.ui:147
 msgid "Shatter From Pointer Location"
 msgstr "포인터 위치에서 깨짐"
 
-#: resources/ui/gtk4/BrokenGlass.ui:227
+#: resources/ui/gtk4/BrokenGlass.ui:227 resources/ui/adw/BrokenGlass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr "창을 닫을 때 마우스 포인터 위치에서 조각이 날아갑니다."
 
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
+#: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
 msgstr "소용돌이"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
+#: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
 msgstr ""
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
+#: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
 msgstr ""
 
@@ -317,34 +376,44 @@ msgstr ""
 #: resources/ui/gtk4/EnergizeB.ui:122 resources/ui/gtk3/Incinerate.ui:263
 #: resources/ui/gtk3/Wisps.ui:145 resources/ui/gtk3/TVEffect.ui:89
 #: resources/ui/gtk3/EnergizeA.ui:145 resources/ui/gtk3/EnergizeB.ui:145
+#: resources/ui/adw/Incinerate.ui:136 resources/ui/adw/Wisps.ui:80
+#: resources/ui/adw/SnapOfDisintegration.ui:80 resources/ui/adw/TVEffect.ui:47
+#: resources/ui/adw/EnergizeA.ui:80 resources/ui/adw/EnergizeB.ui:81
 msgid "Color"
 msgstr "색상"
 
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
+#: resources/ui/adw/Fire.ui:14
 msgid "Presets"
 msgstr "사전설정"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk3/Fire.ui:195
+#: resources/ui/adw/Fire.ui:96
 msgid "Speed"
 msgstr "속도"
 
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
+#: resources/ui/adw/Fire.ui:129
 msgid "3D Noise"
 msgstr "3차원 잡티"
 
 #: resources/ui/gtk4/Fire.ui:206 resources/ui/gtk3/Fire.ui:256
+#: resources/ui/adw/Fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr "좀 더 역동적인 화염을 만들지만 더 많은 GPU 성능이 필요합니다."
 
 #: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
+#: resources/ui/adw/Fire.ui:152
 msgid "Gradient"
 msgstr "그레디언트"
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:160
+#: resources/ui/adw/Glide.ui:80
 msgid "Squish"
 msgstr ""
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:209
+#: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
 msgstr ""
 
@@ -352,70 +421,83 @@ msgstr ""
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
 #: resources/ui/gtk3/PixelWipe.ui:104 resources/ui/gtk3/PixelWheel.ui:153
 #: resources/ui/gtk3/Doom.ui:209 resources/ui/gtk3/Pixelate.ui:153
+#: resources/ui/adw/PixelWipe.ui:47 resources/ui/adw/PixelWheel.ui:80
+#: resources/ui/adw/Doom.ui:113 resources/ui/adw/Pixelate.ui:80
 msgid "Pixel Size"
 msgstr ""
 
-#: resources/ui/gtk4/TRexAttack.ui:76
+#: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
 msgstr "발톱 자국 크기 비율"
 
-#: resources/ui/gtk4/TRexAttack.ui:122
+#: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
 msgstr "발톱 자국 갯수"
 
-#: resources/ui/gtk4/TRexAttack.ui:168
+#: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
 msgstr "왜곡 효과"
 
-#: resources/ui/gtk4/TRexAttack.ui:214
+#: resources/ui/gtk4/TRexAttack.ui:214 resources/ui/adw/TRexAttack.ui:146
 msgid "Flash Color"
 msgstr "번쩍임 색상"
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
+#: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
 msgstr ""
 
-#: resources/ui/gtk4/effectPage.ui:43 resources/ui/gtk3/effectPage.ui:43
+#: resources/ui/gtk4/effectPage.ui:43
 msgid "Preview this Effect"
 msgstr "이 효과 미리 보기"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
+#: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
 msgstr ""
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
+#: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
 msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
+#: resources/ui/adw/Hexagon.ui:80
 msgid "Mesh Line Width"
 msgstr "도형 선 굵기"
 
 #: resources/ui/gtk4/Hexagon.ui:168 resources/ui/gtk3/Hexagon.ui:201
+#: resources/ui/adw/Hexagon.ui:113
 msgid "Line Color"
 msgstr "선 색상"
 
 #: resources/ui/gtk4/Hexagon.ui:202 resources/ui/gtk3/Hexagon.ui:244
+#: resources/ui/adw/Hexagon.ui:138
 msgid "Glow Color"
 msgstr "불빛 색상"
 
 #: resources/ui/gtk4/Hexagon.ui:240 resources/ui/gtk3/Hexagon.ui:291
+#: resources/ui/adw/Hexagon.ui:163
 msgid "Additive Blending"
 msgstr "혼합 효과"
 
 #: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
+#: resources/ui/adw/Hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
 msgstr "어두운 창 테마에서 사용하시면 좋습니다."
 
 #: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
+#: resources/ui/adw/Pixelate.ui:47
 msgid "Noise"
 msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
+#: resources/ui/adw/prefs.ui:31
 msgid "Welcome to Burn-My-Windows!"
 msgstr "Burn-My-Windows 사용을 환영해요!"
 
 #: resources/ui/gtk4/prefs.ui:45 resources/ui/gtk3/prefs.ui:52
+#: resources/ui/adw/prefs.ui:42
 msgid "If you like this extension, recommend it to your friends :)"
 msgstr "이 확장 기능이 맘에 든다면 친구에게 추천해주세요 :)"
 
@@ -438,25 +520,36 @@ msgid "Close Window Animation"
 msgstr "창 닫기 애니메이션"
 
 #: resources/ui/gtk4/prefs.ui:156 resources/ui/gtk3/prefs.ui:204
+#: resources/ui/adw/prefs.ui:52
 msgid "Also Add Effects to Dialogs"
 msgstr "대화상자에도 효과 추가"
 
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
+#: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
 msgstr "배터리 전원 사용시 비활성"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
+#: resources/ui/adw/Apparition.ui:81
 msgid "Twirl Intensity"
 msgstr "회전 강도"
 
 #: resources/ui/gtk4/Apparition.ui:168 resources/ui/gtk3/Apparition.ui:216
+#: resources/ui/adw/Apparition.ui:114
 msgid "Shake Intensity"
 msgstr "떨림 강도"
 
 #: resources/ui/gtk4/Apparition.ui:214 resources/ui/gtk3/Apparition.ui:265
+#: resources/ui/adw/Apparition.ui:147
 msgid "Suction Intensity"
 msgstr "흡입 강도"
 
-#: resources/ui/gtk3/Fire.ui:69
+#: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "사전설정 선택"
+
+#~ msgid "Effect Options"
+#~ msgstr "효과 옵션"
+
+#~ msgid "Go Back"
+#~ msgstr "뒤로 가기"
