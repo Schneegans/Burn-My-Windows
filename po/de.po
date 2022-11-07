@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-07 21:08+0100\n"
-"PO-Revision-Date: 2022-11-06 12:02+0000\n"
+"PO-Revision-Date: 2022-11-07 20:25+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -109,19 +109,19 @@ msgstr "Irrlichter"
 
 #: prefs.js:120
 msgid "Effects"
-msgstr ""
+msgstr "Effekte"
 
 #: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Vorschau des Effekts"
 
 #: prefs.js:197
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Verwenden Sie diesen Effekt beim Öffnen von Fenstern"
 
 #: prefs.js:198
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Verwenden Sie diesen Effekt beim Schließen von Fenstern"
 
 #: prefs.js:224
 msgid "General Options"
