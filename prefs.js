@@ -203,70 +203,9 @@ var PreferencesDialog = class PreferencesDialog {
           this._effectRows.push(row);
         }
       });
-
-    } else if (utils.isGTK4()) {
-      // This is our top-level widget which we will return later.
-      this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
-
-      // Add the general options page to the settings dialog.
-      const generalPrefs = this._builder.get_object('general-prefs');
-      this.gtkBoxAppend(this._widget, generalPrefs);
-
-      // Then add a preferences group with action rows to open the effect subpages.
-      const group = new Adw.PreferencesGroup({title: _('Effects')});
-      this.gtkBoxAppend(this._widget, group);
-
-      this._ALL_EFFECTS.forEach(effect => {
-        const [minMajor, minMinor] = effect.getMinShellVersion();
-        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-
-          const row = new Adw.ActionRow({title: effect.getLabel(), activatable: true});
-          row.add_suffix(new Gtk.Image({icon_name: 'go-next-symbolic'}));
-
-          // Open a subpage with the effect's settings.
-          row.connect('activated', () => {
-            const page         = new BurnMyWindowsEffectPage(effect, this);
-            page.valign        = Gtk.Align.CENTER;
-            page.margin_top    = 10;
-            page.margin_bottom = 10;
-            page.margin_start  = 10;
-            page.margin_end    = 10;
-
-            // Add the effect's preferences (if any).
-            const preferences = effect.getPreferences(this);
-            if (preferences) {
-              this.gtkBoxAppend(page, preferences);
-            }
-
-            // Add a button for back navigation.
-            const backButton = new Gtk.Button({
-              halign: Gtk.Align.CENTER,
-              label: _('Go Back'),
-            });
-            backButton.add_css_class('suggested-action');
-            backButton.add_css_class('pill-button');
-            backButton.connect('clicked', () => {
-              row.get_root().close_subpage();
-            });
-
-            this.gtkBoxAppend(page, backButton);
-
-            // Wrap the preferences group in an Adw.Clamp.
-            const clamp = new Adw.Clamp({
-              child: page,
-              maximum_size: 600,
-              tightening_threshold: 400,
-            });
-
-            // Open the subpage on click.
-            row.get_root().present_subpage(clamp);
-          });
-
-          group.add(row);
-        }
-      });
     }
-    // On older GNOME versions, we use a StackSidebar.
+    // On older GNOME versions, we use a StackSidebar. The code below works both, on GTK3
+    // and GTK4.
     else {
 
       // This is our top-level widget which we will return later.
