@@ -16,8 +16,9 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Other Enhancements
 
 * The settings dialog has been redesigned specifically for libadwaita. These changes are only available on GNOME 42 and GNOME 43.
-* Burn-My-Windows now follows the [REUSE Specification](https://reuse.software/spec).
+* Many translation updates, including a completely new Romanian translation. Thanks to all the translators!
 * The KWin port of Burn-My-Windows now uses `metadata.json` files instead of the deprecated `metadata.desktop` format.
+* Burn-My-Windows now follows the [REUSE Specification](https://reuse.software/spec).
 
 ## [Burn My Windows 21](https://github.com/schneegans/Burn-My-Windows/releases/tag/v21)
 
