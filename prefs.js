@@ -578,13 +578,13 @@ var PreferencesDialog = class PreferencesDialog {
   // Initializes template widgets used by the preferences dialog.
   _registerCustomClasses() {
 
-    // On GTK3, each effect page is based on a template widget. This template contains the
-    // title and the preview button.
+    // If we are not using libadwaita, each effect page is based on a template widget.
+    // This template contains the title and the preview button.
     if (!utils.isADW() && GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
       BurnMyWindowsEffectPage = GObject.registerClass(
         {
           GTypeName: 'BurnMyWindowsEffectPage',
-          Template: `resource:///ui/gtk3/effectPage.ui`,
+          Template: `resource:///ui/${utils.getUIDir()}/effectPage.ui`,
           InternalChildren: ['label', 'button'],
         },
         class BurnMyWindowsEffectPage extends Gtk.Box {  // ------------------------------
