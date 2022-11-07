@@ -349,9 +349,9 @@ var PreferencesDialog = class PreferencesDialog {
             const action     = this._settings.create_action(actionName);
             group.add_action(action);
 
-            // The menu only exists on GTK3. On GTK4, individual ToggleButtons are used
-            // for triggering the above actions.
-            if (!utils.isGTK4()) {
+            // The menu only exists if not using libadwaita. With libadwaita, individual
+            // ToggleButtons are used for triggering the above actions.
+            if (!utils.isADW()) {
               const menu  = this._builder.get_object('open-effect-menu');
               const label = effect.getLabel();
               menu.append_item(Gio.MenuItem.new(label, 'open-effects.' + actionName));
@@ -372,9 +372,9 @@ var PreferencesDialog = class PreferencesDialog {
             const action     = this._settings.create_action(actionName);
             group.add_action(action);
 
-            // The menu only exists on GTK3. On GTK4, individual ToggleButtons are used
-            // for triggering the above actions.
-            if (!utils.isGTK4()) {
+            // The menu only exists if not using libadwaita. With libadwaita, individual
+            // ToggleButtons are used for triggering the above actions.
+            if (!utils.isADW()) {
               const menu  = this._builder.get_object('close-effect-menu');
               const label = effect.getLabel();
               menu.append_item(Gio.MenuItem.new(label, 'close-effects.' + actionName));
