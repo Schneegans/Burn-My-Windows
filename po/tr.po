@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 21:08+0100\n"
+"POT-Creation-Date: 2022-11-07 21:24+0100\n"
 "PO-Revision-Date: 2022-09-16 14:17+0000\n"
 "Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -111,7 +111,8 @@ msgstr "Sihir"
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
@@ -449,10 +450,6 @@ msgstr "Flaş Rengi"
 msgid "Spoke Count"
 msgstr "Parmak Sayısı"
 
-#: resources/ui/gtk4/effectPage.ui:43
-msgid "Preview this Effect"
-msgstr "Bu Efekti Önizle"
-
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
@@ -549,6 +546,9 @@ msgstr "Emme Gücü"
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "Bir Şablon Seçin"
+
+#~ msgid "Preview this Effect"
+#~ msgstr "Bu Efekti Önizle"
 
 #~ msgid "Effect Options"
 #~ msgstr "Efekt Seçenekleri"

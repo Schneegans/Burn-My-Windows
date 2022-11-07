@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 21:08+0100\n"
+"POT-Creation-Date: 2022-11-07 21:24+0100\n"
 "PO-Revision-Date: 2022-09-15 08:21+0000\n"
 "Last-Translator: Paweł Rzońca <pwrzonca@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -112,7 +112,8 @@ msgstr "Ogniki"
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
@@ -450,10 +451,6 @@ msgstr "Kolor Błysku"
 msgid "Spoke Count"
 msgstr "Liczba szprych"
 
-#: resources/ui/gtk4/effectPage.ui:43
-msgid "Preview this Effect"
-msgstr "Podgląd Efektu"
-
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
@@ -550,6 +547,9 @@ msgstr "Intensywność Ssania"
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "Wybierz Obecny"
+
+#~ msgid "Preview this Effect"
+#~ msgstr "Podgląd Efektu"
 
 #~ msgid "Effect Options"
 #~ msgstr "Opcje Efektów"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-07 21:08+0100\n"
+"POT-Creation-Date: 2022-11-07 21:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -108,7 +108,8 @@ msgstr ""
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
@@ -442,10 +443,6 @@ msgstr ""
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr ""
-
-#: resources/ui/gtk4/effectPage.ui:43
-msgid "Preview this Effect"
 msgstr ""
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
