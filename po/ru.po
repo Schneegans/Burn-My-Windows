@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-02 22:09+0100\n"
+"POT-Creation-Date: 2022-11-07 21:08+0100\n"
 "PO-Revision-Date: 2022-09-23 00:15+0000\n"
 "Last-Translator: Мистер Перевод <sergei@racingrebel.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -109,40 +109,48 @@ msgid "Wisps"
 msgstr "Огоньки"
 
 #: prefs.js:120
-msgid "Effect Options"
-msgstr "Параметры эффекта"
+msgid "Effects"
+msgstr ""
 
-#: prefs.js:148
-msgid "Go Back"
-msgstr "Назад"
+#: prefs.js:162 resources/ui/gtk3/effectPage.ui:43
+msgid "Preview this effect"
+msgstr ""
 
-#: prefs.js:190
+#: prefs.js:197
+msgid "Use this effect when opening windows"
+msgstr ""
+
+#: prefs.js:198
+msgid "Use this effect when closing windows"
+msgstr ""
+
+#: prefs.js:224
 msgid "General Options"
 msgstr "Общие настройки"
 
-#: prefs.js:284
+#: prefs.js:318
 msgid "Gold Sponsors"
 msgstr "Золотые спонсоры"
 
-#: prefs.js:287
+#: prefs.js:321
 msgid "Silver Sponsors"
 msgstr "Серебряные спонсоры"
 
-#: prefs.js:290
+#: prefs.js:324
 msgid "Bronze Sponsors"
 msgstr "Бронзовые спонсоры"
 
-#: prefs.js:293
+#: prefs.js:327
 msgid "Past Sponsors"
 msgstr "Прошлые спонсоры"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:516
+#: prefs.js:534
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Предпросмотр %s"
 
-#: prefs.js:538
+#: prefs.js:556
 msgid "Close this Window to Preview the Effect!"
 msgstr "Закройте это окно для предпросмотра эффекта!"
 
@@ -189,6 +197,15 @@ msgstr "О Burn-My-Windows"
 #: resources/ui/gtk3/TVEffect.ui:41 resources/ui/gtk3/EnergizeA.ui:48
 #: resources/ui/gtk3/Hexagon.ui:55 resources/ui/gtk3/EnergizeB.ui:48
 #: resources/ui/gtk3/Pixelate.ui:55 resources/ui/gtk3/Apparition.ui:69
+#: resources/ui/adw/Matrix.ui:14 resources/ui/adw/BrokenGlass.ui:15
+#: resources/ui/adw/Incinerate.ui:14 resources/ui/adw/Wisps.ui:14
+#: resources/ui/adw/Fire.ui:30 resources/ui/adw/SnapOfDisintegration.ui:14
+#: resources/ui/adw/Glide.ui:14 resources/ui/adw/PixelWipe.ui:14
+#: resources/ui/adw/TRexAttack.ui:14 resources/ui/adw/PixelWheel.ui:14
+#: resources/ui/adw/Doom.ui:14 resources/ui/adw/TVEffect.ui:14
+#: resources/ui/adw/EnergizeA.ui:14 resources/ui/adw/Hexagon.ui:14
+#: resources/ui/adw/EnergizeB.ui:15 resources/ui/adw/Pixelate.ui:14
+#: resources/ui/adw/Apparition.ui:15
 msgid "Animation Time [ms]"
 msgstr "Время анимации (мс)"
 
@@ -250,6 +267,39 @@ msgstr "Время анимации (мс)"
 #: resources/ui/gtk3/prefs.ui:269 resources/ui/gtk3/Apparition.ui:95
 #: resources/ui/gtk3/Apparition.ui:144 resources/ui/gtk3/Apparition.ui:193
 #: resources/ui/gtk3/Apparition.ui:242 resources/ui/gtk3/Apparition.ui:291
+#: resources/ui/adw/Matrix.ui:36 resources/ui/adw/Matrix.ui:69
+#: resources/ui/adw/Matrix.ui:102 resources/ui/adw/Matrix.ui:135
+#: resources/ui/adw/Matrix.ui:160 resources/ui/adw/Matrix.ui:185
+#: resources/ui/adw/BrokenGlass.ui:37 resources/ui/adw/BrokenGlass.ui:70
+#: resources/ui/adw/BrokenGlass.ui:103 resources/ui/adw/BrokenGlass.ui:136
+#: resources/ui/adw/BrokenGlass.ui:159 resources/ui/adw/Incinerate.ui:36
+#: resources/ui/adw/Incinerate.ui:69 resources/ui/adw/Incinerate.ui:102
+#: resources/ui/adw/Incinerate.ui:125 resources/ui/adw/Incinerate.ui:150
+#: resources/ui/adw/Wisps.ui:36 resources/ui/adw/Wisps.ui:69
+#: resources/ui/adw/Wisps.ui:94 resources/ui/adw/Fire.ui:52
+#: resources/ui/adw/Fire.ui:85 resources/ui/adw/Fire.ui:118
+#: resources/ui/adw/Fire.ui:141 resources/ui/adw/Fire.ui:199
+#: resources/ui/adw/Glide.ui:36 resources/ui/adw/Glide.ui:69
+#: resources/ui/adw/Glide.ui:102 resources/ui/adw/Glide.ui:135
+#: resources/ui/adw/PixelWipe.ui:36 resources/ui/adw/PixelWipe.ui:69
+#: resources/ui/adw/TRexAttack.ui:36 resources/ui/adw/TRexAttack.ui:69
+#: resources/ui/adw/TRexAttack.ui:102 resources/ui/adw/TRexAttack.ui:135
+#: resources/ui/adw/TRexAttack.ui:160 resources/ui/adw/PixelWheel.ui:36
+#: resources/ui/adw/PixelWheel.ui:69 resources/ui/adw/PixelWheel.ui:102
+#: resources/ui/adw/Doom.ui:36 resources/ui/adw/Doom.ui:69
+#: resources/ui/adw/Doom.ui:102 resources/ui/adw/Doom.ui:135
+#: resources/ui/adw/TVEffect.ui:36 resources/ui/adw/TVEffect.ui:61
+#: resources/ui/adw/EnergizeA.ui:36 resources/ui/adw/EnergizeA.ui:69
+#: resources/ui/adw/EnergizeA.ui:94 resources/ui/adw/Hexagon.ui:36
+#: resources/ui/adw/Hexagon.ui:69 resources/ui/adw/Hexagon.ui:102
+#: resources/ui/adw/Hexagon.ui:127 resources/ui/adw/Hexagon.ui:152
+#: resources/ui/adw/Hexagon.ui:175 resources/ui/adw/EnergizeB.ui:37
+#: resources/ui/adw/EnergizeB.ui:70 resources/ui/adw/EnergizeB.ui:95
+#: resources/ui/adw/Pixelate.ui:36 resources/ui/adw/Pixelate.ui:69
+#: resources/ui/adw/Pixelate.ui:102 resources/ui/adw/prefs.ui:63
+#: resources/ui/adw/prefs.ui:85 resources/ui/adw/Apparition.ui:37
+#: resources/ui/adw/Apparition.ui:70 resources/ui/adw/Apparition.ui:103
+#: resources/ui/adw/Apparition.ui:136 resources/ui/adw/Apparition.ui:169
 msgid "Reset to Default Value"
 msgstr "Сброс на значение по умолчанию"
 
@@ -261,40 +311,46 @@ msgstr "Сброс на значение по умолчанию"
 #: resources/ui/gtk3/Incinerate.ui:104 resources/ui/gtk3/Wisps.ui:97
 #: resources/ui/gtk3/Fire.ui:147 resources/ui/gtk3/Glide.ui:111
 #: resources/ui/gtk3/EnergizeA.ui:97 resources/ui/gtk3/Hexagon.ui:104
-#: resources/ui/gtk3/EnergizeB.ui:97
+#: resources/ui/gtk3/EnergizeB.ui:97 resources/ui/adw/Matrix.ui:47
+#: resources/ui/adw/BrokenGlass.ui:48 resources/ui/adw/Incinerate.ui:47
+#: resources/ui/adw/Wisps.ui:47 resources/ui/adw/Fire.ui:63
+#: resources/ui/adw/SnapOfDisintegration.ui:47 resources/ui/adw/Glide.ui:47
+#: resources/ui/adw/EnergizeA.ui:47 resources/ui/adw/Hexagon.ui:47
+#: resources/ui/adw/EnergizeB.ui:48
 msgid "Scale"
 msgstr "Масштаб"
 
 #: resources/ui/gtk4/Matrix.ui:122 resources/ui/gtk4/Apparition.ui:76
-#: resources/ui/gtk3/Apparition.ui:118
+#: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
+#: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
 msgstr "Случайность"
 
-#: resources/ui/gtk4/Matrix.ui:168
+#: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
 msgstr "Вертикальное превышение"
 
-#: resources/ui/gtk4/Matrix.ui:214
+#: resources/ui/gtk4/Matrix.ui:214 resources/ui/adw/Matrix.ui:146
 msgid "Trail Color"
 msgstr "Цвет следа"
 
-#: resources/ui/gtk4/Matrix.ui:248
+#: resources/ui/gtk4/Matrix.ui:248 resources/ui/adw/Matrix.ui:171
 msgid "Tip Color"
 msgstr "Цвет наконечника"
 
-#: resources/ui/gtk4/BrokenGlass.ui:122
+#: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
 msgstr "Гравитация"
 
-#: resources/ui/gtk4/BrokenGlass.ui:168
+#: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
 msgstr "Сила удара"
 
-#: resources/ui/gtk4/BrokenGlass.ui:218
+#: resources/ui/gtk4/BrokenGlass.ui:218 resources/ui/adw/BrokenGlass.ui:147
 msgid "Shatter From Pointer Location"
 msgstr "Разбить от положения курсора"
 
-#: resources/ui/gtk4/BrokenGlass.ui:227
+#: resources/ui/gtk4/BrokenGlass.ui:227 resources/ui/adw/BrokenGlass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
@@ -303,14 +359,17 @@ msgstr ""
 "закрытии окна."
 
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
+#: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
 msgstr "Турбулентность"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
+#: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
 msgstr "Начинать от курсора"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
+#: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
 msgstr "Если не вклучен, случайное положение будет выбрано."
 
@@ -320,34 +379,44 @@ msgstr "Если не вклучен, случайное положение бу
 #: resources/ui/gtk4/EnergizeB.ui:122 resources/ui/gtk3/Incinerate.ui:263
 #: resources/ui/gtk3/Wisps.ui:145 resources/ui/gtk3/TVEffect.ui:89
 #: resources/ui/gtk3/EnergizeA.ui:145 resources/ui/gtk3/EnergizeB.ui:145
+#: resources/ui/adw/Incinerate.ui:136 resources/ui/adw/Wisps.ui:80
+#: resources/ui/adw/SnapOfDisintegration.ui:80 resources/ui/adw/TVEffect.ui:47
+#: resources/ui/adw/EnergizeA.ui:80 resources/ui/adw/EnergizeB.ui:81
 msgid "Color"
 msgstr "Цвет"
 
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
+#: resources/ui/adw/Fire.ui:14
 msgid "Presets"
 msgstr "Пресеты"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk3/Fire.ui:195
+#: resources/ui/adw/Fire.ui:96
 msgid "Speed"
 msgstr "Скорость"
 
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
+#: resources/ui/adw/Fire.ui:129
 msgid "3D Noise"
 msgstr "3D Шум"
 
 #: resources/ui/gtk4/Fire.ui:206 resources/ui/gtk3/Fire.ui:256
+#: resources/ui/adw/Fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr "Создает более динамичный огонь, но требует большей мощности GPU."
 
 #: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
+#: resources/ui/adw/Fire.ui:152
 msgid "Gradient"
 msgstr "Градиент"
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:160
+#: resources/ui/adw/Glide.ui:80
 msgid "Squish"
 msgstr ""
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:209
+#: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
 msgstr ""
 
@@ -355,70 +424,83 @@ msgstr ""
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
 #: resources/ui/gtk3/PixelWipe.ui:104 resources/ui/gtk3/PixelWheel.ui:153
 #: resources/ui/gtk3/Doom.ui:209 resources/ui/gtk3/Pixelate.ui:153
+#: resources/ui/adw/PixelWipe.ui:47 resources/ui/adw/PixelWheel.ui:80
+#: resources/ui/adw/Doom.ui:113 resources/ui/adw/Pixelate.ui:80
 msgid "Pixel Size"
 msgstr "Размер пикселя"
 
-#: resources/ui/gtk4/TRexAttack.ui:76
+#: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
 msgstr "Масштаб царапин"
 
-#: resources/ui/gtk4/TRexAttack.ui:122
+#: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
 msgstr "Количество царапин"
 
-#: resources/ui/gtk4/TRexAttack.ui:168
+#: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
 msgstr "Эффект искривления"
 
-#: resources/ui/gtk4/TRexAttack.ui:214
+#: resources/ui/gtk4/TRexAttack.ui:214 resources/ui/adw/TRexAttack.ui:146
 msgid "Flash Color"
 msgstr "Цвет вспышки"
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
+#: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
 msgstr "Счёт Спици"
 
-#: resources/ui/gtk4/effectPage.ui:43 resources/ui/gtk3/effectPage.ui:43
+#: resources/ui/gtk4/effectPage.ui:43
 msgid "Preview this Effect"
 msgstr "Предпросмотр этого эффекта"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
+#: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
 msgstr "Горизонтальная Шкала"
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
+#: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
 msgstr "Вертикальная Шкала"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
+#: resources/ui/adw/Hexagon.ui:80
 msgid "Mesh Line Width"
 msgstr "Ширина линии сетки"
 
 #: resources/ui/gtk4/Hexagon.ui:168 resources/ui/gtk3/Hexagon.ui:201
+#: resources/ui/adw/Hexagon.ui:113
 msgid "Line Color"
 msgstr "Цвет линии"
 
 #: resources/ui/gtk4/Hexagon.ui:202 resources/ui/gtk3/Hexagon.ui:244
+#: resources/ui/adw/Hexagon.ui:138
 msgid "Glow Color"
 msgstr "Цвет свечения"
 
 #: resources/ui/gtk4/Hexagon.ui:240 resources/ui/gtk3/Hexagon.ui:291
+#: resources/ui/adw/Hexagon.ui:163
 msgid "Additive Blending"
 msgstr "Аддитивное смешивание"
 
 #: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
+#: resources/ui/adw/Hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
 msgstr "Возможно, вы захотите включить это для тёмной темы."
 
 #: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
+#: resources/ui/adw/Pixelate.ui:47
 msgid "Noise"
 msgstr "Шум"
 
 #: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
+#: resources/ui/adw/prefs.ui:31
 msgid "Welcome to Burn-My-Windows!"
 msgstr "Добро пожаловать в Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:45 resources/ui/gtk3/prefs.ui:52
+#: resources/ui/adw/prefs.ui:42
 msgid "If you like this extension, recommend it to your friends :)"
 msgstr "Если вам нравится это расширение, порекомендуйте его своим друзьям :)"
 
@@ -441,25 +523,36 @@ msgid "Close Window Animation"
 msgstr "Анимация закрытия окна"
 
 #: resources/ui/gtk4/prefs.ui:156 resources/ui/gtk3/prefs.ui:204
+#: resources/ui/adw/prefs.ui:52
 msgid "Also Add Effects to Dialogs"
 msgstr "Также добавить эффекты к диалогам"
 
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
+#: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
 msgstr "Отключать при питании от батареи"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
+#: resources/ui/adw/Apparition.ui:81
 msgid "Twirl Intensity"
 msgstr "Интенсивность вращения"
 
 #: resources/ui/gtk4/Apparition.ui:168 resources/ui/gtk3/Apparition.ui:216
+#: resources/ui/adw/Apparition.ui:114
 msgid "Shake Intensity"
 msgstr "Интенсивность встряски"
 
 #: resources/ui/gtk4/Apparition.ui:214 resources/ui/gtk3/Apparition.ui:265
+#: resources/ui/adw/Apparition.ui:147
 msgid "Suction Intensity"
 msgstr "Интенсивность всасывания"
 
-#: resources/ui/gtk3/Fire.ui:69
+#: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
 msgstr "Выберите пресет"
+
+#~ msgid "Effect Options"
+#~ msgstr "Параметры эффекта"
+
+#~ msgid "Go Back"
+#~ msgstr "Назад"
