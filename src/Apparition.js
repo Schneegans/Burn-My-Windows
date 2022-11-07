@@ -88,7 +88,7 @@ var Apparition = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Apparition.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Apparition.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('apparition-randomness');

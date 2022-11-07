@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+  <requires lib="gtk" version="4.0" />
+
+  <object class="GtkMenuButton" id="menu-button">
+    <property name="menu-model">main-menu</property>
+    <property name="icon-name">open-menu-symbolic</property>
+  </object>
+
+  <object class="GtkBox" id="general-prefs">
+    <property name="orientation">vertical</property>
+    <property name="margin-top">60</property>
+    <property name="margin-bottom">20</property>
+
+    <child>
+      <object class="GtkImage">
+        <property name="valign">center</property>
+        <property name="icon-name">burn-my-windows-symbolic</property>
+        <property name="pixel_size">128</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">Welcome to Burn-My-Windows!</property>
+        <property name="margin-top">8</property>
+        <property name="margin-bottom">6</property>
+        <style>
+          <class name="large-title" />
+        </style>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">If you like this extension, recommend it to your friends :)</property>
+        <property name="margin-bottom">36</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesGroup">
+
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Also Add Effects to Dialogs</property>
+            <property name="activatable-widget">destroy-dialogs</property>
+            <child>
+              <object class="GtkSwitch" id="destroy-dialogs">
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="reset-destroy-dialogs">
+                <property name="icon-name">edit-clear-symbolic</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                <style>
+                  <class name="flat" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Disable on Battery Power</property>
+            <property name="activatable-widget">disable-on-battery</property>
+            <child>
+              <object class="GtkSwitch" id="disable-on-battery">
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="reset-disable-on-battery">
+                <property name="icon-name">edit-clear-symbolic</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                <style>
+                  <class name="flat" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+  </object>
+
+</interface>

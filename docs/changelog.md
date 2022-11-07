@@ -11,10 +11,11 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### New Features
 
-* **New Effect: Glide.** A very subtle effect which simply fades the window and applies some 3D-like tilting and scaling.
+* **New Effect: Glide.** A very subtle effect which simply fades the window and applies some 3D-like tilting and scaling. This effect is available on all support GNOME versions and on KDE.
 
 #### Other Enhancements
 
+* The settings dialog has been redesigned specifically for libadwaita. These changes are only available on GNOME 42 and GNOME 43.
 * Burn-My-Windows now follows the [REUSE Specification](https://reuse.software/spec).
 * The KWin port of Burn-My-Windows now uses `metadata.json` files instead of the deprecated `metadata.desktop` format.
 

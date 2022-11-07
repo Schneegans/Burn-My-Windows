@@ -105,7 +105,7 @@ var Hexagon = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Hexagon.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Hexagon.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('hexagon-animation-time');

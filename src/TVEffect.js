@@ -85,7 +85,7 @@ var TVEffect = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/TVEffect.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/TVEffect.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('tv-animation-time');

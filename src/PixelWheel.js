@@ -81,7 +81,7 @@ var PixelWheel = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/PixelWheel.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/PixelWheel.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('pixel-wheel-animation-time');
