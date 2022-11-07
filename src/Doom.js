@@ -95,7 +95,7 @@ var Doom = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Doom.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Doom.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('doom-animation-time');

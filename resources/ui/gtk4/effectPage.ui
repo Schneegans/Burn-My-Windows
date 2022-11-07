@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+  <requires lib="gtk" version="4.0" />
+
+  <template class="BurnMyWindowsEffectPage" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <property name="hexpand">1</property>
+    <property name="spacing">10</property>
+
+    <child>
+      <object class="GtkBox">
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="xalign">0</property>
+            <property name="hexpand">1</property>
+            <style>
+              <class name="large-title" />
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="button">
+            <property name="valign">center</property>
+            <property name="child">
+              <object class="GtkBox">
+                <property name="margin_start">8</property>
+                <property name="margin_end">8</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="icon_name">media-playback-start-symbolic</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="halign">start</property>
+                    <property name="label" translatable="yes">Preview this Effect</property>
+                  </object>
+                </child>
+              </object>
+            </property>
+            <style>
+              <class name="pill-button" />
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </template>
+
+</interface>

@@ -107,7 +107,7 @@ var Fire = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Fire.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Fire.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('fire-animation-time');

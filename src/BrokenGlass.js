@@ -146,7 +146,7 @@ var BrokenGlass = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource('/ui/gtk4/BrokenGlass.ui');
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/BrokenGlass.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('broken-glass-animation-time');

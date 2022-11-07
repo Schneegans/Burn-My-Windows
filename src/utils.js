@@ -17,6 +17,14 @@
 const {Gtk, Gio} = imports.gi;
 const ByteArray  = imports.byteArray;
 
+// libadwaita is available starting with GNOME Shell 42.
+let Adw = null;
+try {
+  Adw = imports.gi.Adw;
+} catch (e) {
+  // Nothing to do.
+}
+
 // Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
 // -2, and -1 are returned respectively.
 function toNumericVersion(x) {
@@ -62,9 +70,16 @@ function isGTK4() {
   return Gtk.get_major_version() == 4;
 }
 
-// This method returns 'gtk3' or 'gtk4' depending on the currently used gtk version.
-function getGTKString() {
-  return isGTK4() ? 'gtk4' : 'gtk3';
+// Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
+// the time - it seems that pop!_OS does not support libadwaita even on GNOME 42).
+function isADW() {
+  return Adw && shellVersionIsAtLeast(42, 'beta');
+}
+
+// This method returns 'gtk3', 'gtk4', or 'adw' depending on the currently used GTK / and
+// or libadwaita version.
+function getUIDir() {
+  return isADW() ? 'adw' : (isGTK4() ? 'gtk4' : 'gtk3');
 }
 
 // This method returns true if the current GNOME Shell version matches the given

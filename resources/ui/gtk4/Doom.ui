@@ -7,139 +7,208 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 <interface domain="burn-my-windows">
 
-  <object class="AdwExpanderRow" id="doom-prefs">
+  <object class="GtkBox" id="doom-prefs">
+    <property name="orientation">vertical</property>
 
     <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Animation Time [ms]</property>
+      <object class="GtkFrame">
         <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">0</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="doom-animation-time">
-                <property name="upper">10000</property>
-                <property name="lower">100</property>
-                <property name="step-increment">1</property>
-                <property name="page-increment">100</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-doom-animation-time">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+          <object class="GtkListBox">
+            <property name="selection-mode">none</property>
+            <property name="show-separators">1</property>
             <style>
-              <class name="flat" />
+              <class name="rich-list" />
             </style>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Animation Time [ms]</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">0</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="doom-animation-time">
+                            <property name="upper">10000</property>
+                            <property name="lower">100</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">100</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-doom-animation-time">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Horizontal Scale</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="doom-horizontal-scale">
+                            <property name="upper">50</property>
+                            <property name="lower">1</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">10</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-doom-horizontal-scale">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Vertical Scale</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="doom-vertical-scale">
+                            <property name="upper">50</property>
+                            <property name="lower">1</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">10</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-doom-vertical-scale">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Pixel Size</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">0</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="doom-pixel-size">
+                            <property name="upper">50</property>
+                            <property name="lower">1</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">10</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-doom-pixel-size">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
           </object>
         </child>
       </object>
     </child>
 
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Horizontal Scale</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">2</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="doom-horizontal-scale">
-                <property name="upper">50</property>
-                <property name="lower">1</property>
-                <property name="step-increment">1</property>
-                <property name="page-increment">10</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-doom-horizontal-scale">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Vertical Scale</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">2</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="doom-vertical-scale">
-                <property name="upper">50</property>
-                <property name="lower">1</property>
-                <property name="step-increment">1</property>
-                <property name="page-increment">10</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-doom-vertical-scale">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Pixel Size</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">0</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="doom-pixel-size">
-                <property name="upper">50</property>
-                <property name="lower">1</property>
-                <property name="step-increment">1</property>
-                <property name="page-increment">10</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-doom-pixel-size">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
 
   </object>
 

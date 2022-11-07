@@ -97,7 +97,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/main-menu.ui`);
-    this._builder.add_from_resource(`/ui/${utils.getGTKString()}/prefs.ui`);
+    this._builder.add_from_resource(`/ui/${utils.getUIDir()}/prefs.ui`);
 
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
@@ -107,7 +107,7 @@ var PreferencesDialog = class PreferencesDialog {
     // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We
     // have to use a different layout, as the stack sidebar looks pretty ugly with the
     // included Adw.Clamp...
-    if (Adw && utils.shellVersionIsAtLeast(42, 'beta')) {
+    if (utils.isADW()) {
 
       // This is our top-level widget which we will return later.
       this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
@@ -204,6 +204,67 @@ var PreferencesDialog = class PreferencesDialog {
         }
       });
 
+    } else if (utils.isGTK4()) {
+      // This is our top-level widget which we will return later.
+      this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
+
+      // Add the general options page to the settings dialog.
+      const generalPrefs = this._builder.get_object('general-prefs');
+      this.gtkBoxAppend(this._widget, generalPrefs);
+
+      // Then add a preferences group with action rows to open the effect subpages.
+      const group = new Adw.PreferencesGroup({title: _('Effects')});
+      this.gtkBoxAppend(this._widget, group);
+
+      this._ALL_EFFECTS.forEach(effect => {
+        const [minMajor, minMinor] = effect.getMinShellVersion();
+        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+
+          const row = new Adw.ActionRow({title: effect.getLabel(), activatable: true});
+          row.add_suffix(new Gtk.Image({icon_name: 'go-next-symbolic'}));
+
+          // Open a subpage with the effect's settings.
+          row.connect('activated', () => {
+            const page         = new BurnMyWindowsEffectPage(effect, this);
+            page.valign        = Gtk.Align.CENTER;
+            page.margin_top    = 10;
+            page.margin_bottom = 10;
+            page.margin_start  = 10;
+            page.margin_end    = 10;
+
+            // Add the effect's preferences (if any).
+            const preferences = effect.getPreferences(this);
+            if (preferences) {
+              this.gtkBoxAppend(page, preferences);
+            }
+
+            // Add a button for back navigation.
+            const backButton = new Gtk.Button({
+              halign: Gtk.Align.CENTER,
+              label: _('Go Back'),
+            });
+            backButton.add_css_class('suggested-action');
+            backButton.add_css_class('pill-button');
+            backButton.connect('clicked', () => {
+              row.get_root().close_subpage();
+            });
+
+            this.gtkBoxAppend(page, backButton);
+
+            // Wrap the preferences group in an Adw.Clamp.
+            const clamp = new Adw.Clamp({
+              child: page,
+              maximum_size: 600,
+              tightening_threshold: 400,
+            });
+
+            // Open the subpage on click.
+            row.get_root().present_subpage(clamp);
+          });
+
+          group.add(row);
+        }
+      });
     }
     // On older GNOME versions, we use a StackSidebar.
     else {
@@ -580,7 +641,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // On GTK3, each effect page is based on a template widget. This template contains the
     // title and the preview button.
-    if (!utils.isGTK4() && GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
+    if (!utils.isADW() && GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
       BurnMyWindowsEffectPage = GObject.registerClass(
         {
           GTypeName: 'BurnMyWindowsEffectPage',

@@ -121,7 +121,7 @@ var Matrix = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource('/ui/gtk4/Matrix.ui');
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Matrix.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('matrix-animation-time');

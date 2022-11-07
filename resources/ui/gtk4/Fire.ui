@@ -7,199 +7,293 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 <interface domain="burn-my-windows">
 
-  <object class="AdwExpanderRow" id="fire-prefs">
+  <object class="GtkBox" id="fire-prefs">
+    <property name="orientation">vertical</property>
 
     <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Presets</property>
-        <property name="activatable-widget">fire-preset-button</property>
+      <object class="GtkFrame">
+        <property name="margin-bottom">20</property>
         <child>
-          <object class="GtkMenuButton" id="fire-preset-button">
-            <property name="valign">center</property>
-            <property name="label" translatable="yes">Choose a Preset</property>
+          <object class="GtkListBox">
+            <property name="selection-mode">none</property>
+            <property name="show-separators">1</property>
             <style>
-              <class name="flat" />
+              <class name="rich-list" />
             </style>
-          </object>
-        </child>
-      </object>
-    </child>
 
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Animation Time [ms]</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">0</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="fire-animation-time">
-                <property name="upper">10000</property>
-                <property name="lower">100</property>
-                <property name="step-increment">1</property>
-                <property name="page-increment">100</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-fire-animation-time">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Scale</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">2</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="flame-scale">
-                <property name="upper">3</property>
-                <property name="lower">0.1</property>
-                <property name="step-increment">0.01</property>
-                <property name="page-increment">0.1</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-flame-scale">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Speed</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">2</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-              <object class="GtkAdjustment" id="flame-movement-speed">
-                <property name="upper">2.0</property>
-                <property name="lower">-2.0</property>
-                <property name="step-increment">0.01</property>
-                <property name="page-increment">0.1</property>
-              </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-flame-movement-speed">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">3D Noise</property>
-        <property name="subtitle" translatable="yes">Creates a more dynamic fire but requires more GPU power.</property>
-        <property name="activatable-widget">flame-3d-noise</property>
-        <child>
-          <object class="GtkSwitch" id="flame-3d-noise">
-            <property name="valign">center</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-flame-3d-noise">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Gradient</property>
-        <child>
-          <object class="GtkBox">
-            <style>
-              <class name="linked" />
-            </style>
             <child>
-              <object class="GtkColorButton" id="fire-color-1">
-                <property name="use_alpha">1</property>
-                <property name="show_editor">1</property>
-                <property name="valign">center</property>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Presets</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkMenuButton" id="fire-preset-button">
+                        <property name="label">Choose a Preset</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
+
             <child>
-              <object class="GtkColorButton" id="fire-color-2">
-                <property name="use_alpha">1</property>
-                <property name="show_editor">1</property>
-                <property name="valign">center</property>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Animation Time [ms]</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">0</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="fire-animation-time">
+                            <property name="upper">10000</property>
+                            <property name="lower">100</property>
+                            <property name="step-increment">1</property>
+                            <property name="page-increment">100</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-fire-animation-time">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
+
             <child>
-              <object class="GtkColorButton" id="fire-color-3">
-                <property name="use_alpha">1</property>
-                <property name="show_editor">1</property>
-                <property name="valign">center</property>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Scale</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="flame-scale">
+                            <property name="upper">3</property>
+                            <property name="lower">0.1</property>
+                            <property name="step-increment">0.01</property>
+                            <property name="page-increment">0.1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-flame-scale">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
+
             <child>
-              <object class="GtkColorButton" id="fire-color-4">
-                <property name="use_alpha">1</property>
-                <property name="show_editor">1</property>
-                <property name="valign">center</property>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Speed</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScale">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="draw-value">1</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <property name="width-request">300</property>
+                        <property name="adjustment">
+                          <object class="GtkAdjustment" id="flame-movement-speed">
+                            <property name="upper">2.0</property>
+                            <property name="lower">-2.0</property>
+                            <property name="step-increment">0.01</property>
+                            <property name="page-increment">0.1</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-flame-movement-speed">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
+
             <child>
-              <object class="GtkColorButton" id="fire-color-5">
-                <property name="use_alpha">1</property>
-                <property name="show_editor">1</property>
-                <property name="valign">center</property>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">3</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">3D Noise</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Creates a more dynamic fire but requires more GPU power.</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                            <style>
+                              <class name="dim-label" />
+                              <class name="caption" />
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="flame-3d-noise">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-flame-3d-noise">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-fire-colors">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
+
+            <child>
+              <object class="GtkListBoxRow">
+                <property name="activatable">0</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Gradient</property>
+                        <property name="xalign">0</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="fire-color-1">
+                        <property name="use_alpha">1</property>
+                        <property name="show_editor">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="fire-color-2">
+                        <property name="use_alpha">1</property>
+                        <property name="show_editor">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="fire-color-3">
+                        <property name="use_alpha">1</property>
+                        <property name="show_editor">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="fire-color-4">
+                        <property name="use_alpha">1</property>
+                        <property name="show_editor">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkColorButton" id="fire-color-5">
+                        <property name="use_alpha">1</property>
+                        <property name="show_editor">1</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="reset-fire-colors">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                        <style>
+                          <class name="flat" />
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+
           </object>
         </child>
       </object>

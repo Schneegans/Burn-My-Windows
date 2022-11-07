@@ -138,7 +138,7 @@ var Incinerate = class {
   getPreferences(dialog) {
 
     // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getGTKString()}/Incinerate.ui`);
+    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Incinerate.ui`);
 
     // Bind all properties.
     dialog.bindAdjustment('incinerate-animation-time');
