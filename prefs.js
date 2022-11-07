@@ -116,23 +116,25 @@ var PreferencesDialog = class PreferencesDialog {
       const generalPrefs = this._builder.get_object('general-prefs');
       this.gtkBoxAppend(this._widget, generalPrefs);
 
-      // Then add a preferences group with expander rows.
-      const group = new Adw.PreferencesGroup({title: _('Effect Options')});
+      // Then add a preferences group for the effect expander rows.
+      const group = new Adw.PreferencesGroup({title: _('Effects')});
       this.gtkBoxAppend(this._widget, group);
 
       // This stores all expander rows for the effects. We use this to implement the
       // accordion-functionality of the effect settings.
       this._effectRows = [];
 
+      // Now add all the rows.
       this._ALL_EFFECTS.forEach(effect => {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
           const row = effect.getPreferences(this);
-          row.set_title(effect.getLabel());
+          row.set_title('<b>' + effect.getLabel() + '</b>');
+          row.set_use_markup(true);
 
           // Un-expand any previously expanded effect row. This way we ensure that there
           // is only one expanded row at any time.
-          row.connect('notify::expanded', (currentRow) => {
+          row.connect('notify::expanded', currentRow => {
             if (currentRow.get_expanded()) {
               this._effectRows.forEach(row => {
                 if (row != currentRow) {
@@ -142,17 +144,53 @@ var PreferencesDialog = class PreferencesDialog {
             }
           });
 
-          // Show a preview of the effect with a button in the effect row.
-          const previewButton = Gtk.Button.new_from_icon_name('eye-open-symbolic');
+          // Add three buttons on the right.
+          const box = new Gtk.Box();
+          box.set_spacing(8);
+
+          // The preview button.
+          const previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
           previewButton.add_css_class('circular');
-          previewButton.set_tooltip_text(_('Preview this Effect'));
+          previewButton.add_css_class('flat');
+          previewButton.set_tooltip_text(_('Preview this effect'));
           previewButton.set_valign(Gtk.Align.CENTER);
-          row.add_prefix(previewButton);
+          box.append(previewButton);
 
           previewButton.connect('clicked', () => {
             this._previewEffect(effect);
           });
 
+          // Now add the two toggle buttons for enabling and disabling the effect.
+          const addToggle = (action, tooltip) => {
+            const button = Gtk.ToggleButton.new();
+            button.set_action_name(
+              `${action}-effects.${effect.getNick()}-${action}-effect`);
+            button.set_child(
+              Gtk.Image.new_from_icon_name(`bmw-window-${action}-symbolic`));
+            button.set_tooltip_text(tooltip);
+            button.set_valign(Gtk.Align.CENTER);
+
+            // We switch some class when the button is enabled in order to make it more
+            // apparent which effects are currently in use.
+            button.add_css_class('circular');
+            button.add_css_class('flat');
+            button.connect('toggled', button => {
+              if (button.active) {
+                button.add_css_class('suggested-action');
+                button.remove_css_class('flat');
+              } else {
+                button.remove_css_class('suggested-action');
+                button.add_css_class('flat');
+              }
+            });
+
+            box.append(button);
+          };
+
+          addToggle('open', _('Use this effect when opening windows'));
+          addToggle('close', _('Use this effect when closing windows'));
+
+          row.add_action(box);
           group.add(row);
 
           this._effectRows.push(row);
@@ -294,44 +332,46 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Populate the open-effects drop-down menu.
       {
-        const menu  = this._builder.get_object('open-effect-menu');
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('open-effects', group);
 
         this._ALL_EFFECTS.forEach(effect => {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const nick       = effect.getNick();
-            const label      = effect.getLabel();
-            const actionName = nick + '-open-effect';
-            const fullName   = 'open-effects.' + actionName;
-
-            const action = this._settings.create_action(actionName);
+            const actionName = effect.getNick() + '-open-effect';
+            const action     = this._settings.create_action(actionName);
             group.add_action(action);
 
-            menu.append_item(Gio.MenuItem.new(label, fullName));
+            // The menu only exists on GTK3. On GTK4, individual ToggleButtons are used
+            // for triggering the above actions.
+            if (!utils.isGTK4()) {
+              const menu  = this._builder.get_object('open-effect-menu');
+              const label = effect.getLabel();
+              menu.append_item(Gio.MenuItem.new(label, 'open-effects.' + actionName));
+            }
           }
         });
       }
 
       // Populate the close-effects drop-down menu.
       {
-        const menu  = this._builder.get_object('close-effect-menu');
         const group = Gio.SimpleActionGroup.new();
         window.insert_action_group('close-effects', group);
 
         this._ALL_EFFECTS.forEach(effect => {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const nick       = effect.getNick();
-            const label      = effect.getLabel();
-            const actionName = nick + '-close-effect';
-            const fullName   = 'close-effects.' + actionName;
-
-            const action = this._settings.create_action(actionName);
+            const actionName = effect.getNick() + '-close-effect';
+            const action     = this._settings.create_action(actionName);
             group.add_action(action);
 
-            menu.append_item(Gio.MenuItem.new(label, fullName));
+            // The menu only exists on GTK3. On GTK4, individual ToggleButtons are used
+            // for triggering the above actions.
+            if (!utils.isGTK4()) {
+              const menu  = this._builder.get_object('close-effect-menu');
+              const label = effect.getLabel();
+              menu.append_item(Gio.MenuItem.new(label, 'close-effects.' + actionName));
+            }
           }
         });
       }

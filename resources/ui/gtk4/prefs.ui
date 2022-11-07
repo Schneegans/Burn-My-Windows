@@ -8,9 +8,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
   <requires lib="gtk" version="4.0" />
 
-  <menu id="close-effect-menu"></menu>
-  <menu id="open-effect-menu"></menu>
-
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
     <property name="icon-name">open-menu-symbolic</property>
@@ -19,7 +16,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
   <object class="GtkBox" id="general-prefs">
     <property name="orientation">vertical</property>
     <property name="margin-top">60</property>
-    <property name="margin-bottom">60</property>
+    <property name="margin-bottom">20</property>
 
     <child>
       <object class="GtkImage">
