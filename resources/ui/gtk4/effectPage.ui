@@ -40,7 +40,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <child>
                   <object class="GtkLabel">
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Preview this Effect</property>
+                    <property name="label" translatable="yes">Preview this effect</property>
                   </object>
                 </child>
               </object>
