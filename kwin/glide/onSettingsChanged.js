@@ -8,3 +8,4 @@
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
 effect.setUniform(this.shader, 'uSquish', effect.readConfig('Squish', 1.0));
 effect.setUniform(this.shader, 'uTilt', effect.readConfig('Tilt', 1.0));
+effect.setUniform(this.shader, 'uShift', effect.readConfig('Shift', 1.0));

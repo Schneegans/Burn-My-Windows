@@ -17,6 +17,7 @@
 uniform float uScale;
 uniform float uSquish;
 uniform float uTilt;
+uniform float uShift;
 
 void main() {
   // We reverse the progress for window opening.
@@ -34,6 +35,9 @@ void main() {
 
   // 'Tilt' image texture around x-axis.
   coords.x /= mix(1.0, 1.0 - 0.1 * uTilt * coords.y, progress);
+
+  // Move image texture vertically.
+  coords.y += uShift * progress;
 
   // Move texture coordinate center to corner again.
   coords = coords * 0.5 + 0.5;
