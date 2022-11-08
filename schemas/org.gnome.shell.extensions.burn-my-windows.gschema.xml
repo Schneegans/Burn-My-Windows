@@ -320,13 +320,13 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="glide-scale" type="d">
-      <default>0.9</default>
+      <default>0.95</default>
       <summary>Glide Scale</summary>
       <description>The scale of the window.</description>
     </key>
 
     <key name="glide-squish" type="d">
-      <default>0.1</default>
+      <default>0.15</default>
       <summary>Glide Squish</summary>
       <description>The amount of squishing.</description>
     </key>
@@ -335,6 +335,12 @@ SPDX-License-Identifier: CC0-1.0
       <default>-0.3</default>
       <summary>Glide Tilt</summary>
       <description>The amount of tilting.</description>
+    </key>
+
+    <key name="glide-shift" type="d">
+      <default>-0.05</default>
+      <summary>Glide Shift</summary>
+      <description>The amount of shifting.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

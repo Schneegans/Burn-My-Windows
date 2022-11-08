@@ -42,6 +42,7 @@ var Glide = class {
       shader._uScale  = shader.get_uniform_location('uScale');
       shader._uSquish = shader.get_uniform_location('uSquish');
       shader._uTilt   = shader.get_uniform_location('uTilt');
+      shader._uShift  = shader.get_uniform_location('uShift');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
@@ -49,6 +50,7 @@ var Glide = class {
         shader.set_uniform_float(shader._uScale, 1,  [settings.get_double('glide-scale')]);
         shader.set_uniform_float(shader._uSquish, 1, [settings.get_double('glide-squish')]);
         shader.set_uniform_float(shader._uTilt, 1,   [settings.get_double('glide-tilt')]);
+        shader.set_uniform_float(shader._uShift, 1,  [settings.get_double('glide-shift')]);
         // clang-format on
       });
     });
@@ -90,6 +92,7 @@ var Glide = class {
     dialog.bindAdjustment('glide-scale');
     dialog.bindAdjustment('glide-squish');
     dialog.bindAdjustment('glide-tilt');
+    dialog.bindAdjustment('glide-shift');
 
     // Finally, return the new settings page.
     return dialog.getBuilder().get_object('glide-prefs');

@@ -12,13 +12,16 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <default>250</default>
     </entry>
     <entry name="Scale" type="Double">
-      <default>0.9</default>
+      <default>0.95</default>
     </entry>
     <entry name="Squish" type="Double">
-      <default>0.1</default>
+      <default>0.15</default>
     </entry>
     <entry name="Tilt" type="Double">
       <default>-0.3</default>
+    </entry>
+    <entry name="Shift" type="Double">
+      <default>-0.05</default>
     </entry>
   </group>
 </kcfg>
