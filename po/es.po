@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-07 21:24+0100\n"
-"PO-Revision-Date: 2022-11-04 16:06+0000\n"
+"PO-Revision-Date: 2022-11-08 20:14+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.2-dev\n"
+"X-Generator: Weblate 4.14.2\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -109,20 +109,20 @@ msgstr "Chispas"
 
 #: prefs.js:120
 msgid "Effects"
-msgstr ""
+msgstr "Efectos"
 
 #: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Vista previa de este efecto"
 
 #: prefs.js:197
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Utilice este efecto al abrir las ventanas"
 
 #: prefs.js:198
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Utilice este efecto al cerrar las ventanas"
 
 #: prefs.js:224
 msgid "General Options"
