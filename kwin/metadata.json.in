@@ -6,8 +6,8 @@
      "Category": "Window Open/Close Animation",
      "Authors": [ 
         { "Name": "Simon Schneegans", "Email": "code@simonschneegans.de" },
-        { "Name": "Martin Flöser", "Email": "vlad.zahorodnii@kde.org" },
-        { "Name": "Aaron Seigo", "Email": "mgraesslin@kde.org" }
+        { "Name": "Martin Flöser", "Email": "mgraesslin@kde.org" },
+        { "Name": "Vlad Zahorodnii", "Email": "vlad.zahorodnii@kde.org" }
      ],
      "Id": "%DIR_NAME%",
      "License": "GPLv3",
