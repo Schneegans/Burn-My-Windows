@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 22](https://github.com/schneegans/Burn-My-Windows/releases/tag/v22)
 
-**Release Date:** TBD
+**Release Date:** 2022-11-09
 
 #### New Features
 
