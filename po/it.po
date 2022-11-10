@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-08 21:14+0100\n"
-"PO-Revision-Date: 2022-09-17 15:21+0000\n"
+"PO-Revision-Date: 2022-11-11 17:47+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -109,20 +109,20 @@ msgstr "Scintille"
 
 #: prefs.js:120
 msgid "Effects"
-msgstr ""
+msgstr "Effetti"
 
 #: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Anteprima di questo effetto"
 
 #: prefs.js:197
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Usa questo effetto quando apri le finestre"
 
 #: prefs.js:198
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Usa questo effetto quando chiudi le finestre"
 
 #: prefs.js:224
 msgid "General Options"
