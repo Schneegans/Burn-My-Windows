@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-08 21:14+0100\n"
-"PO-Revision-Date: 2022-11-11 17:47+0000\n"
-"Last-Translator: Mathis Chabrier <matshot03@gmail.com>\n"
+"PO-Revision-Date: 2022-11-21 12:48+0000\n"
+"Last-Translator: SoftExpert <softexpert@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
 "Language: fr\n"
@@ -427,7 +427,7 @@ msgstr "Incliner"
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Changement"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
