@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-08 21:14+0100\n"
-"PO-Revision-Date: 2022-11-11 17:47+0000\n"
+"PO-Revision-Date: 2022-11-21 12:48+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -85,7 +85,7 @@ msgstr "Pixelato"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Ruota Pixel"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
