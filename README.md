@@ -184,6 +184,8 @@ gnome-extensions enable burn-my-windows@schneegans.github.com
 
 You can either download the effects from the KDE store (a), download a stable version from GitHub (b) or clone the latest version directly with `git` (c).
 
+:warning: **You need at least KWin 5.25.0 for the effects to work.**
+
 :warning: **If the color picker widgets in the effect settings do not work for you, you may have to install a package called `libkf5widgetsaddons-dev` (Kubuntu, KDE Neon, ...) or `kwidgetsaddons-devel` (Fedora, OpenSuse, ...).**
 
 ### a) Download from the [KDE Store](https://store.kde.org/p/1861183)
