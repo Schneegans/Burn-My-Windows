@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-11-08 21:14+0100\n"
-"PO-Revision-Date: 2022-11-21 12:48+0000\n"
-"Last-Translator: Егор Ермаков <eg.ermakov2016@yandex.ru>\n"
+"PO-Revision-Date: 2022-12-12 05:51+0000\n"
+"Last-Translator: lenemter <lenemter@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.15-dev\n"
 
 #: src/Apparition.js:81
@@ -30,7 +30,7 @@ msgstr "Разбитое стекло"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr "кончина"
+msgstr "Кончина"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
@@ -66,7 +66,7 @@ msgstr "Дед Мороз идёт"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Скольжение"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -90,7 +90,7 @@ msgstr "Кольцо пикселей"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "вытирать пикселями"
+msgstr "Вытирать пикселями"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
@@ -110,7 +110,7 @@ msgstr "Огоньки"
 
 #: prefs.js:120
 msgid "Effects"
-msgstr ""
+msgstr "Эффекты"
 
 #: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
@@ -374,7 +374,7 @@ msgstr "Начинать от курсора"
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr "Если не вклучен, случайное положение будет выбрано."
+msgstr "Если не включён, случайное положение будет выбрано."
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -416,17 +416,17 @@ msgstr "Градиент"
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Хлюпать"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Наклон"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Сдвиг"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -461,12 +461,12 @@ msgstr "Счёт Спици"
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Горизонтальная Шкала"
+msgstr "Горизонтальная шкала"
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
 #: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
-msgstr "Вертикальная Шкала"
+msgstr "Вертикальная шкала"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
