@@ -2,12 +2,14 @@
 
 <!--
 SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
-SPDX-License-Identifier: CC0-1.0
+SPDX-License-Identifier:
+CC0-1.0
 -->
 
 <schemalist>
 
-  <schema path="/org/gnome/shell/extensions/burn-my-windows/" id="org.gnome.shell.extensions.burn-my-windows">
+  <schema path="/org/gnome/shell/extensions/burn-my-windows/"
+    id="org.gnome.shell.extensions.burn-my-windows">
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- General Options                                                               -->
@@ -40,7 +42,8 @@ SPDX-License-Identifier: CC0-1.0
     <key name="test-mode" type="b">
       <default>false</default>
       <summary>Test Mode</summary>
-      <description>If set to true, all animations will show only one still frame to allow for continuous integration tests.</description>
+      <description>If set to true, all animations will show only one still frame to allow for
+        continuous integration tests.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -713,6 +716,34 @@ SPDX-License-Identifier: CC0-1.0
       <default>false</default>
       <summary>Broken Glass Use Pointer</summary>
       <description>Use the pointer location for the broken glass effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Portal Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="portal-close-effect" type="b">
+      <default>false</default>
+      <summary>Portal Close Effect</summary>
+      <description>Use the Portal effect for window closing.</description>
+    </key>
+
+    <key name="portal-open-effect" type="b">
+      <default>false</default>
+      <summary>Portal Open Effect</summary>
+      <description>Use the Portal effect for window opening.</description>
+    </key>
+
+    <key name="portal-animation-time" type="i">
+      <default>1000</default>
+      <summary>Portal Animation Time</summary>
+      <description>The time the Portal effect takes.</description>
+    </key>
+
+    <key name="portal-color" type="s">
+      <default>"rgb(155, 255, 50)"</default>
+      <summary>Portal Color</summary>
+      <description>The color of the effect.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

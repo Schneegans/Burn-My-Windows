@@ -60,6 +60,7 @@ var PreferencesDialog = class PreferencesDialog {
       new Me.imports.src.Pixelate.Pixelate(),
       new Me.imports.src.PixelWheel.PixelWheel(),
       new Me.imports.src.PixelWipe.PixelWipe(),
+      new Me.imports.src.Portal.Portal(),
       new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
       new Me.imports.src.TRexAttack.TRexAttack(),
       new Me.imports.src.TVEffect.TVEffect(),
