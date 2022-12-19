@@ -143,7 +143,28 @@ vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
 // https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
 
 float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
+
 float easeInQuad(float x) { return x * x; }
+
+float easeInBack(float x) { return x * x * ((1.70158 + 1) * x - 1.70158); }
+
+float easeOutBack(float x) {
+  float p = x - 1;
+  return p * p * ((1.70158 + 1) * p + 1.70158) + 1;
+}
+
+float easeInOutBack(float x) {
+  float p = x * 2.0;
+  float s = 1.70158 * 1.525;
+
+  if (p < 1.0) {
+    return 0.5 * (p * p * ((s + 1) * p - s));
+  }
+
+  p -= 2;
+
+  return 0.5 * (p * p * ((s + 1) * p + s) + 2);
+}
 
 // --------------------------------------------------------------------- edge mask helpers
 
