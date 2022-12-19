@@ -183,6 +183,15 @@ float getRelativeEdgeMask(float fadeAmount) {
 
 // ------------------------------------------------------------------------------- 2D math
 
+// The math for the whirling is inspired by this post:
+// http://www.geeks3d.com/20110428/shader-library-swirl-post-processing-filter-in-glsl
+vec2 whirl(vec2 coords, float warping, float rotation) {
+  float angle = pow(1.0 - length(coords), 2.0) * warping + rotation;
+  float s     = sin(angle);
+  float c     = cos(angle);
+  return vec2(dot(coords, vec2(c, -s)), dot(coords, vec2(s, c)));
+}
+
 // Returns the shortest distance between the given point and the line defined by "origin"
 // and "direction".
 float distToLine(vec2 origin, vec2 direction, vec2 point) {
