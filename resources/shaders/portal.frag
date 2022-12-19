@@ -16,23 +16,21 @@
 
 uniform vec3 uColor;
 
-const float PORTAL_OPEN_TIME      = 0.3;
-const float PORTAL_CLOSE_TIME     = 0.4;
-const float PORTAL_ROTATION_SPEED = 0.5;
-const float PORTAL_WARPING        = 2.0;
+const float PORTAL_OPEN_TIME       = 0.2;
+const float PORTAL_WOBBLE_TIME     = 0.4;
+const float PORTAL_WOBBLE_STRENGTH = 1.0;
+const float PORTAL_CLOSE_TIME      = 0.3;
+const float PORTAL_ROTATION_SPEED  = 0.7;
+const float PORTAL_WARPING         = 3.0;
 
-const float WINDOW_ANIMATION_TIME = 0.4;
+const float WINDOW_ANIMATION_TIME = 0.3;
 const float WINDOW_SCALE          = 0.3;
 const float WINDOW_SQUISH         = 1.0;
 const float WINDOW_TILT           = -1.0;
-const float WINDOW_SHIFT          = 0.0;
 
 const float GLOW_EDGE_WIDTH = 0.02;
 
 vec4 getPortalColor() {
-
-  // We simply inverse the progress for opening windows.
-  float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
   // Put coordinate origin to the center of the window and make ensure a 1:1 aspect ratio.
   vec2 coords = (iTexCoord.st - vec2(0.5)) * 2.0 * uSize / vec2(min(uSize.x, uSize.y));
@@ -49,6 +47,16 @@ vec4 getPortalColor() {
 
   coords /= max(scale, 0.01);
 
+  float wobbleProgress =
+    (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_ANIMATION_TIME;
+  wobbleProgress =
+    clamp(1.0 - abs((wobbleProgress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
+  wobbleProgress = easeInBack(wobbleProgress);
+  float dist     = length(coords);
+  vec2 distort   = coords * (1.0 - dist) * exp(-dist);
+
+  coords = (coords - (distort * wobbleProgress * PORTAL_WOBBLE_STRENGTH));
+
   // Apply some whirling.
   // The math for the whirling is inspired by this post:
   float rotation = PORTAL_ROTATION_SPEED * uProgress;
@@ -59,7 +67,7 @@ vec4 getPortalColor() {
   float yDisplace = simplex2D(coords * 2.0 + vec2(12.0, 123.0)) - 0.5;
   coords += vec2(xDisplace, yDisplace) * 0.1;
 
-  float dist           = length(coords);
+  dist                 = length(coords);
   vec3 backgroundColor = mix(0.2 * uColor, 0.8 * uColor, clamp(pow(dist, 5.0), 0.0, 1.0));
   float alpha          = dist > 1.0 ? 0.0 : 1.0;
   vec4 color           = vec4(backgroundColor, alpha);
@@ -96,15 +104,11 @@ vec4 getWindowColor() {
   // 'Tilt' image texture around x-axis.
   coords.x /= mix(1.0, 1.0 - 0.1 * WINDOW_TILT * coords.y, progress);
 
-  // Move image texture vertically.
-  coords.y += WINDOW_SHIFT * progress;
-
   // Move texture coordinate center to corner again.
   coords = coords * 0.5 + 0.5;
 
-  vec4 oColor = getInputColor(coords);
-
   // Dissolve window.
+  vec4 oColor = getInputColor(coords);
   oColor.a *= clamp((1.0 - progress) * 3.0, 0.0, 1.0);
 
   return oColor;
@@ -116,6 +120,7 @@ void main() {
 
   setOutputColor(alphaOver(portal, window));
 
+  // These can be useful for understanding how this works.
   // setOutputColor(portal);
   // setOutputColor(window);
 }

@@ -734,7 +734,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="portal-animation-time" type="i">
-      <default>1000</default>
+      <default>1500</default>
       <summary>Portal Animation Time</summary>
       <description>The time the Portal effect takes.</description>
     </key>
