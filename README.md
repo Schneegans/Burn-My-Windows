@@ -41,6 +41,7 @@ Effect | Preview
 **Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.| <img src ="docs/pics/pixelate.gif" />
 **Pixel Wheel** <br> This simple effect pixelates the window and hides the pixels in a wheel-like fashion.| <img src ="docs/pics/pixel-wheel.gif" />
 **Pixel Wipe** <br> This effect pixelates the window and hides the pixels radially, starting from the pointer position.| <img src ="docs/pics/pixel-wipe.gif" />
+**Portal** <br> This ridiculous effect teleports your windows from and to alternative dimensions.| <img src ="docs/pics/portal.gif" />
 **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.| <img src ="docs/pics/snap.gif" />
 **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!| <img src ="docs/pics/trex.gif" />
 **TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
@@ -72,6 +73,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
+<tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>  </td>   </tr>
 <tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td>   </tr>
