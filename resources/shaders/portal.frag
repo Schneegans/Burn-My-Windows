@@ -16,71 +16,103 @@
 
 uniform vec3 uColor;
 
-const float PORTAL_OPEN_TIME       = 0.2;
-const float PORTAL_WOBBLE_TIME     = 0.4;
-const float PORTAL_WOBBLE_STRENGTH = 1.0;
+const float PORTAL_OPEN_TIME       = 0.3;
+const float PORTAL_WOBBLE_TIME     = 0.8;
+const float PORTAL_WOBBLE_STRENGTH = 1.2;
 const float PORTAL_CLOSE_TIME      = 0.3;
-const float PORTAL_ROTATION_SPEED  = 0.7;
+const float PORTAL_ROTATION_SPEED  = 0.3;
 const float PORTAL_WARPING         = 3.0;
+const float GLOW_EDGE_WIDTH        = 5.0;
 
 const float WINDOW_ANIMATION_TIME = 0.3;
 const float WINDOW_SCALE          = 0.3;
 const float WINDOW_SQUISH         = 1.0;
 const float WINDOW_TILT           = -1.0;
 
-const float GLOW_EDGE_WIDTH = 0.02;
+vec2 getPortalWobble(vec2 coords) {
+  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_ANIMATION_TIME;
+  progress       = clamp(1.0 - abs((progress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
+  progress       = easeInBack(progress, 1.7);
+  float dist     = length(coords);
+
+  return coords * (1.0 - dist) * exp(-dist) * progress * PORTAL_WOBBLE_STRENGTH;
+}
+
+float getPortalScale() {
+  float scale = 1.0;
+  if (uProgress < PORTAL_OPEN_TIME) {
+    scale = easeOutBack(uProgress / PORTAL_OPEN_TIME, 1.5);
+  } else if (uProgress > 1.0 - PORTAL_CLOSE_TIME) {
+    scale =
+      easeOutBack(1.0 - (uProgress - 1.0 + PORTAL_CLOSE_TIME) / PORTAL_CLOSE_TIME, 1.5);
+  }
+
+  return scale;
+}
+
+vec2 getRandomDisplace(vec2 coords, float scale) {
+  return vec2(simplex2D(coords * scale) - 0.5,
+              simplex2D(coords * scale + vec2(7.89, 123.0)) - 0.5);
+}
+
+vec2 getWhirledCoords(vec2 coords, float speedMultiplier, float warpMultiplier) {
+  float rotation = PORTAL_ROTATION_SPEED * uProgress * uDuration * speedMultiplier;
+  float warping  = PORTAL_WARPING * (2.0 + 0.5 * uProgress) * warpMultiplier;
+  return whirl(coords, warping, rotation);
+}
 
 vec4 getPortalColor() {
 
   // Put coordinate origin to the center of the window and make ensure a 1:1 aspect ratio.
-  vec2 coords = (iTexCoord.st - vec2(0.5)) * 2.0 * uSize / vec2(min(uSize.x, uSize.y));
+  vec2 coords = (iTexCoord.st - vec2(0.5)) * 2.0;
+  // vec2 coords = (iTexCoord.st - vec2(0.5)) * 2.0 * uSize * vec2(1.0, 0.75) /
+  // vec2(min(uSize.x, uSize.y * 0.75));
+
+  float scaleFac = 1000.0 / (uSize.x + uSize.y);
 
   // Add some margin for the elastic overshooting.
   coords *= 1.5;
 
-  float scale = 1.0;
-  if (uProgress < PORTAL_OPEN_TIME) {
-    scale = easeOutBack(uProgress / PORTAL_OPEN_TIME);
-  } else if (uProgress > 1.0 - PORTAL_CLOSE_TIME) {
-    scale = easeOutBack(1.0 - (uProgress - 1.0 + PORTAL_CLOSE_TIME) / PORTAL_CLOSE_TIME);
-  }
-
+  float scale = getPortalScale();
   coords /= max(scale, 0.01);
 
-  float wobbleProgress =
-    (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_ANIMATION_TIME;
-  wobbleProgress =
-    clamp(1.0 - abs((wobbleProgress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
-  wobbleProgress = easeInBack(wobbleProgress);
-  float dist     = length(coords);
-  vec2 distort   = coords * (1.0 - dist) * exp(-dist);
+  vec2 wobble = getPortalWobble(coords);
 
-  coords = (coords - (distort * wobbleProgress * PORTAL_WOBBLE_STRENGTH));
+  vec2 coords1 = getWhirledCoords(coords - wobble * 1.0, 0.5, 1.0);
+  vec2 coords2 = getWhirledCoords(coords - wobble * 1.5, 1.5, 0.5);
+  vec2 coords3 = getWhirledCoords(coords - wobble * 1.8, 2.5, 0.0);
 
-  // Apply some whirling.
-  // The math for the whirling is inspired by this post:
-  float rotation = PORTAL_ROTATION_SPEED * uProgress;
-  float warping  = PORTAL_WARPING * (1.0 + 0.5 * uProgress);
-  coords         = whirl(coords, warping, rotation);
+  vec2 displace1 = getRandomDisplace(coords1, 2.1);
+  vec2 displace2 = getRandomDisplace(coords2, 12.2);
 
-  float xDisplace = simplex2D(coords * 2.0) - 0.5;
-  float yDisplace = simplex2D(coords * 2.0 + vec2(12.0, 123.0)) - 0.5;
-  coords += vec2(xDisplace, yDisplace) * 0.1;
+  coords1 += displace1 * 0.1;
+  coords2 += displace2 * 0.1;
 
-  dist                 = length(coords);
+  float dist           = length(coords1);
   vec3 backgroundColor = mix(0.2 * uColor, 0.8 * uColor, clamp(pow(dist, 5.0), 0.0, 1.0));
   float alpha          = dist > 1.0 ? 0.0 : 1.0;
   vec4 color           = vec4(backgroundColor, alpha);
 
   float glowingEdge =
-    pow(clamp((1.0 - abs(dist - 1.0)) + GLOW_EDGE_WIDTH, 0.0, 1.0), 100.0);
-  color = alphaOver(color, vec4(vec3(1.0), glowingEdge));
+    clamp((mix(1.0, 5.0, dot(displace1, displace1)) * GLOW_EDGE_WIDTH * scaleFac -
+           150.0 * abs(dist - 1.0)),
+          0.0, 1.0);
 
-  float bands = simplex2D(coords * 4.0) > 0.7 ? alpha : 0.0;
-  color       = alphaOver(color, vec4(uColor, bands));
+  float bands1 =
+    simplex2D(coords1 / scaleFac * 1.0 + vec2(12.3, 56.4)) > 0.6 ? alpha : 0.0;
+  float bands2 = simplex2D(coords2 / scaleFac * 1.3) > 0.6 ? alpha : 0.0;
 
-  float stars = pow((simplex3D(vec3(coords * 5.0, uProgress * uDuration))) + 0.2, 50.0);
-  color.rgb += vec3(stars);
+  color = alphaOver(color, vec4(uColor * 0.7, bands1));
+  color = alphaOver(color, vec4(uColor, bands2));
+
+  color = clamp(color, 0.0, 1.0);
+
+  color = alphaOver(color, vec4(uColor, glowingEdge));
+
+  float noise = simplex2D(coords3 / scaleFac * 3.0);
+
+  float sparkles = clamp(pow(noise * dot(displace1, displace1) + 0.9, 50.0), 0.0, 1.0);
+  color.rgb += vec3(1.0, 1.0, 0.7) * sparkles;
 
   color.a *= pow(clamp(scale, 0.0, 1.0), 2.0);
 
@@ -90,7 +122,7 @@ vec4 getPortalColor() {
 vec4 getWindowColor() {
   float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_ANIMATION_TIME;
 
-  progress = easeInBack(clamp(progress, 0.0, 1.0));
+  progress = easeInBack(clamp(progress, 0.0, 1.0), 1.2);
 
   // Put texture coordinate origin to center of window.
   vec2 coords = iTexCoord.st * 2.0 - 1.0;
