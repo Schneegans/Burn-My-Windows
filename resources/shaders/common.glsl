@@ -136,6 +136,14 @@ vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
   return mix(midtones, highlights, smoothstep(0.0, 1.0, val * 2.0 - 1.0));
 }
 
+// Darkens the given color. If fac is zero, the color will not change, if fac is one, the
+// color will be black.
+vec3 darken(vec3 color, float fac) { return color * (1.0 - fac); }
+
+// Lightens the given color. If fac is zero, the color will not change, if fac is one, the
+// color will be white.
+vec3 lighten(vec3 color, float fac) { return color + (vec3(1.0) - color) * fac; }
+
 // ---------------------------------------------------------------------- easing functions
 
 // Here are some basic easing function. More can be added if required!
