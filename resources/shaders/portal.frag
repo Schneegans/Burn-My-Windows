@@ -23,14 +23,15 @@ uniform float uDetails;
 const float PORTAL_WOBBLE_TIME     = 0.8;
 const float PORTAL_WOBBLE_STRENGTH = 1.2;
 const float GLOW_EDGE_WIDTH        = 5.0;
+const float WINDOW_SCALE           = 0.3;
+const float WINDOW_SQUISH          = 1.0;
+const float WINDOW_TILT            = -1.0;
 
-const float WINDOW_SCALE  = 0.3;
-const float WINDOW_SQUISH = 1.0;
-const float WINDOW_TILT   = -1.0;
-
-float PORTAL_OPEN_TIME  = 0.3 * 1.5 / uDuration;
-float PORTAL_CLOSE_TIME = 0.3 * 1.5 / uDuration;
-float WINDOW_OPEN_TIME  = 0.3 * 1.5 / uDuration;
+// Make sure that the portal and window open / close animations are quick even if the
+// duration is longer.
+float PORTAL_OPEN_TIME  = 0.45 / uDuration;
+float PORTAL_CLOSE_TIME = 0.45 / uDuration;
+float WINDOW_OPEN_TIME  = 0.45 / uDuration;
 
 // This will distort the given coordinate to achieve the wobble effect of the portal when
 // the window passes through. The wobble happens around the point where the window appears
