@@ -43,11 +43,11 @@ var Portal = class {
       const Clutter = imports.gi.Clutter;
 
       // Store uniform locations of newly created shaders.
-      shader._uSeed  = shader.get_uniform_location('uSeed');
-      shader._uColor = shader.get_uniform_location('uColor');
-      shader._uDetails = shader.get_uniform_location('uDetails');
+      shader._uSeed          = shader.get_uniform_location('uSeed');
+      shader._uColor         = shader.get_uniform_location('uColor');
+      shader._uDetails       = shader.get_uniform_location('uDetails');
       shader._uRotationSpeed = shader.get_uniform_location('uRotationSpeed');
-      shader._uWhirl = shader.get_uniform_location('uWhirl');
+      shader._uWhirl         = shader.get_uniform_location('uWhirl');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
