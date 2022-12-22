@@ -216,6 +216,7 @@ test_effect "incinerate"
 test_effect "pixelate"
 test_effect "pixel-wheel"
 test_effect "pixel-wipe"
+test_effect "portal"
 test_effect "tv"
 test_effect "wisps"
 
