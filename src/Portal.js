@@ -43,8 +43,11 @@ var Portal = class {
       const Clutter = imports.gi.Clutter;
 
       // Store uniform locations of newly created shaders.
-      shader._uColor = shader.get_uniform_location('uColor');
       shader._uSeed  = shader.get_uniform_location('uSeed');
+      shader._uColor = shader.get_uniform_location('uColor');
+      shader._uDetails = shader.get_uniform_location('uDetails');
+      shader._uRotationSpeed = shader.get_uniform_location('uRotationSpeed');
+      shader._uWhirl = shader.get_uniform_location('uWhirl');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
@@ -54,8 +57,11 @@ var Portal = class {
         const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
-        shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+        shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+        shader.set_uniform_float(shader._uDetails,       1, [settings.get_double('portal-details')]);
+        shader.set_uniform_float(shader._uRotationSpeed, 1, [settings.get_double('portal-rotation-speed')]);
+        shader.set_uniform_float(shader._uWhirl,         1, [settings.get_double('portal-whirl')]);
         // clang-format on
       });
     });
@@ -94,6 +100,9 @@ var Portal = class {
 
     // Bind all properties.
     dialog.bindAdjustment('portal-animation-time');
+    dialog.bindAdjustment('portal-rotation-speed');
+    dialog.bindAdjustment('portal-whirl');
+    dialog.bindAdjustment('portal-details');
     dialog.bindColorButton('portal-color');
 
     // Finally, return the new settings page.

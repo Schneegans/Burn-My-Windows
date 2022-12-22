@@ -740,9 +740,27 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="portal-color" type="s">
-      <default>"rgb(155, 255, 50)"</default>
+      <default>"rgb(121, 233, 24)"</default>
       <summary>Portal Color</summary>
       <description>The color of the effect.</description>
+    </key>
+
+    <key name="portal-rotation-speed" type="d">
+      <default>0.3</default>
+      <summary>Portal Rotation Speed</summary>
+      <description>The angular speed of the portal.</description>
+    </key>
+
+    <key name="portal-whirl" type="d">
+      <default>1.0</default>
+      <summary>Portal Whirl</summary>
+      <description>The amount of distortion.</description>
+    </key>
+
+    <key name="portal-details" type="d">
+      <default>15.0</default>
+      <summary>Portal Details</summary>
+      <description>The amount of details in the portal.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

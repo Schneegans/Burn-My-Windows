@@ -14,28 +14,30 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform vec3 uColor;
 uniform vec2 uSeed;
+uniform vec3 uColor;
+uniform float uRotationSpeed;
+uniform float uWhirl;
+uniform float uDetails;
 
-const float PORTAL_OPEN_TIME       = 0.3;
 const float PORTAL_WOBBLE_TIME     = 0.8;
 const float PORTAL_WOBBLE_STRENGTH = 1.2;
-const float PORTAL_CLOSE_TIME      = 0.3;
-const float PORTAL_ROTATION_SPEED  = 0.3;
-const float PORTAL_WARPING         = 3.0;
 const float GLOW_EDGE_WIDTH        = 5.0;
 
-const float WINDOW_ANIMATION_TIME = 0.3;
-const float WINDOW_SCALE          = 0.3;
-const float WINDOW_SQUISH         = 1.0;
-const float WINDOW_TILT           = -1.0;
+const float WINDOW_SCALE  = 0.3;
+const float WINDOW_SQUISH = 1.0;
+const float WINDOW_TILT   = -1.0;
+
+float PORTAL_OPEN_TIME  = 0.3 * 1.5 / uDuration;
+float PORTAL_CLOSE_TIME = 0.3 * 1.5 / uDuration;
+float WINDOW_OPEN_TIME  = 0.3 * 1.5 / uDuration;
 
 // This will distort the given coordinate to achieve the wobble effect of the portal when
 // the window passes through. The wobble happens around the point where the window appears
-// or disappears (which is controlled by WINDOW_ANIMATION_TIME) and takes
+// or disappears (which is controlled by WINDOW_OPEN_TIME) and takes
 // PORTAL_WOBBLE_TIME.
 vec2 getPortalWobble(vec2 coords) {
-  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_ANIMATION_TIME;
+  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME;
   progress       = clamp(1.0 - abs((progress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
   progress       = easeInBack(progress, 1.7);
   float dist     = length(coords);
@@ -70,8 +72,8 @@ vec2 getRandomDisplace(vec2 seed, float scale) {
 // twisting (higher multipliers will make coordinates which are closer to the origin be
 // rotated more than coordinates farther away).
 vec2 getWhirledCoords(vec2 coords, float speedMultiplier, float warpMultiplier) {
-  float rotation = PORTAL_ROTATION_SPEED * uProgress * uDuration * speedMultiplier;
-  float warping  = PORTAL_WARPING * (2.0 + 0.5 * uProgress) * warpMultiplier;
+  float rotation = uRotationSpeed * uProgress * uDuration * speedMultiplier;
+  float warping  = uWhirl * (6.0 + 1.5 * uProgress) * warpMultiplier;
   return whirl(coords, warping, rotation);
 }
 
@@ -101,13 +103,13 @@ vec4 getPortalColor() {
   // This is used below to scale the detail level of the layers. If the portal is small,
   // we want to have less details, if the portal is huge on the screen, theres plenty of
   // space for details.
-  float detailScale = 1000.0 / (uSize.x + uSize.y);
+  float detailScale = 10000.0 / (uSize.x + uSize.y) / uDetails;
 
   // ---------------------------------------------------------------------------- 1. layer
   // We start with the background layer. This is a radial gradient from a dark color in
   // the center to a not-so-dark color in the outer regions. We distort the coordinates to
   // add some variations to the colors and to the shape of the portal.
-  vec2 layerCoords = getWhirledCoords(coords - wobble * 1.0, 0.5, 1.0);
+  vec2 layerCoords = getWhirledCoords(coords - wobble * 1.0, 0.25, 1.0);
   vec2 displace    = getRandomDisplace(layerCoords, 2.1);
   layerCoords += displace * 0.1;
   float dist  = length(layerCoords);
@@ -124,7 +126,7 @@ vec4 getPortalColor() {
   // ---------------------------------------------------------------------------- 3. layer
   // The second layer of whirly bands uses a lighter color and a different set of
   // distorted coordinates.
-  layerCoords = getWhirledCoords(coords - wobble * 1.5, 1.5, 0.5);
+  layerCoords = getWhirledCoords(coords - wobble * 1.5, 0.75, 0.5);
   displace    = getRandomDisplace(layerCoords, 12.2);
   layerCoords += displace * 0.1;
   noise = simplex2D(layerCoords / detailScale * 1.3 + uSeed);
@@ -145,9 +147,9 @@ vec4 getPortalColor() {
 
   // ---------------------------------------------------------------------------- 5. layer
   // Finally, we add some sparkling lights.
-  layerCoords = getWhirledCoords(coords - wobble * 1.8, 2.5, 0.0);
+  layerCoords = getWhirledCoords(coords - wobble * 1.8, 1.25, 0.0);
   noise       = simplex2D(layerCoords / detailScale * 3.0 + uSeed);
-  layer.rgb   = lighten(uColor, 0.5) * clamp(pow(noise * rand + 0.9, 50.0), 0.0, 1.0);
+  layer.rgb   = lighten(uColor, 0.8) * clamp(pow(noise * rand + 0.9, 50.0), 0.0, 1.0);
   color.rgb += layer.rgb;
 
   // Finally, fade in / out the portal when it appears / disappears.
@@ -160,9 +162,9 @@ vec4 getPortalColor() {
 // animation will happen in a fraction of the full animation time (at the end of the
 // animation when opening a window and at the beginning of the animation when closing the
 // window). The fraction of the animation time take for the window animation is defined by
-// WINDOW_ANIMATION_TIME.
+// WINDOW_OPEN_TIME.
 vec4 getWindowColor() {
-  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_ANIMATION_TIME;
+  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME;
 
   // Add some elastic easing to make the effect more dynamic.
   progress = easeInBack(clamp(progress, 0.0, 1.0), 1.2);
