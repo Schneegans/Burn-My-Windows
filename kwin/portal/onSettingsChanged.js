@@ -7,6 +7,6 @@
 
 effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
 effect.setUniform(this.shader, 'uColor', this.readRGBConfig('Color'));
-effect.setUniform(this.shader, 'uDetails', this.readConfig('Details', 1.0));
-effect.setUniform(this.shader, 'uRotationSpeed', this.readConfig('RotationSpeed', 1.0));
-effect.setUniform(this.shader, 'uWhirl', this.readConfig('Whirl', 1.0));
+effect.setUniform(this.shader, 'uDetails', effect.readConfig('Details', 1.0));
+effect.setUniform(this.shader, 'uRotationSpeed', effect.readConfig('RotationSpeed', 1.0));
+effect.setUniform(this.shader, 'uWhirl', effect.readConfig('Whirl', 1.0));
