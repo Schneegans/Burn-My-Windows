@@ -44,13 +44,18 @@ var Portal = class {
 
       // Store uniform locations of newly created shaders.
       shader._uColor = shader.get_uniform_location('uColor');
+      shader._uSeed  = shader.get_uniform_location('uSeed');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         const c = Clutter.Color.from_string(settings.get_string('portal-color'))[1];
 
+        // If we are performing an integration tests, we use a fixed seed.
+        const testMode = settings.get_boolean('test-mode');
+
         // clang-format off
         shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+        shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
         // clang-format on
       });
     });

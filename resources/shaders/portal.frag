@@ -15,6 +15,7 @@
 // The content from common.glsl is automatically prepended to each shader effect.
 
 uniform vec3 uColor;
+uniform vec2 uSeed;
 
 const float PORTAL_OPEN_TIME       = 0.3;
 const float PORTAL_WOBBLE_TIME     = 0.8;
@@ -60,8 +61,8 @@ float getPortalScale() {
 // Returns a random 2D vector in [(-0.5, -0.5) ... (0.5, 0.5)] using two time simplex
 // noise. The scale of the noise can be adjusted with the scale paramter.
 vec2 getRandomDisplace(vec2 seed, float scale) {
-  return vec2(simplex2D(seed * scale) - 0.5,
-              simplex2D(seed * scale + vec2(7.89, 123.0)) - 0.5);
+  return vec2(simplex2D(seed * scale + uSeed) - 0.5,
+              simplex2D(seed * scale + uSeed + vec2(7.89, 123.0)) - 0.5);
 }
 
 // Twists the given coordinates around the origin. The speedMultiplier can be used to
@@ -116,7 +117,7 @@ vec4 getPortalColor() {
 
   // ---------------------------------------------------------------------------- 2. layer
   // Then we add the first layer of whirly bands.
-  float noise = simplex2D(layerCoords / detailScale * 1.0 + vec2(12.3, 56.4));
+  float noise = simplex2D(layerCoords / detailScale * 1.0 + vec2(12.3, 56.4) + uSeed);
   vec4 layer  = vec4(darken(uColor, 0.3), noise > 0.6 ? alpha : 0.0);
   color       = alphaOver(color, layer);
 
@@ -126,7 +127,7 @@ vec4 getPortalColor() {
   layerCoords = getWhirledCoords(coords - wobble * 1.5, 1.5, 0.5);
   displace    = getRandomDisplace(layerCoords, 12.2);
   layerCoords += displace * 0.1;
-  noise = simplex2D(layerCoords / detailScale * 1.3);
+  noise = simplex2D(layerCoords / detailScale * 1.3 + uSeed);
   layer = vec4(uColor, noise > 0.6 ? alpha : 0.0);
   color = alphaOver(color, layer);
 
@@ -145,7 +146,7 @@ vec4 getPortalColor() {
   // ---------------------------------------------------------------------------- 5. layer
   // Finally, we add some sparkling lights.
   layerCoords = getWhirledCoords(coords - wobble * 1.8, 2.5, 0.0);
-  noise       = simplex2D(layerCoords / detailScale * 3.0);
+  noise       = simplex2D(layerCoords / detailScale * 3.0 + uSeed);
   layer.rgb   = lighten(uColor, 0.5) * clamp(pow(noise * rand + 0.9, 50.0), 0.0, 1.0);
   color.rgb += layer.rgb;
 
