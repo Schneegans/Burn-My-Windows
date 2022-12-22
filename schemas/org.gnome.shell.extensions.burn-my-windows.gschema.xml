@@ -7,8 +7,7 @@ SPDX-License-Identifier: CC0-1.0
 
 <schemalist>
 
-  <schema path="/org/gnome/shell/extensions/burn-my-windows/"
-    id="org.gnome.shell.extensions.burn-my-windows">
+  <schema path="/org/gnome/shell/extensions/burn-my-windows/" id="org.gnome.shell.extensions.burn-my-windows">
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- General Options                                                               -->
@@ -41,12 +40,11 @@ SPDX-License-Identifier: CC0-1.0
     <key name="test-mode" type="b">
       <default>false</default>
       <summary>Test Mode</summary>
-      <description>If set to true, all animations will show only one still frame to allow for
-        continuous integration tests.</description>
+      <description>If set to true, all animations will show only one still frame to allow for continuous integration tests.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!-- Apparition Effect Options                                                       -->
+    <!-- Apparition Effect Options                                                     -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
     <key name="apparition-open-effect" type="b">
