@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 11:04+0100\n"
-"PO-Revision-Date: 2022-09-15 08:21+0000\n"
-"Last-Translator: Paweł Rzońca <pwrzonca@gmail.com>\n"
+"PO-Revision-Date: 2022-12-25 14:47+0000\n"
+"Last-Translator: WaldiS <sto@tutanota.de>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -114,20 +114,20 @@ msgstr "Ogniki"
 
 #: prefs.js:121
 msgid "Effects"
-msgstr ""
+msgstr "Efekty"
 
 #: prefs.js:163 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Podgląd efektu"
 
 #: prefs.js:198
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Użyj tego efektu podczas otwierania okien"
 
 #: prefs.js:199
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Użyj tego efektu przy zamykaniu okien"
 
 #: prefs.js:225
 msgid "General Options"
@@ -573,12 +573,12 @@ msgstr ""
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Prędkość obrotu"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Szczegóły"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
