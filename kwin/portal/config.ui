@@ -104,7 +104,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_Whirl">
+    <widget class="QDoubleSpinBox" name="kcfg_Whirling">
      <property name="minimum">
       <double>-2.000000000000000</double>
      </property>
