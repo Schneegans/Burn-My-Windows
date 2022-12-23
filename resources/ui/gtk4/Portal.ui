@@ -45,7 +45,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                         <property name="adjustment">
                           <object class="GtkAdjustment" id="portal-animation-time">
                             <property name="upper">5000</property>
-                            <property name="lower">1000</property>
+                            <property name="lower">500</property>
                             <property name="step-increment">1</property>
                             <property name="page-increment">100</property>
                           </object>
@@ -73,7 +73,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                   <object class="GtkBox">
                     <child>
                       <object class="GtkLabel">
-                        <property name="label" translatable="yes">Whirl</property>
+                        <property name="label" translatable="yes">Whirling</property>
                         <property name="xalign">0</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
@@ -89,7 +89,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                         <property name="value-pos">left</property>
                         <property name="width-request">300</property>
                         <property name="adjustment">
-                          <object class="GtkAdjustment" id="portal-whirl">
+                          <object class="GtkAdjustment" id="portal-whirling">
                             <property name="upper">2</property>
                             <property name="lower">-2</property>
                             <property name="step-increment">0.1</property>
@@ -99,7 +99,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="reset-portal-whirl">
+                      <object class="GtkButton" id="reset-portal-whirling">
                         <property name="icon-name">edit-clear-symbolic</property>
                         <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                         <style>

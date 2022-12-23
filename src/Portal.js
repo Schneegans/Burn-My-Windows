@@ -47,7 +47,7 @@ var Portal = class {
       shader._uColor         = shader.get_uniform_location('uColor');
       shader._uDetails       = shader.get_uniform_location('uDetails');
       shader._uRotationSpeed = shader.get_uniform_location('uRotationSpeed');
-      shader._uWhirl         = shader.get_uniform_location('uWhirl');
+      shader._uWhirling         = shader.get_uniform_location('uWhirling');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
@@ -61,7 +61,7 @@ var Portal = class {
         shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
         shader.set_uniform_float(shader._uDetails,       1, [settings.get_double('portal-details')]);
         shader.set_uniform_float(shader._uRotationSpeed, 1, [settings.get_double('portal-rotation-speed')]);
-        shader.set_uniform_float(shader._uWhirl,         1, [settings.get_double('portal-whirl')]);
+        shader.set_uniform_float(shader._uWhirling,         1, [settings.get_double('portal-whirling')]);
         // clang-format on
       });
     });
@@ -101,7 +101,7 @@ var Portal = class {
     // Bind all properties.
     dialog.bindAdjustment('portal-animation-time');
     dialog.bindAdjustment('portal-rotation-speed');
-    dialog.bindAdjustment('portal-whirl');
+    dialog.bindAdjustment('portal-whirling');
     dialog.bindAdjustment('portal-details');
     dialog.bindColorButton('portal-color');
 

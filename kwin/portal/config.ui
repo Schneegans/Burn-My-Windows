@@ -56,7 +56,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <string> milliseconds</string>
      </property>
      <property name="minimum">
-      <number>1000</number>
+      <number>500</number>
      </property>
      <property name="maximum">
       <number>5000</number>
@@ -76,7 +76,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
    <item row="2" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
-      <string>Whirl</string>
+      <string>Whirling</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

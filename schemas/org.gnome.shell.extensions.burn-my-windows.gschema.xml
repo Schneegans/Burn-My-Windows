@@ -732,7 +732,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="portal-animation-time" type="i">
-      <default>1500</default>
+      <default>1250</default>
       <summary>Portal Animation Time</summary>
       <description>The time the Portal effect takes.</description>
     </key>
@@ -749,9 +749,9 @@ SPDX-License-Identifier: CC0-1.0
       <description>The angular speed of the portal.</description>
     </key>
 
-    <key name="portal-whirl" type="d">
+    <key name="portal-whirling" type="d">
       <default>1.0</default>
-      <summary>Portal Whirl</summary>
+      <summary>Portal Whirling</summary>
       <description>The amount of distortion.</description>
     </key>
 

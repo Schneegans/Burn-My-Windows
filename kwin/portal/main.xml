@@ -11,7 +11,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
-      <default>1500</default>
+      <default>1250</default>
     </entry>
     <entry name="Color" type="Color">
       <default>#79E918</default>
@@ -22,7 +22,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <entry name="RotationSpeed" type="Double">
       <default>0.3</default>
     </entry>
-    <entry name="Whirl" type="Double">
+    <entry name="Whirling" type="Double">
       <default>1.0</default>
     </entry>
   </group>

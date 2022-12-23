@@ -17,7 +17,7 @@
 uniform vec2 uSeed;
 uniform vec3 uColor;
 uniform float uRotationSpeed;
-uniform float uWhirl;
+uniform float uWhirling;
 uniform float uDetails;
 
 const float PORTAL_WOBBLE_TIME     = 0.8;
@@ -29,9 +29,9 @@ const float WINDOW_TILT            = -1.0;
 
 // Make sure that the portal and window open / close animations are quick even if the
 // duration is longer.
-float PORTAL_OPEN_TIME  = 0.45 / uDuration;
-float PORTAL_CLOSE_TIME = 0.45 / uDuration;
-float WINDOW_OPEN_TIME  = 0.45 / uDuration;
+float PORTAL_OPEN_TIME  = 0.4 / uDuration;
+float PORTAL_CLOSE_TIME = 0.4 / uDuration;
+float WINDOW_OPEN_TIME  = 0.35 / uDuration;
 
 // This will distort the given coordinate to achieve the wobble effect of the portal when
 // the window passes through. The wobble happens around the point where the window appears
@@ -74,7 +74,7 @@ vec2 getRandomDisplace(vec2 seed, float scale) {
 // rotated more than coordinates farther away).
 vec2 getWhirledCoords(vec2 coords, float speedMultiplier, float warpMultiplier) {
   float rotation = uRotationSpeed * uProgress * uDuration * speedMultiplier;
-  float warping  = uWhirl * (6.0 + 1.5 * uProgress) * warpMultiplier;
+  float warping  = uWhirling * (6.0 + 1.5 * uProgress) * warpMultiplier;
   return whirl(coords, warping, rotation);
 }
 
@@ -95,7 +95,7 @@ vec4 getPortalColor() {
 
   // Add the open-close animation of the portal.
   float scale = getPortalScale();
-  coords /= max(scale, 0.01);
+  coords /= max(scale * 0.5 + 0.5, 0.01);
 
   // We will use this distortion vector on all layers below in order to add the elastic
   // wobbling when the window passes through the portal.
