@@ -107,6 +107,7 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
+  <a href='https://github.com/taconomix'>@taconomix</a><br>
   <a href='https://github.com/enolive'>@enolive</a><br>
   <a href="https://github.com/Aggraxis">@Aggraxis</a><br>
   <a href="https://twitter.com/tjiiik">tj3k</a><br>
