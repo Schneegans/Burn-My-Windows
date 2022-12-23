@@ -23,8 +23,6 @@ uniform float uRandomness;
 const float ACTOR_SCALE = 2.0;
 const float PADDING     = ACTOR_SCALE / 2.0 - 0.5;
 
-// The math for the whirling is inspired by this post:
-// http://www.geeks3d.com/20110428/shader-library-swirl-post-processing-filter-in-glsl
 void main() {
   // We simply inverse the progress for opening windows.
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
@@ -44,10 +42,7 @@ void main() {
   coords += progress * coords / dist * 0.5 * uSuction;
 
   // Apply some whirling.
-  float angle = pow(1.0 - dist, 2.0) * uTwirl * progress;
-  float s     = sin(angle);
-  float c     = cos(angle);
-  coords      = vec2(dot(coords, vec2(c, -s)), dot(coords, vec2(s, c)));
+  coords = whirl(coords, uTwirl * progress, 0.0);
 
   // Fade out the window texture.
   vec4 oColor = getInputColor(coords + center);

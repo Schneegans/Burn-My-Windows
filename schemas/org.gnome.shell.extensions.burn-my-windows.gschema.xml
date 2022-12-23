@@ -44,7 +44,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!-- Apparition Effect Options                                                       -->
+    <!-- Apparition Effect Options                                                     -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
     <key name="apparition-open-effect" type="b">
@@ -713,6 +713,52 @@ SPDX-License-Identifier: CC0-1.0
       <default>false</default>
       <summary>Broken Glass Use Pointer</summary>
       <description>Use the pointer location for the broken glass effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Portal Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="portal-close-effect" type="b">
+      <default>false</default>
+      <summary>Portal Close Effect</summary>
+      <description>Use the Portal effect for window closing.</description>
+    </key>
+
+    <key name="portal-open-effect" type="b">
+      <default>false</default>
+      <summary>Portal Open Effect</summary>
+      <description>Use the Portal effect for window opening.</description>
+    </key>
+
+    <key name="portal-animation-time" type="i">
+      <default>1250</default>
+      <summary>Portal Animation Time</summary>
+      <description>The time the Portal effect takes.</description>
+    </key>
+
+    <key name="portal-color" type="s">
+      <default>"rgb(121, 233, 24)"</default>
+      <summary>Portal Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <key name="portal-rotation-speed" type="d">
+      <default>0.3</default>
+      <summary>Portal Rotation Speed</summary>
+      <description>The angular speed of the portal.</description>
+    </key>
+
+    <key name="portal-whirling" type="d">
+      <default>1.0</default>
+      <summary>Portal Whirling</summary>
+      <description>The amount of distortion.</description>
+    </key>
+
+    <key name="portal-details" type="d">
+      <default>15.0</default>
+      <summary>Portal Details</summary>
+      <description>The amount of details in the portal.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

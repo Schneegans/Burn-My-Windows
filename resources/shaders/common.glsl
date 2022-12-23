@@ -121,8 +121,8 @@ void setOutputColor(vec4 outColor) { cogl_color_out = outColor; }
 // The Shell.GLSLEffect uses straight alpha blending. This helper method allows
 // compositing color values in the shader in the same way.
 vec4 alphaOver(vec4 under, vec4 over) {
-  float alpha = over.a + under.a * (1.0 - over.a);
-  return vec4((over.rgb * over.a + under.rgb * under.a * (1.0 - over.a)) / alpha, alpha);
+  float alpha = mix(under.a, 1.0, over.a);
+  return vec4(mix(under.rgb * under.a, over.rgb, over.a) / alpha, alpha);
 }
 
 // ------------------------------------------------------------------------- color helpers
@@ -136,6 +136,14 @@ vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
   return mix(midtones, highlights, smoothstep(0.0, 1.0, val * 2.0 - 1.0));
 }
 
+// Darkens the given color. If fac is zero, the color will not change, if fac is one, the
+// color will be black.
+vec3 darken(vec3 color, float fac) { return color * (1.0 - fac); }
+
+// Lightens the given color. If fac is zero, the color will not change, if fac is one, the
+// color will be white.
+vec3 lighten(vec3 color, float fac) { return color + (vec3(1.0) - color) * fac; }
+
 // ---------------------------------------------------------------------- easing functions
 
 // Here are some basic easing function. More can be added if required!
@@ -143,7 +151,15 @@ vec3 tritone(float val, vec3 shadows, vec3 midtones, vec3 highlights) {
 // https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
 
 float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
+
 float easeInQuad(float x) { return x * x; }
+
+float easeInBack(float x, float e) { return x * x * ((e + 1.0) * x - e); }
+
+float easeOutBack(float x, float e) {
+  float p = x - 1.0;
+  return p * p * ((e + 1.0) * p + e) + 1.0;
+}
 
 // --------------------------------------------------------------------- edge mask helpers
 
@@ -182,6 +198,15 @@ float getRelativeEdgeMask(float fadeAmount) {
 }
 
 // ------------------------------------------------------------------------------- 2D math
+
+// The math for the whirling is inspired by this post:
+// http://www.geeks3d.com/20110428/shader-library-swirl-post-processing-filter-in-glsl
+vec2 whirl(vec2 coords, float warping, float rotation) {
+  float angle = pow(1.0 - length(coords), 2.0) * warping + rotation;
+  float s     = sin(angle);
+  float c     = cos(angle);
+  return vec2(dot(coords, vec2(c, -s)), dot(coords, vec2(s, c)));
+}
 
 // Returns the shortest distance between the given point and the line defined by "origin"
 // and "direction".

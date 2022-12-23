@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 23](https://github.com/schneegans/Burn-My-Windows/releases/tag/v23)
+
+**Release Date:** TBD
+
+#### New Features
+
+* **New Effect: Portal.** This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series...
+
 ## [Burn My Windows 22](https://github.com/schneegans/Burn-My-Windows/releases/tag/v22)
 
 **Release Date:** 2022-11-09
