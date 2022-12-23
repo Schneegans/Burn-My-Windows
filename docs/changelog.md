@@ -7,11 +7,15 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 23](https://github.com/schneegans/Burn-My-Windows/releases/tag/v23)
 
-**Release Date:** TBD
+**Release Date:** 2022-12-23
 
 #### New Features
 
 * **New Effect: Portal.** This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series...
+
+#### Other Enhancements
+
+* Many translation updates. Thanks to all the translators!
 
 ## [Burn My Windows 22](https://github.com/schneegans/Burn-My-Windows/releases/tag/v22)
 
