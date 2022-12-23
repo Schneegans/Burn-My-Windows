@@ -47,7 +47,7 @@ var Portal = class {
       shader._uColor         = shader.get_uniform_location('uColor');
       shader._uDetails       = shader.get_uniform_location('uDetails');
       shader._uRotationSpeed = shader.get_uniform_location('uRotationSpeed');
-      shader._uWhirling         = shader.get_uniform_location('uWhirling');
+      shader._uWhirling      = shader.get_uniform_location('uWhirling');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
