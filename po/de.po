@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 11:04+0100\n"
-"PO-Revision-Date: 2022-11-11 17:47+0000\n"
+"PO-Revision-Date: 2022-12-23 12:11+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -93,7 +93,7 @@ msgstr "Pixelwischen"
 
 #: src/Portal.js:89
 msgid "Portal"
-msgstr ""
+msgstr "Portal"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
@@ -568,17 +568,17 @@ msgstr "Saugintensität"
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Verwirbelung"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Rotationsgeschwindigkeit"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
