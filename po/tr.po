@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-08 21:14+0100\n"
+"POT-Creation-Date: 2022-12-23 11:04+0100\n"
 "PO-Revision-Date: 2022-09-16 14:17+0000\n"
 "Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -91,6 +91,10 @@ msgstr "Piksel Tekeri"
 msgid "Pixel Wipe"
 msgstr "Piksel Süpürme"
 
+#: src/Portal.js:89
+msgid "Portal"
+msgstr ""
+
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
 msgstr "El Şıklatma Parçalanması"
@@ -107,50 +111,50 @@ msgstr "TV Efekti"
 msgid "Wisps"
 msgstr "Sihir"
 
-#: prefs.js:120
+#: prefs.js:121
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:162 resources/ui/gtk4/effectPage.ui:43
+#: prefs.js:163 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
-#: prefs.js:197
+#: prefs.js:198
 msgid "Use this effect when opening windows"
 msgstr ""
 
-#: prefs.js:198
+#: prefs.js:199
 msgid "Use this effect when closing windows"
 msgstr ""
 
-#: prefs.js:224
+#: prefs.js:225
 msgid "General Options"
 msgstr "Genel Ayarlar"
 
-#: prefs.js:318
+#: prefs.js:319
 msgid "Gold Sponsors"
 msgstr "Altın Sponsorlar"
 
-#: prefs.js:321
+#: prefs.js:322
 msgid "Silver Sponsors"
 msgstr "Gümüş Sponsorlar"
 
-#: prefs.js:324
+#: prefs.js:325
 msgid "Bronze Sponsors"
 msgstr "Bronz Sponsorlar"
 
-#: prefs.js:327
+#: prefs.js:328
 msgid "Past Sponsors"
 msgstr "Eski Sponsorlar"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:534
+#: prefs.js:535
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s ön izleme"
 
-#: prefs.js:556
+#: prefs.js:557
 msgid "Close this Window to Preview the Effect!"
 msgstr "Efekti Ön izlemek İçin Bu Pencereyi Kapatın!"
 
@@ -190,13 +194,14 @@ msgstr "Burn-My-Windows Hakkında"
 #: resources/ui/gtk4/Doom.ui:30 resources/ui/gtk4/TVEffect.ui:30
 #: resources/ui/gtk4/EnergizeA.ui:30 resources/ui/gtk4/Hexagon.ui:30
 #: resources/ui/gtk4/EnergizeB.ui:30 resources/ui/gtk4/Pixelate.ui:30
-#: resources/ui/gtk4/Apparition.ui:30 resources/ui/gtk3/Incinerate.ui:55
-#: resources/ui/gtk3/Wisps.ui:48 resources/ui/gtk3/Fire.ui:99
-#: resources/ui/gtk3/Glide.ui:69 resources/ui/gtk3/PixelWipe.ui:55
-#: resources/ui/gtk3/PixelWheel.ui:55 resources/ui/gtk3/Doom.ui:62
-#: resources/ui/gtk3/TVEffect.ui:41 resources/ui/gtk3/EnergizeA.ui:48
-#: resources/ui/gtk3/Hexagon.ui:55 resources/ui/gtk3/EnergizeB.ui:48
-#: resources/ui/gtk3/Pixelate.ui:55 resources/ui/gtk3/Apparition.ui:69
+#: resources/ui/gtk4/Apparition.ui:30 resources/ui/gtk4/Portal.ui:30
+#: resources/ui/gtk3/Incinerate.ui:55 resources/ui/gtk3/Wisps.ui:48
+#: resources/ui/gtk3/Fire.ui:99 resources/ui/gtk3/Glide.ui:69
+#: resources/ui/gtk3/PixelWipe.ui:55 resources/ui/gtk3/PixelWheel.ui:55
+#: resources/ui/gtk3/Doom.ui:62 resources/ui/gtk3/TVEffect.ui:41
+#: resources/ui/gtk3/EnergizeA.ui:48 resources/ui/gtk3/Hexagon.ui:55
+#: resources/ui/gtk3/EnergizeB.ui:48 resources/ui/gtk3/Pixelate.ui:55
+#: resources/ui/gtk3/Apparition.ui:69 resources/ui/gtk3/Portal.ui:62
 #: resources/ui/adw/Matrix.ui:14 resources/ui/adw/BrokenGlass.ui:15
 #: resources/ui/adw/Incinerate.ui:14 resources/ui/adw/Wisps.ui:14
 #: resources/ui/adw/Fire.ui:30 resources/ui/adw/SnapOfDisintegration.ui:14
@@ -205,7 +210,7 @@ msgstr "Burn-My-Windows Hakkında"
 #: resources/ui/adw/Doom.ui:14 resources/ui/adw/TVEffect.ui:14
 #: resources/ui/adw/EnergizeA.ui:14 resources/ui/adw/Hexagon.ui:14
 #: resources/ui/adw/EnergizeB.ui:15 resources/ui/adw/Pixelate.ui:14
-#: resources/ui/adw/Apparition.ui:15
+#: resources/ui/adw/Apparition.ui:15 resources/ui/adw/Portal.ui:14
 msgid "Animation Time [ms]"
 msgstr "Animasyon Süresi [ms]"
 
@@ -242,32 +247,37 @@ msgstr "Animasyon Süresi [ms]"
 #: resources/ui/gtk4/prefs.ui:172 resources/ui/gtk4/prefs.ui:206
 #: resources/ui/gtk4/Apparition.ui:58 resources/ui/gtk4/Apparition.ui:104
 #: resources/ui/gtk4/Apparition.ui:150 resources/ui/gtk4/Apparition.ui:196
-#: resources/ui/gtk4/Apparition.ui:242 resources/ui/gtk3/Incinerate.ui:81
-#: resources/ui/gtk3/Incinerate.ui:130 resources/ui/gtk3/Incinerate.ui:179
-#: resources/ui/gtk3/Incinerate.ui:241 resources/ui/gtk3/Incinerate.ui:284
-#: resources/ui/gtk3/Wisps.ui:74 resources/ui/gtk3/Wisps.ui:123
-#: resources/ui/gtk3/Wisps.ui:166 resources/ui/gtk3/Fire.ui:125
-#: resources/ui/gtk3/Fire.ui:173 resources/ui/gtk3/Fire.ui:221
-#: resources/ui/gtk3/Fire.ui:283 resources/ui/gtk3/Fire.ui:351
-#: resources/ui/gtk3/Glide.ui:95 resources/ui/gtk3/Glide.ui:144
-#: resources/ui/gtk3/Glide.ui:193 resources/ui/gtk3/Glide.ui:242
-#: resources/ui/gtk3/Glide.ui:291 resources/ui/gtk3/PixelWipe.ui:81
-#: resources/ui/gtk3/PixelWipe.ui:130 resources/ui/gtk3/PixelWheel.ui:81
-#: resources/ui/gtk3/PixelWheel.ui:130 resources/ui/gtk3/PixelWheel.ui:179
-#: resources/ui/gtk3/Doom.ui:88 resources/ui/gtk3/Doom.ui:137
-#: resources/ui/gtk3/Doom.ui:186 resources/ui/gtk3/Doom.ui:235
-#: resources/ui/gtk3/TVEffect.ui:67 resources/ui/gtk3/TVEffect.ui:110
-#: resources/ui/gtk3/EnergizeA.ui:74 resources/ui/gtk3/EnergizeA.ui:123
-#: resources/ui/gtk3/EnergizeA.ui:166 resources/ui/gtk3/Hexagon.ui:81
-#: resources/ui/gtk3/Hexagon.ui:130 resources/ui/gtk3/Hexagon.ui:179
-#: resources/ui/gtk3/Hexagon.ui:222 resources/ui/gtk3/Hexagon.ui:265
-#: resources/ui/gtk3/Hexagon.ui:327 resources/ui/gtk3/EnergizeB.ui:74
-#: resources/ui/gtk3/EnergizeB.ui:123 resources/ui/gtk3/EnergizeB.ui:166
-#: resources/ui/gtk3/Pixelate.ui:81 resources/ui/gtk3/Pixelate.ui:130
-#: resources/ui/gtk3/Pixelate.ui:179 resources/ui/gtk3/prefs.ui:225
-#: resources/ui/gtk3/prefs.ui:269 resources/ui/gtk3/Apparition.ui:95
-#: resources/ui/gtk3/Apparition.ui:144 resources/ui/gtk3/Apparition.ui:193
-#: resources/ui/gtk3/Apparition.ui:242 resources/ui/gtk3/Apparition.ui:291
+#: resources/ui/gtk4/Apparition.ui:242 resources/ui/gtk4/Portal.ui:58
+#: resources/ui/gtk4/Portal.ui:104 resources/ui/gtk4/Portal.ui:150
+#: resources/ui/gtk4/Portal.ui:196 resources/ui/gtk4/Portal.ui:230
+#: resources/ui/gtk3/Incinerate.ui:81 resources/ui/gtk3/Incinerate.ui:130
+#: resources/ui/gtk3/Incinerate.ui:179 resources/ui/gtk3/Incinerate.ui:241
+#: resources/ui/gtk3/Incinerate.ui:284 resources/ui/gtk3/Wisps.ui:74
+#: resources/ui/gtk3/Wisps.ui:123 resources/ui/gtk3/Wisps.ui:166
+#: resources/ui/gtk3/Fire.ui:125 resources/ui/gtk3/Fire.ui:173
+#: resources/ui/gtk3/Fire.ui:221 resources/ui/gtk3/Fire.ui:283
+#: resources/ui/gtk3/Fire.ui:351 resources/ui/gtk3/Glide.ui:95
+#: resources/ui/gtk3/Glide.ui:144 resources/ui/gtk3/Glide.ui:193
+#: resources/ui/gtk3/Glide.ui:242 resources/ui/gtk3/Glide.ui:291
+#: resources/ui/gtk3/PixelWipe.ui:81 resources/ui/gtk3/PixelWipe.ui:130
+#: resources/ui/gtk3/PixelWheel.ui:81 resources/ui/gtk3/PixelWheel.ui:130
+#: resources/ui/gtk3/PixelWheel.ui:179 resources/ui/gtk3/Doom.ui:88
+#: resources/ui/gtk3/Doom.ui:137 resources/ui/gtk3/Doom.ui:186
+#: resources/ui/gtk3/Doom.ui:235 resources/ui/gtk3/TVEffect.ui:67
+#: resources/ui/gtk3/TVEffect.ui:110 resources/ui/gtk3/EnergizeA.ui:74
+#: resources/ui/gtk3/EnergizeA.ui:123 resources/ui/gtk3/EnergizeA.ui:166
+#: resources/ui/gtk3/Hexagon.ui:81 resources/ui/gtk3/Hexagon.ui:130
+#: resources/ui/gtk3/Hexagon.ui:179 resources/ui/gtk3/Hexagon.ui:222
+#: resources/ui/gtk3/Hexagon.ui:265 resources/ui/gtk3/Hexagon.ui:327
+#: resources/ui/gtk3/EnergizeB.ui:74 resources/ui/gtk3/EnergizeB.ui:123
+#: resources/ui/gtk3/EnergizeB.ui:166 resources/ui/gtk3/Pixelate.ui:81
+#: resources/ui/gtk3/Pixelate.ui:130 resources/ui/gtk3/Pixelate.ui:179
+#: resources/ui/gtk3/prefs.ui:225 resources/ui/gtk3/prefs.ui:269
+#: resources/ui/gtk3/Apparition.ui:95 resources/ui/gtk3/Apparition.ui:144
+#: resources/ui/gtk3/Apparition.ui:193 resources/ui/gtk3/Apparition.ui:242
+#: resources/ui/gtk3/Apparition.ui:291 resources/ui/gtk3/Portal.ui:89
+#: resources/ui/gtk3/Portal.ui:139 resources/ui/gtk3/Portal.ui:189
+#: resources/ui/gtk3/Portal.ui:239 resources/ui/gtk3/Portal.ui:282
 #: resources/ui/adw/Matrix.ui:36 resources/ui/adw/Matrix.ui:69
 #: resources/ui/adw/Matrix.ui:102 resources/ui/adw/Matrix.ui:135
 #: resources/ui/adw/Matrix.ui:160 resources/ui/adw/Matrix.ui:185
@@ -301,7 +311,9 @@ msgstr "Animasyon Süresi [ms]"
 #: resources/ui/adw/prefs.ui:63 resources/ui/adw/prefs.ui:85
 #: resources/ui/adw/Apparition.ui:37 resources/ui/adw/Apparition.ui:70
 #: resources/ui/adw/Apparition.ui:103 resources/ui/adw/Apparition.ui:136
-#: resources/ui/adw/Apparition.ui:169
+#: resources/ui/adw/Apparition.ui:169 resources/ui/adw/Portal.ui:36
+#: resources/ui/adw/Portal.ui:69 resources/ui/adw/Portal.ui:102
+#: resources/ui/adw/Portal.ui:135 resources/ui/adw/Portal.ui:160
 msgid "Reset to Default Value"
 msgstr "Varsayılan Değere Sıfırla"
 
@@ -378,12 +390,14 @@ msgstr "Devre dışı ise rastgele bir konum seçilir."
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
 #: resources/ui/gtk4/TVEffect.ui:76 resources/ui/gtk4/EnergizeA.ui:122
-#: resources/ui/gtk4/EnergizeB.ui:122 resources/ui/gtk3/Incinerate.ui:263
-#: resources/ui/gtk3/Wisps.ui:145 resources/ui/gtk3/TVEffect.ui:89
-#: resources/ui/gtk3/EnergizeA.ui:145 resources/ui/gtk3/EnergizeB.ui:145
+#: resources/ui/gtk4/EnergizeB.ui:122 resources/ui/gtk4/Portal.ui:214
+#: resources/ui/gtk3/Incinerate.ui:263 resources/ui/gtk3/Wisps.ui:145
+#: resources/ui/gtk3/TVEffect.ui:89 resources/ui/gtk3/EnergizeA.ui:145
+#: resources/ui/gtk3/EnergizeB.ui:145 resources/ui/gtk3/Portal.ui:261
 #: resources/ui/adw/Incinerate.ui:136 resources/ui/adw/Wisps.ui:80
 #: resources/ui/adw/SnapOfDisintegration.ui:80 resources/ui/adw/TVEffect.ui:47
 #: resources/ui/adw/EnergizeA.ui:80 resources/ui/adw/EnergizeB.ui:81
+#: resources/ui/adw/Portal.ui:146
 msgid "Color"
 msgstr "Renk"
 
@@ -549,6 +563,21 @@ msgstr "Sarsıntı Gücü"
 #: resources/ui/adw/Apparition.ui:147
 msgid "Suction Intensity"
 msgstr "Emme Gücü"
+
+#: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
+#: resources/ui/adw/Portal.ui:80
+msgid "Whirling"
+msgstr ""
+
+#: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
+#: resources/ui/adw/Portal.ui:47
+msgid "Rotation Speed"
+msgstr ""
+
+#: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
+#: resources/ui/adw/Portal.ui:113
+msgid "Details"
+msgstr ""
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
