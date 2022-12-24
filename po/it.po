@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 11:04+0100\n"
-"PO-Revision-Date: 2022-11-21 12:48+0000\n"
+"PO-Revision-Date: 2022-12-25 14:47+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -29,7 +29,7 @@ msgstr "Vetro rotto"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr ""
+msgstr "Apocalisse"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
@@ -65,7 +65,7 @@ msgstr "Babbo Natale sta arrivando"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Scivolamento"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -89,11 +89,11 @@ msgstr "Ruota Pixel"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Cancellazione pixel"
 
 #: src/Portal.js:89
 msgid "Portal"
-msgstr ""
+msgstr "Portale"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
@@ -380,7 +380,7 @@ msgstr "Turbolenza"
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Inizia dal puntatore"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
@@ -429,17 +429,17 @@ msgstr "Gradiente"
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Schiacciare"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Inclinazione"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Modificare"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -469,7 +469,7 @@ msgstr "Colore Flash"
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "Numero di raggi"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
@@ -567,17 +567,17 @@ msgstr "Intensità di aspirazione"
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Rotazione"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Velocità di rotazione"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
