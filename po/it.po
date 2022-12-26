@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-23 11:04+0100\n"
-"PO-Revision-Date: 2022-12-25 14:47+0000\n"
+"PO-Revision-Date: 2022-12-28 12:48+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -29,7 +29,7 @@ msgstr "Vetro rotto"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr "Apocalisse"
+msgstr "Destino"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
@@ -65,7 +65,7 @@ msgstr "Babbo Natale sta arrivando"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr "Scivolamento"
+msgstr "Planare"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -85,11 +85,11 @@ msgstr "Pixelato"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Ruota Pixel"
+msgstr "Ruota di pixel"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "Cancellazione pixel"
+msgstr "Pulizia di pixel"
 
 #: src/Portal.js:89
 msgid "Portal"
