@@ -156,7 +156,6 @@ do_in_pod wait-user-bus.sh > /dev/null 2>&1
 # ----------------------------------------------------- install the to-be-tested extension
 
 echo "Installing extension."
-podman cp "tests/references" "${POD}:/home/gnomeshell/references"
 podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
 
