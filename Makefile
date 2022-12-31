@@ -57,7 +57,7 @@ test:
 
 # This re-generates all reference images required by the tests.
 references:
-	@ for version in 37 ; do \
+	@ for version in 32 33 34 35 36 37 ; do \
 	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
 	    echo ; \
 	    echo "Generating References for Fedora $$version ($$session)." ; \
