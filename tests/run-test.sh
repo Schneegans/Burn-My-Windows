@@ -28,6 +28,8 @@
 #                    -v 33: GNOME Shell 3.38
 #                    -v 34: GNOME Shell 40
 #                    -v 35: GNOME Shell 41
+#                    -v 36: GNOME Shell 42
+#                    -v 37: GNOME Shell 43
 # -s session:        This can either be "gnome-xsession" or "gnome-wayland-nested".
 
 # Exit on error.
@@ -154,14 +156,8 @@ do_in_pod wait-user-bus.sh > /dev/null 2>&1
 # ----------------------------------------------------- install the to-be-tested extension
 
 echo "Installing extension."
-podman cp "tests/references" "${POD}:/home/gnomeshell/references"
 podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
-
-
-# ----------------------- install gnome-terminal (this is used for testing the animations)
-
-do_in_pod sudo dnf install -y gnome-terminal
 
 
 # ---------------------------------------------------------------------- start GNOME Shell

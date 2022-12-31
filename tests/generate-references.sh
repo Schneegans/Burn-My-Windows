@@ -27,6 +27,8 @@
 #                    -v 33: GNOME Shell 3.38
 #                    -v 34: GNOME Shell 40
 #                    -v 35: GNOME Shell 41
+#                    -v 36: GNOME Shell 42
+#                    -v 37: GNOME Shell 43
 # -s session:        This can either be "gnome-xsession" or "gnome-wayland-nested".
 
 # Exit on error.
@@ -96,8 +98,7 @@ set_setting() {
 # This makes a screen capture (cropped to $CROP) inside the container and stores it
 # on the host relative to this script with the given file name.
 capture() {
-  do_in_pod import -window root -crop $CROP out.png
-  podman cp "${POD}":/home/gnomeshell/out.png "${1}"
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${CROP} ${1}"
 }
 
 # This opens the extensions preferences dialog and captures two images: One during the
@@ -132,11 +133,6 @@ echo "Installing extension."
 podman cp "tests/references" "${POD}:/home/gnomeshell/references"
 podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
-
-
-# ----------------------- install gnome-terminal (this is used for testing the animations)
-
-do_in_pod sudo dnf install -y gnome-terminal
 
 
 # ---------------------------------------------------------------------- start GNOME Shell

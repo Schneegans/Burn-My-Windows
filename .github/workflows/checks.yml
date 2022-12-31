@@ -89,7 +89,7 @@ jobs:
     - name: Download Dependencies
       run: |
         sudo apt update -qq
-        sudo apt install gettext -qq
+        sudo apt install gettext imagemagick -qq
     - name: Build Burn-My-Windows
       run: make
     - name: Generate References
@@ -115,6 +115,7 @@ jobs:
           - '34'
           - '35'
           - '36'
+          - '37'
         session:
           - 'gnome-xsession'
           - 'gnome-wayland-nested'
