@@ -115,6 +115,7 @@ jobs:
           - '34'
           - '35'
           - '36'
+          - '37'
         session:
           - 'gnome-xsession'
           - 'gnome-wayland-nested'
