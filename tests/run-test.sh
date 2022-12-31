@@ -28,6 +28,8 @@
 #                    -v 33: GNOME Shell 3.38
 #                    -v 34: GNOME Shell 40
 #                    -v 35: GNOME Shell 41
+#                    -v 36: GNOME Shell 42
+#                    -v 37: GNOME Shell 43
 # -s session:        This can either be "gnome-xsession" or "gnome-wayland-nested".
 
 # Exit on error.
