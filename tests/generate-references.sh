@@ -98,8 +98,7 @@ set_setting() {
 # This makes a screen capture (cropped to $CROP) inside the container and stores it
 # on the host relative to this script with the given file name.
 capture() {
-  do_in_pod import -window root -crop $CROP out.png
-  podman cp "${POD}":/home/gnomeshell/out.png "${1}"
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${CROP} ${1}"
 }
 
 # This opens the extensions preferences dialog and captures two images: One during the
