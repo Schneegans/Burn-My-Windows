@@ -159,11 +159,6 @@ podman cp "${EXTENSION}.zip" "${POD}:/home/gnomeshell"
 do_in_pod gnome-extensions install "${EXTENSION}.zip"
 
 
-# ----------------------- install gnome-terminal (this is used for testing the animations)
-
-do_in_pod sudo dnf install -y gnome-terminal
-
-
 # ---------------------------------------------------------------------- start GNOME Shell
 
 # Starting with GNOME 40, there is a "Welcome Tour" dialog popping up at first launch.
