@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 24](https://github.com/schneegans/Burn-My-Windows/releases/tag/v24)
+
+**Release Date:** TBD
+
+#### Other Enhancements
+
+* The menu button of the settings dialog has been moved to the left and now shows a heart instead of three dots.
+
 ## [Burn My Windows 23](https://github.com/schneegans/Burn-My-Windows/releases/tag/v23)
 
 **Release Date:** 2022-12-23

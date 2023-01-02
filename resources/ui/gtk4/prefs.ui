@@ -13,7 +13,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
-    <property name="icon-name">open-menu-symbolic</property>
+    <property name="icon-name">heart-filled-symbolic</property>
   </object>
 
   <object class="GtkBox" id="general-prefs">

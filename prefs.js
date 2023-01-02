@@ -267,12 +267,12 @@ var PreferencesDialog = class PreferencesDialog {
         // of the Adw.PreferencesWindow...
         if (Adw && utils.shellVersionIsAtLeast(42, 'beta')) {
           const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
-          header.pack_end(menu);
+          header.pack_start(menu);
 
           // Allow closing of the sub pages.
           window.can_navigate_back = true;
         } else {
-          window.get_titlebar().pack_end(menu);
+          window.get_titlebar().pack_start(menu);
         }
 
         // Populate the menu with actions.
