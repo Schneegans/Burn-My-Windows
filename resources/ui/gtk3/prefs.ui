@@ -16,7 +16,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="visible">1</property>
     <child>
       <object class="GtkImage">
-        <property name="icon-name">open-menu-symbolic</property>
+        <property name="icon-name">heart-filled-symbolic</property>
         <property name="visible">1</property>
         <property name="icon-size">1</property>
       </object>
