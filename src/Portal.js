@@ -24,6 +24,8 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// This ridiculous effect teleports your windows from and to alternative dimensions.    //
+// It may resemble the portal from a well-known cartoon series...                       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
