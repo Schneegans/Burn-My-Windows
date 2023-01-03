@@ -10,7 +10,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
-      <default>2000</default>
+      <default>750</default>
     </entry>
     <entry name="Scale" type="Double">
       <default>1</default>
