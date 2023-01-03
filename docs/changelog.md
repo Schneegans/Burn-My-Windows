@@ -9,6 +9,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### New Features
+
+* **New Effect: Glitch.** This effect applies some intentional graphics issues to your windows.
+
 #### Other Enhancements
 
 * The menu button of the settings dialog has been moved to the left and now shows a heart instead of three dots.
