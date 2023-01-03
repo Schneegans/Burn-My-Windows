@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-03 13:46+0100\n"
-"PO-Revision-Date: 2022-12-25 14:47+0000\n"
+"PO-Revision-Date: 2023-01-06 02:49+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -69,7 +69,7 @@ msgstr "Glijden"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "Verstoring"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -500,7 +500,7 @@ msgstr "Verticale schaal"
 #: resources/ui/gtk4/Glitch.ui:122 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Kracht"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
