@@ -8,57 +8,61 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-03 13:46+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-01-06 02:49+0000\n"
+"Last-Translator: Sir-Ivysaur <randompsyduck@duck.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
-msgstr ""
+msgstr "Penyedotan"
 
 #: src/BrokenGlass.js:139
 msgid "Broken Glass"
-msgstr ""
+msgstr "Kaca Pecah"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr ""
+msgstr "Doom"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
-msgstr ""
+msgstr "Memberdayakan A"
 
 #: src/EnergizeB.js:81
 msgid "Energize B"
-msgstr ""
+msgstr "Memberdayakan B"
 
 #: src/Fire.js:100
 msgid "Fire"
-msgstr ""
+msgstr "Api"
 
 #: src/Fire.js:155
 msgid "Default Fire"
-msgstr ""
+msgstr "Api (Bawaan)"
 
 #: src/Fire.js:165
+#, fuzzy
 msgid "Hell Fire"
-msgstr ""
+msgstr "Api Amat Panas"
 
 #: src/Fire.js:175
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Redup"
 
 #: src/Fire.js:185
 msgid "Cold Breeze"
-msgstr ""
+msgstr "Angin Sejuk"
 
 #: src/Fire.js:195
 msgid "Santa is Coming"
-msgstr ""
+msgstr "Sinterklas Datang"
 
 #: src/Glide.js:78
 msgid "Glide"
@@ -74,11 +78,11 @@ msgstr ""
 
 #: src/Incinerate.js:131
 msgid "Incinerate"
-msgstr ""
+msgstr "Bakar"
 
 #: src/Matrix.js:114
 msgid "Matrix"
-msgstr ""
+msgstr "Matriks"
 
 #: src/Pixelate.js:74
 msgid "Pixelate"
@@ -106,7 +110,7 @@ msgstr ""
 
 #: src/TVEffect.js:78
 msgid "TV Effect"
-msgstr ""
+msgstr "Efek TV"
 
 #: src/Wisps.js:86
 msgid "Wisps"
@@ -114,7 +118,7 @@ msgstr ""
 
 #: prefs.js:122
 msgid "Effects"
-msgstr ""
+msgstr "Efek"
 
 #: prefs.js:164 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
@@ -135,57 +139,60 @@ msgstr ""
 
 #: prefs.js:320
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Sponsor Emas"
 
 #: prefs.js:323
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Sponsor Perak"
 
 #: prefs.js:326
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Sponsor Tembaga"
 
 #: prefs.js:329
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Mantan Sponsor"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:536
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "Pratinjau %s"
 
 #: prefs.js:558
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "Tutup jendela ini untuk melihat efeknya!"
 
 #: resources/ui/common/main-menu.ui:12
+#, fuzzy
 msgid "Visit Homepage"
-msgstr ""
+msgstr "Buka Website"
 
 #: resources/ui/common/main-menu.ui:16
+#, fuzzy
 msgid "View Changelog"
-msgstr ""
+msgstr "Lihat Perubahan"
 
 #: resources/ui/common/main-menu.ui:22
+#, fuzzy
 msgid "Report a Bug"
-msgstr ""
+msgstr "Laporkan Bug"
 
 #: resources/ui/common/main-menu.ui:26
 msgid "Create an Effect"
-msgstr ""
+msgstr "Buat Efek"
 
 #: resources/ui/common/main-menu.ui:30
 msgid "Translate"
-msgstr ""
+msgstr "Terjemahkan"
 
 #: resources/ui/common/main-menu.ui:34
 msgid "Donate"
-msgstr ""
+msgstr "Donasi"
 
 #: resources/ui/common/main-menu.ui:47
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "Tentang Burn-My-Windows"
 
 #: resources/ui/gtk4/Matrix.ui:30 resources/ui/gtk4/BrokenGlass.ui:30
 #: resources/ui/gtk4/Incinerate.ui:30 resources/ui/gtk4/Wisps.ui:30
@@ -344,7 +351,7 @@ msgstr ""
 #: resources/ui/adw/Glitch.ui:47 resources/ui/adw/EnergizeA.ui:47
 #: resources/ui/adw/Hexagon.ui:47 resources/ui/adw/EnergizeB.ui:48
 msgid "Scale"
-msgstr ""
+msgstr "Skala"
 
 #: resources/ui/gtk4/Matrix.ui:122 resources/ui/gtk4/Apparition.ui:76
 #: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
@@ -410,7 +417,7 @@ msgstr ""
 #: resources/ui/adw/TVEffect.ui:47 resources/ui/adw/EnergizeA.ui:80
 #: resources/ui/adw/EnergizeB.ui:81 resources/ui/adw/Portal.ui:146
 msgid "Color"
-msgstr ""
+msgstr "Warna"
 
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 #: resources/ui/adw/Fire.ui:14
@@ -421,7 +428,7 @@ msgstr ""
 #: resources/ui/gtk3/Fire.ui:195 resources/ui/gtk3/Glitch.ui:209
 #: resources/ui/adw/Fire.ui:96 resources/ui/adw/Glitch.ui:113
 msgid "Speed"
-msgstr ""
+msgstr "Kecepatan"
 
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
 #: resources/ui/adw/Fire.ui:129
@@ -460,7 +467,7 @@ msgstr ""
 #: resources/ui/adw/PixelWipe.ui:47 resources/ui/adw/PixelWheel.ui:80
 #: resources/ui/adw/Doom.ui:113 resources/ui/adw/Pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "Ukuran Piksel"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
@@ -531,12 +538,12 @@ msgstr ""
 #: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
 #: resources/ui/adw/prefs.ui:31
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "Selamat datang ke Burn-My-Windows!"
 
 #: resources/ui/gtk4/prefs.ui:45 resources/ui/gtk3/prefs.ui:52
 #: resources/ui/adw/prefs.ui:42
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr ""
+msgstr "Jika anda menyukai ekstensi ini, rekomendasikan ke teman anda :)"
 
 #: resources/ui/gtk4/prefs.ui:72 resources/ui/gtk3/prefs.ui:80
 msgid "Open Window Animation"
