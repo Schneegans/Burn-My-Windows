@@ -57,7 +57,7 @@ void main() {
   oColor.b     = mix(oColor.b, getInputColor(vec2(xPos - offset, iTexCoord.y)).b, 0.25);
 
   // Dissolve the window.
-  float fadeDelay = 2.0;
+  float fadeDelay = 1.5;
   float alpha = clamp(noise + 1.0 + fadeDelay - (3.0 + fadeDelay) * progress, 0.0, 1.0);
   oColor.a *= alpha;
 
