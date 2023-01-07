@@ -104,6 +104,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Bind general options properties.
     this.bindSwitch('destroy-dialogs');
     this.bindSwitch('disable-on-battery');
+    this.bindSwitch('disable-on-power-save');
 
     // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
     // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We

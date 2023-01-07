@@ -91,6 +91,28 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
 
+        <child>
+          <object class="AdwActionRow" id="disable-on-power-save-row">
+            <property name="title" translatable="yes">Disable in Power-Save Mode</property>
+            <property name="activatable-widget">disable-on-power-save</property>
+            <child>
+              <object class="GtkSwitch" id="disable-on-power-save">
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="reset-disable-on-power-save">
+                <property name="icon-name">edit-clear-symbolic</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                <style>
+                  <class name="flat" />
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+
       </object>
     </child>
 

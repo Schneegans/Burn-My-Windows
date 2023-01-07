@@ -89,14 +89,10 @@ class Extension {
                                         '/org/freedesktop/UPower');
 
     // This is used to get the current power profile.
-    // Ab 41??
     const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
       utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
     this._powerProfilesProxy = new PowerProfilesProxy(
       Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
-
-    utils.debug(this._powerProfilesProxy);
-    utils.debug(this._powerProfilesProxy.get_connection());
 
     // We will monkey-patch these methods. Let's store the original ones.
     this._origAddWindowClone        = Workspace.prototype._addWindowClone;
