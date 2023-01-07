@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-07 13:39+0100\n"
-"PO-Revision-Date: 2023-01-06 02:49+0000\n"
-"Last-Translator: lenemter <lenemter@gmail.com>\n"
+"PO-Revision-Date: 2023-01-09 16:48+0000\n"
+"Last-Translator: Daudix UFO <ddaudix@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/Apparition.js:81
@@ -30,15 +30,15 @@ msgstr "Разбитое стекло"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr "Кончина"
+msgstr "Doom"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
-msgstr "Энергия A"
+msgstr "Энергия А"
 
 #: src/EnergizeB.js:81
 msgid "Energize B"
-msgstr "Энергия B"
+msgstr "Энергия Б"
 
 #: src/Fire.js:100
 msgid "Fire"
@@ -70,11 +70,11 @@ msgstr "Скольжение"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr "Сбой"
+msgstr "Глюк"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
-msgstr "Гексагон"
+msgstr "Шестиугольник"
 
 #: src/Incinerate.js:131
 msgid "Incinerate"
@@ -90,11 +90,11 @@ msgstr "Пикселяция"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Кольцо пикселей"
+msgstr "Пиксельное колесо"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "Вытирать пикселями"
+msgstr "Вытирание пикселями"
 
 #: src/Portal.js:91
 msgid "Portal"
@@ -110,7 +110,7 @@ msgstr "Атака тираннозавра"
 
 #: src/TVEffect.js:78
 msgid "TV Effect"
-msgstr "Эффект ЭЛТ"
+msgstr "Эффект ТВ"
 
 #: src/Wisps.js:86
 msgid "Wisps"
@@ -123,7 +123,7 @@ msgstr "Эффекты"
 #: prefs.js:176 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr "Предпросмотр эффекта"
+msgstr "Предпросмотр этого эффекта"
 
 #: prefs.js:211
 msgid "Use this effect when opening windows"
@@ -135,7 +135,7 @@ msgstr "Использовать этот эффект при закрытии �
 
 #: prefs.js:238
 msgid "General Options"
-msgstr "Общие настройки"
+msgstr "Общие параметры"
 
 #: prefs.js:332
 msgid "Gold Sponsors"
@@ -157,7 +157,7 @@ msgstr "Прошлые спонсоры"
 #: prefs.js:548
 #, javascript-format
 msgid "Preview for %s"
-msgstr "Предпросмотр %s"
+msgstr "Предпросмотр для %s"
 
 #: prefs.js:570
 msgid "Close this Window to Preview the Effect!"
@@ -165,7 +165,7 @@ msgstr "Закройте это окно для предпросмотра эф�
 
 #: resources/ui/common/main-menu.ui:12
 msgid "Visit Homepage"
-msgstr "Посетить страницу проекта"
+msgstr "Посетить домашнюю страницу"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "View Changelog"
@@ -219,7 +219,7 @@ msgstr "О Burn-My-Windows"
 #: resources/ui/adw/Pixelate.ui:14 resources/ui/adw/Apparition.ui:15
 #: resources/ui/adw/Portal.ui:14
 msgid "Animation Time [ms]"
-msgstr "Время анимации (мс)"
+msgstr "Время анимации [мс]"
 
 #: resources/ui/gtk4/Matrix.ui:58 resources/ui/gtk4/Matrix.ui:104
 #: resources/ui/gtk4/Matrix.ui:150 resources/ui/gtk4/Matrix.ui:196
@@ -402,7 +402,7 @@ msgstr "Начинать от курсора"
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr "Если не включён, случайное положение будет выбрано."
+msgstr "Если отключено, будет выбрано случайное местоположение."
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -422,7 +422,7 @@ msgstr "Цвет"
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 #: resources/ui/adw/Fire.ui:14
 msgid "Presets"
-msgstr "Пресеты"
+msgstr "Предустановки"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/Glitch.ui:168
 #: resources/ui/gtk3/Fire.ui:195 resources/ui/gtk3/Glitch.ui:209
@@ -448,7 +448,7 @@ msgstr "Градиент"
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr "Хлюпать"
+msgstr "Хлюпанье"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
@@ -471,11 +471,11 @@ msgstr "Размер пикселя"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
-msgstr "Масштаб царапин"
+msgstr "Масштаб царапин когтями"
 
 #: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
-msgstr "Количество царапин"
+msgstr "Количество царапин когтями"
 
 #: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
@@ -488,17 +488,17 @@ msgstr "Цвет вспышки"
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr "Счёт Спици"
+msgstr "Количество спиц"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Горизонтальная шкала"
+msgstr "Горизонтальный масштаб"
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
 #: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
-msgstr "Вертикальная шкала"
+msgstr "Вертикальный масштаб"
 
 #: resources/ui/gtk4/Glitch.ui:122 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/Glitch.ui:80
@@ -528,7 +528,7 @@ msgstr "Аддитивное смешивание"
 #: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
 #: resources/ui/adw/Hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr "Возможно, вы захотите включить это для тёмной темы."
+msgstr "Возможно, вы захотите включить это для тёмной темы окон."
 
 #: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
 #: resources/ui/adw/Pixelate.ui:47
@@ -552,7 +552,7 @@ msgstr "Анимация открытия окна"
 #: resources/ui/gtk4/prefs.ui:81 resources/ui/gtk4/prefs.ui:125
 #: resources/ui/gtk3/prefs.ui:89 resources/ui/gtk3/prefs.ui:153
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Если выбрано несколько, то один выбирается случайным образом."
+msgstr "Если выбрано несколько, то один выбирается случайно."
 
 #: resources/ui/gtk4/prefs.ui:96 resources/ui/gtk4/prefs.ui:140
 #: resources/ui/gtk3/prefs.ui:110 resources/ui/gtk3/prefs.ui:174
@@ -576,12 +576,12 @@ msgstr "Отключать при питании от батареи"
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr ""
+msgstr "Отключить в режиме энергосбережения"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
 msgid "Twirl Intensity"
-msgstr "Интенсивность вращения"
+msgstr "Интенсивность завихрений"
 
 #: resources/ui/gtk4/Apparition.ui:168 resources/ui/gtk3/Apparition.ui:216
 #: resources/ui/adw/Apparition.ui:114
@@ -596,21 +596,21 @@ msgstr "Интенсивность всасывания"
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr "Кручение"
+msgstr "Завихрение"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr "Скорость поворота"
+msgstr "Скорость вращения"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr "Детали"
+msgstr "Подробности"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
-msgstr "Выберите пресет"
+msgstr "Выбрать предустановку"
 
 #~ msgid "Preview this Effect"
 #~ msgstr "Предпросмотр этого эффекта"
