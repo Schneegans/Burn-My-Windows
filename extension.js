@@ -88,6 +88,16 @@ class Extension {
     this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
                                         '/org/freedesktop/UPower');
 
+    // This is used to get the current power profile.
+    // Ab 41??
+    const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
+      utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+    this._powerProfilesProxy = new PowerProfilesProxy(
+      Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
+
+    console.log(this._powerProfilesProxy);
+    console.log(this._powerProfilesProxy.get_connection());
+
     // We will monkey-patch these methods. Let's store the original ones.
     this._origAddWindowClone        = Workspace.prototype._addWindowClone;
     this._origWindowRemoved         = Workspace.prototype._windowRemoved;
@@ -381,9 +391,13 @@ class Extension {
       return;
     }
 
-    // We may have to do nothing if running on battery power.
-    if (this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery &&
-        previewNick == '') {
+    // We may have to do nothing if running on battery power or if in power-save mode.
+    let disableOnBattery =
+      this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery;
+    let disableOnPowerSave = this._settings.get_boolean('disable-on-power-save') &&
+      this._powerProfilesProxy.ActiveProfile == 'power-saver';
+
+    if ((disableOnBattery || disableOnPowerSave) && previewNick == '') {
       this._fixAnimationTimes(isDialogWindow, forOpening, null);
       return;
     }

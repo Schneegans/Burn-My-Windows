@@ -25,6 +25,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>Enable effects only if plugged in.</description>
     </key>
 
+    <key name="disable-on-power-save" type="b">
+      <default>false</default>
+      <summary>Disable on Power Save</summary>
+      <description>Enable effects only if power saver is disabled.</description>
+    </key>
+
     <key name="close-preview-effect" type="s">
       <default>""</default>
       <summary>Close Preview Effect</summary>
