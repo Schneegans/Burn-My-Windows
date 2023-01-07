@@ -106,6 +106,17 @@ var PreferencesDialog = class PreferencesDialog {
     this.bindSwitch('disable-on-battery');
     this.bindSwitch('disable-on-power-save');
 
+    // Check whether the power profiles daemon is available - if not, we hide the
+    // corresponding settings row.
+    const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
+      utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+    let powerProfilesProxy = new PowerProfilesProxy(
+      Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
+
+    if (powerProfilesProxy.get_name_owner() == null) {
+      this._builder.get_object('disable-on-power-save-row').set_visible(false);
+    }
+
     // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
     // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We
     // have to use a different layout, as the stack sidebar looks pretty ugly with the
