@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-07 13:39+0100\n"
-"PO-Revision-Date: 2022-12-28 12:48+0000\n"
+"PO-Revision-Date: 2023-01-09 16:48+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -502,7 +502,7 @@ msgstr "Scala verticale"
 #: resources/ui/gtk4/Glitch.ui:122 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Forza"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
@@ -575,7 +575,7 @@ msgstr "Disattiva con alimentazione a batteria"
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr ""
+msgstr "Disabilita in modalità risparmio energetico"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
