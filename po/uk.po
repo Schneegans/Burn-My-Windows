@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-03 13:46+0100\n"
+"POT-Creation-Date: 2023-01-07 13:39+0100\n"
 "PO-Revision-Date: 2022-09-11 10:17+0000\n"
 "Last-Translator: Юрій Дмитренко <yuridm@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/burn-my-"
@@ -116,50 +116,50 @@ msgstr "Телевізор"
 msgid "Wisps"
 msgstr ""
 
-#: prefs.js:122
+#: prefs.js:134
 msgid "Effects"
 msgstr ""
 
-#: prefs.js:164 resources/ui/gtk4/effectPage.ui:43
+#: prefs.js:176 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr ""
 
-#: prefs.js:199
+#: prefs.js:211
 msgid "Use this effect when opening windows"
 msgstr ""
 
-#: prefs.js:200
+#: prefs.js:212
 msgid "Use this effect when closing windows"
 msgstr ""
 
-#: prefs.js:226
+#: prefs.js:238
 msgid "General Options"
 msgstr ""
 
-#: prefs.js:320
+#: prefs.js:332
 msgid "Gold Sponsors"
 msgstr "Золоті спонсори"
 
-#: prefs.js:323
+#: prefs.js:335
 msgid "Silver Sponsors"
 msgstr "Срібні спонсори"
 
-#: prefs.js:326
+#: prefs.js:338
 msgid "Bronze Sponsors"
 msgstr "Бронзові спонсори"
 
-#: prefs.js:329
+#: prefs.js:341
 msgid "Past Sponsors"
 msgstr "Колишні спонсори"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:536
+#: prefs.js:548
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Попередній перегляд ефекту %s"
 
-#: prefs.js:558
+#: prefs.js:570
 msgid "Close this Window to Preview the Effect!"
 msgstr "Закрийте це вікно, щоб переглянути ефект!"
 
@@ -254,37 +254,38 @@ msgstr "Час анімації (мс)"
 #: resources/ui/gtk4/EnergizeB.ui:104 resources/ui/gtk4/EnergizeB.ui:138
 #: resources/ui/gtk4/Pixelate.ui:58 resources/ui/gtk4/Pixelate.ui:104
 #: resources/ui/gtk4/Pixelate.ui:150 resources/ui/gtk4/prefs.ui:172
-#: resources/ui/gtk4/prefs.ui:206 resources/ui/gtk4/Apparition.ui:58
-#: resources/ui/gtk4/Apparition.ui:104 resources/ui/gtk4/Apparition.ui:150
-#: resources/ui/gtk4/Apparition.ui:196 resources/ui/gtk4/Apparition.ui:242
-#: resources/ui/gtk4/Portal.ui:58 resources/ui/gtk4/Portal.ui:104
-#: resources/ui/gtk4/Portal.ui:150 resources/ui/gtk4/Portal.ui:196
-#: resources/ui/gtk4/Portal.ui:230 resources/ui/gtk3/Incinerate.ui:81
-#: resources/ui/gtk3/Incinerate.ui:130 resources/ui/gtk3/Incinerate.ui:179
-#: resources/ui/gtk3/Incinerate.ui:241 resources/ui/gtk3/Incinerate.ui:284
-#: resources/ui/gtk3/Wisps.ui:74 resources/ui/gtk3/Wisps.ui:123
-#: resources/ui/gtk3/Wisps.ui:166 resources/ui/gtk3/Fire.ui:125
-#: resources/ui/gtk3/Fire.ui:173 resources/ui/gtk3/Fire.ui:221
-#: resources/ui/gtk3/Fire.ui:283 resources/ui/gtk3/Fire.ui:351
-#: resources/ui/gtk3/Glide.ui:95 resources/ui/gtk3/Glide.ui:144
-#: resources/ui/gtk3/Glide.ui:193 resources/ui/gtk3/Glide.ui:242
-#: resources/ui/gtk3/Glide.ui:291 resources/ui/gtk3/PixelWipe.ui:81
-#: resources/ui/gtk3/PixelWipe.ui:130 resources/ui/gtk3/PixelWheel.ui:81
-#: resources/ui/gtk3/PixelWheel.ui:130 resources/ui/gtk3/PixelWheel.ui:179
-#: resources/ui/gtk3/Doom.ui:88 resources/ui/gtk3/Doom.ui:137
-#: resources/ui/gtk3/Doom.ui:186 resources/ui/gtk3/Doom.ui:235
-#: resources/ui/gtk3/Glitch.ui:88 resources/ui/gtk3/Glitch.ui:137
-#: resources/ui/gtk3/Glitch.ui:186 resources/ui/gtk3/Glitch.ui:235
-#: resources/ui/gtk3/Glitch.ui:278 resources/ui/gtk3/TVEffect.ui:67
-#: resources/ui/gtk3/TVEffect.ui:110 resources/ui/gtk3/EnergizeA.ui:74
-#: resources/ui/gtk3/EnergizeA.ui:123 resources/ui/gtk3/EnergizeA.ui:166
-#: resources/ui/gtk3/Hexagon.ui:81 resources/ui/gtk3/Hexagon.ui:130
-#: resources/ui/gtk3/Hexagon.ui:179 resources/ui/gtk3/Hexagon.ui:222
-#: resources/ui/gtk3/Hexagon.ui:265 resources/ui/gtk3/Hexagon.ui:327
-#: resources/ui/gtk3/EnergizeB.ui:74 resources/ui/gtk3/EnergizeB.ui:123
-#: resources/ui/gtk3/EnergizeB.ui:166 resources/ui/gtk3/Pixelate.ui:81
-#: resources/ui/gtk3/Pixelate.ui:130 resources/ui/gtk3/Pixelate.ui:179
-#: resources/ui/gtk3/prefs.ui:225 resources/ui/gtk3/prefs.ui:269
+#: resources/ui/gtk4/prefs.ui:206 resources/ui/gtk4/prefs.ui:240
+#: resources/ui/gtk4/Apparition.ui:58 resources/ui/gtk4/Apparition.ui:104
+#: resources/ui/gtk4/Apparition.ui:150 resources/ui/gtk4/Apparition.ui:196
+#: resources/ui/gtk4/Apparition.ui:242 resources/ui/gtk4/Portal.ui:58
+#: resources/ui/gtk4/Portal.ui:104 resources/ui/gtk4/Portal.ui:150
+#: resources/ui/gtk4/Portal.ui:196 resources/ui/gtk4/Portal.ui:230
+#: resources/ui/gtk3/Incinerate.ui:81 resources/ui/gtk3/Incinerate.ui:130
+#: resources/ui/gtk3/Incinerate.ui:179 resources/ui/gtk3/Incinerate.ui:241
+#: resources/ui/gtk3/Incinerate.ui:284 resources/ui/gtk3/Wisps.ui:74
+#: resources/ui/gtk3/Wisps.ui:123 resources/ui/gtk3/Wisps.ui:166
+#: resources/ui/gtk3/Fire.ui:125 resources/ui/gtk3/Fire.ui:173
+#: resources/ui/gtk3/Fire.ui:221 resources/ui/gtk3/Fire.ui:283
+#: resources/ui/gtk3/Fire.ui:351 resources/ui/gtk3/Glide.ui:95
+#: resources/ui/gtk3/Glide.ui:144 resources/ui/gtk3/Glide.ui:193
+#: resources/ui/gtk3/Glide.ui:242 resources/ui/gtk3/Glide.ui:291
+#: resources/ui/gtk3/PixelWipe.ui:81 resources/ui/gtk3/PixelWipe.ui:130
+#: resources/ui/gtk3/PixelWheel.ui:81 resources/ui/gtk3/PixelWheel.ui:130
+#: resources/ui/gtk3/PixelWheel.ui:179 resources/ui/gtk3/Doom.ui:88
+#: resources/ui/gtk3/Doom.ui:137 resources/ui/gtk3/Doom.ui:186
+#: resources/ui/gtk3/Doom.ui:235 resources/ui/gtk3/Glitch.ui:88
+#: resources/ui/gtk3/Glitch.ui:137 resources/ui/gtk3/Glitch.ui:186
+#: resources/ui/gtk3/Glitch.ui:235 resources/ui/gtk3/Glitch.ui:278
+#: resources/ui/gtk3/TVEffect.ui:67 resources/ui/gtk3/TVEffect.ui:110
+#: resources/ui/gtk3/EnergizeA.ui:74 resources/ui/gtk3/EnergizeA.ui:123
+#: resources/ui/gtk3/EnergizeA.ui:166 resources/ui/gtk3/Hexagon.ui:81
+#: resources/ui/gtk3/Hexagon.ui:130 resources/ui/gtk3/Hexagon.ui:179
+#: resources/ui/gtk3/Hexagon.ui:222 resources/ui/gtk3/Hexagon.ui:265
+#: resources/ui/gtk3/Hexagon.ui:327 resources/ui/gtk3/EnergizeB.ui:74
+#: resources/ui/gtk3/EnergizeB.ui:123 resources/ui/gtk3/EnergizeB.ui:166
+#: resources/ui/gtk3/Pixelate.ui:81 resources/ui/gtk3/Pixelate.ui:130
+#: resources/ui/gtk3/Pixelate.ui:179 resources/ui/gtk3/prefs.ui:225
+#: resources/ui/gtk3/prefs.ui:269 resources/ui/gtk3/prefs.ui:313
 #: resources/ui/gtk3/Apparition.ui:95 resources/ui/gtk3/Apparition.ui:144
 #: resources/ui/gtk3/Apparition.ui:193 resources/ui/gtk3/Apparition.ui:242
 #: resources/ui/gtk3/Apparition.ui:291 resources/ui/gtk3/Portal.ui:89
@@ -323,12 +324,12 @@ msgstr "Час анімації (мс)"
 #: resources/ui/adw/EnergizeB.ui:70 resources/ui/adw/EnergizeB.ui:95
 #: resources/ui/adw/Pixelate.ui:36 resources/ui/adw/Pixelate.ui:69
 #: resources/ui/adw/Pixelate.ui:102 resources/ui/adw/prefs.ui:63
-#: resources/ui/adw/prefs.ui:85 resources/ui/adw/Apparition.ui:37
-#: resources/ui/adw/Apparition.ui:70 resources/ui/adw/Apparition.ui:103
-#: resources/ui/adw/Apparition.ui:136 resources/ui/adw/Apparition.ui:169
-#: resources/ui/adw/Portal.ui:36 resources/ui/adw/Portal.ui:69
-#: resources/ui/adw/Portal.ui:102 resources/ui/adw/Portal.ui:135
-#: resources/ui/adw/Portal.ui:160
+#: resources/ui/adw/prefs.ui:85 resources/ui/adw/prefs.ui:107
+#: resources/ui/adw/Apparition.ui:37 resources/ui/adw/Apparition.ui:70
+#: resources/ui/adw/Apparition.ui:103 resources/ui/adw/Apparition.ui:136
+#: resources/ui/adw/Apparition.ui:169 resources/ui/adw/Portal.ui:36
+#: resources/ui/adw/Portal.ui:69 resources/ui/adw/Portal.ui:102
+#: resources/ui/adw/Portal.ui:135 resources/ui/adw/Portal.ui:160
 msgid "Reset to Default Value"
 msgstr "Скинути до початкового значення"
 
@@ -568,6 +569,11 @@ msgstr ""
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
 #: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
+#: resources/ui/adw/prefs.ui:96
+msgid "Disable in Power-Save Mode"
 msgstr ""
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
