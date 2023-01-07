@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-03 13:46+0100\n"
-"PO-Revision-Date: 2023-01-06 02:49+0000\n"
+"PO-Revision-Date: 2023-01-07 12:48+0000\n"
 "Last-Translator: Sir-Ivysaur <randompsyduck@duck.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/"
 "burn-my-windows/core/id/>\n"
@@ -48,7 +48,6 @@ msgid "Default Fire"
 msgstr "Api (Bawaan)"
 
 #: src/Fire.js:165
-#, fuzzy
 msgid "Hell Fire"
 msgstr "Api Amat Panas"
 
@@ -66,15 +65,15 @@ msgstr "Sinterklas Datang"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Meluncur"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "Glitch"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
-msgstr ""
+msgstr "Segi Enam"
 
 #: src/Incinerate.js:131
 msgid "Incinerate"
@@ -86,27 +85,27 @@ msgstr "Matriks"
 
 #: src/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "Pikselasi"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Roda Piksel"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Gelombang Piksel"
 
 #: src/Portal.js:91
 msgid "Portal"
-msgstr ""
+msgstr "Pintu Gerbang Ajaib"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Jentikan Kehancuran"
 
 #: src/TRexAttack.js:116
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "Serangan T-Rex"
 
 #: src/TVEffect.js:78
 msgid "TV Effect"
@@ -114,7 +113,7 @@ msgstr "Efek TV"
 
 #: src/Wisps.js:86
 msgid "Wisps"
-msgstr ""
+msgstr "Cahaya"
 
 #: prefs.js:122
 msgid "Effects"
@@ -123,19 +122,19 @@ msgstr "Efek"
 #: prefs.js:164 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Pratinjau efek ini"
 
 #: prefs.js:199
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Gunakan efek ini saat membuka jendela"
 
 #: prefs.js:200
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Gunakan efek ini saat menutup jendela"
 
 #: prefs.js:226
 msgid "General Options"
-msgstr ""
+msgstr "Pengaturan Umum"
 
 #: prefs.js:320
 msgid "Gold Sponsors"
@@ -164,17 +163,14 @@ msgid "Close this Window to Preview the Effect!"
 msgstr "Tutup jendela ini untuk melihat efeknya!"
 
 #: resources/ui/common/main-menu.ui:12
-#, fuzzy
 msgid "Visit Homepage"
 msgstr "Buka Website"
 
 #: resources/ui/common/main-menu.ui:16
-#, fuzzy
 msgid "View Changelog"
 msgstr "Lihat Perubahan"
 
 #: resources/ui/common/main-menu.ui:22
-#, fuzzy
 msgid "Report a Bug"
 msgstr "Laporkan Bug"
 
@@ -222,7 +218,7 @@ msgstr "Tentang Burn-My-Windows"
 #: resources/ui/adw/Pixelate.ui:14 resources/ui/adw/Apparition.ui:15
 #: resources/ui/adw/Portal.ui:14
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Panjang Animasi [milidetik]"
 
 #: resources/ui/gtk4/Matrix.ui:58 resources/ui/gtk4/Matrix.ui:104
 #: resources/ui/gtk4/Matrix.ui:150 resources/ui/gtk4/Matrix.ui:196
@@ -333,7 +329,7 @@ msgstr ""
 #: resources/ui/adw/Portal.ui:102 resources/ui/adw/Portal.ui:135
 #: resources/ui/adw/Portal.ui:160
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "Kembalikan ke Pengaturan Awal"
 
 #: resources/ui/gtk4/Matrix.ui:76 resources/ui/gtk4/BrokenGlass.ui:76
 #: resources/ui/gtk4/Incinerate.ui:76 resources/ui/gtk4/Wisps.ui:76
@@ -357,52 +353,54 @@ msgstr "Skala"
 #: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
 #: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
-msgstr ""
+msgstr "Keserampangan"
 
 #: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Lewat Batas Vertikal Jendela"
 
 #: resources/ui/gtk4/Matrix.ui:214 resources/ui/adw/Matrix.ui:146
 msgid "Trail Color"
-msgstr ""
+msgstr "Warna Jejak"
 
 #: resources/ui/gtk4/Matrix.ui:248 resources/ui/adw/Matrix.ui:171
 msgid "Tip Color"
-msgstr ""
+msgstr "Warna Ujung"
 
 #: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
-msgstr ""
+msgstr "Gravitasi"
 
 #: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
-msgstr ""
+msgstr "Kekuatan Pecahan"
 
 #: resources/ui/gtk4/BrokenGlass.ui:218 resources/ui/adw/BrokenGlass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Pecahkan dari Lokasi Pointer"
 
 #: resources/ui/gtk4/BrokenGlass.ui:227 resources/ui/adw/BrokenGlass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"Pecahan kaca akan terbang menjauh dari lokasi pointer anda saat menutup "
+"jendela."
 
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
 #: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "Pergolakan"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Bakar dari Lokasi Pointer"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Jiki dimatikan, akan terpilih lokasi secara acak."
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -422,7 +420,7 @@ msgstr "Warna"
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 #: resources/ui/adw/Fire.ui:14
 msgid "Presets"
-msgstr ""
+msgstr "Preset"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/Glitch.ui:168
 #: resources/ui/gtk3/Fire.ui:195 resources/ui/gtk3/Glitch.ui:209
@@ -433,17 +431,17 @@ msgstr "Kecepatan"
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
 #: resources/ui/adw/Fire.ui:129
 msgid "3D Noise"
-msgstr ""
+msgstr "Kebisingan 3D"
 
 #: resources/ui/gtk4/Fire.ui:206 resources/ui/gtk3/Fire.ui:256
 #: resources/ui/adw/Fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Menciptakan api lebih dinamis tapi membutuhkan tenaga GPU lebih."
 
 #: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
 #: resources/ui/adw/Fire.ui:152
 msgid "Gradient"
-msgstr ""
+msgstr "Gradien"
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
@@ -547,31 +545,31 @@ msgstr "Jika anda menyukai ekstensi ini, rekomendasikan ke teman anda :)"
 
 #: resources/ui/gtk4/prefs.ui:72 resources/ui/gtk3/prefs.ui:80
 msgid "Open Window Animation"
-msgstr ""
+msgstr "Animasi Pembukaan Jendela"
 
 #: resources/ui/gtk4/prefs.ui:81 resources/ui/gtk4/prefs.ui:125
 #: resources/ui/gtk3/prefs.ui:89 resources/ui/gtk3/prefs.ui:153
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "Jika lebih dari satu terpilih, satu akan dipilih secara acak."
 
 #: resources/ui/gtk4/prefs.ui:96 resources/ui/gtk4/prefs.ui:140
 #: resources/ui/gtk3/prefs.ui:110 resources/ui/gtk3/prefs.ui:174
 msgid "Choose Effects"
-msgstr ""
+msgstr "Pilih Efek"
 
 #: resources/ui/gtk4/prefs.ui:116 resources/ui/gtk3/prefs.ui:144
 msgid "Close Window Animation"
-msgstr ""
+msgstr "Animasi Penutupan Jendela"
 
 #: resources/ui/gtk4/prefs.ui:156 resources/ui/gtk3/prefs.ui:204
 #: resources/ui/adw/prefs.ui:52
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "Juga Tambah Efek pada Dialog"
 
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
 #: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
-msgstr ""
+msgstr "Jangan Tampilkan Efek Saat Menggunakan Daya Baterai"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
@@ -596,13 +594,13 @@ msgstr ""
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Kecepatan Rotasi"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Detil"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Pilih Preset"
