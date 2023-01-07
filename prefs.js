@@ -320,26 +320,78 @@ var PreferencesDialog = class PreferencesDialog {
           });
 
           const sponsors = this._getJSONResource('/credits/sponsors.json');
+          let dialog;
 
-          const dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
-          dialog.set_logo_icon_name('burn-my-windows-symbolic');
-          dialog.set_program_name(`Burn-My-Windows ${Me.metadata.version}`);
-          dialog.set_website('https://github.com/Schneegans/Burn-My-Windows');
-          dialog.set_authors(['Simon Schneegans']);
-          dialog.set_copyright('© 2022 Simon Schneegans');
+          // We try to use the special Adw.AboutWindow if it is available.
+          if (utils.isADW() && Adw.AboutWindow) {
+            let formatSponsors = (sponsors) => {
+              return sponsors.map(s => {
+                if (s.url == '')
+                  return s.name;
+                else
+                  return `${s.name} ${s.url}`;
+              });
+            };
+
+            dialog = new Adw.AboutWindow({transient_for: window, modal: true});
+            dialog.set_application_icon('burn-my-windows-symbolic');
+            dialog.set_application_name('Burn-My-Windows');
+            dialog.set_version(`${Me.metadata.version}`);
+            dialog.set_developer_name('Simon Schneegans');
+            dialog.set_issue_url('https://github.com/Schneegans/Burn-My-Windows/issues');
+            if (sponsors.gold.length > 0) {
+              dialog.add_credit_section(_('Gold Sponsors'),
+                                        formatSponsors(sponsors.gold));
+            }
+            if (sponsors.silver.length > 0) {
+              dialog.add_credit_section(_('Silver Sponsors'),
+                                        formatSponsors(sponsors.silver));
+            }
+            if (sponsors.bronze.length > 0) {
+              dialog.add_credit_section(_('Bronze Sponsors'),
+                                        formatSponsors(sponsors.bronze));
+            }
+            if (sponsors.past.length > 0) {
+              dialog.add_credit_section(_('Past Sponsors'),
+                                        formatSponsors(sponsors.past));
+            }
+
+          } else {
+
+            let formatSponsors = (sponsors) => {
+              return sponsors.map(s => {
+                if (s.url == '')
+                  return s.name;
+                else
+                  return `<a href="${s.url}">${s.name}</a>`;
+              });
+            };
+
+            dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
+            dialog.set_logo_icon_name('burn-my-windows-symbolic');
+            dialog.set_program_name(`Burn-My-Windows ${Me.metadata.version}`);
+            dialog.set_authors(['Simon Schneegans']);
+            if (sponsors.gold.length > 0) {
+              dialog.add_credit_section(_('Gold Sponsors'),
+                                        formatSponsors(sponsors.gold));
+            }
+            if (sponsors.silver.length > 0) {
+              dialog.add_credit_section(_('Silver Sponsors'),
+                                        formatSponsors(sponsors.silver));
+            }
+            if (sponsors.bronze.length > 0) {
+              dialog.add_credit_section(_('Bronze Sponsors'),
+                                        formatSponsors(sponsors.bronze));
+            }
+            if (sponsors.past.length > 0) {
+              dialog.add_credit_section(_('Past Sponsors'),
+                                        formatSponsors(sponsors.past));
+            }
+          }
+
           dialog.set_translator_credits([...translators].join('\n'));
-          if (sponsors.gold.length > 0) {
-            dialog.add_credit_section(_('Gold Sponsors'), sponsors.gold);
-          }
-          if (sponsors.silver.length > 0) {
-            dialog.add_credit_section(_('Silver Sponsors'), sponsors.silver);
-          }
-          if (sponsors.bronze.length > 0) {
-            dialog.add_credit_section(_('Bronze Sponsors'), sponsors.bronze);
-          }
-          if (sponsors.past.length > 0) {
-            dialog.add_credit_section(_('Past Sponsors'), sponsors.past);
-          }
+          dialog.set_copyright('© 2022 Simon Schneegans');
+          dialog.set_website('https://github.com/Schneegans/Burn-My-Windows');
           dialog.set_license_type(Gtk.License.GPL_3_0);
 
           if (utils.isGTK4()) {
@@ -348,6 +400,7 @@ var PreferencesDialog = class PreferencesDialog {
             dialog.show_all();
           }
         });
+
         group.add_action(aboutAction);
       }
 
