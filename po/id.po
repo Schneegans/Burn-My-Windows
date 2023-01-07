@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-07 13:39+0100\n"
-"PO-Revision-Date: 2023-01-07 12:48+0000\n"
+"PO-Revision-Date: 2023-01-09 16:48+0000\n"
 "Last-Translator: Sir-Ivysaur <randompsyduck@duck.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -452,12 +452,12 @@ msgstr ""
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Miring"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Pindah"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -470,19 +470,19 @@ msgstr "Ukuran Piksel"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Skala Cakar"
 
 #: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Jumlah Cakar"
 
 #: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "Efek Distorsi"
 
 #: resources/ui/gtk4/TRexAttack.ui:214 resources/ui/adw/TRexAttack.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "Warna"
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
