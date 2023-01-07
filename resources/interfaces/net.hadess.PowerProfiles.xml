@@ -1,0 +1,11 @@
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: CC0-1.0
+-->
+
+<node>
+    <interface name="net.hadess.PowerProfiles">
+        <property name="ActiveProfile" type="s" access="read"/>
+    </interface>
+</node>
+  
