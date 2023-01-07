@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### New Features
 
 * **New Effect: Glitch.** This effect applies some intentional graphics issues to your windows.
+* There is a new option to disable the effects when power-save mode is active. This may not only help to reduce power consumption, but also help in situation where the window animation do not run fluently in power-save mode. This option requires the power-profiles daemon, so it should be available for GNOME Shell 41 and beyond.
 
 #### Other Enhancements
 
