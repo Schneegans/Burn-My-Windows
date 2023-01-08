@@ -121,6 +121,10 @@ void setOutputColor(vec4 outColor) { cogl_color_out = outColor; }
 // The Shell.GLSLEffect uses straight alpha blending. This helper method allows
 // compositing color values in the shader in the same way.
 vec4 alphaOver(vec4 under, vec4 over) {
+  if (under.a == 0.0 && over.a == 0.0) {
+    return vec4(0.0);
+  }
+
   float alpha = mix(under.a, 1.0, over.a);
   return vec4(mix(under.rgb * under.a, over.rgb, over.a) / alpha, alpha);
 }
