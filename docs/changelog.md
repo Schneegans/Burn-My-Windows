@@ -19,6 +19,10 @@ SPDX-License-Identifier: CC-BY-4.0
 * The menu button of the settings dialog has been moved to the left and now shows a heart instead of three dots.
 * The about dialog now uses the `Adw.AboutWindow` if available.
 
+#### Bug Fixes
+
+* Fixed an issue which could lead to black artifacts for some effects (Fire, Incinerate, Matrix, Portal, T-Rex Attack, and Wisps).
+
 ## [Burn My Windows 23](https://github.com/schneegans/Burn-My-Windows/releases/tag/v23)
 
 **Release Date:** 2022-12-23
