@@ -17,6 +17,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Other Enhancements
 
 * The menu button of the settings dialog has been moved to the left and now shows a heart instead of three dots.
+* The about dialog now uses the `Adw.AboutWindow` if available.
 
 ## [Burn My Windows 23](https://github.com/schneegans/Burn-My-Windows/releases/tag/v23)
 
