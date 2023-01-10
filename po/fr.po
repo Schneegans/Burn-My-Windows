@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-07 13:39+0100\n"
-"PO-Revision-Date: 2022-11-21 12:48+0000\n"
+"PO-Revision-Date: 2023-01-11 16:48+0000\n"
 "Last-Translator: SoftExpert <softexpert@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
-msgstr "Apparition"
+msgstr "Spectre"
 
 #: src/BrokenGlass.js:139
 msgid "Broken Glass"
@@ -69,7 +69,7 @@ msgstr "Glisse"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "Défaut"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -97,7 +97,7 @@ msgstr "Effacement de Pixels"
 
 #: src/Portal.js:91
 msgid "Portal"
-msgstr ""
+msgstr "Portail"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
@@ -391,7 +391,7 @@ msgstr ""
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
 #: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
-msgstr "Turbulence"
+msgstr "Turbulences"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
@@ -444,7 +444,7 @@ msgstr ""
 #: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
 #: resources/ui/adw/Fire.ui:152
 msgid "Gradient"
-msgstr "Gradient"
+msgstr "Dégradé"
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
@@ -459,7 +459,7 @@ msgstr "Incliner"
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr "Changement"
+msgstr "Décalage"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -504,7 +504,7 @@ msgstr "Échelle verticale"
 #: resources/ui/gtk4/Glitch.ui:122 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Résistance"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
@@ -577,7 +577,7 @@ msgstr "Désactiver sur batterie"
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr ""
+msgstr "Désactiver en mode économie d'énergie"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
@@ -597,17 +597,17 @@ msgstr "Intensité de la succion"
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Tourbillon"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Vitesse de rotation"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Détails"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
