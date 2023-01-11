@@ -101,11 +101,6 @@ var PreferencesDialog = class PreferencesDialog {
     this._builder.add_from_resource(`/ui/common/main-menu.ui`);
     this._builder.add_from_resource(`/ui/${utils.getUIDir()}/prefs.ui`);
 
-    // Bind general options properties.
-    this.bindSwitch('destroy-dialogs');
-    this.bindSwitch('disable-on-battery');
-    this.bindSwitch('disable-on-power-save');
-
     // Check whether the power profiles daemon is available - if not, we hide the
     // corresponding settings row.
     const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
@@ -131,8 +126,7 @@ var PreferencesDialog = class PreferencesDialog {
       this.gtkBoxAppend(this._widget, generalPrefs);
 
       // Then add a preferences group for the effect expander rows.
-      const group = new Adw.PreferencesGroup({title: _('Effects')});
-      this.gtkBoxAppend(this._widget, group);
+      const group = this._builder.get_object('effects-group');
 
       // This stores all expander rows for the effects. We use this to implement the
       // accordion-functionality of the effect settings.
@@ -280,6 +274,7 @@ var PreferencesDialog = class PreferencesDialog {
         if (Adw && utils.shellVersionIsAtLeast(42, 'beta')) {
           const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
           header.pack_start(menu);
+          header.set_title_widget(this._builder.get_object('profile-button'));
 
           // Allow closing of the sub pages.
           window.can_navigate_back = true;

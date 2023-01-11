@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16px"
+   viewBox="0 0 16 16"
+   width="16px"
+   version="1.1"
+   id="svg880"
+   sodipodi:docname="bmw-select-app-symbolic.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs884" />
+  <sodipodi:namedview
+     id="namedview882"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="true"
+     inkscape:zoom="57.412587"
+     inkscape:cx="8.0905604"
+     inkscape:cy="8.0992692"
+     inkscape:window-width="1920"
+     inkscape:window-height="1163"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg880">
+    <inkscape:grid
+       type="xygrid"
+       id="grid975" />
+  </sodipodi:namedview>
+  <path
+     d="m 7,11 v 5 h 2 v -5 m 2,-2 h 5 V 7 H 11 M 9,5 V 0 H 7 V 5 M 5.0431967,7 H 0 v 2 h 4.9715524"
+     fill="#222222"
+     id="path878"
+     sodipodi:nodetypes="cccccccccccccccc" />
+  <path
+     id="path966"
+     d="M 14.708984 10 L 12.580078 10 C 12.074974 11.149358 11.149798 12.075226 10 12.580078 L 10 14.707031 C 12.252335 14.032781 14.034893 12.252099 14.708984 10 z " />
+  <path
+     id="path2645"
+     d="M 10 1.2929688 L 10 3.4199219 C 11.149798 3.9247737 12.074974 4.8506419 12.580078 6 L 14.708984 6 C 14.034893 3.7479009 12.252335 1.9672199 10 1.2929688 z " />
+  <path
+     id="path2107"
+     d="M 3.421875 10 L 1.2910156 10 C 1.965107 12.252099 3.7476652 14.032781 6 14.707031 L 6 12.580078 C 4.8504712 12.075345 3.9270579 11.148985 3.421875 10 z " />
+  <path
+     id="path2456"
+     d="M 6 1.2929688 C 3.7476652 1.9672199 1.965107 3.7479009 1.2910156 6 L 3.421875 6 C 3.9270579 4.8510155 4.8504712 3.9246556 6 3.4199219 L 6 1.2929688 z " />
+</svg>

@@ -8,111 +8,102 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
   <requires lib="gtk" version="4.0" />
 
+  <object class="GtkBox" id="profile-button">
+    <property name="halign">center</property>
+    <child>
+      <object class="GtkButton">
+        <property name="label">Default Profile</property>
+        <property name="valign">center</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton">
+        <property name="icon-name">edit-symbolic</property>
+        <property name="valign">center</property>
+      </object>
+    </child>
+    <style>
+      <class name="linked" />
+    </style>
+  </object>
+
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
     <property name="icon-name">heart-filled-symbolic</property>
   </object>
-
+  
   <object class="GtkBox" id="general-prefs">
     <property name="orientation">vertical</property>
-    <property name="margin-top">60</property>
-    <property name="margin-bottom">20</property>
-
-    <child>
-      <object class="GtkImage">
-        <property name="valign">center</property>
-        <property name="icon-name">burn-my-windows-symbolic</property>
-        <property name="pixel_size">128</property>
-      </object>
-    </child>
-
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="yes">Welcome to Burn-My-Windows!</property>
-        <property name="margin-top">8</property>
-        <property name="margin-bottom">6</property>
-        <style>
-          <class name="large-title" />
-        </style>
-      </object>
-    </child>
-
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="yes">If you like this extension, recommend it to your friends :)</property>
-        <property name="margin-bottom">36</property>
-      </object>
-    </child>
-
+    
     <child>
       <object class="AdwPreferencesGroup">
+        <property name="margin-bottom">20</property>
 
         <child>
-          <object class="AdwActionRow">
-            <property name="title" translatable="yes">Also Add Effects to Dialogs</property>
-            <property name="activatable-widget">destroy-dialogs</property>
+          <object class="AdwEntryRow">
+            <property name="title" translatable="yes">Application</property>
             <child>
-              <object class="GtkSwitch" id="destroy-dialogs">
+              <object class="GtkButton" id="reset-doom-animation-time">
+                <property name="icon-name">bmw-select-app-symbolic</property>
                 <property name="valign">center</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="reset-destroy-dialogs">
-                <property name="icon-name">edit-clear-symbolic</property>
-                <property name="valign">center</property>
-                <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                <style>
-                  <class name="flat" />
-                </style>
               </object>
             </child>
           </object>
         </child>
 
         <child>
-          <object class="AdwActionRow">
-            <property name="title" translatable="yes">Disable on Battery Power</property>
-            <property name="activatable-widget">disable-on-battery</property>
-            <child>
-              <object class="GtkSwitch" id="disable-on-battery">
-                <property name="valign">center</property>
+          <object class="AdwComboRow">
+            <property name="title" translatable="yes">Window Type</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item>Any</item>
+                  <item>Normal Windows</item>
+                  <item>Dialogs</item>
+                </items>
               </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="reset-disable-on-battery">
-                <property name="icon-name">edit-clear-symbolic</property>
-                <property name="valign">center</property>
-                <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                <style>
-                  <class name="flat" />
-                </style>
-              </object>
-            </child>
+            </property>
           </object>
         </child>
 
         <child>
-          <object class="AdwActionRow" id="disable-on-power-save-row">
-            <property name="title" translatable="yes">Disable in Power-Save Mode</property>
-            <property name="activatable-widget">disable-on-power-save</property>
-            <child>
-              <object class="GtkSwitch" id="disable-on-power-save">
-                <property name="valign">center</property>
+          <object class="AdwComboRow">
+            <property name="title" translatable="yes">Power Mode</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item>Any</item>
+                  <item>On Battery</item>
+                  <item>Plugged In</item>
+                </items>
               </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="reset-disable-on-power-save">
-                <property name="icon-name">edit-clear-symbolic</property>
-                <property name="valign">center</property>
-                <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                <style>
-                  <class name="flat" />
-                </style>
-              </object>
-            </child>
+            </property>
           </object>
         </child>
 
+        <child>
+          <object class="AdwComboRow">
+            <property name="title" translatable="yes">Power Profile</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item>Any</item>
+                  <item>Power Saver</item>
+                  <item>Balanced</item>
+                  <item>Performance</item>
+                  <item>Power Saver or Balanced</item>
+                  <item>Balanced or Performance</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesGroup" id="effects-group">
       </object>
     </child>
 
