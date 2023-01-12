@@ -119,11 +119,7 @@ var PreferencesDialog = class PreferencesDialog {
     if (utils.isADW()) {
 
       // This is our top-level widget which we will return later.
-      this._widget = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
-
-      // Add the general options page to the settings dialog.
-      const generalPrefs = this._builder.get_object('general-prefs');
-      this.gtkBoxAppend(this._widget, generalPrefs);
+      this._widget = this._builder.get_object('general-prefs');
 
       // Then add a preferences group for the effect expander rows.
       const group = this._builder.get_object('effects-group');
@@ -276,8 +272,20 @@ var PreferencesDialog = class PreferencesDialog {
           header.pack_start(menu);
           header.set_title_widget(this._builder.get_object('profile-button'));
 
-          // Allow closing of the sub pages.
-          window.can_navigate_back = true;
+          const flap     = this._builder.get_object('profile-editor-flap');
+          const clamp    = this._findWidgetByType(window.get_content(), Adw.Clamp);
+          const viewport = clamp.get_parent();
+          viewport.get_parent().set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER);
+          viewport.set_child(flap);
+          
+          const scrolledWindow = Gtk.ScrolledWindow.new();
+          scrolledWindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+          scrolledWindow.set_propagate_natural_height(true);
+          scrolledWindow.set_vexpand(true);
+          scrolledWindow.set_child(clamp);
+
+          flap.set_content(scrolledWindow);
+
         } else {
           window.get_titlebar().pack_start(menu);
         }
@@ -678,4 +686,9 @@ function init() {
 function buildPrefsWidget() {
   var dialog = new PreferencesDialog();
   return dialog.getWidget();
+}
+
+function fillPreferencesWindow(window) {
+  var dialog = new PreferencesDialog();
+  window.add(dialog.getWidget());
 }

@@ -2,7 +2,8 @@
 
 <!--
 SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
-SPDX-License-Identifier: GPL-3.0-or-later
+SPDX-License-Identifier:
+GPL-3.0-or-later
 -->
 
 <interface domain="burn-my-windows">
@@ -17,9 +18,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
       </object>
     </child>
     <child>
-      <object class="GtkButton">
+      <object class="GtkToggleButton" id="edit-profile-button">
         <property name="icon-name">edit-symbolic</property>
         <property name="valign">center</property>
+
+        <binding name="active">
+          <lookup name="reveal-flap">profile-editor-flap</lookup>
+        </binding>
       </object>
     </child>
     <style>
@@ -27,94 +32,107 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </style>
   </object>
 
-  <object class="GtkMenuButton" id="menu-button">
-    <property name="menu-model">main-menu</property>
-    <property name="icon-name">heart-filled-symbolic</property>
-  </object>
-  
-  <object class="AdwFlap" id="general-prefs">
+  <object class="AdwFlap" id="profile-editor-flap">
     <property name="orientation">vertical</property>
-    <property name="reveal-flap">true</property>
-    <property name="locked">true</property>
-    <property name="swipe-to-open">false</property>
-    <property name="swipe-to-close">false</property>
-    
+    <property name="fold-threshold-policy">natural</property>
+
+    <binding name="reveal-flap">
+      <lookup name="active">edit-profile-button</lookup>
+    </binding>
+
     <child type="flap">
-      <object class="AdwPreferencesGroup">
+      <object class="AdwClamp">
         <style>
           <class name="background" />
         </style>
 
-        <child>
-          <object class="AdwEntryRow">
-            <property name="title" translatable="yes">Application</property>
+        <property name="child">
+          <object class="AdwPreferencesGroup">
+            <property name="margin-top">20</property>
+            <property name="margin-bottom">20</property>
+            <property name="margin-start">20</property>
+            <property name="margin-end">20</property>
+
             <child>
-              <object class="GtkButton" id="reset-doom-animation-time">
-                <property name="icon-name">bmw-select-app-symbolic</property>
-                <property name="valign">center</property>
+              <object class="AdwEntryRow">
+                <property name="title" translatable="yes">Application</property>
+                <child>
+                  <object class="GtkButton" id="reset-doom-animation-time">
+                    <property name="icon-name">bmw-select-app-symbolic</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
               </object>
             </child>
-          </object>
-        </child>
 
-        <child>
-          <object class="AdwComboRow">
-            <property name="title" translatable="yes">Window Type</property>
-            <property name="model">
-              <object class="GtkStringList">
-                <items>
-                  <item>Any</item>
-                  <item>Normal Windows</item>
-                  <item>Dialogs</item>
-                </items>
+            <child>
+              <object class="AdwComboRow">
+                <property name="title" translatable="yes">Window Type</property>
+                <property name="model">
+                  <object class="GtkStringList">
+                    <items>
+                      <item>Any</item>
+                      <item>Normal Windows</item>
+                      <item>Dialogs</item>
+                    </items>
+                  </object>
+                </property>
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
-        <child>
-          <object class="AdwComboRow">
-            <property name="title" translatable="yes">Power Mode</property>
-            <property name="model">
-              <object class="GtkStringList">
-                <items>
-                  <item>Any</item>
-                  <item>On Battery</item>
-                  <item>Plugged In</item>
-                </items>
+            <child>
+              <object class="AdwComboRow">
+                <property name="title" translatable="yes">Power Mode</property>
+                <property name="model">
+                  <object class="GtkStringList">
+                    <items>
+                      <item>Any</item>
+                      <item>On Battery</item>
+                      <item>Plugged In</item>
+                    </items>
+                  </object>
+                </property>
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
-        <child>
-          <object class="AdwComboRow">
-            <property name="title" translatable="yes">Power Profile</property>
-            <property name="model">
-              <object class="GtkStringList">
-                <items>
-                  <item>Any</item>
-                  <item>Power Saver</item>
-                  <item>Balanced</item>
-                  <item>Performance</item>
-                  <item>Power Saver or Balanced</item>
-                  <item>Balanced or Performance</item>
-                </items>
+            <child>
+              <object class="AdwComboRow">
+                <property name="title" translatable="yes">Power Profile</property>
+                <property name="model">
+                  <object class="GtkStringList">
+                    <items>
+                      <item>Any</item>
+                      <item>Power Saver</item>
+                      <item>Balanced</item>
+                      <item>Performance</item>
+                      <item>Power Saver or Balanced</item>
+                      <item>Balanced or Performance</item>
+                    </items>
+                  </object>
+                </property>
               </object>
-            </property>
-          </object>
-        </child>
+            </child>
 
+          </object>
+        </property>
       </object>
     </child>
+  </object>
 
-    <child type="content">
+  <object class="GtkMenuButton" id="menu-button">
+    <property name="menu-model">main-menu</property>
+    <property name="icon-name">heart-filled-symbolic</property>
+  </object>
+
+  <object class="AdwPreferencesPage" id="general-prefs">
+    <child>
       <object class="AdwPreferencesGroup" id="effects-group">
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
       </object>
     </child>
-
-   
-
   </object>
 
 </interface>
