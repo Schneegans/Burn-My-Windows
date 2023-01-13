@@ -155,53 +155,25 @@ var PreferencesDialog = class PreferencesDialog {
             }
           });
 
-          // Add three buttons on the right.
-          const box = new Gtk.Box();
-          box.set_spacing(8);
-
           // The preview button.
           const previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
           previewButton.add_css_class('circular');
           previewButton.add_css_class('flat');
           previewButton.set_tooltip_text(_('Preview this effect'));
           previewButton.set_valign(Gtk.Align.CENTER);
-          box.append(previewButton);
+          row.add_action(previewButton);
 
           previewButton.connect('clicked', () => {
             this._previewEffect(effect);
           });
 
           // Now add the two toggle buttons for enabling and disabling the effect.
-          const addToggle = (action, tooltip) => {
-            const button = Gtk.ToggleButton.new();
-            button.set_action_name(
-              `${action}-effects.${effect.getNick()}-${action}-effect`);
-            button.set_child(
-              Gtk.Image.new_from_icon_name(`bmw-window-${action}-symbolic`));
-            button.set_tooltip_text(tooltip);
-            button.set_valign(Gtk.Align.CENTER);
+          const button = Gtk.Switch.new();
+          button.set_action_name(`enabled-effects.${effect.getNick()}-enable-effect`);
+          button.set_tooltip_text(_('Use this effect'));
+          button.set_valign(Gtk.Align.CENTER);
 
-            // We switch some class when the button is enabled in order to make it more
-            // apparent which effects are currently in use.
-            button.add_css_class('circular');
-            button.add_css_class('flat');
-            button.connect('toggled', button => {
-              if (button.active) {
-                button.add_css_class('suggested-action');
-                button.remove_css_class('flat');
-              } else {
-                button.remove_css_class('suggested-action');
-                button.add_css_class('flat');
-              }
-            });
-
-            box.append(button);
-          };
-
-          addToggle('open', _('Use this effect when opening windows'));
-          addToggle('close', _('Use this effect when closing windows'));
-
-          row.add_action(box);
+          row.add_prefix(button);
           group.add(row);
 
           this._effectRows.push(row);
@@ -277,7 +249,7 @@ var PreferencesDialog = class PreferencesDialog {
           const viewport = clamp.get_parent();
           viewport.get_parent().set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER);
           viewport.set_child(flap);
-          
+
           const scrolledWindow = Gtk.ScrolledWindow.new();
           scrolledWindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
           scrolledWindow.set_propagate_natural_height(true);
@@ -407,47 +379,24 @@ var PreferencesDialog = class PreferencesDialog {
         group.add_action(aboutAction);
       }
 
-      // Populate the open-effects drop-down menu.
+      // Populate the enabled-effects drop-down menu.
       {
         const group = Gio.SimpleActionGroup.new();
-        window.insert_action_group('open-effects', group);
+        window.insert_action_group('enabled-effects', group);
 
         this._ALL_EFFECTS.forEach(effect => {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const actionName = effect.getNick() + '-open-effect';
+            const actionName = effect.getNick() + '-enable-effect';
             const action     = this._settings.create_action(actionName);
             group.add_action(action);
 
             // The menu only exists if not using libadwaita. With libadwaita, individual
             // ToggleButtons are used for triggering the above actions.
             if (!utils.isADW()) {
-              const menu  = this._builder.get_object('open-effect-menu');
+              const menu  = this._builder.get_object('enabled-effects-menu');
               const label = effect.getLabel();
-              menu.append_item(Gio.MenuItem.new(label, 'open-effects.' + actionName));
-            }
-          }
-        });
-      }
-
-      // Populate the close-effects drop-down menu.
-      {
-        const group = Gio.SimpleActionGroup.new();
-        window.insert_action_group('close-effects', group);
-
-        this._ALL_EFFECTS.forEach(effect => {
-          const [minMajor, minMinor] = effect.getMinShellVersion();
-          if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const actionName = effect.getNick() + '-close-effect';
-            const action     = this._settings.create_action(actionName);
-            group.add_action(action);
-
-            // The menu only exists if not using libadwaita. With libadwaita, individual
-            // ToggleButtons are used for triggering the above actions.
-            if (!utils.isADW()) {
-              const menu  = this._builder.get_object('close-effect-menu');
-              const label = effect.getLabel();
-              menu.append_item(Gio.MenuItem.new(label, 'close-effects.' + actionName));
+              menu.append_item(Gio.MenuItem.new(label, 'enabled-effects.' + actionName));
             }
           }
         });
@@ -592,8 +541,7 @@ var PreferencesDialog = class PreferencesDialog {
   _previewEffect(effect) {
 
     // Set the to-be-previewed effect.
-    this.getSettings().set_string('open-preview-effect', effect.getNick());
-    this.getSettings().set_string('close-preview-effect', effect.getNick());
+    this.getSettings().set_string('preview-effect', effect.getNick());
 
     // Make sure that the window.show() firther below "sees" this change.
     Gio.Settings.sync();

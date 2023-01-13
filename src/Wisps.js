@@ -75,7 +75,7 @@ var Wisps = class {
 
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
-  // effect is enabled currently (e.g. the '*-close-effect').
+  // effect is enabled currently (e.g. the '*-enable-effect').
   getNick() {
     return 'wisps';
   }

@@ -379,8 +379,7 @@ class Extension {
 
     // If an effect is to be previewed, we have to affect dialogs es well. This is
     // because the preview window is a dialog window...
-    const action      = forOpening ? 'open' : 'close';
-    const previewNick = this._settings.get_string(action + '-preview-effect');
+    const previewNick = this._settings.get_string('preview-effect');
 
     if (isDialogWindow && !shouldDestroyDialogs && previewNick == '') {
       this._fixAnimationTimes(isDialogWindow, forOpening, null);
@@ -418,15 +417,16 @@ class Extension {
       effect = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
 
       // Only preview the effect once.
-      this._settings.set_string(action + '-preview-effect', '');
-
+      if (!forOpening) {
+        this._settings.set_string('preview-effect', '');
+      }
     }
     // Else we choose a random effect from all enabled effects.
     else {
 
       // Therefore, we first create a list of all currently enabled effects.
       const enabled = this._ALL_EFFECTS.filter(effect => {
-        return this._settings.get_boolean(`${effect.getNick()}-${action}-effect`);
+        return this._settings.get_boolean(`${effect.getNick()}-enable-effect`);
       });
 
       // And then choose a random effect.

@@ -31,16 +31,10 @@ SPDX-License-Identifier: CC0-1.0
       <description>Enable effects only if power saver is disabled.</description>
     </key>
 
-    <key name="close-preview-effect" type="s">
+    <key name="preview-effect" type="s">
       <default>""</default>
-      <summary>Close Preview Effect</summary>
-      <description>The effect with this nick will be used for the next window-close animation.</description>
-    </key>
-
-    <key name="open-preview-effect" type="s">
-      <default>""</default>
-      <summary>Open Preview Effect</summary>
-      <description>The effect with this nick will be used for the next window-open animation.</description>
+      <summary>Preview Effect</summary>
+      <description>The effect with this nick will be used for the next window animation.</description>
     </key>
 
     <key name="test-mode" type="b">
@@ -53,16 +47,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Apparition Effect Options                                                     -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="apparition-open-effect" type="b">
+    <key name="apparition-enable-effect" type="b">
       <default>false</default>
-      <summary>Apparition Open Effect</summary>
-      <description>Use the apparition effect for window openeing.</description>
-    </key>
-
-    <key name="apparition-close-effect" type="b">
-      <default>false</default>
-      <summary>Apparition Close Effect</summary>
-      <description>Use the apparition effect for window closing.</description>
+      <summary>Apparition Enable Effect</summary>
+      <description>Use the apparition effect.</description>
     </key>
 
     <key name="apparition-animation-time" type="i">
@@ -100,16 +88,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Pixelate Options                                                              -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="pixelate-close-effect" type="b">
+    <key name="pixelate-enable-effect" type="b">
       <default>false</default>
-      <summary>Pixelate Close Effect</summary>
-      <description>Use the Pixelate effect for window closing.</description>
-    </key>
-
-    <key name="pixelate-open-effect" type="b">
-      <default>false</default>
-      <summary>Pixelate Open Effect</summary>
-      <description>Use the Pixelate effect for window opening.</description>
+      <summary>Pixelate Enable Effect</summary>
+      <description>Use the Pixelate effect.</description>
     </key>
 
     <key name="pixelate-animation-time" type="i">
@@ -135,16 +117,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Pixel Wipe Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="pixel-wipe-close-effect" type="b">
+    <key name="pixel-wipe-enable-effect" type="b">
       <default>false</default>
-      <summary>Pixel Wipe Close Effect</summary>
-      <description>Use the Pixel Wipe effect for window closing.</description>
-    </key>
-
-    <key name="pixel-wipe-open-effect" type="b">
-      <default>false</default>
-      <summary>Pixel Wipe Open Effect</summary>
-      <description>Use the Pixel Wipe effect for window opening.</description>
+      <summary>Pixel Wipe Enable Effect</summary>
+      <description>Use the Pixel Wipe effect.</description>
     </key>
 
     <key name="pixel-wipe-animation-time" type="i">
@@ -163,16 +139,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Pixel Wheel Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="pixel-wheel-close-effect" type="b">
+    <key name="pixel-wheel-enable-effect" type="b">
       <default>false</default>
-      <summary>Pixel Wheel Close Effect</summary>
-      <description>Use the Pixel Wheel effect for window closing.</description>
-    </key>
-
-    <key name="pixel-wheel-open-effect" type="b">
-      <default>false</default>
-      <summary>Pixel Wheel Open Effect</summary>
-      <description>Use the Pixel Wheel effect for window opening.</description>
+      <summary>Pixel Wheel Enable Effect</summary>
+      <description>Use the Pixel Wheel effect.</description>
     </key>
 
     <key name="pixel-wheel-animation-time" type="i">
@@ -197,16 +167,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Doom Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="doom-close-effect" type="b">
+    <key name="doom-enable-effect" type="b">
       <default>false</default>
-      <summary>Doom Close Effect</summary>
-      <description>Use the Doom effect for window closing.</description>
-    </key>
-
-    <key name="doom-open-effect" type="b">
-      <default>false</default>
-      <summary>Doom Open Effect</summary>
-      <description>Use the Doom effect for window opening.</description>
+      <summary>Doom Enable Effect</summary>
+      <description>Use the Doom effect.</description>
     </key>
 
     <key name="doom-animation-time" type="i">
@@ -237,16 +201,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Fire Options                                                                  -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="fire-close-effect" type="b">
+    <key name="fire-enable-effect" type="b">
       <default>true</default>
-      <summary>Fire Close Effect</summary>
-      <description>Use the fire effect for window closing.</description>
-    </key>
-
-    <key name="fire-open-effect" type="b">
-      <default>false</default>
-      <summary>Fire Open Effect</summary>
-      <description>Use the fire effect for window opening.</description>
+      <summary>Fire Enable Effect</summary>
+      <description>Use the fire effect.</description>
     </key>
 
     <key name="fire-animation-time" type="i">
@@ -307,16 +265,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Glide Options                                                                 -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="glide-close-effect" type="b">
-      <default>true</default>
-      <summary>Glide Close Effect</summary>
-      <description>Use the glide effect for window closing.</description>
-    </key>
-
-    <key name="glide-open-effect" type="b">
+    <key name="glide-enable-effect" type="b">
       <default>false</default>
-      <summary>Glide Open Effect</summary>
-      <description>Use the glide effect for window opening.</description>
+      <summary>Glide Enable Effect</summary>
+      <description>Use the glide effect.</description>
     </key>
 
     <key name="glide-animation-time" type="i">
@@ -353,16 +305,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Matrix Options                                                                -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="matrix-close-effect" type="b">
+    <key name="matrix-enable-effect" type="b">
       <default>false</default>
-      <summary>Matrix Close Effect</summary>
-      <description>Use the matrix effect for window closing.</description>
-    </key>
-
-    <key name="matrix-open-effect" type="b">
-      <default>false</default>
-      <summary>Matrix Open Effect</summary>
-      <description>Use the matrix effect for window opening.</description>
+      <summary>Matrix Enable Effect</summary>
+      <description>Use the matrix effect.</description>
     </key>
 
     <key name="matrix-animation-time" type="i">
@@ -405,16 +351,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- TV Effect Options                                                             -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="tv-close-effect" type="b">
+    <key name="tv-enable-effect" type="b">
       <default>false</default>
-      <summary>TV Close Effect</summary>
-      <description>Use the tv effect for window closing.</description>
-    </key>
-
-    <key name="tv-open-effect" type="b">
-      <default>false</default>
-      <summary>TV Open Effect</summary>
-      <description>Use the tv effect for window opening.</description>
+      <summary>TV Enable Effect</summary>
+      <description>Use the tv effect.</description>
     </key>
 
     <key name="tv-animation-time" type="i">
@@ -433,16 +373,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- T-Rex Attack Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="trex-close-effect" type="b">
+    <key name="trex-enable-effect" type="b">
       <default>false</default>
-      <summary>T-Rex Close Effect</summary>
-      <description>Use the trex effect for window closing.</description>
-    </key>
-
-    <key name="trex-open-effect" type="b">
-      <default>false</default>
-      <summary>T-Rex Open Effect</summary>
-      <description>Use the trex effect for window opening.</description>
+      <summary>T-Rex Enable Effect</summary>
+      <description>Use the trex effect.</description>
     </key>
 
     <key name="trex-animation-time" type="i">
@@ -479,16 +413,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Hexagon Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="hexagon-close-effect" type="b">
+    <key name="hexagon-enable-effect" type="b">
       <default>false</default>
-      <summary>Hexagon Close Effect</summary>
-      <description>Use the Hexagon effect for window closing.</description>
-    </key>
-
-    <key name="hexagon-open-effect" type="b">
-      <default>false</default>
-      <summary>Hexagon Open Effect</summary>
-      <description>Use the Hexagon effect for window opening.</description>
+      <summary>Hexagon Enable Effect</summary>
+      <description>Use the Hexagon effect.</description>
     </key>
 
     <key name="hexagon-animation-time" type="i">
@@ -531,16 +459,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Incinerate Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="incinerate-close-effect" type="b">
+    <key name="incinerate-enable-effect" type="b">
       <default>false</default>
-      <summary>Incinerate Close Effect</summary>
-      <description>Use the Incinerate effect for window closing.</description>
-    </key>
-
-    <key name="incinerate-open-effect" type="b">
-      <default>false</default>
-      <summary>Incinerate Open Effect</summary>
-      <description>Use the Incinerate effect for window opening.</description>
+      <summary>Incinerate Enable Effect</summary>
+      <description>Use the Incinerate effect.</description>
     </key>
 
     <key name="incinerate-animation-time" type="i">
@@ -577,16 +499,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Energize A Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="energize-a-close-effect" type="b">
+    <key name="energize-a-enable-effect" type="b">
       <default>false</default>
-      <summary>Energize A Close Effect</summary>
-      <description>Use the Energize A effect for window closing.</description>
-    </key>
-
-    <key name="energize-a-open-effect" type="b">
-      <default>false</default>
-      <summary>Energize A Open Effect</summary>
-      <description>Use the Energize A effect for window opening.</description>
+      <summary>Energize A Enable Effect</summary>
+      <description>Use the Energize A effect.</description>
     </key>
 
     <key name="energize-a-animation-time" type="i">
@@ -611,16 +527,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Energize B Options                                                            -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="energize-b-close-effect" type="b">
+    <key name="energize-b-enable-effect" type="b">
       <default>false</default>
-      <summary>Energize B Close Effect</summary>
-      <description>Use the Energize B effect for window closing.</description>
-    </key>
-
-    <key name="energize-b-open-effect" type="b">
-      <default>false</default>
-      <summary>Energize B Open Effect</summary>
-      <description>Use the Energize B effect for window opening.</description>
+      <summary>Energize B Enable Effect</summary>
+      <description>Use the Energize B effect.</description>
     </key>
 
     <key name="energize-b-animation-time" type="i">
@@ -646,16 +556,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Glitch Options                                                                -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="glitch-close-effect" type="b">
+    <key name="glitch-enable-effect" type="b">
       <default>false</default>
-      <summary>Glitch Close Effect</summary>
-      <description>Use the Glitch effect for window closing.</description>
-    </key>
-
-    <key name="glitch-open-effect" type="b">
-      <default>false</default>
-      <summary>Glitch Open Effect</summary>
-      <description>Use the Glitch effect for window opening.</description>
+      <summary>Glitch Enable Effect</summary>
+      <description>Use the Glitch effect.</description>
     </key>
 
     <key name="glitch-animation-time" type="i">
@@ -692,16 +596,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Wisps Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="wisps-close-effect" type="b">
+    <key name="wisps-enable-effect" type="b">
       <default>false</default>
-      <summary>Wisps Close Effect</summary>
-      <description>Use the wisps effect for window closing.</description>
-    </key>
-
-    <key name="wisps-open-effect" type="b">
-      <default>false</default>
-      <summary>Wisps Open Effect</summary>
-      <description>Use the wisps effect for window opening.</description>
+      <summary>Wisps Enable Effect</summary>
+      <description>Use the wisps effect.</description>
     </key>
 
     <key name="wisps-animation-time" type="i">
@@ -726,16 +624,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Broken Glass Effect Options                                                   -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="broken-glass-close-effect" type="b">
+    <key name="broken-glass-enable-effect" type="b">
       <default>false</default>
-      <summary>Broken Glass Close Effect</summary>
-      <description>Use the broken glass effect for window closing.</description>
-    </key>
-
-    <key name="broken-glass-open-effect" type="b">
-      <default>false</default>
-      <summary>Broken Glass Open Effect</summary>
-      <description>Use the broken glass effect for window opening.</description>
+      <summary>Broken Glass Enable Effect</summary>
+      <description>Use the broken glass effect.</description>
     </key>
 
     <key name="broken-glass-animation-time" type="i">
@@ -772,16 +664,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Portal Options                                                                -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="portal-close-effect" type="b">
+    <key name="portal-enable-effect" type="b">
       <default>false</default>
-      <summary>Portal Close Effect</summary>
-      <description>Use the Portal effect for window closing.</description>
-    </key>
-
-    <key name="portal-open-effect" type="b">
-      <default>false</default>
-      <summary>Portal Open Effect</summary>
-      <description>Use the Portal effect for window opening.</description>
+      <summary>Portal Enable Effect</summary>
+      <description>Use the Portal effect.</description>
     </key>
 
     <key name="portal-animation-time" type="i">
@@ -818,16 +704,10 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Snap of Disintegration Effect Options                                         -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="snap-open-effect" type="b">
+    <key name="snap-enable-effect" type="b">
       <default>false</default>
-      <summary>Snap Open Effect</summary>
-      <description>Use the snap effect for window openeing.</description>
-    </key>
-
-    <key name="snap-close-effect" type="b">
-      <default>false</default>
-      <summary>Snap Close Effect</summary>
-      <description>Use the snap effect for window closing.</description>
+      <summary>Snap Enable Effect</summary>
+      <description>Use the snap effect.</description>
     </key>
 
     <key name="snap-animation-time" type="i">

@@ -47,7 +47,7 @@ You will have to ...
 
 ### 1. Expanding the Schema
 
-For enabling the new effect, the boolean settings keys `simple-fade-open-effect`, `simple-fade-close-effect`, and `simple-fade-animation-time` are required.
+For enabling the new effect, the boolean settings keys `simple-fade-enable-effect` and `simple-fade-animation-time` are required.
 In this example, we also add a floating point value for storing another property of the effect - we will use them later in the tutorial.
 Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml).
 Just remember to replace `simple-fade` with your custom name!
@@ -57,16 +57,10 @@ Just remember to replace `simple-fade` with your custom name!
 <!-- Simple Fade Effect Options                                                    -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-<key name="simple-fade-close-effect" type="b">
+<key name="simple-fade-enable-effect" type="b">
   <default>false</default>
-  <summary>Simple Fade Close Effect</summary>
-  <description>Use the Simple Fade effect for window closing.</description>
-</key>
-
-<key name="simple-fade-open-effect" type="b">
-  <default>false</default>
-  <summary>Simple Fade Open Effect</summary>
-  <description>Use the Simple Fade effect for window opening.</description>
+  <summary>Simple Fade Enable Effect</summary>
+  <description>Use the Simple Fade effect.</description>
 </key>
 
 <key name="simple-fade-animation-time" type="i">
@@ -201,7 +195,7 @@ var SimpleFade = class {
 
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
-  // effect is enabled currently (e.g. '*-close-effect'), and its animation time
+  // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
     return 'simple-fade';

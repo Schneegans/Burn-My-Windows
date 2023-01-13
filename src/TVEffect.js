@@ -66,7 +66,7 @@ var TVEffect = class {
 
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
-  // effect is enabled currently (e.g. '*-close-effect'), and its animation time
+  // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
     return 'tv';

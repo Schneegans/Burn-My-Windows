@@ -8,8 +8,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
   <requires lib="gtk" version="4.0" />
 
-  <menu id="close-effect-menu"></menu>
-  <menu id="open-effect-menu"></menu>
+  <menu id="enabled-effects-menu"></menu>
 
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
@@ -69,7 +68,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                         <property name="spacing">3</property>
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="yes">Open Window Animation</property>
+                            <property name="label" translatable="yes">Enabled Effects</property>
                             <property name="xalign">0</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
@@ -92,53 +91,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
                       </object>
                     </child>
                     <child>
-                      <object class="GtkMenuButton" id="open-effect-button">
+                      <object class="GtkMenuButton" id="enabled-effects-button">
                         <property name="label" translatable="yes">Choose Effects</property>
-                        <property name="menu-model">open-effect-menu</property>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">3</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">Close Window Animation</property>
-                            <property name="xalign">0</property>
-                            <property name="halign">start</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">1</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
-                            <property name="xalign">0</property>
-                            <property name="halign">start</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">1</property>
-                            <style>
-                              <class name="dim-label" />
-                              <class name="caption" />
-                            </style>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuButton" id="close-effect-button">
-                        <property name="label" translatable="yes">Choose Effects</property>
-                        <property name="menu-model">close-effect-menu</property>
+                        <property name="menu-model">enabled-effects-menu</property>
                       </object>
                     </child>
                   </object>
