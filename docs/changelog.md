@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 24](https://github.com/schneegans/Burn-My-Windows/releases/tag/v24)
 
-**Release Date:** TBD
+**Release Date:** 2023-01-14
 
 #### New Features
 
@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Other Enhancements
 
+* Many translation updates, including a completely new Indonesian translation. Thanks to all the translators!
 * The menu button of the settings dialog has been moved to the left and now shows a heart instead of three dots.
 * The about dialog now uses the `Adw.AboutWindow` if available.
 
