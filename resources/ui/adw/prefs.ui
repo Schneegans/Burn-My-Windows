@@ -2,8 +2,7 @@
 
 <!--
 SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
-SPDX-License-Identifier:
-GPL-3.0-or-later
+SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
 <interface domain="burn-my-windows">
@@ -12,9 +11,9 @@ GPL-3.0-or-later
   <object class="GtkBox" id="profile-button">
     <property name="halign">center</property>
     <child>
-      <object class="GtkButton">
+      <object class="GtkMenuButton">
         <property name="label">Default Profile</property>
-        <property name="valign">center</property>
+        <property name="menu-model">effect-profile-menu</property>
       </object>
     </child>
     <child>
@@ -25,6 +24,12 @@ GPL-3.0-or-later
         <binding name="active">
           <lookup name="reveal-flap">profile-editor-flap</lookup>
         </binding>
+      </object>
+    </child>
+    <child>
+      <object class="GtkButton">
+        <property name="icon-name">user-trash-symbolic</property>
+        <property name="valign">center</property>
       </object>
     </child>
     <style>
@@ -57,7 +62,8 @@ GPL-3.0-or-later
 
             <child>
               <object class="AdwPreferencesGroup">
-
+                <property name="title" translatable="yes">Edit Effect Profile</property>
+                <property name="description" translatable="yes">Here you can specify under which circumstances the current effect settings should be applied.</property>
 
                 <child>
                   <object class="AdwEntryRow">
@@ -85,7 +91,7 @@ GPL-3.0-or-later
                     </property>
                   </object>
                 </child>
-                
+
                 <child>
                   <object class="AdwComboRow">
                     <property name="title" translatable="yes">Window Type</property>
@@ -100,7 +106,22 @@ GPL-3.0-or-later
                     </property>
                   </object>
                 </child>
-                
+
+                <child>
+                  <object class="AdwComboRow">
+                    <property name="title" translatable="yes">Desktop Style</property>
+                    <property name="model">
+                      <object class="GtkStringList">
+                        <items>
+                          <item>Any</item>
+                          <item>Default Mode</item>
+                          <item>Dark Mode</item>
+                        </items>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+
                 <child>
                   <object class="AdwComboRow">
                     <property name="title" translatable="yes">Power Mode</property>
@@ -137,29 +158,6 @@ GPL-3.0-or-later
               </object>
             </child>
 
-            <child>
-              <object class="GtkBox">
-
-                <child>
-                  <object class="GtkButton">
-                    <property name="label" translatable="yes">Delete this Profile...</property>
-                  </object>
-                </child>
-
-                <child>
-                  <object class="GtkButton">
-                    <property name="halign">end</property>
-                    <property name="hexpand">true</property>
-                    <property name="icon-name">system-help-symbolic</property>
-                    <style>
-                      <class name="circular" />
-                    </style>
-                  </object>
-                </child>
-
-              </object>
-            </child>
-
           </object>
         </property>
       </object>
@@ -186,11 +184,11 @@ GPL-3.0-or-later
             <style>
               <class name="linked" />
             </style>
-          
+
 
             <child>
               <object class="GtkButton">
-               
+
                 <property name="icon-name">edit-paste-symbolic</property>
               </object>
             </child>
@@ -201,7 +199,6 @@ GPL-3.0-or-later
               </object>
             </child>
 
-           
 
           </object>
         </child>

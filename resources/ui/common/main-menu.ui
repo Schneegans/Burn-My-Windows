@@ -49,4 +49,19 @@ SPDX-License-Identifier: GPL-3.0-or-later
       </item>
     </section>
   </menu>
+
+  <menu id="effect-profile-menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Default Profile</attribute>
+        <attribute name="action">profile.default</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Add New...</attribute>
+        <attribute name="action">profile.new</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
