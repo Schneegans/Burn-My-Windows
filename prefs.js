@@ -98,7 +98,7 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
-    this._builder.add_from_resource(`/ui/common/main-menu.ui`);
+    this._builder.add_from_resource(`/ui/common/menus.ui`);
     this._builder.add_from_resource(`/ui/${utils.getUIDir()}/prefs.ui`);
 
     // Check whether the power profiles daemon is available - if not, we hide the
@@ -169,7 +169,7 @@ var PreferencesDialog = class PreferencesDialog {
 
           // Now add the two toggle buttons for enabling and disabling the effect.
           const button = Gtk.Switch.new();
-          button.set_action_name(`enabled-effects.${effect.getNick()}-enable-effect`);
+          button.set_action_name(`prefs.${effect.getNick()}-enable-effect`);
           button.set_tooltip_text(_('Use this effect'));
           button.set_valign(Gtk.Align.CENTER);
 
@@ -232,6 +232,10 @@ var PreferencesDialog = class PreferencesDialog {
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
 
+      // Populate the menu with actions.
+      const group = Gio.SimpleActionGroup.new();
+      window.insert_action_group('prefs', group);
+
       // Add the main menu to the title bar.
       {
         // Add the menu button to the title bar.
@@ -261,10 +265,6 @@ var PreferencesDialog = class PreferencesDialog {
         } else {
           window.get_titlebar().pack_start(menu);
         }
-
-        // Populate the menu with actions.
-        const group = Gio.SimpleActionGroup.new();
-        window.insert_action_group('prefs', group);
 
         const addURIAction = (name, uri) => {
           const action = Gio.SimpleAction.new(name, null);
@@ -379,11 +379,17 @@ var PreferencesDialog = class PreferencesDialog {
         group.add_action(aboutAction);
       }
 
+      // Bind all the profile-related actions.
+      {
+        this.bindComboRow('profile-animation-type');
+        this.bindComboRow('profile-window-type');
+        this.bindComboRow('profile-desktop-style');
+        this.bindComboRow('profile-power-mode');
+        this.bindComboRow('profile-power-profile');
+      }
+
       // Populate the enabled-effects drop-down menu.
       {
-        const group = Gio.SimpleActionGroup.new();
-        window.insert_action_group('enabled-effects', group);
-
         this._ALL_EFFECTS.forEach(effect => {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
@@ -396,7 +402,7 @@ var PreferencesDialog = class PreferencesDialog {
             if (!utils.isADW()) {
               const menu  = this._builder.get_object('enabled-effects-menu');
               const label = effect.getLabel();
-              menu.append_item(Gio.MenuItem.new(label, 'enabled-effects.' + actionName));
+              menu.append_item(Gio.MenuItem.new(label, 'prefs.' + actionName));
             }
           }
         });
@@ -434,10 +440,10 @@ var PreferencesDialog = class PreferencesDialog {
     return this._widget;
   }
 
-  // Connects a Gtk.ComboBox (or anything else which has an 'active-id' property) to a
+  // Connects a Gtk.ComboBox (or anything else which has an 'selected' property) to a
   // settings key. It also binds the corresponding reset button.
-  bindCombobox(settingsKey) {
-    this._bind(settingsKey, 'active-id');
+  bindComboRow(settingsKey) {
+    this._bind(settingsKey, 'selected');
   }
 
   // Connects a Gtk.Adjustment (or anything else which has a 'value' property) to a

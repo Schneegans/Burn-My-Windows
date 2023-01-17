@@ -6,6 +6,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
 <interface domain="burn-my-windows">
+
   <menu id="main-menu">
     <section>
       <item>
@@ -50,18 +51,19 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </section>
   </menu>
 
-  <menu id="effect-profile-menu">
+  <menu id="profile-menu">
     <section>
       <item>
         <attribute name="label" translatable="yes">Default Profile</attribute>
-        <attribute name="action">profile.default</attribute>
+        <attribute name="action">prefs.profile-default</attribute>
       </item>
     </section>
     <section>
       <item>
         <attribute name="label" translatable="yes">Add New...</attribute>
-        <attribute name="action">profile.new</attribute>
+        <attribute name="action">prefs.profile-new</attribute>
       </item>
     </section>
   </menu>
+
 </interface>

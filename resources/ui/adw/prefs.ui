@@ -13,7 +13,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="GtkMenuButton">
         <property name="label">Default Profile</property>
-        <property name="menu-model">effect-profile-menu</property>
+        <property name="menu-model">profile-menu</property>
       </object>
     </child>
     <child>
@@ -66,10 +66,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <property name="description" translatable="yes">Here you can specify under which circumstances the current effect settings should be applied.</property>
 
                 <child>
-                  <object class="AdwEntryRow">
+                  <object class="AdwEntryRow" id="profile-app">
                     <property name="title" translatable="yes">Choose an Application</property>
                     <child>
-                      <object class="GtkButton" id="reset-doom-animation-time">
+                      <object class="GtkButton" id="profile-choose-app-button">
                         <property name="icon-name">bmw-select-app-symbolic</property>
                         <property name="valign">center</property>
                       </object>
@@ -78,14 +78,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow">
+                  <object class="AdwComboRow" id="profile-animation-type">
                     <property name="title" translatable="yes">Animation Type</property>
                     <property name="model">
                       <object class="GtkStringList">
                         <items>
-                          <item>Any</item>
-                          <item>Open Windows</item>
-                          <item>Close Windows</item>
+                          <item translatable="yes">Any</item>
+                          <item translatable="yes">Open Windows</item>
+                          <item translatable="yes">Close Windows</item>
                         </items>
                       </object>
                     </property>
@@ -93,14 +93,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow">
+                  <object class="AdwComboRow" id="profile-window-type">
                     <property name="title" translatable="yes">Window Type</property>
                     <property name="model">
                       <object class="GtkStringList">
                         <items>
-                          <item>Any</item>
-                          <item>Normal Windows</item>
-                          <item>Dialogs</item>
+                          <item translatable="yes">Any</item>
+                          <item translatable="yes">Normal Windows</item>
+                          <item translatable="yes">Dialogs</item>
                         </items>
                       </object>
                     </property>
@@ -108,14 +108,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow">
+                  <object class="AdwComboRow" id="profile-desktop-style">
                     <property name="title" translatable="yes">Desktop Style</property>
                     <property name="model">
                       <object class="GtkStringList">
                         <items>
-                          <item>Any</item>
-                          <item>Default Mode</item>
-                          <item>Dark Mode</item>
+                          <item translatable="yes">Any</item>
+                          <item translatable="yes">Default Mode</item>
+                          <item translatable="yes">Dark Mode</item>
                         </items>
                       </object>
                     </property>
@@ -123,14 +123,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow">
+                  <object class="AdwComboRow" id="profile-power-mode">
                     <property name="title" translatable="yes">Power Mode</property>
                     <property name="model">
                       <object class="GtkStringList">
                         <items>
-                          <item>Any</item>
-                          <item>On Battery</item>
-                          <item>Plugged In</item>
+                          <item translatable="yes">Any</item>
+                          <item translatable="yes">On Battery</item>
+                          <item translatable="yes">Plugged In</item>
                         </items>
                       </object>
                     </property>
@@ -138,17 +138,17 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow">
+                  <object class="AdwComboRow" id="profile-power-profile">
                     <property name="title" translatable="yes">Power Profile</property>
                     <property name="model">
                       <object class="GtkStringList">
                         <items>
-                          <item>Any</item>
-                          <item>Power-Saver Mode</item>
-                          <item>Balanced Mode</item>
-                          <item>Performance Mode</item>
-                          <item>Power Saver or Balanced</item>
-                          <item>Balanced or Performance</item>
+                          <item translatable="yes">Any</item>
+                          <item translatable="yes">Power-Saver Mode</item>
+                          <item translatable="yes">Balanced Mode</item>
+                          <item translatable="yes">Performance Mode</item>
+                          <item translatable="yes">Power Saver or Balanced</item>
+                          <item translatable="yes">Balanced or Performance</item>
                         </items>
                       </object>
                     </property>

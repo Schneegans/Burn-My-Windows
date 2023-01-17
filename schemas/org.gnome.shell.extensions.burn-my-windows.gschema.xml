@@ -13,24 +13,6 @@ SPDX-License-Identifier: CC0-1.0
     <!-- General Options                                                               -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="destroy-dialogs" type="b">
-      <default>false</default>
-      <summary>Destroy Dialogs</summary>
-      <description>Set to true to burn dialogs as well.</description>
-    </key>
-
-    <key name="disable-on-battery" type="b">
-      <default>false</default>
-      <summary>Disable on Battery</summary>
-      <description>Enable effects only if plugged in.</description>
-    </key>
-
-    <key name="disable-on-power-save" type="b">
-      <default>false</default>
-      <summary>Disable on Power Save</summary>
-      <description>Enable effects only if power saver is disabled.</description>
-    </key>
-
     <key name="preview-effect" type="s">
       <default>""</default>
       <summary>Preview Effect</summary>
@@ -41,6 +23,45 @@ SPDX-License-Identifier: CC0-1.0
       <default>false</default>
       <summary>Test Mode</summary>
       <description>If set to true, all animations will show only one still frame to allow for continuous integration tests.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Profile Options                                                               -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="profile-animation-type" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Animation Type</summary>
+      <description>The animation types for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-window-type" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Window Type</summary>
+      <description>The window types for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-desktop-style" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Desktop Style</summary>
+      <description>The desktop styles for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-power-mode" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Power Mode</summary>
+      <description>The power mode for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-power-profile" type="i">
+      <default>0</default>
+      <range min="0" max="5" />
+      <summary>Profile Power Profile</summary>
+      <description>The power profiles in which the current effect settings should be used.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
