@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 25](https://github.com/schneegans/Burn-My-Windows/releases/tag/v25)
+
+**Release Date:** 2023-01-17
+
+#### Bug Fixes
+
+* Fixed an issue which prevented the extension from loading if `power-profiles-daemon` was masked.
+
 ## [Burn My Windows 24](https://github.com/schneegans/Burn-My-Windows/releases/tag/v24)
 
 **Release Date:** 2023-01-14
