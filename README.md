@@ -103,6 +103,7 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
 <p align="center">
+  <a href='https://github.com/vlazic'>@vlazic</a><br>
   <a href='https://github.com/AngelBrielez'>Angel Brielez</a>
   <!-- <a href="https://github.com/sponsors/Schneegans">Become the first!</a><br> -->
 </p>
