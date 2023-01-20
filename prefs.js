@@ -96,6 +96,13 @@ var PreferencesDialog = class PreferencesDialog {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
+    let profiles = utils.listProfiles();
+    if (profiles.length == 0) {
+      profiles = [utils.createProfile()];
+    }
+
+    this._profileSettings = utils.getProfileSettings(profiles[0]);
+
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/menus.ui`);
@@ -115,7 +122,7 @@ var PreferencesDialog = class PreferencesDialog {
       // Maybe the service is masked...
     }
 
-    this._builder.get_object('disable-on-power-save-row').set_visible(hasPowerProfiles);
+    this._builder.get_object('profile-power-profile').set_visible(hasPowerProfiles);
 
     // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
     // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We
@@ -386,11 +393,55 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Bind all the profile-related actions.
       {
-        this.bindComboRow('profile-animation-type');
-        this.bindComboRow('profile-window-type');
-        this.bindComboRow('profile-desktop-style');
-        this.bindComboRow('profile-power-mode');
-        this.bindComboRow('profile-power-profile');
+        const updateProfileName = () => {
+          let items = [];
+
+          const addItems = (settingsKey, options) => {
+            const option = this._profileSettings.get_int(settingsKey);
+            if (option > 0) {
+              items.push(options[option - 1]);
+            }
+          };
+
+          // clang-format off
+          addItems('profile-animation-type', [_('Opening Windows'),
+                                              _('Closing Windows')]);
+          addItems('profile-window-type',    [_('Normal Windows'),
+                                              _('Dialog Windows')]);
+          addItems('profile-desktop-style',  [_('Bright Mode'),
+                                              _('Dark Mode')]);
+          addItems('profile-power-mode',     [_('On Battery'),
+                                              _('Plugged In')]);
+          addItems('profile-power-profile',  [_('Power-Saver Mode'),
+                                              _('Balanced Mode'),
+                                              _('Performance Mode'),
+                                              _('Power Saver or Balanced'),
+                                              _('Balanced or Performance')]);
+          // clang-format on
+
+          let label = '';
+
+          if (items.length == 0) {
+            label = _('Default Profile');
+          } else {
+            label = items.join(' · ');
+          }
+
+          this._builder.get_object('choose-profile-button').label = label;
+        };
+
+        const setupProfileOption = (settingsKey) => {
+          this.bindComboRow(settingsKey);
+          this._profileSettings.connect('changed::' + settingsKey, updateProfileName);
+        };
+
+        setupProfileOption('profile-animation-type');
+        setupProfileOption('profile-window-type');
+        setupProfileOption('profile-desktop-style');
+        setupProfileOption('profile-power-mode');
+        setupProfileOption('profile-power-profile');
+
+        updateProfileName();
       }
 
       // Populate the enabled-effects drop-down menu.
@@ -399,7 +450,7 @@ var PreferencesDialog = class PreferencesDialog {
           const [minMajor, minMinor] = effect.getMinShellVersion();
           if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
             const actionName = effect.getNick() + '-enable-effect';
-            const action     = this._settings.create_action(actionName);
+            const action     = this._profileSettings.create_action(actionName);
             group.add_action(action);
 
             // The menu only exists if not using libadwaita. With libadwaita, individual
@@ -435,9 +486,9 @@ var PreferencesDialog = class PreferencesDialog {
     return this._builder;
   }
 
-  // Returns a Gio.Settings object for this extension.
-  getSettings() {
-    return this._settings;
+  // Returns a Gio.Settings object for the current effect profile.
+  getProfileSettings() {
+    return this._profileSettings;
   }
 
   // Returns the widget used for the settings of this extension.
@@ -474,17 +525,17 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Update the settings when the color is modified.
       button.connect('color-set', () => {
-        this._settings.set_string(settingsKey, button.get_rgba().to_string());
+        this._profileSettings.set_string(settingsKey, button.get_rgba().to_string());
       });
 
       // Update the button state when the settings change.
       const settingSignalHandler = () => {
         const rgba = new Gdk.RGBA();
-        rgba.parse(this._settings.get_string(settingsKey));
+        rgba.parse(this._profileSettings.get_string(settingsKey));
         button.rgba = rgba;
       };
 
-      this._settings.connect('changed::' + settingsKey, settingSignalHandler);
+      this._profileSettings.connect('changed::' + settingsKey, settingSignalHandler);
 
       // Initialize the button with the state in the settings.
       settingSignalHandler();
@@ -512,7 +563,7 @@ var PreferencesDialog = class PreferencesDialog {
     const resetButton = this._builder.get_object('reset-' + settingsKey);
     if (resetButton) {
       resetButton.connect('clicked', () => {
-        this._settings.reset(settingsKey);
+        this._profileSettings.reset(settingsKey);
       });
     }
   }
@@ -523,7 +574,8 @@ var PreferencesDialog = class PreferencesDialog {
     const object = this._builder.get_object(settingsKey);
 
     if (object) {
-      this._settings.bind(settingsKey, object, property, Gio.SettingsBindFlags.DEFAULT);
+      this._profileSettings.bind(settingsKey, object, property,
+                                 Gio.SettingsBindFlags.DEFAULT);
     }
 
     this._bindResetButton(settingsKey);
@@ -552,7 +604,7 @@ var PreferencesDialog = class PreferencesDialog {
   _previewEffect(effect) {
 
     // Set the to-be-previewed effect.
-    this.getSettings().set_string('preview-effect', effect.getNick());
+    this._settings.set_string('preview-effect', effect.getNick());
 
     // Make sure that the window.show() firther below "sees" this change.
     Gio.Settings.sync();

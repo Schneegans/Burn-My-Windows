@@ -14,8 +14,8 @@
 
 'use strict';
 
-const {Gtk, Gio} = imports.gi;
-const ByteArray  = imports.byteArray;
+const {Gtk, Gio, GLib} = imports.gi;
+const ByteArray        = imports.byteArray;
 
 // libadwaita is available starting with GNOME Shell 42.
 let Adw = null;
@@ -107,4 +107,75 @@ function shellVersionIsAtLeast(major, minor) {
 function getStringResource(path) {
   const data = Gio.resources_lookup_data(path, 0);
   return ByteArray.toString(ByteArray.fromGBytes(data));
+}
+
+function createProfile() {
+  const path =
+    GLib.get_user_config_dir() + `/burn-my-windows/profiles/${GLib.get_real_time()}.conf`;
+  const file = Gio.File.new_for_path(path);
+
+  if (!file.get_parent().query_exists(null)) {
+    file.get_parent().make_directory_with_parents(null);
+  }
+
+  file.create(Gio.FileCreateFlags.NONE, null);
+
+  return path;
+}
+
+
+function listProfiles() {
+
+  const profileDir =
+    Gio.File.new_for_path(GLib.get_user_config_dir() + '/burn-my-windows/profiles');
+
+  if (!profileDir.query_exists(null)) {
+    return [];
+  }
+
+  const files =
+    profileDir.enumerate_children('standard::*', Gio.FileQueryInfoFlags.NONE, null);
+
+  let profiles = [];
+
+  while (true) {
+    const presetInfo = files.next_file(null);
+
+    if (presetInfo == null) {
+      break;
+    }
+
+    if (presetInfo.get_file_type() == Gio.FileType.REGULAR) {
+      const suffixPos = presetInfo.get_display_name().indexOf('.conf');
+      if (suffixPos > 0) {
+        profiles.push(profileDir.get_child(presetInfo.get_name()).get_path());
+      }
+    }
+  }
+
+  return profiles;
+}
+
+// Based on
+// https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/misc/extensionUtils.js#L213
+function getProfileSettings(profilePath) {
+
+  // Expect USER extensions to have a schemas/ subfolder, otherwise assume a
+  // SYSTEM extension that has been installed in the same prefix as the shell
+  const schemaDir = Me.dir.get_child('schemas');
+  let source;
+  if (schemaDir.query_exists(null)) {
+    source = Gio.SettingsSchemaSource.new_from_directory(
+      schemaDir.get_path(), Gio.SettingsSchemaSource.get_default(), false);
+  } else {
+    source = Gio.SettingsSchemaSource.get_default();
+  }
+
+  const schema =
+    source.lookup('org.gnome.shell.extensions.burn-my-windows-profile', true);
+
+  const backend =
+    Gio.keyfile_settings_backend_new(profilePath, '/org/gnome/shell/extensions/', null);
+
+  return new Gio.Settings({settings_schema: schema, backend: backend});
 }

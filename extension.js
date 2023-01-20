@@ -378,28 +378,21 @@ class Extension {
       return;
     }
 
-    // We do nothing if a dialog got closed and we should not burn them.
-    const shouldDestroyDialogs = this._settings.get_boolean('destroy-dialogs');
-
-    // If an effect is to be previewed, we have to affect dialogs es well. This is
-    // because the preview window is a dialog window...
     const previewNick = this._settings.get_string('preview-effect');
 
-    if (isDialogWindow && !shouldDestroyDialogs && previewNick == '') {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
-      return;
-    }
-
+    // TODO!.
     // We may have to do nothing if running on battery power or if in power-save mode.
-    let disableOnBattery =
-      this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery;
-    let disableOnPowerSave = this._settings.get_boolean('disable-on-power-save') &&
-      this._powerProfilesProxy && this._powerProfilesProxy.ActiveProfile == 'power-saver';
+    // let disableOnBattery =
+    //   this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery;
+    // let disableOnPowerSave = this._settings.get_boolean('disable-on-power-save') &&
+    //   this._powerProfilesProxy && this._powerProfilesProxy.ActiveProfile ==
+    //   'power-saver';
 
-    if ((disableOnBattery || disableOnPowerSave) && previewNick == '') {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
-      return;
-    }
+    // if (!skip! && previewNick == '') {
+    //   this._fixAnimationTimes(isDialogWindow, forOpening, null);
+    //   return;
+    // }
+
 
     // There is the weird case where an animation is already ongoing. This happens when a
     // window is closed which has been created before the session was started (e.g. when

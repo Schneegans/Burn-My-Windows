@@ -122,11 +122,11 @@ var Fire = class {
 
     // The fire-gradient-reset button needs to be bound explicitly.
     dialog.getBuilder().get_object('reset-fire-colors').connect('clicked', () => {
-      dialog.getSettings().reset('fire-color-1');
-      dialog.getSettings().reset('fire-color-2');
-      dialog.getSettings().reset('fire-color-3');
-      dialog.getSettings().reset('fire-color-4');
-      dialog.getSettings().reset('fire-color-5');
+      dialog.getProfileSettings().reset('fire-color-1');
+      dialog.getProfileSettings().reset('fire-color-2');
+      dialog.getProfileSettings().reset('fire-color-3');
+      dialog.getProfileSettings().reset('fire-color-4');
+      dialog.getProfileSettings().reset('fire-color-5');
     });
 
     // Initialize the fire-preset dropdown.
@@ -215,13 +215,13 @@ var Fire = class {
 
         // Load the preset on activation.
         action.connect('activate', () => {
-          dialog.getSettings().set_double('flame-movement-speed', preset.speed);
-          dialog.getSettings().set_double('flame-scale', preset.scale);
-          dialog.getSettings().set_string('fire-color-1', preset.color1);
-          dialog.getSettings().set_string('fire-color-2', preset.color2);
-          dialog.getSettings().set_string('fire-color-3', preset.color3);
-          dialog.getSettings().set_string('fire-color-4', preset.color4);
-          dialog.getSettings().set_string('fire-color-5', preset.color5);
+          dialog.getProfileSettings().set_double('flame-movement-speed', preset.speed);
+          dialog.getProfileSettings().set_double('flame-scale', preset.scale);
+          dialog.getProfileSettings().set_string('fire-color-1', preset.color1);
+          dialog.getProfileSettings().set_string('fire-color-2', preset.color2);
+          dialog.getProfileSettings().set_string('fire-color-3', preset.color3);
+          dialog.getProfileSettings().set_string('fire-color-4', preset.color4);
+          dialog.getProfileSettings().set_string('fire-color-5', preset.color5);
         });
 
         group.add_action(action);
