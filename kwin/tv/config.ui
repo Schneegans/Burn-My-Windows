@@ -19,9 +19,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <layout class="QGridLayout" name="gridLayout">
             <item row="0" column="1">
                 <widget class="QSpinBox" name="kcfg_Duration">
-                    <property name="suffix">
-                        <string> milliseconds</string>
-                    </property>
                     <property name="minimum">
                         <number>100</number>
                     </property>
@@ -43,7 +40,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <item row="0" column="0">
                 <widget class="QLabel" name="label">
                     <property name="text">
-                        <string>Duration:</string>
+                        <string>Animation Time [ms]</string>
                     </property>
                     <property name="alignment">
                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -53,7 +50,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <item row="1" column="0">
                 <widget class="QLabel" name="label_2">
                     <property name="text">
-                        <string>Color:</string>
+                        <string>Color</string>
                     </property>
                     <property name="alignment">
                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
