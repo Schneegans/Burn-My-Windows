@@ -48,6 +48,9 @@ generate() {
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/config"
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/ui"
 
+  # Copy the translations.
+  cp -r "../locale" "$BUILD_DIR/$DIR_NAME/contents"
+
   # Copy the config file if it exists.
   if [ -f "$1/main.xml" ]; then
     cp "$1/main.xml" "$BUILD_DIR/$DIR_NAME/contents/config"
@@ -123,9 +126,9 @@ generate() {
 }
 
 # Now run the above method for all supported effects.
+generate "doom"        "Doom [Burn-My-Windows]"        "Melt your windows"
 generate "energize-a"  "Energize A [Burn-My-Windows]"  "Beam your windows away"
 generate "energize-b"  "Energize B [Burn-My-Windows]"  "Using different transporter technology results in an alternative visual effect"
-generate "doom"        "Doom [Burn-My-Windows]"        "Melt your windows"
 generate "fire"        "Fire [Burn-My-Windows]"        "The classic effect inspired by Compiz"
 generate "glide"       "Glide [Burn-My-Windows]"       "Fade the window to transparency with subtle 3D effects"
 generate "glitch"      "Glitch [Burn-My-Windows]"      "This effect applies some intentional graphics issues to your windows"
