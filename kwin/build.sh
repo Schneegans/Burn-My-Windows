@@ -30,6 +30,14 @@ BUILD_DIR="_build"
 # Create it if it's not there yet.
 mkdir -p "$BUILD_DIR"
 
+# Compile the translations.
+for file in ../po/*.po; do
+  echo "Compiling $file"
+  lang=$(basename "$file" .po)
+  mkdir -p "$BUILD_DIR/locale/$lang/LC_MESSAGES"
+  msgfmt "$file" -o "$BUILD_DIR/locale/$lang/LC_MESSAGES/burn-my-windows.mo"
+done
+
 # This method is called one for each effect. The parameters are as follows:
 # $1: The nick of the effect (e.g. "energize-a")
 # $2: The name of the effect (e.g. "Energize A")
@@ -47,6 +55,9 @@ generate() {
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/code"
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/config"
   mkdir -p "$BUILD_DIR/$DIR_NAME/contents/ui"
+
+  # Copy the translations.
+  cp -r "$BUILD_DIR/locale" "$BUILD_DIR/$DIR_NAME/contents"
 
   # Copy the config file if it exists.
   if [ -f "$1/main.xml" ]; then
@@ -123,9 +134,9 @@ generate() {
 }
 
 # Now run the above method for all supported effects.
+generate "doom"        "Doom [Burn-My-Windows]"        "Melt your windows"
 generate "energize-a"  "Energize A [Burn-My-Windows]"  "Beam your windows away"
 generate "energize-b"  "Energize B [Burn-My-Windows]"  "Using different transporter technology results in an alternative visual effect"
-generate "doom"        "Doom [Burn-My-Windows]"        "Melt your windows"
 generate "fire"        "Fire [Burn-My-Windows]"        "The classic effect inspired by Compiz"
 generate "glide"       "Glide [Burn-My-Windows]"       "Fade the window to transparency with subtle 3D effects"
 generate "glitch"      "Glitch [Burn-My-Windows]"      "This effect applies some intentional graphics issues to your windows"
