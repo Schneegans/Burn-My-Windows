@@ -5,6 +5,15 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 26](https://github.com/schneegans/Burn-My-Windows/releases/tag/v26)
+
+**Release Date:** TBD
+
+#### Enhancements
+
+* On KDE, the effect configuration dialogs can now be translated. The translations for GNOME are re-used, so we already have many translations! This requires at least KWin 5.27 to be working.
+
+
 ## [Burn My Windows 25](https://github.com/schneegans/Burn-My-Windows/releases/tag/v25)
 
 **Release Date:** 2023-01-17

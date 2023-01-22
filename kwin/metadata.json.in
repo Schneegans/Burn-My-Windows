@@ -21,7 +21,7 @@
   },
   "X-KDE-Ordering": "60",
   "X-KDE-PluginKeyword": "%DIR_NAME%",
-  "X-KWin-Config-TranslationDomain": "kwin_effects",
+  "X-KWin-Config-TranslationDomain": "burn-my-windows",
   "X-KWin-Exclusive-Category": "toplevel-open-close-animation",
   "X-Plasma-API": "javascript",
   "X-Plasma-MainScript": "code/main.js"
