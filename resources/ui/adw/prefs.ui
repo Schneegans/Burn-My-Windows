@@ -189,13 +189,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
             <child>
               <object class="GtkButton">
-                <property name="icon-name">edit-paste-symbolic</property>
+                <property name="icon-name">bmw-copy-effects-symbolic</property>
               </object>
             </child>
 
             <child>
               <object class="GtkButton">
-                <property name="icon-name">edit-paste-symbolic</property>
+                <property name="icon-name">bmw-paste-effects-symbolic</property>
               </object>
             </child>
 
