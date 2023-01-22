@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-07 13:39+0100\n"
-"PO-Revision-Date: 2022-12-28 12:48+0000\n"
-"Last-Translator: Paweł Rzońca <pwrzonca@gmail.com>\n"
+"PO-Revision-Date: 2023-01-23 16:13+0000\n"
+"Last-Translator: gnu-ewm <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -30,7 +30,7 @@ msgstr "Rozbicie Szkła"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr "Doom"
+msgstr "Fatum"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
@@ -66,11 +66,11 @@ msgstr "Nadchodzi Święty Mikołaj"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Poślizg"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "Zakłócenia"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -448,17 +448,17 @@ msgstr "Gradient"
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Zgniatanie"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Przechylenie"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Zmiana"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -503,7 +503,7 @@ msgstr "Skala Pionowa"
 #: resources/ui/gtk4/Glitch.ui:122 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Natężenie"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
@@ -576,7 +576,7 @@ msgstr "Wyłącz na Zasilaniu Bateryjnym"
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr ""
+msgstr "Wyłącz w trybie oszczędzania energii"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
@@ -596,7 +596,7 @@ msgstr "Intensywność Ssania"
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Wirowanie"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
