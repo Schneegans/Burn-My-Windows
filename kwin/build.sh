@@ -140,7 +140,6 @@ generate "energize-b"  "Energize B [Burn-My-Windows]"  "Using different transpor
 generate "fire"        "Fire [Burn-My-Windows]"        "The classic effect inspired by Compiz"
 generate "glide"       "Glide [Burn-My-Windows]"       "Fade the window to transparency with subtle 3D effects"
 generate "glitch"      "Glitch [Burn-My-Windows]"      "This effect applies some intentional graphics issues to your windows"
-generate "tvglitch"    "TVGlitch [Burn-My-Windows]"    "This effect applies some intentional graphics issues to your windows"
 generate "hexagon"     "Hexagon [Burn-My-Windows]"     "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
 generate "incinerate"  "Incinerate [Burn-My-Windows]"  "A less snappy but definitely more fancy take on the fire effect"
 generate "pixelate"    "Pixelate [Burn-My-Windows]"    "Pixelate the window and randomly hide the pixels"
@@ -148,6 +147,7 @@ generate "pixel-wheel" "Pixel Wheel [Burn-My-Windows]" "Pixelate the window and 
 generate "pixel-wipe"  "Pixel Wipe [Burn-My-Windows]"  "Pixelate the window and hide the pixels radially, starting from the pointer position"
 generate "portal"      "Portal [Burn-My-Windows]"      "Transfer your windows to other locations in space and time"
 generate "tv"          "TV Effect [Burn-My-Windows]"   "Make windows close like turning off a TV"
+generate "tv-glitch"   "TV Glitch [Burn-My-Windows]"   "Make your windows close like a very glitchy old-school TV"
 generate "wisps"       "Wisps [Burn-My-Windows]"       "Let your windows be carried away to the realm of dreams by these little fairies"
 
 # Finally, create an archive for the effects.
