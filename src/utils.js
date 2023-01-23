@@ -45,6 +45,8 @@ const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVers
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 
+const _ = imports.gettext.domain('burn-my-windows').gettext;
+
 // This method can be used to write a message to GNOME Shell's log. This is enhances
 // the standard log() functionality by prepending the extension's name and the location
 // where the message was logged. As the extensions name is part of the location, you
@@ -123,6 +125,14 @@ function createProfile() {
   return path;
 }
 
+function deleteProfile(profilePath) {
+  const profileDir = GLib.get_user_config_dir() + `/burn-my-windows/profiles`;
+  const file       = Gio.File.new_for_path(profilePath);
+  if (file.has_prefix(Gio.File.new_for_path(profileDir)) && file.query_exists(null)) {
+    file.delete(null);
+  }
+}
+
 
 function listProfiles() {
 
@@ -178,4 +188,42 @@ function getProfileSettings(profilePath) {
     Gio.keyfile_settings_backend_new(profilePath, '/org/gnome/shell/extensions/', null);
 
   return new Gio.Settings({settings_schema: schema, backend: backend});
+}
+
+function getProfileName(profilePath) {
+  let items      = [];
+  const settings = getProfileSettings(profilePath);
+
+  const addItems = (settingsKey, options) => {
+    const option = settings.get_int(settingsKey);
+    if (option > 0) {
+      items.push(options[option - 1]);
+    }
+  };
+
+  // clang-format off
+  addItems('profile-animation-type', [_('Opening Windows'),
+                                      _('Closing Windows')]);
+  addItems('profile-window-type',    [_('Normal Windows'),
+                                      _('Dialog Windows')]);
+  addItems('profile-desktop-style',  [_('Bright Mode'),
+                                      _('Dark Mode')]);
+  addItems('profile-power-mode',     [_('On Battery'),
+                                      _('Plugged In')]);
+  addItems('profile-power-profile',  [_('Power-Saver Mode'),
+                                      _('Balanced Mode'),
+                                      _('Performance Mode'),
+                                      _('Power Saver or Balanced'),
+                                      _('Balanced or Performance')]);
+  // clang-format on
+
+  let label = '';
+
+  if (items.length == 0) {
+    label = _('Default Profile');
+  } else {
+    label = items.join(' · ');
+  }
+
+  return label;
 }

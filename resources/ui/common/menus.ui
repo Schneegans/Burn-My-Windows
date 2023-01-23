@@ -52,11 +52,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
   </menu>
 
   <menu id="profile-menu">
-    <section>
-      <item>
-        <attribute name="label" translatable="yes">Default Profile</attribute>
-        <attribute name="action">prefs.profile-default</attribute>
-      </item>
+    <section id="profile-section">
+      <!-- <item>
+        <attribute name="label">Default Profile</attribute>
+        <attribute name="action">prefs.profile</attribute>
+        <attribute name="target">profile-023402834923749</attribute>
+      </item> -->
     </section>
     <section>
       <item>

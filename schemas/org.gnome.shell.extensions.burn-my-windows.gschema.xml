@@ -15,7 +15,7 @@ SPDX-License-Identifier: CC0-1.0
 
     <key name="active-profile" type="s">
       <default>""</default>
-      <summary>Active Profile</summary>
+      <summary>Profile</summary>
       <description>The currently active effect profile.</description>
     </key>
 

@@ -8,6 +8,21 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
   <requires lib="gtk" version="4.0" />
 
+  <!-- This is shown when a profile is going to be deleted. -->
+  <object class="AdwMessageDialog" id="profile-delete-dialog">
+    <property name="modal">true</property>
+    <property name="hide-on-close">true</property>
+    <property name="heading" translatable="yes">Delete this Profile?</property>
+    <property name="body" translatable="yes">The current effect profile will be permanently lost.</property>
+    <property name="default-response">cancel</property>
+    <property name="close-response">cancel</property>
+    <responses>
+      <response id="cancel" translatable="yes">Cancel</response>
+      <response id="delete" translatable="yes" appearance="destructive">Delete</response>
+    </responses>
+  </object>
+
+  <!-- This will be added to the header bar. -->
   <object class="GtkBox" id="profile-button">
     <property name="halign">center</property>
     <child>
@@ -153,8 +168,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
             <child>
               <object class="GtkButton">
-                <property name="icon-name">user-trash-symbolic</property>
-                <property name="label" translatable="yes">Delete this Profile...</property>
+                <property name="action-name">prefs.profile-delete</property>
+                <property name="child">
+                  <object class="AdwButtonContent">
+                    <property name="icon-name">user-trash-symbolic</property>
+                    <property name="label" translatable="yes">Delete this Profile...</property>
+                  </object>
+                </property>
                 <property name="halign">start</property>
               </object>
             </child>
@@ -198,7 +218,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <property name="icon-name">bmw-paste-effects-symbolic</property>
               </object>
             </child>
-
 
           </object>
         </child>

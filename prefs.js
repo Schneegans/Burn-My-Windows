@@ -93,20 +93,21 @@ var PreferencesDialog = class PreferencesDialog {
     // Register the template widgets used in the settings dialog.
     this._registerCustomClasses();
 
-    // Store a reference to the settings object.
-    this._settings = ExtensionUtils.getSettings();
-
-    let profiles = utils.listProfiles();
-    if (profiles.length == 0) {
-      profiles = [utils.createProfile()];
-    }
-
-    this._profileSettings = utils.getProfileSettings(profiles[0]);
-
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/menus.ui`);
     this._builder.add_from_resource(`/ui/${utils.getUIDir()}/prefs.ui`);
+
+    // Store a reference to the general settings object.
+    this._settings = ExtensionUtils.getSettings();
+
+    // Load the current effect profile. If there is none, we create a default profile.
+    this._settings.connect('changed::active-profile', () => {
+      this._loadActiveProfile();
+      this._updateProfileButton();
+    });
+    this._loadActiveProfile();
+    this._updateProfileButton();
 
     // Check whether the power profiles daemon is available - if not, we hide the
     // corresponding settings row.
@@ -124,10 +125,8 @@ var PreferencesDialog = class PreferencesDialog {
 
     this._builder.get_object('profile-power-profile').set_visible(hasPowerProfiles);
 
-    // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
-    // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42). We
-    // have to use a different layout, as the stack sidebar looks pretty ugly with the
-    // included Adw.Clamp...
+    // Starting with GNOME Shell 42, the settings dialog uses libadwaita. We use this to
+    // create a completely different layout for the settings dialog.
     if (utils.isADW()) {
 
       // This is our top-level widget which we will return later.
@@ -192,8 +191,8 @@ var PreferencesDialog = class PreferencesDialog {
         }
       });
     }
-    // On older GNOME versions, we use a StackSidebar. The code below works both, on GTK3
-    // and GTK4.
+    // On older GNOME versions, we use a StackSidebar. The code below works on GTK3 and
+    // GTK4.
     else {
 
       // This is our top-level widget which we will return later.
@@ -393,46 +392,10 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Bind all the profile-related actions.
       {
-        const updateProfileName = () => {
-          let items = [];
-
-          const addItems = (settingsKey, options) => {
-            const option = this._profileSettings.get_int(settingsKey);
-            if (option > 0) {
-              items.push(options[option - 1]);
-            }
-          };
-
-          // clang-format off
-          addItems('profile-animation-type', [_('Opening Windows'),
-                                              _('Closing Windows')]);
-          addItems('profile-window-type',    [_('Normal Windows'),
-                                              _('Dialog Windows')]);
-          addItems('profile-desktop-style',  [_('Bright Mode'),
-                                              _('Dark Mode')]);
-          addItems('profile-power-mode',     [_('On Battery'),
-                                              _('Plugged In')]);
-          addItems('profile-power-profile',  [_('Power-Saver Mode'),
-                                              _('Balanced Mode'),
-                                              _('Performance Mode'),
-                                              _('Power Saver or Balanced'),
-                                              _('Balanced or Performance')]);
-          // clang-format on
-
-          let label = '';
-
-          if (items.length == 0) {
-            label = _('Default Profile');
-          } else {
-            label = items.join(' · ');
-          }
-
-          this._builder.get_object('choose-profile-button').label = label;
-        };
-
         const setupProfileOption = (settingsKey) => {
           this.bindComboRow(settingsKey);
-          this._profileSettings.connect('changed::' + settingsKey, updateProfileName);
+          this._profileSettings.connect('changed::' + settingsKey,
+                                        () => this._updateProfileButton());
         };
 
         setupProfileOption('profile-animation-type');
@@ -441,7 +404,37 @@ var PreferencesDialog = class PreferencesDialog {
         setupProfileOption('profile-power-mode');
         setupProfileOption('profile-power-profile');
 
-        updateProfileName();
+
+        const profileAction = this._settings.create_action('active-profile');
+        group.add_action(profileAction);
+
+        const newProfileAction = Gio.SimpleAction.new('profile-new', null);
+        newProfileAction.connect('activate', () => {
+          const profile = utils.createProfile();
+          this._settings.set_string('active-profile', profile);
+          this._builder.get_object('edit-profile-button').active = true;
+        });
+
+        group.add_action(newProfileAction);
+
+        const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
+        deleteProfileAction.connect('activate', () => {
+          this._builder.get_object('profile-delete-dialog').show();
+        });
+
+        const deleteProfileDialog = this._builder.get_object('profile-delete-dialog');
+        deleteProfileDialog.set_transient_for(window);
+        deleteProfileDialog.connect('response', (d, response) => {
+          if (response == 'delete') {
+            this._builder.get_object('edit-profile-button').active = false;
+            const profile = this._settings.get_string('active-profile');
+            utils.deleteProfile(profile);
+            this._loadActiveProfile();
+            this._updateProfileButton();
+          }
+        });
+
+        group.add_action(deleteProfileAction);
       }
 
       // Populate the enabled-effects drop-down menu.
@@ -556,6 +549,44 @@ var PreferencesDialog = class PreferencesDialog {
   }
 
   // ----------------------------------------------------------------------- private stuff
+
+  _loadActiveProfile() {
+
+    let profiles = utils.listProfiles();
+    if (profiles.length == 0) {
+      profiles = [utils.createProfile()];
+    }
+
+    let activeProfile = this._settings.get_string('active-profile');
+    if (!profiles.includes(activeProfile)) {
+      activeProfile = profiles[0];
+      this._settings.set_string('active-profile', activeProfile);
+    }
+
+    utils.debug('loading ' + activeProfile);
+
+    this._profileSettings = utils.getProfileSettings(activeProfile);
+  }
+
+  _updateProfileButton() {
+    const activeProfile = this._settings.get_string('active-profile');
+
+    this._builder.get_object('choose-profile-button').label =
+      utils.getProfileName(activeProfile);
+
+    const profileSection = this._builder.get_object('profile-section');
+    profileSection.remove_all();
+
+    const profiles = utils.listProfiles();
+
+    profiles.forEach(profile => {
+      const label = utils.getProfileName(profile);
+      const item  = Gio.MenuItem.new(label, 'prefs.active-profile');
+      item.set_action_and_target_value('prefs.active-profile',
+                                       GLib.Variant.new_string(profile));
+      profileSection.append_item(item);
+    });
+  }
 
   // Searches for a reset button for the given settings key and make it reset the settings
   // key when clicked.
