@@ -51,8 +51,8 @@ var TVEffect = class {
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         const c = Clutter.Color.from_string(settings.get_string('tv-effect-color'))[1];
-        shader.set_uniform_float(shader._uColor, 3,
-                                 [c.red / 255, c.green / 255, c.blue / 255]);
+        shader.set_uniform_float(
+          shader._uColor, 4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
       });
     });
   }

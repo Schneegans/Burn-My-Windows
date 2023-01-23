@@ -11,11 +11,12 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### New Features
 
-* **New Effect: TV-Glitch.** This effect combines the Glitch and the TV Effect into one. Credits go to Kurt Wilson (https://github.com/Kurtoid) for this idea!
+* **New Effect: TV-Glitch.** This effect combines the Glitch and the TV Effect into one. Credits go to [Kurt Wilson](https://github.com/Kurtoid) for this idea!
 
 #### Other Enhancements
 
 * On KDE, the effect configuration dialogs can now be translated. The translations for GNOME are re-used, so we already have many translations! This requires at least KWin 5.27 to be working.
+* The effect colors for the Glitch and TV Effect now support an alpha channel. With this you can control how much color gets mixed into the window color.
 
 
 ## [Burn My Windows 25](https://github.com/schneegans/Burn-My-Windows/releases/tag/v25)

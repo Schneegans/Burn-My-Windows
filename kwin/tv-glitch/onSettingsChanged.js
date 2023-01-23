@@ -9,4 +9,4 @@ effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
 effect.setUniform(this.shader, 'uStrength', effect.readConfig('Strength', 1.0));
 effect.setUniform(this.shader, 'uSpeed', effect.readConfig('Speed', 1.0));
-effect.setUniform(this.shader, 'uColor', this.readRGBConfig('Color'));
+effect.setUniform(this.shader, 'uColor', this.readRGBAConfig('Color'));
