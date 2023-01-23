@@ -14,7 +14,7 @@
 
 // The content from common.glsl is automatically prepended to each shader effect.
 
-uniform vec3 uColor;
+uniform vec4 uColor;
 uniform float uSeed;
 uniform float uScale;
 uniform float uStrength;
@@ -37,18 +37,18 @@ void main() {
   vec4 oColor = getInputColor(vec2(xPos, iTexCoord.y));
 
   // Mix in some random interference lines.
-  vec3 interference          = uColor * hash12(vec2(yPos * time));
+  vec3 interference          = uColor.rgb * hash12(vec2(yPos * time));
   float interferenceStrength = noise * min(strength, 1.0);
-  oColor.rgb                 = mix(oColor.rgb, interference, interferenceStrength);
+  oColor.rgb = mix(oColor.rgb, interference, uColor.a * interferenceStrength);
 
   // Mix in some grainy noise.
-  vec3 grain          = uColor * simplex2D(uSize * iTexCoord + vec2(time * 100.0));
+  vec3 grain          = uColor.rgb * simplex2D(uSize * iTexCoord + vec2(time * 100.0));
   float grainStrength = 0.2 * min(strength, 1.0);
-  oColor.rgb          = mix(oColor.rgb, grain, grainStrength);
+  oColor.rgb          = mix(oColor.rgb, grain, uColor.a * grainStrength);
 
   // Add a subtle line pattern every 4 pixels.
   if (floor(mod(yPos * 0.25, 2.0)) == 0.0) {
-    oColor.rgb = mix(uColor, oColor.rgb, 1.0 - (0.15 * noise));
+    oColor.rgb = mix(oColor.rgb, uColor.rgb, uColor.a * (0.15 * noise));
   }
 
   // Shift green/blue channels.
