@@ -215,6 +215,7 @@ test_effect "pixel-wheel"
 test_effect "pixel-wipe"
 test_effect "portal"
 test_effect "tv"
+test_effect "tv-glitch"
 test_effect "wisps"
 
 if [[ "${FEDORA_VERSION}" -gt 32 ]]; then

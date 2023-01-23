@@ -45,7 +45,8 @@ Effect | Preview
 **Portal** <br> This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series... | <img src ="docs/pics/portal.gif" />
 **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.| <img src ="docs/pics/snap.gif" />
 **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!| <img src ="docs/pics/trex.gif" />
-**TV-Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
+**TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment. | <img src ="docs/pics/tv.gif" />
+**TV Glitch** <br> This effect combines the Glitch and the TV Effect. | <img src ="docs/pics/tv-glitch.gif" />
 **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies! | <img src ="docs/pics/wisps.gif" />
 **Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md)
 
@@ -78,7 +79,8 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>TV-Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
+<tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
+<tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 </table>
 

@@ -65,6 +65,7 @@ var PreferencesDialog = class PreferencesDialog {
       new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
       new Me.imports.src.TRexAttack.TRexAttack(),
       new Me.imports.src.TVEffect.TVEffect(),
+      new Me.imports.src.TVGlitch.TVGlitch(),
       new Me.imports.src.Wisps.Wisps(),
     ];
 

@@ -5,4 +5,4 @@
 // The code below is called whenever the user changes something in the configuration of
 // the effect.
 
-effect.setUniform(this.shader, 'uColor', this.readRGBConfig('Color'));
+effect.setUniform(this.shader, 'uColor', this.readRGBAConfig('Color'));
