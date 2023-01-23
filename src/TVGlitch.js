@@ -24,13 +24,14 @@ const utils          = Me.imports.src.utils;
 const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This effect applies some intentional graphics issues to your windows.                //
+// This effect combines the Glitch and the TV Effect. Credits go to Kurt Wilson         //
+// (https://github.com/Kurtoid) for this idea!                                          //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Glitch = class {
+var TVGlitch = class {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
@@ -52,7 +53,7 @@ var Glitch = class {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        const c = Clutter.Color.from_string(settings.get_string('glitch-color'))[1];
+        const c = Clutter.Color.from_string(settings.get_string('tv-glitch-color'))[1];
 
         // If we are performing an integration tests, we use a fixed seed.
         const testMode = settings.get_boolean('test-mode');
@@ -60,9 +61,9 @@ var Glitch = class {
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  1, [testMode ? 0 : Math.random()]);
         shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
-        shader.set_uniform_float(shader._uScale, 1, [settings.get_double('glitch-scale')]);
-        shader.set_uniform_float(shader._uStrength, 1, [settings.get_double('glitch-strength')]);
-        shader.set_uniform_float(shader._uSpeed, 1, [settings.get_double('glitch-speed')]);
+        shader.set_uniform_float(shader._uScale, 1, [settings.get_double('tv-glitch-scale')]);
+        shader.set_uniform_float(shader._uStrength, 1, [settings.get_double('tv-glitch-strength')]);
+        shader.set_uniform_float(shader._uSpeed, 1, [settings.get_double('tv-glitch-speed')]);
         // clang-format on
       });
     });
@@ -80,13 +81,13 @@ var Glitch = class {
   // effect is enabled currently (e.g. '*-close-effect'), and its animation time
   // (e.g. '*-animation-time').
   getNick() {
-    return 'tvglitch';
+    return 'tv-glitch';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   getLabel() {
-    return _('TVGlitch');
+    return _('TV Glitch');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -99,14 +100,14 @@ var Glitch = class {
     dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/TVGlitch.ui`);
 
     // Bind all properties.
-    dialog.bindAdjustment('glitch-animation-time');
-    dialog.bindAdjustment('glitch-scale');
-    dialog.bindAdjustment('glitch-speed');
-    dialog.bindAdjustment('glitch-strength');
-    dialog.bindColorButton('glitch-color');
+    dialog.bindAdjustment('tv-glitch-animation-time');
+    dialog.bindAdjustment('tv-glitch-scale');
+    dialog.bindAdjustment('tv-glitch-speed');
+    dialog.bindAdjustment('tv-glitch-strength');
+    dialog.bindColorButton('tv-glitch-color');
 
     // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('tvglitch-prefs');
+    return dialog.getBuilder().get_object('tv-glitch-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js
