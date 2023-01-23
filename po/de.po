@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-07 13:39+0100\n"
+"POT-Creation-Date: 2023-01-23 13:21+0100\n"
 "PO-Revision-Date: 2023-01-09 16:48+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -111,54 +111,58 @@ msgstr "T-Rex-Angriff"
 msgid "TV Effect"
 msgstr "TV-Effekt"
 
+#: src/TVGlitch.js:90
+msgid "TV Glitch"
+msgstr ""
+
 #: src/Wisps.js:86
 msgid "Wisps"
 msgstr "Irrlichter"
 
-#: prefs.js:134
+#: prefs.js:140
 msgid "Effects"
 msgstr "Effekte"
 
-#: prefs.js:176 resources/ui/gtk4/effectPage.ui:43
+#: prefs.js:182 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
 msgstr "Vorschau des Effekts"
 
-#: prefs.js:211
+#: prefs.js:217
 msgid "Use this effect when opening windows"
 msgstr "Verwenden Sie diesen Effekt beim Öffnen von Fenstern"
 
-#: prefs.js:212
+#: prefs.js:218
 msgid "Use this effect when closing windows"
 msgstr "Verwenden Sie diesen Effekt beim Schließen von Fenstern"
 
-#: prefs.js:238
+#: prefs.js:244
 msgid "General Options"
 msgstr "Allgemeine Optionen"
 
-#: prefs.js:332
+#: prefs.js:349 prefs.js:381
 msgid "Gold Sponsors"
 msgstr "Gold-Sponsoren"
 
-#: prefs.js:335
+#: prefs.js:353 prefs.js:385
 msgid "Silver Sponsors"
 msgstr "Silber-Sponsoren"
 
-#: prefs.js:338
+#: prefs.js:357 prefs.js:389
 msgid "Bronze Sponsors"
 msgstr "Bronze-Sponsoren"
 
-#: prefs.js:341
+#: prefs.js:361 prefs.js:393
 msgid "Past Sponsors"
 msgstr "Ehemalige Sponsoren"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:548
+#: prefs.js:607
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Vorschau für %s"
 
-#: prefs.js:570
+#: prefs.js:629
 msgid "Close this Window to Preview the Effect!"
 msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
 
@@ -194,14 +198,15 @@ msgstr "Über Burn-My-Windows"
 #: resources/ui/gtk4/Incinerate.ui:30 resources/ui/gtk4/Wisps.ui:30
 #: resources/ui/gtk4/Fire.ui:55 resources/ui/gtk4/SnapOfDisintegration.ui:30
 #: resources/ui/gtk4/Glide.ui:30 resources/ui/gtk4/PixelWipe.ui:30
-#: resources/ui/gtk4/TRexAttack.ui:30 resources/ui/gtk4/PixelWheel.ui:30
-#: resources/ui/gtk4/Doom.ui:30 resources/ui/gtk4/Glitch.ui:30
-#: resources/ui/gtk4/TVEffect.ui:30 resources/ui/gtk4/EnergizeA.ui:30
-#: resources/ui/gtk4/Hexagon.ui:30 resources/ui/gtk4/EnergizeB.ui:30
-#: resources/ui/gtk4/Pixelate.ui:30 resources/ui/gtk4/Apparition.ui:30
-#: resources/ui/gtk4/Portal.ui:30 resources/ui/gtk3/Incinerate.ui:55
-#: resources/ui/gtk3/Wisps.ui:48 resources/ui/gtk3/Fire.ui:99
-#: resources/ui/gtk3/Glide.ui:69 resources/ui/gtk3/PixelWipe.ui:55
+#: resources/ui/gtk4/TRexAttack.ui:30 resources/ui/gtk4/TVGlitch.ui:30
+#: resources/ui/gtk4/PixelWheel.ui:30 resources/ui/gtk4/Doom.ui:30
+#: resources/ui/gtk4/Glitch.ui:30 resources/ui/gtk4/TVEffect.ui:30
+#: resources/ui/gtk4/EnergizeA.ui:30 resources/ui/gtk4/Hexagon.ui:30
+#: resources/ui/gtk4/EnergizeB.ui:30 resources/ui/gtk4/Pixelate.ui:30
+#: resources/ui/gtk4/Apparition.ui:30 resources/ui/gtk4/Portal.ui:30
+#: resources/ui/gtk3/Incinerate.ui:55 resources/ui/gtk3/Wisps.ui:48
+#: resources/ui/gtk3/Fire.ui:99 resources/ui/gtk3/Glide.ui:69
+#: resources/ui/gtk3/PixelWipe.ui:55 resources/ui/gtk3/TVGlitch.ui:62
 #: resources/ui/gtk3/PixelWheel.ui:55 resources/ui/gtk3/Doom.ui:62
 #: resources/ui/gtk3/Glitch.ui:62 resources/ui/gtk3/TVEffect.ui:41
 #: resources/ui/gtk3/EnergizeA.ui:48 resources/ui/gtk3/Hexagon.ui:55
@@ -211,12 +216,12 @@ msgstr "Über Burn-My-Windows"
 #: resources/ui/adw/Incinerate.ui:14 resources/ui/adw/Wisps.ui:14
 #: resources/ui/adw/Fire.ui:30 resources/ui/adw/SnapOfDisintegration.ui:14
 #: resources/ui/adw/Glide.ui:14 resources/ui/adw/PixelWipe.ui:14
-#: resources/ui/adw/TRexAttack.ui:14 resources/ui/adw/PixelWheel.ui:14
-#: resources/ui/adw/Doom.ui:14 resources/ui/adw/Glitch.ui:14
-#: resources/ui/adw/TVEffect.ui:14 resources/ui/adw/EnergizeA.ui:14
-#: resources/ui/adw/Hexagon.ui:14 resources/ui/adw/EnergizeB.ui:15
-#: resources/ui/adw/Pixelate.ui:14 resources/ui/adw/Apparition.ui:15
-#: resources/ui/adw/Portal.ui:14
+#: resources/ui/adw/TRexAttack.ui:14 resources/ui/adw/TVGlitch.ui:14
+#: resources/ui/adw/PixelWheel.ui:14 resources/ui/adw/Doom.ui:14
+#: resources/ui/adw/Glitch.ui:14 resources/ui/adw/TVEffect.ui:14
+#: resources/ui/adw/EnergizeA.ui:14 resources/ui/adw/Hexagon.ui:14
+#: resources/ui/adw/EnergizeB.ui:15 resources/ui/adw/Pixelate.ui:14
+#: resources/ui/adw/Apparition.ui:15 resources/ui/adw/Portal.ui:14
 msgid "Animation Time [ms]"
 msgstr "Animationszeit [ms]"
 
@@ -238,37 +243,42 @@ msgstr "Animationszeit [ms]"
 #: resources/ui/gtk4/PixelWipe.ui:104 resources/ui/gtk4/TRexAttack.ui:58
 #: resources/ui/gtk4/TRexAttack.ui:104 resources/ui/gtk4/TRexAttack.ui:150
 #: resources/ui/gtk4/TRexAttack.ui:196 resources/ui/gtk4/TRexAttack.ui:230
-#: resources/ui/gtk4/PixelWheel.ui:58 resources/ui/gtk4/PixelWheel.ui:104
-#: resources/ui/gtk4/PixelWheel.ui:150 resources/ui/gtk4/Doom.ui:58
-#: resources/ui/gtk4/Doom.ui:104 resources/ui/gtk4/Doom.ui:150
-#: resources/ui/gtk4/Doom.ui:196 resources/ui/gtk4/Glitch.ui:58
-#: resources/ui/gtk4/Glitch.ui:104 resources/ui/gtk4/Glitch.ui:150
-#: resources/ui/gtk4/Glitch.ui:196 resources/ui/gtk4/Glitch.ui:230
-#: resources/ui/gtk4/TVEffect.ui:58 resources/ui/gtk4/TVEffect.ui:92
-#: resources/ui/gtk4/EnergizeA.ui:58 resources/ui/gtk4/EnergizeA.ui:104
-#: resources/ui/gtk4/EnergizeA.ui:138 resources/ui/gtk4/Hexagon.ui:58
-#: resources/ui/gtk4/Hexagon.ui:104 resources/ui/gtk4/Hexagon.ui:150
-#: resources/ui/gtk4/Hexagon.ui:184 resources/ui/gtk4/Hexagon.ui:218
-#: resources/ui/gtk4/Hexagon.ui:271 resources/ui/gtk4/EnergizeB.ui:58
-#: resources/ui/gtk4/EnergizeB.ui:104 resources/ui/gtk4/EnergizeB.ui:138
-#: resources/ui/gtk4/Pixelate.ui:58 resources/ui/gtk4/Pixelate.ui:104
-#: resources/ui/gtk4/Pixelate.ui:150 resources/ui/gtk4/prefs.ui:172
-#: resources/ui/gtk4/prefs.ui:206 resources/ui/gtk4/prefs.ui:240
-#: resources/ui/gtk4/Apparition.ui:58 resources/ui/gtk4/Apparition.ui:104
-#: resources/ui/gtk4/Apparition.ui:150 resources/ui/gtk4/Apparition.ui:196
-#: resources/ui/gtk4/Apparition.ui:242 resources/ui/gtk4/Portal.ui:58
-#: resources/ui/gtk4/Portal.ui:104 resources/ui/gtk4/Portal.ui:150
-#: resources/ui/gtk4/Portal.ui:196 resources/ui/gtk4/Portal.ui:230
-#: resources/ui/gtk3/Incinerate.ui:81 resources/ui/gtk3/Incinerate.ui:130
-#: resources/ui/gtk3/Incinerate.ui:179 resources/ui/gtk3/Incinerate.ui:241
-#: resources/ui/gtk3/Incinerate.ui:284 resources/ui/gtk3/Wisps.ui:74
-#: resources/ui/gtk3/Wisps.ui:123 resources/ui/gtk3/Wisps.ui:166
-#: resources/ui/gtk3/Fire.ui:125 resources/ui/gtk3/Fire.ui:173
-#: resources/ui/gtk3/Fire.ui:221 resources/ui/gtk3/Fire.ui:283
-#: resources/ui/gtk3/Fire.ui:351 resources/ui/gtk3/Glide.ui:95
-#: resources/ui/gtk3/Glide.ui:144 resources/ui/gtk3/Glide.ui:193
-#: resources/ui/gtk3/Glide.ui:242 resources/ui/gtk3/Glide.ui:291
-#: resources/ui/gtk3/PixelWipe.ui:81 resources/ui/gtk3/PixelWipe.ui:130
+#: resources/ui/gtk4/TVGlitch.ui:58 resources/ui/gtk4/TVGlitch.ui:104
+#: resources/ui/gtk4/TVGlitch.ui:150 resources/ui/gtk4/TVGlitch.ui:196
+#: resources/ui/gtk4/TVGlitch.ui:230 resources/ui/gtk4/PixelWheel.ui:58
+#: resources/ui/gtk4/PixelWheel.ui:104 resources/ui/gtk4/PixelWheel.ui:150
+#: resources/ui/gtk4/Doom.ui:58 resources/ui/gtk4/Doom.ui:104
+#: resources/ui/gtk4/Doom.ui:150 resources/ui/gtk4/Doom.ui:196
+#: resources/ui/gtk4/Glitch.ui:58 resources/ui/gtk4/Glitch.ui:104
+#: resources/ui/gtk4/Glitch.ui:150 resources/ui/gtk4/Glitch.ui:196
+#: resources/ui/gtk4/Glitch.ui:230 resources/ui/gtk4/TVEffect.ui:58
+#: resources/ui/gtk4/TVEffect.ui:92 resources/ui/gtk4/EnergizeA.ui:58
+#: resources/ui/gtk4/EnergizeA.ui:104 resources/ui/gtk4/EnergizeA.ui:138
+#: resources/ui/gtk4/Hexagon.ui:58 resources/ui/gtk4/Hexagon.ui:104
+#: resources/ui/gtk4/Hexagon.ui:150 resources/ui/gtk4/Hexagon.ui:184
+#: resources/ui/gtk4/Hexagon.ui:218 resources/ui/gtk4/Hexagon.ui:271
+#: resources/ui/gtk4/EnergizeB.ui:58 resources/ui/gtk4/EnergizeB.ui:104
+#: resources/ui/gtk4/EnergizeB.ui:138 resources/ui/gtk4/Pixelate.ui:58
+#: resources/ui/gtk4/Pixelate.ui:104 resources/ui/gtk4/Pixelate.ui:150
+#: resources/ui/gtk4/prefs.ui:172 resources/ui/gtk4/prefs.ui:206
+#: resources/ui/gtk4/prefs.ui:240 resources/ui/gtk4/Apparition.ui:58
+#: resources/ui/gtk4/Apparition.ui:104 resources/ui/gtk4/Apparition.ui:150
+#: resources/ui/gtk4/Apparition.ui:196 resources/ui/gtk4/Apparition.ui:242
+#: resources/ui/gtk4/Portal.ui:58 resources/ui/gtk4/Portal.ui:104
+#: resources/ui/gtk4/Portal.ui:150 resources/ui/gtk4/Portal.ui:196
+#: resources/ui/gtk4/Portal.ui:230 resources/ui/gtk3/Incinerate.ui:81
+#: resources/ui/gtk3/Incinerate.ui:130 resources/ui/gtk3/Incinerate.ui:179
+#: resources/ui/gtk3/Incinerate.ui:241 resources/ui/gtk3/Incinerate.ui:284
+#: resources/ui/gtk3/Wisps.ui:74 resources/ui/gtk3/Wisps.ui:123
+#: resources/ui/gtk3/Wisps.ui:166 resources/ui/gtk3/Fire.ui:125
+#: resources/ui/gtk3/Fire.ui:173 resources/ui/gtk3/Fire.ui:221
+#: resources/ui/gtk3/Fire.ui:283 resources/ui/gtk3/Fire.ui:351
+#: resources/ui/gtk3/Glide.ui:95 resources/ui/gtk3/Glide.ui:144
+#: resources/ui/gtk3/Glide.ui:193 resources/ui/gtk3/Glide.ui:242
+#: resources/ui/gtk3/Glide.ui:291 resources/ui/gtk3/PixelWipe.ui:81
+#: resources/ui/gtk3/PixelWipe.ui:130 resources/ui/gtk3/TVGlitch.ui:88
+#: resources/ui/gtk3/TVGlitch.ui:137 resources/ui/gtk3/TVGlitch.ui:186
+#: resources/ui/gtk3/TVGlitch.ui:235 resources/ui/gtk3/TVGlitch.ui:278
 #: resources/ui/gtk3/PixelWheel.ui:81 resources/ui/gtk3/PixelWheel.ui:130
 #: resources/ui/gtk3/PixelWheel.ui:179 resources/ui/gtk3/Doom.ui:88
 #: resources/ui/gtk3/Doom.ui:137 resources/ui/gtk3/Doom.ui:186
@@ -308,45 +318,50 @@ msgstr "Animationszeit [ms]"
 #: resources/ui/adw/PixelWipe.ui:69 resources/ui/adw/TRexAttack.ui:36
 #: resources/ui/adw/TRexAttack.ui:69 resources/ui/adw/TRexAttack.ui:102
 #: resources/ui/adw/TRexAttack.ui:135 resources/ui/adw/TRexAttack.ui:160
-#: resources/ui/adw/PixelWheel.ui:36 resources/ui/adw/PixelWheel.ui:69
-#: resources/ui/adw/PixelWheel.ui:102 resources/ui/adw/Doom.ui:36
-#: resources/ui/adw/Doom.ui:69 resources/ui/adw/Doom.ui:102
-#: resources/ui/adw/Doom.ui:135 resources/ui/adw/Glitch.ui:36
-#: resources/ui/adw/Glitch.ui:69 resources/ui/adw/Glitch.ui:102
-#: resources/ui/adw/Glitch.ui:135 resources/ui/adw/Glitch.ui:160
-#: resources/ui/adw/TVEffect.ui:36 resources/ui/adw/TVEffect.ui:61
-#: resources/ui/adw/EnergizeA.ui:36 resources/ui/adw/EnergizeA.ui:69
-#: resources/ui/adw/EnergizeA.ui:94 resources/ui/adw/Hexagon.ui:36
-#: resources/ui/adw/Hexagon.ui:69 resources/ui/adw/Hexagon.ui:102
-#: resources/ui/adw/Hexagon.ui:127 resources/ui/adw/Hexagon.ui:152
-#: resources/ui/adw/Hexagon.ui:175 resources/ui/adw/EnergizeB.ui:37
-#: resources/ui/adw/EnergizeB.ui:70 resources/ui/adw/EnergizeB.ui:95
-#: resources/ui/adw/Pixelate.ui:36 resources/ui/adw/Pixelate.ui:69
-#: resources/ui/adw/Pixelate.ui:102 resources/ui/adw/prefs.ui:63
-#: resources/ui/adw/prefs.ui:85 resources/ui/adw/prefs.ui:107
-#: resources/ui/adw/Apparition.ui:37 resources/ui/adw/Apparition.ui:70
-#: resources/ui/adw/Apparition.ui:103 resources/ui/adw/Apparition.ui:136
-#: resources/ui/adw/Apparition.ui:169 resources/ui/adw/Portal.ui:36
-#: resources/ui/adw/Portal.ui:69 resources/ui/adw/Portal.ui:102
-#: resources/ui/adw/Portal.ui:135 resources/ui/adw/Portal.ui:160
+#: resources/ui/adw/TVGlitch.ui:36 resources/ui/adw/TVGlitch.ui:69
+#: resources/ui/adw/TVGlitch.ui:102 resources/ui/adw/TVGlitch.ui:135
+#: resources/ui/adw/TVGlitch.ui:160 resources/ui/adw/PixelWheel.ui:36
+#: resources/ui/adw/PixelWheel.ui:69 resources/ui/adw/PixelWheel.ui:102
+#: resources/ui/adw/Doom.ui:36 resources/ui/adw/Doom.ui:69
+#: resources/ui/adw/Doom.ui:102 resources/ui/adw/Doom.ui:135
+#: resources/ui/adw/Glitch.ui:36 resources/ui/adw/Glitch.ui:69
+#: resources/ui/adw/Glitch.ui:102 resources/ui/adw/Glitch.ui:135
+#: resources/ui/adw/Glitch.ui:160 resources/ui/adw/TVEffect.ui:36
+#: resources/ui/adw/TVEffect.ui:61 resources/ui/adw/EnergizeA.ui:36
+#: resources/ui/adw/EnergizeA.ui:69 resources/ui/adw/EnergizeA.ui:94
+#: resources/ui/adw/Hexagon.ui:36 resources/ui/adw/Hexagon.ui:69
+#: resources/ui/adw/Hexagon.ui:102 resources/ui/adw/Hexagon.ui:127
+#: resources/ui/adw/Hexagon.ui:152 resources/ui/adw/Hexagon.ui:175
+#: resources/ui/adw/EnergizeB.ui:37 resources/ui/adw/EnergizeB.ui:70
+#: resources/ui/adw/EnergizeB.ui:95 resources/ui/adw/Pixelate.ui:36
+#: resources/ui/adw/Pixelate.ui:69 resources/ui/adw/Pixelate.ui:102
+#: resources/ui/adw/prefs.ui:63 resources/ui/adw/prefs.ui:85
+#: resources/ui/adw/prefs.ui:107 resources/ui/adw/Apparition.ui:37
+#: resources/ui/adw/Apparition.ui:70 resources/ui/adw/Apparition.ui:103
+#: resources/ui/adw/Apparition.ui:136 resources/ui/adw/Apparition.ui:169
+#: resources/ui/adw/Portal.ui:36 resources/ui/adw/Portal.ui:69
+#: resources/ui/adw/Portal.ui:102 resources/ui/adw/Portal.ui:135
+#: resources/ui/adw/Portal.ui:160
 msgid "Reset to Default Value"
 msgstr "Auf Standardwert zurücksetzen"
 
 #: resources/ui/gtk4/Matrix.ui:76 resources/ui/gtk4/BrokenGlass.ui:76
 #: resources/ui/gtk4/Incinerate.ui:76 resources/ui/gtk4/Wisps.ui:76
 #: resources/ui/gtk4/Fire.ui:101 resources/ui/gtk4/SnapOfDisintegration.ui:76
-#: resources/ui/gtk4/Glide.ui:76 resources/ui/gtk4/Glitch.ui:76
-#: resources/ui/gtk4/EnergizeA.ui:76 resources/ui/gtk4/Hexagon.ui:76
-#: resources/ui/gtk4/EnergizeB.ui:76 resources/ui/gtk3/Incinerate.ui:104
-#: resources/ui/gtk3/Wisps.ui:97 resources/ui/gtk3/Fire.ui:147
-#: resources/ui/gtk3/Glide.ui:118 resources/ui/gtk3/Glitch.ui:111
+#: resources/ui/gtk4/Glide.ui:76 resources/ui/gtk4/TVGlitch.ui:76
+#: resources/ui/gtk4/Glitch.ui:76 resources/ui/gtk4/EnergizeA.ui:76
+#: resources/ui/gtk4/Hexagon.ui:76 resources/ui/gtk4/EnergizeB.ui:76
+#: resources/ui/gtk3/Incinerate.ui:104 resources/ui/gtk3/Wisps.ui:97
+#: resources/ui/gtk3/Fire.ui:147 resources/ui/gtk3/Glide.ui:118
+#: resources/ui/gtk3/TVGlitch.ui:111 resources/ui/gtk3/Glitch.ui:111
 #: resources/ui/gtk3/EnergizeA.ui:97 resources/ui/gtk3/Hexagon.ui:104
 #: resources/ui/gtk3/EnergizeB.ui:97 resources/ui/adw/Matrix.ui:47
 #: resources/ui/adw/BrokenGlass.ui:48 resources/ui/adw/Incinerate.ui:47
 #: resources/ui/adw/Wisps.ui:47 resources/ui/adw/Fire.ui:63
 #: resources/ui/adw/SnapOfDisintegration.ui:47 resources/ui/adw/Glide.ui:47
-#: resources/ui/adw/Glitch.ui:47 resources/ui/adw/EnergizeA.ui:47
-#: resources/ui/adw/Hexagon.ui:47 resources/ui/adw/EnergizeB.ui:48
+#: resources/ui/adw/TVGlitch.ui:47 resources/ui/adw/Glitch.ui:47
+#: resources/ui/adw/EnergizeA.ui:47 resources/ui/adw/Hexagon.ui:47
+#: resources/ui/adw/EnergizeB.ui:48
 msgid "Scale"
 msgstr "Größe"
 
@@ -406,16 +421,18 @@ msgstr ""
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
-#: resources/ui/gtk4/Glitch.ui:214 resources/ui/gtk4/TVEffect.ui:76
-#: resources/ui/gtk4/EnergizeA.ui:122 resources/ui/gtk4/EnergizeB.ui:122
-#: resources/ui/gtk4/Portal.ui:214 resources/ui/gtk3/Incinerate.ui:263
-#: resources/ui/gtk3/Wisps.ui:145 resources/ui/gtk3/Glitch.ui:257
+#: resources/ui/gtk4/TVGlitch.ui:214 resources/ui/gtk4/Glitch.ui:214
+#: resources/ui/gtk4/TVEffect.ui:76 resources/ui/gtk4/EnergizeA.ui:122
+#: resources/ui/gtk4/EnergizeB.ui:122 resources/ui/gtk4/Portal.ui:214
+#: resources/ui/gtk3/Incinerate.ui:263 resources/ui/gtk3/Wisps.ui:145
+#: resources/ui/gtk3/TVGlitch.ui:257 resources/ui/gtk3/Glitch.ui:257
 #: resources/ui/gtk3/TVEffect.ui:89 resources/ui/gtk3/EnergizeA.ui:145
 #: resources/ui/gtk3/EnergizeB.ui:145 resources/ui/gtk3/Portal.ui:261
 #: resources/ui/adw/Incinerate.ui:136 resources/ui/adw/Wisps.ui:80
-#: resources/ui/adw/SnapOfDisintegration.ui:80 resources/ui/adw/Glitch.ui:146
-#: resources/ui/adw/TVEffect.ui:47 resources/ui/adw/EnergizeA.ui:80
-#: resources/ui/adw/EnergizeB.ui:81 resources/ui/adw/Portal.ui:146
+#: resources/ui/adw/SnapOfDisintegration.ui:80 resources/ui/adw/TVGlitch.ui:146
+#: resources/ui/adw/Glitch.ui:146 resources/ui/adw/TVEffect.ui:47
+#: resources/ui/adw/EnergizeA.ui:80 resources/ui/adw/EnergizeB.ui:81
+#: resources/ui/adw/Portal.ui:146
 msgid "Color"
 msgstr "Farbe"
 
@@ -424,9 +441,11 @@ msgstr "Farbe"
 msgid "Presets"
 msgstr "Voreinstellungen"
 
-#: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/Glitch.ui:168
-#: resources/ui/gtk3/Fire.ui:195 resources/ui/gtk3/Glitch.ui:209
-#: resources/ui/adw/Fire.ui:96 resources/ui/adw/Glitch.ui:113
+#: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/TVGlitch.ui:168
+#: resources/ui/gtk4/Glitch.ui:168 resources/ui/gtk3/Fire.ui:195
+#: resources/ui/gtk3/TVGlitch.ui:209 resources/ui/gtk3/Glitch.ui:209
+#: resources/ui/adw/Fire.ui:96 resources/ui/adw/TVGlitch.ui:113
+#: resources/ui/adw/Glitch.ui:113
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
@@ -485,6 +504,12 @@ msgstr "Warp-Effekt"
 msgid "Flash Color"
 msgstr "Blitzfarbe"
 
+#: resources/ui/gtk4/TVGlitch.ui:122 resources/ui/gtk4/Glitch.ui:122
+#: resources/ui/gtk3/TVGlitch.ui:160 resources/ui/gtk3/Glitch.ui:160
+#: resources/ui/adw/TVGlitch.ui:80 resources/ui/adw/Glitch.ui:80
+msgid "Strength"
+msgstr "Stärke"
+
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
@@ -499,11 +524,6 @@ msgstr "Horizontale Skalierung"
 #: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
 msgstr "Vertikale Skalierung"
-
-#: resources/ui/gtk4/Glitch.ui:122 resources/ui/gtk3/Glitch.ui:160
-#: resources/ui/adw/Glitch.ui:80
-msgid "Strength"
-msgstr "Stärke"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
