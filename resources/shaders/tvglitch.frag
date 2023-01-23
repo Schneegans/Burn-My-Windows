@@ -72,6 +72,8 @@ void main() {
   //   oColor.a *= alpha;
 
   // add tv effect - we just want the shape transforms
+
+  // add the tv effect sooner/later in the animation
   float toffset = uForOpening ? 0.0 : 1.0;
   float prog = clamp(uProgress * 2.0 - toffset, 0.0, 1.0);
   prog = uForOpening ? 1.0 - easeOutQuad(prog) : easeOutQuad(prog);
