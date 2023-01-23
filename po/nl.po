@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 13:21+0100\n"
-"PO-Revision-Date: 2023-01-09 16:48+0000\n"
+"PO-Revision-Date: 2023-01-25 20:52+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -113,7 +113,7 @@ msgstr "Tv-effect"
 
 #: src/TVGlitch.js:90
 msgid "TV Glitch"
-msgstr ""
+msgstr "Tv-hapering"
 
 #: src/Wisps.js:86
 msgid "Wisps"
