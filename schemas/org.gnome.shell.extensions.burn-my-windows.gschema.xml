@@ -688,6 +688,53 @@ SPDX-License-Identifier: CC0-1.0
       <description>The color of the effect.</description>
     </key>
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- TV Glitch Options                                                             -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="tv-glitch-close-effect" type="b">
+      <default>false</default>
+      <summary>TV Glitch Close Effect</summary>
+      <description>Use the Glitch effect for window closing.</description>
+    </key>
+
+    <key name="tv-glitch-open-effect" type="b">
+      <default>false</default>
+      <summary>TV Glitch Open Effect</summary>
+      <description>Use the Glitch effect for window opening.</description>
+    </key>
+
+    <key name="tv-glitch-animation-time" type="i">
+      <default>750</default>
+      <summary>TV Glitch Animation Time</summary>
+      <description>The time the Glitch effect takes.</description>
+    </key>
+
+    <key name="tv-glitch-scale" type="d">
+      <default>1.0</default>
+      <summary>TV Glitch Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="tv-glitch-strength" type="d">
+      <default>2.0</default>
+      <summary>TV Glitch Strength</summary>
+      <description>The intensity of the effect.</description>
+    </key>
+
+    <key name="tv-glitch-speed" type="d">
+      <default>2.0</default>
+      <summary>TV Glitch Speed</summary>
+      <description>The speed of the effect.</description>
+    </key>
+
+    <key name="tv-glitch-color" type="s">
+      <default>"rgb(100, 160, 255)"</default>
+      <summary>TV Glitch Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Wisps Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

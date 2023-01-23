@@ -9,7 +9,11 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
-#### Enhancements
+#### New Features
+
+* **New Effect: TV-Glitch.** This effect combines the Glitch and the TV Effect into one. Credits go to Kurt Wilson (https://github.com/Kurtoid) for this idea!
+
+#### Other Enhancements
 
 * On KDE, the effect configuration dialogs can now be translated. The translations for GNOME are re-used, so we already have many translations! This requires at least KWin 5.27 to be working.
 

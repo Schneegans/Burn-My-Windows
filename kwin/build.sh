@@ -147,6 +147,7 @@ generate "pixel-wheel" "Pixel Wheel [Burn-My-Windows]" "Pixelate the window and 
 generate "pixel-wipe"  "Pixel Wipe [Burn-My-Windows]"  "Pixelate the window and hide the pixels radially, starting from the pointer position"
 generate "portal"      "Portal [Burn-My-Windows]"      "Transfer your windows to other locations in space and time"
 generate "tv"          "TV Effect [Burn-My-Windows]"   "Make windows close like turning off a TV"
+generate "tv-glitch"   "TV Glitch [Burn-My-Windows]"   "Make your windows close like a very glitchy old-school TV"
 generate "wisps"       "Wisps [Burn-My-Windows]"       "Let your windows be carried away to the realm of dreams by these little fairies"
 
 # Finally, create an archive for the effects.
