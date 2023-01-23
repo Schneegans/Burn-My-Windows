@@ -140,6 +140,7 @@ generate "energize-b"  "Energize B [Burn-My-Windows]"  "Using different transpor
 generate "fire"        "Fire [Burn-My-Windows]"        "The classic effect inspired by Compiz"
 generate "glide"       "Glide [Burn-My-Windows]"       "Fade the window to transparency with subtle 3D effects"
 generate "glitch"      "Glitch [Burn-My-Windows]"      "This effect applies some intentional graphics issues to your windows"
+generate "tvglitch"    "TVGlitch [Burn-My-Windows]"    "This effect applies some intentional graphics issues to your windows"
 generate "hexagon"     "Hexagon [Burn-My-Windows]"     "With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi"
 generate "incinerate"  "Incinerate [Burn-My-Windows]"  "A less snappy but definitely more fancy take on the fire effect"
 generate "pixelate"    "Pixelate [Burn-My-Windows]"    "Pixelate the window and randomly hide the pixels"
