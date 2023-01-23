@@ -190,6 +190,7 @@ capture_effect "pixel-wheel"
 capture_effect "pixel-wipe"
 capture_effect "portal"
 capture_effect "tv"
+capture_effect "tv-glitch"
 capture_effect "wisps"
 
 if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
