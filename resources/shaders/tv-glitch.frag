@@ -100,7 +100,8 @@ void main() {
   float lrMask = 1.0 - smoothstep(0.0, 1.0, clamp((lrProg - lr) / BLUR_WIDTH, 0.0, 1.0));
   float ffMask = 1.0 - smoothstep(0.0, 1.0, ffProg);
 
-  // Assemble the final alpha value.
+  // Assemble the final color value.
+  oColor.rgb = mix(oColor.rgb, uColor * oColor.a, smoothstep(0.0, 1.0, tvProgress));
   float mask = tbMask * lrMask * ffMask;
 
   oColor.a *= mask;
