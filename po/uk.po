@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 13:21+0100\n"
-"PO-Revision-Date: 2022-09-11 10:17+0000\n"
-"Last-Translator: Юрій Дмитренко <yuridm@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/uk/>\n"
+"PO-Revision-Date: 2023-01-25 20:52+0000\n"
+"Last-Translator: Petro S. <911us@duck.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
-msgstr ""
+msgstr "Привид"
 
 #: src/BrokenGlass.js:139
 msgid "Broken Glass"
@@ -34,11 +34,11 @@ msgstr "Doom"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
-msgstr ""
+msgstr "Енергія А"
 
 #: src/EnergizeB.js:81
 msgid "Energize B"
-msgstr ""
+msgstr "Енергія Б"
 
 #: src/Fire.js:100
 msgid "Fire"
@@ -54,7 +54,7 @@ msgstr "Пекельний вогонь"
 
 #: src/Fire.js:175
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Темний та брудний"
 
 #: src/Fire.js:185
 msgid "Cold Breeze"
@@ -66,11 +66,11 @@ msgstr "Миколай іде"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Ковзання"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "Глюк"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -90,7 +90,7 @@ msgstr "Пікселізація"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Піксельне колесо"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
@@ -98,11 +98,11 @@ msgstr "Витерти пікселі"
 
 #: src/Portal.js:91
 msgid "Portal"
-msgstr ""
+msgstr "Портал"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Клацання розпаду"
 
 #: src/TRexAttack.js:116
 msgid "T-Rex Attack"
@@ -114,32 +114,32 @@ msgstr "Телевізор"
 
 #: src/TVGlitch.js:90
 msgid "TV Glitch"
-msgstr ""
+msgstr "ТВ Глюк"
 
 #: src/Wisps.js:86
 msgid "Wisps"
-msgstr ""
+msgstr "Вогники"
 
 #: prefs.js:140
 msgid "Effects"
-msgstr ""
+msgstr "Ефекти"
 
 #: prefs.js:182 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Попередній перегляд цього ефекту"
 
 #: prefs.js:217
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Використовувати цей ефект під час відчинення вікон"
 
 #: prefs.js:218
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Використовувати цей ефект під час зачинення вікон"
 
 #: prefs.js:244
 msgid "General Options"
-msgstr ""
+msgstr "Основні параметри"
 
 #: prefs.js:349 prefs.js:381
 msgid "Gold Sponsors"
@@ -370,52 +370,54 @@ msgstr "Маштаб"
 #: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
 #: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
-msgstr ""
+msgstr "Випадковість"
 
 #: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Вертекальне перевищення"
 
 #: resources/ui/gtk4/Matrix.ui:214 resources/ui/adw/Matrix.ui:146
 msgid "Trail Color"
-msgstr ""
+msgstr "Колір сліду"
 
 #: resources/ui/gtk4/Matrix.ui:248 resources/ui/adw/Matrix.ui:171
 msgid "Tip Color"
-msgstr ""
+msgstr "Колір наконечника"
 
 #: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
-msgstr ""
+msgstr "Гравітація"
 
 #: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
-msgstr ""
+msgstr "Сила удару"
 
 #: resources/ui/gtk4/BrokenGlass.ui:218 resources/ui/adw/BrokenGlass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Розбити від місцезнаходження курсору"
 
 #: resources/ui/gtk4/BrokenGlass.ui:227 resources/ui/adw/BrokenGlass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"Осколки розлетяться в сторону того місця, де знаходився курсор мишки під час "
+"зачинення вікна."
 
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
 #: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "Турбулентність"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Починати від вказівника миші"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Якщо вимкнено, буде вибрано випадкове місце."
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -437,7 +439,7 @@ msgstr "Колір"
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 #: resources/ui/adw/Fire.ui:14
 msgid "Presets"
-msgstr ""
+msgstr "Пресети"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/TVGlitch.ui:168
 #: resources/ui/gtk4/Glitch.ui:168 resources/ui/gtk3/Fire.ui:195
@@ -445,7 +447,7 @@ msgstr ""
 #: resources/ui/adw/Fire.ui:96 resources/ui/adw/TVGlitch.ui:113
 #: resources/ui/adw/Glitch.ui:113
 msgid "Speed"
-msgstr ""
+msgstr "Швидкість"
 
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
 #: resources/ui/adw/Fire.ui:129
@@ -465,17 +467,17 @@ msgstr "Градієнт"
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Хлюпання"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Нахил"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Зрушення"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -488,11 +490,11 @@ msgstr "Розмір пікселя"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Шкала подряпин кігтів"
 
 #: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Кількість подряпин кігтями"
 
 #: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
@@ -506,12 +508,12 @@ msgstr "Колір м'яса"
 #: resources/ui/gtk3/TVGlitch.ui:160 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/TVGlitch.ui:80 resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Сила"
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "Кількість спиць"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
@@ -526,7 +528,7 @@ msgstr "Вертикальний маштаб"
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Ширина лінії сітки"
 
 #: resources/ui/gtk4/Hexagon.ui:168 resources/ui/gtk3/Hexagon.ui:201
 #: resources/ui/adw/Hexagon.ui:113
@@ -536,12 +538,12 @@ msgstr "Колір лінії"
 #: resources/ui/gtk4/Hexagon.ui:202 resources/ui/gtk3/Hexagon.ui:244
 #: resources/ui/adw/Hexagon.ui:138
 msgid "Glow Color"
-msgstr ""
+msgstr "Цвіт свічіння"
 
 #: resources/ui/gtk4/Hexagon.ui:240 resources/ui/gtk3/Hexagon.ui:291
 #: resources/ui/adw/Hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "Адивне змішування"
 
 #: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
 #: resources/ui/adw/Hexagon.ui:164
@@ -570,7 +572,7 @@ msgstr "Анімація відкриття вікна"
 #: resources/ui/gtk4/prefs.ui:81 resources/ui/gtk4/prefs.ui:125
 #: resources/ui/gtk3/prefs.ui:89 resources/ui/gtk3/prefs.ui:153
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "Якщо вибрано декілька, то один обереться випадково."
 
 #: resources/ui/gtk4/prefs.ui:96 resources/ui/gtk4/prefs.ui:140
 #: resources/ui/gtk3/prefs.ui:110 resources/ui/gtk3/prefs.ui:174
@@ -584,51 +586,51 @@ msgstr "Анімація закриття вікна"
 #: resources/ui/gtk4/prefs.ui:156 resources/ui/gtk3/prefs.ui:204
 #: resources/ui/adw/prefs.ui:52
 msgid "Also Add Effects to Dialogs"
-msgstr ""
+msgstr "Також додати ефекти для діалогів"
 
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
 #: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
-msgstr ""
+msgstr "Відключити під час живлення від батареї"
 
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr ""
+msgstr "Відключити у режимі енергозбереження"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Інтенсивність обертання"
 
 #: resources/ui/gtk4/Apparition.ui:168 resources/ui/gtk3/Apparition.ui:216
 #: resources/ui/adw/Apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Інтенсивність трясіння"
 
 #: resources/ui/gtk4/Apparition.ui:214 resources/ui/gtk3/Apparition.ui:265
 #: resources/ui/adw/Apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Інтенсивність втягування"
 
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Кружляння"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Швидкість обертання"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Деталі"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Вибрати Пресет"
 
 #~ msgid "Preview this Effect"
 #~ msgstr "Переглянути цей ефект"
