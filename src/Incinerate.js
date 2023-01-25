@@ -133,22 +133,14 @@ var Incinerate = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Incinerate.ui`);
-
-    // Bind all properties.
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     dialog.bindAdjustment('incinerate-animation-time');
     dialog.bindAdjustment('incinerate-scale');
     dialog.bindAdjustment('incinerate-turbulence');
     dialog.bindSwitch('incinerate-use-pointer');
     dialog.bindColorButton('incinerate-color');
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('incinerate-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

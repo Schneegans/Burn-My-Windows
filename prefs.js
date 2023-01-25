@@ -107,8 +107,6 @@ var PreferencesDialog = class PreferencesDialog {
       this._loadActiveProfile();
       this._updateProfileButton();
     });
-    this._loadActiveProfile();
-    this._updateProfileButton();
 
     // Check whether the power profiles daemon is available - if not, we hide the
     // corresponding settings row.
@@ -144,7 +142,20 @@ var PreferencesDialog = class PreferencesDialog {
       this._ALL_EFFECTS.forEach(effect => {
         const [minMajor, minMinor] = effect.getMinShellVersion();
         if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-          const row = effect.getPreferences(this);
+
+          const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
+          const [hasPrefs] = Gio.resources_get_info(uiFile, 0);
+
+          let row;
+          if (hasPrefs) {
+            // Add the settings page to the builder.
+            this._builder.add_from_resource(uiFile);
+
+            // Add the effect's preferences (if any).
+            row = this._builder.get_object(`${effect.getNick()}-prefs`);
+          } else {
+            row = Adw.ActionRow.new();
+          }
 
           // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
           // not yet exist.
@@ -157,15 +168,17 @@ var PreferencesDialog = class PreferencesDialog {
 
           // Un-expand any previously expanded effect row. This way we ensure that there
           // is only one expanded row at any time.
-          row.connect('notify::expanded', currentRow => {
-            if (currentRow.get_expanded()) {
-              this._effectRows.forEach(row => {
-                if (row != currentRow) {
-                  row.set_expanded(false);
-                }
-              });
-            }
-          });
+          if (hasPrefs) {
+            row.connect('notify::expanded', currentRow => {
+              if (currentRow.get_expanded()) {
+                this._effectRows.forEach(row => {
+                  if (row != currentRow && row.set_expanded) {
+                    row.set_expanded(false);
+                  }
+                });
+              }
+            });
+          }
 
           // The preview button.
           const previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
@@ -179,11 +192,11 @@ var PreferencesDialog = class PreferencesDialog {
             this._previewEffect(effect);
           });
 
-          // Now add the two toggle buttons for enabling and disabling the effect.
+          // Now add the toggle button for enabling and disabling the effect.
           const button = Gtk.Switch.new();
-          button.set_action_name(`prefs.${effect.getNick()}-enable-effect`);
           button.set_tooltip_text(_('Use this effect'));
           button.set_valign(Gtk.Align.CENTER);
+          this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
 
           row.add_prefix(button);
           group.add(row);
@@ -225,10 +238,18 @@ var PreferencesDialog = class PreferencesDialog {
           page.margin_top    = 60;
           page.margin_bottom = 60;
 
-          // Add the effect's preferences (if any).
-          const preferences = effect.getPreferences(this);
-          if (preferences) {
-            this.gtkBoxAppend(page, preferences);
+          const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
+          const [hasPrefs] = Gio.resources_get_info(uiFile);
+          if (hasPrefs) {
+
+            // Add the settings page to the builder.
+            this._builder.add_from_resource(uiFile);
+
+            // Add the effect's preferences (if any).
+            const prefs = this._builder.get_object(`${effect.getNick()}-prefs`);
+            if (prefs) {
+              this.gtkBoxAppend(page, prefs);
+            }
           }
 
           stack.add_titled(page, effect.getNick(), effect.getLabel());
@@ -243,6 +264,9 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
+
+      this._loadActiveProfile();
+      this._updateProfileButton();
 
       // Populate the menu with actions.
       const group = Gio.SimpleActionGroup.new();
@@ -391,21 +415,8 @@ var PreferencesDialog = class PreferencesDialog {
         group.add_action(aboutAction);
       }
 
-      // Bind all the profile-related actions.
+      // Setup all the profile-related actions.
       {
-        const setupProfileOption = (settingsKey) => {
-          this.bindComboRow(settingsKey);
-          this._profileSettings.connect('changed::' + settingsKey,
-                                        () => this._updateProfileButton());
-        };
-
-        setupProfileOption('profile-animation-type');
-        setupProfileOption('profile-window-type');
-        setupProfileOption('profile-desktop-style');
-        setupProfileOption('profile-power-mode');
-        setupProfileOption('profile-power-profile');
-
-
         const profileAction = this._settings.create_action('active-profile');
         group.add_action(profileAction);
 
@@ -415,7 +426,6 @@ var PreferencesDialog = class PreferencesDialog {
           this._settings.set_string('active-profile', profile);
           this._builder.get_object('edit-profile-button').active = true;
         });
-
         group.add_action(newProfileAction);
 
         const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
@@ -436,26 +446,6 @@ var PreferencesDialog = class PreferencesDialog {
         });
 
         group.add_action(deleteProfileAction);
-      }
-
-      // Populate the enabled-effects drop-down menu.
-      {
-        this._ALL_EFFECTS.forEach(effect => {
-          const [minMajor, minMinor] = effect.getMinShellVersion();
-          if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-            const actionName = effect.getNick() + '-enable-effect';
-            const action     = this._profileSettings.create_action(actionName);
-            group.add_action(action);
-
-            // The menu only exists if not using libadwaita. With libadwaita, individual
-            // ToggleButtons are used for triggering the above actions.
-            if (!utils.isADW()) {
-              const menu  = this._builder.get_object('enabled-effects-menu');
-              const label = effect.getLabel();
-              menu.append_item(Gio.MenuItem.new(label, 'prefs.' + actionName));
-            }
-          }
-        });
       }
     });
 
@@ -567,6 +557,29 @@ var PreferencesDialog = class PreferencesDialog {
     utils.debug('loading ' + activeProfile);
 
     this._profileSettings = utils.getProfileSettings(activeProfile);
+
+    // Bind all the profile-related settings.
+    {
+      const setupProfileOption = (settingsKey) => {
+        this.bindComboRow(settingsKey);
+        this._profileSettings.connect('changed::' + settingsKey,
+                                      () => this._updateProfileButton());
+      };
+
+      setupProfileOption('profile-animation-type');
+      setupProfileOption('profile-window-type');
+      setupProfileOption('profile-desktop-style');
+      setupProfileOption('profile-power-mode');
+      setupProfileOption('profile-power-profile');
+    }
+
+    this._ALL_EFFECTS.forEach(effect => {
+      const [minMajor, minMinor] = effect.getMinShellVersion();
+      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+        this.bindSwitch(`${effect.getNick()}-enable-effect`);
+        effect.bindPreferences(this);
+      }
+    });
   }
 
   _updateProfileButton() {

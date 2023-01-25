@@ -196,7 +196,8 @@ var SimpleFade = class {
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
-  // (e.g. '*-animation-time').
+  // (e.g. '*-animation-time'). Also, the shader file and the settings UI files should be
+  // named likes this.
   getNick() {
     return 'simple-fade';
   }
@@ -209,10 +210,9 @@ var SimpleFade = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // binds all properties to the settings and appends the page to the main stack of the
-  // preferences dialog.
-  getPreferences(dialog) {
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
     return null;
   }
@@ -265,9 +265,9 @@ There should be two sliders in this example: The animation duration and the widt
 If your effect supports GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide three `*.ui` files for this.
 This is because starting with GNOME Shell 40, the preference dialog uses GTK4, before it used to use GTK3.
 Starting with GNOME Shell 42, it uses `libadwaita` which requires different UI files again.
-We will load the respective file in the `getPreferences()` method of your new effect class.
+We will load the respective file in the `bindPreferences()` method of your new effect class.
 
-Just save the code below to `resources/ui/gtk3/SimpleFade.ui`, `resources/ui/gtk4/SimpleFade.ui`, and `resources/ui/adw/SimpleFade.ui` respectively.
+Just save the code below to `resources/ui/gtk3/simple-fade.ui`, `resources/ui/gtk4/simple-fade.ui`, and `resources/ui/adw/simple-fade.ui` respectively.
 Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
 
 <details>
@@ -641,21 +641,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 ### Loading the Preferences Page
 
-In order to load the above `*.ui` files, add the following code to your effect's `getPreferences()` method.
+In order to load the above `*.ui` files, add the following code to your effect's `bindPreferences()` method.
 
 ```javascript
-static getPreferences(dialog) {
-
-  // Add the settings page to the builder.
-  dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/SimpleFade.ui`);
-
+bindPreferences(dialog) {
   // These connect the settings to the UI elements. Have a look at prefs.js
   // on how to bind other types of UI elements.
   dialog.bindAdjustment('simple-fade-animation-time');
   dialog.bindAdjustment('simple-fade-width');
-
-  // Finally, return the new settings page.
-  return dialog.getBuilder().get_object('simple-fade-prefs');
 }
 ```
 

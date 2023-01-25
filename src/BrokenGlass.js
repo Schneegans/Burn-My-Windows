@@ -128,7 +128,8 @@ var BrokenGlass = class {
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
-  // (e.g. '*-animation-time').
+  // (e.g. '*-animation-time'). Also, the shader file and the settings UI files should be
+  // named likes this.
   getNick() {
     return 'broken-glass';
   }
@@ -141,22 +142,14 @@ var BrokenGlass = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/BrokenGlass.ui`);
-
-    // Bind all properties.
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     dialog.bindAdjustment('broken-glass-animation-time');
     dialog.bindAdjustment('broken-glass-scale');
     dialog.bindAdjustment('broken-glass-gravity');
     dialog.bindAdjustment('broken-glass-blow-force');
     dialog.bindSwitch('broken-glass-use-pointer');
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('broken-glass-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

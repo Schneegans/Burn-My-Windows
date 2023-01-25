@@ -83,22 +83,14 @@ var Apparition = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Apparition.ui`);
-
-    // Bind all properties.
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     dialog.bindAdjustment('apparition-randomness');
     dialog.bindAdjustment('apparition-animation-time');
     dialog.bindAdjustment('apparition-twirl-intensity');
     dialog.bindAdjustment('apparition-shake-intensity');
     dialog.bindAdjustment('apparition-suction-intensity');
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('apparition-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

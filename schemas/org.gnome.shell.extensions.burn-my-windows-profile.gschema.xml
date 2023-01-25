@@ -602,22 +602,16 @@ SPDX-License-Identifier: CC0-1.0
     <!-- TV Glitch Options                                                             -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="tv-glitch-close-effect" type="b">
+    <key name="tv-glitch-enable-effect" type="b">
       <default>false</default>
-      <summary>TV Glitch Close Effect</summary>
-      <description>Use the Glitch effect for window closing.</description>
-    </key>
-
-    <key name="tv-glitch-open-effect" type="b">
-      <default>false</default>
-      <summary>TV Glitch Open Effect</summary>
-      <description>Use the Glitch effect for window opening.</description>
+      <summary>TV Glitch Enable Effect</summary>
+      <description>Use the TV Glitch effect.</description>
     </key>
 
     <key name="tv-glitch-animation-time" type="i">
       <default>750</default>
       <summary>TV Glitch Animation Time</summary>
-      <description>The time the Glitch effect takes.</description>
+      <description>The time the TV Glitch effect takes.</description>
     </key>
 
     <key name="tv-glitch-scale" type="d">

@@ -116,23 +116,15 @@ var Matrix = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Matrix.ui`);
-
-    // Bind all properties.
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     dialog.bindAdjustment('matrix-animation-time');
     dialog.bindAdjustment('matrix-scale');
     dialog.bindAdjustment('matrix-randomness');
     dialog.bindAdjustment('matrix-overshoot');
     dialog.bindColorButton('matrix-trail-color');
     dialog.bindColorButton('matrix-tip-color');
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('matrix-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

@@ -80,22 +80,14 @@ var Glide = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Glide.ui`);
-
-    // Bind all properties.
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     dialog.bindAdjustment('glide-animation-time');
     dialog.bindAdjustment('glide-scale');
     dialog.bindAdjustment('glide-squish');
     dialog.bindAdjustment('glide-tilt');
     dialog.bindAdjustment('glide-shift');
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('glide-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

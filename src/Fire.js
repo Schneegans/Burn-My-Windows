@@ -102,12 +102,9 @@ var Fire = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Fire.ui`);
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
 
     // Bind all properties.
     dialog.bindAdjustment('fire-animation-time');
@@ -131,9 +128,6 @@ var Fire = class {
 
     // Initialize the fire-preset dropdown.
     this._createFirePresets(dialog);
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('fire-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js

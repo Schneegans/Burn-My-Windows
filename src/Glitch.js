@@ -91,22 +91,14 @@ var Glitch = class {
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // and binds all properties to the settings.
-  getPreferences(dialog) {
-
-    // Add the settings page to the builder.
-    dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/Glitch.ui`);
-
-    // Bind all properties.
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  bindPreferences(dialog) {
     dialog.bindAdjustment('glitch-animation-time');
     dialog.bindAdjustment('glitch-scale');
     dialog.bindAdjustment('glitch-speed');
     dialog.bindAdjustment('glitch-strength');
     dialog.bindColorButton('glitch-color');
-
-    // Finally, return the new settings page.
-    return dialog.getBuilder().get_object('glitch-prefs');
   }
 
   // ---------------------------------------------------------------- API for extension.js
