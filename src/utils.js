@@ -163,7 +163,8 @@ function listProfiles() {
     }
   }
 
-  return profiles;
+
+  return profiles.sort();
 }
 
 // Based on
