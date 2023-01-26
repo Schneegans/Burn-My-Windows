@@ -32,7 +32,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </child>
     <child>
       <object class="GtkToggleButton" id="edit-profile-button">
-        <property name="icon-name">edit-symbolic</property>
+        <property name="icon-name">bmw-edit-profile-symbolic</property>
         <property name="valign">center</property>
 
         <binding name="active">
