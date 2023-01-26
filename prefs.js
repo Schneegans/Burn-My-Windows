@@ -552,26 +552,24 @@ var PreferencesDialog = class PreferencesDialog {
     if (!profiles.includes(activeProfile)) {
       activeProfile = profiles[0];
       this._settings.set_string('active-profile', activeProfile);
+      return;
     }
 
     utils.debug('loading ' + activeProfile);
 
     this._profileSettings = utils.getProfileSettings(activeProfile);
 
-    // Bind all the profile-related settings.
-    {
-      const setupProfileOption = (settingsKey) => {
-        this.bindComboRow(settingsKey);
-        this._profileSettings.connect('changed::' + settingsKey,
-                                      () => this._updateProfileButton());
-      };
+    const setupProfileOption = (settingsKey) => {
+      this.bindComboRow(settingsKey);
+      this._profileSettings.connect('changed::' + settingsKey,
+                                    () => this._updateProfileButton());
+    };
 
-      setupProfileOption('profile-animation-type');
-      setupProfileOption('profile-window-type');
-      setupProfileOption('profile-desktop-style');
-      setupProfileOption('profile-power-mode');
-      setupProfileOption('profile-power-profile');
-    }
+    setupProfileOption('profile-animation-type');
+    setupProfileOption('profile-window-type');
+    setupProfileOption('profile-desktop-style');
+    setupProfileOption('profile-power-mode');
+    setupProfileOption('profile-power-profile');
 
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
@@ -580,6 +578,8 @@ var PreferencesDialog = class PreferencesDialog {
         effect.bindPreferences(this);
       }
     });
+
+    utils.debug('loading done');
   }
 
   _updateProfileButton() {
@@ -606,10 +606,11 @@ var PreferencesDialog = class PreferencesDialog {
   // key when clicked.
   _bindResetButton(settingsKey) {
     const resetButton = this._builder.get_object('reset-' + settingsKey);
-    if (resetButton) {
+    if (resetButton && !resetButton._isConnected) {
       resetButton.connect('clicked', () => {
         this._profileSettings.reset(settingsKey);
       });
+      resetButton._isConnected = true;
     }
   }
 
@@ -619,6 +620,7 @@ var PreferencesDialog = class PreferencesDialog {
     const object = this._builder.get_object(settingsKey);
 
     if (object) {
+      Gio.Settings.unbind(object, property);
       this._profileSettings.bind(settingsKey, object, property,
                                  Gio.SettingsBindFlags.DEFAULT);
     }
