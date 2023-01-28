@@ -29,6 +29,7 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
+const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 
 // This template widget class is defined at the bottom of this file.
 var BurnMyWindowsEffectPage = null;
@@ -102,10 +103,13 @@ var PreferencesDialog = class PreferencesDialog {
     // Store a reference to the general settings object.
     this._settings = ExtensionUtils.getSettings();
 
+    // This tracks all available effect profiles.
+    this._profileManager             = new ProfileManager();
+    this._profileSettingsConnections = [];
+
     // Load the current effect profile. If there is none, we create a default profile.
     this._settings.connect('changed::active-profile', () => {
       this._loadActiveProfile();
-      this._updateProfileButton();
     });
 
     // Check whether the power profiles daemon is available - if not, we hide the
@@ -266,7 +270,7 @@ var PreferencesDialog = class PreferencesDialog {
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
 
       this._loadActiveProfile();
-      this._updateProfileButton();
+      this._updateProfileMenu();
 
       // Populate the menu with actions.
       const group = Gio.SimpleActionGroup.new();
@@ -417,14 +421,21 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Setup all the profile-related actions.
       {
-        const profileAction = this._settings.create_action('active-profile');
-        group.add_action(profileAction);
+        const activeProfileAction = this._settings.create_action('active-profile');
+        group.add_action(activeProfileAction);
 
         const newProfileAction = Gio.SimpleAction.new('profile-new', null);
         newProfileAction.connect('activate', () => {
-          const profile = utils.createProfile();
-          this._settings.set_string('active-profile', profile);
+          // Create a new profile and make it the active one.
+          const profile = this._profileManager.createProfile();
+          this._settings.set_string('active-profile', profile.path);
+
+          // Start editing the profile.
           this._builder.get_object('edit-profile-button').active = true;
+
+          // The number of profiles has changed, so we have to update the profile
+          // selection menu.
+          this._updateProfileMenu();
         });
         group.add_action(newProfileAction);
 
@@ -437,11 +448,19 @@ var PreferencesDialog = class PreferencesDialog {
         deleteProfileDialog.set_transient_for(window);
         deleteProfileDialog.connect('response', (d, response) => {
           if (response == 'delete') {
+            // Stop editing the current profile.
             this._builder.get_object('edit-profile-button').active = false;
-            const profile = this._settings.get_string('active-profile');
-            utils.deleteProfile(profile);
-            this._loadActiveProfile();
-            this._updateProfileButton();
+
+            // Delete the currently active profile.
+            this._profileManager.deleteProfile(this._activeProfile.path);
+
+            // Select another one.
+            this._settings.set_string('active-profile',
+                                      this._profileManager.getProfiles()[0].path);
+
+            // The number of profiles has changed, so we have to update the profile
+            // selection menu.
+            this._updateProfileMenu();
           }
         });
 
@@ -472,7 +491,7 @@ var PreferencesDialog = class PreferencesDialog {
 
   // Returns a Gio.Settings object for the current effect profile.
   getProfileSettings() {
-    return this._profileSettings;
+    return this._activeProfile.settings;
   }
 
   // Returns the widget used for the settings of this extension.
@@ -508,18 +527,23 @@ var PreferencesDialog = class PreferencesDialog {
     if (button) {
 
       // Update the settings when the color is modified.
-      button.connect('color-set', () => {
-        this._profileSettings.set_string(settingsKey, button.get_rgba().to_string());
-      });
+      if (!button._isConnected) {
+        button.connect('color-set', () => {
+          this.getProfileSettings().set_string(settingsKey,
+                                               button.get_rgba().to_string());
+        });
+
+        button._isConnected = true;
+      }
 
       // Update the button state when the settings change.
       const settingSignalHandler = () => {
         const rgba = new Gdk.RGBA();
-        rgba.parse(this._profileSettings.get_string(settingsKey));
+        rgba.parse(this.getProfileSettings().get_string(settingsKey));
         button.rgba = rgba;
       };
 
-      this._profileSettings.connect('changed::' + settingsKey, settingSignalHandler);
+      this._connectProfileSetting('changed::' + settingsKey, settingSignalHandler);
 
       // Initialize the button with the state in the settings.
       settingSignalHandler();
@@ -543,26 +567,27 @@ var PreferencesDialog = class PreferencesDialog {
 
   _loadActiveProfile() {
 
-    let profiles = utils.listProfiles();
-    if (profiles.length == 0) {
-      profiles = [utils.createProfile()];
-    }
+    this._disconnectProfileSettings();
 
-    let activeProfile = this._settings.get_string('active-profile');
-    if (!profiles.includes(activeProfile)) {
-      activeProfile = profiles[0];
-      this._settings.set_string('active-profile', activeProfile);
+    const allProfiles   = this._profileManager.getProfiles();
+    const path          = this._settings.get_string('active-profile');
+    this._activeProfile = allProfiles.find(p => p.path == path);
+
+    if (!this._activeProfile) {
+      utils.debug('active profile not found!!!');
+      this._activeProfile = allProfiles[0];
+      this._settings.set_string('active-profile', this._activeProfile.path);
       return;
     }
 
-    utils.debug('loading ' + activeProfile);
-
-    this._profileSettings = utils.getProfileSettings(activeProfile);
+    utils.debug('loading ' + this._activeProfile.path);
 
     const setupProfileOption = (settingsKey) => {
       this.bindComboRow(settingsKey);
-      this._profileSettings.connect('changed::' + settingsKey,
-                                    () => this._updateProfileButton());
+      this._connectProfileSetting('changed::' + settingsKey, () => {
+        this._updateProfileButton();
+        this._updateProfileMenu();
+      });
     };
 
     setupProfileOption('profile-animation-type');
@@ -579,27 +604,42 @@ var PreferencesDialog = class PreferencesDialog {
       }
     });
 
+    this._updateProfileButton();
+
     utils.debug('loading done');
   }
 
   _updateProfileButton() {
-    const activeProfile = this._settings.get_string('active-profile');
-
+    utils.debug('updating profile button');
     this._builder.get_object('choose-profile-button').label =
-      utils.getProfileName(activeProfile);
+      this._profileManager.getProfileName(this.getProfileSettings());
+  }
 
+  _updateProfileMenu() {
+    utils.debug('updating profile menu');
     const profileSection = this._builder.get_object('profile-section');
     profileSection.remove_all();
 
-    const profiles = utils.listProfiles();
+    const profiles = this._profileManager.getProfiles();
 
     profiles.forEach(profile => {
-      const label = utils.getProfileName(profile);
+      const label = this._profileManager.getProfileName(profile.settings);
       const item  = Gio.MenuItem.new(label, 'prefs.active-profile');
       item.set_action_and_target_value('prefs.active-profile',
-                                       GLib.Variant.new_string(profile));
+                                       GLib.Variant.new_string(profile.path));
       profileSection.append_item(item);
     });
+  }
+
+  _connectProfileSetting(key, callback) {
+    this._profileSettingsConnections.push(
+      this.getProfileSettings().connect(key, callback));
+  }
+
+  _disconnectProfileSettings() {
+    this._profileSettingsConnections.forEach(c =>
+                                               this.getProfileSettings().disconnect(c));
+    this._profileSettingsConnections = [];
   }
 
   // Searches for a reset button for the given settings key and make it reset the settings
@@ -608,7 +648,7 @@ var PreferencesDialog = class PreferencesDialog {
     const resetButton = this._builder.get_object('reset-' + settingsKey);
     if (resetButton && !resetButton._isConnected) {
       resetButton.connect('clicked', () => {
-        this._profileSettings.reset(settingsKey);
+        this.getProfileSettings().reset(settingsKey);
       });
       resetButton._isConnected = true;
     }
@@ -621,8 +661,8 @@ var PreferencesDialog = class PreferencesDialog {
 
     if (object) {
       Gio.Settings.unbind(object, property);
-      this._profileSettings.bind(settingsKey, object, property,
-                                 Gio.SettingsBindFlags.DEFAULT);
+      this.getProfileSettings().bind(settingsKey, object, property,
+                                     Gio.SettingsBindFlags.DEFAULT);
     }
 
     this._bindResetButton(settingsKey);
