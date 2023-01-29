@@ -31,6 +31,7 @@ try {
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
+const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
@@ -79,6 +80,15 @@ class Extension {
 
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
+
+    // We reload all effect profiles whenever the currently edited profile in the
+    // preferences dialog changes. This is most likely a bit too often, but it will also
+    // happen whenever a new profile is created and whenever an old profile is deleted.
+    this._settings.connect('changed::active-profile', () => {
+      this._loadProfiles();
+    });
+
+    this._loadProfiles();
 
     // We will use extensionThis to refer to the extension inside the patched methods.
     const extensionThis = this;
@@ -363,6 +373,32 @@ class Extension {
 
   // ----------------------------------------------------------------------- private stuff
 
+  _loadProfiles() {
+    const profileManager = new ProfileManager();
+
+    utils.debug('load profiles!');
+
+    const updatePriority = (p) => {
+      utils.debug('sort profiles!');
+      p.priority = profileManager.getProfilePriority(p.settings);
+      this._profiles.sort((a, b) => b.priority - a.priority);
+    };
+
+    this._profiles = profileManager.getProfiles();
+    this._profiles.forEach(p => {
+      p.settings.connect('changed::profile-animation-type', () => updatePriority(p));
+      p.settings.connect('changed::profile-window-type', () => updatePriority(p));
+      p.settings.connect('changed::profile-desktop-style', () => updatePriority(p));
+      p.settings.connect('changed::profile-power-mode', () => updatePriority(p));
+      p.settings.connect('changed::profile-power-profile', () => updatePriority(p));
+
+      p.priority = profileManager.getProfilePriority(p.settings);
+    });
+
+    utils.debug('sort profiles!');
+    this._profiles.sort((a, b) => b.priority - a.priority);
+  }
+
   // This method adds one of the configured effects to the given actor. If forOpening is
   // set to true, a effect from the enabled window-open animations is chosen, else an
   // enabled window-close animation is used. This will also tweak the transitions of the
@@ -379,7 +415,6 @@ class Extension {
       return;
     }
 
-    const previewNick = this._settings.get_string('preview-effect');
 
     // TODO!.
     // We may have to do nothing if running on battery power or if in power-save mode.
@@ -407,34 +442,52 @@ class Extension {
 
     // ------------------------------------------------------------------ choose an effect
 
-    // Now we chose a random effect from all enabled effects.
-    let effect = null;
+    // Usually, we use the effect profile with the highest priority which matches the
+    // current circumstances. From this profile, we choose a random effect. However, if an
+    // effect is to be previewed, we choose the currently edited profile regardless of the
+    // circumstances.
+    let profile = null;
+    let effect  = null;
 
-    // First we check if an effect is to be previewed.
+    // Hence, we first check if an effect is to be previewed.
+    const previewNick = this._settings.get_string('preview-effect');
+
     if (previewNick != '') {
-      effect = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
+      const activeProfile = this._settings.get_string('active-profile');
+      effect  = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
+      profile = this._profiles.find(p => p.path == activeProfile);
 
-      // Only preview the effect once.
-      if (!forOpening) {
+      // Only preview the effect until the preview window is closed.
+      if (!profile || !forOpening) {
         this._settings.set_string('preview-effect', '');
       }
     }
-    // Else we choose a random effect from all enabled effects.
+    // If no effect is previewed, we use the effect profile with the highest priority
+    // which matches the current circumstances. From this profile, we choose a random
+    // effect.
     else {
 
-      // Therefore, we first create a list of all currently enabled effects.
-      const enabled = this._ALL_EFFECTS.filter(effect => {
-        return this._settings.get_boolean(`${effect.getNick()}-enable-effect`);
+      const profile = this._profiles.find(p => {
+        utils.debug('PRIO: ' + p.priority);
+        return true;
       });
 
-      // And then choose a random effect.
-      if (enabled.length > 0) {
-        effect = enabled[Math.floor(Math.random() * enabled.length)];
+      if (profile) {
+
+        // Create a list of all enabled effects of this profile.
+        const enabled = this._ALL_EFFECTS.filter(effect => {
+          return profile.settings.get_boolean(`${effect.getNick()}-enable-effect`);
+        });
+
+        // And then choose a random effect.
+        if (enabled.length > 0) {
+          effect = enabled[Math.floor(Math.random() * enabled.length)];
+        }
       }
     }
 
     // If nothing was enabled, we have to do nothing :)
-    if (effect == null) {
+    if (!effect || !profile) {
       this._fixAnimationTimes(isDialogWindow, forOpening, null);
       return;
     }
@@ -449,12 +502,12 @@ class Extension {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.getActorScale(this._settings, forOpening, actor);
+    const actorScale = effect.getActorScale(profile.settings, forOpening, actor);
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.
     const duration =
-      testMode ? 5000 : this._settings.get_int(effect.getNick() + '-animation-time');
+      testMode ? 5000 : profile.settings.get_int(effect.getNick() + '-animation-time');
 
     // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);

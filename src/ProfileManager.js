@@ -124,6 +124,19 @@ var ProfileManager = class {
     });
   }
 
+  // Each profile has a priority. It is higher, the more specific it is.
+  getProfilePriority(settings) {
+    let priority = 0;
+
+    if (settings.get_int('profile-animation-type') > 0) ++priority;
+    if (settings.get_int('profile-window-type') > 0) ++priority;
+    if (settings.get_int('profile-desktop-style') > 0) ++priority;
+    if (settings.get_int('profile-power-mode') > 0) ++priority;
+    if (settings.get_int('profile-power-profile') > 0) ++priority;
+
+    return priority;
+  }
+
   // Profiles are named according to their configuration. This method returns a localized
   // string describing the settings of the profile.
   getProfileName(settings) {
