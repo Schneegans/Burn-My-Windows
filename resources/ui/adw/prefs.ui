@@ -200,7 +200,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Effect Settings</property>
         <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
 
-        <child type="header-suffix">
+        <!-- <child type="header-suffix">
           <object class="GtkBox">
             <property name="valign">center</property>
             <style>
@@ -220,7 +220,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             </child>
 
           </object>
-        </child>
+        </child> -->
       </object>
     </child>
   </object>
