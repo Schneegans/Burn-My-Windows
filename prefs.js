@@ -805,6 +805,7 @@ function buildPrefsWidget() {
 }
 
 function fillPreferencesWindow(window) {
+  window.set_default_size(700, 700);
   var dialog = new PreferencesDialog();
   window.add(dialog.getWidget());
 }
