@@ -50,7 +50,7 @@ var ProfileManager = class {
   // profile will be created.
   getProfiles() {
     if (this._profiles.length == 0) {
-      this._profiles.push(this._createProfile());
+      this.createProfile();
     }
 
     return this._profiles;
