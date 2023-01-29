@@ -104,8 +104,11 @@ var PreferencesDialog = class PreferencesDialog {
     this._settings = ExtensionUtils.getSettings();
 
     // This tracks all available effect profiles.
-    this._profileManager             = new ProfileManager();
-    this._profileSettingsConnections = [];
+    this._profileManager = new ProfileManager();
+
+    // This is used to track all connections to properties of the current effect profile.
+    // Whenever the current effect profile changes, all connections are disconnected.
+    this._profileConnections = [];
 
     // Load the current effect profile. If there is none, we create a default profile.
     this._settings.connect('changed::active-profile', () => {
@@ -421,12 +424,13 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Setup all the profile-related actions.
       {
+        // Allow switching the current profile.
         const activeProfileAction = this._settings.create_action('active-profile');
         group.add_action(activeProfileAction);
 
+        // This action creates a new profile and makes it the active one.
         const newProfileAction = Gio.SimpleAction.new('profile-new', null);
         newProfileAction.connect('activate', () => {
-          // Create a new profile and make it the active one.
           const profile = this._profileManager.createProfile();
           this._settings.set_string('active-profile', profile.path);
 
@@ -439,6 +443,8 @@ var PreferencesDialog = class PreferencesDialog {
         });
         group.add_action(newProfileAction);
 
+        // This action shows a confirmation dialog. Upon user approval, the currently
+        // active profile is deleted.
         const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
         deleteProfileAction.connect('activate', () => {
           this._builder.get_object('profile-delete-dialog').show();
@@ -565,23 +571,26 @@ var PreferencesDialog = class PreferencesDialog {
 
   // ----------------------------------------------------------------------- private stuff
 
+  // This loads all settings from the profile given in the settings key 'active-profile'.
   _loadActiveProfile() {
 
+    // Disconnect any connection to the previously active profile.
     this._disconnectProfileSettings();
 
+    // Find the active profile in the list of all profiles.
     const allProfiles   = this._profileManager.getProfiles();
     const path          = this._settings.get_string('active-profile');
     this._activeProfile = allProfiles.find(p => p.path == path);
 
+    // If, for whatever reason, it is not found, select the first one. Setting the
+    // settings key will trigger this method again.
     if (!this._activeProfile) {
-      utils.debug('active profile not found!!!');
       this._activeProfile = allProfiles[0];
       this._settings.set_string('active-profile', this._activeProfile.path);
       return;
     }
 
-    utils.debug('loading ' + this._activeProfile.path);
-
+    // Connect all profile options.
     const setupProfileOption = (settingsKey) => {
       this.bindComboRow(settingsKey);
       this._connectProfileSetting('changed::' + settingsKey, () => {
@@ -596,6 +605,7 @@ var PreferencesDialog = class PreferencesDialog {
     setupProfileOption('profile-power-mode');
     setupProfileOption('profile-power-profile');
 
+    // Connect all effect settings.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
@@ -604,25 +614,29 @@ var PreferencesDialog = class PreferencesDialog {
       }
     });
 
+    // Update the label in the profile-select button.
     this._updateProfileButton();
-
-    utils.debug('loading done');
   }
 
+  // This updates the label of the profile-selection button according to the currently
+  // active profile. It's called whenever the active profile is changed or whenever a
+  // configuration option of the profile is changed.
   _updateProfileButton() {
-    utils.debug('updating profile button');
     this._builder.get_object('choose-profile-button').label =
       this._profileManager.getProfileName(this.getProfileSettings());
   }
 
+  // This updates the list of available profiles in the dropdown of the profile-selection
+  // button. It's called whenever one of the configuration option of the currently active
+  // profile is changed, or whenever a profile is added / removed.
   _updateProfileMenu() {
-    utils.debug('updating profile menu');
+
+    // First, clear the menu section.
     const profileSection = this._builder.get_object('profile-section');
     profileSection.remove_all();
 
-    const profiles = this._profileManager.getProfiles();
-
-    profiles.forEach(profile => {
+    // Then add an entry for each available profile.
+    this._profileManager.getProfiles().forEach(profile => {
       const label = this._profileManager.getProfileName(profile.settings);
       const item  = Gio.MenuItem.new(label, 'prefs.active-profile');
       item.set_action_and_target_value('prefs.active-profile',
@@ -631,15 +645,18 @@ var PreferencesDialog = class PreferencesDialog {
     });
   }
 
+  // This wrapper connects a given callback to a profile settings key. Use this instead of
+  // the direct connect() call on the profile settings to make sure that the callback is
+  // disconnected when the active profile changes.
   _connectProfileSetting(key, callback) {
-    this._profileSettingsConnections.push(
-      this.getProfileSettings().connect(key, callback));
+    this._profileConnections.push(this.getProfileSettings().connect(key, callback));
   }
 
+  // This is called whenever the currently edited effect profile changes. It unbinds all
+  // callbacks bound with the above method before.
   _disconnectProfileSettings() {
-    this._profileSettingsConnections.forEach(c =>
-                                               this.getProfileSettings().disconnect(c));
-    this._profileSettingsConnections = [];
+    this._profileConnections.forEach(c => this.getProfileSettings().disconnect(c));
+    this._profileConnections = [];
   }
 
   // Searches for a reset button for the given settings key and make it reset the settings
@@ -660,6 +677,7 @@ var PreferencesDialog = class PreferencesDialog {
     const object = this._builder.get_object(settingsKey);
 
     if (object) {
+      // Unbind any previous binding (potentially to a previously edited profile).
       Gio.Settings.unbind(object, property);
       this.getProfileSettings().bind(settingsKey, object, property,
                                      Gio.SettingsBindFlags.DEFAULT);
