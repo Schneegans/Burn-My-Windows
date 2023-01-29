@@ -9,7 +9,7 @@ DOMAIN   := schneegans.github.com
 ZIP_NAME := $(NAME)@$(DOMAIN).zip
 
 # Some of the recipes below depend on some of these files.
-JS_FILES       = $(wildcard src/*.js extension.js prefs.js)
+JS_FILES       = $(wildcard src/*.js src/*/*.js extension.js prefs.js)
 UI_FILES       = $(shell find resources -type f -and \( -name "*.ui" \))
 RESOURCE_FILES = $(shell find resources -mindepth 2 -type f)
 LOCALES_PO     = $(wildcard po/*.po)
