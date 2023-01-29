@@ -44,10 +44,7 @@ var Apparition = class {
       shader._uRandomness = shader.get_uniform_location('uRandomness');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
-        // If we are performing an integration tests, we use a fixed seed.
-        const testMode = settings.get_boolean('test-mode');
-
+      shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         // clang-format off
         shader.set_uniform_float(shader._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
         shader.set_uniform_float(shader._uShake,      1, [settings.get_double('apparition-shake-intensity')]);

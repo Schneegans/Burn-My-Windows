@@ -521,7 +521,8 @@ class Extension {
     actor.add_effect_with_name('burn-my-windows-effect', shader);
 
     // Set one-time uniforms.
-    shader.beginAnimation(this._settings, forOpening, duration * 0.001, actor);
+    shader.beginAnimation(profile.settings, forOpening, testMode, duration * 0.001,
+                          actor);
 
     // Set other uniforms each frame.
     transition.connect('new-frame', (t) => {

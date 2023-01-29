@@ -51,39 +51,39 @@ var Incinerate = class {
       shader._uStartPos   = shader.get_uniform_location('uStartPos');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
-        // If we are currently performing integration test, the animation uses a fixed
-        // seed.
-        const testMode = settings.get_boolean('test-mode');
-        let seed       = [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()];
+      shader.connect(
+        'begin-animation', (shader, settings, forOpening, testMode, actor) => {
+          // If we are currently performing integration test, the animation uses a fixed
+          // seed.
+          let seed = [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()];
 
-        // If this option is set, we use the mouse pointer position. Because the actor
-        // position may change after the begin-animation signal is called, we set the
-        // uStartPos uniform during the update callback.
-        if (settings.get_boolean('incinerate-use-pointer')) {
-          this._startPointerPos = global.get_pointer();
-          this._actor           = actor;
+          // If this option is set, we use the mouse pointer position. Because the actor
+          // position may change after the begin-animation signal is called, we set the
+          // uStartPos uniform during the update callback.
+          if (settings.get_boolean('incinerate-use-pointer')) {
+            this._startPointerPos = global.get_pointer();
+            this._actor           = actor;
 
-        } else {
-          // Else, a random position along the window boundary is used as start position
-          // for the incinerate effect.
-          let startPos = seed[0] > seed[1] ? [seed[0], Math.floor(seed[1] + 0.5)] :
-                                             [Math.floor(seed[0] + 0.5), seed[1]];
+          } else {
+            // Else, a random position along the window boundary is used as start position
+            // for the incinerate effect.
+            let startPos = seed[0] > seed[1] ? [seed[0], Math.floor(seed[1] + 0.5)] :
+                                               [Math.floor(seed[0] + 0.5), seed[1]];
 
-          shader.set_uniform_float(shader._uStartPos, 2, startPos);
+            shader.set_uniform_float(shader._uStartPos, 2, startPos);
 
-          this._startPointerPos = null;
-        }
+            this._startPointerPos = null;
+          }
 
-        const c = Clutter.Color.from_string(settings.get_string('incinerate-color'))[1];
+          const c = Clutter.Color.from_string(settings.get_string('incinerate-color'))[1];
 
-        // clang-format off
-        shader.set_uniform_float(shader._uSeed,       2, seed);
-        shader.set_uniform_float(shader._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
-        shader.set_uniform_float(shader._uScale,      1, [settings.get_double('incinerate-scale')]);
-        shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('incinerate-turbulence')]);
-        // clang-format on
-      });
+          // clang-format off
+          shader.set_uniform_float(shader._uSeed,       2, seed);
+          shader.set_uniform_float(shader._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
+          shader.set_uniform_float(shader._uScale,      1, [settings.get_double('incinerate-scale')]);
+          shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('incinerate-turbulence')]);
+          // clang-format on
+        });
 
       // If the mouse pointer position is used as start position, we set the uStartPos
       // uniform during the update callback as the actor position may not be set up

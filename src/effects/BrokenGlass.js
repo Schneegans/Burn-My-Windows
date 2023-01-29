@@ -70,34 +70,31 @@ var BrokenGlass = class {
       shader._uGravity      = shader.get_uniform_location('uGravity');
 
       // And update all uniforms at the start of each animation.
-      shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
-        // Usually, the shards fly away from the center of the window.
-        let epicenterX = 0.5;
-        let epicenterY = 0.5;
+      shader.connect(
+        'begin-animation', (shader, settings, forOpening, testMode, actor) => {
+          // Usually, the shards fly away from the center of the window.
+          let epicenterX = 0.5;
+          let epicenterY = 0.5;
 
-        // However, if this option is set, we use the mouse pointer position.
-        if (!forOpening && settings.get_boolean('broken-glass-use-pointer')) {
-          const [x, y]               = global.get_pointer();
-          const [ok, localX, localY] = actor.transform_stage_point(x, y);
+          // However, if this option is set, we use the mouse pointer position.
+          if (!forOpening && settings.get_boolean('broken-glass-use-pointer')) {
+            const [x, y]               = global.get_pointer();
+            const [ok, localX, localY] = actor.transform_stage_point(x, y);
 
-          if (ok) {
-            epicenterX = localX / actor.width;
-            epicenterY = localY / actor.height;
+            if (ok) {
+              epicenterX = localX / actor.width;
+              epicenterY = localY / actor.height;
+            }
           }
-        }
 
-        // If we are currently performing integration test, the animation uses a fixed
-        // seed.
-        const testMode = settings.get_boolean('test-mode');
-
-        // clang-format off
-        shader.set_uniform_float(shader._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-        shader.set_uniform_float(shader._uEpicenter,  2, [epicenterX, epicenterY]);
-        shader.set_uniform_float(shader._uShardScale, 1, [settings.get_double('broken-glass-scale')]);
-        shader.set_uniform_float(shader._uBlowForce,  1, [settings.get_double('broken-glass-blow-force')]);
-        shader.set_uniform_float(shader._uGravity,    1, [settings.get_double('broken-glass-gravity')]);
-        // clang-format on
-      });
+          // clang-format off
+          shader.set_uniform_float(shader._uSeed,       2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
+          shader.set_uniform_float(shader._uEpicenter,  2, [epicenterX, epicenterY]);
+          shader.set_uniform_float(shader._uShardScale, 1, [settings.get_double('broken-glass-scale')]);
+          shader.set_uniform_float(shader._uBlowForce,  1, [settings.get_double('broken-glass-blow-force')]);
+          shader.set_uniform_float(shader._uGravity,    1, [settings.get_double('broken-glass-gravity')]);
+          // clang-format on
+        });
 
       // This is required to bind the shard texture for drawing. Sadly, this seems to be
       // impossible under GNOME 3.3x as this.get_pipeline() is not available. It was

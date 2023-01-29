@@ -50,12 +50,8 @@ var Wisps = class {
       shader._uScale = shader.get_uniform_location('uScale');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         const c = Clutter.Color.from_string(settings.get_string('wisps-color'))[1];
-
-        // If we are currently performing integration test, the animation uses a fixed
-        // seed.
-        const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);

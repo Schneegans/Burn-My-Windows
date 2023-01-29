@@ -52,11 +52,8 @@ var Portal = class {
       shader._uWhirling      = shader.get_uniform_location('uWhirling');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         const c = Clutter.Color.from_string(settings.get_string('portal-color'))[1];
-
-        // If we are performing an integration tests, we use a fixed seed.
-        const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);

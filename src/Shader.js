@@ -29,7 +29,7 @@ const utils          = Me.imports.src.utils;
 // main benefit when compared to Clutter.ShaderEffect is that setting uniforms of types //
 // vec2, vec3 or vec4 is supported via the API (with Clutter.ShaderEffect the GJS       //
 // binding does not work properly). However, there are two drawbacks: On the one hand,  //
-// the shader source code is cached statically - this mean if we want to have a         //
+// the shader source code is cached statically - this means if we want to have a        //
 // different shader, we have to derive a new class. Therefore, each effect has to       //
 // derive its own class from the class below. This is encapsulated in the               //
 // ShaderFactory, however it is some really awkward code. The other drawback is the     //
@@ -47,8 +47,12 @@ const utils          = Me.imports.src.utils;
 var Shader = GObject.registerClass(
   {
     Signals: {
-      'begin-animation':
-        {param_types: [Gio.Settings.$gtype, GObject.TYPE_BOOLEAN, Clutter.Actor.$gtype]},
+      'begin-animation': {
+        param_types: [
+          Gio.Settings.$gtype, GObject.TYPE_BOOLEAN, GObject.TYPE_BOOLEAN,
+          Clutter.Actor.$gtype
+        ]
+      },
       'update-animation': {param_types: [GObject.TYPE_DOUBLE]},
       'end-animation': {}
     }
@@ -76,7 +80,7 @@ var Shader = GObject.registerClass(
     }
 
     // This is called once each time the shader is used.
-    beginAnimation(settings, forOpening, duration, actor) {
+    beginAnimation(settings, forOpening, testMode, duration, actor) {
 
       // Reset progress value.
       this._progress = 0;
@@ -90,7 +94,7 @@ var Shader = GObject.registerClass(
       this.set_uniform_float(this._uDuration, 1, [duration]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 
-      this.emit('begin-animation', settings, forOpening, actor);
+      this.emit('begin-animation', settings, forOpening, testMode, actor);
     }
 
     // This is called at each frame during the animation.

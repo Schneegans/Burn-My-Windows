@@ -63,13 +63,9 @@ var SnapOfDisintegration = class {
       shader._uDustScale   = shader.get_uniform_location('uDustScale');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         // The dust particles will fade to this color over time.
         const c = Clutter.Color.from_string(settings.get_string('snap-color'))[1];
-
-        // If we are currently performing integration test, the animation uses a fixed
-        // seed.
-        const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
         shader.set_uniform_float(shader._uDustColor, 4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);

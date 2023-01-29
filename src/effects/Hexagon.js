@@ -53,17 +53,13 @@ var Hexagon = class {
       shader._uLineColor        = shader.get_uniform_location('uLineColor');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         // Get the two configurable colors. They are directly injected into the shader
         // code below.
         const gc =
           Clutter.Color.from_string(settings.get_string('hexagon-glow-color'))[1];
         const lc =
           Clutter.Color.from_string(settings.get_string('hexagon-line-color'))[1];
-
-        // If we are currently performing integration test, the animation uses a fixed
-        // seed.
-        const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
         shader.set_uniform_float(shader._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);

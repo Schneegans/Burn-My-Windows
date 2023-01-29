@@ -61,12 +61,8 @@ var TRexAttack = class {
       shader._uWarpIntensity = shader.get_uniform_location('uWarpIntensity');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         const c = Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
-
-        // If we are currently performing integration test, the animation uses a fixed
-        // seed.
-        const testMode = settings.get_boolean('test-mode');
 
         // clang-format off
         shader.set_uniform_float(shader._uFlashColor,    4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
