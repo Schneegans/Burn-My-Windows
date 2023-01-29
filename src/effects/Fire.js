@@ -117,17 +117,22 @@ var Fire = class {
     dialog.bindColorButton('fire-color-4');
     dialog.bindColorButton('fire-color-5');
 
-    // The fire-gradient-reset button needs to be bound explicitly.
-    dialog.getBuilder().get_object('reset-fire-colors').connect('clicked', () => {
-      dialog.getProfileSettings().reset('fire-color-1');
-      dialog.getProfileSettings().reset('fire-color-2');
-      dialog.getProfileSettings().reset('fire-color-3');
-      dialog.getProfileSettings().reset('fire-color-4');
-      dialog.getProfileSettings().reset('fire-color-5');
-    });
+    // Connect the buttons only once. The bindPreferences can be called multiple times...
+    if (!this._isConnected) {
+      this._isConnected = true;
 
-    // Initialize the fire-preset dropdown.
-    this._createFirePresets(dialog);
+      // The fire-gradient-reset button needs to be bound explicitly.
+      dialog.getBuilder().get_object('reset-fire-colors').connect('clicked', () => {
+        dialog.getProfileSettings().reset('fire-color-1');
+        dialog.getProfileSettings().reset('fire-color-2');
+        dialog.getProfileSettings().reset('fire-color-3');
+        dialog.getProfileSettings().reset('fire-color-4');
+        dialog.getProfileSettings().reset('fire-color-5');
+      });
+
+      // Initialize the fire-preset dropdown.
+      this._createFirePresets(dialog);
+    }
   }
 
   // ---------------------------------------------------------------- API for extension.js
