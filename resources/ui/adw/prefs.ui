@@ -8,20 +8,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
   <requires lib="gtk" version="4.0" />
 
-  <!-- This is shown when a profile is going to be deleted. -->
-  <object class="AdwMessageDialog" id="profile-delete-dialog">
-    <property name="modal">true</property>
-    <property name="hide-on-close">true</property>
-    <property name="heading" translatable="yes">Delete this Profile?</property>
-    <property name="body" translatable="yes">The current effect profile will be permanently lost.</property>
-    <property name="default-response">cancel</property>
-    <property name="close-response">cancel</property>
-    <responses>
-      <response id="cancel" translatable="yes">Cancel</response>
-      <response id="delete" translatable="yes" appearance="destructive">Delete</response>
-    </responses>
-  </object>
-
   <!-- This will be added to the header bar. -->
   <object class="GtkBox" id="profile-button">
     <property name="halign">center</property>
@@ -74,12 +60,25 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <property name="description" translatable="yes">Define when the current effect settings should be used.</property>
 
                 <child>
-                  <object class="AdwEntryRow" id="profile-app">
+                  <object class="AdwActionRow">
                     <property name="title" translatable="yes">Application Name</property>
                     <child>
-                      <object class="GtkButton" id="profile-choose-app-button">
-                        <property name="icon-name">bmw-select-app-symbolic</property>
+                      <object class="GtkBox">
                         <property name="valign">center</property>
+                        <style>
+                          <class name="linked" />
+                        </style>
+
+                        <child>
+                          <object class="GtkEntry" id="profile-app"></object>
+                        </child>
+
+                        <child>
+                          <object class="GtkButton" id="profile-choose-app-button">
+                            <property name="icon-name">bmw-select-app-symbolic</property>
+                            <property name="valign">center</property>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>

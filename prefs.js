@@ -467,16 +467,36 @@ var PreferencesDialog = class PreferencesDialog {
         group.add_action(newProfileAction);
 
         // This action shows a confirmation dialog. Upon user approval, the currently
-        // active profile is deleted.
-        const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
-        deleteProfileAction.connect('activate', () => {
-          this._builder.get_object('profile-delete-dialog').show();
-        });
+        // active profile is deleted. We use the more beautiful Adw.MessageDialog if it is
+        // available (usually on GNOME 43 and beyond).
+        let deleteProfileDialog;
+        const dialogTitle    = _('Delete this Profile?');
+        const dialogSubtitle = _('The current effect profile will be permanently lost.');
 
-        const deleteProfileDialog = this._builder.get_object('profile-delete-dialog');
+        if (Adw.MessageDialog) {
+          deleteProfileDialog =
+            new Adw.MessageDialog({heading: dialogTitle, body: dialogSubtitle});
+          deleteProfileDialog.add_response('cancel', _('Cancel'));
+          deleteProfileDialog.add_response('delete', _('Delete'));
+          deleteProfileDialog.set_response_appearance('delete',
+                                                      Adw.ResponseAppearance.DESTRUCTIVE);
+          deleteProfileDialog.set_default_response('cancel');
+          deleteProfileDialog.set_close_response('cancel');
+        } else {
+          deleteProfileDialog = new Gtk.MessageDialog({
+            text: dialogTitle,
+            secondary_text: dialogSubtitle,
+            modal: true,
+            title: '',
+            buttons: Gtk.ButtonsType.OK_CANCEL
+          });
+        }
+
+        deleteProfileDialog.set_hide_on_close(true);
         deleteProfileDialog.set_transient_for(window);
+
         deleteProfileDialog.connect('response', (d, response) => {
-          if (response == 'delete') {
+          if (response == 'delete' || response == Gtk.ResponseType.OK) {
             // Stop editing the current profile.
             this._builder.get_object('edit-profile-button').active = false;
 
@@ -491,8 +511,14 @@ var PreferencesDialog = class PreferencesDialog {
             // selection menu.
             this._updateProfileMenu();
           }
+
+          d.hide();
         });
 
+        const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
+        deleteProfileAction.connect('activate', () => {
+          deleteProfileDialog.show();
+        });
         group.add_action(deleteProfileAction);
       }
     });
