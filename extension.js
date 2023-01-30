@@ -404,6 +404,8 @@ class Extension {
   // enabled window-close animation is used. This will also tweak the transitions of the
   // given actor (e.g. scale it up if required).
   _setupEffect(actor, forOpening) {
+    // In case we return early, make sure that the animation times are reset properly.
+    this._fixAnimationTimes(forOpening, null);
 
     // Only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
@@ -425,7 +427,6 @@ class Extension {
     //   'power-saver';
 
     // if (!skip! && previewNick == '') {
-    //   this._fixAnimationTimes(isDialogWindow, forOpening, null);
     //   return;
     // }
 
@@ -467,9 +468,20 @@ class Extension {
     // effect.
     else {
 
-      const profile = this._profiles.find(p => {
-        utils.debug('PRIO: ' + p.priority);
-        return true;
+      const animationType = forOpening ? 1 : 2;
+      const windowType    = isNormalWindow ? 1 : 2;
+      const powerMode     = this._upowerProxy.OnBattery ? 1 : 2;
+
+      profile = this._profiles.find(p => {
+        const profileAnimationType = p.settings.get_int('profile-animation-type');
+        const profileWindowType    = p.settings.get_int('profile-window-type');
+        const profileDesktopStyle  = p.settings.get_int('profile-desktop-style');
+        const profilePowerMode     = p.settings.get_int('profile-power-mode');
+        const profilePowerProfile  = p.settings.get_int('profile-power-profile');
+
+        return (profileAnimationType == 0 || profileAnimationType == animationType) &&
+          (profileWindowType == 0 || profileWindowType == windowType) &&
+          (profilePowerMode == 0 || profilePowerMode == powerMode);
       });
 
       if (profile) {
@@ -488,7 +500,6 @@ class Extension {
 
     // If nothing was enabled, we have to do nothing :)
     if (!effect || !profile) {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
       return;
     }
 
@@ -511,7 +522,6 @@ class Extension {
 
     // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
-
 
     // We tweak the opacity and scale of the actor. If there is no ongoing transition for
     // a property, a new one is set up.
@@ -565,7 +575,6 @@ class Extension {
     const transition = actor.get_transition('opacity');
 
     if (!transition) {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
       utils.debug('Cannot setup shader without opacity transition.')
       return;
     }
@@ -600,7 +609,7 @@ class Extension {
 
     // Finally, ensure that all animation times are set properly so that other extensions
     // may guess how long it will take until windows are gone :)
-    this._fixAnimationTimes(isDialogWindow, forOpening, duration);
+    this._fixAnimationTimes(forOpening, duration);
   }
 
   // The code below is not necessary for Burn-My-Windows to function. However, there
@@ -610,15 +619,12 @@ class Extension {
   // duration depends on the used effect, this may vary each time a window is
   // closed. We set the currently used time here, so that others can get an idea how
   // long this will take...
-  _fixAnimationTimes(isDialogWindow, forOpening, duration) {
+  _fixAnimationTimes(forOpening, duration) {
     if (!forOpening) {
-      if (isDialogWindow) {
-        imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
-          duration != null ? duration : this._origDialogTime;
-      } else {
-        imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
-          duration != null ? duration : this._origWindowTime;
-      }
+      imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
+        duration != null ? duration : this._origDialogTime;
+      imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
+        duration != null ? duration : this._origWindowTime;
     }
   }
 
