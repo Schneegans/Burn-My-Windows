@@ -9,6 +9,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
   <requires lib="gtk" version="4.0" />
 
   <!-- This will be added to the header bar. -->
+  <object class="GtkMenuButton" id="menu-button">
+    <property name="menu-model">main-menu</property>
+    <property name="icon-name">heart-filled-symbolic</property>
+  </object>
+
+  <!-- This will be added to the header bar. -->
   <object class="GtkBox" id="profile-button">
     <property name="halign">center</property>
     <child>
@@ -203,11 +209,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </property>
       </object>
     </child>
-  </object>
-
-  <object class="GtkMenuButton" id="menu-button">
-    <property name="menu-model">main-menu</property>
-    <property name="icon-name">heart-filled-symbolic</property>
   </object>
 
   <object class="AdwPreferencesPage" id="general-prefs">
