@@ -131,6 +131,29 @@ var PreferencesDialog = class PreferencesDialog {
 
     this._builder.get_object('profile-power-profile').set_visible(hasPowerProfiles);
 
+    // The global color scheme is only available starting with GNOME Shell 42. We hide the
+    // corresponding settings row on older versions.
+    this._builder.get_object('profile-color-scheme')
+      .set_visible(utils.shellVersionIsAtLeast(42, 0));
+
+    this._builder.get_object('profile-choose-app-button').connect('clicked', () => {
+      Gio.DBus.session.call('org.gnome.Shell',
+                            '/org/gnome/shell/extensions/BurnMyWindows',
+                            'org.gnome.shell.extensions.BurnMyWindows', 'PickWindow',
+                            null, null, Gio.DBusCallFlags.NO_AUTO_START, -1, null, null);
+    });
+
+    this._dbusConnection = Gio.DBus.session.signal_subscribe(
+      'org.gnome.Shell', 'org.gnome.shell.extensions.BurnMyWindows', 'WindowPicked',
+      '/org/gnome/shell/extensions/BurnMyWindows', null, Gio.DBusSignalFlags.NONE,
+      (conn, sender, obj_path, iface, signal, params) => {
+        const val = params.get_child_value(0).get_string()[0];
+
+        if (val != 'window-not-found') {
+          this._builder.get_object('profile-app').text = val;
+        }
+      });
+
     // Starting with GNOME Shell 42, the settings dialog uses libadwaita. We use this to
     // create a completely different layout for the settings dialog.
     if (utils.isADW()) {
@@ -479,6 +502,9 @@ var PreferencesDialog = class PreferencesDialog {
     this._widget.connect('destroy', () => {
       // Unregister our resources.
       Gio.resources_unregister(this._resources);
+
+      // Disconnect from the window-picker API.
+      Gio.DBus.session.signal_unsubscribe(this._dbusConnection);
     });
 
     // Show the widgets on GTK3.
@@ -507,8 +533,14 @@ var PreferencesDialog = class PreferencesDialog {
 
   // Connects a Gtk.ComboBox (or anything else which has an 'selected' property) to a
   // settings key. It also binds the corresponding reset button.
-  bindComboRow(settingsKey) {
+  bindComboBox(settingsKey) {
     this._bind(settingsKey, 'selected');
+  }
+
+  // Connects a Gtk.Entry (or anything else which has an 'text' property) to a
+  // settings key. It also binds the corresponding reset button.
+  bindEntry(settingsKey) {
+    this._bind(settingsKey, 'text');
   }
 
   // Connects a Gtk.Adjustment (or anything else which has a 'value' property) to a
@@ -591,19 +623,27 @@ var PreferencesDialog = class PreferencesDialog {
     }
 
     // Connect all profile options.
-    const setupProfileOption = (settingsKey) => {
-      this.bindComboRow(settingsKey);
+    const updateProfileButtonMenuIfChanged = (settingsKey) => {
       this._connectProfileSetting('changed::' + settingsKey, () => {
         this._updateProfileButton();
         this._updateProfileMenu();
       });
     };
 
-    setupProfileOption('profile-animation-type');
-    setupProfileOption('profile-window-type');
-    setupProfileOption('profile-desktop-style');
-    setupProfileOption('profile-power-mode');
-    setupProfileOption('profile-power-profile');
+    updateProfileButtonMenuIfChanged('profile-app');
+    updateProfileButtonMenuIfChanged('profile-animation-type');
+    updateProfileButtonMenuIfChanged('profile-window-type');
+    updateProfileButtonMenuIfChanged('profile-color-scheme');
+    updateProfileButtonMenuIfChanged('profile-power-mode');
+    updateProfileButtonMenuIfChanged('profile-power-profile');
+
+    this.bindEntry('profile-app');
+    this.bindComboBox('profile-animation-type');
+    this.bindComboBox('profile-window-type');
+    this.bindComboBox('profile-color-scheme');
+    this.bindComboBox('profile-power-mode');
+    this.bindComboBox('profile-power-profile');
+    this.bindSwitch('profile-high-priority');
 
     // Connect all effect settings.
     this._ALL_EFFECTS.forEach(effect => {

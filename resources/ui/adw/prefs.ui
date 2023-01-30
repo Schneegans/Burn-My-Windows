@@ -70,12 +70,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
             <child>
               <object class="AdwPreferencesGroup">
-                <property name="title" translatable="yes">Edit Effect Profile</property>
-                <property name="description" translatable="yes">Here you can specify under which circumstances the current effect settings should be applied.</property>
+                <property name="title" translatable="yes">Effect Profile Constraints</property>
+                <property name="description" translatable="yes">Define when the current effect settings should be used.</property>
 
                 <child>
                   <object class="AdwEntryRow" id="profile-app">
-                    <property name="title" translatable="yes">Choose an Application</property>
+                    <property name="title" translatable="yes">Application Name</property>
                     <child>
                       <object class="GtkButton" id="profile-choose-app-button">
                         <property name="icon-name">bmw-select-app-symbolic</property>
@@ -116,14 +116,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow" id="profile-desktop-style">
-                    <property name="title" translatable="yes">Desktop Style</property>
+                  <object class="AdwComboRow" id="profile-color-scheme">
+                    <property name="title" translatable="yes">Color Scheme</property>
                     <property name="model">
                       <object class="GtkStringList">
                         <items>
                           <item translatable="yes">Any</item>
-                          <item translatable="yes">Bright Mode</item>
-                          <item translatable="yes">Dark Mode</item>
+                          <item translatable="yes">Default Color Scheme</item>
+                          <item translatable="yes">Dark Color Scheme</item>
                         </items>
                       </object>
                     </property>
@@ -160,6 +160,27 @@ SPDX-License-Identifier: GPL-3.0-or-later
                         </items>
                       </object>
                     </property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+
+            <child>
+              <object class="AdwPreferencesGroup">
+                <property name="title" translatable="yes">Advanced Profile Options</property>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="yes">High Priority</property>
+                    <property name="subtitle" translatable="yes">Force using this profile even if it has less constraints than another matching profile.</property>
+                    <property name="subtitle-lines">1</property>
+                    <property name="activatable-widget">profile-high-priority</property>
+                    <child>
+                      <object class="GtkSwitch" id="profile-high-priority">
+                        <property name="valign">center</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
 

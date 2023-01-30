@@ -13,6 +13,12 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Profile Options                                                               -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+    <key name="profile-app" type="s">
+      <default>""</default>
+      <summary>Profile App</summary>
+      <description>The application name for which the current effect settings should be used.</description>
+    </key>
+
     <key name="profile-animation-type" type="i">
       <default>0</default>
       <range min="0" max="2" />
@@ -27,11 +33,11 @@ SPDX-License-Identifier: CC0-1.0
       <description>The window types for which the current effect settings should be used.</description>
     </key>
 
-    <key name="profile-desktop-style" type="i">
+    <key name="profile-color-scheme" type="i">
       <default>0</default>
       <range min="0" max="2" />
-      <summary>Profile Desktop Style</summary>
-      <description>The desktop styles for which the current effect settings should be used.</description>
+      <summary>Profile Color Scheme</summary>
+      <description>The desktop color schemes for which the current effect settings should be used.</description>
     </key>
 
     <key name="profile-power-mode" type="i">
@@ -46,6 +52,12 @@ SPDX-License-Identifier: CC0-1.0
       <range min="0" max="5" />
       <summary>Profile Power Profile</summary>
       <description>The power profiles in which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-high-priority" type="b">
+      <default>false</default>
+      <summary>Profile High Priority</summary>
+      <description>Force using this profile even if it has less constraints than another matching profile.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

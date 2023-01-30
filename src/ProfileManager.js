@@ -32,7 +32,7 @@ const utils          = Me.imports.src.utils;
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var ProfileManager = class {
-  // ------------------------------------------------------------ constructor / destructor
+  // ------------------------------------------------------------------------- constructor
 
   constructor() {
     this._makeProfilesDir();
@@ -128,11 +128,16 @@ var ProfileManager = class {
   getProfilePriority(settings) {
     let priority = 0;
 
+    // Each setting which is not set to its default value increases the priority by one.
+    if (settings.get_string('profile-app') != '') ++priority;
     if (settings.get_int('profile-animation-type') > 0) ++priority;
     if (settings.get_int('profile-window-type') > 0) ++priority;
-    if (settings.get_int('profile-desktop-style') > 0) ++priority;
+    if (settings.get_int('profile-color-scheme') > 0) ++priority;
     if (settings.get_int('profile-power-mode') > 0) ++priority;
     if (settings.get_int('profile-power-profile') > 0) ++priority;
+
+    // Increase the priority significantly for high-priority profiles.
+    if (settings.get_boolean('profile-high-priority')) priority += 100;
 
     return priority;
   }
@@ -142,6 +147,14 @@ var ProfileManager = class {
   getProfileName(settings) {
     let items = [];
 
+    // If an app is configured, use it as first component for the profile's name.
+    const app = settings.get_string('profile-app');
+    if (app != '') {
+      items.push(app);
+    }
+
+    // Now add components to the name for each non-default profile option. Make sure that
+    // these are the same strings as used in the UI files!
     const addComponent = (settingsKey, options) => {
       const option = settings.get_int(settingsKey);
       if (option > 0) {
@@ -154,8 +167,8 @@ var ProfileManager = class {
                                             _('Closing Windows')]);
     addComponent('profile-window-type',    [_('Normal Windows'),
                                             _('Dialog Windows')]);
-    addComponent('profile-desktop-style',  [_('Bright Mode'),
-                                            _('Dark Mode')]);
+    addComponent('profile-color-scheme',   [_('Default Color Scheme'),
+                                            _('Dark Color Scheme')]);
     addComponent('profile-power-mode',     [_('On Battery'),
                                             _('Plugged In')]);
     addComponent('profile-power-profile',  [_('Power-Saver Mode'),

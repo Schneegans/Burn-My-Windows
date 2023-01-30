@@ -32,6 +32,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
+const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
@@ -89,6 +90,13 @@ class Extension {
     });
 
     this._loadProfiles();
+
+    // This is used to get the desktop's color scheme.
+    this._shellSettings = new Gio.Settings({schema: 'org.gnome.desktop.interface'});
+
+    // Enable the window-picking D-Bus API for the preferences dialog.
+    this._windowPicker = new WindowPicker();
+    this._windowPicker.export();
 
     // We will use extensionThis to refer to the extension inside the patched methods.
     const extensionThis = this;
@@ -348,6 +356,9 @@ class Extension {
     // Unregister our resources.
     Gio.resources_unregister(this._resources);
 
+    // Disable the window-picking D-Bus API.
+    this._windowPicker.unexport();
+
     // Restore the original window-open and window-close animations.
     global.window_manager.disconnect(this._destroyConnection);
     global.display.disconnect(this._windowCreatedConnection);
@@ -373,41 +384,50 @@ class Extension {
 
   // ----------------------------------------------------------------------- private stuff
 
+  // This loads all effect profiles and assigns a priority to each profile. Whenever a
+  // window is opened or closed, the matching effect profile with the highest priority
+  // will be chosen.
+  // This method is called whenever the currently edited profile in the/ preferences
+  // dialog changes. This is most likely a bit too often, but it will also happen whenever
+  // a new profile is created and whenever an old profile is deleted.
   _loadProfiles() {
+
+    // Get all currently available profiles.
     const profileManager = new ProfileManager();
+    this._profiles       = profileManager.getProfiles();
 
-    utils.debug('load profiles!');
-
+    // Whenever the properties of a profile is changed in the settings, we may have to
+    // resort all profiles according to their priority.
     const updatePriority = (p) => {
-      utils.debug('sort profiles!');
       p.priority = profileManager.getProfilePriority(p.settings);
       this._profiles.sort((a, b) => b.priority - a.priority);
     };
 
-    this._profiles = profileManager.getProfiles();
+    // For each profile, assign an initial priority and update the priority whenever a
+    // related setting changes.
     this._profiles.forEach(p => {
+      p.priority = profileManager.getProfilePriority(p.settings);
+      p.settings.connect('changed::profile-app', () => updatePriority(p));
       p.settings.connect('changed::profile-animation-type', () => updatePriority(p));
       p.settings.connect('changed::profile-window-type', () => updatePriority(p));
-      p.settings.connect('changed::profile-desktop-style', () => updatePriority(p));
+      p.settings.connect('changed::profile-color-scheme', () => updatePriority(p));
       p.settings.connect('changed::profile-power-mode', () => updatePriority(p));
       p.settings.connect('changed::profile-power-profile', () => updatePriority(p));
-
-      p.priority = profileManager.getProfilePriority(p.settings);
     });
 
-    utils.debug('sort profiles!');
+    // Sort all profiles initially according to their initial priority.
     this._profiles.sort((a, b) => b.priority - a.priority);
   }
 
-  // This method adds one of the configured effects to the given actor. If forOpening is
-  // set to true, a effect from the enabled window-open animations is chosen, else an
-  // enabled window-close animation is used. This will also tweak the transitions of the
-  // given actor (e.g. scale it up if required).
+  // This method adds one of the configured effects to the given actor. First, a profile
+  // matching the current circumstances is chosen. Then a random effect from its enabled
+  // effects will be selected. This will also tweak the transitions of the given actor
+  // (e.g. scale it up if required).
   _setupEffect(actor, forOpening) {
     // In case we return early, make sure that the animation times are reset properly.
     this._fixAnimationTimes(forOpening, null);
 
-    // Only add effects to normal windows and dialog windows.
+    // For now, we only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
     const isDialogWindow =
       actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
@@ -416,20 +436,6 @@ class Extension {
     if (!isNormalWindow && !isDialogWindow) {
       return;
     }
-
-
-    // TODO!.
-    // We may have to do nothing if running on battery power or if in power-save mode.
-    // let disableOnBattery =
-    //   this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery;
-    // let disableOnPowerSave = this._settings.get_boolean('disable-on-power-save') &&
-    //   this._powerProfilesProxy && this._powerProfilesProxy.ActiveProfile ==
-    //   'power-saver';
-
-    // if (!skip! && previewNick == '') {
-    //   return;
-    // }
-
 
     // There is the weird case where an animation is already ongoing. This happens when a
     // window is closed which has been created before the session was started (e.g. when
@@ -441,7 +447,7 @@ class Extension {
       oldShader.returnToFactory();
     }
 
-    // ------------------------------------------------------------------ choose an effect
+    // ----------------------------------------------- choose a profile and then an effect
 
     // Usually, we use the effect profile with the highest priority which matches the
     // current circumstances. From this profile, we choose a random effect. However, if an
@@ -468,22 +474,62 @@ class Extension {
     // effect.
     else {
 
+      // These numbers match the indices in the Gtk.StringLists defined in the UI files
+      // (e.g. resources/ui/adw/prefs.ui).
       const animationType = forOpening ? 1 : 2;
       const windowType    = isNormalWindow ? 1 : 2;
       const powerMode     = this._upowerProxy.OnBattery ? 1 : 2;
 
+      // Get the first profile whose constraints match the circumstances. The list is
+      // sorted by priority, so we are good to take the first match.
       profile = this._profiles.find(p => {
+        const profileApp           = p.settings.get_string('profile-app');
         const profileAnimationType = p.settings.get_int('profile-animation-type');
         const profileWindowType    = p.settings.get_int('profile-window-type');
-        const profileDesktopStyle  = p.settings.get_int('profile-desktop-style');
         const profilePowerMode     = p.settings.get_int('profile-power-mode');
+        const profileColorScheme   = p.settings.get_int('profile-color-scheme');
         const profilePowerProfile  = p.settings.get_int('profile-power-profile');
 
-        return (profileAnimationType == 0 || profileAnimationType == animationType) &&
+        // First we check whether the animation type, window type, and power mode are
+        // matching.
+        let matches =
+          (profileAnimationType == 0 || profileAnimationType == animationType) &&
           (profileWindowType == 0 || profileWindowType == windowType) &&
           (profilePowerMode == 0 || profilePowerMode == powerMode);
+
+        // If that was the case, we also check the application name.
+        if (matches && profileApp != '') {
+          const app = actor.meta_window.get_wm_class().toLowerCase();
+          matches   = app == profileApp.toLowerCase();
+        }
+
+        // If the profile is still matching, we also check the color scheme.
+        if (matches && profileColorScheme != 0 && utils.shellVersionIsAtLeast(42, 0)) {
+          const colorScheme = this._shellSettings.get_string('color-scheme');
+          matches &= (profileColorScheme == 1 && colorScheme == 'default') ||
+            (profileColorScheme == 2 && colorScheme == 'prefer-dark');
+        }
+
+        // Finally, we may also have to check the power profile.
+        if (matches && profilePowerProfile != 0 && this._powerProfilesProxy) {
+          const powerProfile = this._powerProfilesProxy.ActiveProfile;
+
+          // To understand the numbers, please refer to the indices in the Gtk.StringList
+          // of the profile-power-profile Adw.ComboRow in resources/ui/adw/prefs.ui.
+          if (powerProfile == 'power-saver') {
+            matches &= profilePowerProfile == 1 || profilePowerProfile == 4;
+          } else if (powerProfile == 'balanced') {
+            matches &= profilePowerProfile == 2 || profilePowerProfile == 4 ||
+              profilePowerProfile == 5;
+          } else {
+            matches &= profilePowerProfile == 3 || profilePowerProfile == 5;
+          }
+        }
+
+        return matches;
       });
 
+      // If we found a matching profile, choose a random effect from it.
       if (profile) {
 
         // Create a list of all enabled effects of this profile.
@@ -502,6 +548,7 @@ class Extension {
     if (!effect || !profile) {
       return;
     }
+
 
     // ----------------------------------------------------------- tweak actor transitions
 
