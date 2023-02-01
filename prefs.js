@@ -31,9 +31,6 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
 const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 
-// This template widget class is defined at the bottom of this file.
-var BurnMyWindowsEffectPage = null;
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // The preferences dialog is organized in pages, each of which is loaded from a         //
 // separate ui file. There's one page with general options, all other paged are loaded  //
@@ -48,26 +45,26 @@ var PreferencesDialog = class PreferencesDialog {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      new Me.imports.src.effects.Apparition.Apparition(),
-      new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
-      new Me.imports.src.effects.Doom.Doom(),
-      new Me.imports.src.effects.EnergizeA.EnergizeA(),
-      new Me.imports.src.effects.EnergizeB.EnergizeB(),
-      new Me.imports.src.effects.Fire.Fire(),
-      new Me.imports.src.effects.Glide.Glide(),
-      new Me.imports.src.effects.Glitch.Glitch(),
-      new Me.imports.src.effects.Hexagon.Hexagon(),
-      new Me.imports.src.effects.Incinerate.Incinerate(),
-      new Me.imports.src.effects.Matrix.Matrix(),
-      new Me.imports.src.effects.Pixelate.Pixelate(),
-      new Me.imports.src.effects.PixelWheel.PixelWheel(),
-      new Me.imports.src.effects.PixelWipe.PixelWipe(),
-      new Me.imports.src.effects.Portal.Portal(),
-      new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
-      new Me.imports.src.effects.TRexAttack.TRexAttack(),
-      new Me.imports.src.effects.TVEffect.TVEffect(),
-      new Me.imports.src.effects.TVGlitch.TVGlitch(),
-      new Me.imports.src.effects.Wisps.Wisps(),
+      // new Me.imports.src.effects.Apparition.Apparition(),
+      // new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
+      // new Me.imports.src.effects.Doom.Doom(),
+      // new Me.imports.src.effects.EnergizeA.EnergizeA(),
+      // new Me.imports.src.effects.EnergizeB.EnergizeB(),
+      // new Me.imports.src.effects.Fire.Fire(),
+      // new Me.imports.src.effects.Glide.Glide(),
+      // new Me.imports.src.effects.Glitch.Glitch(),
+      // new Me.imports.src.effects.Hexagon.Hexagon(),
+      // new Me.imports.src.effects.Incinerate.Incinerate(),
+      // new Me.imports.src.effects.Matrix.Matrix(),
+      // new Me.imports.src.effects.Pixelate.Pixelate(),
+      // new Me.imports.src.effects.PixelWheel.PixelWheel(),
+      // new Me.imports.src.effects.PixelWipe.PixelWipe(),
+      // new Me.imports.src.effects.Portal.Portal(),
+      // new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
+      // new Me.imports.src.effects.TRexAttack.TRexAttack(),
+      // new Me.imports.src.effects.TVEffect.TVEffect(),
+      // new Me.imports.src.effects.TVGlitch.TVGlitch(),
+      // new Me.imports.src.effects.Wisps.Wisps(),
     ];
 
     // Load all of our resources.
@@ -91,9 +88,6 @@ var PreferencesDialog = class PreferencesDialog {
     } else {
       Gtk.IconTheme.get_default().add_resource_path('/img');
     }
-
-    // Register the template widgets used in the settings dialog.
-    this._registerCustomClasses();
 
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
@@ -129,12 +123,19 @@ var PreferencesDialog = class PreferencesDialog {
       // Maybe the service is masked...
     }
 
-    this._builder.get_object('profile-power-profile').set_visible(hasPowerProfiles);
+    let powerProfileRow = this._builder.get_object('profile-power-profile');
+    if (!utils.isADW()) {
+      powerProfileRow = powerProfileRow.get_parent().get_parent();
+    }
+    powerProfileRow.set_visible(hasPowerProfiles);
 
     // The global color scheme is only available starting with GNOME Shell 42. We hide the
     // corresponding settings row on older versions.
-    this._builder.get_object('profile-color-scheme')
-      .set_visible(utils.shellVersionIsAtLeast(42, 0));
+    let colorSchemeRow = this._builder.get_object('profile-color-scheme');
+    if (!utils.isADW()) {
+      colorSchemeRow = colorSchemeRow.get_parent().get_parent();
+    }
+    colorSchemeRow.set_visible(utils.shellVersionIsAtLeast(42, 0));
 
     this._builder.get_object('profile-choose-app-button').connect('clicked', () => {
       Gio.DBus.session.call('org.gnome.Shell',
@@ -154,138 +155,82 @@ var PreferencesDialog = class PreferencesDialog {
         }
       });
 
-    // Starting with GNOME Shell 42, the settings dialog uses libadwaita. We use this to
-    // create a completely different layout for the settings dialog.
-    if (utils.isADW()) {
+    // This is our top-level widget which we will return later.
+    this._widget = this._builder.get_object('general-prefs');
 
-      // This is our top-level widget which we will return later.
-      this._widget = this._builder.get_object('general-prefs');
+    // Then add a preferences group for the effect expander rows.
+    const group = this._builder.get_object('effects-group');
 
-      // Then add a preferences group for the effect expander rows.
-      const group = this._builder.get_object('effects-group');
+    // This stores all expander rows for the effects. We use this to implement the
+    // accordion-like behavior of the effect settings.
+    this._effectRows = [];
 
-      // This stores all expander rows for the effects. We use this to implement the
-      // accordion-functionality of the effect settings.
-      this._effectRows = [];
+    // Now add all the rows.
+    this._ALL_EFFECTS.forEach(effect => {
+      const [minMajor, minMinor] = effect.getMinShellVersion();
+      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
-      // Now add all the rows.
-      this._ALL_EFFECTS.forEach(effect => {
-        const [minMajor, minMinor] = effect.getMinShellVersion();
-        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+        const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
+        const [hasPrefs] = Gio.resources_get_info(uiFile, 0);
 
-          const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
-          const [hasPrefs] = Gio.resources_get_info(uiFile, 0);
+        let row;
+        if (hasPrefs) {
+          // Add the settings page to the builder.
+          this._builder.add_from_resource(uiFile);
 
-          let row;
-          if (hasPrefs) {
-            // Add the settings page to the builder.
-            this._builder.add_from_resource(uiFile);
-
-            // Add the effect's preferences (if any).
-            row = this._builder.get_object(`${effect.getNick()}-prefs`);
-          } else {
-            row = Adw.ActionRow.new();
-          }
-
-          // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
-          // not yet exist.
-          if (row.set_use_markup) {
-            row.set_title('<b>' + effect.getLabel() + '</b>');
-            row.set_use_markup(true);
-          } else {
-            row.set_title(effect.getLabel());
-          }
-
-          // Un-expand any previously expanded effect row. This way we ensure that there
-          // is only one expanded row at any time.
-          if (hasPrefs) {
-            row.connect('notify::expanded', currentRow => {
-              if (currentRow.get_expanded()) {
-                this._effectRows.forEach(row => {
-                  if (row != currentRow && row.set_expanded) {
-                    row.set_expanded(false);
-                  }
-                });
-              }
-            });
-          }
-
-          // The preview button.
-          const previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
-          previewButton.add_css_class('circular');
-          previewButton.add_css_class('flat');
-          previewButton.set_tooltip_text(_('Preview this effect'));
-          previewButton.set_valign(Gtk.Align.CENTER);
-          row.add_action(previewButton);
-
-          previewButton.connect('clicked', () => {
-            this._previewEffect(effect);
-          });
-
-          // Now add the toggle button for enabling and disabling the effect.
-          const button = Gtk.Switch.new();
-          button.set_tooltip_text(_('Use this effect'));
-          button.set_valign(Gtk.Align.CENTER);
-          this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
-
-          row.add_prefix(button);
-          group.add(row);
-
-          this._effectRows.push(row);
+          // Add the effect's preferences (if any).
+          row = this._builder.get_object(`${effect.getNick()}-prefs`);
+        } else {
+          row = Adw.ActionRow.new();
         }
-      });
-    }
-    // On older GNOME versions, we use a StackSidebar. The code below works on GTK3 and
-    // GTK4.
-    else {
 
-      // This is our top-level widget which we will return later.
-      this._widget = new Gtk.Box({
-        orientation: Gtk.Orientation.HORIZONTAL,
-      });
+        // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
+        // not yet exist.
+        if (row.set_use_markup) {
+          row.set_title('<b>' + effect.getLabel() + '</b>');
+          row.set_use_markup(true);
+        } else {
+          row.set_title(effect.getLabel());
+        }
 
-      const stack = new Gtk.Stack({
-        transition_type: Gtk.StackTransitionType.SLIDE_UP_DOWN,
-      });
-
-      // Add the general options page.
-      const generalPage        = this._builder.get_object('general-prefs');
-      generalPage.margin_start = 60;
-      generalPage.margin_end   = 60;
-      stack.add_titled(generalPage, 'general', _('General Options'));
-
-      this.gtkBoxAppend(this._widget, new Gtk.StackSidebar({stack: stack}));
-      this.gtkBoxAppend(this._widget, stack);
-
-      // Add all other effect pages.
-      this._ALL_EFFECTS.forEach(effect => {
-        const [minMajor, minMinor] = effect.getMinShellVersion();
-        if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
-
-          const page         = new BurnMyWindowsEffectPage(effect, this);
-          page.margin_start  = 60;
-          page.margin_end    = 60;
-          page.margin_top    = 60;
-          page.margin_bottom = 60;
-
-          const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
-          const [hasPrefs] = Gio.resources_get_info(uiFile);
-          if (hasPrefs) {
-
-            // Add the settings page to the builder.
-            this._builder.add_from_resource(uiFile);
-
-            // Add the effect's preferences (if any).
-            const prefs = this._builder.get_object(`${effect.getNick()}-prefs`);
-            if (prefs) {
-              this.gtkBoxAppend(page, prefs);
+        // Un-expand any previously expanded effect row. This way we ensure that there
+        // is only one expanded row at any time.
+        if (hasPrefs) {
+          row.connect('notify::expanded', currentRow => {
+            if (currentRow.get_expanded()) {
+              this._effectRows.forEach(row => {
+                if (row != currentRow && row.set_expanded) {
+                  row.set_expanded(false);
+                }
+              });
             }
-          }
-
-          stack.add_titled(page, effect.getNick(), effect.getLabel());
+          });
         }
-      });
-    }
+
+        // The preview button.
+        const previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
+        previewButton.add_css_class('circular');
+        previewButton.add_css_class('flat');
+        previewButton.set_tooltip_text(_('Preview this effect'));
+        previewButton.set_valign(Gtk.Align.CENTER);
+        row.add_action(previewButton);
+
+        previewButton.connect('clicked', () => {
+          this._previewEffect(effect);
+        });
+
+        // Now add the toggle button for enabling and disabling the effect.
+        const button = Gtk.Switch.new();
+        button.set_tooltip_text(_('Use this effect'));
+        button.set_valign(Gtk.Align.CENTER);
+        this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
+
+        row.add_prefix(button);
+        group.add(row);
+
+        this._effectRows.push(row);
+      }
+    });
 
     // Some things can only be done once the widget is shown as we do not have access to
     // the toplevel widget before.
@@ -309,7 +254,7 @@ var PreferencesDialog = class PreferencesDialog {
 
         // Starting with GNOME Shell 42, we have to hack our way through the widget tree
         // of the Adw.PreferencesWindow...
-        if (Adw && utils.shellVersionIsAtLeast(42, 'beta')) {
+        if (utils.isADW()) {
           const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
           header.pack_start(menu);
           header.set_title_widget(this._builder.get_object('profile-button'));
@@ -330,6 +275,7 @@ var PreferencesDialog = class PreferencesDialog {
 
         } else {
           window.get_titlebar().pack_start(menu);
+          window.get_titlebar().set_title_widget(this._builder.get_object('profile-button'));
         }
 
         const addURIAction = (name, uri) => {
@@ -473,7 +419,7 @@ var PreferencesDialog = class PreferencesDialog {
         const dialogTitle    = _('Delete this Profile?');
         const dialogSubtitle = _('The current effect profile will be permanently lost.');
 
-        if (Adw.MessageDialog) {
+        if (utils.isADW() && Adw.MessageDialog) {
           deleteProfileDialog =
             new Adw.MessageDialog({heading: dialogTitle, body: dialogSubtitle});
           deleteProfileDialog.add_response('cancel', _('Cancel'));
@@ -495,7 +441,7 @@ var PreferencesDialog = class PreferencesDialog {
         deleteProfileDialog.set_hide_on_close(true);
         deleteProfileDialog.set_transient_for(window);
 
-        deleteProfileDialog.connect('response', (d, response) => {
+        deleteProfileDialog.connect('response', (dialog, response) => {
           if (response == 'delete' || response == Gtk.ResponseType.OK) {
             // Stop editing the current profile.
             this._builder.get_object('edit-profile-button').active = false;
@@ -512,7 +458,7 @@ var PreferencesDialog = class PreferencesDialog {
             this._updateProfileMenu();
           }
 
-          d.hide();
+          dialog.hide();
         });
 
         const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
@@ -557,10 +503,16 @@ var PreferencesDialog = class PreferencesDialog {
     return this._widget;
   }
 
-  // Connects a Gtk.ComboBox (or anything else which has an 'selected' property) to a
+  // Connects an Adw.ComboRow (or anything else which has an 'selected' property) to a
+  // settings key. It also binds the corresponding reset button.
+  bindComboRow(settingsKey) {
+    this._bind(settingsKey, 'selected');
+  }
+
+  // Connects a Gtk.ComboBox (or anything else which has an 'active' property) to a
   // settings key. It also binds the corresponding reset button.
   bindComboBox(settingsKey) {
-    this._bind(settingsKey, 'selected');
+    this._bind(settingsKey, 'active');
   }
 
   // Connects a Gtk.Entry (or anything else which has an 'text' property) to a
@@ -664,11 +616,20 @@ var PreferencesDialog = class PreferencesDialog {
     updateProfileButtonMenuIfChanged('profile-power-profile');
 
     this.bindEntry('profile-app');
-    this.bindComboBox('profile-animation-type');
-    this.bindComboBox('profile-window-type');
-    this.bindComboBox('profile-color-scheme');
-    this.bindComboBox('profile-power-mode');
-    this.bindComboBox('profile-power-profile');
+
+    if (utils.isADW()) {
+      this.bindComboRow('profile-animation-type');
+      this.bindComboRow('profile-window-type');
+      this.bindComboRow('profile-color-scheme');
+      this.bindComboRow('profile-power-mode');
+      this.bindComboRow('profile-power-profile');
+    } else {
+      this.bindComboBox('profile-animation-type');
+      this.bindComboBox('profile-window-type');
+      this.bindComboBox('profile-color-scheme');
+      this.bindComboBox('profile-power-mode');
+      this.bindComboBox('profile-power-profile');
+    }
     this.bindSwitch('profile-high-priority');
 
     // Connect all effect settings.
@@ -824,34 +785,6 @@ var PreferencesDialog = class PreferencesDialog {
     } else {
       window.add(box);
       window.show_all();
-    }
-  }
-
-  // Initializes template widgets used by the preferences dialog.
-  _registerCustomClasses() {
-
-    // If we are not using libadwaita, each effect page is based on a template widget.
-    // This template contains the title and the preview button.
-    if (!utils.isADW() && GObject.type_from_name('BurnMyWindowsEffectPage') == null) {
-      BurnMyWindowsEffectPage = GObject.registerClass(
-        {
-          GTypeName: 'BurnMyWindowsEffectPage',
-          Template: `resource:///ui/${utils.getUIDir()}/effectPage.ui`,
-          InternalChildren: ['label', 'button'],
-        },
-        class BurnMyWindowsEffectPage extends Gtk.Box {  // ------------------------------
-          _init(effect, dialog) {
-            super._init();
-
-            // Set the effect's name as label.
-            this._label.label = effect.getLabel();
-
-            // Open the preview window once the preview button is clicked.
-            this._button.connect('clicked', () => {
-              dialog._previewEffect(effect);
-            });
-          }
-        });
     }
   }
 }
