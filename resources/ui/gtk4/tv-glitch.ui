@@ -7,242 +7,235 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 <interface domain="burn-my-windows">
 
-  <object class="GtkBox" id="tv-glitch-prefs">
-    <property name="orientation">vertical</property>
+  <object class="GtkRevealer" id="tv-glitch-prefs">
 
     <child>
-      <object class="GtkFrame">
+      <object class="GtkListBox">
+        <property name="selection-mode">none</property>
+
         <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
-            <property name="show-separators">1</property>
-            <style>
-              <class name="rich-list" />
-            </style>
-
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
             <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
+              <object class="GtkBox">
                 <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Animation Time [ms]</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Animation Time [ms]</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">0</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment" id="tv-glitch-animation-time">
+                        <property name="upper">2000</property>
+                        <property name="lower">100</property>
+                        <property name="step-increment">1</property>
+                        <property name="page-increment">100</property>
                       </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">
-                          <object class="GtkAdjustment" id="tv-glitch-animation-time">
-                            <property name="upper">2000</property>
-                            <property name="lower">100</property>
-                            <property name="step-increment">1</property>
-                            <property name="page-increment">100</property>
-                          </object>
-                        </property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-tv-glitch-animation-time">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-tv-glitch-animation-time">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
                   </object>
                 </child>
               </object>
             </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Scale</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">
-                          <object class="GtkAdjustment" id="tv-glitch-scale">
-                            <property name="upper">10</property>
-                            <property name="lower">0.1</property>
-                            <property name="step-increment">0.01</property>
-                            <property name="page-increment">0.1</property>
-                          </object>
-                        </property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-tv-glitch-scale">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Strength</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">
-                          <object class="GtkAdjustment" id="tv-glitch-strength">
-                            <property name="upper">10</property>
-                            <property name="lower">0.1</property>
-                            <property name="step-increment">0.01</property>
-                            <property name="page-increment">0.1</property>
-                          </object>
-                        </property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-tv-glitch-strength">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Speed</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">
-                          <object class="GtkAdjustment" id="tv-glitch-speed">
-                            <property name="upper">10</property>
-                            <property name="lower">0.1</property>
-                            <property name="step-increment">0.01</property>
-                            <property name="page-increment">0.1</property>
-                          </object>
-                        </property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-tv-glitch-speed">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Color</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkColorButton" id="tv-glitch-color">
-                        <property name="use_alpha">1</property>
-                        <property name="show_editor">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-tv-glitch-color">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
           </object>
         </child>
+
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Scale</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">2</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment" id="tv-glitch-scale">
+                        <property name="upper">10</property>
+                        <property name="lower">0.1</property>
+                        <property name="step-increment">0.01</property>
+                        <property name="page-increment">0.1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-tv-glitch-scale">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Strength</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">2</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment" id="tv-glitch-strength">
+                        <property name="upper">10</property>
+                        <property name="lower">0.1</property>
+                        <property name="step-increment">0.01</property>
+                        <property name="page-increment">0.1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-tv-glitch-strength">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Speed</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">2</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">
+                      <object class="GtkAdjustment" id="tv-glitch-speed">
+                        <property name="upper">10</property>
+                        <property name="lower">0.1</property>
+                        <property name="step-increment">0.01</property>
+                        <property name="page-increment">0.1</property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-tv-glitch-speed">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Color</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkColorButton" id="tv-glitch-color">
+                    <property name="use_alpha">1</property>
+                    <property name="show_editor">1</property>
+                    <property name="margin-start">8</property>
+                    <property name="margin-end">8</property>
+                    <property name="width-request">250</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-tv-glitch-color">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+
       </object>
     </child>
-
 
   </object>
 

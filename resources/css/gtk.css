@@ -6,3 +6,25 @@ SPDX-License-Identifier: CC0-1.0
 .pill-button {
     border-radius: 9999px;
 }
+
+/* These are only used if not using libadwaita */
+
+.effect-row {
+    padding: 0;
+}
+
+.effect-row-header,
+.effect-row list {
+    padding: 8px;
+    border: 0 solid @borders;
+    border-bottom-width: 1px;
+}
+
+.revealer-arrow {
+    margin-right: 6px;
+    transition: transform 250ms;
+}
+
+.revealer-arrow.revealed {
+    transform: rotate(180deg);
+}

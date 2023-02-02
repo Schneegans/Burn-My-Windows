@@ -45,26 +45,26 @@ var PreferencesDialog = class PreferencesDialog {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      // new Me.imports.src.effects.Apparition.Apparition(),
-      // new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
-      // new Me.imports.src.effects.Doom.Doom(),
-      // new Me.imports.src.effects.EnergizeA.EnergizeA(),
-      // new Me.imports.src.effects.EnergizeB.EnergizeB(),
-      // new Me.imports.src.effects.Fire.Fire(),
-      // new Me.imports.src.effects.Glide.Glide(),
-      // new Me.imports.src.effects.Glitch.Glitch(),
-      // new Me.imports.src.effects.Hexagon.Hexagon(),
-      // new Me.imports.src.effects.Incinerate.Incinerate(),
-      // new Me.imports.src.effects.Matrix.Matrix(),
-      // new Me.imports.src.effects.Pixelate.Pixelate(),
-      // new Me.imports.src.effects.PixelWheel.PixelWheel(),
-      // new Me.imports.src.effects.PixelWipe.PixelWipe(),
-      // new Me.imports.src.effects.Portal.Portal(),
-      // new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
-      // new Me.imports.src.effects.TRexAttack.TRexAttack(),
-      // new Me.imports.src.effects.TVEffect.TVEffect(),
-      // new Me.imports.src.effects.TVGlitch.TVGlitch(),
-      // new Me.imports.src.effects.Wisps.Wisps(),
+      new Me.imports.src.effects.Apparition.Apparition(),
+      new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
+      new Me.imports.src.effects.Doom.Doom(),
+      new Me.imports.src.effects.EnergizeA.EnergizeA(),
+      new Me.imports.src.effects.EnergizeB.EnergizeB(),
+      new Me.imports.src.effects.Fire.Fire(),
+      new Me.imports.src.effects.Glide.Glide(),
+      new Me.imports.src.effects.Glitch.Glitch(),
+      new Me.imports.src.effects.Hexagon.Hexagon(),
+      new Me.imports.src.effects.Incinerate.Incinerate(),
+      new Me.imports.src.effects.Matrix.Matrix(),
+      new Me.imports.src.effects.Pixelate.Pixelate(),
+      new Me.imports.src.effects.PixelWheel.PixelWheel(),
+      new Me.imports.src.effects.PixelWipe.PixelWipe(),
+      new Me.imports.src.effects.Portal.Portal(),
+      new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
+      new Me.imports.src.effects.TRexAttack.TRexAttack(),
+      new Me.imports.src.effects.TVEffect.TVEffect(),
+      new Me.imports.src.effects.TVGlitch.TVGlitch(),
+      new Me.imports.src.effects.Wisps.Wisps(),
     ];
 
     // Load all of our resources.
@@ -137,6 +137,7 @@ var PreferencesDialog = class PreferencesDialog {
     }
     colorSchemeRow.set_visible(utils.shellVersionIsAtLeast(42, 0));
 
+    // Wire up the window picker of the profile editor.
     this._builder.get_object('profile-choose-app-button').connect('clicked', () => {
       Gio.DBus.session.call('org.gnome.Shell',
                             '/org/gnome/shell/extensions/BurnMyWindows',
@@ -155,6 +156,17 @@ var PreferencesDialog = class PreferencesDialog {
         }
       });
 
+    if (!utils.isADW()) {
+      const profileEditorButton = this._builder.get_object("edit-profile-button");
+      profileEditorButton.connect("toggled", b => {
+        if (b.active) {
+          this._builder.get_object("general-prefs").set_visible_child(this._builder.get_object("profile-editor"));
+        } else {
+          this._builder.get_object("general-prefs").set_visible_child(this._builder.get_object("effect-editor"));
+        }
+      });
+    }
+
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('general-prefs');
 
@@ -165,6 +177,26 @@ var PreferencesDialog = class PreferencesDialog {
     // accordion-like behavior of the effect settings.
     this._effectRows = [];
 
+    if (!utils.isADW()) {
+      group.connect("row-activated", (g, row) => {
+        this._effectRows.forEach(r => {
+          if (r == row) {
+            if (r._revealer.get_reveal_child()) {
+              r._revealer.set_reveal_child(false);
+              r._arrow.remove_css_class("revealed");
+            } else {
+              r._revealer.set_reveal_child(true);
+              r._arrow.add_css_class("revealed");
+            }
+          } else {
+            r._revealer.set_reveal_child(false);
+            r._arrow.remove_css_class("revealed");
+          }
+        }
+        );
+      });
+    }
+
     // Now add all the rows.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
@@ -173,38 +205,9 @@ var PreferencesDialog = class PreferencesDialog {
         const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
         const [hasPrefs] = Gio.resources_get_info(uiFile, 0);
 
-        let row;
+        // Add the settings page to the builder.
         if (hasPrefs) {
-          // Add the settings page to the builder.
           this._builder.add_from_resource(uiFile);
-
-          // Add the effect's preferences (if any).
-          row = this._builder.get_object(`${effect.getNick()}-prefs`);
-        } else {
-          row = Adw.ActionRow.new();
-        }
-
-        // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
-        // not yet exist.
-        if (row.set_use_markup) {
-          row.set_title('<b>' + effect.getLabel() + '</b>');
-          row.set_use_markup(true);
-        } else {
-          row.set_title(effect.getLabel());
-        }
-
-        // Un-expand any previously expanded effect row. This way we ensure that there
-        // is only one expanded row at any time.
-        if (hasPrefs) {
-          row.connect('notify::expanded', currentRow => {
-            if (currentRow.get_expanded()) {
-              this._effectRows.forEach(row => {
-                if (row != currentRow && row.set_expanded) {
-                  row.set_expanded(false);
-                }
-              });
-            }
-          });
         }
 
         // The preview button.
@@ -213,22 +216,89 @@ var PreferencesDialog = class PreferencesDialog {
         previewButton.add_css_class('flat');
         previewButton.set_tooltip_text(_('Preview this effect'));
         previewButton.set_valign(Gtk.Align.CENTER);
-        row.add_action(previewButton);
-
         previewButton.connect('clicked', () => {
           this._previewEffect(effect);
         });
-
-        // Now add the toggle button for enabling and disabling the effect.
+        
+        // The toggle button for enabling and disabling the effect.
         const button = Gtk.Switch.new();
         button.set_tooltip_text(_('Use this effect'));
         button.set_valign(Gtk.Align.CENTER);
         this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
+        
+        if (utils.isADW()) {
 
-        row.add_prefix(button);
-        group.add(row);
+          let row;
+          if (hasPrefs) {
 
-        this._effectRows.push(row);
+            // Add the effect's preferences (if any).
+            row = this._builder.get_object(`${effect.getNick()}-prefs`);
+          } else if(utils.isADW()) {
+            row = Adw.ActionRow.new();
+          }
+
+          // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
+          // not yet exist.
+          if (row.set_use_markup) {
+            row.set_title('<b>' + effect.getLabel() + '</b>');
+            row.set_use_markup(true);
+          } else {
+            row.set_title(effect.getLabel());
+          }
+
+          // Un-expand any previously expanded effect row. This way we ensure that there
+          // is only one expanded row at any time.
+          if (hasPrefs) {
+            row.connect('notify::expanded', currentRow => {
+              if (currentRow.get_expanded()) {
+                this._effectRows.forEach(row => {
+                  if (row != currentRow) {
+                    row.set_expanded(false);
+                  }
+                });
+              }
+            });
+            this._effectRows.push(row);
+          }
+
+          row.add_action(previewButton);
+          row.add_prefix(button);
+
+          group.add(row);
+          
+
+        } else {
+
+          const row = new Gtk.ListBoxRow({css_classes:["effect-row"]});
+          const container = new Gtk.Box({orientation:Gtk.Orientation.VERTICAL});
+          const header =  new Gtk.Box({css_classes:["effect-row-header"], spacing:12});
+          const label = new Gtk.Label({label:effect.getLabel(), css_classes:["heading"], hexpand:true, halign: Gtk.Align.START});
+
+          this.gtkBoxAppend(header, button);
+          this.gtkBoxAppend(header, label);
+          this.gtkBoxAppend(header, previewButton);
+          this.gtkBoxAppend(container, header);
+          
+          if (hasPrefs) {
+            const revealer = this._builder.get_object(`${effect.getNick()}-prefs`);
+            const arrow = new Gtk.Image({css_classes:["revealer-arrow"], icon_name:"go-down-symbolic"});
+            this.gtkBoxAppend(header, arrow);
+            this.gtkBoxAppend(container, revealer);
+            row._revealer = revealer;
+            row._arrow = arrow;
+
+            row.set_activatable(true);
+            this._effectRows.push(row);
+          } else {
+            row.set_activatable(false);
+          }
+
+          row.set_child(container);
+
+          group.append(row);
+
+        }
+
       }
     });
 
