@@ -44,16 +44,17 @@ var PixelWipe = class {
       shader._uStartPos  = shader.get_uniform_location('uStartPos');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings, forOpening, actor) => {
-        // Because the actor position may change after the begin-animation signal is
-        // called, we set the uStartPos uniform during the update callback.
-        this._startPointerPos = global.get_pointer();
-        this._actor           = actor;
+      shader.connect(
+        'begin-animation', (shader, settings, forOpening, testMode, actor) => {
+          // Because the actor position may change after the begin-animation signal is
+          // called, we set the uStartPos uniform during the update callback.
+          this._startPointerPos = global.get_pointer();
+          this._actor           = actor;
 
-        // clang-format off
+          // clang-format off
         shader.set_uniform_float(shader._uPixelSize, 1, [settings.get_int('pixel-wipe-pixel-size')]);
-        // clang-format on
-      });
+          // clang-format on
+        });
 
       // We set the uStartPos uniform during the update callback as the actor position
       // may not be set up properly before the begin animation callback.
