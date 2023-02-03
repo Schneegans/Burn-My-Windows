@@ -196,9 +196,26 @@ You can either download the effects from the KDE store (a), download a stable ve
 
 :warning: **If the color picker widgets in the effect settings do not work for you, you may have to install a package called `libkf5widgetsaddons-dev` (Kubuntu, KDE Neon, ...) or `kf5-kwidgetsaddons-devel`, `kwidgetsaddons-devel` (Fedora, OpenSuse, ...).**
 
-### a) Download from the [KDE Store](https://store.kde.org/p/1861183)
+### a) Download from the KDE Store
 
-You can directly get the effects from within your system settings. Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effetcs...".
+Here are links to all effects which are currently available in the KDE store;
+
+* [Energize A](https://store.kde.org/p/1884310)
+* [Energize B](https://store.kde.org/p/1884311)
+* [Doom](https://store.kde.org/p/1898739)
+* [Fire](https://store.kde.org/p/1884307)
+* [Glide](https://store.kde.org/p/1935778)
+* [Hexagon](https://store.kde.org/p/1884309)
+* [Incinerate](https://store.kde.org/p/1861183)
+* [Pixelate](https://store.kde.org/p/1898742)
+* [Pixel Wheel](https://store.kde.org/p/1898746)
+* [Pixel Wipe](https://store.kde.org/p/1898748)
+* [Portal](https://store.kde.org/p/1959879)
+* [TV-Effect](https://store.kde.org/p/1884312)
+* [Wisps](https://store.kde.org/p/1884313)
+
+You can also directly get the effects from within your system settings.
+Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effetcs...".
 
 ### b) Downloading a Stable Release
 
