@@ -200,11 +200,12 @@ You can either download the effects from the KDE store (a), download a stable ve
 
 Here are links to all effects which are currently available in the KDE store;
 
+* [Doom](https://store.kde.org/p/1898739)
 * [Energize A](https://store.kde.org/p/1884310)
 * [Energize B](https://store.kde.org/p/1884311)
-* [Doom](https://store.kde.org/p/1898739)
 * [Fire](https://store.kde.org/p/1884307)
 * [Glide](https://store.kde.org/p/1935778)
+* [Glitch](https://store.kde.org/p/1972813)
 * [Hexagon](https://store.kde.org/p/1884309)
 * [Incinerate](https://store.kde.org/p/1861183)
 * [Pixelate](https://store.kde.org/p/1898742)
@@ -212,6 +213,7 @@ Here are links to all effects which are currently available in the KDE store;
 * [Pixel Wipe](https://store.kde.org/p/1898748)
 * [Portal](https://store.kde.org/p/1959879)
 * [TV-Effect](https://store.kde.org/p/1884312)
+* [TV-Glitch](https://store.kde.org/p/1982142)
 * [Wisps](https://store.kde.org/p/1884313)
 
 You can also directly get the effects from within your system settings.
