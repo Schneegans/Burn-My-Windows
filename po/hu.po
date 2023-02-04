@@ -8,188 +8,191 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 13:21+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-02-06 11:38+0000\n"
+"Last-Translator: KinteLiX <superh552@gmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
-msgstr ""
+msgstr "Jelenés"
 
 #: src/BrokenGlass.js:139
 msgid "Broken Glass"
-msgstr ""
+msgstr "Szilánkok"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr ""
+msgstr "Végzet"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
-msgstr ""
+msgstr "Energia A"
 
 #: src/EnergizeB.js:81
 msgid "Energize B"
-msgstr ""
+msgstr "Energia B"
 
 #: src/Fire.js:100
 msgid "Fire"
-msgstr ""
+msgstr "Tűz"
 
 #: src/Fire.js:155
 msgid "Default Fire"
-msgstr ""
+msgstr "Alapértelmezett tűz"
 
 #: src/Fire.js:165
 msgid "Hell Fire"
-msgstr ""
+msgstr "Pokoli tűz"
 
 #: src/Fire.js:175
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "Sötét és kormos"
 
 #: src/Fire.js:185
 msgid "Cold Breeze"
-msgstr ""
+msgstr "Hideg szellő"
 
 #: src/Fire.js:195
 msgid "Santa is Coming"
-msgstr ""
+msgstr "Jön a télapó"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Siklás"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "Hiba"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
-msgstr ""
+msgstr "Hatszög"
 
 #: src/Incinerate.js:131
 msgid "Incinerate"
-msgstr ""
+msgstr "Elégetés"
 
 #: src/Matrix.js:114
 msgid "Matrix"
-msgstr ""
+msgstr "Mátrix"
 
 #: src/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelezés"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Pixelciklus"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Pixelhullám"
 
 #: src/Portal.js:91
 msgid "Portal"
-msgstr ""
+msgstr "Portál"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Hírtelen felbomlás"
 
 #: src/TRexAttack.js:116
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "T-Rex támadás"
 
 #: src/TVEffect.js:78
 msgid "TV Effect"
-msgstr ""
+msgstr "Tévé hatás"
 
 #: src/TVGlitch.js:90
 msgid "TV Glitch"
-msgstr ""
+msgstr "Tévé hiba"
 
 #: src/Wisps.js:86
 msgid "Wisps"
-msgstr ""
+msgstr "Szálak"
 
 #: prefs.js:140
 msgid "Effects"
-msgstr ""
+msgstr "Hatások"
 
 #: prefs.js:182 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "Nézze elő ezt a hatást"
 
 #: prefs.js:217
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "Használja ezt a hatást az ablakok megnyitásakor"
 
 #: prefs.js:218
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "Használja ezt a hatást az ablakok bezárásakor"
 
 #: prefs.js:244
 msgid "General Options"
-msgstr ""
+msgstr "Általános opciók"
 
 #: prefs.js:349 prefs.js:381
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Aranyszponzorok"
 
 #: prefs.js:353 prefs.js:385
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Ezüstszponzorok"
 
 #: prefs.js:357 prefs.js:389
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Bronzszponzorok"
 
 #: prefs.js:361 prefs.js:393
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Korábbi szponzorok"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:607
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "%s előnézete"
 
 #: prefs.js:629
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "Zárja be ezt az ablakot hogy előnézze ezt a hatást!"
 
 #: resources/ui/common/main-menu.ui:12
 msgid "Visit Homepage"
-msgstr ""
+msgstr "Honlap meglátogatása"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "View Changelog"
-msgstr ""
+msgstr "Változási napló megtekintése"
 
 #: resources/ui/common/main-menu.ui:22
 msgid "Report a Bug"
-msgstr ""
+msgstr "Hiba jelentése"
 
 #: resources/ui/common/main-menu.ui:26
 msgid "Create an Effect"
-msgstr ""
+msgstr "Hatás készítése"
 
 #: resources/ui/common/main-menu.ui:30
 msgid "Translate"
-msgstr ""
+msgstr "Fordítás"
 
 #: resources/ui/common/main-menu.ui:34
 msgid "Donate"
-msgstr ""
+msgstr "Adományozás"
 
 #: resources/ui/common/main-menu.ui:47
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "A Burn-My-Windowsról"
 
 #: resources/ui/gtk4/Matrix.ui:30 resources/ui/gtk4/BrokenGlass.ui:30
 #: resources/ui/gtk4/Incinerate.ui:30 resources/ui/gtk4/Wisps.ui:30
@@ -220,7 +223,7 @@ msgstr ""
 #: resources/ui/adw/EnergizeB.ui:15 resources/ui/adw/Pixelate.ui:14
 #: resources/ui/adw/Apparition.ui:15 resources/ui/adw/Portal.ui:14
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "Animáció időtartama [ms]"
 
 #: resources/ui/gtk4/Matrix.ui:58 resources/ui/gtk4/Matrix.ui:104
 #: resources/ui/gtk4/Matrix.ui:150 resources/ui/gtk4/Matrix.ui:196
@@ -340,7 +343,7 @@ msgstr ""
 #: resources/ui/adw/Portal.ui:102 resources/ui/adw/Portal.ui:135
 #: resources/ui/adw/Portal.ui:160
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "Visszaállítás az alapértelmezett értékre"
 
 #: resources/ui/gtk4/Matrix.ui:76 resources/ui/gtk4/BrokenGlass.ui:76
 #: resources/ui/gtk4/Incinerate.ui:76 resources/ui/gtk4/Wisps.ui:76
@@ -360,58 +363,60 @@ msgstr ""
 #: resources/ui/adw/EnergizeA.ui:47 resources/ui/adw/Hexagon.ui:47
 #: resources/ui/adw/EnergizeB.ui:48
 msgid "Scale"
-msgstr ""
+msgstr "Skála"
 
 #: resources/ui/gtk4/Matrix.ui:122 resources/ui/gtk4/Apparition.ui:76
 #: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
 #: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
-msgstr ""
+msgstr "Véletlenszerűség"
 
 #: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Függőleges túlcsúszás"
 
 #: resources/ui/gtk4/Matrix.ui:214 resources/ui/adw/Matrix.ui:146
 msgid "Trail Color"
-msgstr ""
+msgstr "Nyom színe"
 
 #: resources/ui/gtk4/Matrix.ui:248 resources/ui/adw/Matrix.ui:171
 msgid "Tip Color"
-msgstr ""
+msgstr "Csúcs színe"
 
 #: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
-msgstr ""
+msgstr "Gravitáció"
 
 #: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
-msgstr ""
+msgstr "Fúvóerő"
 
 #: resources/ui/gtk4/BrokenGlass.ui:218 resources/ui/adw/BrokenGlass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Összetörés a mutató pozíciójáról"
 
 #: resources/ui/gtk4/BrokenGlass.ui:227 resources/ui/adw/BrokenGlass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"A szilánkok onnan fognak elrepülni, ahol a mutató tartózkodott az ablak "
+"bezárásakor."
 
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
 #: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "Légörvény"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Mutatónál kezdje"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Ha ki van kapcsolva, egy véletlenszerű hely lesz választva."
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -428,12 +433,12 @@ msgstr ""
 #: resources/ui/adw/EnergizeA.ui:80 resources/ui/adw/EnergizeB.ui:81
 #: resources/ui/adw/Portal.ui:146
 msgid "Color"
-msgstr ""
+msgstr "Szín"
 
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 #: resources/ui/adw/Fire.ui:14
 msgid "Presets"
-msgstr ""
+msgstr "Sablonok"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/TVGlitch.ui:168
 #: resources/ui/gtk4/Glitch.ui:168 resources/ui/gtk3/Fire.ui:195
@@ -441,37 +446,37 @@ msgstr ""
 #: resources/ui/adw/Fire.ui:96 resources/ui/adw/TVGlitch.ui:113
 #: resources/ui/adw/Glitch.ui:113
 msgid "Speed"
-msgstr ""
+msgstr "Gyorsaság"
 
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
 #: resources/ui/adw/Fire.ui:129
 msgid "3D Noise"
-msgstr ""
+msgstr "3D zaj"
 
 #: resources/ui/gtk4/Fire.ui:206 resources/ui/gtk3/Fire.ui:256
 #: resources/ui/adw/Fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "Egy dinamikusabb tüzet készít, de több GPU erőt igényel."
 
 #: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
 #: resources/ui/adw/Fire.ui:152
 msgid "Gradient"
-msgstr ""
+msgstr "Gradiens"
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Összenyomás"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Billenés"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Elmozdítás"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -480,44 +485,44 @@ msgstr ""
 #: resources/ui/adw/PixelWipe.ui:47 resources/ui/adw/PixelWheel.ui:80
 #: resources/ui/adw/Doom.ui:113 resources/ui/adw/Pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "Pixelméret"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Korom karmolás skálája"
 
 #: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Korom karmolás száma"
 
 #: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "Eltorzító hatás"
 
 #: resources/ui/gtk4/TRexAttack.ui:214 resources/ui/adw/TRexAttack.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "Villanás színe"
 
 #: resources/ui/gtk4/TVGlitch.ui:122 resources/ui/gtk4/Glitch.ui:122
 #: resources/ui/gtk3/TVGlitch.ui:160 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/TVGlitch.ui:80 resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Erő"
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "Sugár száma"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Vízszintes skála"
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
 #: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Függőleges skála"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
@@ -527,12 +532,12 @@ msgstr ""
 #: resources/ui/gtk4/Hexagon.ui:168 resources/ui/gtk3/Hexagon.ui:201
 #: resources/ui/adw/Hexagon.ui:113
 msgid "Line Color"
-msgstr ""
+msgstr "Vonal színe"
 
 #: resources/ui/gtk4/Hexagon.ui:202 resources/ui/gtk3/Hexagon.ui:244
 #: resources/ui/adw/Hexagon.ui:138
 msgid "Glow Color"
-msgstr ""
+msgstr "Világítás színe"
 
 #: resources/ui/gtk4/Hexagon.ui:240 resources/ui/gtk3/Hexagon.ui:291
 #: resources/ui/adw/Hexagon.ui:163
@@ -542,26 +547,26 @@ msgstr ""
 #: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
 #: resources/ui/adw/Hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Lehet, hogy szeretné bekapcsolni ezt a sötét témájú ablaktémákoknak."
 
 #: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
 #: resources/ui/adw/Pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "Zaj"
 
 #: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
 #: resources/ui/adw/prefs.ui:31
 msgid "Welcome to Burn-My-Windows!"
-msgstr ""
+msgstr "Üdvözöljük a Burn-My-Windowsban!"
 
 #: resources/ui/gtk4/prefs.ui:45 resources/ui/gtk3/prefs.ui:52
 #: resources/ui/adw/prefs.ui:42
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr ""
+msgstr "Ha tetszik önnek ez a bővítmény, ajánlja barátainak :)"
 
 #: resources/ui/gtk4/prefs.ui:72 resources/ui/gtk3/prefs.ui:80
 msgid "Open Window Animation"
-msgstr ""
+msgstr "Megnyitott ablak animációja"
 
 #: resources/ui/gtk4/prefs.ui:81 resources/ui/gtk4/prefs.ui:125
 #: resources/ui/gtk3/prefs.ui:89 resources/ui/gtk3/prefs.ui:153
