@@ -1,198 +1,198 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Simon Schneegans
-# This file is distributed under the same license as the Burn-My-Windows package.
+# This file is distributed under the same license as the burn-my-windows package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Burn-My-Windows\n"
+"Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 13:21+0100\n"
-"PO-Revision-Date: 2023-02-03 07:42+0000\n"
-"Last-Translator: Mathis Chabrier <matshot03@gmail.com>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
-"core/fr/>\n"
-"Language: fr\n"
+"PO-Revision-Date: 2023-01-31 11:35+0000\n"
+"Last-Translator: Ryan Y <ryuichi.ya220@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.16-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
-msgstr "Spectre"
+msgstr "幻影"
 
 #: src/BrokenGlass.js:139
 msgid "Broken Glass"
-msgstr "Verre brisé"
+msgstr "壊れたガラス"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr "Apocalypse"
+msgstr ""
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
-msgstr "Énergie A"
+msgstr "エナジャイズ A"
 
 #: src/EnergizeB.js:81
 msgid "Energize B"
-msgstr "Énergie B"
+msgstr "エナジャイズ B"
 
 #: src/Fire.js:100
 msgid "Fire"
-msgstr "Feu"
+msgstr "炎"
 
 #: src/Fire.js:155
 msgid "Default Fire"
-msgstr "Feu par défaut"
+msgstr "デフォルトの炎"
 
 #: src/Fire.js:165
 msgid "Hell Fire"
-msgstr "Feu de l'enfer"
+msgstr "地獄の炎"
 
 #: src/Fire.js:175
 msgid "Dark and Smutty"
-msgstr "Sombre et ténébreux"
+msgstr "暗い感じ"
 
 #: src/Fire.js:185
 msgid "Cold Breeze"
-msgstr "Brise froide"
+msgstr "冷たい風"
 
 #: src/Fire.js:195
 msgid "Santa is Coming"
-msgstr "Le Père Noël arrive"
+msgstr "サンタさんがやってきた"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr "Glisse"
+msgstr "グライド"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr "Défaut"
+msgstr "グリッチ"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
-msgstr "Hexagone"
+msgstr "ヘキサゴン"
 
 #: src/Incinerate.js:131
 msgid "Incinerate"
-msgstr "Incinération"
+msgstr "焼却"
 
 #: src/Matrix.js:114
 msgid "Matrix"
-msgstr "Matrix"
+msgstr "マトリックス"
 
 #: src/Pixelate.js:74
 msgid "Pixelate"
-msgstr "Pixelisé"
+msgstr "ピクセル"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Roue de Pixels"
+msgstr "ピクセルの輪"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "Effacement de Pixels"
+msgstr "ピクセルの波"
 
 #: src/Portal.js:91
 msgid "Portal"
-msgstr "Portail"
+msgstr "ポータル"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
-msgstr "Désintégration"
+msgstr "指パッチン"
 
 #: src/TRexAttack.js:116
 msgid "T-Rex Attack"
-msgstr "Attaque de T-Rex"
+msgstr "ティラノサウルスの攻撃"
 
 #: src/TVEffect.js:78
 msgid "TV Effect"
-msgstr "Effet TV"
+msgstr "テレビ"
 
 #: src/TVGlitch.js:90
 msgid "TV Glitch"
-msgstr "Dysfonctionnement Télé"
+msgstr "テレビの故障"
 
 #: src/Wisps.js:86
 msgid "Wisps"
-msgstr "Feux follets"
+msgstr "フェアリー"
 
 #: prefs.js:140
 msgid "Effects"
-msgstr "Effets"
+msgstr "エフェクト"
 
 #: prefs.js:182 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr "Aperçu de l'effet"
+msgstr "このエフェクトをプレビュー"
 
 #: prefs.js:217
 msgid "Use this effect when opening windows"
-msgstr "Utiliser l'effet à l'ouverture de la fenêtre"
+msgstr "ウィンドウを開くときに使用"
 
 #: prefs.js:218
 msgid "Use this effect when closing windows"
-msgstr "Utiliser l'effet à la fermeture de la fenêtre"
+msgstr "ウィンドウを閉じるときに使用"
 
 #: prefs.js:244
 msgid "General Options"
-msgstr "Options générales"
+msgstr "全般"
 
 #: prefs.js:349 prefs.js:381
 msgid "Gold Sponsors"
-msgstr "Sponsors Or"
+msgstr "ゴールドスポンサー"
 
 #: prefs.js:353 prefs.js:385
 msgid "Silver Sponsors"
-msgstr "Sponsors Argent"
+msgstr "シルバースポンサー"
 
 #: prefs.js:357 prefs.js:389
 msgid "Bronze Sponsors"
-msgstr "Sponsors Bronze"
+msgstr "ブロンズスポンサー"
 
 #: prefs.js:361 prefs.js:393
 msgid "Past Sponsors"
-msgstr "Anciens Sponsors"
+msgstr "過去のスポンサー"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:607
 #, javascript-format
 msgid "Preview for %s"
-msgstr "Aperçu pour %s"
+msgstr "%s のプレビュー"
 
 #: prefs.js:629
 msgid "Close this Window to Preview the Effect!"
-msgstr "Fermez cette fenêtre pour un aperçu de l'effet !"
+msgstr "このウィンドウを閉じてエフェクトを試してみて下さい！"
 
 #: resources/ui/common/main-menu.ui:12
 msgid "Visit Homepage"
-msgstr "Visiter la page d'accueil"
+msgstr "ホームページを訪れる"
 
 #: resources/ui/common/main-menu.ui:16
 msgid "View Changelog"
-msgstr "Voir le journal des modifications"
+msgstr "変更ログを見る"
 
 #: resources/ui/common/main-menu.ui:22
 msgid "Report a Bug"
-msgstr "Signaler un bogue"
+msgstr "バグを報告する"
 
 #: resources/ui/common/main-menu.ui:26
 msgid "Create an Effect"
-msgstr "Créer un effet"
+msgstr "エフェクトを作成する"
 
 #: resources/ui/common/main-menu.ui:30
 msgid "Translate"
-msgstr "Traduire"
+msgstr "翻訳する"
 
 #: resources/ui/common/main-menu.ui:34
 msgid "Donate"
-msgstr "Faire un don"
+msgstr "寄付する"
 
 #: resources/ui/common/main-menu.ui:47
 msgid "About Burn-My-Windows"
-msgstr "À propos de Burn-My-Windows"
+msgstr "Burn-My-Windows について"
 
 #: resources/ui/gtk4/Matrix.ui:30 resources/ui/gtk4/BrokenGlass.ui:30
 #: resources/ui/gtk4/Incinerate.ui:30 resources/ui/gtk4/Wisps.ui:30
@@ -223,7 +223,7 @@ msgstr "À propos de Burn-My-Windows"
 #: resources/ui/adw/EnergizeB.ui:15 resources/ui/adw/Pixelate.ui:14
 #: resources/ui/adw/Apparition.ui:15 resources/ui/adw/Portal.ui:14
 msgid "Animation Time [ms]"
-msgstr "Durée de l'animation (ms)"
+msgstr "アニメーション時間（ミリ秒）"
 
 #: resources/ui/gtk4/Matrix.ui:58 resources/ui/gtk4/Matrix.ui:104
 #: resources/ui/gtk4/Matrix.ui:150 resources/ui/gtk4/Matrix.ui:196
@@ -343,7 +343,7 @@ msgstr "Durée de l'animation (ms)"
 #: resources/ui/adw/Portal.ui:102 resources/ui/adw/Portal.ui:135
 #: resources/ui/adw/Portal.ui:160
 msgid "Reset to Default Value"
-msgstr "Réinitialiser à la valeur par défaut"
+msgstr "デフォルトの値にリセット"
 
 #: resources/ui/gtk4/Matrix.ui:76 resources/ui/gtk4/BrokenGlass.ui:76
 #: resources/ui/gtk4/Incinerate.ui:76 resources/ui/gtk4/Wisps.ui:76
@@ -363,60 +363,58 @@ msgstr "Réinitialiser à la valeur par défaut"
 #: resources/ui/adw/EnergizeA.ui:47 resources/ui/adw/Hexagon.ui:47
 #: resources/ui/adw/EnergizeB.ui:48
 msgid "Scale"
-msgstr "Échelle"
+msgstr "大きさ"
 
 #: resources/ui/gtk4/Matrix.ui:122 resources/ui/gtk4/Apparition.ui:76
 #: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
 #: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
-msgstr "Aléatoire"
+msgstr "ランダム度"
 
 #: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr "Dépassement vertical"
+msgstr "垂直オーバーシュート"
 
 #: resources/ui/gtk4/Matrix.ui:214 resources/ui/adw/Matrix.ui:146
 msgid "Trail Color"
-msgstr "Couleur de la traîne"
+msgstr "軌跡の色"
 
 #: resources/ui/gtk4/Matrix.ui:248 resources/ui/adw/Matrix.ui:171
 msgid "Tip Color"
-msgstr "Couleur de la pointe"
+msgstr "先端の色"
 
 #: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
-msgstr "Gravité"
+msgstr "重力"
 
 #: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
-msgstr "Force d'explosion"
+msgstr "吹き飛ぶ強さ"
 
 #: resources/ui/gtk4/BrokenGlass.ui:218 resources/ui/adw/BrokenGlass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr "Briser à partir de la position du curseur"
+msgstr "ポインタの位置から砕ける"
 
 #: resources/ui/gtk4/BrokenGlass.ui:227 resources/ui/adw/BrokenGlass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
-msgstr ""
-"Les éclats s'envoleront de l'endroit où se trouvait le pointeur de votre "
-"souris lorsque vous fermez la fenêtre."
+msgstr "ウィンドウが閉じられた際のポインタの位置から砕け散ります。"
 
 #: resources/ui/gtk4/Incinerate.ui:122 resources/ui/gtk3/Incinerate.ui:153
 #: resources/ui/adw/Incinerate.ui:80
 msgid "Turbulence"
-msgstr "Turbulences"
+msgstr "乱気流"
 
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
-msgstr "Débuter au pointeur"
+msgstr "ポインタから開始"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr "Si désactivé, un emplacement aléatoire sera choisi."
+msgstr "無効化されている場合、ランダムに位置が選ばれます。"
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -433,12 +431,12 @@ msgstr "Si désactivé, un emplacement aléatoire sera choisi."
 #: resources/ui/adw/EnergizeA.ui:80 resources/ui/adw/EnergizeB.ui:81
 #: resources/ui/adw/Portal.ui:146
 msgid "Color"
-msgstr "Couleur"
+msgstr "色"
 
 #: resources/ui/gtk4/Fire.ui:31 resources/ui/gtk3/Fire.ui:55
 #: resources/ui/adw/Fire.ui:14
 msgid "Presets"
-msgstr "Préréglages"
+msgstr "プリセット"
 
 #: resources/ui/gtk4/Fire.ui:147 resources/ui/gtk4/TVGlitch.ui:168
 #: resources/ui/gtk4/Glitch.ui:168 resources/ui/gtk3/Fire.ui:195
@@ -446,39 +444,37 @@ msgstr "Préréglages"
 #: resources/ui/adw/Fire.ui:96 resources/ui/adw/TVGlitch.ui:113
 #: resources/ui/adw/Glitch.ui:113
 msgid "Speed"
-msgstr "Vitesse"
+msgstr "速さ"
 
 #: resources/ui/gtk4/Fire.ui:197 resources/ui/gtk3/Fire.ui:247
 #: resources/ui/adw/Fire.ui:129
 msgid "3D Noise"
-msgstr "Bruit 3D"
+msgstr "3D ノイズ"
 
 #: resources/ui/gtk4/Fire.ui:206 resources/ui/gtk3/Fire.ui:256
 #: resources/ui/adw/Fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
-"Crée un feu plus dynamique mais nécessite plus de puissance de la carte "
-"graphique."
+msgstr "ダイナミックな炎を生成します。GPU の使用率が増えます。"
 
 #: resources/ui/gtk4/Fire.ui:246 resources/ui/gtk3/Fire.ui:306
 #: resources/ui/adw/Fire.ui:152
 msgid "Gradient"
-msgstr "Dégradé"
+msgstr ""
 
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr "Écraser"
+msgstr ""
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr "Incliner"
+msgstr ""
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr "Décaler"
+msgstr ""
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -487,163 +483,148 @@ msgstr "Décaler"
 #: resources/ui/adw/PixelWipe.ui:47 resources/ui/adw/PixelWheel.ui:80
 #: resources/ui/adw/Doom.ui:113 resources/ui/adw/Pixelate.ui:80
 msgid "Pixel Size"
-msgstr "Taille des pixels"
+msgstr "ピクセルの大きさ"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
-msgstr "Taille de la griffe"
+msgstr ""
 
 #: resources/ui/gtk4/TRexAttack.ui:122 resources/ui/adw/TRexAttack.ui:80
 msgid "Claw Scratch Count"
-msgstr "Nombre de griffures"
+msgstr ""
 
 #: resources/ui/gtk4/TRexAttack.ui:168 resources/ui/adw/TRexAttack.ui:113
 msgid "Warp Effect"
-msgstr "Effet de distorsion"
+msgstr ""
 
 #: resources/ui/gtk4/TRexAttack.ui:214 resources/ui/adw/TRexAttack.ui:146
 msgid "Flash Color"
-msgstr "Couleur du flash"
+msgstr ""
 
 #: resources/ui/gtk4/TVGlitch.ui:122 resources/ui/gtk4/Glitch.ui:122
 #: resources/ui/gtk3/TVGlitch.ui:160 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/TVGlitch.ui:80 resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr "Résistance"
+msgstr ""
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr "Nombre de rayons"
+msgstr ""
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Échelle horizontale"
+msgstr ""
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
 #: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
-msgstr "Échelle verticale"
+msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr "Largeur des lignes du maillage"
+msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:168 resources/ui/gtk3/Hexagon.ui:201
 #: resources/ui/adw/Hexagon.ui:113
 msgid "Line Color"
-msgstr "Couleur de ligne"
+msgstr "線の色"
 
 #: resources/ui/gtk4/Hexagon.ui:202 resources/ui/gtk3/Hexagon.ui:244
 #: resources/ui/adw/Hexagon.ui:138
 msgid "Glow Color"
-msgstr "Couleur de la lueur"
+msgstr "光の色"
 
 #: resources/ui/gtk4/Hexagon.ui:240 resources/ui/gtk3/Hexagon.ui:291
 #: resources/ui/adw/Hexagon.ui:163
 msgid "Additive Blending"
-msgstr "Mélange additif"
+msgstr ""
 
 #: resources/ui/gtk4/Hexagon.ui:249 resources/ui/gtk3/Hexagon.ui:300
 #: resources/ui/adw/Hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr "Vous voudrez peut-être l'activer pour les thèmes de fenêtre sombre."
+msgstr ""
 
 #: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
 #: resources/ui/adw/Pixelate.ui:47
 msgid "Noise"
-msgstr "Bruit"
+msgstr "ノイズ"
 
 #: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
 #: resources/ui/adw/prefs.ui:31
 msgid "Welcome to Burn-My-Windows!"
-msgstr "Bienvenue dans Burn-My-Windows !"
+msgstr "Burn-My-Windows へようこそ！"
 
 #: resources/ui/gtk4/prefs.ui:45 resources/ui/gtk3/prefs.ui:52
 #: resources/ui/adw/prefs.ui:42
 msgid "If you like this extension, recommend it to your friends :)"
-msgstr "Si vous aimez cette extension, recommandez-la à vos amis :)"
+msgstr "気に入っていただけたなら、あなたの友人にも見せてみて下さい :)"
 
 #: resources/ui/gtk4/prefs.ui:72 resources/ui/gtk3/prefs.ui:80
 msgid "Open Window Animation"
-msgstr "Animation d'ouverture de fenêtre"
+msgstr "ウィンドウを開いたときのアニメーション"
 
 #: resources/ui/gtk4/prefs.ui:81 resources/ui/gtk4/prefs.ui:125
 #: resources/ui/gtk3/prefs.ui:89 resources/ui/gtk3/prefs.ui:153
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Si plusieurs effets sont sélectionnés, un est choisi au hasard."
+msgstr "複数のエフェクトが設定されている場合、その中からランダムに選択されます。"
 
 #: resources/ui/gtk4/prefs.ui:96 resources/ui/gtk4/prefs.ui:140
 #: resources/ui/gtk3/prefs.ui:110 resources/ui/gtk3/prefs.ui:174
 msgid "Choose Effects"
-msgstr "Choisir les effets"
+msgstr "エフェクトを選ぶ"
 
 #: resources/ui/gtk4/prefs.ui:116 resources/ui/gtk3/prefs.ui:144
 msgid "Close Window Animation"
-msgstr "Animation de fermeture de fenêtre"
+msgstr "ウィンドウを閉じたときのアニメーション"
 
 #: resources/ui/gtk4/prefs.ui:156 resources/ui/gtk3/prefs.ui:204
 #: resources/ui/adw/prefs.ui:52
 msgid "Also Add Effects to Dialogs"
-msgstr "Appliquer également les effets aux boîtes de dialogue"
+msgstr "ダイアログにでもエフェクトを使用する"
 
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
 #: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
-msgstr "Désactiver sur batterie"
+msgstr "電源に接続されていないとき無効化"
 
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr "Désactiver en mode économie d'énergie"
+msgstr "パワーセーブモード時無効化"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
 msgid "Twirl Intensity"
-msgstr "Intensité du tournoiement"
+msgstr "ねじれの強さ"
 
 #: resources/ui/gtk4/Apparition.ui:168 resources/ui/gtk3/Apparition.ui:216
 #: resources/ui/adw/Apparition.ui:114
 msgid "Shake Intensity"
-msgstr "Intensité de la secousse"
+msgstr "揺れの強さ"
 
 #: resources/ui/gtk4/Apparition.ui:214 resources/ui/gtk3/Apparition.ui:265
 #: resources/ui/adw/Apparition.ui:147
 msgid "Suction Intensity"
-msgstr "Intensité de la succion"
+msgstr "吸う力の強さ"
 
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr "Tourbillon"
+msgstr "渦巻き度"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr "Vitesse de rotation"
+msgstr "回転速度"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr "Détails"
+msgstr "ディテール"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
-msgstr "Sélectionner un préréglage"
-
-#~ msgid "Preview this Effect"
-#~ msgstr "Voir l'aperçu de cet effet"
-
-#~ msgid "Effect Options"
-#~ msgstr "Options de l'effet"
-
-#~ msgid "Go Back"
-#~ msgstr "Retour"
-
-#~ msgid "Via PayPal"
-#~ msgstr "Via PayPal"
-
-#~ msgid "Via GitHub"
-#~ msgstr "Via GitHub"
+msgstr "プリセットを選ぶ"

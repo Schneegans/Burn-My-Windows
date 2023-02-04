@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 26](https://github.com/schneegans/Burn-My-Windows/releases/tag/v26)
 
-**Release Date:** TBD
+**Release Date:** 2023-02-04
 
 #### New Features
 
@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Other Enhancements
 
 * On KDE, the effect configuration dialogs can now be translated. The translations for GNOME are re-used, so we already have many translations! This requires at least KWin 5.27 to be working.
+* Many translation updates, including a completely new Japanese translation. Thanks to all the translators!
 * The effect colors for the Glitch and TV Effect now support an alpha channel. With this you can control how much color gets mixed into the window color.
 
 

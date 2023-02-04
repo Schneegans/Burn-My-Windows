@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 13:21+0100\n"
-"PO-Revision-Date: 2023-01-23 16:13+0000\n"
+"PO-Revision-Date: 2023-01-25 20:52+0000\n"
 "Last-Translator: gnu-ewm <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/pl/>\n"
@@ -30,7 +30,7 @@ msgstr "Rozbicie Szkła"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr "Fatum"
+msgstr "Doom"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
@@ -114,7 +114,7 @@ msgstr "Efekt TV"
 
 #: src/TVGlitch.js:90
 msgid "TV Glitch"
-msgstr ""
+msgstr "Zakłócenia TV"
 
 #: src/Wisps.js:86
 msgid "Wisps"
