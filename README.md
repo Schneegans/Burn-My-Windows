@@ -217,7 +217,7 @@ Here are links to all effects which are currently available in the KDE store;
 * [Wisps](https://store.kde.org/p/1884313)
 
 You can also directly get the effects from within your system settings.
-Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effetcs...".
+Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effects...".
 
 ### b) Downloading a Stable Release
 
