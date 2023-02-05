@@ -349,6 +349,11 @@ var PreferencesDialog = class PreferencesDialog {
           header.pack_start(menu);
           header.set_title_widget(this._builder.get_object('profile-button'));
 
+          // GNOME Shell extensions are forced to use a AdwPreferencesWindow. This already
+          // includes a Gtk.ScrolledWindow as well as an Adw.Clamp. For the profile
+          // editing, we want to use an Adw.Flap which reveals itself from the top. This
+          // needs to be inserted in the widget hierarchy above the Adw.Clamp, else it
+          // would look ugly. Therefore, we fiddle around with the internal widgets...
           const flap     = this._builder.get_object('profile-editor-flap');
           const clamp    = this._findWidgetByType(window.get_content(), Adw.Clamp);
           const viewport = clamp.get_parent();
@@ -901,6 +906,8 @@ function buildPrefsWidget() {
   return dialog.getWidget();
 }
 
+// If using libadwaita, this method is called. In this case, the primary widget of the
+// preferences dialog is an Adw.PreferencesPage, which we directly add to the window.
 function fillPreferencesWindow(window) {
   window.set_default_size(700, 700);
   var dialog = new PreferencesDialog();
