@@ -72,14 +72,18 @@ var PreferencesDialog = class PreferencesDialog {
     Gio.resources_register(this._resources);
 
     // Load the CSS file for the settings dialog.
-    const styleProvider = Gtk.CssProvider.new();
-    styleProvider.load_from_resource('/css/gtk.css');
-    if (utils.isGTK4()) {
-      Gtk.StyleContext.add_provider_for_display(Gdk.Display.get_default(), styleProvider,
-                                                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-    } else {
-      Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), styleProvider,
-                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    if (!utils.isADW()) {
+      const styleProvider = Gtk.CssProvider.new();
+      if (utils.isGTK4()) {
+        styleProvider.load_from_resource('/css/gtk4.css');
+        Gtk.StyleContext.add_provider_for_display(
+          Gdk.Display.get_default(), styleProvider,
+          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+      } else {
+        styleProvider.load_from_resource('/css/gtk3.css');
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), styleProvider,
+                                                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+      }
     }
 
     // Make sure custom icons are found.
@@ -157,12 +161,14 @@ var PreferencesDialog = class PreferencesDialog {
       });
 
     if (!utils.isADW()) {
-      const profileEditorButton = this._builder.get_object("edit-profile-button");
-      profileEditorButton.connect("toggled", b => {
+      const profileEditorButton = this._builder.get_object('edit-profile-button');
+      profileEditorButton.connect('toggled', b => {
         if (b.active) {
-          this._builder.get_object("general-prefs").set_visible_child(this._builder.get_object("profile-editor"));
+          this._builder.get_object('general-prefs')
+            .set_visible_child(this._builder.get_object('profile-editor'));
         } else {
-          this._builder.get_object("general-prefs").set_visible_child(this._builder.get_object("effect-editor"));
+          this._builder.get_object('general-prefs')
+            .set_visible_child(this._builder.get_object('effect-editor'));
         }
       });
     }
@@ -178,22 +184,21 @@ var PreferencesDialog = class PreferencesDialog {
     this._effectRows = [];
 
     if (!utils.isADW()) {
-      group.connect("row-activated", (g, row) => {
+      group.connect('row-activated', (g, row) => {
         this._effectRows.forEach(r => {
           if (r == row) {
             if (r._revealer.get_reveal_child()) {
               r._revealer.set_reveal_child(false);
-              r._arrow.remove_css_class("revealed");
+              r._arrow.get_style_context().remove_class('revealed');
             } else {
               r._revealer.set_reveal_child(true);
-              r._arrow.add_css_class("revealed");
+              r._arrow.get_style_context().add_class('revealed');
             }
           } else {
             r._revealer.set_reveal_child(false);
-            r._arrow.remove_css_class("revealed");
+            r._arrow.get_style_context().remove_class('revealed');
           }
-        }
-        );
+        });
       });
     }
 
@@ -211,21 +216,26 @@ var PreferencesDialog = class PreferencesDialog {
         }
 
         // The preview button.
-        const previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
-        previewButton.add_css_class('circular');
-        previewButton.add_css_class('flat');
+        let previewButton;
+        if (utils.isGTK4()) {
+          previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
+        } else {
+          previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic', 1);
+        }
+        previewButton.get_style_context().add_class('circular');
+        previewButton.get_style_context().add_class('flat');
         previewButton.set_tooltip_text(_('Preview this effect'));
         previewButton.set_valign(Gtk.Align.CENTER);
         previewButton.connect('clicked', () => {
           this._previewEffect(effect);
         });
-        
+
         // The toggle button for enabling and disabling the effect.
         const button = Gtk.Switch.new();
         button.set_tooltip_text(_('Use this effect'));
         button.set_valign(Gtk.Align.CENTER);
         this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
-        
+
         if (utils.isADW()) {
 
           let row;
@@ -233,7 +243,7 @@ var PreferencesDialog = class PreferencesDialog {
 
             // Add the effect's preferences (if any).
             row = this._builder.get_object(`${effect.getNick()}-prefs`);
-          } else if(utils.isADW()) {
+          } else if (utils.isADW()) {
             row = Adw.ActionRow.new();
           }
 
@@ -265,27 +275,35 @@ var PreferencesDialog = class PreferencesDialog {
           row.add_prefix(button);
 
           group.add(row);
-          
+
 
         } else {
 
-          const row = new Gtk.ListBoxRow({css_classes:["effect-row"]});
-          const container = new Gtk.Box({orientation:Gtk.Orientation.VERTICAL});
-          const header =  new Gtk.Box({css_classes:["effect-row-header"], spacing:12});
-          const label = new Gtk.Label({label:effect.getLabel(), css_classes:["heading"], hexpand:true, halign: Gtk.Align.START});
+          const row = new Gtk.ListBoxRow();
+          row.get_style_context().add_class('effect-row');
+
+          const container = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
+
+          const header = new Gtk.Box({spacing: 12});
+          header.get_style_context().add_class('effect-row-header');
+
+          const label = new Gtk.Label(
+            {label: effect.getLabel(), hexpand: true, halign: Gtk.Align.START});
+          label.get_style_context().add_class('heading');
 
           this.gtkBoxAppend(header, button);
           this.gtkBoxAppend(header, label);
           this.gtkBoxAppend(header, previewButton);
           this.gtkBoxAppend(container, header);
-          
+
           if (hasPrefs) {
             const revealer = this._builder.get_object(`${effect.getNick()}-prefs`);
-            const arrow = new Gtk.Image({css_classes:["revealer-arrow"], icon_name:"go-down-symbolic"});
+            const arrow    = new Gtk.Image({icon_name: 'go-down-symbolic'});
+            arrow.get_style_context().add_class('revealer-arrow');
             this.gtkBoxAppend(header, arrow);
             this.gtkBoxAppend(container, revealer);
             row._revealer = revealer;
-            row._arrow = arrow;
+            row._arrow    = arrow;
 
             row.set_activatable(true);
             this._effectRows.push(row);
@@ -293,12 +311,14 @@ var PreferencesDialog = class PreferencesDialog {
             row.set_activatable(false);
           }
 
-          row.set_child(container);
-
-          group.append(row);
-
+          if (utils.isGTK4()) {
+            row.set_child(container);
+            group.append(row);
+          } else {
+            row.add(container);
+            group.add(row);
+          }
         }
-
       }
     });
 
@@ -343,9 +363,14 @@ var PreferencesDialog = class PreferencesDialog {
 
           flap.set_content(scrolledWindow);
 
+        } else if (utils.isGTK4()) {
+          window.get_titlebar().pack_start(menu);
+          window.get_titlebar().set_title_widget(
+            this._builder.get_object('profile-button'));
         } else {
           window.get_titlebar().pack_start(menu);
-          window.get_titlebar().set_title_widget(this._builder.get_object('profile-button'));
+          window.get_titlebar().set_custom_title(
+            this._builder.get_object('profile-button'));
         }
 
         const addURIAction = (name, uri) => {
@@ -508,7 +533,10 @@ var PreferencesDialog = class PreferencesDialog {
           });
         }
 
-        deleteProfileDialog.set_hide_on_close(true);
+        if (utils.isGTK4()) {
+          deleteProfileDialog.set_hide_on_close(true);
+        }
+
         deleteProfileDialog.set_transient_for(window);
 
         deleteProfileDialog.connect('response', (dialog, response) => {
@@ -645,7 +673,7 @@ var PreferencesDialog = class PreferencesDialog {
     if (utils.isGTK4()) {
       box.append(child);
     } else {
-      box.pack_start(child, false, false, 0);
+      box.pack_start(child, false, true, 0);
     }
   }
 

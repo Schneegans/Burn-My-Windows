@@ -8,8 +8,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
   <requires lib="gtk" version="3.0" />
 
-  <menu id="enabled-effects-menu"></menu>
-
+  <!-- This will be added to the header bar. -->
   <object class="GtkMenuButton" id="menu-button">
     <property name="menu-model">main-menu</property>
     <property name="visible">1</property>
@@ -22,244 +21,407 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </child>
   </object>
 
-  <object class="GtkBox" id="general-prefs">
-    <property name="orientation">vertical</property>
-    <property name="margin-top">30</property>
-    <property name="margin-bottom">30</property>
-
+  <!-- This will be added to the header bar. -->
+  <object class="GtkBox" id="profile-button">
+    <property name="halign">center</property>
+    <property name="visible">1</property>
     <child>
-      <object class="GtkImage">
+      <object class="GtkMenuButton" id="choose-profile-button">
+        <property name="menu-model">profile-menu</property>
+        <property name="visible">1</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkToggleButton" id="edit-profile-button">
         <property name="valign">center</property>
-        <property name="icon-name">burn-my-windows-symbolic</property>
-        <property name="pixel_size">128</property>
-      </object>
-    </child>
-
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="yes">Welcome to Burn-My-Windows!</property>
-        <property name="margin-top">8</property>
-        <property name="margin-bottom">6</property>
-        <style>
-          <class name="large-title" />
-        </style>
-      </object>
-    </child>
-
-    <child>
-      <object class="GtkLabel">
-        <property name="label" translatable="yes">If you like this extension, recommend it to your friends :)</property>
-        <property name="margin-bottom">36</property>
-      </object>
-    </child>
-
-
-    <child>
-      <object class="GtkFrame">
+        <property name="visible">1</property>
         <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
+          <object class="GtkImage">
+            <property name="icon-name">bmw-edit-profile-symbolic</property>
+            <property name="visible">1</property>
+            <property name="icon-size">1</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <style>
+      <class name="linked" />
+    </style>
+  </object>
+
+  <object class="GtkStack" id="general-prefs">
+    <property name="transition-type">over-down-up</property>
+
+    <child>
+      <object class="GtkScrolledWindow" id="effect-editor">
+        <property name="hscrollbar-policy">never</property>
+        <child>
+
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="margin-top">20</property>
+            <property name="margin-bottom">20</property>
+            <property name="margin-start">20</property>
+            <property name="margin-end">20</property>
+            <property name="spacing">5</property>
 
             <child>
-              <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="spacing">8</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">3</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">Enabled Effects</property>
-                            <property name="xalign">0</property>
-                            <property name="halign">start</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">1</property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
-                            <property name="xalign">0</property>
-                            <property name="halign">start</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">1</property>
-                            <style>
-                              <class name="dim-label" />
-                              <class name="caption" />
-                            </style>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkMenuButton" id="enabled-effects-button">
-                        <property name="menu-model">enabled-effects-menu</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="spacing">8</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="label" translatable="yes">Choose Effects</property>
-                              </object>
-                            </child>
-                            <child>
-                              <object class="GtkImage">
-                                <property name="icon-name">pan-down-symbolic</property>
-                                <property name="icon-size">1</property>
-                              </object>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                  </object>
-                </child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Effect Settings</property>
+                <property name="halign">start</property>
+                <style>
+                  <class name="heading" />
+                </style>
               </object>
             </child>
 
             <child>
-              <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="spacing">8</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Also Add Effects to Dialogs</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSwitch" id="destroy-dialogs">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-destroy-dialogs">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+                <property name="halign">start</property>
               </object>
             </child>
 
             <child>
-              <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="activatable">0</property>
+              <object class="GtkFrame">
                 <child>
-                  <object class="GtkBox">
-                    <property name="spacing">8</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Disable on Battery Power</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSwitch" id="disable-on-battery">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-disable-on-battery">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow" id="disable-on-power-save-row">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="spacing">8</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Disable in Power-Save Mode</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkSwitch" id="disable-on-power-save">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-disable-on-power-save">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
+                  <object class="GtkListBox" id="effects-group">
+                    <property name="selection-mode">none</property>
                   </object>
                 </child>
               </object>
             </child>
 
           </object>
+
         </child>
+
       </object>
     </child>
+
+    <child>
+      <object class="GtkBox" id="profile-editor">
+        <property name="orientation">vertical</property>
+        <property name="margin-top">20</property>
+        <property name="margin-bottom">20</property>
+        <property name="margin-start">20</property>
+        <property name="margin-end">20</property>
+        <property name="spacing">5</property>
+        <style>
+          <class name="background" />
+        </style>
+
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="yes">Effect Profile Constraints</property>
+            <property name="halign">start</property>
+            <style>
+              <class name="heading" />
+            </style>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="yes">Define when the current effect settings should be used.</property>
+            <property name="halign">start</property>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkFrame">
+            <property name="margin-top">5</property>
+            <property name="margin-bottom">15</property>
+            <child>
+              <object class="GtkListBox">
+                <property name="selection-mode">none</property>
+                <!-- <property name="show-separators">1</property> -->
+                <style>
+                  <class name="rich-list" />
+                </style>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Application</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+
+                            <property name="valign">center</property>
+                            <style>
+                              <class name="linked" />
+                            </style>
+
+                            <child>
+                              <object class="GtkEntry" id="profile-app">
+                                <property name="width-request">300</property>
+                                <property name="placeholder-text" translatable="yes">Any</property>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkButton" id="profile-choose-app-button">
+                                <property name="valign">center</property>
+                                <child>
+                                  <object class="GtkImage">
+                                    <property name="icon-name">bmw-select-app-symbolic</property>
+                                    <property name="icon-size">1</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Animation Type</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="profile-animation-type">
+                            <property name="width-request">200</property>
+                            <items>
+                              <item translatable="yes">Any</item>
+                              <item translatable="yes">Opening Windows</item>
+                              <item translatable="yes">Closing Windows</item>
+                            </items>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Window Type</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="profile-window-type">
+                            <property name="width-request">200</property>
+                            <items>
+                              <item translatable="yes">Any</item>
+                              <item translatable="yes">Normal Windows</item>
+                              <item translatable="yes">Dialog Windows</item>
+                            </items>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Color Scheme</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="profile-color-scheme">
+                            <property name="width-request">200</property>
+                            <items>
+                              <item translatable="yes">Any</item>
+                              <item translatable="yes">Default Color Scheme</item>
+                              <item translatable="yes">Dark Color Scheme</item>
+                            </items>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Power Mode</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="profile-power-mode">
+                            <property name="width-request">200</property>
+                            <items>
+                              <item translatable="yes">Any</item>
+                              <item translatable="yes">On Battery</item>
+                              <item translatable="yes">Plugged In</item>
+                            </items>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Power Profile</property>
+                            <property name="xalign">0</property>
+                            <property name="halign">start</property>
+                            <property name="valign">center</property>
+                            <property name="hexpand">1</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkComboBoxText" id="profile-power-profile">
+                            <property name="width-request">200</property>
+                            <items>
+                              <item translatable="yes">Any</item>
+                              <item translatable="yes">Power-Saver Mode</item>
+                              <item translatable="yes">Balanced Mode</item>
+                              <item translatable="yes">Performance Mode</item>
+                              <item translatable="yes">Power Saver or Balanced</item>
+                              <item translatable="yes">Balanced or Performance</item>
+                            </items>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkLabel">
+            <property name="label" translatable="yes">Advanced Profile Options</property>
+            <property name="halign">start</property>
+            <style>
+              <class name="heading" />
+            </style>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkFrame">
+            <property name="margin-top">5</property>
+            <property name="margin-bottom">15</property>
+            <child>
+              <object class="GtkListBox">
+                <property name="selection-mode">none</property>
+                <!-- <property name="show-separators">1</property> -->
+                <style>
+                  <class name="rich-list" />
+                </style>
+
+                <child>
+                  <object class="GtkListBoxRow">
+                    <property name="activatable">0</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">3</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">High Priority</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Force using this profile even if it has less constraints than another matching profile.</property>
+                                <property name="xalign">0</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+                                <property name="ellipsize">end</property>
+                                <style>
+                                  <class name="dim-label" />
+                                  <class name="caption" />
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkSwitch" id="profile-high-priority">
+                            <property name="valign">center</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+              </object>
+            </child>
+          </object>
+        </child>
+
+        <child>
+          <object class="GtkButton">
+            <property name="action-name">prefs.profile-delete</property>
+            <property name="label" translatable="yes">Delete this Profile...</property>
+            <property name="halign">start</property>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
   </object>
 
 </interface>
