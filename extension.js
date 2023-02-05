@@ -125,11 +125,6 @@ class Extension {
     this._origWaitForOverviewToHide = WindowManager.prototype._waitForOverviewToHide;
     this._origDestroyWindowDone     = WindowManager.prototype._destroyWindowDone;
 
-    // We will also override these animation times.
-    this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
-    this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
-
-
     // ------------------------------------------------ patching the window-open animation
 
     // Here we add an effect to the window-open animation. This is done whenever a new
@@ -370,9 +365,6 @@ class Extension {
     WindowManager.prototype._waitForOverviewToHide = this._origWaitForOverviewToHide;
     WindowManager.prototype._destroyWindowDone     = this._origDestroyWindowDone;
 
-    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
-    imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
-
     if (WindowPreview) {
       WindowPreview.prototype._deleteAll = this._origDeleteAll;
       WindowPreview.prototype._restack   = this._origRestack;
@@ -424,8 +416,6 @@ class Extension {
   // effects will be selected. This will also tweak the transitions of the given actor
   // (e.g. scale it up if required).
   _setupEffect(actor, forOpening) {
-    // In case we return early, make sure that the animation times are reset properly.
-    this._fixAnimationTimes(forOpening, null);
 
     // For now, we only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
@@ -652,26 +642,6 @@ class Extension {
           oldShader.returnToFactory();
         }
       });
-    }
-
-    // Finally, ensure that all animation times are set properly so that other extensions
-    // may guess how long it will take until windows are gone :)
-    this._fixAnimationTimes(forOpening, duration);
-  }
-
-  // The code below is not necessary for Burn-My-Windows to function. However, there
-  // are some extensions such as "Show Application View When Workspace Empty"
-  // https://extensions.gnome.org/extension/2036/show-application-view-when-workspace-empty/
-  // which do something *after* a window was closed. As the window-close animation
-  // duration depends on the used effect, this may vary each time a window is
-  // closed. We set the currently used time here, so that others can get an idea how
-  // long this will take...
-  _fixAnimationTimes(forOpening, duration) {
-    if (!forOpening) {
-      imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
-        duration != null ? duration : this._origDialogTime;
-      imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
-        duration != null ? duration : this._origWindowTime;
     }
   }
 
