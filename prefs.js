@@ -673,7 +673,7 @@ var PreferencesDialog = class PreferencesDialog {
     if (utils.isGTK4()) {
       box.append(child);
     } else {
-      box.pack_start(child, false, false, 0);
+      box.pack_start(child, false, true, 0);
     }
   }
 
