@@ -63,8 +63,8 @@ var WindowPicker = class WindowPicker {
       }
 
       let wmClass = 'window-not-found';
-      if (actor.toString().includes('WindowActor')) {
-        wmClass = actor.meta_window.get_wm_class() ?? 'window-not-found';
+      if (actor.toString().includes('WindowActor') && actor.meta_window.get_wm_class() != "") {
+        wmClass = actor.meta_window.get_wm_class();
       }
 
       this._dbus.emit_signal('WindowPicked', new GLib.Variant('(s)', [wmClass]));
