@@ -60,7 +60,8 @@ EXTENSION="burn-my-windows@schneegans.github.com"
 # All references images of the effects are captured at & cropped to this region
 # in the center of the screen. This is kind of arbitrary, but has been choosen so that
 # something is visible from each effect.
-CROP="100x100+900+500"
+EFFECT_CROP="100x100+900+500"
+PREFS_CROP="100x100+700+300"
 
 # Run the container. For more info, visit https://github.com/Schneegans/gnome-shell-pod.
 POD=$(podman run --rm --cap-add=SYS_NICE --cap-add=IPC_LOCK -td "${IMAGE}")
@@ -95,10 +96,11 @@ set_setting() {
                       set org.gnome.shell.extensions.burn-my-windows "${1}" "${2}"
 }
 
-# This makes a screen capture (cropped to $CROP) inside the container and stores it
-# on the host relative to this script with the given file name.
+# This makes a screen capture (cropped to either $EFFECT_CROP or P$REFS_CROP as given through the
+# second parameter) inside the container and stores it on the host relative to this script with the
+# given file name.
 capture() {
-  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${CROP} ${1}"
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${2} ${1}"
 }
 
 # This opens the extensions preferences dialog and captures two images: One during the
@@ -114,10 +116,10 @@ capture_effect() {
   sleep 1
   do_in_pod gnome-terminal
   sleep 3
-  capture "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png"
+  capture "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png" "${EFFECT_CROP}"
   send_keystroke "Alt+F4"
   sleep 3
-  capture "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png"
+  capture "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png" "${EFFECT_CROP}"
 }
 
 # ----------------------------------------------------- wait for the container to start up
@@ -170,7 +172,7 @@ sleep 3
 echo "Opening Preferences."
 do_in_pod gnome-extensions prefs "${EXTENSION}"
 sleep 3
-capture "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png"
+capture "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png" "${PREFS_CROP}"
 send_keystroke "Alt+F4"
 
 # The test mode ensures that the animations are "frozen" and do not change in time.
