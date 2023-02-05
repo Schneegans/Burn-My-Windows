@@ -147,7 +147,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                       <object class="GtkBox">
                         <child>
                           <object class="GtkLabel">
-                            <property name="label" translatable="yes">Application Name</property>
+                            <property name="label" translatable="yes">Application</property>
                             <property name="xalign">0</property>
                             <property name="halign">start</property>
                             <property name="valign">center</property>
@@ -164,7 +164,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
                             <child>
                               <object class="GtkEntry" id="profile-app">
-                                <property name="width-request">200</property>
+                                <property name="width-request">300</property>
+                                <property name="placeholder-text" translatable="yes">Any</property>
                               </object>
                             </child>
 
