@@ -63,7 +63,8 @@ var WindowPicker = class WindowPicker {
       }
 
       let wmClass = 'window-not-found';
-      if (actor.toString().includes('WindowActor') && actor.meta_window.get_wm_class() != "") {
+      if (actor.toString().includes('WindowActor') &&
+          actor.meta_window.get_wm_class() != '') {
         wmClass = actor.meta_window.get_wm_class();
       }
 
