@@ -311,10 +311,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
             <child>
               <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
                 <property name="activatable">0</property>
                 <child>
                   <object class="GtkBox">
@@ -359,10 +355,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
             <child>
               <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
                 <property name="activatable">0</property>
                 <child>
                   <object class="GtkBox">

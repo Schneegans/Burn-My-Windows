@@ -3,11 +3,9 @@ SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 SPDX-License-Identifier: CC0-1.0
 */
 
-.pill-button {
-    border-radius: 9999px;
+row {
+    padding: 8px;
 }
-
-/* These are only used if not using libadwaita */
 
 .effect-row {
     padding: 0;
@@ -22,9 +20,14 @@ SPDX-License-Identifier: CC0-1.0
 
 .revealer-arrow {
     margin-right: 6px;
-    transition: transform 250ms;
 }
 
-.revealer-arrow.revealed {
-    transform: rotate(180deg);
+/* .revealer-arrow.revealed {} */
+
+/* row {
+    padding: 10px;
 }
+
+.effect-row {
+    padding: 0px;
+} */
