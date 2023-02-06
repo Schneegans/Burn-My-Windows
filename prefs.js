@@ -71,17 +71,17 @@ var PreferencesDialog = class PreferencesDialog {
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
-    // Load the CSS file for the settings dialog.
+    // Load the CSS file for the settings dialog. If using libadwaita, we do not need an
+    // additional style sheet.
     if (!utils.isADW()) {
-      const styleProvider = Gtk.CssProvider.new();
+      const provider = Gtk.CssProvider.new();
       if (utils.isGTK4()) {
-        styleProvider.load_from_resource('/css/gtk4.css');
+        provider.load_from_resource('/css/gtk4.css');
         Gtk.StyleContext.add_provider_for_display(
-          Gdk.Display.get_default(), styleProvider,
-          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+          Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
       } else {
-        styleProvider.load_from_resource('/css/gtk3.css');
-        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), styleProvider,
+        provider.load_from_resource('/css/gtk3.css');
+        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider,
                                                  Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
       }
     }
@@ -141,7 +141,8 @@ var PreferencesDialog = class PreferencesDialog {
     }
     colorSchemeRow.set_visible(utils.shellVersionIsAtLeast(42, 0));
 
-    // Wire up the window picker of the profile editor.
+    // Wire up the window picker of the profile editor. Whenever the app-chooser button is
+    // clicked, we call a method of the extension which will initiate the window picking.
     this._builder.get_object('profile-choose-app-button').connect('clicked', () => {
       Gio.DBus.session.call('org.gnome.Shell',
                             '/org/gnome/shell/extensions/BurnMyWindows',
@@ -149,17 +150,20 @@ var PreferencesDialog = class PreferencesDialog {
                             null, null, Gio.DBusCallFlags.NO_AUTO_START, -1, null, null);
     });
 
+    // If the window picking was successful, this D-Bus signal will be emitted.
     this._dbusConnection = Gio.DBus.session.signal_subscribe(
       'org.gnome.Shell', 'org.gnome.shell.extensions.BurnMyWindows', 'WindowPicked',
       '/org/gnome/shell/extensions/BurnMyWindows', null, Gio.DBusSignalFlags.NONE,
       (conn, sender, obj_path, iface, signal, params) => {
         const val = params.get_child_value(0).get_string()[0];
-
         if (val != 'window-not-found') {
           this._builder.get_object('profile-app').text = val;
         }
       });
 
+    // If using libadwaita, the visibility of the profile-editor Adw.Flap is controlled
+    // using bindings in the ui file. On GTK3 and GTK4 we have to wire up this toggling
+    // here since we are using a Gtk.Stack instead of an Adw.Flap.
     if (!utils.isADW()) {
       const profileEditorButton = this._builder.get_object('edit-profile-button');
       profileEditorButton.connect('toggled', b => {
