@@ -71,9 +71,9 @@ var Fire = class {
         }
 
         // clang-format off
-        shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('flame-3d-noise')]);
-        shader.set_uniform_float(shader._uScale,         1, [settings.get_double('flame-scale')]);
-        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('flame-movement-speed')]);
+        shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('fire-3d-noise')]);
+        shader.set_uniform_float(shader._uScale,         1, [settings.get_double('fire-scale')]);
+        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('fire-movement-speed')]);
         // clang-format on
       });
     });
@@ -108,9 +108,9 @@ var Fire = class {
 
     // Bind all properties.
     dialog.bindAdjustment('fire-animation-time');
-    dialog.bindAdjustment('flame-movement-speed');
-    dialog.bindAdjustment('flame-scale');
-    dialog.bindSwitch('flame-3d-noise');
+    dialog.bindAdjustment('fire-movement-speed');
+    dialog.bindAdjustment('fire-scale');
+    dialog.bindSwitch('fire-3d-noise');
     dialog.bindColorButton('fire-color-1');
     dialog.bindColorButton('fire-color-2');
     dialog.bindColorButton('fire-color-3');
@@ -214,8 +214,8 @@ var Fire = class {
 
         // Load the preset on activation.
         action.connect('activate', () => {
-          dialog.getProfileSettings().set_double('flame-movement-speed', preset.speed);
-          dialog.getProfileSettings().set_double('flame-scale', preset.scale);
+          dialog.getProfileSettings().set_double('fire-movement-speed', preset.speed);
+          dialog.getProfileSettings().set_double('fire-scale', preset.scale);
           dialog.getProfileSettings().set_string('fire-color-1', preset.color1);
           dialog.getProfileSettings().set_string('fire-color-2', preset.color2);
           dialog.getProfileSettings().set_string('fire-color-3', preset.color3);

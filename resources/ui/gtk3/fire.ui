@@ -14,14 +14,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="page-increment">100</property>
   </object>
 
-  <object class="GtkAdjustment" id="flame-scale">
+  <object class="GtkAdjustment" id="fire-scale">
     <property name="upper">3</property>
     <property name="lower">0.1</property>
     <property name="step-increment">0.01</property>
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="GtkAdjustment" id="flame-movement-speed">
+  <object class="GtkAdjustment" id="fire-movement-speed">
     <property name="upper">2.0</property>
     <property name="lower">-2.0</property>
     <property name="step-increment">0.01</property>
@@ -140,11 +140,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
                     <property name="digits">2</property>
                     <property name="value-pos">left</property>
                     <property name="width-request">300</property>
-                    <property name="adjustment">flame-scale</property>
+                    <property name="adjustment">fire-scale</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reset-flame-scale">
+                  <object class="GtkButton" id="reset-fire-scale">
                     <child>
                       <object class="GtkImage">
                         <property name="icon-name">edit-clear-symbolic</property>
@@ -184,11 +184,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
                     <property name="digits">2</property>
                     <property name="value-pos">left</property>
                     <property name="width-request">300</property>
-                    <property name="adjustment">flame-movement-speed</property>
+                    <property name="adjustment">fire-movement-speed</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reset-flame-movement-speed">
+                  <object class="GtkButton" id="reset-fire-movement-speed">
                     <child>
                       <object class="GtkImage">
                         <property name="icon-name">edit-clear-symbolic</property>
@@ -240,14 +240,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
                   </object>
                 </child>
                 <child>
-                  <object class="GtkSwitch" id="flame-3d-noise">
+                  <object class="GtkSwitch" id="fire-3d-noise">
                     <property name="halign">end</property>
                     <property name="valign">center</property>
                     <property name="margin-end">8</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reset-flame-3d-noise">
+                  <object class="GtkButton" id="reset-fire-3d-noise">
                     <child>
                       <object class="GtkImage">
                         <property name="icon-name">edit-clear-symbolic</property>
