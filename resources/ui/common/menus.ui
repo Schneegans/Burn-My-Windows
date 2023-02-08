@@ -53,15 +53,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
   <menu id="profile-menu">
     <section id="profile-section">
-      <!-- <item>
-        <attribute name="label">Default Profile</attribute>
-        <attribute name="action">prefs.profile</attribute>
-        <attribute name="target">profile-023402834923749</attribute>
-      </item> -->
     </section>
     <section>
       <item>
-        <attribute name="label" translatable="yes">Add New...</attribute>
+        <attribute name="label" translatable="yes">Add New Profile...</attribute>
         <attribute name="action">prefs.profile-new</attribute>
       </item>
     </section>

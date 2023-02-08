@@ -181,7 +181,7 @@ var ProfileManager = class {
     let name = '';
 
     if (items.length == 0) {
-      name = _('Default Profile');
+      name = _('Standard Profile');
     } else {
       name = items.join(' · ');
     }
