@@ -345,16 +345,25 @@ var PreferencesDialog = class PreferencesDialog {
           GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
             this._showUpdateInfoTimeout = 0;
 
-            const toast = Adw.Toast.new(_('Burn-My-Windows has been updated!'));
-            toast.set_button_label(_('View Changelog'));
-            toast.set_action_name('prefs.changelog');
-            toast.set_timeout(0);
-
-            toast.connect(
-              'dismissed',
-              () => this._settings.set_int('last-version', Me.metadata.version));
-
-            window.add_toast(toast);
+            if (utils.isADW()) {
+              const toast = Adw.Toast.new(_('Burn-My-Windows has been updated!'));
+              toast.set_button_label(_('View Changelog'));
+              toast.set_action_name('prefs.changelog');
+              toast.set_timeout(0);
+  
+              toast.connect(
+                'dismissed',
+                () => this._settings.set_int('last-version', Me.metadata.version));
+  
+              window.add_toast(toast);
+            }else {
+              const infoBar = this._builder.get_object("update-info");
+              infoBar.connect("response", i => {
+                this._settings.set_int('last-version', Me.metadata.version);
+                i.set_revealed(false);
+              });
+              infoBar.set_revealed(true);
+            }
 
             return false;
           });
