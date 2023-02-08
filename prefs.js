@@ -28,6 +28,7 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
+const migrate        = Me.imports.src.migrate;
 const utils          = Me.imports.src.utils;
 const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 
@@ -66,6 +67,8 @@ var PreferencesDialog = class PreferencesDialog {
       new Me.imports.src.effects.TVGlitch.TVGlitch(),
       new Me.imports.src.effects.Wisps.Wisps(),
     ];
+
+    migrate.migrate();
 
     // Load all of our resources.
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
