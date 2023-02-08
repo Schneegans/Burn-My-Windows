@@ -62,14 +62,14 @@ var TRexAttack = class {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        const c = Clutter.Color.from_string(settings.get_string('claw-scratch-color'))[1];
+        const c = Clutter.Color.from_string(settings.get_string('trex-scratch-color'))[1];
 
         // clang-format off
         shader.set_uniform_float(shader._uFlashColor,    4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
         shader.set_uniform_float(shader._uSeed,          2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-        shader.set_uniform_float(shader._uClawSize,      1, [settings.get_double('claw-scratch-scale')]);
-        shader.set_uniform_float(shader._uNumClaws,      1, [settings.get_int('claw-scratch-count')]);
-        shader.set_uniform_float(shader._uWarpIntensity, 1, [settings.get_double('claw-scratch-warp')]);
+        shader.set_uniform_float(shader._uClawSize,      1, [settings.get_double('trex-scratch-scale')]);
+        shader.set_uniform_float(shader._uNumClaws,      1, [settings.get_int('trex-scratch-count')]);
+        shader.set_uniform_float(shader._uWarpIntensity, 1, [settings.get_double('trex-scratch-warp')]);
         // clang-format on
       });
 
@@ -118,10 +118,10 @@ var TRexAttack = class {
   // binds all user interface elements to the respective settings keys of the profile.
   bindPreferences(dialog) {
     dialog.bindAdjustment('trex-animation-time');
-    dialog.bindColorButton('claw-scratch-color');
-    dialog.bindAdjustment('claw-scratch-scale');
-    dialog.bindAdjustment('claw-scratch-count');
-    dialog.bindAdjustment('claw-scratch-warp');
+    dialog.bindColorButton('trex-scratch-color');
+    dialog.bindAdjustment('trex-scratch-scale');
+    dialog.bindAdjustment('trex-scratch-count');
+    dialog.bindAdjustment('trex-scratch-warp');
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -130,7 +130,7 @@ var TRexAttack = class {
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
   getActorScale(settings) {
-    const scale = 1.0 + 0.5 * settings.get_double('claw-scratch-warp');
+    const scale = 1.0 + 0.5 * settings.get_double('trex-scratch-warp');
     return {x: scale, y: scale};
   }
 }

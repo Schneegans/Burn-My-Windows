@@ -53,7 +53,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
-              <object class="GtkAdjustment" id="claw-scratch-scale">
+              <object class="GtkAdjustment" id="trex-scratch-scale">
                 <property name="upper">10</property>
                 <property name="lower">0.1</property>
                 <property name="step-increment">0.1</property>
@@ -63,7 +63,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-claw-scratch-scale">
+          <object class="GtkButton" id="reset-trex-scratch-scale">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -86,7 +86,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
-              <object class="GtkAdjustment" id="claw-scratch-count">
+              <object class="GtkAdjustment" id="trex-scratch-count">
                 <property name="upper">50</property>
                 <property name="lower">1</property>
                 <property name="step-increment">1</property>
@@ -96,7 +96,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-claw-scratch-count">
+          <object class="GtkButton" id="reset-trex-scratch-count">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -119,7 +119,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
-              <object class="GtkAdjustment" id="claw-scratch-warp">
+              <object class="GtkAdjustment" id="trex-scratch-warp">
                 <property name="upper">1</property>
                 <property name="lower">0</property>
                 <property name="step-increment">0.01</property>
@@ -129,7 +129,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-claw-scratch-warp">
+          <object class="GtkButton" id="reset-trex-scratch-warp">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -144,9 +144,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Flash Color</property>
-        <property name="activatable-widget">claw-scratch-color</property>
+        <property name="activatable-widget">trex-scratch-color</property>
         <child>
-          <object class="GtkColorButton" id="claw-scratch-color">
+          <object class="GtkColorButton" id="trex-scratch-color">
             <property name="use_alpha">1</property>
             <property name="show_editor">1</property>
             <property name="width-request">250</property>
@@ -154,7 +154,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-claw-scratch-color">
+          <object class="GtkButton" id="reset-trex-scratch-color">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>

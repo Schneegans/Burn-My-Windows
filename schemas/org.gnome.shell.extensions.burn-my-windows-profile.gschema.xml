@@ -402,25 +402,25 @@ SPDX-License-Identifier: CC0-1.0
       <description>The time the trex effect takes.</description>
     </key>
 
-    <key name="claw-scratch-color" type="s">
+    <key name="trex-scratch-color" type="s">
       <default>"rgb(170, 0, 0)"</default>
       <summary>Claw Scratch Color</summary>
       <description>The color of the claw scratches.</description>
     </key>
 
-    <key name="claw-scratch-scale" type="d">
+    <key name="trex-scratch-scale" type="d">
       <default>1.0</default>
       <summary>Claw Scratch Scale</summary>
       <description>Size of the claw scratches.</description>
     </key>
 
-    <key name="claw-scratch-warp" type="d">
+    <key name="trex-scratch-warp" type="d">
       <default>0.15</default>
       <summary>Claw Scratch Warp</summary>
       <description>Intensity of the claw scratch warp effect.</description>
     </key>
 
-    <key name="claw-scratch-count" type="i">
+    <key name="trex-scratch-count" type="i">
       <default>5</default>
       <summary>Claw Scratch Count</summary>
       <description>Number of claw scratches drawn on top of each other.</description>
