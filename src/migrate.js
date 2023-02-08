@@ -40,6 +40,7 @@ function migrate() {
       r = r.replace(/^destroy-dialogs=.*\n?/gm, '');
       r = r.replace(/^.*-preview-.*\n?/gm, '');
       r = r.replace('[/]\n', '');
+      r = r.trim();
 
       // There were some inconsistencies in the key names.
       r.replace('flame-', 'fire-');
