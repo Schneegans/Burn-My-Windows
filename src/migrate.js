@@ -55,12 +55,8 @@ function migrate() {
       let closeEffects = lines.filter(l => l.includes('-close-effect=true'))
                            .map(l => l.replace('-close-effect=true', ''));
 
-      // The fire effect is enabled per default, so we have to add it if it's not
+      // The fire-close effect is enabled per default, so we have to add it if it's not
       // explicitly disabled.
-      if (!r.includes('fire-open-effect=false') && !openEffects.includes('fire')) {
-        openEffects.push('fire');
-      }
-
       if (!r.includes('fire-close-effect=false') && !closeEffects.includes('fire')) {
         closeEffects.push('fire');
       }
@@ -73,6 +69,10 @@ function migrate() {
       const numProfiles = openEffects.join() == closeEffects.join() ? 1 : 2;
       if (numProfiles == 1) {
         utils.debug('Only one profile is required.');
+      } else if (closeEffects.length == 0) {
+        utils.debug('Only a window-open profile is required.');
+      } else if (openEffects.length == 0) {
+        utils.debug('Only a window-close profile is required.');
       } else {
         utils.debug('Two profiles are required.');
       }
@@ -93,16 +93,34 @@ function migrate() {
         utils.debug('The new profile:');
         utils.debug(profile.join('\n'));
 
-      } else {
+      } else if (closeEffects.length == 0) {
 
-        const closeProfile = [...profile];
-        const openProfile  = [...profile];
-
-        openEffects.forEach(e => openProfile.push(e + '-enable-effect=true'));
+        profile.push('profile-animation-type=1')
+        openEffects.forEach(e => profile.push(e + '-enable-effect=true'));
         if (!openEffects.includes('fire')) {
-          openProfile.push('fire-enable-effect=false');
+          profile.push('fire-enable-effect=false');
         }
 
+        utils.debug('The new window-open profile:');
+        utils.debug(profile.join('\n'));
+
+      } else if (openEffects.length == 0) {
+
+        profile.push('profile-animation-type=2')
+        closeEffects.forEach(e => profile.push(e + '-enable-effect=true'));
+        if (!closeEffects.includes('fire')) {
+          profile.push('fire-enable-effect=false');
+        }
+
+        utils.debug('The new window-close profile:');
+        utils.debug(profile.join('\n'));
+
+      } else {
+
+        const openProfile  = [...profile, 'profile-animation-type=1'];
+        const closeProfile = [...profile, 'profile-animation-type=2'];
+
+        openEffects.forEach(e => openProfile.push(e + '-enable-effect=true'));
         closeEffects.forEach(e => closeProfile.push(e + '-enable-effect=true'));
         if (!closeEffects.includes('fire')) {
           closeProfile.push('fire-enable-effect=false');
