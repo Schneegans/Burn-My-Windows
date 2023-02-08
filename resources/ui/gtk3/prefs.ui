@@ -26,9 +26,27 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="halign">center</property>
     <property name="visible">1</property>
     <child>
-      <object class="GtkMenuButton" id="choose-profile-button">
+      <object class="GtkMenuButton">
         <property name="menu-model">profile-menu</property>
         <property name="visible">1</property>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">1</property>
+            <property name="spacing">6</property>
+            <child>
+              <object class="GtkLabel" id="choose-profile-button">
+                <property name="visible">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkImage">
+                <property name="icon-name">pan-down-symbolic</property>
+                <property name="visible">1</property>
+                <property name="icon-size">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
     <child>
