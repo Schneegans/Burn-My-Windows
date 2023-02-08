@@ -110,3 +110,46 @@ function getStringResource(path) {
   const data = Gio.resources_lookup_data(path, 0);
   return ByteArray.toString(ByteArray.fromGBytes(data));
 }
+
+// Executes a command asynchronously and returns the output from 'stdout' on success or
+// throw an error with output from 'stderr' on failure. If given, input will be passed to
+// 'stdin' and cancellable can be used to stop the process before it finishes.
+// This is directly taken from here:
+// https://gjs.guide/guides/gio/subprocesses.html#complete-examples
+async function executeCommand(argv, input = null, cancellable = null) {
+  let cancelId = 0;
+  let flags    = (Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE);
+
+  if (input !== null) flags |= Gio.SubprocessFlags.STDIN_PIPE;
+
+  let proc = new Gio.Subprocess({argv: argv, flags: flags});
+  proc.init(cancellable);
+
+  if (cancellable instanceof Gio.Cancellable) {
+    cancelId = cancellable.connect(() => proc.force_exit());
+  }
+
+  return new Promise((resolve, reject) => {
+    proc.communicate_utf8_async(input, null, (proc, res) => {
+      try {
+        let [, stdout, stderr] = proc.communicate_utf8_finish(res);
+        let status = proc.get_exit_status();
+
+        if (status !== 0) {
+          throw new Gio.IOErrorEnum({
+            code: Gio.io_error_from_errno(status),
+            message: stderr ? stderr.trim() : GLib.strerror(status)
+          });
+        }
+
+        resolve(stdout.trim());
+      } catch (e) {
+        reject(e);
+      } finally {
+        if (cancelId > 0) {
+          cancellable.disconnect(cancelId);
+        }
+      }
+    });
+  });
+}
