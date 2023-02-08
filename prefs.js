@@ -150,14 +150,30 @@ var PreferencesDialog = class PreferencesDialog {
                             null, null, Gio.DBusCallFlags.NO_AUTO_START, -1, null, null);
     });
 
-    // If the window picking was successful, this D-Bus signal will be emitted.
+    // If the window picking was successful, this D-Bus signal will be emitted. If a
+    // window was picked, we add it to the list of window name.
     this._dbusConnection = Gio.DBus.session.signal_subscribe(
       'org.gnome.Shell', 'org.gnome.shell.extensions.BurnMyWindows', 'WindowPicked',
       '/org/gnome/shell/extensions/BurnMyWindows', null, Gio.DBusSignalFlags.NONE,
       (conn, sender, obj_path, iface, signal, params) => {
         const val = params.get_child_value(0).get_string()[0];
         if (val != 'window-not-found') {
-          this._builder.get_object('profile-app').text = val;
+          const entry = this._builder.get_object('profile-app');
+
+          // Split the current value at each |, trim spaces, and remove empty components.
+          let apps = entry.text.split('|').map(item => item.trim()).filter(v => v != '');
+
+          // If the list is empty, we simply use the name of the picked window.
+          if (apps.length == 0) {
+            entry.text = val;
+          } else {
+
+            // Else we append the new application name, remove any duplicates, and sort
+            // the resulting list alphabetically.
+            apps.push(val);
+            apps       = [...new Set(apps)].sort();
+            entry.text = apps.join(' | ');
+          }
         }
       });
 
@@ -350,15 +366,15 @@ var PreferencesDialog = class PreferencesDialog {
               toast.set_button_label(_('View Changelog'));
               toast.set_action_name('prefs.changelog');
               toast.set_timeout(0);
-  
+
               toast.connect(
                 'dismissed',
                 () => this._settings.set_int('last-version', Me.metadata.version));
-  
+
               window.add_toast(toast);
-            }else {
-              const infoBar = this._builder.get_object("update-info");
-              infoBar.connect("response", i => {
+            } else {
+              const infoBar = this._builder.get_object('update-info');
+              infoBar.connect('response', i => {
                 this._settings.set_int('last-version', Me.metadata.version);
                 i.set_revealed(false);
               });
