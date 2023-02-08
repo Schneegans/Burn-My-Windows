@@ -24,9 +24,20 @@ function migrate() {
     .then(r => {
       utils.debug('Starting Burn-My-Windows profile migration!');
 
+      // The default value of this is false, so if it is not present, only normal windows
+      // were affected.
+      const onlyNormalWindows = !r.includes('destroy-dialogs=true');
+      if (onlyNormalWindows) {
+        utils.debug('Only normal windows will be burned by the new profile(s).');
+      } else {
+        utils.debug('Normal windows and dialogs will be burned by the new profile(s).');
+      }
+
       // Remove some unnecessary lines.
       r = r.replace(/^active-profile=.*\n?/gm, '');
       r = r.replace(/^test-mode=.*\n?/gm, '');
+      r = r.replace(/^last-version=.*\n?/gm, '');
+      r = r.replace(/^destroy-dialogs=.*\n?/gm, '');
       r = r.replace(/^.*-preview-.*\n?/gm, '');
       r = r.replace('[/]\n', '');
 
@@ -64,15 +75,6 @@ function migrate() {
         utils.debug('Only one profile is required.');
       } else {
         utils.debug('Two profiles are required.');
-      }
-
-      // The default value of this is false, so if it is not present, only normal windows
-      // were affected.
-      const onlyNormalWindows = !r.includes('destroy-dialogs=true');
-      if (onlyNormalWindows) {
-        utils.debug('Only normal windows will be burned by the new profile(s).');
-      } else {
-        utils.debug('Normal windows and dialogs will be burned by the new profile(s).');
       }
 
       const profile =
