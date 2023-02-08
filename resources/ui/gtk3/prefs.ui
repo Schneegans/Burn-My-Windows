@@ -53,47 +53,85 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="transition-type">over-down-up</property>
 
     <child>
-      <object class="GtkScrolledWindow" id="effect-editor">
-        <property name="hscrollbar-policy">never</property>
+      <object class="GtkBox" id="effect-editor">
+        <property name="orientation">vertical</property>
+
         <child>
-
-          <object class="GtkBox">
-            <property name="orientation">vertical</property>
-            <property name="margin-top">20</property>
-            <property name="margin-bottom">20</property>
-            <property name="margin-start">20</property>
-            <property name="margin-end">20</property>
-            <property name="spacing">5</property>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="yes">Effect Settings</property>
-                <property name="halign">start</property>
-                <style>
-                  <class name="heading" />
-                </style>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkLabel">
-                <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
-                <property name="halign">start</property>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkFrame">
+          <object class="GtkInfoBar" id="update-info">
+            <property name="message-type">info</property>
+            <property name="revealed">false</property>
+            <property name="show-close-button">true</property>
+            <child internal-child="content_area">
+              <object class="GtkBox">
                 <child>
-                  <object class="GtkListBox" id="effects-group">
-                    <property name="selection-mode">none</property>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Burn-My-Windows has been updated!</property>
+                    <property name="margin-start">6</property>
                   </object>
                 </child>
               </object>
             </child>
-
+            <child internal-child="action_area">
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkButton" id="update-info-button">
+                    <property name="label" translatable="yes">View Changelog</property>
+                    <property name="action-name">prefs.changelog</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <action-widgets>
+              <action-widget response="-1">update-info-button</action-widget>
+            </action-widgets>
           </object>
+        </child>
 
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="hscrollbar-policy">never</property>
+            <property name="vexpand">true</property>
+            <child>
+
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <property name="margin-top">20</property>
+                <property name="margin-bottom">20</property>
+                <property name="margin-start">20</property>
+                <property name="margin-end">20</property>
+                <property name="spacing">5</property>
+
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Effect Settings</property>
+                    <property name="halign">start</property>
+                    <style>
+                      <class name="heading" />
+                    </style>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+                    <property name="halign">start</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="GtkFrame">
+                    <child>
+                      <object class="GtkListBox" id="effects-group">
+                        <property name="selection-mode">none</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+              </object>
+
+            </child>
+          </object>
         </child>
 
       </object>
