@@ -337,6 +337,29 @@ var PreferencesDialog = class PreferencesDialog {
       this._loadActiveProfile();
       this._updateProfileMenu();
 
+      // Show an Adw.Toast or a Gtk.InfoBar whenever Burn-My-Windows was updated. We use a
+      // small timeout so that it is not shown instantaneously.
+      const lastVersion = this._settings.get_int('last-version');
+      if (lastVersion < Me.metadata.version) {
+        this._showUpdateInfoTimeout =
+          GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
+            this._showUpdateInfoTimeout = 0;
+
+            const toast = Adw.Toast.new(_('Burn-My-Windows has been updated!'));
+            toast.set_button_label(_('View Changelog'));
+            toast.set_action_name('prefs.changelog');
+            toast.set_timeout(0);
+
+            toast.connect(
+              'dismissed',
+              () => this._settings.set_int('last-version', Me.metadata.version));
+
+            window.add_toast(toast);
+
+            return false;
+          });
+      }
+
       // Populate the menu with actions.
       const group = Gio.SimpleActionGroup.new();
       window.insert_action_group('prefs', group);
@@ -390,13 +413,27 @@ var PreferencesDialog = class PreferencesDialog {
 
         // clang-format off
         addURIAction('homepage',      'https://github.com/Schneegans/Burn-My-Windows');
-        addURIAction('changelog',     'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md');
         addURIAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
         addURIAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
         addURIAction('translate',     'https://hosted.weblate.org/engage/burn-my-windows/');
         addURIAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
         addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
         // clang-format on
+
+        // The changelog action is a bit different, as it may get activated when the
+        // view-changelog button is pressed which is shown in an Adw.Toast or a
+        // Gtk.InfoBar whenever Burn-My-Windows gets updated. To ensure that the
+        // notification is shown only once, we have to store the current version of
+        // Burn-My-Windows in the settings.
+        const changelogAction = Gio.SimpleAction.new('changelog', null);
+        changelogAction.connect('activate', () => {
+          Gtk.show_uri(
+            null,
+            'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md',
+            Gdk.CURRENT_TIME);
+          this._settings.set_int('last-version', Me.metadata.version)
+        });
+        group.add_action(changelogAction);
 
         // Add the about dialog.
         const aboutAction = Gio.SimpleAction.new('about', null);
@@ -584,6 +621,11 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Disconnect from the window-picker API.
       Gio.DBus.session.signal_unsubscribe(this._dbusConnection);
+
+      // If the settings dialog got closed too quickly, this may not have been shown.
+      if (this._showUpdateInfoTimeout > 0) {
+        GLib.source_remove(this._showUpdateInfoTimeout);
+      }
     });
 
     // Show the widgets on GTK3.

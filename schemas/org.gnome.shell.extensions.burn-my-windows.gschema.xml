@@ -31,6 +31,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>If set to true, all animations will show only one still frame to allow for continuous integration tests.</description>
     </key>
 
+    <key name="last-version" type="i">
+      <default>0</default>
+      <summary>Last Version</summary>
+      <description>Used to check whether the extension got updated.</description>
+    </key>
+
   </schema>
 
 </schemalist>
