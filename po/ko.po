@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-23 13:21+0100\n"
-"PO-Revision-Date: 2022-08-23 04:16+0000\n"
+"PO-Revision-Date: 2023-02-11 06:35+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ko/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 #: src/Apparition.js:81
 msgid "Apparition"
@@ -29,7 +29,7 @@ msgstr "유리 깨짐"
 
 #: src/Doom.js:88
 msgid "Doom"
-msgstr ""
+msgstr "둠"
 
 #: src/EnergizeA.js:80
 msgid "Energize A"
@@ -65,11 +65,11 @@ msgstr "산타의 방문"
 
 #: src/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "활공"
 
 #: src/Glitch.js:89
 msgid "Glitch"
-msgstr ""
+msgstr "잡티 화면"
 
 #: src/Hexagon.js:98
 msgid "Hexagon"
@@ -85,19 +85,19 @@ msgstr "매트릭스"
 
 #: src/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "픽셀 파편"
 
 #: src/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "픽셀 바퀴회전"
 
 #: src/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "픽셀 쓸어내기"
 
 #: src/Portal.js:91
 msgid "Portal"
-msgstr ""
+msgstr "차원 관문"
 
 #: src/SnapOfDisintegration.js:118
 msgid "Snap of Disintegration"
@@ -113,7 +113,7 @@ msgstr "TV 효과"
 
 #: src/TVGlitch.js:90
 msgid "TV Glitch"
-msgstr ""
+msgstr "TV 잡티 화면"
 
 #: src/Wisps.js:86
 msgid "Wisps"
@@ -121,20 +121,20 @@ msgstr "도깨비불"
 
 #: prefs.js:140
 msgid "Effects"
-msgstr ""
+msgstr "효과"
 
 #: prefs.js:182 resources/ui/gtk4/effectPage.ui:43
 #: resources/ui/gtk3/effectPage.ui:43
 msgid "Preview this effect"
-msgstr ""
+msgstr "이 효과를 미리 봅니다"
 
 #: prefs.js:217
 msgid "Use this effect when opening windows"
-msgstr ""
+msgstr "창을 열 때 이 효과 사용"
 
 #: prefs.js:218
 msgid "Use this effect when closing windows"
-msgstr ""
+msgstr "창을 닫을 때 이 효과 사용"
 
 #: prefs.js:244
 msgid "General Options"
@@ -369,7 +369,7 @@ msgstr "비율 조정"
 #: resources/ui/gtk3/Apparition.ui:118 resources/ui/adw/Matrix.ui:80
 #: resources/ui/adw/Apparition.ui:48
 msgid "Randomness"
-msgstr "임의성 지수"
+msgstr "임의 상수"
 
 #: resources/ui/gtk4/Matrix.ui:168 resources/ui/adw/Matrix.ui:113
 msgid "Vertical Overshooting"
@@ -385,7 +385,7 @@ msgstr "끄트머리 색상"
 
 #: resources/ui/gtk4/BrokenGlass.ui:122 resources/ui/adw/BrokenGlass.ui:81
 msgid "Gravity"
-msgstr "중력계수"
+msgstr "중력 계수"
 
 #: resources/ui/gtk4/BrokenGlass.ui:168 resources/ui/adw/BrokenGlass.ui:114
 msgid "Blow Force"
@@ -409,12 +409,12 @@ msgstr "소용돌이"
 #: resources/ui/gtk4/Incinerate.ui:172 resources/ui/gtk3/Incinerate.ui:205
 #: resources/ui/adw/Incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "포인터 위치에서 시작"
 
 #: resources/ui/gtk4/Incinerate.ui:181 resources/ui/gtk3/Incinerate.ui:214
 #: resources/ui/adw/Incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "설정을 끄면, 임의 위치에서 시작합니다."
 
 #: resources/ui/gtk4/Incinerate.ui:221 resources/ui/gtk4/Wisps.ui:122
 #: resources/ui/gtk4/SnapOfDisintegration.ui:122
@@ -464,17 +464,17 @@ msgstr "그레디언트"
 #: resources/ui/gtk4/Glide.ui:122 resources/ui/gtk3/Glide.ui:167
 #: resources/ui/adw/Glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "찌그러짐"
 
 #: resources/ui/gtk4/Glide.ui:168 resources/ui/gtk3/Glide.ui:216
 #: resources/ui/adw/Glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "기울임"
 
 #: resources/ui/gtk4/Glide.ui:214 resources/ui/gtk3/Glide.ui:265
 #: resources/ui/adw/Glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "위치 이동"
 
 #: resources/ui/gtk4/PixelWipe.ui:76 resources/ui/gtk4/PixelWheel.ui:122
 #: resources/ui/gtk4/Doom.ui:168 resources/ui/gtk4/Pixelate.ui:122
@@ -483,7 +483,7 @@ msgstr ""
 #: resources/ui/adw/PixelWipe.ui:47 resources/ui/adw/PixelWheel.ui:80
 #: resources/ui/adw/Doom.ui:113 resources/ui/adw/Pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "픽셀 크기"
 
 #: resources/ui/gtk4/TRexAttack.ui:76 resources/ui/adw/TRexAttack.ui:47
 msgid "Claw Scratch Scale"
@@ -505,22 +505,22 @@ msgstr "번쩍임 색상"
 #: resources/ui/gtk3/TVGlitch.ui:160 resources/ui/gtk3/Glitch.ui:160
 #: resources/ui/adw/TVGlitch.ui:80 resources/ui/adw/Glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "강도"
 
 #: resources/ui/gtk4/PixelWheel.ui:76 resources/ui/gtk3/PixelWheel.ui:104
 #: resources/ui/adw/PixelWheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "바퀴살 수"
 
 #: resources/ui/gtk4/Doom.ui:76 resources/ui/gtk3/Doom.ui:111
 #: resources/ui/adw/Doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "수평 규모"
 
 #: resources/ui/gtk4/Doom.ui:122 resources/ui/gtk3/Doom.ui:160
 #: resources/ui/adw/Doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "수직 규모"
 
 #: resources/ui/gtk4/Hexagon.ui:122 resources/ui/gtk3/Hexagon.ui:153
 #: resources/ui/adw/Hexagon.ui:80
@@ -550,7 +550,7 @@ msgstr "어두운 창 테마에서 사용하시면 좋습니다."
 #: resources/ui/gtk4/Pixelate.ui:76 resources/ui/gtk3/Pixelate.ui:104
 #: resources/ui/adw/Pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "잡티"
 
 #: resources/ui/gtk4/prefs.ui:34 resources/ui/gtk3/prefs.ui:41
 #: resources/ui/adw/prefs.ui:31
@@ -588,12 +588,12 @@ msgstr "대화상자에도 효과 추가"
 #: resources/ui/gtk4/prefs.ui:190 resources/ui/gtk3/prefs.ui:248
 #: resources/ui/adw/prefs.ui:74
 msgid "Disable on Battery Power"
-msgstr "배터리 전원 사용시 비활성"
+msgstr "배터리 전원 사용시 사용 안함"
 
 #: resources/ui/gtk4/prefs.ui:224 resources/ui/gtk3/prefs.ui:292
 #: resources/ui/adw/prefs.ui:96
 msgid "Disable in Power-Save Mode"
-msgstr ""
+msgstr "전원 절약 모드에서 사용 안함"
 
 #: resources/ui/gtk4/Apparition.ui:122 resources/ui/gtk3/Apparition.ui:167
 #: resources/ui/adw/Apparition.ui:81
@@ -613,17 +613,17 @@ msgstr "흡입 강도"
 #: resources/ui/gtk4/Portal.ui:76 resources/ui/gtk3/Portal.ui:162
 #: resources/ui/adw/Portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "소용돌이"
 
 #: resources/ui/gtk4/Portal.ui:122 resources/ui/gtk3/Portal.ui:112
 #: resources/ui/adw/Portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "회전 속도"
 
 #: resources/ui/gtk4/Portal.ui:168 resources/ui/gtk3/Portal.ui:212
 #: resources/ui/adw/Portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "밀도"
 
 #: resources/ui/gtk3/Fire.ui:69 resources/ui/adw/Fire.ui:19
 msgid "Choose a Preset"
