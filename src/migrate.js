@@ -189,8 +189,8 @@ async function fromVersion26() {
 
       } else {
 
-        const openProfileLines  = [...profile, 'profile-animation-type=1'];
-        const closeProfileLines = [...profile, 'profile-animation-type=2'];
+        const openProfileLines  = [...profileLines, 'profile-animation-type=1'];
+        const closeProfileLines = [...profileLines, 'profile-animation-type=2'];
 
         // Add all relevant effects.
         openEffects.forEach(e => openProfileLines.push(e + '-enable-effect=true'));
@@ -200,6 +200,10 @@ async function fromVersion26() {
         // not required.
         if (!closeEffects.includes('fire')) {
           closeProfileLines.push('fire-enable-effect=false');
+        }
+
+        if (!openEffects.includes('fire')) {
+          openProfileLines.push('fire-enable-effect=false');
         }
 
         // Print and save the new profiles.
