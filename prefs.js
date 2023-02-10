@@ -252,7 +252,6 @@ var PreferencesDialog = class PreferencesDialog {
 
         // The toggle button for enabling and disabling the effect.
         const button = Gtk.Switch.new();
-        button.set_tooltip_text(_('Use this effect'));
         button.set_valign(Gtk.Align.CENTER);
         this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
 
