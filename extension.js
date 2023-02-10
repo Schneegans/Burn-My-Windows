@@ -88,7 +88,9 @@ class Extension {
     const lastVersion = this._settings.get_int('last-extension-version');
     if (lastVersion < Me.metadata.version) {
       if (lastVersion <= 26) {
-        migrate.fromVersion26().then(() => {
+        // If the profile migration fails for some reason, the callback will create a
+        // default profile instead.
+        migrate.fromVersion26().finally(() => {
           this._loadProfiles();
           this._settings.set_int('last-extension-version', Me.metadata.version);
         });
