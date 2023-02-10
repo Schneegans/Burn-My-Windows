@@ -30,6 +30,7 @@ try {
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
+const migrate        = Me.imports.src.migrate;
 const utils          = Me.imports.src.utils;
 const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
@@ -82,14 +83,26 @@ class Extension {
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
 
+    // Now we check whether the extension settings need to be migrated from a previous
+    // version. If this is the case, we defer the profile loading until this is finished.
+    const lastVersion = this._settings.get_int('last-extension-version');
+    if (lastVersion < Me.metadata.version) {
+      if (lastVersion <= 26) {
+        migrate.fromVersion26().then(() => {
+          this._loadProfiles();
+          this._settings.set_int('last-extension-version', Me.metadata.version);
+        });
+      }
+    } else {
+      this._loadProfiles();
+    }
+
     // We reload all effect profiles whenever the currently edited profile in the
     // preferences dialog changes. This is most likely a bit too often, but it will also
     // happen whenever a new profile is created and whenever an old profile is deleted.
     this._settings.connect('changed::active-profile', () => {
       this._loadProfiles();
     });
-
-    this._loadProfiles();
 
     // This is used to get the desktop's color scheme.
     this._shellSettings = new Gio.Settings({schema: 'org.gnome.desktop.interface'});

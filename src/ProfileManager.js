@@ -56,15 +56,17 @@ var ProfileManager = class {
     return this._profiles;
   }
 
-  // This will create a new profile with all values initialized to their defaults. The
-  // method will return an effect profile object (as described above). We will use the
-  // current system time in microseconds as profile name. This ensures that they are
-  // always sorted according to their creation date.
-  createProfile() {
+  // This will create a new profile. If no content is given, all values will be
+  // initialized to their defaults. The method will return an effect profile object (as
+  // described above). We will use the current system time in microseconds as profile
+  // name. This ensures that they are always sorted according to their creation date.
+  createProfile(content = '') {
     const path = `${GLib.get_user_config_dir()}/burn-my-windows/profiles/${
       GLib.get_real_time()}.conf`;
     const file = Gio.File.new_for_path(path);
     file.create(Gio.FileCreateFlags.NONE, null);
+    file.replace_contents(content, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION,
+                          null);
 
     const profile = {'path': path, 'settings': this._getProfileSettings(path)};
 

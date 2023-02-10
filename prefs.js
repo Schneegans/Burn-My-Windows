@@ -28,7 +28,6 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const migrate        = Me.imports.src.migrate;
 const utils          = Me.imports.src.utils;
 const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 
@@ -67,8 +66,6 @@ var PreferencesDialog = class PreferencesDialog {
       new Me.imports.src.effects.TVGlitch.TVGlitch(),
       new Me.imports.src.effects.Wisps.Wisps(),
     ];
-
-    migrate.migrate();
 
     // Load all of our resources.
     this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
@@ -358,7 +355,7 @@ var PreferencesDialog = class PreferencesDialog {
 
       // Show an Adw.Toast or a Gtk.InfoBar whenever Burn-My-Windows was updated. We use a
       // small timeout so that it is not shown instantaneously.
-      const lastVersion = this._settings.get_int('last-version');
+      const lastVersion = this._settings.get_int('last-prefs-version');
       if (lastVersion < Me.metadata.version) {
         this._showUpdateInfoTimeout =
           GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
@@ -372,13 +369,13 @@ var PreferencesDialog = class PreferencesDialog {
 
               toast.connect(
                 'dismissed',
-                () => this._settings.set_int('last-version', Me.metadata.version));
+                () => this._settings.set_int('last-prefs-version', Me.metadata.version));
 
               window.add_toast(toast);
             } else {
               const infoBar = this._builder.get_object('update-info');
               infoBar.connect('response', i => {
-                this._settings.set_int('last-version', Me.metadata.version);
+                this._settings.set_int('last-prefs-version', Me.metadata.version);
                 i.set_revealed(false);
               });
               infoBar.set_revealed(true);
@@ -459,7 +456,7 @@ var PreferencesDialog = class PreferencesDialog {
             null,
             'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md',
             Gdk.CURRENT_TIME);
-          this._settings.set_int('last-version', Me.metadata.version)
+          this._settings.set_int('last-prefs-version', Me.metadata.version)
         });
         group.add_action(changelogAction);
 
