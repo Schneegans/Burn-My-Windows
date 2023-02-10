@@ -583,7 +583,8 @@ var PreferencesDialog = class PreferencesDialog {
         // available (usually on GNOME 43 and beyond).
         let deleteProfileDialog;
         const dialogTitle    = _('Delete this Profile?');
-        const dialogSubtitle = _('The current effect profile will be permanently lost.');
+        const dialogSubtitle = _(
+          'The current effect profile with all its effect settings will be permanently lost.');
 
         if (utils.isADW() && Adw.MessageDialog) {
           deleteProfileDialog =
