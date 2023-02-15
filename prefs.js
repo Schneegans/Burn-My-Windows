@@ -788,6 +788,7 @@ var PreferencesDialog = class PreferencesDialog {
     updateProfileButtonMenuIfChanged('profile-color-scheme');
     updateProfileButtonMenuIfChanged('profile-power-mode');
     updateProfileButtonMenuIfChanged('profile-power-profile');
+    updateProfileButtonMenuIfChanged('profile-high-priority');
 
     this.bindEntry('profile-app');
 

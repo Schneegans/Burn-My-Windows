@@ -180,6 +180,11 @@ var ProfileManager = class {
                                             _('Balanced or Performance')]);
     // clang-format on
 
+    // If the profile is a high-priority profile, also add this..
+    if (settings.get_boolean('profile-high-priority')) {
+      items.push(_('High Priority'));
+    }
+
     let name = '';
 
     if (items.length == 0) {

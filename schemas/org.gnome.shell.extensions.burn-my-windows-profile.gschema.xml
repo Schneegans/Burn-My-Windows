@@ -57,7 +57,7 @@ SPDX-License-Identifier: CC0-1.0
     <key name="profile-high-priority" type="b">
       <default>false</default>
       <summary>Profile High Priority</summary>
-      <description>Force using this profile even if it has less constraints than another matching profile.</description>
+      <description>Use this profile even if there are better matching profiles.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

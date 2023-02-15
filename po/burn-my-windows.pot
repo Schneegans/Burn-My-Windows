@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-10 21:20+0100\n"
+"POT-Creation-Date: 2023-02-15 13:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,12 @@ msgstr ""
 msgid "Balanced or Performance"
 msgstr ""
 
-#: src/ProfileManager.js:186
+#: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
+#: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
+msgid "High Priority"
+msgstr ""
+
+#: src/ProfileManager.js:191
 msgid "Standard Profile"
 msgstr ""
 
@@ -234,12 +239,12 @@ msgid "Delete"
 msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:921
+#: prefs.js:922
 #, javascript-format
 msgid "Preview for %s"
 msgstr ""
 
-#: prefs.js:943
+#: prefs.js:944
 msgid "Close this Window to Preview the Effect!"
 msgstr ""
 
@@ -715,16 +720,9 @@ msgstr ""
 msgid "Advanced Profile Options"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:387 resources/ui/gtk3/prefs.ui:432
-#: resources/ui/adw/prefs.ui:183
-msgid "High Priority"
-msgstr ""
-
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
-msgid ""
-"Force using this profile even if it has less constraints than another "
-"matching profile."
+msgid "Use this profile even if there are better matching profiles."
 msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473

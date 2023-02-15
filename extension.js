@@ -420,6 +420,7 @@ class Extension {
       p.settings.connect('changed::profile-color-scheme', () => updatePriority(p));
       p.settings.connect('changed::profile-power-mode', () => updatePriority(p));
       p.settings.connect('changed::profile-power-profile', () => updatePriority(p));
+      p.settings.connect('changed::profile-high-priority', () => updatePriority(p));
     });
 
     // Sort all profiles initially according to their initial priority.

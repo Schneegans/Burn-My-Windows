@@ -393,7 +393,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                             </child>
                             <child>
                               <object class="GtkLabel">
-                                <property name="label" translatable="yes">Force using this profile even if it has less constraints than another matching profile.</property>
+                                <property name="label" translatable="yes">Use this profile even if there are better matching profiles.</property>
                                 <property name="xalign">0</property>
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
