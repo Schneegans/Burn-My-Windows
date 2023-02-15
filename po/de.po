@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-10 21:20+0100\n"
+"POT-Creation-Date: 2023-02-15 13:19+0100\n"
 "PO-Revision-Date: 2023-02-15 12:21+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -84,7 +84,12 @@ msgstr "Energiesparmodus oder Ausgeglichen"
 msgid "Balanced or Performance"
 msgstr "Ausgewogen oder Leistungsmodus"
 
-#: src/ProfileManager.js:186
+#: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
+#: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
+msgid "High Priority"
+msgstr "Hohe Priorität"
+
+#: src/ProfileManager.js:191
 msgid "Standard Profile"
 msgstr "Standardprofil"
 
@@ -238,12 +243,12 @@ msgid "Delete"
 msgstr "Löschen"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:921
+#: prefs.js:922
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Vorschau für %s"
 
-#: prefs.js:943
+#: prefs.js:944
 msgid "Close this Window to Preview the Effect!"
 msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
 
@@ -724,16 +729,9 @@ msgstr "Leistungsprofil"
 msgid "Advanced Profile Options"
 msgstr "Erweiterte Profiloptionen"
 
-#: resources/ui/gtk4/prefs.ui:387 resources/ui/gtk3/prefs.ui:432
-#: resources/ui/adw/prefs.ui:183
-msgid "High Priority"
-msgstr "Hohe Priorität"
-
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
-msgid ""
-"Force using this profile even if it has less constraints than another "
-"matching profile."
+msgid "Use this profile even if there are better matching profiles."
 msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
