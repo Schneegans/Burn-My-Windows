@@ -9,7 +9,7 @@ DOMAIN   := schneegans.github.com
 ZIP_NAME := $(NAME)@$(DOMAIN).zip
 
 # Some of the recipes below depend on some of these files.
-JS_FILES       = $(wildcard src/*.js extension.js prefs.js)
+JS_FILES       = $(wildcard src/*.js src/*/*.js extension.js prefs.js)
 UI_FILES       = $(shell find resources -type f -and \( -name "*.ui" \))
 RESOURCE_FILES = $(shell find resources -mindepth 2 -type f)
 LOCALES_PO     = $(wildcard po/*.po)
@@ -91,7 +91,7 @@ $(ZIP_NAME): $(ZIP_CONTENT)
 	 fi
 
 # Compiles the gschemas.compiled file from the gschema.xml file.
-schemas/gschemas.compiled: schemas/org.gnome.shell.extensions.$(NAME).gschema.xml
+schemas/gschemas.compiled: schemas/org.gnome.shell.extensions.$(NAME).gschema.xml schemas/org.gnome.shell.extensions.$(NAME)-profile.gschema.xml
 	@echo "Compiling schemas..."
 	@glib-compile-schemas schemas
 

@@ -30,7 +30,10 @@ try {
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
+const migrate        = Me.imports.src.migrate;
 const utils          = Me.imports.src.utils;
+const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
+const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
@@ -51,26 +54,26 @@ class Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new Me.imports.src.Apparition.Apparition(),
-      new Me.imports.src.BrokenGlass.BrokenGlass(),
-      new Me.imports.src.Doom.Doom(),
-      new Me.imports.src.EnergizeA.EnergizeA(),
-      new Me.imports.src.EnergizeB.EnergizeB(),
-      new Me.imports.src.Fire.Fire(),
-      new Me.imports.src.Glide.Glide(),
-      new Me.imports.src.Glitch.Glitch(),
-      new Me.imports.src.Hexagon.Hexagon(),
-      new Me.imports.src.Incinerate.Incinerate(),
-      new Me.imports.src.Matrix.Matrix(),
-      new Me.imports.src.Pixelate.Pixelate(),
-      new Me.imports.src.PixelWheel.PixelWheel(),
-      new Me.imports.src.PixelWipe.PixelWipe(),
-      new Me.imports.src.Portal.Portal(),
-      new Me.imports.src.SnapOfDisintegration.SnapOfDisintegration(),
-      new Me.imports.src.TRexAttack.TRexAttack(),
-      new Me.imports.src.TVEffect.TVEffect(),
-      new Me.imports.src.TVGlitch.TVGlitch(),
-      new Me.imports.src.Wisps.Wisps(),
+      new Me.imports.src.effects.Apparition.Apparition(),
+      new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
+      new Me.imports.src.effects.Doom.Doom(),
+      new Me.imports.src.effects.EnergizeA.EnergizeA(),
+      new Me.imports.src.effects.EnergizeB.EnergizeB(),
+      new Me.imports.src.effects.Fire.Fire(),
+      new Me.imports.src.effects.Glide.Glide(),
+      new Me.imports.src.effects.Glitch.Glitch(),
+      new Me.imports.src.effects.Hexagon.Hexagon(),
+      new Me.imports.src.effects.Incinerate.Incinerate(),
+      new Me.imports.src.effects.Matrix.Matrix(),
+      new Me.imports.src.effects.Pixelate.Pixelate(),
+      new Me.imports.src.effects.PixelWheel.PixelWheel(),
+      new Me.imports.src.effects.PixelWipe.PixelWipe(),
+      new Me.imports.src.effects.Portal.Portal(),
+      new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
+      new Me.imports.src.effects.TRexAttack.TRexAttack(),
+      new Me.imports.src.effects.TVEffect.TVEffect(),
+      new Me.imports.src.effects.TVGlitch.TVGlitch(),
+      new Me.imports.src.effects.Wisps.Wisps(),
     ];
 
     // Load all of our resources.
@@ -79,6 +82,36 @@ class Extension {
 
     // Store a reference to the settings object.
     this._settings = ExtensionUtils.getSettings();
+
+    // Now we check whether the extension settings need to be migrated from a previous
+    // version. If this is the case, we defer the profile loading until this is finished.
+    const lastVersion = this._settings.get_int('last-extension-version');
+    if (lastVersion < Me.metadata.version) {
+      if (lastVersion <= 26) {
+        // If the profile migration fails for some reason, the callback will create a
+        // default profile instead.
+        migrate.fromVersion26().finally(() => {
+          this._loadProfiles();
+          this._settings.set_int('last-extension-version', Me.metadata.version);
+        });
+      }
+    } else {
+      this._loadProfiles();
+    }
+
+    // We reload all effect profiles whenever the currently edited profile in the
+    // preferences dialog changes. This is most likely a bit too often, but it will also
+    // happen whenever a new profile is created and whenever an old profile is deleted.
+    this._settings.connect('changed::active-profile', () => {
+      this._loadProfiles();
+    });
+
+    // This is used to get the desktop's color scheme.
+    this._shellSettings = new Gio.Settings({schema: 'org.gnome.desktop.interface'});
+
+    // Enable the window-picking D-Bus API for the preferences dialog.
+    this._windowPicker = new WindowPicker();
+    this._windowPicker.export();
 
     // We will use extensionThis to refer to the extension inside the patched methods.
     const extensionThis = this;
@@ -106,11 +139,6 @@ class Extension {
     this._origShouldAnimateActor    = WindowManager.prototype._shouldAnimateActor;
     this._origWaitForOverviewToHide = WindowManager.prototype._waitForOverviewToHide;
     this._origDestroyWindowDone     = WindowManager.prototype._destroyWindowDone;
-
-    // We will also override these animation times.
-    this._origWindowTime = imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME;
-    this._origDialogTime = imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME;
-
 
     // ------------------------------------------------ patching the window-open animation
 
@@ -338,6 +366,9 @@ class Extension {
     // Unregister our resources.
     Gio.resources_unregister(this._resources);
 
+    // Disable the window-picking D-Bus API.
+    this._windowPicker.unexport();
+
     // Restore the original window-open and window-close animations.
     global.window_manager.disconnect(this._destroyConnection);
     global.display.disconnect(this._windowCreatedConnection);
@@ -348,9 +379,6 @@ class Extension {
     WindowManager.prototype._shouldAnimateActor    = this._origShouldAnimateActor;
     WindowManager.prototype._waitForOverviewToHide = this._origWaitForOverviewToHide;
     WindowManager.prototype._destroyWindowDone     = this._origDestroyWindowDone;
-
-    imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME        = this._origWindowTime;
-    imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME = this._origDialogTime;
 
     if (WindowPreview) {
       WindowPreview.prototype._deleteAll = this._origDeleteAll;
@@ -363,43 +391,54 @@ class Extension {
 
   // ----------------------------------------------------------------------- private stuff
 
-  // This method adds one of the configured effects to the given actor. If forOpening is
-  // set to true, a effect from the enabled window-open animations is chosen, else an
-  // enabled window-close animation is used. This will also tweak the transitions of the
-  // given actor (e.g. scale it up if required).
+  // This loads all effect profiles and assigns a priority to each profile. Whenever a
+  // window is opened or closed, the matching effect profile with the highest priority
+  // will be chosen.
+  // This method is called whenever the currently edited profile in the/ preferences
+  // dialog changes. This is most likely a bit too often, but it will also happen whenever
+  // a new profile is created and whenever an old profile is deleted.
+  _loadProfiles() {
+
+    // Get all currently available profiles.
+    const profileManager = new ProfileManager();
+    this._profiles       = profileManager.getProfiles();
+
+    // Whenever the properties of a profile is changed in the settings, we may have to
+    // resort all profiles according to their priority.
+    const updatePriority = (p) => {
+      p.priority = profileManager.getProfilePriority(p.settings);
+      this._profiles.sort((a, b) => b.priority - a.priority);
+    };
+
+    // For each profile, assign an initial priority and update the priority whenever a
+    // related setting changes.
+    this._profiles.forEach(p => {
+      p.priority = profileManager.getProfilePriority(p.settings);
+      p.settings.connect('changed::profile-app', () => updatePriority(p));
+      p.settings.connect('changed::profile-animation-type', () => updatePriority(p));
+      p.settings.connect('changed::profile-window-type', () => updatePriority(p));
+      p.settings.connect('changed::profile-color-scheme', () => updatePriority(p));
+      p.settings.connect('changed::profile-power-mode', () => updatePriority(p));
+      p.settings.connect('changed::profile-power-profile', () => updatePriority(p));
+    });
+
+    // Sort all profiles initially according to their initial priority.
+    this._profiles.sort((a, b) => b.priority - a.priority);
+  }
+
+  // This method adds one of the configured effects to the given actor. First, a profile
+  // matching the current circumstances is chosen. Then a random effect from its enabled
+  // effects will be selected. This will also tweak the transitions of the given actor
+  // (e.g. scale it up if required).
   _setupEffect(actor, forOpening) {
 
-    // Only add effects to normal windows and dialog windows.
+    // For now, we only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
     const isDialogWindow =
       actor.meta_window.window_type == Meta.WindowType.MODAL_DIALOG ||
       actor.meta_window.window_type == Meta.WindowType.DIALOG;
 
     if (!isNormalWindow && !isDialogWindow) {
-      return;
-    }
-
-    // We do nothing if a dialog got closed and we should not burn them.
-    const shouldDestroyDialogs = this._settings.get_boolean('destroy-dialogs');
-
-    // If an effect is to be previewed, we have to affect dialogs es well. This is
-    // because the preview window is a dialog window...
-    const action      = forOpening ? 'open' : 'close';
-    const previewNick = this._settings.get_string(action + '-preview-effect');
-
-    if (isDialogWindow && !shouldDestroyDialogs && previewNick == '') {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
-      return;
-    }
-
-    // We may have to do nothing if running on battery power or if in power-save mode.
-    let disableOnBattery =
-      this._settings.get_boolean('disable-on-battery') && this._upowerProxy.OnBattery;
-    let disableOnPowerSave = this._settings.get_boolean('disable-on-power-save') &&
-      this._powerProfilesProxy && this._powerProfilesProxy.ActiveProfile == 'power-saver';
-
-    if ((disableOnBattery || disableOnPowerSave) && previewNick == '') {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
       return;
     }
 
@@ -413,38 +452,112 @@ class Extension {
       oldShader.returnToFactory();
     }
 
-    // ------------------------------------------------------------------ choose an effect
+    // ----------------------------------------------- choose a profile and then an effect
 
-    // Now we chose a random effect from all enabled effects.
-    let effect = null;
+    // Usually, we use the effect profile with the highest priority which matches the
+    // current circumstances. From this profile, we choose a random effect. However, if an
+    // effect is to be previewed, we choose the currently edited profile regardless of the
+    // circumstances.
+    let profile = null;
+    let effect  = null;
 
-    // First we check if an effect is to be previewed.
+    // Hence, we first check if an effect is to be previewed.
+    const previewNick = this._settings.get_string('preview-effect');
+
     if (previewNick != '') {
-      effect = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
+      const activeProfile = this._settings.get_string('active-profile');
+      effect  = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
+      profile = this._profiles.find(p => p.path == activeProfile);
 
-      // Only preview the effect once.
-      this._settings.set_string(action + '-preview-effect', '');
-
+      // Only preview the effect until the preview window is closed.
+      if (!profile || !forOpening) {
+        this._settings.set_string('preview-effect', '');
+      }
     }
-    // Else we choose a random effect from all enabled effects.
+    // If no effect is previewed, we use the effect profile with the highest priority
+    // which matches the current circumstances. From this profile, we choose a random
+    // effect.
     else {
 
-      // Therefore, we first create a list of all currently enabled effects.
-      const enabled = this._ALL_EFFECTS.filter(effect => {
-        return this._settings.get_boolean(`${effect.getNick()}-${action}-effect`);
+      // These numbers match the indices in the Gtk.StringLists defined in the UI files
+      // (e.g. resources/ui/adw/prefs.ui).
+      const animationType = forOpening ? 1 : 2;
+      const windowType    = isNormalWindow ? 1 : 2;
+      const powerMode     = this._upowerProxy.OnBattery ? 1 : 2;
+
+      // Get the first profile whose constraints match the circumstances. The list is
+      // sorted by priority, so we are good to take the first match.
+      profile = this._profiles.find(p => {
+        const profileApp           = p.settings.get_string('profile-app');
+        const profileAnimationType = p.settings.get_int('profile-animation-type');
+        const profileWindowType    = p.settings.get_int('profile-window-type');
+        const profilePowerMode     = p.settings.get_int('profile-power-mode');
+        const profileColorScheme   = p.settings.get_int('profile-color-scheme');
+        const profilePowerProfile  = p.settings.get_int('profile-power-profile');
+
+        // First we check whether the animation type, window type, and power mode are
+        // matching.
+        let matches =
+          (profileAnimationType == 0 || profileAnimationType == animationType) &&
+          (profileWindowType == 0 || profileWindowType == windowType) &&
+          (profilePowerMode == 0 || profilePowerMode == powerMode);
+
+        // If that was the case, we also check the application name.
+        if (matches && profileApp != '') {
+          const app = actor.meta_window.get_wm_class().toLowerCase();
+
+          // Split app names at |, remove any whitespace, and transform to lower case.
+          const profileApps =
+            profileApp.split('|').map(item => item.trim().toLowerCase());
+          matches = profileApps.includes(app);
+        }
+
+        // If the profile is still matching, we also check the color scheme.
+        if (matches && profileColorScheme != 0 && utils.shellVersionIsAtLeast(42, 0)) {
+          const colorScheme = this._shellSettings.get_string('color-scheme');
+          matches &= (profileColorScheme == 1 && colorScheme == 'default') ||
+            (profileColorScheme == 2 && colorScheme == 'prefer-dark');
+        }
+
+        // Finally, we may also have to check the power profile.
+        if (matches && profilePowerProfile != 0 && this._powerProfilesProxy) {
+          const powerProfile = this._powerProfilesProxy.ActiveProfile;
+
+          // To understand the numbers, please refer to the indices in the Gtk.StringList
+          // of the profile-power-profile Adw.ComboRow in resources/ui/adw/prefs.ui.
+          if (powerProfile == 'power-saver') {
+            matches &= profilePowerProfile == 1 || profilePowerProfile == 4;
+          } else if (powerProfile == 'balanced') {
+            matches &= profilePowerProfile == 2 || profilePowerProfile == 4 ||
+              profilePowerProfile == 5;
+          } else {
+            matches &= profilePowerProfile == 3 || profilePowerProfile == 5;
+          }
+        }
+
+        return matches;
       });
 
-      // And then choose a random effect.
-      if (enabled.length > 0) {
-        effect = enabled[Math.floor(Math.random() * enabled.length)];
+      // If we found a matching profile, choose a random effect from it.
+      if (profile) {
+
+        // Create a list of all enabled effects of this profile.
+        const enabled = this._ALL_EFFECTS.filter(effect => {
+          return profile.settings.get_boolean(`${effect.getNick()}-enable-effect`);
+        });
+
+        // And then choose a random effect.
+        if (enabled.length > 0) {
+          effect = enabled[Math.floor(Math.random() * enabled.length)];
+        }
       }
     }
 
     // If nothing was enabled, we have to do nothing :)
-    if (effect == null) {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
+    if (!effect || !profile) {
       return;
     }
+
 
     // ----------------------------------------------------------- tweak actor transitions
 
@@ -456,16 +569,15 @@ class Extension {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.getActorScale(this._settings, forOpening, actor);
+    const actorScale = effect.getActorScale(profile.settings, forOpening, actor);
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.
     const duration =
-      testMode ? 5000 : this._settings.get_int(effect.getNick() + '-animation-time');
+      testMode ? 5000 : profile.settings.get_int(effect.getNick() + '-animation-time');
 
     // All animations are relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
-
 
     // We tweak the opacity and scale of the actor. If there is no ongoing transition for
     // a property, a new one is set up.
@@ -519,7 +631,6 @@ class Extension {
     const transition = actor.get_transition('opacity');
 
     if (!transition) {
-      this._fixAnimationTimes(isDialogWindow, forOpening, null);
       utils.debug('Cannot setup shader without opacity transition.')
       return;
     }
@@ -528,7 +639,8 @@ class Extension {
     actor.add_effect_with_name('burn-my-windows-effect', shader);
 
     // Set one-time uniforms.
-    shader.beginAnimation(this._settings, forOpening, duration * 0.001, actor);
+    shader.beginAnimation(profile.settings, forOpening, testMode, duration * 0.001,
+                          actor);
 
     // Set other uniforms each frame.
     transition.connect('new-frame', (t) => {
@@ -549,29 +661,6 @@ class Extension {
           oldShader.returnToFactory();
         }
       });
-    }
-
-    // Finally, ensure that all animation times are set properly so that other extensions
-    // may guess how long it will take until windows are gone :)
-    this._fixAnimationTimes(isDialogWindow, forOpening, duration);
-  }
-
-  // The code below is not necessary for Burn-My-Windows to function. However, there
-  // are some extensions such as "Show Application View When Workspace Empty"
-  // https://extensions.gnome.org/extension/2036/show-application-view-when-workspace-empty/
-  // which do something *after* a window was closed. As the window-close animation
-  // duration depends on the used effect, this may vary each time a window is
-  // closed. We set the currently used time here, so that others can get an idea how
-  // long this will take...
-  _fixAnimationTimes(isDialogWindow, forOpening, duration) {
-    if (!forOpening) {
-      if (isDialogWindow) {
-        imports.ui.windowManager.DIALOG_DESTROY_WINDOW_ANIMATION_TIME =
-          duration != null ? duration : this._origDialogTime;
-      } else {
-        imports.ui.windowManager.DESTROY_WINDOW_ANIMATION_TIME =
-          duration != null ? duration : this._origWindowTime;
-      }
     }
   }
 

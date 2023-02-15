@@ -134,8 +134,7 @@ set_setting() {
 test_effect() {
   echo "Testing ${1} effect."
 
-  set_setting "open-preview-effect" "${1}"
-  set_setting "close-preview-effect" "${1}"
+  set_setting "preview-effect" "${1}"
 
   sleep 1
   do_in_pod gnome-terminal
