@@ -29,10 +29,10 @@ Further down in this file you'll find installation instructions for both.
 Effect | Preview
 -----|--------
 **Apparition** <br> This effect hides your windows by violently sucking them into the void of magic! | <img src ="docs/pics/apparition.gif" />
-**Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!| <img src ="docs/pics/glass.gif" />
+**Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!| <img src ="docs/pics/broken-glass.gif" />
 **Doom** <br> Melt your windows. Inspired by the legendary screen transitions of the original Doom. | <img src ="docs/pics/doom.gif" />
-**Energize A** <br> Beam your windows away! | <img src ="docs/pics/energizeA.gif" />
-**Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energizeB.gif" />
+**Energize A** <br> Beam your windows away! | <img src ="docs/pics/energize-a.gif" />
+**Energize B** <br> Using different transporter technology results in an alternative visual effect. | <img src ="docs/pics/energize-b.gif" />
 **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days. | <img src ="docs/pics/fire.gif" />
 **Glide** <br> This very simple effect fades the window to transparency with subtle 3D effects. | <img src ="docs/pics/glide.gif" />
 **Glitch** <br> This effect applies some intentional graphics issues to your windows. | <img src ="docs/pics/glitch.gif" />
