@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-15 13:19+0100\n"
-"PO-Revision-Date: 2023-01-25 20:52+0000\n"
+"PO-Revision-Date: 2023-02-16 15:36+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -22,76 +22,76 @@ msgstr ""
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Vensters openen"
 
 #: src/ProfileManager.js:169 resources/ui/gtk4/prefs.ui:221
 #: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Vensters sluiten"
 
 #: src/ProfileManager.js:170 resources/ui/gtk4/prefs.ui:249
 #: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Normale vensters"
 
 #: src/ProfileManager.js:171 resources/ui/gtk4/prefs.ui:250
 #: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Dialoogvensters"
 
 #: src/ProfileManager.js:172 resources/ui/gtk4/prefs.ui:278
 #: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Standaardthema"
 
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Donker thema"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Op accu"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:308
 #: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Op netstroom"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:336
 #: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Energiebesparingsmodus"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:337
 #: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Gebalanceerde modus"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:338
 #: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Prestatiemodus"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:339
 #: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Energiebesparing of gebalanceerd"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:340
 #: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Gebalanceerd of prestaties"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
 #: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Hoge prioriteit"
 
 #: src/ProfileManager.js:191
 msgid "Standard Profile"
-msgstr ""
+msgstr "Standaardprofiel"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -199,7 +199,7 @@ msgstr "Effect voorvertonen"
 
 #: prefs.js:364 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows is bijgewerkt!"
 
 #: prefs.js:365 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -224,21 +224,23 @@ msgstr "Voormalige sponsoren"
 
 #: prefs.js:584
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Profiel verwijderen?"
 
 #: prefs.js:586
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Let op: hierdoor wordt het huidige profiel met alle bijbehorende voorkeuren "
+"verwijderd."
 
 #: prefs.js:591
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #: prefs.js:592
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:922
@@ -276,7 +278,7 @@ msgstr "Over Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:59
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Profiel toevoegen…"
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -659,7 +661,7 @@ msgstr "Verloop"
 #: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Settings"
-msgstr ""
+msgstr "Effectvoorkeuren"
 
 #: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
 #: resources/ui/adw/prefs.ui:225
@@ -670,17 +672,17 @@ msgstr ""
 #: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Effectbeperkingen"
 
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Geef aan wanneer de huidige effectvoorkeuren dienen te worden gebruikt."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Toepassing"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
 #: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
@@ -692,47 +694,47 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Elke"
 
 #: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Soort animatie"
 
 #: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Soort venster"
 
 #: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Thema"
 
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Energiemodus"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Energieprofiel"
 
 #: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Geavanceerde profielopties"
 
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Gebruik dit profiel, zelfs als er beter overeenkomende profielen zijn."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Profiel verwijderen…"
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
