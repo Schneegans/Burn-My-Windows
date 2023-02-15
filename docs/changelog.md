@@ -5,6 +5,35 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
+
+**Release Date:** TBD
+
+#### New Features
+
+* **Effect Profiles:** It is now possible to create _effect profiles_. Each profile contains a different set of effect settings. You can choose for each profile under which circumstances it will be used. Currently, these constraints are supported:
+  - Application name
+  - Animation type (open close)
+  - Window type (normal, dialog)
+  - Desktop style (light, dark)
+  - Power mode (plugged-in, on battery)
+  - Power profile (power saver, balanced, performance)
+
+  This allows for a very detailed configuration of the extension. For instance, you can now...
+  - ... exclude specific applications from BMW effects
+  - ... select effects per-application
+  - ... use different configurations of the same effect for opening or closing windows
+
+  The extension will attempt to migrate your previous settings to the new effect profile system. Depending on your previous configuration, you may have now one or two profiles to start with, but you can add an arbitrary amount of profiles.
+
+  The effect profiles are available for all supported GNOME versions (that is GNOME 3.36, 3.38, 40, 41, 42, amd 43).
+
+#### Other Enhancements
+
+* As part of the effect profile implementation, the libadwaita-inspired preferences dialog layout got back-ported to all other supported GNOME versions.
+* A notification is now shown in the settings dialog whenever the extension got updated. It contains a link to this changelog.
+* Many translation updates. Thanks to all the translators!
+
 ## [Burn My Windows 26](https://github.com/schneegans/Burn-My-Windows/releases/tag/v26)
 
 **Release Date:** 2023-02-04
