@@ -7,8 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
   <a href="https://www.youtube.com/watch?v=L2aaNF_rPHo"><img src ="docs/pics/teaser.jpg" /></a>
 </p>
 
-<h1 align="center">🔥 Set GNOME Shell on Fire!</h1>
-<p align="center">(and KWin as well)</p>
+<h1 align="center">🔥 Set GNOME Shell and KWin on Fire!</h1>
 
 <p align="center">
 <a href="https://extensions.gnome.org/extension/4679/burn-my-windows/"><img src="https://img.shields.io/badge/Download-extensions.gnome.org-e67f4d.svg?logo=gnome&logoColor=lightgrey&labelColor=303030" /></a><br/>
@@ -23,8 +22,7 @@ SPDX-License-Identifier: CC-BY-4.0
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/) for GNOME, many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
 
-Burn-My-Windows is not only available for **GNOME** but also includes some basic support for **KDE Plasma's KWin**.
-Further down in this file you'll find installation instructions for both.
+**🖼️ The wallpapers used in the previews below were all generated using AI and are available in [this GitHub repository](https://github.com/Schneegans/ai-wallpapers).**
 
 Effect | Preview
 -----|--------
