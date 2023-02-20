@@ -4,7 +4,7 @@ SPDX-License-Identifier: CC-BY-4.0
 -->
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=L2aaNF_rPHo"><img src ="docs/pics/teaser.jpg" /></a>
+  <a href="https://www.youtube.com/watch?v=ZHMboQq8Z5c"><img src ="docs/pics/teaser.jpg" /></a>
 </p>
 
 <h1 align="center">🔥 Set GNOME Shell and KWin on Fire!</h1>
