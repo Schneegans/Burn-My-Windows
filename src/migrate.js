@@ -27,6 +27,12 @@ async function fromVersion26() {
     .executeCommand(['dconf', 'dump', '/org/gnome/shell/extensions/burn-my-windows/'])
     .catch(r => utils.debug('Failed to get old settings for effect migration: ' + r))
     .then(r => {
+      // If there were no settings before, we do not have to migrate anything. Just use
+      // the new defaults.
+      if (r == '') {
+        return;
+      }
+
       utils.debug('Starting Burn-My-Windows profile migration (old version <= 26)!');
 
       // We use this to write the new profiles.
