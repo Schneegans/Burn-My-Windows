@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-15 13:19+0100\n"
+"POT-Creation-Date: 2023-02-21 16:46+0100\n"
 "PO-Revision-Date: 2022-09-16 14:17+0000\n"
 "Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -206,47 +206,47 @@ msgstr ""
 msgid "View Changelog"
 msgstr "Değişim Günlüğü"
 
-#: prefs.js:495 prefs.js:527
+#: prefs.js:496 prefs.js:528
 msgid "Gold Sponsors"
 msgstr "Altın Sponsorlar"
 
-#: prefs.js:499 prefs.js:531
+#: prefs.js:500 prefs.js:532
 msgid "Silver Sponsors"
 msgstr "Gümüş Sponsorlar"
 
-#: prefs.js:503 prefs.js:535
+#: prefs.js:504 prefs.js:536
 msgid "Bronze Sponsors"
 msgstr "Bronz Sponsorlar"
 
-#: prefs.js:507 prefs.js:539
+#: prefs.js:508 prefs.js:540
 msgid "Past Sponsors"
 msgstr "Eski Sponsorlar"
 
-#: prefs.js:584
+#: prefs.js:585
 msgid "Delete this Profile?"
 msgstr ""
 
-#: prefs.js:586
+#: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 
-#: prefs.js:591
+#: prefs.js:592
 msgid "Cancel"
 msgstr ""
 
-#: prefs.js:592
+#: prefs.js:593
 msgid "Delete"
 msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:922
+#: prefs.js:923
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s ön izleme"
 
-#: prefs.js:944
+#: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
 msgstr "Efekti Ön izlemek İçin Bu Pencereyi Kapatın!"
 
@@ -254,27 +254,31 @@ msgstr "Efekti Ön izlemek İçin Bu Pencereyi Kapatın!"
 msgid "Visit Homepage"
 msgstr "Ana Sayfaya Git"
 
-#: resources/ui/common/menus.ui:23
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr ""
+
+#: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
 msgstr "Hata Bildir"
 
-#: resources/ui/common/menus.ui:27
+#: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
 msgstr "Efekt Oluştur"
 
-#: resources/ui/common/menus.ui:31
+#: resources/ui/common/menus.ui:35
 msgid "Translate"
 msgstr "Çevir"
 
-#: resources/ui/common/menus.ui:35
+#: resources/ui/common/menus.ui:39
 msgid "Donate"
 msgstr "Bağış"
 
-#: resources/ui/common/menus.ui:48
+#: resources/ui/common/menus.ui:52
 msgid "About Burn-My-Windows"
 msgstr "Burn-My-Windows Hakkında"
 
-#: resources/ui/common/menus.ui:59
+#: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
 msgstr ""
 
