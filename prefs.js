@@ -982,7 +982,7 @@ function buildPrefsWidget() {
 // If using libadwaita, this method is called. In this case, the primary widget of the
 // preferences dialog is an Adw.PreferencesPage, which we directly add to the window.
 function fillPreferencesWindow(window) {
-  window.set_default_size(700, 700);
+  window.set_default_size(650, 750);
   var dialog = new PreferencesDialog();
   window.add(dialog.getWidget());
 }
