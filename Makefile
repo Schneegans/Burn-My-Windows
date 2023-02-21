@@ -17,6 +17,8 @@ LOCALES_MO     = $(patsubst po/%.po,locale/%/LC_MESSAGES/$(NAME).mo,$(LOCALES_PO
 
 # These files will be included in the extension zip file.
 ZIP_CONTENT = $(JS_FILES) $(LOCALES_MO) resources/$(NAME).gresource \
+              schemas/org.gnome.shell.extensions.$(NAME).gschema.xml \
+              schemas/org.gnome.shell.extensions.$(NAME)-profile.gschema.xml \
               schemas/gschemas.compiled metadata.json LICENSE
 
 # These seven recipes can be invoked by the user.
