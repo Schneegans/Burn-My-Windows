@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-02-15 12:23+0000\n"
+"PO-Revision-Date: 2023-02-21 16:19+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -258,7 +258,7 @@ msgstr "Homepage besuchen"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Passende Bildschirmhintergründe anzeigen"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
