@@ -36,7 +36,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <child>
               <object class="GtkLabel" id="choose-profile-button">
                 <property name="visible">1</property>
-                <property name="ellipsize">end</property>
               </object>
             </child>
             <child>
