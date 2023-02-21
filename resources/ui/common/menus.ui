@@ -17,6 +17,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <attribute name="label" translatable="yes">View Changelog</attribute>
         <attribute name="action">prefs.changelog</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">View Matching Wallpapers</attribute>
+        <attribute name="action">prefs.wallpapers</attribute>
+      </item>
     </section>
     <section>
       <item>

@@ -442,6 +442,7 @@ var PreferencesDialog = class PreferencesDialog {
         addURIAction('translate',     'https://hosted.weblate.org/engage/burn-my-windows/');
         addURIAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
         addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        addURIAction('wallpapers',    'https://github.com/Schneegans/ai-wallpapers');
         // clang-format on
 
         // The changelog action is a bit different, as it may get activated when the
