@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-15 13:19+0100\n"
-"PO-Revision-Date: 2023-02-16 15:36+0000\n"
+"POT-Creation-Date: 2023-02-21 16:46+0100\n"
+"PO-Revision-Date: 2023-02-21 16:19+0000\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -206,27 +206,27 @@ msgstr "Burn-My-Windows is bijgewerkt!"
 msgid "View Changelog"
 msgstr "Wijzigingslog bekijken"
 
-#: prefs.js:495 prefs.js:527
+#: prefs.js:496 prefs.js:528
 msgid "Gold Sponsors"
 msgstr "Gouden sponsoren"
 
-#: prefs.js:499 prefs.js:531
+#: prefs.js:500 prefs.js:532
 msgid "Silver Sponsors"
 msgstr "Zilveren sponsoren"
 
-#: prefs.js:503 prefs.js:535
+#: prefs.js:504 prefs.js:536
 msgid "Bronze Sponsors"
 msgstr "Bronzen sponsoren"
 
-#: prefs.js:507 prefs.js:539
+#: prefs.js:508 prefs.js:540
 msgid "Past Sponsors"
 msgstr "Voormalige sponsoren"
 
-#: prefs.js:584
+#: prefs.js:585
 msgid "Delete this Profile?"
 msgstr "Profiel verwijderen?"
 
-#: prefs.js:586
+#: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
@@ -234,21 +234,21 @@ msgstr ""
 "Let op: hierdoor wordt het huidige profiel met alle bijbehorende voorkeuren "
 "verwijderd."
 
-#: prefs.js:591
+#: prefs.js:592
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: prefs.js:592
+#: prefs.js:593
 msgid "Delete"
 msgstr "Verwijderen"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:922
+#: prefs.js:923
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s-voorvertoning"
 
-#: prefs.js:944
+#: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
 msgstr "Sluit dit venster om het effect voor te vertonen!"
 
@@ -256,27 +256,31 @@ msgstr "Sluit dit venster om het effect voor te vertonen!"
 msgid "Visit Homepage"
 msgstr "Website openen"
 
-#: resources/ui/common/menus.ui:23
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr "Bijpassende achtergronden tonen"
+
+#: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
 msgstr "Bug melden"
 
-#: resources/ui/common/menus.ui:27
+#: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
 msgstr "Effect creëren"
 
-#: resources/ui/common/menus.ui:31
+#: resources/ui/common/menus.ui:35
 msgid "Translate"
 msgstr "Vertalen"
 
-#: resources/ui/common/menus.ui:35
+#: resources/ui/common/menus.ui:39
 msgid "Donate"
 msgstr "Doneren"
 
-#: resources/ui/common/menus.ui:48
+#: resources/ui/common/menus.ui:52
 msgid "About Burn-My-Windows"
 msgstr "Over Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:59
+#: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
 msgstr "Profiel toevoegen…"
 
@@ -677,7 +681,8 @@ msgstr "Effectbeperkingen"
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr "Geef aan wanneer de huidige effectvoorkeuren dienen te worden gebruikt."
+msgstr ""
+"Geef aan wanneer de huidige effectvoorkeuren dienen te worden gebruikt."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70

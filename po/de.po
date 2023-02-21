@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-15 13:19+0100\n"
-"PO-Revision-Date: 2023-02-15 12:23+0000\n"
+"POT-Creation-Date: 2023-02-21 16:46+0100\n"
+"PO-Revision-Date: 2023-02-21 16:19+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -206,27 +206,27 @@ msgstr "Burn-My-Windows wurde aktualisiert!"
 msgid "View Changelog"
 msgstr "Changelog anzeigen"
 
-#: prefs.js:495 prefs.js:527
+#: prefs.js:496 prefs.js:528
 msgid "Gold Sponsors"
 msgstr "Gold-Sponsoren"
 
-#: prefs.js:499 prefs.js:531
+#: prefs.js:500 prefs.js:532
 msgid "Silver Sponsors"
 msgstr "Silber-Sponsoren"
 
-#: prefs.js:503 prefs.js:535
+#: prefs.js:504 prefs.js:536
 msgid "Bronze Sponsors"
 msgstr "Bronze-Sponsoren"
 
-#: prefs.js:507 prefs.js:539
+#: prefs.js:508 prefs.js:540
 msgid "Past Sponsors"
 msgstr "Ehemalige Sponsoren"
 
-#: prefs.js:584
+#: prefs.js:585
 msgid "Delete this Profile?"
 msgstr "Dieses Profil löschen?"
 
-#: prefs.js:586
+#: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
@@ -234,21 +234,21 @@ msgstr ""
 "Das aktuelle Effektprofil mit all seinen Effekteinstellungen geht dauerhaft "
 "verloren."
 
-#: prefs.js:591
+#: prefs.js:592
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: prefs.js:592
+#: prefs.js:593
 msgid "Delete"
 msgstr "Löschen"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:922
+#: prefs.js:923
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Vorschau für %s"
 
-#: prefs.js:944
+#: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
 msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
 
@@ -256,27 +256,31 @@ msgstr "Schließen Sie dieses Fenster, um eine Vorschau des Effekts anzuzeigen!"
 msgid "Visit Homepage"
 msgstr "Homepage besuchen"
 
-#: resources/ui/common/menus.ui:23
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr "Passende Bildschirmhintergründe anzeigen"
+
+#: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
 msgstr "Fehler melden"
 
-#: resources/ui/common/menus.ui:27
+#: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
 msgstr "Einen Effekt hinzufügen"
 
-#: resources/ui/common/menus.ui:31
+#: resources/ui/common/menus.ui:35
 msgid "Translate"
 msgstr "Übersetzen"
 
-#: resources/ui/common/menus.ui:35
+#: resources/ui/common/menus.ui:39
 msgid "Donate"
 msgstr "Spenden"
 
-#: resources/ui/common/menus.ui:48
+#: resources/ui/common/menus.ui:52
 msgid "About Burn-My-Windows"
 msgstr "Über Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:59
+#: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
 msgstr "Neues Profil hinzufügen..."
 

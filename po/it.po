@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-15 13:19+0100\n"
+"POT-Creation-Date: 2023-02-21 16:46+0100\n"
 "PO-Revision-Date: 2023-02-20 11:39+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -206,27 +206,27 @@ msgstr "Burn-My-Windows è stato aggiornato!"
 msgid "View Changelog"
 msgstr "Visualizza Changelog"
 
-#: prefs.js:495 prefs.js:527
+#: prefs.js:496 prefs.js:528
 msgid "Gold Sponsors"
 msgstr "Sponsor d'oro"
 
-#: prefs.js:499 prefs.js:531
+#: prefs.js:500 prefs.js:532
 msgid "Silver Sponsors"
 msgstr "Sponsor d'argento"
 
-#: prefs.js:503 prefs.js:535
+#: prefs.js:504 prefs.js:536
 msgid "Bronze Sponsors"
 msgstr "Sponsor di bronzo"
 
-#: prefs.js:507 prefs.js:539
+#: prefs.js:508 prefs.js:540
 msgid "Past Sponsors"
 msgstr "Sponsor passati"
 
-#: prefs.js:584
+#: prefs.js:585
 msgid "Delete this Profile?"
 msgstr "Eliminare questo profilo?"
 
-#: prefs.js:586
+#: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
@@ -234,21 +234,21 @@ msgstr ""
 "L'attuale profilo dell'effetto con tutte le sue impostazioni andrà "
 "definitivamente perso."
 
-#: prefs.js:591
+#: prefs.js:592
 msgid "Cancel"
 msgstr "Cancella"
 
-#: prefs.js:592
+#: prefs.js:593
 msgid "Delete"
 msgstr "Elimina"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:922
+#: prefs.js:923
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Anteprima per %s"
 
-#: prefs.js:944
+#: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
 msgstr "Chiudi questa finestra per visualizzare in anteprima l'effetto!"
 
@@ -256,27 +256,31 @@ msgstr "Chiudi questa finestra per visualizzare in anteprima l'effetto!"
 msgid "Visit Homepage"
 msgstr "Visita la home page"
 
-#: resources/ui/common/menus.ui:23
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr ""
+
+#: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
 msgstr "Segnala un bug"
 
-#: resources/ui/common/menus.ui:27
+#: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
 msgstr "Crea un effetto"
 
-#: resources/ui/common/menus.ui:31
+#: resources/ui/common/menus.ui:35
 msgid "Translate"
 msgstr "Traduci"
 
-#: resources/ui/common/menus.ui:35
+#: resources/ui/common/menus.ui:39
 msgid "Donate"
 msgstr "Donare"
 
-#: resources/ui/common/menus.ui:48
+#: resources/ui/common/menus.ui:52
 msgid "About Burn-My-Windows"
 msgstr "Informazioni su Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:59
+#: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
 msgstr "Aggiungi nuovo profilo..."
 
@@ -731,7 +735,8 @@ msgstr "Opzioni avanzate del profilo"
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr "Usa questo profilo anche se ci sono profili di corrispondenza migliori."
+msgstr ""
+"Usa questo profilo anche se ci sono profili di corrispondenza migliori."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
