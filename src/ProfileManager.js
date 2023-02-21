@@ -65,8 +65,11 @@ var ProfileManager = class {
       GLib.get_real_time()}.conf`;
     const file = Gio.File.new_for_path(path);
     file.create(Gio.FileCreateFlags.NONE, null);
-    file.replace_contents(content, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION,
-                          null);
+
+    if (content != '') {
+      file.replace_contents(content, null, false, Gio.FileCreateFlags.REPLACE_DESTINATION,
+                            null);
+    }
 
     const profile = {'path': path, 'settings': this._getProfileSettings(path)};
 
