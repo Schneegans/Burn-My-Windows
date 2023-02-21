@@ -26,8 +26,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
   The extension will attempt to migrate your previous settings to the new effect profile system. Depending on your previous configuration, you may have now one or two profiles to start with, but you can add an arbitrary amount of profiles.
 
-  The effect profiles are available for all supported GNOME versions (that is GNOME 3.36, 3.38, 40, 41, 42, amd 43).
+  The effect profiles are available for all supported GNOME versions (that is GNOME 3.36, 3.38, 40, 41, 42, 43, and 44).
 * **Wallpapers:** A set of AI-generated [wallpapers has released](https://github.com/Schneegans/ai-wallpapers). For each effect of Burn-My-Windows, there is one dedicated wallpaper. As a central theme, each wallpaper shows a window. In some cases, the window is actually burning!
+* Initial support for GNOME 44.
 
 #### Other Enhancements
 
