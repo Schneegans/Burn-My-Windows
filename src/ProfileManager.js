@@ -133,8 +133,12 @@ var ProfileManager = class {
   getProfilePriority(settings) {
     let priority = 0;
 
-    // Each setting which is not set to its default value increases the priority by one.
-    if (settings.get_string('profile-app') != '') ++priority;
+    // If an application is specified, we increase the priority quite a lot. This makes
+    // sure that per-application overrides are used in most cases.
+    if (settings.get_string('profile-app') != '') priority += 10;
+
+    // Each other setting which is not set to its default value increases the priority by
+    // one.
     if (settings.get_int('profile-animation-type') > 0) ++priority;
     if (settings.get_int('profile-window-type') > 0) ++priority;
     if (settings.get_int('profile-color-scheme') > 0) ++priority;
