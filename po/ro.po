@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-02-03 07:42+0000\n"
+"PO-Revision-Date: 2023-02-25 03:39+0000\n"
 "Last-Translator: SoftExpert <softexpert@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ro/>\n"
@@ -23,76 +23,76 @@ msgstr ""
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "La deschiderea ferestrei"
 
 #: src/ProfileManager.js:169 resources/ui/gtk4/prefs.ui:221
 #: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "La închiderea ferestrei"
 
 #: src/ProfileManager.js:170 resources/ui/gtk4/prefs.ui:249
 #: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Ferestre normale"
 
 #: src/ProfileManager.js:171 resources/ui/gtk4/prefs.ui:250
 #: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Ferestre de dialog"
 
 #: src/ProfileManager.js:172 resources/ui/gtk4/prefs.ui:278
 #: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Schemă de culori implicită"
 
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Schema de culori întunecate"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Pe baterie"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:308
 #: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Conectat"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:336
 #: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Modul de economisire a energiei"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:337
 #: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Modul echilibrat"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:338
 #: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Modul de performanță"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:339
 #: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Economizor de energie sau echilibrat"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:340
 #: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Echilibrat sau performanță"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
 #: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Prioritate ridicată"
 
 #: src/ProfileManager.js:191
 msgid "Standard Profile"
-msgstr ""
+msgstr "Profil standard"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -200,7 +200,7 @@ msgstr "Demonstrează efectul"
 
 #: prefs.js:364 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows a fost actualizat!"
 
 #: prefs.js:365 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -225,21 +225,22 @@ msgstr "Sponsori din Trecut"
 
 #: prefs.js:585
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Ștergeți acest profil?"
 
 #: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Profilul curent cu toate setările sale de efect va fi pierdut definitiv."
 
 #: prefs.js:592
 msgid "Cancel"
-msgstr ""
+msgstr "Anulează"
 
 #: prefs.js:593
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:923
@@ -257,7 +258,7 @@ msgstr "Vizitează pagina de pornire"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Vezi imagini de fundal asortate"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -281,7 +282,7 @@ msgstr "Despre Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Adăugați un profil nou..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -667,7 +668,7 @@ msgstr "Gradiente"
 #: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Settings"
-msgstr ""
+msgstr "Setări de efect"
 
 #: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
 #: resources/ui/adw/prefs.ui:225
@@ -678,17 +679,17 @@ msgstr ""
 #: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Constrângeri ale profilului de efect"
 
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Definiți când trebuie utilizate setările curente ale efectului."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Aplicație"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
 #: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
@@ -700,47 +701,47 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Oricare"
 
 #: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Tipul de animație"
 
 #: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Tip fereastră"
 
 #: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Schemă de culori"
 
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Mod de alimentare"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Profil de alimentare"
 
 #: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Opțiuni avansate de profil"
 
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Utilizați acest profil chiar dacă există profiluri mai potrivite."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Ștergeți acest profil ..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
