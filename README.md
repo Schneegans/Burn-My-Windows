@@ -89,7 +89,6 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
-  <a href="https://github.com/D3vil0p3r">D3vil0p3r</a><br>
   Maxence Sebald<br>
   <a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
 </p>
@@ -97,19 +96,20 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 <h3 align="center">🥈 Current Silver Sponsors</h3>
 <p align="center">
   <a href="https://github.com/danielheadbang">@danielheadbang</a><br>
-  <a href="https://github.com/MRR-dev">@MRR-dev</a><br>
   <a href="https://github.com/castrojo">Jorge Castro</a><br>
 </p>
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
 <p align="center">
   <a href='https://github.com/vlazic'>@vlazic</a><br>
-  <a href='https://github.com/AngelBrielez'>Angel Brielez</a>
   <!-- <a href="https://github.com/sponsors/Schneegans">Become the first!</a><br> -->
 </p>
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
+  <a href="https://github.com/D3vil0p3r">D3vil0p3r</a><br>
+  <a href="https://github.com/MRR-dev">@MRR-dev</a><br>
+  <a href='https://github.com/AngelBrielez'>Angel Brielez</a>
   <a href='https://github.com/taconomix'>@taconomix</a><br>
   <a href='https://github.com/enolive'>@enolive</a><br>
   <a href="https://github.com/Aggraxis">@Aggraxis</a><br>
