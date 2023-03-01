@@ -7,7 +7,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
 
-**Release Date:** TBD
+**Release Date:** 2023-03-01
 
 #### New Features
 
