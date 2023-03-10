@@ -5,6 +5,16 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 28](https://github.com/schneegans/Burn-My-Windows/releases/tag/v28)
+
+**Release Date:** TBD
+
+#### New Features
+
+#### Other Enhancements
+
+* **New donation method: Ko-fi**. Follow me on Ko-fi to get the latest updates regarding my extensions: https://ko-fi.com/schneegans!
+
 ## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
 
 **Release Date:** 2023-03-01
