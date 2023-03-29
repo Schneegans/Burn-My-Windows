@@ -227,8 +227,16 @@ var PreferencesDialog = class PreferencesDialog {
       const [minMajor, minMinor] = effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
-        const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
-        const [hasPrefs] = Gio.resources_get_info(uiFile, 0);
+        const uiFile = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
+
+        // Is there a better way to test for the existence of a resource file?
+        let hasPrefs = false;
+        try {
+          Gio.resources_get_info(uiFile, 0);
+          hasPrefs = true;
+        } catch (e) {
+          // Nothing todo, there
+        }
 
         // Add the settings page to the builder.
         if (hasPrefs) {
@@ -288,9 +296,11 @@ var PreferencesDialog = class PreferencesDialog {
               }
             });
             this._effectRows.push(row);
+            row.add_action(previewButton);
+          } else {
+            row.add_suffix(previewButton);
           }
 
-          row.add_action(previewButton);
           row.add_prefix(button);
 
           group.add(row);
