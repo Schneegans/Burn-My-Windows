@@ -49,7 +49,7 @@ You will have to ...
 
 For enabling the new effect, the boolean settings keys `simple-fade-enable-effect` and `simple-fade-animation-time` are required.
 In this example, we also add a floating point value for storing another property of the effect - we will use them later in the tutorial.
-Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml).
+Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows-profile.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows-profile.gschema.xml).
 Just remember to replace `simple-fade` with your custom name!
 
 ```xml
@@ -86,6 +86,20 @@ Please study this code carefully, all of it is explained with inline comments.
   <summary>Expand this to show the GLSL code.</summary>
 
 ```glsl
+//////////////////////////////////////////////////////////////////////////////////////////
+//          )                                                   (                       //
+//       ( /(   (  (               )    (       (  (  (         )\ )    (  (            //
+//       )\()) ))\ )(   (         (     )\ )    )\))( )\  (    (()/( (  )\))(  (        //
+//      ((_)\ /((_|()\  )\ )      )\  '(()/(   ((_)()((_) )\ )  ((_)))\((_)()\ )\       //
+//      | |(_|_))( ((_)_(_/(    _((_))  )(_))  _(()((_|_)_(_/(  _| |((_)(()((_|(_)      //
+//      | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<      //
+//      |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/      //
+//                                 |__/                                                 //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// SPDX-FileCopyrightText: Your Name <your@email.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 // The content from common.glsl is automatically prepended to each shader effect. This
 // provides the standard input:
 
@@ -214,7 +228,6 @@ var SimpleFade = class {
   // binds all user interface elements to the respective settings keys of the profile.
   bindPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
-    return null;
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -265,7 +278,8 @@ There should be two sliders in this example: The animation duration and the widt
 If your effect supports GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide three `*.ui` files for this.
 This is because starting with GNOME Shell 40, the preference dialog uses GTK4, before it used to use GTK3.
 Starting with GNOME Shell 42, it uses `libadwaita` which requires different UI files again.
-We will load the respective file in the `bindPreferences()` method of your new effect class.
+
+_:information_source: If you do not have the means to test your effect on different versions of GNOME, feel free to submit a pull request for one GNOME version only, I may then port your effect to other GNOME versions!_
 
 Just save the code below to `resources/ui/gtk3/simple-fade.ui`, `resources/ui/gtk4/simple-fade.ui`, and `resources/ui/adw/simple-fade.ui` respectively.
 Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
@@ -281,7 +295,7 @@ SPDX-FileCopyrightText: Your Name <your@email.com>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
     <property name="upper">5000</property>
@@ -297,106 +311,97 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="GtkBox" id="simple-fade-prefs">
-    <property name="orientation">vertical</property>
+  <object class="GtkRevealer" id="simple-fade-prefs">
 
     <child>
-      <object class="GtkFrame">
+      <object class="GtkListBox">
+        <property name="selection-mode">none</property>
+
         <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
-            <style>
-              <class name="rich-list" />
-            </style>
-
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
             <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
+              <object class="GtkBox">
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Animation Time [ms]</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">0</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">simple-fade-animation-time</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-simple-fade-animation-time">
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Animation Time [ms]</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
+                      <object class="GtkImage">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="icon-size">1</property>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-animation-time</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-animation-time">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
                   </object>
                 </child>
               </object>
             </child>
+          </object>
+        </child>
 
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
             <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
+              <object class="GtkBox">
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Fade Width</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">2</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">simple-fade-width</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-simple-fade-width">
                     <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Fade Width</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
+                      <object class="GtkImage">
+                        <property name="icon-name">edit-clear-symbolic</property>
+                        <property name="icon-size">1</property>
                       </object>
                     </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-width</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-width">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
                   </object>
                 </child>
               </object>
             </child>
-
           </object>
         </child>
       </object>
@@ -423,7 +428,7 @@ SPDX-FileCopyrightText: Your Name <your@email.com>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
     <property name="upper">5000</property>
@@ -439,97 +444,87 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="GtkBox" id="simple-fade-prefs">
-    <property name="orientation">vertical</property>
+  <object class="GtkRevealer" id="simple-fade-prefs">
 
     <child>
-      <object class="GtkFrame">
+      <object class="GtkListBox">
+        <property name="selection-mode">none</property>
+
         <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
-            <property name="show-separators">1</property>
-            <style>
-              <class name="rich-list" />
-            </style>
-
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
             <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
+              <object class="GtkBox">
                 <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Animation Time [ms]</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-animation-time</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-animation-time">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Animation Time [ms]</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">0</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">simple-fade-animation-time</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-simple-fade-animation-time">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
                   </object>
                 </child>
               </object>
             </child>
+          </object>
+        </child>
 
+        <child>
+          <object class="GtkListBoxRow">
+            <property name="activatable">0</property>
             <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
+              <object class="GtkBox">
                 <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Fade Width</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-width</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-width">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="yes">Fade Width</property>
+                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="hexpand">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkScale">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <property name="draw-value">1</property>
+                    <property name="digits">2</property>
+                    <property name="value-pos">left</property>
+                    <property name="width-request">300</property>
+                    <property name="adjustment">simple-fade-width</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-simple-fade-width">
+                    <property name="icon-name">edit-clear-symbolic</property>
+                    <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+                    <style>
+                      <class name="flat" />
+                    </style>
                   </object>
                 </child>
               </object>
             </child>
-
           </object>
         </child>
       </object>
@@ -570,7 +565,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="AdwActionRow" id="simple-fade-prefs">
+  <object class="AdwExpanderRow" id="simple-fade-prefs">
 
     <child>
       <object class="AdwActionRow">
