@@ -319,6 +319,22 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Magic Lamp Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="magic-lamp-enable-effect" type="b">
+      <default>false</default>
+      <summary>Magic Lamp Enable Effect</summary>
+      <description>Use the magic lamp effect.</description>
+    </key>
+
+    <key name="magic-lamp-animation-time" type="i">
+      <default>1500</default>
+      <summary>Magic Lamp Animation Time</summary>
+      <description>The time the magic lamp effect takes.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Matrix Options                                                                -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 

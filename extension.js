@@ -64,6 +64,7 @@ class Extension {
       new Me.imports.src.effects.Glitch.Glitch(),
       new Me.imports.src.effects.Hexagon.Hexagon(),
       new Me.imports.src.effects.Incinerate.Incinerate(),
+      new Me.imports.src.effects.MagicLamp.MagicLamp(),
       new Me.imports.src.effects.Matrix.Matrix(),
       new Me.imports.src.effects.Pixelate.Pixelate(),
       new Me.imports.src.effects.PixelWheel.PixelWheel(),
