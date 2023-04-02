@@ -38,10 +38,11 @@ float WINDOW_OPEN_TIME  = 0.35;
 // or disappears (which is controlled by WINDOW_OPEN_TIME) and takes
 // PORTAL_WOBBLE_TIME.
 vec2 getPortalWobble(vec2 coords) {
-  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME * uDuration;
-  progress       = clamp(1.0 - abs((progress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
-  progress       = easeInBack(progress, 1.7);
-  float dist     = length(coords);
+  float progress =
+    (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME * uDuration;
+  progress   = clamp(1.0 - abs((progress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
+  progress   = easeInBack(progress, 1.7);
+  float dist = length(coords);
 
   return coords * (1.0 - dist) * exp(-dist) * progress * PORTAL_WOBBLE_STRENGTH;
 }
@@ -50,14 +51,13 @@ vec2 getPortalWobble(vec2 coords) {
 // increase during uDuration*PORTAL_OPEN_TIME, stay at one until uDuration*(1.0 -
 // PORTAL_CLOSE_TIME) and then decrease again.
 float getPortalScale() {
-  float scale = 1.0;
+  float scale     = 1.0;
   float closeTime = PORTAL_CLOSE_TIME / uDuration;
-  float openTime = PORTAL_OPEN_TIME / uDuration;
+  float openTime  = PORTAL_OPEN_TIME / uDuration;
   if (uProgress < openTime) {
     scale = easeOutBack(uProgress / openTime, 1.5);
   } else if (uProgress > 1.0 - closeTime) {
-    scale =
-      easeOutBack(1.0 - (uProgress - 1.0 + closeTime) / closeTime, 1.5);
+    scale = easeOutBack(1.0 - (uProgress - 1.0 + closeTime) / closeTime, 1.5);
   }
 
   return scale;
@@ -167,7 +167,8 @@ vec4 getPortalColor() {
 // window). The fraction of the animation time take for the window animation is defined by
 // WINDOW_OPEN_TIME.
 vec4 getWindowColor() {
-  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME * uDuration;
+  float progress =
+    (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME * uDuration;
 
   // Add some elastic easing to make the effect more dynamic.
   progress = easeInBack(clamp(progress, 0.0, 1.0), 1.2);

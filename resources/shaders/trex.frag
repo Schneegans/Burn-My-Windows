@@ -92,12 +92,13 @@ void main() {
   }
 
   // Get the window texture. We shift the texture lookup by the local derivative of
-  // the claw texture in order to mimic some folding distortion. This is only possible if not using GLES.
+  // the claw texture in order to mimic some folding distortion. This is only possible if
+  // not using GLES.
   vec2 offset = vec2(0.0);
-  
-  #ifndef GL_ES
-    offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
-  #endif
+
+#ifndef GL_ES
+  offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
+#endif
 
   vec4 oColor = getInputColor(coords + offset);
 
