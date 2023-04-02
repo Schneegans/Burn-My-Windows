@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v28)
+
+**Release Date:** TBD
+
+#### Other Enhancements
+
+* All shaders are now compatible with OpenGL ES. Due to [this change](https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2672) the number of devices using OpenGL ES has significantly increased since GNOME 44. This change makes Burn-My-Windows working on those devices.
+
 ## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
 
 **Release Date:** 2023-03-01
