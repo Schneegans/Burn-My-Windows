@@ -1,12 +1,12 @@
 {
   "gold": [
     {
-      "name": "Maxence Sebald",
-      "url": ""
+      "name": "D3vil0p3r",
+      "url": "https://github.com/D3vil0p3r"
     },
     {
-      "name": "Dennis ten Hoove",
-      "url": "https://github.com/dennis1248"
+      "name": "Maxence Sebald",
+      "url": ""
     }
   ],
   "silver": [
@@ -21,14 +21,18 @@
   ],
   "bronze": [
     {
+      "name": "@SubOptimal",
+      "url": "https://github.com/SubOptimal"
+    },
+    {
       "name": "@vlazic",
       "url": "https://github.com/vlazic"
     }
   ],
   "past": [
     {
-      "name": "D3vil0p3r",
-      "url": "https://github.com/D3vil0p3r"
+      "name": "Dennis ten Hoove",
+      "url": "https://github.com/dennis1248"
     },
     {
       "name": "@MRR-dev",

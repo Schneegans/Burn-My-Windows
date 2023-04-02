@@ -8,91 +8,91 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-01-25 20:52+0000\n"
-"Last-Translator: Petro S. <911us@duck.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/uk/>\n"
+"PO-Revision-Date: 2023-03-28 09:40+0000\n"
+"Last-Translator: CakesTwix <cakestwix1@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Відкриття вікон"
 
 #: src/ProfileManager.js:169 resources/ui/gtk4/prefs.ui:221
 #: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Закриття вікон"
 
 #: src/ProfileManager.js:170 resources/ui/gtk4/prefs.ui:249
 #: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Звичайні вікна"
 
 #: src/ProfileManager.js:171 resources/ui/gtk4/prefs.ui:250
 #: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Діалогові вікна"
 
 #: src/ProfileManager.js:172 resources/ui/gtk4/prefs.ui:278
 #: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Кольорова схема за замовчуванням"
 
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Темна кольорова схема"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "На батареї"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:308
 #: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Підключено до електромережі"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:336
 #: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Режим енергозбереження"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:337
 #: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Збалансований режим"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:338
 #: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Продуктивний режим"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:339
 #: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Енергозберігаючий або збалансований"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:340
 #: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Збалансований або продуктивний"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
 #: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Високий пріоритет"
 
 #: src/ProfileManager.js:191
 msgid "Standard Profile"
-msgstr ""
+msgstr "Стандартний профіль"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -200,7 +200,7 @@ msgstr "Попередній перегляд цього ефекту"
 
 #: prefs.js:364 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows оновлено!"
 
 #: prefs.js:365 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -225,21 +225,23 @@ msgstr "Колишні спонсори"
 
 #: prefs.js:585
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Видалити цей профіль?"
 
 #: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Поточний профіль ефекту з усіма його налаштуваннями буде безповоротно "
+"втрачено."
 
 #: prefs.js:592
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: prefs.js:593
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:923
@@ -257,7 +259,7 @@ msgstr "Завітайте на сайт"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Переглянути відповідні обої"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -281,7 +283,7 @@ msgstr "Про Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Додати новий профіль..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -665,7 +667,7 @@ msgstr "Градієнт"
 #: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Settings"
-msgstr ""
+msgstr "Налаштування ефектів"
 
 #: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
 #: resources/ui/adw/prefs.ui:225
@@ -675,17 +677,17 @@ msgstr "Якщо вибрано декілька, то один оберетьс
 #: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Обмеження профілю ефектів"
 
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Визначте, коли слід використовувати поточні налаштування ефекту."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Додаток"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
 #: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
@@ -697,47 +699,47 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Будь-який"
 
 #: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Тип анімації"
 
 #: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Тип вікна"
 
 #: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Кольорова схема"
 
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Режим живлення"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Профіль живлення"
 
 #: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Розширені параметри профілю"
 
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Використати цей профіль, навіть якщо є кращі підходящі профілі."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Видалити цей профіль..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47

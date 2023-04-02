@@ -38,12 +38,16 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <submenu>
         <attribute name="label" translatable="yes">Donate</attribute>
         <item>
-          <attribute name="label">PayPal</attribute>
-          <attribute name="action">prefs.donate-paypal</attribute>
+          <attribute name="label">Ko-fi</attribute>
+          <attribute name="action">prefs.donate-kofi</attribute>
         </item>
         <item>
           <attribute name="label">GitHub</attribute>
           <attribute name="action">prefs.donate-github</attribute>
+        </item>
+        <item>
+          <attribute name="label">PayPal</attribute>
+          <attribute name="action">prefs.donate-paypal</attribute>
         </item>
       </submenu>
     </section>

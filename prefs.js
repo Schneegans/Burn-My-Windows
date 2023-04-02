@@ -227,8 +227,16 @@ var PreferencesDialog = class PreferencesDialog {
       const [minMajor, minMinor] = effect.getMinShellVersion();
       if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
-        const uiFile     = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
-        const [hasPrefs] = Gio.resources_get_info(uiFile, 0);
+        const uiFile = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
+
+        // Is there a better way to test for the existence of a resource file?
+        let hasPrefs = false;
+        try {
+          Gio.resources_get_info(uiFile, 0);
+          hasPrefs = true;
+        } catch (e) {
+          // Nothing todo, there
+        }
 
         // Add the settings page to the builder.
         if (hasPrefs) {
@@ -288,9 +296,11 @@ var PreferencesDialog = class PreferencesDialog {
               }
             });
             this._effectRows.push(row);
+            row.add_action(previewButton);
+          } else {
+            row.add_suffix(previewButton);
           }
 
-          row.add_action(previewButton);
           row.add_prefix(button);
 
           group.add(row);
@@ -440,8 +450,9 @@ var PreferencesDialog = class PreferencesDialog {
         addURIAction('bugs',          'https://github.com/Schneegans/Burn-My-Windows/issues');
         addURIAction('new-effect',    'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/how-to-create-new-effects.md');
         addURIAction('translate',     'https://hosted.weblate.org/engage/burn-my-windows/');
-        addURIAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
+        addURIAction('donate-kofi',   'https://ko-fi.com/schneegans');
         addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
+        addURIAction('donate-paypal', 'https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE');
         addURIAction('wallpapers',    'https://github.com/Schneegans/ai-wallpapers');
         // clang-format on
 
