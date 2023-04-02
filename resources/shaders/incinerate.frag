@@ -107,12 +107,14 @@ void main() {
   if ((!uForOpening && gradient > hideThreshold) ||
       (uForOpening && gradient < hideThreshold)) {
 
-    //  We add some distortion in the scorch zone
+    //  We add some distortion in the scorch zone. This is only possible if using GLES.
     vec2 distort = vec2(0.0);
 
+#ifndef GL_ES
     if (scorchRange.x < gradient && gradient < scorchRange.y) {
       distort = vec2(dFdx(gradient), dFdy(gradient)) * scorchMask * 5.0;
     }
+#endif
 
     oColor = getInputColor(iTexCoord + distort);
   }

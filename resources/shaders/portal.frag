@@ -29,16 +29,16 @@ const float WINDOW_TILT            = -1.0;
 
 // Make sure that the portal and window open / close animations are quick even if the
 // duration is longer.
-float PORTAL_OPEN_TIME  = 0.4 / uDuration;
-float PORTAL_CLOSE_TIME = 0.4 / uDuration;
-float WINDOW_OPEN_TIME  = 0.35 / uDuration;
+float PORTAL_OPEN_TIME  = 0.4;
+float PORTAL_CLOSE_TIME = 0.4;
+float WINDOW_OPEN_TIME  = 0.35;
 
 // This will distort the given coordinate to achieve the wobble effect of the portal when
 // the window passes through. The wobble happens around the point where the window appears
 // or disappears (which is controlled by WINDOW_OPEN_TIME) and takes
 // PORTAL_WOBBLE_TIME.
 vec2 getPortalWobble(vec2 coords) {
-  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME;
+  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME * uDuration;
   progress       = clamp(1.0 - abs((progress - 1.0) / PORTAL_WOBBLE_TIME), 0.0, 1.0);
   progress       = easeInBack(progress, 1.7);
   float dist     = length(coords);
@@ -51,11 +51,13 @@ vec2 getPortalWobble(vec2 coords) {
 // PORTAL_CLOSE_TIME) and then decrease again.
 float getPortalScale() {
   float scale = 1.0;
-  if (uProgress < PORTAL_OPEN_TIME) {
-    scale = easeOutBack(uProgress / PORTAL_OPEN_TIME, 1.5);
-  } else if (uProgress > 1.0 - PORTAL_CLOSE_TIME) {
+  float closeTime = PORTAL_CLOSE_TIME / uDuration;
+  float openTime = PORTAL_OPEN_TIME / uDuration;
+  if (uProgress < openTime) {
+    scale = easeOutBack(uProgress / openTime, 1.5);
+  } else if (uProgress > 1.0 - closeTime) {
     scale =
-      easeOutBack(1.0 - (uProgress - 1.0 + PORTAL_CLOSE_TIME) / PORTAL_CLOSE_TIME, 1.5);
+      easeOutBack(1.0 - (uProgress - 1.0 + closeTime) / closeTime, 1.5);
   }
 
   return scale;
@@ -165,7 +167,7 @@ vec4 getPortalColor() {
 // window). The fraction of the animation time take for the window animation is defined by
 // WINDOW_OPEN_TIME.
 vec4 getWindowColor() {
-  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME;
+  float progress = (uForOpening ? (1.0 - uProgress) : uProgress) / WINDOW_OPEN_TIME * uDuration;
 
   // Add some elastic easing to make the effect more dynamic.
   progress = easeInBack(clamp(progress, 0.0, 1.0), 1.2);

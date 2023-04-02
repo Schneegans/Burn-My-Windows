@@ -54,7 +54,7 @@ vec2 getRain(vec2 fragCoord) {
   float delay = fract(sin(column) * 78.233) * mix(0.0, 1.0, uRandomness);
   float speed = fract(cos(column) * 12.989) * mix(0.0, 0.3, uRandomness) + 1.5;
 
-  float distToDrop = (uProgress * 2 - delay) * speed - iTexCoord.y;
+  float distToDrop = (uProgress * 2.0 - delay) * speed - iTexCoord.y;
 
   float rainAlpha   = distToDrop >= 0.0 ? exp(-distToDrop / TRAIL_LENGTH) : 0.0;
   float windowAlpha = 1.0 - clamp(uSize.y * distToDrop, 0.0, FADE_WIDTH) / FADE_WIDTH;
@@ -91,7 +91,7 @@ void main() {
 
   // This is used to fade out the remaining trails in the end.
   float finalFade =
-    1 -
+    1.0 -
     clamp((uProgress - FINAL_FADE_START_TIME) / (1.0 - FINAL_FADE_START_TIME), 0.0, 1.0);
   float rainAlpha = finalFade * rainMask.x;
 
