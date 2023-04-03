@@ -99,7 +99,7 @@ uniform vec2 uSize;
 uniform float uPadding;
 
 // On GNOME, we set iTexCoord to be an alias for the cogl variables.
-vec2 iTexCoord = cogl_tex_coord_in[0].st;
+#define iTexCoord vec2(cogl_tex_coord_in[0])
 
 // Shell.GLSLEffect uses straight alpha. So we have to convert from premultiplied.
 vec4 getInputColor(vec2 coords) {

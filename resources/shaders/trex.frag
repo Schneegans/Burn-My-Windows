@@ -23,9 +23,12 @@ uniform float uNumClaws;
 uniform float uWarpIntensity;
 
 const float FLASH_INTENSITY = 0.1;
-const float MAX_SPAWN_TIME =
-  0.6;  // Scratches will only start in the first half of the animation.
-const float FF_TIME = 0.6;  // Relative time for the final fade to transparency.
+
+// Scratches will only start in the first half of the animation.
+const float MAX_SPAWN_TIME = 0.6;
+
+// Relative time for the final fade to transparency.
+const float FF_TIME = 0.6;
 
 // This method generates a grid of randomly rotated, slightly shifted and scaled
 // UV squares. It returns the texture coords of the UV square at the given actor
@@ -82,15 +85,21 @@ void main() {
   // relative time when the respective part will become invisible. Therefore we can
   // add a value to make the scratch appear later.
   float scratchMap = 1.0;
-  for (int i = 0; i < uNumClaws; ++i) {
-    vec2 uv     = getClawUV(coords, 1.0 / uClawSize, uSeed * (i + 1));
+  for (float i = 0.0; i < uNumClaws; ++i) {
+    vec2 uv     = getClawUV(coords, 1.0 / uClawSize, uSeed * (i + 1.0));
     float delay = i / uNumClaws * MAX_SPAWN_TIME;
     scratchMap  = min(scratchMap, clamp(texture2D(uClawTexture, uv).r + delay, 0.0, 1.0));
   }
 
   // Get the window texture. We shift the texture lookup by the local derivative of
-  // the claw texture in order to mimic some folding distortion.
-  vec2 offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
+  // the claw texture in order to mimic some folding distortion. This is only possible if
+  // not using GLES.
+  vec2 offset = vec2(0.0);
+
+#ifndef GL_ES
+  offset = vec2(dFdx(scratchMap), dFdy(scratchMap)) * progress * 0.5;
+#endif
+
   vec4 oColor = getInputColor(coords + offset);
 
   // Add colorful flashes.

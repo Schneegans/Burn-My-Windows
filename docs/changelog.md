@@ -14,11 +14,13 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Other Enhancements
 
 * **New donation method: Ko-fi**. Follow me on Ko-fi to get the latest updates regarding my extensions: https://ko-fi.com/schneegans!
+* All shaders are now compatible with OpenGL ES. Due to [this change](https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2672) the number of devices using OpenGL ES has significantly increased since GNOME 44. This change makes Burn-My-Windows working on those devices.
 * It is now possible to create effects which do not have any settings at all.
 
 #### Bug Fixes
 
 * The tutorial on how to create new effects has been updated and should work again.
+
 
 ## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
 
