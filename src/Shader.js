@@ -17,6 +17,7 @@
 const {Gio, Shell, GObject, Clutter} = imports.gi;
 const ByteArray                      = imports.byteArray;
 
+const Main           = imports.ui.main;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
 const utils          = Me.imports.src.utils;
@@ -77,13 +78,39 @@ var Shader = GObject.registerClass(
       this._uDuration   = this.get_uniform_location('uDuration');
       this._uSize       = this.get_uniform_location('uSize');
       this._uPadding    = this.get_uniform_location('uPadding');
+
+      // Create a timeline to drive the animation.
+      this._timeline = new Clutter.Timeline();
+
+      // Call updateAnimation() once a frame.
+      this._timeline.connect('new-frame', (t) => {
+        if (this._testMode) {
+          this.updateAnimation(0.5);
+        } else {
+          this.updateAnimation(t.get_progress());
+        }
+      });
+
+      // Clean up if the animation finished or was interrupted.
+      this._timeline.connect('stopped', (t, finished) => {
+        this.endAnimation();
+      });
     }
 
     // This is called once each time the shader is used.
     beginAnimation(settings, forOpening, testMode, duration, actor) {
+      if (this._timeline.is_playing()) {
+        this._timeline.stop();
+      }
+
+      this._timeline.set_actor(actor);
+      this._timeline.set_duration(duration);
+      this._timeline.start();
 
       // Reset progress value.
-      this._progress = 0;
+      this._progress   = 0;
+      this._testMode   = testMode;
+      this._forOpening = forOpening;
 
       // This is not necessarily symmetric, but I haven't figured out a way to
       // get the actual values...
@@ -91,7 +118,7 @@ var Shader = GObject.registerClass(
 
       this.set_uniform_float(this._uPadding, 1, [padding]);
       this.set_uniform_float(this._uForOpening, 1, [forOpening]);
-      this.set_uniform_float(this._uDuration, 1, [duration]);
+      this.set_uniform_float(this._uDuration, 1, [duration * 0.001]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 
       this.emit('begin-animation', settings, forOpening, testMode, actor);
@@ -103,11 +130,36 @@ var Shader = GObject.registerClass(
       // in vfunc_paint_target. We do not emit it here, as the pipeline which may be used
       // by handlers must not have been created yet.
       this._progress = progress;
+
+      this.queue_repaint();
     }
 
-    // This will just emit the end-animation signal. It can be used to clean up any
-    // resources required during the animation.
+    // This will stop any running animation and emit the end-animation signal. This can be
+    // used to clean up any resources required during the animation.
     endAnimation() {
+      // This will call endAnimation() again, so we can return for now.
+      if (this._timeline.is_playing()) {
+        this._timeline.stop();
+        return;
+      }
+
+      // Remove the effect.
+      const actor = this.get_actor();
+      actor.remove_effect(this);
+
+      // Once the animation is done or interrupted, we call the methods which should have
+      // been called by the original ease() methods.
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
+      if (this._forOpening) {
+        Main.wm._mapWindowDone(global.window_manager, actor);
+      } else {
+        Main.wm._destroyWindowDone(global.window_manager, actor);
+      }
+
+      // Mark this shader of being re-usable.
+      this.returnToFactory();
+
       this.emit('end-animation');
     }
 
