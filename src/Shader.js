@@ -103,7 +103,11 @@ var Shader = GObject.registerClass(
         this._timeline.stop();
       }
 
-      this._timeline.set_actor(actor);
+      // On GNOME 3.36 this method was not yet available.
+      if (this._timeline.set_actor) {
+        this._timeline.set_actor(actor);
+      }
+
       this._timeline.set_duration(duration);
       this._timeline.start();
 
