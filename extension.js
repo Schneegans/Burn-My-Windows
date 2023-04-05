@@ -575,8 +575,12 @@ class Extension {
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
       }
 
-      // Once the animation is done or interrupted, we call the methods which should have
-      // been called by the original ease() methods.
+      // Remove the shader and mark it being re-usable for future animations.
+      actor.remove_effect(shader);
+      shader.returnToFactory();
+
+      // Finally, once the animation is done or interrupted, we call the methods which
+      // should have been called by the original ease() methods.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
       if (forOpening) {
@@ -584,13 +588,7 @@ class Extension {
       } else {
         Main.wm._destroyWindowDone(global.window_manager, actor);
       }
-
-      // Finally remove the shader and mark it being re-usable for future animations.
-      actor.remove_effect(shader);
-      shader.returnToFactory();
     });
-
-
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.
