@@ -553,7 +553,7 @@ class Extension {
     // If we are in the overview, we have to enlarge the window's clone as well. We also
     // disable the clone's overlay (e.g. its icon, name, and close button) during the
     // animation.
-    if (actor._bmwOverviewClone) {
+    if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
       actor._bmwOverviewClone.overlayEnabled   = false;
       actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
       actor._bmwOverviewCloneContainer.scale_y = actorScale.y;
@@ -569,7 +569,7 @@ class Extension {
     const endID = shader.connect('end-animation', () => {
       shader.disconnect(endID);
 
-      if (actor._bmwOverviewClone) {
+      if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
         actor._bmwOverviewClone.overlayEnabled   = true;
         actor._bmwOverviewCloneContainer.scale_x = 1.0;
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
