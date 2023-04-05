@@ -213,42 +213,33 @@ class Extension {
     // of the actor. However, if we are in the overview, we have to enlarge the clone of
     // the window as well.
     Workspace.prototype._addWindowClone = function(...params) {
-      const result = extensionThis._origAddWindowClone.apply(this, params);
+      const clone = extensionThis._origAddWindowClone.apply(this, params);
 
       // The parameters of this method changed a bit through the versions...
-      let realWindow, clone;
+      let realWindow, container;
 
       if (utils.shellVersionIs(3, 36)) {
-        clone      = result[0];
-        realWindow = clone.realWindow;
+        container  = clone[0];
+        realWindow = container.realWindow;
       } else if (utils.shellVersionIs(3, 38)) {
-        clone      = result._windowContainer;
+        container  = clone._windowContainer;
         realWindow = params[0].get_compositor_private();
       } else {
-        clone      = result.window_container;
+        container  = clone.window_container;
         realWindow = params[0].get_compositor_private();
       }
 
-      // Syncing the real window's scale with the scale of its clone only works on GNOME
-      // Shell 3.38+. So effects cannot scale windows in the overview of GNOME 3.36...
-      if (utils.shellVersionIsAtLeast(3, 38)) {
-        const xID = realWindow.connect('notify::scale-x', () => {
-          if (realWindow.scale_x > 0 && clone.allocation.get_size()[0] > 0) {
-            clone.scale_x = realWindow.scale_x;
-          }
-        });
+      // Store the overview clone as temporary members of the real window actor. When we
+      // set up the effect, we will check for the existence of these and enlarge the clone
+      // as needed.
+      realWindow._bmwOverviewClone          = clone;
+      realWindow._bmwOverviewCloneContainer = container;
 
-        const yID = realWindow.connect('notify::scale-y', () => {
-          if (realWindow.scale_y > 0 && clone.allocation.get_size()[1] > 0) {
-            clone.scale_y = realWindow.scale_y;
-          }
-        });
-
-        clone.connect('destroy', () => {
-          realWindow.disconnect(xID);
-          realWindow.disconnect(yID);
-        });
-      }
+      // Remove the temporary members again once the clone is deleted.
+      container.connect('destroy', () => {
+        delete realWindow._bmwOverviewClone;
+        delete realWindow._bmwOverviewCloneContainer;
+      });
 
       // This is actually needed for the window-close animation on GNOME Shell 3.36.
       // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
@@ -257,10 +248,10 @@ class Extension {
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1363
       if (utils.shellVersionIs(3, 36)) {
-        clone.connect('destroy', () => this._doRemoveWindow(clone.metaWindow));
+        container.connect('destroy', () => this._doRemoveWindow(container.metaWindow));
       }
 
-      return result;
+      return clone;
     };
 
     // Usually, windows are faded in after the overview is completely hidden. We enable
@@ -559,11 +550,47 @@ class Extension {
     actor.scale_x = actorScale.x;
     actor.scale_y = actorScale.y;
 
+    // If we are in the overview, we have to enlarge the window's clone as well. We also
+    // disable the clone's overlay (e.g. its icon, name, and close button) during the
+    // animation.
+    if (actor._bmwOverviewClone) {
+      actor._bmwOverviewClone.overlayEnabled   = false;
+      actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
+      actor._bmwOverviewCloneContainer.scale_y = actorScale.y;
+    }
+
     // Now add a cool shader to our window actor!
     const shader = effect.shaderFactory.getShader();
-
-    // Assign the effect to the window actor!
     actor.add_effect_with_name('burn-my-windows-effect', shader);
+
+    // At the end of the animation, we restore the scale of the overview clone (if any)
+    // and call the methods which would have been called by the original ease() calls at
+    // the end of the standard fade-in animation.
+    const endID = shader.connect('end-animation', () => {
+      shader.disconnect(endID);
+
+      if (actor._bmwOverviewClone) {
+        actor._bmwOverviewClone.overlayEnabled   = true;
+        actor._bmwOverviewCloneContainer.scale_x = 1.0;
+        actor._bmwOverviewCloneContainer.scale_y = 1.0;
+      }
+
+      // Once the animation is done or interrupted, we call the methods which should have
+      // been called by the original ease() methods.
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
+      if (forOpening) {
+        Main.wm._mapWindowDone(global.window_manager, actor);
+      } else {
+        Main.wm._destroyWindowDone(global.window_manager, actor);
+      }
+
+      // Finally remove the shader and mark it being re-usable for future animations.
+      actor.remove_effect(shader);
+      shader.returnToFactory();
+    });
+
+
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.

@@ -37,12 +37,14 @@ const utils          = Me.imports.src.utils;
 // hard-coded use of straight alpha (as opposed to premultiplied). This makes the       //
 // shaders a bit more complicated than required.                                        //
 //                                                                                      //
-// The Shader fires two signals:                                                        //
+// The Shader fires three signals:                                                      //
 //   * begin-animation:    This is called each time a new animation is started. It can  //
 //                         be used to set uniform values which do not change during the //
 //                         animation.                                                   //
 //   * update-animation:   This is called at each frame during the animation. It can be //
 //                         used to set uniforms which change during the animation.      //
+//   * end-animation:      This is called when the animation is stopped. This can be    //
+//                         used to clean up any resources.
 //////////////////////////////////////////////////////////////////////////////////////////
 
 var Shader = GObject.registerClass(
@@ -112,9 +114,8 @@ var Shader = GObject.registerClass(
       this._timeline.start();
 
       // Reset progress value.
-      this._progress   = 0;
-      this._testMode   = testMode;
-      this._forOpening = forOpening;
+      this._progress = 0;
+      this._testMode = testMode;
 
       // This is not necessarily symmetric, but I haven't figured out a way to
       // get the actual values...
@@ -138,31 +139,13 @@ var Shader = GObject.registerClass(
       this.queue_repaint();
     }
 
-    // This will stop any running animation and emit the end-animation signal. This can be
-    // used to clean up any resources required during the animation.
+    // This will stop any running animation and emit the end-animation signal.
     endAnimation() {
       // This will call endAnimation() again, so we can return for now.
       if (this._timeline.is_playing()) {
         this._timeline.stop();
         return;
       }
-
-      // Remove the effect.
-      const actor = this.get_actor();
-      actor.remove_effect(this);
-
-      // Once the animation is done or interrupted, we call the methods which should have
-      // been called by the original ease() methods.
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
-      if (this._forOpening) {
-        Main.wm._mapWindowDone(global.window_manager, actor);
-      } else {
-        Main.wm._destroyWindowDone(global.window_manager, actor);
-      }
-
-      // Mark this shader of being re-usable.
-      this.returnToFactory();
 
       this.emit('end-animation');
     }
