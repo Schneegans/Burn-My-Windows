@@ -554,7 +554,8 @@ class Extension {
     // disable the clone's overlay (e.g. its icon, name, and close button) during the
     // animation.
     if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
-      actor._bmwOverviewClone.overlayEnabled   = false;
+      actor._bmwOverviewClone.overlayEnabled = false;
+      actor._bmwOverviewCloneContainer.set_pivot_point(0.5, 0.5);
       actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
       actor._bmwOverviewCloneContainer.scale_y = actorScale.y;
     }
