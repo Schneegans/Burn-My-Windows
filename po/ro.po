@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-02-25 03:39+0000\n"
+"PO-Revision-Date: 2023-04-07 05:50+0000\n"
 "Last-Translator: SoftExpert <softexpert@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
@@ -48,7 +48,7 @@ msgstr "Schemă de culori implicită"
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr "Schema de culori întunecate"
+msgstr "Schemă de culori întunecate"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
