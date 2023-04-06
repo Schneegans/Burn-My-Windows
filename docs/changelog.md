@@ -9,7 +9,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** 2023-04-06
 
-#### Other Enhancements
+#### Enhancements
 
 * **New donation method: Ko-fi**. Follow me on Ko-fi to get the latest updates regarding my extensions: https://ko-fi.com/schneegans!
 * All shaders are now compatible with OpenGL ES. Due to [this change in Mutter](https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2672) the number of devices using OpenGL ES has significantly increased since GNOME 44. This change makes Burn-My-Windows working on those devices.
