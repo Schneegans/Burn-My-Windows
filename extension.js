@@ -94,7 +94,10 @@ class Extension {
           this._loadProfiles();
           this._settings.set_int('last-extension-version', Me.metadata.version);
         });
+      } else {
+        this._loadProfiles();
       }
+
     } else {
       this._loadProfiles();
     }

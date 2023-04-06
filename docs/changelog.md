@@ -19,6 +19,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 * [This change in GNOME Shell](https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/7bd98f3f5fb7e0d1220646b8a4ee7073534a8e8f) prevented Burn-My-Windows from working if no hardware-acceleration was available on GNOME 44, including the Docker containers used for CI testing. Some severe refactoring was necessary to fix this issue.
 * The tutorial on how to create new effects has been updated and should work again.
+* Fixed an issue which caused effect-profile loading to fail whenever Burn-My-Windows was updated.
 
 ## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
 
