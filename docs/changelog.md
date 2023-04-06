@@ -7,20 +7,18 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 28](https://github.com/schneegans/Burn-My-Windows/releases/tag/v28)
 
-**Release Date:** TBD
-
-#### New Features
+**Release Date:** 2023-04-06
 
 #### Other Enhancements
 
 * **New donation method: Ko-fi**. Follow me on Ko-fi to get the latest updates regarding my extensions: https://ko-fi.com/schneegans!
-* All shaders are now compatible with OpenGL ES. Due to [this change](https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2672) the number of devices using OpenGL ES has significantly increased since GNOME 44. This change makes Burn-My-Windows working on those devices.
+* All shaders are now compatible with OpenGL ES. Due to [this change in Mutter](https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/2672) the number of devices using OpenGL ES has significantly increased since GNOME 44. This change makes Burn-My-Windows working on those devices.
 * It is now possible to create effects which do not have any settings at all.
 
 #### Bug Fixes
 
+* [This change in GNOME Shell](https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/7bd98f3f5fb7e0d1220646b8a4ee7073534a8e8f) prevented Burn-My-Windows from working if no hardware-acceleration was available on GNOME 44, including the Docker containers used for CI testing. Some severe refactoring was necessary to fix this issue.
 * The tutorial on how to create new effects has been updated and should work again.
-
 
 ## [Burn My Windows 27](https://github.com/schneegans/Burn-My-Windows/releases/tag/v27)
 
