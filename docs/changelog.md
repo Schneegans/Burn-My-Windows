@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 29](https://github.com/schneegans/Burn-My-Windows/releases/tag/v29)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+* Beetle fixed a regression introduced with the severe refactoring in the previous version: The window-close animations of Burn-My-Windows were not shown in front of full-screen windows.
+
 ## [Burn My Windows 28](https://github.com/schneegans/Burn-My-Windows/releases/tag/v28)
 
 **Release Date:** 2023-04-06
