@@ -136,8 +136,8 @@ class Extension {
     }
 
     // We will monkey-patch these methods. Let's store the original ones.
-    this._origShouldAnimateActor    = WindowManager.prototype._shouldAnimateActor;
-    this._origWaitForOverviewToHide = WindowManager.prototype._waitForOverviewToHide;
+    this._origShouldAnimateActor    = Main.wm._shouldAnimateActor;
+    this._origWaitForOverviewToHide = Main.wm._waitForOverviewToHide;
     this._origAddWindowClone        = Workspace.prototype._addWindowClone;
     this._origWindowRemoved         = Workspace.prototype._windowRemoved;
     this._origDoRemoveWindow        = Workspace.prototype._doRemoveWindow;
@@ -165,7 +165,7 @@ class Extension {
     // was called by either _mapWindow or _destroyWindow. If so, we return true. Let's see
     // if this breaks stuff left and right...
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1120
-    WindowManager.prototype._shouldAnimateActor = function(actor, types) {
+    Main.wm._shouldAnimateActor = function(actor, types) {
       const caller     = (new Error()).stack.split('\n')[1];
       const forClosing = caller.includes('_destroyWindow@');
       const forOpening = caller.includes('_mapWindow@');
@@ -259,7 +259,7 @@ class Extension {
 
     // Usually, windows are faded in after the overview is completely hidden. We enable
     // window-open animations by not waiting for this.
-    WindowManager.prototype._waitForOverviewToHide = async function() {
+    Main.wm._waitForOverviewToHide = async function() {
       return Promise.resolve();
     };
 
@@ -348,11 +348,11 @@ class Extension {
     global.window_manager.disconnect(this._killEffectsSignal);
 
     // Restore the original window-open and window-close animations.
-    Workspace.prototype._addWindowClone            = this._origAddWindowClone;
-    Workspace.prototype._windowRemoved             = this._origWindowRemoved;
-    Workspace.prototype._doRemoveWindow            = this._origDoRemoveWindow;
-    WindowManager.prototype._shouldAnimateActor    = this._origShouldAnimateActor;
-    WindowManager.prototype._waitForOverviewToHide = this._origWaitForOverviewToHide;
+    Workspace.prototype._addWindowClone = this._origAddWindowClone;
+    Workspace.prototype._windowRemoved  = this._origWindowRemoved;
+    Workspace.prototype._doRemoveWindow = this._origDoRemoveWindow;
+    Main.wm._shouldAnimateActor         = this._origShouldAnimateActor;
+    Main.wm._waitForOverviewToHide      = this._origWaitForOverviewToHide;
 
     if (WindowPreview) {
       WindowPreview.prototype._deleteAll = this._origDeleteAll;
