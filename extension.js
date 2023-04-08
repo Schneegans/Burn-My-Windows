@@ -166,9 +166,9 @@ class Extension {
     // if this breaks stuff left and right...
     // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1120
     Main.wm._shouldAnimateActor = function(actor, types) {
-      const caller     = (new Error()).stack.split('\n')[1];
-      const forClosing = caller.includes('_destroyWindow@');
-      const forOpening = caller.includes('_mapWindow@');
+      const stack      = (new Error()).stack;
+      const forClosing = stack.includes('_destroyWindow@');
+      const forOpening = stack.includes('_mapWindow@');
 
       // This is also called in other cases, for instance when minimizing windows. We are
       // only interested in window opening and window closing for now.

@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 30](https://github.com/schneegans/Burn-My-Windows/releases/tag/v30)
+
+**Release Date:** 2023-04-08
+
+#### Bug Fixes
+
+* Fixed yet another incompatibility with the [Compiz alike magic lamp effect](https://extensions.gnome.org/extension/3740/compiz-alike-magic-lamp-effect/).
+
 ## [Burn My Windows 29](https://github.com/schneegans/Burn-My-Windows/releases/tag/v29)
 
 **Release Date:** 2023-04-08
