@@ -7,11 +7,12 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 29](https://github.com/schneegans/Burn-My-Windows/releases/tag/v29)
 
-**Release Date:** TBD
+**Release Date:** 2023-04-08
 
 #### Bug Fixes
 
-* Beetle fixed a regression introduced with the severe refactoring in the previous version: The window-close animations of Burn-My-Windows were not shown in front of full-screen windows.
+* Fixed a regression which caused window-close animations not to shown in front of full-screen windows.
+* Fixed an incompatibility with the [Compiz alike magic lamp effect](https://extensions.gnome.org/extension/3740/compiz-alike-magic-lamp-effect/).
 
 ## [Burn My Windows 28](https://github.com/schneegans/Burn-My-Windows/releases/tag/v28)
 
