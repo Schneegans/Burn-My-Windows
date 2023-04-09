@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-02-21 15:39+0000\n"
+"PO-Revision-Date: 2023-04-10 11:51+0000\n"
 "Last-Translator: Isaac Dias <mr-isaac@ig.com.br>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/burn-"
-"my-windows/core/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.17-dev\n"
 
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
@@ -159,7 +159,7 @@ msgstr "Matrix"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr "Pixel izar"
+msgstr "Pixelizar"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
@@ -208,55 +208,57 @@ msgstr "Veja as alterações"
 
 #: prefs.js:496 prefs.js:528
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Patrocinadores Ouro"
 
 #: prefs.js:500 prefs.js:532
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Patrocinadores Prata"
 
 #: prefs.js:504 prefs.js:536
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Patrocinadores Bronze"
 
 #: prefs.js:508 prefs.js:540
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Patrocinadores Anteriores"
 
 #: prefs.js:585
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Excluir esse Perfil?"
 
 #: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"O perfil de efeito atual com todas as suas configurações de efeito será "
+"perdido permanentemente."
 
 #: prefs.js:592
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: prefs.js:593
 msgid "Delete"
-msgstr ""
+msgstr "Deletar"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:923
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "Visualização para %s"
 
 #: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "Feche essa Janela para Visualizar o Efeito!"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr ""
+msgstr "Visite a Homepage"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Ver papéis de parede correspondentes"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -541,15 +543,15 @@ msgstr "Escala do Arranhão da Garra"
 
 #: resources/ui/gtk4/trex.ui:115 resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Total de Arranhões de Garra"
 
 #: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "Efeito de Deformação"
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "Cor do Flash"
 
 #: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
 #: resources/ui/adw/pixel-wheel.ui:47
