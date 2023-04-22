@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-02-11 06:35+0000\n"
+"PO-Revision-Date: 2023-04-23 10:50+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ko/>\n"
@@ -17,81 +17,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "창 열기"
 
 #: src/ProfileManager.js:169 resources/ui/gtk4/prefs.ui:221
 #: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "창 닫기"
 
 #: src/ProfileManager.js:170 resources/ui/gtk4/prefs.ui:249
 #: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "일반 창"
 
 #: src/ProfileManager.js:171 resources/ui/gtk4/prefs.ui:250
 #: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "대화상자 창"
 
 #: src/ProfileManager.js:172 resources/ui/gtk4/prefs.ui:278
 #: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "기본 색상 스킴"
 
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "어두움 색상 스킴"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "배터리 사용"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:308
 #: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "AC 전원 연결"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:336
 #: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "전원 절약 모드"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:337
 #: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "균형 모드"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:338
 #: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "성능 강화 모드"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:339
 #: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "전원 절약 또는 균형"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:340
 #: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "균형 또는 성능 강화"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
 #: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "높은 우선순위"
 
 #: src/ProfileManager.js:191
 msgid "Standard Profile"
-msgstr ""
+msgstr "표준 프로파일"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -163,7 +163,7 @@ msgstr "픽셀 파편"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "픽셀 바퀴회전"
+msgstr "픽셀 회전"
 
 #: src/effects/PixelWipe.js:101
 msgid "Pixel Wipe"
@@ -199,7 +199,7 @@ msgstr "이 효과를 미리 봅니다"
 
 #: prefs.js:364 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows를 업데이트했습니다!"
 
 #: prefs.js:365 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -224,21 +224,21 @@ msgstr "이전 스폰서"
 
 #: prefs.js:585
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "이 프로파일을 삭제할까요?"
 
 #: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
-msgstr ""
+msgstr "모든 효과 설정이 들어간 현재 효과 프로파일을 완전히 날립니다."
 
 #: prefs.js:592
 msgid "Cancel"
-msgstr ""
+msgstr "취소"
 
 #: prefs.js:593
 msgid "Delete"
-msgstr ""
+msgstr "삭제"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:923
@@ -256,7 +256,7 @@ msgstr "홈페이지 방문"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "일치하는 배경 보기"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -280,7 +280,7 @@ msgstr "Burn-My-Windows 정보"
 
 #: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
-msgstr ""
+msgstr "새 프로파일 추가..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -662,7 +662,7 @@ msgstr "그레디언트"
 #: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Settings"
-msgstr ""
+msgstr "효과 설정"
 
 #: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
 #: resources/ui/adw/prefs.ui:225
@@ -672,17 +672,17 @@ msgstr "여러 항목을 선택하면 그 중 하나를 임의로 선택합니�
 #: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "효과 프로파일 제약 사항"
 
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "현재 효과 설정을 사용할 경우를 지정합니다."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "앱"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
 #: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
@@ -694,47 +694,47 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "모든 경우"
 
 #: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "애니메이션 형식"
 
 #: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "창 형식"
 
 #: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "색상 스킴"
 
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "전원 관리 모드"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "전원 프로파일"
 
 #: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "고급 프로파일 옵션"
 
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "좀 더 적절한 프로파일이 있더라도 이 프로파일을 사용합니다."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "이 프로파일 삭제..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
