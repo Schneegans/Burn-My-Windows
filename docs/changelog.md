@@ -5,6 +5,15 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 31](https://github.com/schneegans/Burn-My-Windows/releases/tag/v31)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+* Fixed an issue which made windows invisible which did not set the `WM_CLASS` X11 property correctly.
+
+
 ## [Burn My Windows 30](https://github.com/schneegans/Burn-My-Windows/releases/tag/v30)
 
 **Release Date:** 2023-04-08
