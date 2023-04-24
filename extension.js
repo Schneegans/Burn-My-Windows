@@ -468,12 +468,18 @@ class Extension {
 
         // If that was the case, we also check the application name.
         if (matches && profileApp != '') {
-          const app = actor.meta_window.get_wm_class().toLowerCase();
+          const wmClass = actor.meta_window.get_wm_class();
 
-          // Split app names at |, remove any whitespace, and transform to lower case.
-          const profileApps =
-            profileApp.split('|').map(item => item.trim().toLowerCase());
-          matches = profileApps.includes(app);
+          if (wmClass) {
+            const app = wmClass.toLowerCase();
+
+            // Split app names at |, remove any whitespace, and transform to lower case.
+            const profileApps =
+              profileApp.split('|').map(item => item.trim().toLowerCase());
+            matches = profileApps.includes(app);
+          } else {
+            matches = false;
+          }
         }
 
         // If the profile is still matching, we also check the color scheme.
