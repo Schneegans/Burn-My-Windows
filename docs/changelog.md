@@ -7,6 +7,8 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 31](https://github.com/schneegans/Burn-My-Windows/releases/tag/v31)
 
+**Release Date:** 2023-05-04
+
 #### Enhancements
 
 * Several translations have been updated. Thanks to all the translators!
