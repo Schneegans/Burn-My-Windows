@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Bug Fixes
 
 * Fixed an issue which made windows invisible which did not set the `WM_CLASS` X11 property correctly.
+* Fixed an issue which made window-picking of Wayland windows impossible on GNOME 44.
 
 
 ## [Burn My Windows 30](https://github.com/schneegans/Burn-My-Windows/releases/tag/v30)
