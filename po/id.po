@@ -8,90 +8,90 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-01-09 16:48+0000\n"
-"Last-Translator: Sir-Ivysaur <randompsyduck@duck.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/id/>\n"
+"PO-Revision-Date: 2023-05-14 23:48+0000\n"
+"Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Membuka Jendela"
 
 #: src/ProfileManager.js:169 resources/ui/gtk4/prefs.ui:221
 #: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Menutup Jendela"
 
 #: src/ProfileManager.js:170 resources/ui/gtk4/prefs.ui:249
 #: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Jendela Biasa"
 
 #: src/ProfileManager.js:171 resources/ui/gtk4/prefs.ui:250
 #: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Jendela Dialog"
 
 #: src/ProfileManager.js:172 resources/ui/gtk4/prefs.ui:278
 #: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Skema Warna Default"
 
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Skema Warna Gelap"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Baterai"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:308
 #: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Dicolokkan"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:336
 #: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Mode Penghemat Daya"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:337
 #: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Mode Seimbang"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:338
 #: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Mode Performa"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:339
 #: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Hemat Daya atau Seimbang"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:340
 #: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Seimbang atau Performa"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
 #: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Prioritas Tinggi"
 
 #: src/ProfileManager.js:191
 msgid "Standard Profile"
-msgstr ""
+msgstr "Profil Standar"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -187,7 +187,7 @@ msgstr "Efek TV"
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
-msgstr ""
+msgstr "Glitch TV"
 
 #: src/effects/Wisps.js:82
 msgid "Wisps"
@@ -199,7 +199,7 @@ msgstr "Pratinjau efek ini"
 
 #: prefs.js:364 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows telah diperbarui!"
 
 #: prefs.js:365 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -224,21 +224,23 @@ msgstr "Mantan Sponsor"
 
 #: prefs.js:585
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Hapus Profil ini?"
 
 #: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Profil efek saat ini dengan semua pengaturan efeknya akan hilang secara "
+"permanen."
 
 #: prefs.js:592
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 #: prefs.js:593
 msgid "Delete"
-msgstr ""
+msgstr "Hapus"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:923
@@ -256,7 +258,7 @@ msgstr "Buka Website"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Lihat wallpaper yang cocok"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -280,7 +282,7 @@ msgstr "Tentang Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Tambah Profil Baru..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -472,7 +474,7 @@ msgstr ""
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Kekuatan"
 
 #: resources/ui/gtk4/tv-glitch.ui:161 resources/ui/gtk4/glitch.ui:161
 #: resources/ui/gtk4/fire.ui:138 resources/ui/gtk3/tv-glitch.ui:187
@@ -519,12 +521,12 @@ msgstr "Warna Ujung"
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Skala Horizontal"
 
 #: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Skala Vertikal"
 
 #: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
 #: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
@@ -554,12 +556,12 @@ msgstr "Warna"
 #: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "Jumlah Spoke"
 
 #: resources/ui/gtk4/glide.ui:115 resources/ui/gtk3/glide.ui:149
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Penyet"
 
 #: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
 #: resources/ui/adw/glide.ui:113
@@ -574,22 +576,22 @@ msgstr "Pindah"
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Intensitas Putaran"
 
 #: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Intensitas Goyang"
 
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Intensitas Hisap"
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Berputar"
 
 #: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
 #: resources/ui/adw/portal.ui:47
@@ -619,27 +621,27 @@ msgstr "Jiki dimatikan, akan terpilih lokasi secara acak."
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Lebar Garis Mesh"
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr ""
+msgstr "Warna Garis"
 
 #: resources/ui/gtk4/hexagon.ui:198 resources/ui/gtk3/hexagon.ui:221
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr ""
+msgstr "Warna Cahaya"
 
 #: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "Pencampuran Aditif"
 
 #: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Anda mungkin ingin mengaktifkan ini untuk tema jendela gelap."
 
 #: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
 #: resources/ui/adw/fire.ui:14
@@ -664,7 +666,7 @@ msgstr "Gradien"
 #: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Settings"
-msgstr ""
+msgstr "Pengaturan Efek"
 
 #: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
 #: resources/ui/adw/prefs.ui:225
@@ -674,17 +676,17 @@ msgstr "Jika lebih dari satu terpilih, satu akan dipilih secara acak."
 #: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Batasan Profil Efek"
 
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Tentukan kapan pengaturan efek saat ini harus digunakan."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Aplikasi"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
 #: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
@@ -696,52 +698,52 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Apapun"
 
 #: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Jenis Animasi"
 
 #: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Jenis Jendela"
 
 #: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Skema Warna"
 
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Mode Daya"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Profil Daya"
 
 #: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Opsi Profil Lanjutan"
 
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Gunakan profil ini meskipun ada profil yang lebih cocok."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Hapus Profil ini..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "Kebisingan"
 
 #: resources/ui/gtk3/fire.ui:58 resources/ui/adw/fire.ui:19
 msgid "Choose a Preset"
