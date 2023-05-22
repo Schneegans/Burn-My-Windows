@@ -146,16 +146,16 @@ class Extension {
 
     // If a window is created, the transitions are set up in the async _mapWindow() of the
     // WindowManager:
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1436
     // AFAIK, overriding this method is not possible as it's called by a signal to which
     // it is bound via the bind() method. To tweak the async transition anyways, we
     // override the actors ease() method once. We do this in _shouldAnimateActor() which
     // is called right before the ease() in _mapWindow:
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1472
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1465
 
     // The same trick is done for the window-close animation. This is set up in a similar
     // fashion in the WindowManager's _destroyWindow():
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
+    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1525
     // Here is _shouldAnimateActor() also called right before. So we use it again to
     // monkey-patch the window actor's ease() once.
 
@@ -164,7 +164,6 @@ class Extension {
     // there. To enable animations in the overview, we check inside the method whether it
     // was called by either _mapWindow or _destroyWindow. If so, we return true. Let's see
     // if this breaks stuff left and right...
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1120
     Main.wm._shouldAnimateActor = function(actor, types) {
       const stack      = (new Error()).stack;
       const forClosing = stack.includes('_destroyWindow@');
