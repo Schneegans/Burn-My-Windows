@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 32](https://github.com/schneegans/Burn-My-Windows/releases/tag/v32)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+* Fixed an issue which caused corrupted windows on X11 GNOME 44 under very specific circumstances. This happened only on X11 and only when the window was resized before it was actually shown.
+
 ## [Burn My Windows 31](https://github.com/schneegans/Burn-My-Windows/releases/tag/v31)
 
 **Release Date:** 2023-05-04
