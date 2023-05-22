@@ -9,6 +9,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### Enhancements
+
+* Several translations have been updated. Thanks to all the translators!
+
 #### Bug Fixes
 
 * Fixed an issue which caused corrupted windows on X11 GNOME 44 under very specific circumstances. This happened only on X11 and only when the window was resized before it was actually shown.
