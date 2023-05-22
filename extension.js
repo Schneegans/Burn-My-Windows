@@ -183,12 +183,30 @@ class Extension {
 
           // Now intercept the next call to actor.ease().
           actor.ease = function(...params) {
-            // Quickly restore the original behavior. Nobody noticed, I guess :D
-            actor.ease = orig;
+            // There is a really weird issue in GNOME Shell 44: A few non-GTK windows are
+            // resized directly after they are mapped on X11. This happens for instance
+            // for keepassxc after it was closed in the maximized state. As the
+            // _mapWindow() method is called asynchronously, the window is not yet visible
+            // when the resize happens. Hence, our ease-override is called for the resize
+            // animation instead of the window-open or window-close animation. This is not
+            // what we want. So we check again whether the ease() call is for the
+            // window-open or window-close animation. If not, we just call the original
+            // ease() method. See also:
+            // https://github.com/Schneegans/Burn-My-Windows/issues/335
+            const stack      = (new Error()).stack;
+            const forClosing = stack.includes('_destroyWindow@');
+            const forOpening = stack.includes('_mapWindow@');
 
-            // And then create the effect!
-            extensionThis._setupEffect(actor, forOpening, chosenEffect.effect,
-                                       chosenEffect.profile);
+            if (forClosing || forOpening) {
+              // Quickly restore the original behavior. Nobody noticed, I guess :D
+              actor.ease = orig;
+
+              // And then create the effect!
+              extensionThis._setupEffect(actor, forOpening, chosenEffect.effect,
+                                         chosenEffect.profile);
+            } else {
+              orig.apply(this, params);
+            }
           };
 
           return true;
