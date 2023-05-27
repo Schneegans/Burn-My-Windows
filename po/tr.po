@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2023-05-27 02:53+0000\n"
-"Last-Translator: TCr3 <tcreeper.earth@gmail.com>\n"
+"PO-Revision-Date: 2023-05-27 03:16+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/tr/>\n"
 "Language: tr\n"
@@ -159,7 +159,7 @@ msgstr "Matrix"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr "Pikselleştir"
+msgstr "Pikselleştirme"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
@@ -175,7 +175,7 @@ msgstr "Portal"
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
-msgstr "Parçalanma Anında"
+msgstr "Parçalanma Anı"
 
 #: src/effects/TRexAttack.js:112
 msgid "T-Rex Attack"
@@ -187,7 +187,7 @@ msgstr "TV Etkisi"
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
-msgstr "Televizyon Bozukluğu"
+msgstr "TV Bozukluğu"
 
 #: src/effects/Wisps.js:82
 msgid "Wisps"
@@ -245,7 +245,7 @@ msgstr "Sil"
 #: prefs.js:923
 #, javascript-format
 msgid "Preview for %s"
-msgstr "%s ön izleme"
+msgstr "%s Ön İzleme"
 
 #: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
@@ -520,12 +520,12 @@ msgstr "Yazı Rengi"
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Yatay Boyut"
+msgstr "Yatay Ölçek"
 
 #: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr "Dikey Boyut"
+msgstr "Dikey Ölçek"
 
 #: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
 #: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
