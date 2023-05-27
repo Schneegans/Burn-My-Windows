@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-02-21 16:46+0100\n"
-"PO-Revision-Date: 2022-09-16 14:17+0000\n"
-"Last-Translator: Muha Aliss <muhaaliss@pm.me>\n"
+"PO-Revision-Date: 2023-05-27 02:53+0000\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/tr/>\n"
 "Language: tr\n"
@@ -17,81 +17,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: src/ProfileManager.js:168 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Pencerelerin Açılması"
 
 #: src/ProfileManager.js:169 resources/ui/gtk4/prefs.ui:221
 #: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Pencerelerin Kapanması"
 
 #: src/ProfileManager.js:170 resources/ui/gtk4/prefs.ui:249
 #: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Normal Pencereler"
 
 #: src/ProfileManager.js:171 resources/ui/gtk4/prefs.ui:250
 #: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "İletişim Kutusu Pencereleri"
 
 #: src/ProfileManager.js:172 resources/ui/gtk4/prefs.ui:278
 #: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Öntanımlı Renk Şeması"
 
 #: src/ProfileManager.js:173 resources/ui/gtk4/prefs.ui:279
 #: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Koyu Renk Şeması"
 
 #: src/ProfileManager.js:174 resources/ui/gtk4/prefs.ui:307
 #: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Pilde"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:308
 #: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Fişe Takılı"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:336
 #: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Güç Tutumu Kipi"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:337
 #: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Dengeli Kip"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:338
 #: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Performans Kipi"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:339
 #: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Güç Tutumu veya Dengeli"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:340
 #: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Dengeli veya Performans"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:387
 #: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Yüksek Öncelik"
 
 #: src/ProfileManager.js:191
 msgid "Standard Profile"
-msgstr ""
+msgstr "Standart Profil"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -119,7 +119,7 @@ msgstr "Ateş"
 
 #: src/effects/Fire.js:154
 msgid "Default Fire"
-msgstr "Varsayılan Ateş"
+msgstr "Öntanımlı Ateş"
 
 #: src/effects/Fire.js:164
 msgid "Hell Fire"
@@ -127,7 +127,7 @@ msgstr "Cehennem Ateşi"
 
 #: src/effects/Fire.js:174
 msgid "Dark and Smutty"
-msgstr "Karanlık ve Sürmeli"
+msgstr "Karanlık ve Kirli"
 
 #: src/effects/Fire.js:184
 msgid "Cold Breeze"
@@ -139,11 +139,11 @@ msgstr "Noel Baba Geliyor"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Süzülme"
 
 #: src/effects/Glitch.js:86
 msgid "Glitch"
-msgstr ""
+msgstr "Kusur"
 
 #: src/effects/Hexagon.js:94
 msgid "Hexagon"
@@ -159,7 +159,7 @@ msgstr "Matrix"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr "Pikselleştirme"
+msgstr "Pikselleştir"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
@@ -171,11 +171,11 @@ msgstr "Piksel Süpürme"
 
 #: src/effects/Portal.js:88
 msgid "Portal"
-msgstr ""
+msgstr "Portal"
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
-msgstr "El Şıklatma Parçalanması"
+msgstr "Parçalanma Anında"
 
 #: src/effects/TRexAttack.js:112
 msgid "T-Rex Attack"
@@ -183,11 +183,11 @@ msgstr "T-Rex Saldırısı"
 
 #: src/effects/TVEffect.js:78
 msgid "TV Effect"
-msgstr "TV Efekti"
+msgstr "TV Etkisi"
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
-msgstr ""
+msgstr "Televizyon Bozukluğu"
 
 #: src/effects/Wisps.js:82
 msgid "Wisps"
@@ -195,11 +195,11 @@ msgstr "Sihir"
 
 #: prefs.js:247
 msgid "Preview this effect"
-msgstr ""
+msgstr "Bu etkiyi önizle"
 
 #: prefs.js:364 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows güncellendi!"
 
 #: prefs.js:365 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -224,21 +224,22 @@ msgstr "Eski Sponsorlar"
 
 #: prefs.js:585
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Bu Profil Silinsin Mi?"
 
 #: prefs.js:587
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Tüm etki ayarlarıyla birlikte var olan etki profili kalıcı olarak kaybolacak."
 
 #: prefs.js:592
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: prefs.js:593
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:923
@@ -248,7 +249,7 @@ msgstr "%s ön izleme"
 
 #: prefs.js:945
 msgid "Close this Window to Preview the Effect!"
-msgstr "Efekti Ön izlemek İçin Bu Pencereyi Kapatın!"
+msgstr "Etkiyi Ön İzlemek İçin Bu Pencereyi Kapatın!"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
@@ -256,7 +257,7 @@ msgstr "Ana Sayfaya Git"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Eşleşen Duvar Kağıtlarını Görüntüle"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -264,7 +265,7 @@ msgstr "Hata Bildir"
 
 #: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
-msgstr "Efekt Oluştur"
+msgstr "Etki Oluştur"
 
 #: resources/ui/common/menus.ui:35
 msgid "Translate"
@@ -280,7 +281,7 @@ msgstr "Burn-My-Windows Hakkında"
 
 #: resources/ui/common/menus.ui:63
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Yeni Profil Ekle..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -426,7 +427,7 @@ msgstr "Animasyon Süresi [ms]"
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr "Varsayılan Değere Sıfırla"
+msgstr "Öntanımlı Değere Sıfırla"
 
 #: resources/ui/gtk4/broken-glass.ui:68 resources/ui/gtk4/tv-glitch.ui:69
 #: resources/ui/gtk4/glitch.ui:69 resources/ui/gtk4/matrix.ui:69
@@ -472,7 +473,7 @@ msgstr ""
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Güç"
 
 #: resources/ui/gtk4/tv-glitch.ui:161 resources/ui/gtk4/glitch.ui:161
 #: resources/ui/gtk4/fire.ui:138 resources/ui/gtk3/tv-glitch.ui:187
@@ -545,7 +546,7 @@ msgstr "Pençe Çizik Sayısı"
 
 #: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr "Çözgü Etkisi"
+msgstr "Bükme Etkisi"
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
@@ -559,17 +560,17 @@ msgstr "Parmak Sayısı"
 #: resources/ui/gtk4/glide.ui:115 resources/ui/gtk3/glide.ui:149
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Ezmek"
 
 #: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Eğim"
 
 #: resources/ui/gtk4/glide.ui:207 resources/ui/gtk3/glide.ui:239
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Kayma"
 
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
@@ -589,17 +590,17 @@ msgstr "Emme Gücü"
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Dönme"
 
 #: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Dönüş Hızı"
 
 #: resources/ui/gtk4/portal.ui:161 resources/ui/gtk3/portal.ui:187
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Ayrıntılar"
 
 #: resources/ui/gtk4/incinerate.ui:115 resources/ui/gtk3/incinerate.ui:135
 #: resources/ui/adw/incinerate.ui:80
@@ -664,7 +665,7 @@ msgstr "Gradyan"
 #: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Settings"
-msgstr ""
+msgstr "Etki Ayarları"
 
 #: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
 #: resources/ui/adw/prefs.ui:225
@@ -674,17 +675,17 @@ msgstr "Birden fazla seçilirse, rastgele biri uygulanır."
 #: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Etki Profili Kısıtlamaları"
 
 #: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Geçerli etki ayarlarının ne zaman kullanılması gerektiğini tanımlayın."
 
 #: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Uygulama"
 
 #: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
 #: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
@@ -696,47 +697,47 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Herhangi"
 
 #: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Animasyon Türü"
 
 #: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Pencere Türü"
 
 #: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Renk Şeması"
 
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Güç Kipi"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Güç Profili"
 
 #: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Gelişmiş Profil Seçenekleri"
 
 #: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Daha iyi eşleşen profiller olsa bile bu profili kullan."
 
 #: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Bu Profili Sil..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
