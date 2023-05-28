@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkRevealer" id="snap-prefs">
 

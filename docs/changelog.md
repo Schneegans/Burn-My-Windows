@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 33](https://github.com/schneegans/Burn-My-Windows/releases/tag/v33)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+- Fixed an issue which prevented the settings of the Snap of Disintegration effect from being translatable.
+
 ## [Burn My Windows 32](https://github.com/schneegans/Burn-My-Windows/releases/tag/v32)
 
 **Release Date:** 2023-05-22

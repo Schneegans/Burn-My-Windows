@@ -549,7 +549,7 @@ SPDX-FileCopyrightText: Your Name <your@email.com>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
     <property name="upper">5000</property>
