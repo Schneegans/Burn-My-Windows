@@ -405,8 +405,13 @@ var PreferencesDialog = class PreferencesDialog {
           const dialog = this._builder.get_object('support-dialog');
           dialog.set_transient_for(window);
           dialog.connect('response', (dialog, response) => {
-            if (response === 'never') {
+            if ((utils.isADW() && response === 'never') ||
+                (!utils.isADW() && response === 2)) {
               this._settings.set_boolean('show-support-dialog', false);
+            }
+
+            if (!utils.isGTK4()) {
+              dialog.close();
             }
           });
           dialog.show();
