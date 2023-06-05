@@ -410,7 +410,7 @@ var PreferencesDialog = class PreferencesDialog {
               this._settings.set_boolean('show-support-dialog', false);
             }
 
-            if (!utils.isGTK4()) {
+            if (!utils.isADW()) {
               dialog.close();
             }
           });
