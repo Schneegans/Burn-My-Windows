@@ -11,6 +11,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Bug Fixes
 
+- Fixed an issue on GNOME 44.2 which caused the effects to look broken. It was caused by [this change](https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2650).
 - Fixed an issue which prevented the settings of the Snap of Disintegration effect from being translatable.
 
 ## [Burn My Windows 32](https://github.com/schneegans/Burn-My-Windows/releases/tag/v32)
