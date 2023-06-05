@@ -180,6 +180,7 @@ var Shader = GObject.registerClass(
     // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
     // the handler. This could still be null if called from the updateAnimation() above.
     vfunc_paint_target(...params) {
+      this.emit('update-animation', this._progress);
 
       // Starting with GNOME 44.2, the alpha channel is not written to by default. We need
       // to undo this. It is a pity that we have to do this here, as it is not really
