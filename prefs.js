@@ -394,6 +394,25 @@ var PreferencesDialog = class PreferencesDialog {
           });
       }
 
+      // Count the number of times the user has opened the preferences window. Every now
+      // and then, we show a dialog asking the user to support the extension.
+      const showSupportDialog = this._settings.get_boolean('show-support-dialog');
+      if (showSupportDialog) {
+        const count = this._settings.get_int('prefs-open-count') + 1;
+        this._settings.set_int('prefs-open-count', count);
+
+        if (count % 10 == 0) {
+          const dialog = this._builder.get_object('support-dialog');
+          dialog.set_transient_for(window);
+          dialog.connect('response', (dialog, response) => {
+            if (response === 'never') {
+              this._settings.set_boolean('show-support-dialog', false);
+            }
+          });
+          dialog.show();
+        }
+      }
+
       // Populate the menu with actions.
       const group = Gio.SimpleActionGroup.new();
       window.insert_action_group('prefs', group);

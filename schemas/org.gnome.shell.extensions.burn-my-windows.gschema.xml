@@ -43,6 +43,18 @@ SPDX-License-Identifier: CC0-1.0
       <description>Used to check whether the extension got updated from the extension side.</description>
     </key>
 
+    <key name="prefs-open-count" type="i">
+      <default>0</default>
+      <summary>Prefs Open Count</summary>
+      <description>The number of times the settings dialog was openend.</description>
+    </key>
+
+    <key name="show-support-dialog" type="b">
+      <default>true</default>
+      <summary>Show Support Dialog</summary>
+      <description>If set to false, the ask-for-support dialog will never be shown.</description>
+    </key>
+
   </schema>
 
 </schemalist>
