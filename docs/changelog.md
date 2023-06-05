@@ -9,6 +9,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### Enhancements
+
+- When opening the preferences, a dialog is now shown occasionally to kindly ask for a donation. The dialog can be disabled once it has been shown for the first time.
+
 #### Bug Fixes
 
 - Fixed an issue on GNOME 44.2 which caused the effects to look broken. It was caused by [this change](https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2650).
