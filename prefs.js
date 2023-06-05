@@ -414,7 +414,12 @@ var PreferencesDialog = class PreferencesDialog {
               dialog.close();
             }
           });
-          dialog.show();
+
+          if (utils.isGTK4()) {
+            dialog.show();
+          } else {
+            dialog.show_all();
+          }
         }
       }
 
