@@ -394,6 +394,54 @@ var PreferencesDialog = class PreferencesDialog {
           });
       }
 
+      // Count the number of times the user has opened the preferences window. Every now
+      // and then, we show a dialog asking the user to support the extension. We connect
+      // to the notify::visible signal to ensure that the dialog can be a modal dialog.
+      window.connect('notify::visible', (window) => {
+        // Do not show the dialog when the window is hidden.
+        if (!window.get_visible()) {
+          return;
+        }
+
+        // Do not show the dialog when the user has disabled it.
+        if (!this._settings.get_boolean('show-support-dialog')) {
+          return;
+        }
+
+        const count = this._settings.get_int('prefs-open-count') + 1;
+        this._settings.set_int('prefs-open-count', count);
+
+        // if (count % 10 == 0) {
+        const dialog = this._createMessageDialog(
+          'Do you want to support Burn-My-Windows?',
+          `If only one out of ten users would support this project with 1$ / month, I could work full-time on open-source projects!
+
+Ko-fi: <a href='https://ko-fi.com/schneegans'>https://ko-fi.com/schneegans</a>
+GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/sponsors/schneegans</a>`,
+          window, [
+            {
+              label: 'Do not show this again!',
+              destructive: true,
+              default: false,
+              action: () => {
+                this._settings.set_boolean('show-support-dialog', false);
+              }
+            },
+            {
+              label: 'Maybe later...',
+              destructive: false,
+              default: true,
+            }
+          ]);
+
+        if (utils.isGTK4()) {
+          dialog.show();
+        } else {
+          dialog.show_all();
+        }
+        // }
+      });
+
       // Populate the menu with actions.
       const group = Gio.SimpleActionGroup.new();
       window.insert_action_group('prefs', group);
@@ -629,47 +677,6 @@ var PreferencesDialog = class PreferencesDialog {
           deleteProfileDialog.show();
         });
         group.add_action(deleteProfileAction);
-      }
-    });
-
-    // Count the number of times the user has opened the preferences window. Every now
-    // and then, we show a dialog asking the user to support the extension.
-    this._widget.connect('map', (widget) => {
-      const showSupportDialog = this._settings.get_boolean('show-support-dialog');
-      if (showSupportDialog) {
-        const window = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
-        const count  = this._settings.get_int('prefs-open-count') + 1;
-        this._settings.set_int('prefs-open-count', count);
-
-        // if (count % 10 == 0) {
-        const dialog = this._createMessageDialog(
-          'Do you want to support Burn-My-Windows?',
-          `If only one out of ten users would support this project with 1$ / month, I could work full-time on open-source projects!
-
-Ko-fi: <a href='https://ko-fi.com/schneegans'>https://ko-fi.com/schneegans</a>
-GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/sponsors/schneegans</a>`,
-          window, [
-            {
-              label: 'Do not show this again!',
-              destructive: true,
-              default: false,
-              action: () => {
-                this._settings.set_boolean('show-support-dialog', false);
-              }
-            },
-            {
-              label: 'Maybe later...',
-              destructive: false,
-              default: true,
-            }
-          ]);
-
-        if (utils.isGTK4()) {
-          dialog.show();
-        } else {
-          dialog.show_all();
-        }
-        // }
       }
     });
 
