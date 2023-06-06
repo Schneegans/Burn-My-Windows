@@ -413,7 +413,7 @@ var PreferencesDialog = class PreferencesDialog {
 
         if (count % 10 == 0) {
           const dialog = this._createMessageDialog(
-            '❤️ Do you love Burn-My-Windows?',
+            '❤️‍🔥 Do you love Burn-My-Windows?',
             `Even the smallest donation can have a big impact! If just one of ten Burn-My-Windows users donated $1 per month, I could dedicate myself to creating awesome open-source projects full-time!
 
 Ko-fi: <a href='https://ko-fi.com/schneegans'>https://ko-fi.com/schneegans</a>
