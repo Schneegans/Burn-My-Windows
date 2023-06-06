@@ -411,35 +411,35 @@ var PreferencesDialog = class PreferencesDialog {
         const count = this._settings.get_int('prefs-open-count') + 1;
         this._settings.set_int('prefs-open-count', count);
 
-        // if (count % 10 == 0) {
-        const dialog = this._createMessageDialog(
-          '❤️ Do you love Burn-My-Windows?',
-          `Even the smallest donation can have a big impact! If just one of ten Burn-My-Windows users donated $1 per month, I could dedicate myself to creating awesome open-source projects full-time!
+        if (count % 10 == 0) {
+          const dialog = this._createMessageDialog(
+            '❤️ Do you love Burn-My-Windows?',
+            `Even the smallest donation can have a big impact! If just one of ten Burn-My-Windows users donated $1 per month, I could dedicate myself to creating awesome open-source projects full-time!
 
 Ko-fi: <a href='https://ko-fi.com/schneegans'>https://ko-fi.com/schneegans</a>
 GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/sponsors/schneegans</a>`,
-          window, [
-            {
-              label: 'Do not show this again!',
-              destructive: true,
-              default: false,
-              action: () => {
-                this._settings.set_boolean('show-support-dialog', false);
+            window, [
+              {
+                label: 'Do not show this again!',
+                destructive: true,
+                default: false,
+                action: () => {
+                  this._settings.set_boolean('show-support-dialog', false);
+                }
+              },
+              {
+                label: 'Remind me later.',
+                destructive: false,
+                default: true,
               }
-            },
-            {
-              label: 'Remind me later.',
-              destructive: false,
-              default: true,
-            }
-          ]);
+            ]);
 
-        if (utils.isGTK4()) {
-          dialog.show();
-        } else {
-          dialog.show_all();
+          if (utils.isGTK4()) {
+            dialog.show();
+          } else {
+            dialog.show_all();
+          }
         }
-        // }
       });
 
       // Populate the menu with actions.
