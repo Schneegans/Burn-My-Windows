@@ -7,11 +7,12 @@ SPDX-License-Identifier: CC-BY-4.0
 
 ## [Burn My Windows 33](https://github.com/schneegans/Burn-My-Windows/releases/tag/v33)
 
-**Release Date:** TBD
+**Release Date:** 2023-06-06
 
 #### Enhancements
 
 - When opening the preferences, a dialog is now shown occasionally to kindly ask for a donation. The dialog can be disabled once it has been shown for the first time.
+- Several translations have been updated. Thanks to all the translators!
 
 #### Bug Fixes
 
