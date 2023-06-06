@@ -413,8 +413,8 @@ var PreferencesDialog = class PreferencesDialog {
 
         // if (count % 10 == 0) {
         const dialog = this._createMessageDialog(
-          'Do you want to support Burn-My-Windows?',
-          `If only one out of ten users would support this project with 1$ / month, I could work full-time on open-source projects!
+          '❤️ Do you love Burn-My-Windows?',
+          `Even the smallest donation can have a big impact! If just one of ten Burn-My-Windows users donated $1 per month, I could dedicate myself to creating awesome open-source projects full-time!
 
 Ko-fi: <a href='https://ko-fi.com/schneegans'>https://ko-fi.com/schneegans</a>
 GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/sponsors/schneegans</a>`,
@@ -428,7 +428,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
               }
             },
             {
-              label: 'Maybe later...',
+              label: 'Remind me later.',
               destructive: false,
               default: true,
             }
