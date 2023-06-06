@@ -37,40 +37,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </style>
   </object>
 
-  <!-- This dialog is occasionaly shown to ask the user for support. -->
-  <object class="AdwMessageDialog" id="support-dialog">
-    <property name="heading">Do you want to support Burn-My-Windows?</property>
-    <property name="body">If only one out of ten users would support this project with 1$ / month, I could work full-time on open-source projects!</property>
-    <property name="default-response">later</property>
-    <property name="close-response">later</property>
-    <responses>
-      <response id="never" appearance="destructive">Do not show this again!</response>
-      <response id="later">Maybe later...</response>
-    </responses>
-    <property name="extra-child">
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkLabel">
-            <property name="hexpand">true</property>
-            <property name="halign">start</property>
-            <property name="use-markup">true</property>
-            <property name="label">Support me on Ko-fi: &lt;a href='https://ko-fi.com/schneegans'&gt;https://ko-fi.com/schneegans&lt;/a&gt;</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="hexpand">true</property>
-            <property name="halign">start</property>
-            <property name="use-markup">true</property>
-            <property name="label">Support me on GitHub: &lt;a href='https://github.com/sponsors/schneegans'&gt;https://github.com/sponsors/schneegans&lt;/a&gt;</property>
-          </object>
-        </child>
-      </object>
-    </property>
-
-  </object>
-
   <object class="AdwFlap" id="profile-editor-flap">
     <property name="orientation">vertical</property>
     <property name="fold-threshold-policy">natural</property>

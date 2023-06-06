@@ -401,26 +401,35 @@ var PreferencesDialog = class PreferencesDialog {
         const count = this._settings.get_int('prefs-open-count') + 1;
         this._settings.set_int('prefs-open-count', count);
 
-        if (count % 10 == 0) {
-          const dialog = this._builder.get_object('support-dialog');
-          dialog.set_transient_for(window);
-          dialog.connect('response', (dialog, response) => {
-            if ((utils.isADW() && response === 'never') ||
-                (!utils.isADW() && response === 2)) {
-              this._settings.set_boolean('show-support-dialog', false);
-            }
+        // if (count % 10 == 0) {
+        const dialog = this._createMessageDialog(
+          'Do you want to support Burn-My-Windows?',
+          `If only one out of ten users would support this project with 1$ / month, I could work full-time on open-source projects!
 
-            if (!utils.isADW()) {
-              dialog.close();
+Ko-fi: <a href='https://ko-fi.com/schneegans'>https://ko-fi.com/schneegans</a>
+GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/sponsors/schneegans</a>`,
+          window, [
+            {
+              label: 'Do not show this again!',
+              destructive: true,
+              default: false,
+              action: () => {
+                this._settings.set_boolean('show-support-dialog', false);
+              }
+            },
+            {
+              label: 'Maybe later...',
+              destructive: false,
+              default: true,
             }
-          });
+          ]);
 
-          if (utils.isGTK4()) {
-            dialog.show();
-          } else {
-            dialog.show_all();
-          }
+        if (utils.isGTK4()) {
+          dialog.show();
+        } else {
+          dialog.show_all();
         }
+        // }
       }
 
       // Populate the menu with actions.
@@ -621,56 +630,38 @@ var PreferencesDialog = class PreferencesDialog {
         // This action shows a confirmation dialog. Upon user approval, the currently
         // active profile is deleted. We use the more beautiful Adw.MessageDialog if it is
         // available (usually on GNOME 43 and beyond).
-        let deleteProfileDialog;
-        const dialogTitle    = _('Delete this Profile?');
-        const dialogSubtitle = _(
-          'The current effect profile with all its effect settings will be permanently lost.');
+        const deleteProfileDialog = this._createMessageDialog(
+          _('Delete this Profile?'),
+          _('The current effect profile with all its effect settings will be permanently lost.'),
+          window, [
+            {
+              label: _('Cancel'),
+              destructive: false,
+              default: true,
+            },
+            {
+              label: _('Delete'),
+              destructive: true,
+              default: false,
+              action: () => {
+                // Stop editing the current profile.
+                this._builder.get_object('edit-profile-button').active = false;
 
-        if (utils.isADW() && Adw.MessageDialog) {
-          deleteProfileDialog =
-            new Adw.MessageDialog({heading: dialogTitle, body: dialogSubtitle});
-          deleteProfileDialog.add_response('cancel', _('Cancel'));
-          deleteProfileDialog.add_response('delete', _('Delete'));
-          deleteProfileDialog.set_response_appearance('delete',
-                                                      Adw.ResponseAppearance.DESTRUCTIVE);
-          deleteProfileDialog.set_default_response('cancel');
-          deleteProfileDialog.set_close_response('cancel');
-        } else {
-          deleteProfileDialog = new Gtk.MessageDialog({
-            text: dialogTitle,
-            secondary_text: dialogSubtitle,
-            modal: true,
-            title: '',
-            buttons: Gtk.ButtonsType.OK_CANCEL
-          });
-        }
+                // Delete the currently active profile.
+                this._profileManager.deleteProfile(this._activeProfile.path);
 
-        if (utils.isGTK4()) {
-          deleteProfileDialog.set_hide_on_close(true);
-        }
+                // Select another one.
+                this._settings.set_string('active-profile',
+                                          this._profileManager.getProfiles()[0].path);
 
-        deleteProfileDialog.set_transient_for(window);
+                // The number of profiles has changed, so we have to update the profile
+                // selection menu.
+                this._updateProfileMenu();
+              }
+            }
+          ]);
 
-        deleteProfileDialog.connect('response', (dialog, response) => {
-          if (response == 'delete' || response == Gtk.ResponseType.OK) {
-            // Stop editing the current profile.
-            this._builder.get_object('edit-profile-button').active = false;
-
-            // Delete the currently active profile.
-            this._profileManager.deleteProfile(this._activeProfile.path);
-
-            // Select another one.
-            this._settings.set_string('active-profile',
-                                      this._profileManager.getProfiles()[0].path);
-
-            // The number of profiles has changed, so we have to update the profile
-            // selection menu.
-            this._updateProfileMenu();
-          }
-
-          dialog.hide();
-        });
-
+        // This action deletes the currently active profile.
         const deleteProfileAction = Gio.SimpleAction.new('profile-delete', null);
         deleteProfileAction.connect('activate', () => {
           deleteProfileDialog.show();
@@ -1002,6 +993,70 @@ var PreferencesDialog = class PreferencesDialog {
       window.add(box);
       window.show_all();
     }
+  }
+
+  _createMessageDialog(title, message, window, buttons) {
+    let dialog;
+
+    if (utils.isADW() && Adw.MessageDialog) {
+      dialog = new Adw.MessageDialog({
+        heading: title,
+        body: message,
+        body_use_markup: true,
+        modal: true,
+      });
+
+      buttons.forEach((button, i) => {
+        const response = i.toString();
+        dialog.add_response(response, button.label);
+
+        if (button.default) {
+          dialog.set_default_response(response);
+          dialog.set_close_response(response);
+        }
+
+        if (button.destructive) {
+          dialog.set_response_appearance(response, Adw.ResponseAppearance.DESTRUCTIVE);
+        }
+      });
+
+    } else {
+
+      dialog = new Gtk.MessageDialog({
+        text: title,
+        secondary_text: message,
+        secondary_use_markup: true,
+        modal: true,
+        title: '',
+      });
+
+      buttons.forEach((button, i) => {
+        dialog.add_button(button.label, i);
+
+        if (button.default) {
+          dialog.set_default_response(i);
+        }
+      });
+    }
+
+    if (utils.isGTK4()) {
+      dialog.set_hide_on_close(true);
+    }
+
+    dialog.set_transient_for(window);
+
+    dialog.connect('response', (dialog, response) => {
+      const i = parseInt(response);
+
+      const button = buttons[i];
+      if (button && button.action) {
+        button.action();
+      }
+
+      dialog.hide();
+    });
+
+    return dialog;
   }
 }
 

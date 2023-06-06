@@ -33,51 +33,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </style>
   </object>
 
-  <!-- This dialog is occasionaly shown to ask the user for support. -->
-  <object class="GtkMessageDialog" id="support-dialog">
-    <property name="text">Do you want to support Burn-My-Windows?</property>
-    <property name="secondary-text">If only one out of ten users would support this project with 1$ / month, I could work full-time on open-source projects!</property>
-    <property name="modal">true</property>
-    <child internal-child="message_area">
-      <object class="GtkBox">
-        <child>
-          <object class="GtkLabel">
-            <property name="hexpand">true</property>
-            <property name="halign">start</property>
-            <property name="use-markup">true</property>
-            <property name="label">Support me on Ko-fi: &lt;a href='https://ko-fi.com/schneegans'&gt;https://ko-fi.com/schneegans&lt;/a&gt;</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="hexpand">true</property>
-            <property name="halign">start</property>
-            <property name="use-markup">true</property>
-            <property name="label">Support me on GitHub: &lt;a href='https://github.com/sponsors/schneegans'&gt;https://github.com/sponsors/schneegans&lt;/a&gt;</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <child internal-child="action_area">
-      <object class="GtkBox">
-        <child>
-          <object class="GtkButton" id="support_never_button">
-            <property name="label">Do not show this again!</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="support_later_button">
-            <property name="label">Maybe later...</property>
-          </object>
-        </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="1" default="true">support_later_button</action-widget>
-      <action-widget response="2">support_never_button</action-widget>
-    </action-widgets>
-  </object>
-
   <object class="GtkStack" id="general-prefs">
     <property name="transition-type">over-down-up</property>
 
