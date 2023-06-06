@@ -411,6 +411,7 @@ var PreferencesDialog = class PreferencesDialog {
         const count = this._settings.get_int('prefs-open-count') + 1;
         this._settings.set_int('prefs-open-count', count);
 
+        // Show the dialog every 10th time.
         if (count % 10 == 0) {
           const dialog = this._createMessageDialog(
             '❤️ Do you love Burn-My-Windows?',
@@ -1005,6 +1006,11 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     }
   }
 
+  // Helper function to show a message dialog. The dialog is modal and has a title, a
+  // message and a list of buttons. Each button is an object with a label, a default flag
+  // and a destructive flag. Each button object can also have an "action" callback that is
+  // called when the button is clicked.
+  // This method works on GTK3, GTK4, and libadwaita.
   _createMessageDialog(title, message, window, buttons) {
     let dialog;
 
@@ -1055,6 +1061,8 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
     dialog.set_transient_for(window);
 
+    // If the dialog is closed or a button is clicked, we hide the dialog and call the
+    // button's action callback if it exists.
     dialog.connect('response', (dialog, response) => {
       const i = parseInt(response);
 
