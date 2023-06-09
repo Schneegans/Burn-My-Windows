@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Enhancements
 
 - Added support for the new donation button on extensions.gnome.org.
+- https://www.paypal.me/simonschneegans is now the default donation link for PayPal.
 
 ## [Burn My Windows 33](https://github.com/schneegans/Burn-My-Windows/releases/tag/v33)
 
