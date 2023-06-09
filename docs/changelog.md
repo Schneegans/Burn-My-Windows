@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 34](https://github.com/schneegans/Burn-My-Windows/releases/tag/v34)
+
+**Release Date:** TBD
+
+#### Enhancements
+
+- Added support for the new donation button on extensions.gnome.org.
+
 ## [Burn My Windows 33](https://github.com/schneegans/Burn-My-Windows/releases/tag/v33)
 
 **Release Date:** 2023-06-06
