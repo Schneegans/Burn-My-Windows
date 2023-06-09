@@ -5,7 +5,7 @@
     "donations": {
         "kofi": "schneegans",
         "github": "schneegans",
-        "custom": "https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE"
+        "paypal": "simonschneegans"
     },
     "gettext-domain": "burn-my-windows",
     "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
