@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 35](https://github.com/schneegans/Burn-My-Windows/releases/tag/v35)
+
+**Release Date:** TBD
+
+#### New Features
+
+- **New Effect: Paint-Brush.** This effect paints or erases your windows with a thick paint brush.
+
 ## [Burn My Windows 34](https://github.com/schneegans/Burn-My-Windows/releases/tag/v34)
 
 **Release Date:** 2023-09-06
