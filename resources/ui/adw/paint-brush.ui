@@ -44,7 +44,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
     <child>
       <object class="AdwActionRow">
-        <property name="title" translatable="yes">Size</property>
+        <property name="title" translatable="yes">Brush Size</property>
         <child>
           <object class="GtkScale">
             <property name="valign">center</property>

@@ -66,7 +66,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
               <object class="GtkBox">
                 <child>
                   <object class="GtkLabel">
-                    <property name="label" translatable="yes">Size</property>
+                    <property name="label" translatable="yes">Brush Size</property>
                     <property name="xalign">0</property>
                     <property name="halign">start</property>
                     <property name="valign">center</property>
