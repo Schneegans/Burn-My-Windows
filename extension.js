@@ -65,6 +65,7 @@ class Extension {
       new Me.imports.src.effects.Hexagon.Hexagon(),
       new Me.imports.src.effects.Incinerate.Incinerate(),
       new Me.imports.src.effects.Matrix.Matrix(),
+      new Me.imports.src.effects.PaintBrush.PaintBrush(),
       new Me.imports.src.effects.Pixelate.Pixelate(),
       new Me.imports.src.effects.PixelWheel.PixelWheel(),
       new Me.imports.src.effects.PixelWipe.PixelWipe(),

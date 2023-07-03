@@ -387,6 +387,28 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Paint-Brush Options                                                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="paint-brush-enable-effect" type="b">
+      <default>false</default>
+      <summary>Paint Brush Enable Effect</summary>
+      <description>Use the paint-brush effect.</description>
+    </key>
+
+    <key name="paint-brush-animation-time" type="i">
+      <default>1000</default>
+      <summary>Paint Brush Animation Time</summary>
+      <description>The time the paint-brush effect takes.</description>
+    </key>
+
+    <key name="paint-brush-size" type="i">
+      <default>3</default>
+      <summary>Paint Brush Size</summary>
+      <description>Affects the number of paint strokes.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- T-Rex Attack Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
