@@ -147,6 +147,11 @@ test_effect() {
   find_target "${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
 }
 
+# -------------------------------------------------------------- set GSK_RENDERER to cairo
+
+echo "Make sure to use Cairo GTK rendering backend."
+do_in_pod 'echo "export GSK_RENDERER=cairo" >> .bash_profile'
+
 
 # ----------------------------------------------------- wait for the container to start up
 
