@@ -14,12 +14,40 @@
 
 'use strict';
 
-const {Gio, Gtk, Gdk, GLib, GObject} = imports.gi;
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import GLib from 'gi://GLib';
+import Gdk from 'gi://Gdk';
+
+import {isADW, isGTK4, getUIDir, getStringResource, shellVersionIsAtLeast} from './utils.js';
+import {ProfileManager} from './ProfileManager.js';
+
+import Apparition from './src/effects/Apparition.js';
+import BrokenGlass from './src/effects/BrokenGlass.js';
+import Doom from './src/effects/Doom.js';
+import EnergizeA from './src/effects/EnergizeA.js';
+import EnergizeB from './src/effects/EnergizeB.js';
+import Fire from './src/effects/Fire.js';
+import Glide from './src/effects/Glide.js';
+import Glitch from './src/effects/Glitch.js';
+import Hexagon from './src/effects/Hexagon.js';
+import Incinerate from './src/effects/Incinerate.js';
+import Matrix from './src/effects/Matrix.js';
+import PaintBrush from './src/effects/PaintBrush.js';
+import Pixelate from './src/effects/Pixelate.js';
+import PixelWheel from './src/effects/PixelWheel.js';
+import PixelWipe from './src/effects/PixelWipe.js';
+import Portal from './src/effects/Portal.js';
+import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TRexAttack from './src/effects/TRexAttack.js';
+import TVEffect from './src/effects/TVEffect.js';
+import TVGlitch from './src/effects/TVGlitch.js';
+import Wisps from './src/effects/Wisps.js';
 
 // libadwaita is available starting with GNOME Shell 42.
 let Adw = null;
 try {
-  Adw = imports.gi.Adw;
+  Adw = await import('gi://Adw');
 } catch (e) {
   // Nothing to do.
 }
@@ -28,8 +56,6 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
-const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // The preferences dialog is organized in pages, each of which is loaded from a         //
@@ -37,35 +63,41 @@ const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
 // from the respective effects.                                                         //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var PreferencesDialog = class PreferencesDialog {
+export default class ExtensionPreferences {
 
   // ------------------------------------------------------------ constructor / destructor
 
+  // This is used for setting up the translations.
   constructor() {
+    ExtensionUtils.initTranslations();
+  }
+
+  fillPreferencesWindow(window) {
+    window.set_default_size(650, 750);
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      new Me.imports.src.effects.Apparition.Apparition(),
-      new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
-      new Me.imports.src.effects.Doom.Doom(),
-      new Me.imports.src.effects.EnergizeA.EnergizeA(),
-      new Me.imports.src.effects.EnergizeB.EnergizeB(),
-      new Me.imports.src.effects.Fire.Fire(),
-      new Me.imports.src.effects.Glide.Glide(),
-      new Me.imports.src.effects.Glitch.Glitch(),
-      new Me.imports.src.effects.Hexagon.Hexagon(),
-      new Me.imports.src.effects.Incinerate.Incinerate(),
-      new Me.imports.src.effects.Matrix.Matrix(),
-      new Me.imports.src.effects.PaintBrush.PaintBrush(),
-      new Me.imports.src.effects.Pixelate.Pixelate(),
-      new Me.imports.src.effects.PixelWheel.PixelWheel(),
-      new Me.imports.src.effects.PixelWipe.PixelWipe(),
-      new Me.imports.src.effects.Portal.Portal(),
-      new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
-      new Me.imports.src.effects.TRexAttack.TRexAttack(),
-      new Me.imports.src.effects.TVEffect.TVEffect(),
-      new Me.imports.src.effects.TVGlitch.TVGlitch(),
-      new Me.imports.src.effects.Wisps.Wisps(),
+      new Apparition(),
+      new BrokenGlass(),
+      new Doom(),
+      new EnergizeA(),
+      new EnergizeB(),
+      new Fire(),
+      new Glide(),
+      new Glitch(),
+      new Hexagon(),
+      new Incinerate(),
+      new Matrix(),
+      new PaintBrush(),
+      new Pixelate(),
+      new PixelWheel(),
+      new PixelWipe(),
+      new Portal(),
+      new SnapOfDisintegration(),
+      new TRexAttack(),
+      new TVEffect(),
+      new TVGlitch(),
+      new Wisps(),
     ];
 
     // Load all of our resources.
@@ -74,9 +106,9 @@ var PreferencesDialog = class PreferencesDialog {
 
     // Load the CSS file for the settings dialog. If using libadwaita, we do not need an
     // additional style sheet.
-    if (!utils.isADW()) {
+    if (!isADW()) {
       const provider = Gtk.CssProvider.new();
-      if (utils.isGTK4()) {
+      if (isGTK4()) {
         provider.load_from_resource('/css/gtk4.css');
         Gtk.StyleContext.add_provider_for_display(
           Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
@@ -88,7 +120,7 @@ var PreferencesDialog = class PreferencesDialog {
     }
 
     // Make sure custom icons are found.
-    if (utils.isGTK4()) {
+    if (isGTK4()) {
       Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).add_resource_path('/img');
     } else {
       Gtk.IconTheme.get_default().add_resource_path('/img');
@@ -97,7 +129,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/menus.ui`);
-    this._builder.add_from_resource(`/ui/${utils.getUIDir()}/prefs.ui`);
+    this._builder.add_from_resource(`/ui/${getUIDir()}/prefs.ui`);
 
     // Store a reference to the general settings object.
     this._settings = ExtensionUtils.getSettings();
@@ -119,7 +151,7 @@ var PreferencesDialog = class PreferencesDialog {
     let hasPowerProfiles = false;
     try {
       const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+        getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
       let powerProfilesProxy = new PowerProfilesProxy(
         Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
 
@@ -129,7 +161,7 @@ var PreferencesDialog = class PreferencesDialog {
     }
 
     let powerProfileRow = this._builder.get_object('profile-power-profile');
-    if (!utils.isADW()) {
+    if (!isADW()) {
       powerProfileRow = powerProfileRow.get_parent().get_parent();
     }
     powerProfileRow.set_visible(hasPowerProfiles);
@@ -137,10 +169,10 @@ var PreferencesDialog = class PreferencesDialog {
     // The global color scheme is only available starting with GNOME Shell 42. We hide the
     // corresponding settings row on older versions.
     let colorSchemeRow = this._builder.get_object('profile-color-scheme');
-    if (!utils.isADW()) {
+    if (!isADW()) {
       colorSchemeRow = colorSchemeRow.get_parent().get_parent();
     }
-    colorSchemeRow.set_visible(utils.shellVersionIsAtLeast(42, 0));
+    colorSchemeRow.set_visible(shellVersionIsAtLeast(42, 0));
 
     // Wire up the window picker of the profile editor. Whenever the app-chooser button is
     // clicked, we call a method of the extension which will initiate the window picking.
@@ -181,7 +213,7 @@ var PreferencesDialog = class PreferencesDialog {
     // If using libadwaita, the visibility of the profile-editor Adw.Flap is controlled
     // using bindings in the ui file. On GTK3 and GTK4 we have to wire up this toggling
     // here since we are using a Gtk.Stack instead of an Adw.Flap.
-    if (!utils.isADW()) {
+    if (!isADW()) {
       const profileEditorButton = this._builder.get_object('edit-profile-button');
       profileEditorButton.connect('toggled', b => {
         if (b.active) {
@@ -204,7 +236,7 @@ var PreferencesDialog = class PreferencesDialog {
     // accordion-like behavior of the effect settings.
     this._effectRows = [];
 
-    if (!utils.isADW()) {
+    if (!isADW()) {
       group.connect('row-activated', (g, row) => {
         this._effectRows.forEach(r => {
           if (r == row) {
@@ -226,9 +258,9 @@ var PreferencesDialog = class PreferencesDialog {
     // Now add all the rows.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
-      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+      if (shellVersionIsAtLeast(minMajor, minMinor)) {
 
-        const uiFile = `/ui/${utils.getUIDir()}/${effect.getNick()}.ui`;
+        const uiFile = `/ui/${getUIDir()}/${effect.getNick()}.ui`;
 
         // Is there a better way to test for the existence of a resource file?
         let hasPrefs = false;
@@ -246,7 +278,7 @@ var PreferencesDialog = class PreferencesDialog {
 
         // The preview button.
         let previewButton;
-        if (utils.isGTK4()) {
+        if (isGTK4()) {
           previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
         } else {
           previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic', 1);
@@ -264,14 +296,14 @@ var PreferencesDialog = class PreferencesDialog {
         button.set_valign(Gtk.Align.CENTER);
         this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
 
-        if (utils.isADW()) {
+        if (isADW()) {
 
           let row;
           if (hasPrefs) {
 
             // Add the effect's preferences (if any).
             row = this._builder.get_object(`${effect.getNick()}-prefs`);
-          } else if (utils.isADW()) {
+          } else if (isADW()) {
             row = Adw.ActionRow.new();
           }
 
@@ -341,7 +373,7 @@ var PreferencesDialog = class PreferencesDialog {
             row.set_activatable(false);
           }
 
-          if (utils.isGTK4()) {
+          if (isGTK4()) {
             row.set_child(container);
             group.append(row);
           } else {
@@ -355,7 +387,7 @@ var PreferencesDialog = class PreferencesDialog {
     // Some things can only be done once the widget is shown as we do not have access to
     // the toplevel widget before.
     this._widget.connect('realize', (widget) => {
-      const window = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
+      const window = isGTK4() ? widget.get_root() : widget.get_toplevel();
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
@@ -371,7 +403,7 @@ var PreferencesDialog = class PreferencesDialog {
           GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
             this._showUpdateInfoTimeout = 0;
 
-            if (utils.isADW()) {
+            if (isADW()) {
               const toast = Adw.Toast.new(_('Burn-My-Windows has been updated!'));
               toast.set_button_label(_('View Changelog'));
               toast.set_action_name('prefs.changelog');
@@ -436,7 +468,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
               }
             ]);
 
-          if (utils.isGTK4()) {
+          if (isGTK4()) {
             dialog.show();
           } else {
             dialog.show_all();
@@ -455,7 +487,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
         // Starting with GNOME Shell 42, we have to hack our way through the widget tree
         // of the Adw.PreferencesWindow...
-        if (utils.isADW()) {
+        if (isADW()) {
           const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
           header.pack_start(menu);
           header.set_title_widget(this._builder.get_object('profile-button'));
@@ -479,7 +511,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
           flap.set_content(scrolledWindow);
 
-        } else if (utils.isGTK4()) {
+        } else if (isGTK4()) {
           window.get_titlebar().pack_start(menu);
           window.get_titlebar().set_title_widget(
             this._builder.get_object('profile-button'));
@@ -537,7 +569,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
           let dialog;
 
           // We try to use the special Adw.AboutWindow if it is available.
-          if (utils.isADW() && Adw.AboutWindow) {
+          if (isADW() && Adw.AboutWindow) {
             let formatSponsors = (sponsors) => {
               return sponsors.map(s => {
                 if (s.url == '')
@@ -608,7 +640,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
           dialog.set_website('https://github.com/Schneegans/Burn-My-Windows');
           dialog.set_license_type(Gtk.License.GPL_3_0);
 
-          if (utils.isGTK4()) {
+          if (isGTK4()) {
             dialog.show();
           } else {
             dialog.show_all();
@@ -698,9 +730,11 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     });
 
     // Show the widgets on GTK3.
-    if (!utils.isGTK4()) {
+    if (!isGTK4()) {
       this._widget.show_all();
     }
+
+    window.add(this._widget);
   }
 
   // -------------------------------------------------------------------- public interface
@@ -714,11 +748,6 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
   // Returns a Gio.Settings object for the current effect profile.
   getProfileSettings() {
     return this._activeProfile.settings;
-  }
-
-  // Returns the widget used for the settings of this extension.
-  getWidget() {
-    return this._widget;
   }
 
   // Connects an Adw.ComboRow (or anything else which has an 'selected' property) to a
@@ -790,7 +819,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
   // Appends the given child widget to the given Gtk.Box.
   gtkBoxAppend(box, child) {
-    if (utils.isGTK4()) {
+    if (isGTK4()) {
       box.append(child);
     } else {
       box.pack_start(child, false, true, 0);
@@ -836,7 +865,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
     this.bindEntry('profile-app');
 
-    if (utils.isADW()) {
+    if (isADW()) {
       this.bindComboRow('profile-animation-type');
       this.bindComboRow('profile-window-type');
       this.bindComboRow('profile-color-scheme');
@@ -854,7 +883,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     // Connect all effect settings.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
-      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
+      if (shellVersionIsAtLeast(minMajor, minMinor)) {
         this.bindSwitch(`${effect.getNick()}-enable-effect`);
         effect.bindPreferences(this);
       }
@@ -935,7 +964,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
   // Reads the contents of a JSON file contained in the global resources archive. The data
   // is parsed and returned as a JavaScript object / array.
   _getJSONResource(path) {
-    return JSON.parse(utils.getStringResource(path));
+    return JSON.parse(getStringResource(path));
   }
 
   // This traverses the widget tree below the given parent recursively and returns the
@@ -967,12 +996,11 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
       default_width: 800,
       default_height: 450,
       modal: true,
-      transient_for: utils.isGTK4() ? this._widget.get_root() :
-                                      this._widget.get_toplevel()
+      transient_for: isGTK4() ? this._widget.get_root() : this._widget.get_toplevel()
     });
 
     // Add a header bar to the window.
-    if (utils.isGTK4()) {
+    if (isGTK4()) {
       const header = Gtk.HeaderBar.new();
       window.set_titlebar(header);
     }
@@ -998,7 +1026,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     this.gtkBoxAppend(box, image);
     this.gtkBoxAppend(box, label);
 
-    if (utils.isGTK4()) {
+    if (isGTK4()) {
       window.set_child(box);
       window.show();
     } else {
@@ -1015,7 +1043,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
   _createMessageDialog(title, message, window, buttons) {
     let dialog;
 
-    if (utils.isADW() && Adw.MessageDialog) {
+    if (isADW() && Adw.MessageDialog) {
       dialog = new Adw.MessageDialog({
         heading: title,
         body: message,
@@ -1056,7 +1084,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
       });
     }
 
-    if (utils.isGTK4()) {
+    if (isGTK4()) {
       dialog.set_hide_on_close(true);
     }
 
@@ -1077,26 +1105,4 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
     return dialog;
   }
-}
-
-// This is used for setting up the translations.
-function init() {
-  ExtensionUtils.initTranslations();
-}
-
-// This function is called when the preferences window is created to build and return a
-// Gtk widget. We create a new instance of the PreferencesDialog class each time this
-// method is called. This way we can actually open multiple settings windows and interact
-// with all of them properly.
-function buildPrefsWidget() {
-  var dialog = new PreferencesDialog();
-  return dialog.getWidget();
-}
-
-// If using libadwaita, this method is called. In this case, the primary widget of the
-// preferences dialog is an Adw.PreferencesPage, which we directly add to the window.
-function fillPreferencesWindow(window) {
-  window.set_default_size(650, 750);
-  var dialog = new PreferencesDialog();
-  window.add(dialog.getWidget());
 }

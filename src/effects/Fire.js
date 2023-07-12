@@ -14,14 +14,11 @@
 
 'use strict';
 
-const {Gio} = imports.gi;
+import Gio from 'gi://Gio';
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
-const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
+import {ShaderFactory} from '../ShaderFactory.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
@@ -34,8 +31,7 @@ const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Fire = class {
-
+export default class Effect {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the

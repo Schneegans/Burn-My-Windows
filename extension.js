@@ -14,11 +14,38 @@
 
 'use strict';
 
-const {Clutter, Gio, Meta} = imports.gi;
+import Gio from 'gi://Gio';
+import Meta from 'gi://Meta';
 
-const Main          = imports.ui.main;
-const Workspace     = imports.ui.workspace.Workspace;
-const WindowManager = imports.ui.windowManager.WindowManager;
+import {fromVersion26} from './src/migrate.js';
+import {ProfileManager} from './src/ProfileManager.js';
+import {WindowPicker} from './src/WindowPicker.js';
+import {getStringResource, shellVersionIs, shellVersionIsAtLeast} from './src/utils.js';
+
+import Apparition from './src/effects/Apparition.js';
+import BrokenGlass from './src/effects/BrokenGlass.js';
+import Doom from './src/effects/Doom.js';
+import EnergizeA from './src/effects/EnergizeA.js';
+import EnergizeB from './src/effects/EnergizeB.js';
+import Fire from './src/effects/Fire.js';
+import Glide from './src/effects/Glide.js';
+import Glitch from './src/effects/Glitch.js';
+import Hexagon from './src/effects/Hexagon.js';
+import Incinerate from './src/effects/Incinerate.js';
+import Matrix from './src/effects/Matrix.js';
+import PaintBrush from './src/effects/PaintBrush.js';
+import Pixelate from './src/effects/Pixelate.js';
+import PixelWheel from './src/effects/PixelWheel.js';
+import PixelWipe from './src/effects/PixelWipe.js';
+import Portal from './src/effects/Portal.js';
+import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TRexAttack from './src/effects/TRexAttack.js';
+import TVEffect from './src/effects/TVEffect.js';
+import TVGlitch from './src/effects/TVGlitch.js';
+import Wisps from './src/effects/Wisps.js';
+
+const Main      = imports.ui.main;
+const Workspace = imports.ui.workspace.Workspace;
 
 // The WindowPreview class is only available on GNOME Shell 3.38+;
 let WindowPreview = null;
@@ -30,10 +57,6 @@ try {
 
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const migrate        = Me.imports.src.migrate;
-const utils          = Me.imports.src.utils;
-const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
-const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
@@ -44,7 +67,7 @@ const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
 // to get this working. For more details, read the other comments in this file...       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-class Extension {
+export default class Extension {
 
   // ------------------------------------------------------------------------ public stuff
 
@@ -54,27 +77,27 @@ class Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new Me.imports.src.effects.Apparition.Apparition(),
-      new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
-      new Me.imports.src.effects.Doom.Doom(),
-      new Me.imports.src.effects.EnergizeA.EnergizeA(),
-      new Me.imports.src.effects.EnergizeB.EnergizeB(),
-      new Me.imports.src.effects.Fire.Fire(),
-      new Me.imports.src.effects.Glide.Glide(),
-      new Me.imports.src.effects.Glitch.Glitch(),
-      new Me.imports.src.effects.Hexagon.Hexagon(),
-      new Me.imports.src.effects.Incinerate.Incinerate(),
-      new Me.imports.src.effects.Matrix.Matrix(),
-      new Me.imports.src.effects.PaintBrush.PaintBrush(),
-      new Me.imports.src.effects.Pixelate.Pixelate(),
-      new Me.imports.src.effects.PixelWheel.PixelWheel(),
-      new Me.imports.src.effects.PixelWipe.PixelWipe(),
-      new Me.imports.src.effects.Portal.Portal(),
-      new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
-      new Me.imports.src.effects.TRexAttack.TRexAttack(),
-      new Me.imports.src.effects.TVEffect.TVEffect(),
-      new Me.imports.src.effects.TVGlitch.TVGlitch(),
-      new Me.imports.src.effects.Wisps.Wisps(),
+      new Apparition(),
+      new BrokenGlass(),
+      new Doom(),
+      new EnergizeA(),
+      new EnergizeB(),
+      new Fire(),
+      new Glide(),
+      new Glitch(),
+      new Hexagon(),
+      new Incinerate(),
+      new Matrix(),
+      new PaintBrush(),
+      new Pixelate(),
+      new PixelWheel(),
+      new PixelWipe(),
+      new Portal(),
+      new SnapOfDisintegration(),
+      new TRexAttack(),
+      new TVEffect(),
+      new TVGlitch(),
+      new Wisps(),
     ];
 
     // Load all of our resources.
@@ -91,7 +114,7 @@ class Extension {
       if (lastVersion <= 26) {
         // If the profile migration fails for some reason, the callback will create a
         // default profile instead.
-        migrate.fromVersion26().finally(() => {
+        fromVersion26().finally(() => {
           this._loadProfiles();
           this._settings.set_int('last-extension-version', Me.metadata.version);
         });
@@ -122,14 +145,14 @@ class Extension {
 
     // This is used to get the battery state.
     const UPowerProxy = Gio.DBusProxy.makeProxyWrapper(
-      utils.getStringResource('/interfaces/org.freedesktop.UPower.xml'));
+      getStringResource('/interfaces/org.freedesktop.UPower.xml'));
     this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
                                         '/org/freedesktop/UPower');
 
     // This is used to get the current power profile.
     try {
       const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+        getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
       this._powerProfilesProxy = new PowerProfilesProxy(
         Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
     } catch (e) {
@@ -239,10 +262,10 @@ class Extension {
       // The parameters of this method changed a bit through the versions...
       let realWindow, container;
 
-      if (utils.shellVersionIs(3, 36)) {
+      if (shellVersionIs(3, 36)) {
         container  = clone[0];
         realWindow = container.realWindow;
-      } else if (utils.shellVersionIs(3, 38)) {
+      } else if (shellVersionIs(3, 38)) {
         container  = clone._windowContainer;
         realWindow = params[0].get_compositor_private();
       } else {
@@ -268,7 +291,7 @@ class Extension {
       // the overview window layout. Therefore we call this method in addition.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1363
-      if (utils.shellVersionIs(3, 36)) {
+      if (shellVersionIs(3, 36)) {
         container.connect('destroy', () => this._doRemoveWindow(container.metaWindow));
       }
 
@@ -501,7 +524,7 @@ class Extension {
         }
 
         // If the profile is still matching, we also check the color scheme.
-        if (matches && profileColorScheme != 0 && utils.shellVersionIsAtLeast(42, 0)) {
+        if (matches && profileColorScheme != 0 && shellVersionIsAtLeast(42, 0)) {
           const colorScheme = this._shellSettings.get_string('color-scheme');
           matches &= (profileColorScheme == 1 && colorScheme == 'default') ||
             (profileColorScheme == 2 && colorScheme == 'prefer-dark');
@@ -580,7 +603,7 @@ class Extension {
     // If we are in the overview, we have to enlarge the window's clone as well. We also
     // disable the clone's overlay (e.g. its icon, name, and close button) during the
     // animation.
-    if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
+    if (actor._bmwOverviewClone && shellVersionIsAtLeast(3, 38)) {
       actor._bmwOverviewClone.overlayEnabled = false;
       actor._bmwOverviewCloneContainer.set_pivot_point(0.5, 0.5);
       actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
@@ -597,7 +620,7 @@ class Extension {
     const endID = shader.connect('end-animation', () => {
       shader.disconnect(endID);
 
-      if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
+      if (actor._bmwOverviewClone && shellVersionIsAtLeast(3, 38)) {
         actor._bmwOverviewClone.overlayEnabled   = true;
         actor._bmwOverviewCloneContainer.scale_x = 1.0;
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
@@ -636,7 +659,7 @@ class Extension {
     }
 
     // This was called "realWindow" in GNOME 3.36.
-    const propertyName = utils.shellVersionIs(3, 36) ? 'realWindow' : '_windowActor';
+    const propertyName = shellVersionIs(3, 36) ? 'realWindow' : '_windowActor';
     const actor        = workspace._windows[index][propertyName];
     const shader       = actor.get_effect('burn-my-windows-effect');
 

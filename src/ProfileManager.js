@@ -12,15 +12,14 @@
 // SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-'use strict';
+//'use strict';
 
-const {Gio, GLib, GObject} = imports.gi;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
+const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // Burn-My-Windows allows applying different sets of effect settings under specific     //
@@ -31,7 +30,7 @@ const utils          = Me.imports.src.utils;
 // via Gio.Settings objects.                                                            //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var ProfileManager = class {
+export class ProfileManager {
   // ------------------------------------------------------------------------- constructor
 
   constructor() {

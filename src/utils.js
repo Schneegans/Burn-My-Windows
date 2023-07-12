@@ -14,13 +14,14 @@
 
 'use strict';
 
-const {Gtk, Gio} = imports.gi;
-const ByteArray  = imports.byteArray;
+import Gio from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import GLib from 'gi://GLib';
 
 // libadwaita is available starting with GNOME Shell 42.
 let Adw = null;
 try {
-  Adw = imports.gi.Adw;
+  Adw = await import('gi://Adw');
 } catch (e) {
   // Nothing to do.
 }
@@ -39,11 +40,9 @@ function toNumericVersion(x) {
   return x;
 }
 
+const Me                   = imports.misc.extensionUtils.getCurrentExtension();
 const Config               = imports.misc.config;
 const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVersion);
-
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
@@ -54,7 +53,7 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 // journalctl -f -o cat | grep -E 'particle-effects|'
 // This method is based on a similar script from the Fly-Pie GNOME Shell extension which
 // os published under the MIT License (https://github.com/Schneegans/Fly-Pie).
-function debug(message) {
+export function debug(message) {
   const stack = new Error().stack.split('\n');
 
   // Remove debug() function call from stack.
@@ -68,31 +67,31 @@ function debug(message) {
 }
 
 // This method simply returns true if we are currently using GTK4.
-function isGTK4() {
+export function isGTK4() {
   return Gtk.get_major_version() == 4;
 }
 
 // Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
 // the time - it seems that pop!_OS does not support libadwaita even on GNOME 42).
-function isADW() {
+export function isADW() {
   return Adw && shellVersionIsAtLeast(42, 'beta');
 }
 
 // This method returns 'gtk3', 'gtk4', or 'adw' depending on the currently used GTK / and
 // or libadwaita version.
-function getUIDir() {
+export function getUIDir() {
   return isADW() ? 'adw' : (isGTK4() ? 'gtk4' : 'gtk3');
 }
 
 // This method returns true if the current GNOME Shell version matches the given
 // arguments.
-function shellVersionIs(major, minor) {
+export function shellVersionIs(major, minor) {
   return GS_MAJOR == major && GS_MINOR == toNumericVersion(minor);
 }
 
 // This method returns true if the current GNOME Shell version is at least as high as the
 // given arguments. Supports "alpha" and "beta" for the minor version number.
-function shellVersionIsAtLeast(major, minor) {
+export function shellVersionIsAtLeast(major, minor) {
   if (GS_MAJOR > major) {
     return true;
   }
@@ -106,9 +105,9 @@ function shellVersionIsAtLeast(major, minor) {
 
 // Reads the contents of a file contained in the global resources archive. The data
 // is returned as a string.
-function getStringResource(path) {
+export function getStringResource(path) {
   const data = Gio.resources_lookup_data(path, 0);
-  return ByteArray.toString(ByteArray.fromGBytes(data));
+  return new TextDecoder().decode(data.get_data());
 }
 
 // Executes a command asynchronously and returns the output from 'stdout' on success or
@@ -116,7 +115,7 @@ function getStringResource(path) {
 // 'stdin' and cancellable can be used to stop the process before it finishes.
 // This is directly taken from here:
 // https://gjs.guide/guides/gio/subprocesses.html#complete-examples
-async function executeCommand(argv, input = null, cancellable = null) {
+export async function executeCommand(argv, input = null, cancellable = null) {
   let cancelId = 0;
   let flags    = (Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE);
 

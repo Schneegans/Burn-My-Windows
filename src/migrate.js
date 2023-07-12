@@ -14,18 +14,15 @@
 
 'use strict';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
-const utils          = Me.imports.src.utils;
+import {ProfileManager} from './ProfileManager.js';
+import {debug, executeCommand} from './utils.js';
 
 // Migrating from pre-27 versions is pretty involved. Before, all settings were stored in
 // the standard Gio.Settings backend. Now, there are effect profiles. Depending on the
 // settings one or two profiles may be required.
-async function fromVersion26() {
-  return utils
-    .executeCommand(['dconf', 'dump', '/org/gnome/shell/extensions/burn-my-windows/'])
-    .catch(r => utils.debug('Failed to get old settings for effect migration: ' + r))
+export async function fromVersion26() {
+  return executeCommand(['dconf', 'dump', '/org/gnome/shell/extensions/burn-my-windows/'])
+    .catch(r => debug('Failed to get old settings for effect migration: ' + r))
     .then(r => {
       // If there were no settings before, we do not have to migrate anything. Just use
       // the new defaults.
@@ -33,7 +30,7 @@ async function fromVersion26() {
         return;
       }
 
-      utils.debug('Starting Burn-My-Windows profile migration (old version <= 26)!');
+      debug('Starting Burn-My-Windows profile migration (old version <= 26)!');
 
       // We use this to write the new profiles.
       const profileManager = new ProfileManager();
@@ -41,19 +38,19 @@ async function fromVersion26() {
       // The default value of this was false, so not-present is equal to false.
       const destroyDialogs = r.includes('destroy-dialogs=true');
       if (!destroyDialogs) {
-        utils.debug('Only normal windows will be burned by the new profile(s).');
+        debug('Only normal windows will be burned by the new profile(s).');
       }
 
       // The default value of this was false, so not-present is equal to false.
       const disableOnBattery = r.includes('disable-on-battery=true');
       if (disableOnBattery) {
-        utils.debug('The new profile(s) will not be active on battery.');
+        debug('The new profile(s) will not be active on battery.');
       }
 
       // The default value of this was false, so not-present is equal to false.
       const disableOnPowerSave = r.includes('disable-on-power-save=true');
       if (disableOnPowerSave) {
-        utils.debug('The new profile(s) will not be active in power-save mode.');
+        debug('The new profile(s) will not be active in power-save mode.');
       }
 
       // Remove some unnecessary lines.
@@ -88,21 +85,21 @@ async function fromVersion26() {
       }
 
       // Print all effects we've found.
-      utils.debug('Enabled open effects: ' + openEffects);
-      utils.debug('Enabled close effects: ' + closeEffects);
+      debug('Enabled open effects: ' + openEffects);
+      debug('Enabled close effects: ' + closeEffects);
 
       // If the same effects were used for opening and closing windows or there is either
       // no opening or no closing animation configured, only one profile is required. Else
       // we have to create two new profiles.
       const numProfiles = openEffects.join() == closeEffects.join() ? 1 : 2;
       if (numProfiles == 1) {
-        utils.debug('Only one profile is required.');
+        debug('Only one profile is required.');
       } else if (closeEffects.length == 0) {
-        utils.debug('Only a window-open profile is required.');
+        debug('Only a window-open profile is required.');
       } else if (openEffects.length == 0) {
-        utils.debug('Only a window-close profile is required.');
+        debug('Only a window-close profile is required.');
       } else {
-        utils.debug('Two profiles are required.');
+        debug('Two profiles are required.');
       }
 
       // Remove all open / close lines.
@@ -143,8 +140,8 @@ async function fromVersion26() {
         // Print and save the new profile.
         const profile = profileLines.join('\n');
 
-        utils.debug('The new profile:');
-        utils.debug(profile);
+        debug('The new profile:');
+        debug(profile);
 
         profileManager.createProfile(profile);
 
@@ -165,8 +162,8 @@ async function fromVersion26() {
         // Print and save the new profile.
         const profile = profileLines.join('\n');
 
-        utils.debug('The new window-open profile:');
-        utils.debug(profile);
+        debug('The new window-open profile:');
+        debug(profile);
 
         profileManager.createProfile(profile);
 
@@ -187,8 +184,8 @@ async function fromVersion26() {
         // Print and save the new profile.
         const profile = profileLines.join('\n');
 
-        utils.debug('The new window-close profile:');
-        utils.debug(profile);
+        debug('The new window-close profile:');
+        debug(profile);
 
         profileManager.createProfile(profile);
 
@@ -216,14 +213,14 @@ async function fromVersion26() {
         const openProfile  = openProfileLines.join('\n');
         const closeProfile = closeProfileLines.join('\n');
 
-        utils.debug('The new open-window profile:');
-        utils.debug(openProfile);
-        utils.debug('The new close-window profile:');
-        utils.debug(closeProfile);
+        debug('The new open-window profile:');
+        debug(openProfile);
+        debug('The new close-window profile:');
+        debug(closeProfile);
 
         profileManager.createProfile(openProfile);
         profileManager.createProfile(closeProfile);
       }
     })
-    .catch(r => utils.debug('Failed to migrate settings: ' + r));
+    .catch(r => debug('Failed to migrate settings: ' + r));
 }

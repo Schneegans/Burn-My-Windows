@@ -15,12 +15,13 @@
 
 'use strict';
 
-const {Gio, GLib}  = imports.gi;
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+
 const Main         = imports.ui.main;
 const LookingGlass = imports.ui.lookingGlass;
 
-const Me    = imports.misc.extensionUtils.getCurrentExtension();
-const utils = Me.imports.src.utils;
+import {getStringResource} from './utils.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is based on the window-picking functionality of the Blur-My-Shell extension.    //
@@ -29,12 +30,12 @@ const utils = Me.imports.src.utils;
 // picking.                                                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var WindowPicker = class WindowPicker {
+export class WindowPicker {
   // ------------------------------------------------------------------------- constructor
 
   constructor() {
-    const iFace = utils.getStringResource(
-      '/interfaces/org.gnome.shell.extensions.burn-my-windows.xml');
+    const iFace =
+      getStringResource('/interfaces/org.gnome.shell.extensions.burn-my-windows.xml');
     this._dbus = Gio.DBusExportedObject.wrapJSObject(iFace, this);
   }
 
