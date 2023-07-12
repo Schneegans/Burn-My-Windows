@@ -19,6 +19,7 @@ import Gio from 'gi://Gio';
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 import {ShaderFactory} from '../ShaderFactory.js';
+import {isGTK4} from '../utils.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
@@ -224,7 +225,7 @@ export default class Effect {
 
       dialog.getBuilder().get_object('fire-preset-button').set_menu_model(menu);
 
-      const root = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
+      const root = isGTK4() ? widget.get_root() : widget.get_toplevel();
       root.insert_action_group(groupName, group);
     });
   }

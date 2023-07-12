@@ -17,14 +17,7 @@
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import GLib from 'gi://GLib';
-
-// libadwaita is available starting with GNOME Shell 42.
-let Adw = null;
-try {
-  Adw = await import('gi://Adw');
-} catch (e) {
-  // Nothing to do.
-}
+import Adw from 'gi://Adw';
 
 // Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
 // -2, and -1 are returned respectively.

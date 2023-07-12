@@ -18,9 +18,10 @@ import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk';
 import GLib from 'gi://GLib';
 import Gdk from 'gi://Gdk';
+import Adw from 'gi://Adw';
 
-import {isADW, isGTK4, getUIDir, getStringResource, shellVersionIsAtLeast} from './utils.js';
-import {ProfileManager} from './ProfileManager.js';
+import {isADW, isGTK4, getUIDir, getStringResource, shellVersionIsAtLeast} from './src/utils.js';
+import {ProfileManager} from './src/ProfileManager.js';
 
 import Apparition from './src/effects/Apparition.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
@@ -43,14 +44,6 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
-
-// libadwaita is available starting with GNOME Shell 42.
-let Adw = null;
-try {
-  Adw = await import('gi://Adw');
-} catch (e) {
-  // Nothing to do.
-}
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
