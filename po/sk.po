@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-02 21:54+0200\n"
-"PO-Revision-Date: 2023-03-07 08:41+0000\n"
-"Last-Translator: Jose Riha <jose1711@gmail.com>\n"
+"PO-Revision-Date: 2023-07-23 08:05+0000\n"
+"Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sk/>\n"
 "Language: sk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:220
 #: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
@@ -159,7 +159,7 @@ msgstr "Matrix"
 
 #: src/effects/PaintBrush.js:102
 msgid "Paint Brush"
-msgstr ""
+msgstr "Štetec na maľovanie"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
@@ -544,7 +544,7 @@ msgstr "Veľkosť štvorčeka"
 
 #: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "Veľkosť štetca"
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
