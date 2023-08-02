@@ -37,6 +37,7 @@ Effect | Preview
 **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi. | <img src ="docs/pics/hexagon.gif" />
 **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect. | <img src ="docs/pics/incinerate.gif" />
 **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.| <img src ="docs/pics/matrix.gif" />
+**Paint Brush** <br> Paint or erase your windows with a thick paint brush. | <img src ="docs/pics/paint-brush.gif" />
 **Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.| <img src ="docs/pics/pixelate.gif" />
 **Pixel Wheel** <br> This simple effect pixelates the window and hides the pixels in a wheel-like fashion.| <img src ="docs/pics/pixel-wheel.gif" />
 **Pixel Wipe** <br> This effect pixelates the window and hides the pixels radially, starting from the pointer position.| <img src ="docs/pics/pixel-wipe.gif" />
@@ -71,6 +72,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
+<tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
@@ -89,8 +91,8 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🥇 Current Gold Sponsors</h3>
 <p align="center">
+  <a href="https://github.com/D3vil0p3r">D3vil0p3r</a><br>
   Maxence Sebald<br>
-  <a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
 </p>
 
 <h3 align="center">🥈 Current Silver Sponsors</h3>
@@ -101,13 +103,14 @@ While [coding new features](docs/how-to-create-new-effects.md) or [translating t
 
 <h3 align="center">🥉 Current Bronze Sponsors</h3>
 <p align="center">
+  <a href='https://github.com/SubOptimal'>@SubOptimal</a><br>
   <a href='https://github.com/vlazic'>@vlazic</a><br>
   <!-- <a href="https://github.com/sponsors/Schneegans">Become the first!</a><br> -->
 </p>
 
 <h3 align="center">🏅 Previous Sponsors and One-Time Donators</h3>
 <p align="center">
-  <a href="https://github.com/D3vil0p3r">D3vil0p3r</a><br>
+  <a href="https://github.com/dennis1248">Dennis ten Hoove</a><br>
   <a href="https://github.com/MRR-dev">@MRR-dev</a><br>
   <a href='https://github.com/AngelBrielez'>Angel Brielez</a>
   <a href='https://github.com/taconomix'>@taconomix</a><br>

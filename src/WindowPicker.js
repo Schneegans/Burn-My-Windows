@@ -57,15 +57,18 @@ var WindowPicker = class WindowPicker {
         .filter(e => e.toString().includes('lookingGlass_RedBorderEffect'))
         .forEach(e => target.remove_effect(e));
 
-      let actor = target;
       if (target.toString().includes('MetaSurfaceActor')) {
-        actor = target.get_parent();
+        target = target.get_parent();
+      }
+
+      if (target.toString().includes('ContainerActor')) {
+        target = target.get_parent();
       }
 
       let wmClass = 'window-not-found';
-      if (actor.toString().includes('WindowActor') &&
-          actor.meta_window.get_wm_class() != '') {
-        wmClass = actor.meta_window.get_wm_class();
+      if (target.toString().includes('WindowActor') &&
+          target.meta_window.get_wm_class() != '') {
+        wmClass = target.meta_window.get_wm_class();
       }
 
       this._dbus.emit_signal('WindowPicked', new GLib.Variant('(s)', [wmClass]));

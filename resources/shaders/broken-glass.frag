@@ -31,7 +31,7 @@ void main() {
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
   // Draw the individual shard layers.
-  for (float i = 0; i < SHARD_LAYERS; ++i) {
+  for (float i = 0.0; i < SHARD_LAYERS; ++i) {
 
     // To enable drawing shards outside of the window bounds, the actor was scaled
     // by ACTOR_SCALE. Here we scale and move the texture coordinates so that the
@@ -51,8 +51,8 @@ void main() {
 
     // Move down each layer a bit.
     float gravity =
-      (uForOpening ? -1.0 : 1.0) * uGravity * 0.1 * (i + 1) * progress * progress;
-    coords += vec2(0, gravity);
+      (uForOpening ? -1.0 : 1.0) * uGravity * 0.1 * (i + 1.0) * progress * progress;
+    coords += vec2(0.0, gravity);
 
     // Restore correct position.
     coords += uEpicenter;
@@ -66,7 +66,7 @@ void main() {
     // the bin of the current shard.
     float shardGroup = floor(shardMap.g * SHARD_LAYERS * 0.999);
 
-    if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2)) > 0.0) {
+    if (shardGroup == i && (shardMap.x - pow(progress + 0.1, 2.0)) > 0.0) {
       oColor = getInputColor(coords);
     }
   }
