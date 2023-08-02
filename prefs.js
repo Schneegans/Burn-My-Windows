@@ -297,12 +297,12 @@ var PreferencesDialog = class PreferencesDialog {
               }
             });
             this._effectRows.push(row);
-            row.add_action(previewButton);
+            row.add_action(button);
           } else {
-            row.add_suffix(previewButton);
+            row.add_suffix(button);
           }
 
-          row.add_prefix(button);
+          row.add_prefix(previewButton);
 
           group.add(row);
 
@@ -321,9 +321,9 @@ var PreferencesDialog = class PreferencesDialog {
             {label: effect.getLabel(), hexpand: true, halign: Gtk.Align.START});
           label.get_style_context().add_class('heading');
 
-          this.gtkBoxAppend(header, button);
-          this.gtkBoxAppend(header, label);
           this.gtkBoxAppend(header, previewButton);
+          this.gtkBoxAppend(header, label);
+          this.gtkBoxAppend(header, button);
           this.gtkBoxAppend(container, header);
 
           if (hasPrefs) {

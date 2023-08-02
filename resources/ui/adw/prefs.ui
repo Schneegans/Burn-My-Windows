@@ -221,10 +221,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="margin-bottom">20</property>
         <property name="margin-start">20</property>
         <property name="margin-end">20</property>
-        <property name="title" translatable="yes">Effect Settings</property>
+        <property name="title" translatable="yes">Choose Effects</property>
         <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
 
-        <!-- <child type="header-suffix">
+        <child type="header-suffix">
           <object class="GtkBox">
             <property name="valign">center</property>
             <style>
@@ -233,18 +233,18 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
             <child>
               <object class="GtkButton">
-                <property name="icon-name">bmw-copy-effects-symbolic</property>
+                <property name="label" translatable="yes">All</property>
               </object>
             </child>
 
             <child>
               <object class="GtkButton">
-                <property name="icon-name">bmw-paste-effects-symbolic</property>
+                <property name="label" translatable="yes">None</property>
               </object>
             </child>
 
           </object>
-        </child> -->
+        </child>
       </object>
     </child>
   </object>
