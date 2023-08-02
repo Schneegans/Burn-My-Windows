@@ -25,8 +25,10 @@ void main() {
   vec2 texcoord = iTexCoord.st;
   texcoord      = texcoord * uActorScale + 0.5 - uActorScale * 0.5;
 
+  vec2 warp = (texcoord - uPointerPos) * progress / (1.0 - progress);
+  texcoord += warp * 0.5;
+
   vec4 oColor = getInputColor(texcoord);
-  oColor.rgb *= vec3(1.0, 0.5, 0.5);
 
   if (length(texcoord - uPointerPos) < 0.02) {
     oColor = vec4(1.0);
