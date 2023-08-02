@@ -15,7 +15,8 @@
 // The content from common.glsl is automatically prepended to each shader effect.
 
 uniform vec2 uActorScale;
-uniform vec2 uPointerPos;
+uniform vec2 uInitialPointerPos;
+uniform vec2 uCurrentPointerPos;
 uniform vec2 uControlPointA;
 uniform vec2 uControlPointB;
 
@@ -25,21 +26,24 @@ void main() {
   vec2 texcoord = iTexCoord.st;
   texcoord      = texcoord * uActorScale + 0.5 - uActorScale * 0.5;
 
-  vec2 warp = (texcoord - uPointerPos) * progress / (1.0 - progress);
-  texcoord += warp * 0.5;
+  vec2 warp = (texcoord - uInitialPointerPos) * progress / (1.0 - progress);
 
-  vec4 oColor = getInputColor(texcoord);
+  vec4 oColor = getInputColor(texcoord + warp);
 
-  if (length(texcoord - uPointerPos) < 0.02) {
+  if (length(texcoord - uInitialPointerPos) < 0.02) {
     oColor = vec4(1.0);
   }
 
-  if (length(texcoord - uControlPointA) < 0.02) {
+  if (length(texcoord - uCurrentPointerPos) < 0.02) {
     oColor = vec4(1.0, 0.0, 0.0, 1.0);
   }
 
-  if (length(texcoord - uControlPointB) < 0.02) {
+  if (length(texcoord - uControlPointA) < 0.02) {
     oColor = vec4(0.0, 1.0, 0.0, 1.0);
+  }
+
+  if (length(texcoord - uControlPointB) < 0.02) {
+    oColor = vec4(0.0, 0.0, 1.0, 1.0);
   }
 
   setOutputColor(oColor);

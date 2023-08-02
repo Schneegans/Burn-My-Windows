@@ -38,14 +38,19 @@ var MagicLamp = class {
   constructor() {
     this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uActorScale    = shader.get_uniform_location('uActorScale');
-      shader._uPointerPos    = shader.get_uniform_location('uPointerPos');
-      shader._uControlPointA = shader.get_uniform_location('uControlPointA');
-      shader._uControlPointB = shader.get_uniform_location('uControlPointB');
+      shader._uActorScale        = shader.get_uniform_location('uActorScale');
+      shader._uInitialPointerPos = shader.get_uniform_location('uInitialPointerPos');
+      shader._uCurrentPointerPos = shader.get_uniform_location('uCurrentPointerPos');
+      shader._uControlPointA     = shader.get_uniform_location('uControlPointA');
+      shader._uControlPointB     = shader.get_uniform_location('uControlPointB');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation',
                      (shader, settings, forOpening, testMode, actor) => {
+                       this._initialPointerPos = null;
+                       this._controlPointA     = null;
+                       this._controlPointB     = null;
+
                        shader.set_uniform_float(shader._uActorScale, 2, [
                          2.0 * Math.max(1.0, global.stage.width / actor.width),
                          2.0 * Math.max(1.0, global.stage.height / actor.height)
@@ -70,13 +75,19 @@ var MagicLamp = class {
             localY / this._actor.height * scale[1] + 0.5 - scale[1] * 0.5,
           ];
         };
+
         const pointer = global.get_pointer();
 
         {
           const [ok, x, y] = convertCoords(pointer);
 
           if (ok) {
-            shader.set_uniform_float(shader._uPointerPos, 2, [x, y]);
+            if (!this._initialPointerPos) {
+              this._initialPointerPos = [x, y];
+              shader.set_uniform_float(shader._uInitialPointerPos, 2, [x, y]);
+            }
+
+            shader.set_uniform_float(shader._uCurrentPointerPos, 2, [x, y]);
           }
         }
 
@@ -86,16 +97,16 @@ var MagicLamp = class {
           const controlPointA =
             [pointer[0] * 0.33 + 0.66 * center.x, pointer[1] * 0.33 + 0.66 * center.y];
 
-          if (!this._uControlPointA) {
-            this._uControlPointA = controlPointA;
+          if (!this._controlPointA) {
+            this._controlPointA = controlPointA;
           } else {
-            this._uControlPointA = [
-              this._uControlPointA[0] * 0.95 + controlPointA[0] * 0.05,
-              this._uControlPointA[1] * 0.95 + controlPointA[1] * 0.05
+            this._controlPointA = [
+              this._controlPointA[0] * 0.95 + controlPointA[0] * 0.05,
+              this._controlPointA[1] * 0.95 + controlPointA[1] * 0.05
             ];
           }
 
-          const [ok, x, y] = convertCoords(this._uControlPointA);
+          const [ok, x, y] = convertCoords(this._controlPointA);
 
           shader.set_uniform_float(shader._uControlPointA, 2, [x, y]);
         }
@@ -106,16 +117,16 @@ var MagicLamp = class {
           const controlPointB =
             [pointer[0] * 0.66 + 0.33 * center.x, pointer[1] * 0.66 + 0.33 * center.y];
 
-          if (!this._uControlPointB) {
-            this._uControlPointB = controlPointB;
+          if (!this._controlPointB) {
+            this._controlPointB = controlPointB;
           } else {
-            this._uControlPointB = [
-              this._uControlPointB[0] * 0.9 + controlPointB[0] * 0.1,
-              this._uControlPointB[1] * 0.9 + controlPointB[1] * 0.1
+            this._controlPointB = [
+              this._controlPointB[0] * 0.9 + controlPointB[0] * 0.1,
+              this._controlPointB[1] * 0.9 + controlPointB[1] * 0.1
             ];
           }
 
-          const [ok, x, y] = convertCoords(this._uControlPointB);
+          const [ok, x, y] = convertCoords(this._controlPointB);
 
           shader.set_uniform_float(shader._uControlPointB, 2, [x, y]);
         }
