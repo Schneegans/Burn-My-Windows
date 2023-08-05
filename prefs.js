@@ -197,6 +197,19 @@ var PreferencesDialog = class PreferencesDialog {
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('general-prefs');
 
+    // Add the functionality to the choose-all and choose-none buttons.
+    this._builder.get_object('choose-all-effects-button').connect('clicked', () => {
+      this._ALL_EFFECTS.forEach(effect => {
+        this.getProfileSettings().set_boolean(`${effect.getNick()}-enable-effect`, true);
+      });
+    });
+
+    this._builder.get_object('choose-no-effects-button').connect('clicked', () => {
+      this._ALL_EFFECTS.forEach(effect => {
+        this.getProfileSettings().set_boolean(`${effect.getNick()}-enable-effect`, false);
+      });
+    });
+
     // Then add a preferences group for the effect expander rows.
     const group = this._builder.get_object('effects-group');
 

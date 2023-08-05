@@ -232,13 +232,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
             </style>
 
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="choose-all-effects-button">
                 <property name="label" translatable="yes">All</property>
               </object>
             </child>
 
             <child>
-              <object class="GtkButton">
+              <object class="GtkButton" id="choose-no-effects-button">
                 <property name="label" translatable="yes">None</property>
               </object>
             </child>
