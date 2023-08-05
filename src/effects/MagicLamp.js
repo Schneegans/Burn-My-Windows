@@ -101,8 +101,8 @@ var MagicLamp = class {
             this._controlPointA = controlPointA;
           } else {
             this._controlPointA = [
-              this._controlPointA[0] * 0.95 + controlPointA[0] * 0.05,
-              this._controlPointA[1] * 0.95 + controlPointA[1] * 0.05
+              this._controlPointA[0] * 0.99 + controlPointA[0] * 0.01,
+              this._controlPointA[1] * 0.99 + controlPointA[1] * 0.01
             ];
           }
 
@@ -121,8 +121,8 @@ var MagicLamp = class {
             this._controlPointB = controlPointB;
           } else {
             this._controlPointB = [
-              this._controlPointB[0] * 0.9 + controlPointB[0] * 0.1,
-              this._controlPointB[1] * 0.9 + controlPointB[1] * 0.1
+              this._controlPointB[0] * 0.95 + controlPointB[0] * 0.05,
+              this._controlPointB[1] * 0.95 + controlPointB[1] * 0.05
             ];
           }
 
