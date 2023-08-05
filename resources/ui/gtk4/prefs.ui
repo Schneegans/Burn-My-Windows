@@ -78,19 +78,55 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <property name="spacing">5</property>
 
                 <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">Effect Selection</property>
-                    <property name="halign">start</property>
-                    <style>
-                      <class name="heading" />
-                    </style>
-                  </object>
-                </child>
+                  <object class="GtkBox">
 
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
-                    <property name="halign">start</property>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <property name="hexpand">true</property>
+
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">Effect Selection</property>
+                            <property name="halign">start</property>
+                            <style>
+                              <class name="heading" />
+                            </style>
+                          </object>
+                        </child>
+
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="label" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+                            <property name="halign">start</property>
+                          </object>
+                        </child>
+
+                      </object>
+                    </child>
+
+                    <child>
+                      <object class="GtkBox">
+                        <property name="valign">center</property>
+                        <style>
+                          <class name="linked" />
+                        </style>
+
+                        <child>
+                          <object class="GtkButton" id="choose-all-effects-button">
+                            <property name="label" translatable="yes">All</property>
+                          </object>
+                        </child>
+
+                        <child>
+                          <object class="GtkButton" id="choose-no-effects-button">
+                            <property name="label" translatable="yes">None</property>
+                          </object>
+                        </child>
+
+                      </object>
+                    </child>
                   </object>
                 </child>
 
