@@ -221,7 +221,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="margin-bottom">20</property>
         <property name="margin-start">20</property>
         <property name="margin-end">20</property>
-        <property name="title" translatable="yes">Choose Effects</property>
+        <property name="title" translatable="yes">Effect Selection</property>
         <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
 
         <child type="header-suffix">

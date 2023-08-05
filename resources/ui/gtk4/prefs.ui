@@ -79,7 +79,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
                 <child>
                   <object class="GtkLabel">
-                    <property name="label" translatable="yes">Effect Settings</property>
+                    <property name="label" translatable="yes">Effect Selection</property>
                     <property name="halign">start</property>
                     <style>
                       <class name="heading" />
