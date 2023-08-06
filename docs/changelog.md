@@ -13,6 +13,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - Two convenience buttons have been added to the preferences dialog. One allows you to select all effects, the other one allows you to deselect all effects.
 
+#### Bug Fixes
+
+- Some effects (Fire, Incinerate, Energize A, Energize B) are faded towards the edges of the window. This used to look weird when the window is maximized. This has been fixed.
+
 ## [Burn My Windows 35](https://github.com/schneegans/Burn-My-Windows/releases/tag/v35)
 
 **Release Date:** 2023-07-03
