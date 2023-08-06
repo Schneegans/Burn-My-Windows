@@ -13,6 +13,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - Two convenience buttons have been added to the preferences dialog. One allows you to select all effects, the other one allows you to deselect all effects.
 
+#### Bug Fixes
+
+- On KDE, the animations are not applied to IntelliJ IDEs anymore. These IDEs use windows for their tooltips which do not set the WM class correctly. This caused the animations to be applied to the tooltips as well making them unusable. This is rather a workaround than a fix, but makes the effect usable again in conjunction with IntelliJ IDEs.
+
 ## [Burn My Windows 35](https://github.com/schneegans/Burn-My-Windows/releases/tag/v35)
 
 **Release Date:** 2023-07-03
