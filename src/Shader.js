@@ -75,11 +75,12 @@ var Shader = GObject.registerClass(
       this._time     = 0;
 
       // Store standard uniform locations.
-      this._uForOpening = this.get_uniform_location('uForOpening');
-      this._uProgress   = this.get_uniform_location('uProgress');
-      this._uDuration   = this.get_uniform_location('uDuration');
-      this._uSize       = this.get_uniform_location('uSize');
-      this._uPadding    = this.get_uniform_location('uPadding');
+      this._uForOpening   = this.get_uniform_location('uForOpening');
+      this._uIsFullscreen = this.get_uniform_location('uIsFullscreen');
+      this._uProgress     = this.get_uniform_location('uProgress');
+      this._uDuration     = this.get_uniform_location('uDuration');
+      this._uSize         = this.get_uniform_location('uSize');
+      this._uPadding      = this.get_uniform_location('uPadding');
 
       // Create a timeline to drive the animation.
       this._timeline = new Clutter.Timeline();
@@ -124,9 +125,13 @@ var Shader = GObject.registerClass(
       // This is not necessarily symmetric, but I haven't figured out a way to
       // get the actual values...
       const padding = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
+      const isFullscreen =
+        actor.meta_window.get_maximized() === Meta.MaximizeFlags.BOTH ||
+        actor.meta_window.fullscreen;
 
       this.set_uniform_float(this._uPadding, 1, [padding]);
       this.set_uniform_float(this._uForOpening, 1, [forOpening]);
+      this.set_uniform_float(this._uIsFullscreen, 1, [isFullscreen]);
       this.set_uniform_float(this._uDuration, 1, [duration * 0.001]);
       this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 
