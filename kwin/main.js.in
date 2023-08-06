@@ -122,6 +122,7 @@ class %EFFECT_CLASS% {
         this.setupForcedRoles(window);
 
         effect.setUniform(this.shader, 'uForOpening', 1.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
 
         %ON_ANIMATION_BEGIN%
 
@@ -161,6 +162,7 @@ class %EFFECT_CLASS% {
         this.setupForcedRoles(window);
 
         effect.setUniform(this.shader, 'uForOpening', 0.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
 
         %ON_ANIMATION_BEGIN%
 
