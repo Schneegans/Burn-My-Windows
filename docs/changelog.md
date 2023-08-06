@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 36](https://github.com/schneegans/Burn-My-Windows/releases/tag/v36)
+
+**Release Date:** TBD
+
+#### New Features
+
+- Two convenience buttons have been added to the preferences dialog. One allows you to select all effects, the other one allows you to deselect all effects.
+
 ## [Burn My Windows 35](https://github.com/schneegans/Burn-My-Windows/releases/tag/v35)
 
 **Release Date:** 2023-07-03

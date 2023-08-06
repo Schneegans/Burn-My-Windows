@@ -222,6 +222,19 @@ export default class ExtensionPreferences {
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('general-prefs');
 
+    // Add the functionality to the choose-all and choose-none buttons.
+    this._builder.get_object('choose-all-effects-button').connect('clicked', () => {
+      this._ALL_EFFECTS.forEach(effect => {
+        this.getProfileSettings().set_boolean(`${effect.getNick()}-enable-effect`, true);
+      });
+    });
+
+    this._builder.get_object('choose-no-effects-button').connect('clicked', () => {
+      this._ALL_EFFECTS.forEach(effect => {
+        this.getProfileSettings().set_boolean(`${effect.getNick()}-enable-effect`, false);
+      });
+    });
+
     // Then add a preferences group for the effect expander rows.
     const group = this._builder.get_object('effects-group');
 
@@ -322,12 +335,12 @@ export default class ExtensionPreferences {
               }
             });
             this._effectRows.push(row);
-            row.add_action(previewButton);
+            row.add_action(button);
           } else {
-            row.add_suffix(previewButton);
+            row.add_suffix(button);
           }
 
-          row.add_prefix(button);
+          row.add_prefix(previewButton);
 
           group.add(row);
 
@@ -346,9 +359,9 @@ export default class ExtensionPreferences {
             {label: effect.getLabel(), hexpand: true, halign: Gtk.Align.START});
           label.get_style_context().add_class('heading');
 
-          this.gtkBoxAppend(header, button);
-          this.gtkBoxAppend(header, label);
           this.gtkBoxAppend(header, previewButton);
+          this.gtkBoxAppend(header, label);
+          this.gtkBoxAppend(header, button);
           this.gtkBoxAppend(container, header);
 
           if (hasPrefs) {
