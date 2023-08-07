@@ -19,7 +19,7 @@ import GObject from 'gi://GObject';
 import {Shader} from './Shader.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Each effect of Burn-My-Windows owns an instance of this class. It is used to created //
+// Each effect of Burn-My-Windows owns an instance of this class. It is used to create  //
 // shaders whenever a new one is required. It tries to re-use old shaders as much as    //
 // possible in order to avoid memory leaks.                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
