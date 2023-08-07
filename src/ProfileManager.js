@@ -12,7 +12,7 @@
 // SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-//'use strict';
+'use strict';
 
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';

@@ -20,7 +20,7 @@ import GLib from 'gi://GLib';
 import Gdk from 'gi://Gdk';
 import Adw from 'gi://Adw';
 
-import {isADW, isGTK4, getUIDir, getStringResource, shellVersionIsAtLeast} from './src/utils.js';
+import {getUIDir, getStringResource, shellVersionIsAtLeast} from './src/utils.js';
 import {ProfileManager} from './src/ProfileManager.js';
 
 import Apparition from './src/effects/Apparition.js';
@@ -90,27 +90,8 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       Gio.Resource.load(this.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
-    // Load the CSS file for the settings dialog. If using libadwaita, we do not need an
-    // additional style sheet.
-    if (!isADW()) {
-      const provider = Gtk.CssProvider.new();
-      if (isGTK4()) {
-        provider.load_from_resource('/css/gtk4.css');
-        Gtk.StyleContext.add_provider_for_display(
-          Gdk.Display.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-      } else {
-        provider.load_from_resource('/css/gtk3.css');
-        Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider,
-                                                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-      }
-    }
-
     // Make sure custom icons are found.
-    if (isGTK4()) {
-      Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).add_resource_path('/img');
-    } else {
-      Gtk.IconTheme.get_default().add_resource_path('/img');
-    }
+    Gtk.IconTheme.get_for_display(Gdk.Display.get_default()).add_resource_path('/img');
 
     // Load the general user interface files.
     this._builder = new Gtk.Builder();
@@ -147,18 +128,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     }
 
     let powerProfileRow = this._builder.get_object('profile-power-profile');
-    if (!isADW()) {
-      powerProfileRow = powerProfileRow.get_parent().get_parent();
-    }
     powerProfileRow.set_visible(hasPowerProfiles);
-
-    // The global color scheme is only available starting with GNOME Shell 42. We hide the
-    // corresponding settings row on older versions.
-    let colorSchemeRow = this._builder.get_object('profile-color-scheme');
-    if (!isADW()) {
-      colorSchemeRow = colorSchemeRow.get_parent().get_parent();
-    }
-    colorSchemeRow.set_visible(shellVersionIsAtLeast(42, 0));
 
     // Wire up the window picker of the profile editor. Whenever the app-chooser button is
     // clicked, we call a method of the extension which will initiate the window picking.
@@ -196,22 +166,6 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
         }
       });
 
-    // If using libadwaita, the visibility of the profile-editor Adw.Flap is controlled
-    // using bindings in the ui file. On GTK3 and GTK4 we have to wire up this toggling
-    // here since we are using a Gtk.Stack instead of an Adw.Flap.
-    if (!isADW()) {
-      const profileEditorButton = this._builder.get_object('edit-profile-button');
-      profileEditorButton.connect('toggled', b => {
-        if (b.active) {
-          this._builder.get_object('general-prefs')
-            .set_visible_child(this._builder.get_object('profile-editor'));
-        } else {
-          this._builder.get_object('general-prefs')
-            .set_visible_child(this._builder.get_object('effect-editor'));
-        }
-      });
-    }
-
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('general-prefs');
 
@@ -235,25 +189,6 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     // accordion-like behavior of the effect settings.
     this._effectRows = [];
 
-    if (!isADW()) {
-      group.connect('row-activated', (g, row) => {
-        this._effectRows.forEach(r => {
-          if (r == row) {
-            if (r._revealer.get_reveal_child()) {
-              r._revealer.set_reveal_child(false);
-              r._arrow.get_style_context().remove_class('revealed');
-            } else {
-              r._revealer.set_reveal_child(true);
-              r._arrow.get_style_context().add_class('revealed');
-            }
-          } else {
-            r._revealer.set_reveal_child(false);
-            r._arrow.get_style_context().remove_class('revealed');
-          }
-        });
-      });
-    }
-
     // Now add all the rows.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
@@ -276,12 +211,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
         }
 
         // The preview button.
-        let previewButton;
-        if (isGTK4()) {
-          previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
-        } else {
-          previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic', 1);
-        }
+        let previewButton = Gtk.Button.new_from_icon_name('bmw-preview-symbolic');
         previewButton.get_style_context().add_class('circular');
         previewButton.get_style_context().add_class('flat');
         previewButton.set_tooltip_text(_('Preview this effect'));
@@ -295,98 +225,52 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
         button.set_valign(Gtk.Align.CENTER);
         this._builder.expose_object(`${effect.getNick()}-enable-effect`, button);
 
-        if (isADW()) {
+        let row;
+        if (hasPrefs) {
 
-          let row;
-          if (hasPrefs) {
-
-            // Add the effect's preferences (if any).
-            row = this._builder.get_object(`${effect.getNick()}-prefs`);
-          } else if (isADW()) {
-            row = Adw.ActionRow.new();
-          }
-
-          // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
-          // not yet exist.
-          if (row.set_use_markup) {
-            row.set_title('<b>' + effect.getLabel() + '</b>');
-            row.set_use_markup(true);
-          } else {
-            row.set_title(effect.getLabel());
-          }
-
-          // Un-expand any previously expanded effect row. This way we ensure that there
-          // is only one expanded row at any time.
-          if (hasPrefs) {
-            row.connect('notify::expanded', currentRow => {
-              if (currentRow.get_expanded()) {
-                this._effectRows.forEach(row => {
-                  if (row != currentRow) {
-                    row.set_expanded(false);
-                  }
-                });
-              }
-            });
-            this._effectRows.push(row);
-            row.add_action(button);
-          } else {
-            row.add_suffix(button);
-          }
-
-          row.add_prefix(previewButton);
-
-          group.add(row);
-
-
+          // Add the effect's preferences (if any).
+          row = this._builder.get_object(`${effect.getNick()}-prefs`);
         } else {
-
-          const row = new Gtk.ListBoxRow();
-          row.get_style_context().add_class('effect-row');
-
-          const container = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL});
-
-          const header = new Gtk.Box({spacing: 12});
-          header.get_style_context().add_class('effect-row-header');
-
-          const label = new Gtk.Label(
-            {label: effect.getLabel(), hexpand: true, halign: Gtk.Align.START});
-          label.get_style_context().add_class('heading');
-
-          this.gtkBoxAppend(header, previewButton);
-          this.gtkBoxAppend(header, label);
-          this.gtkBoxAppend(header, button);
-          this.gtkBoxAppend(container, header);
-
-          if (hasPrefs) {
-            const revealer = this._builder.get_object(`${effect.getNick()}-prefs`);
-            const arrow    = new Gtk.Image({icon_name: 'go-down-symbolic'});
-            arrow.get_style_context().add_class('revealer-arrow');
-            this.gtkBoxAppend(header, arrow);
-            this.gtkBoxAppend(container, revealer);
-            row._revealer = revealer;
-            row._arrow    = arrow;
-
-            row.set_activatable(true);
-            this._effectRows.push(row);
-          } else {
-            row.set_activatable(false);
-          }
-
-          if (isGTK4()) {
-            row.set_child(container);
-            group.append(row);
-          } else {
-            row.add(container);
-            group.add(row);
-          }
+          row = Adw.ActionRow.new();
         }
+
+        // On older versions of Adw (e.g. on GNOME Shell <43), the set_use_markup() does
+        // not yet exist.
+        if (row.set_use_markup) {
+          row.set_title('<b>' + effect.getLabel() + '</b>');
+          row.set_use_markup(true);
+        } else {
+          row.set_title(effect.getLabel());
+        }
+
+        // Un-expand any previously expanded effect row. This way we ensure that there
+        // is only one expanded row at any time.
+        if (hasPrefs) {
+          row.connect('notify::expanded', currentRow => {
+            if (currentRow.get_expanded()) {
+              this._effectRows.forEach(row => {
+                if (row != currentRow) {
+                  row.set_expanded(false);
+                }
+              });
+            }
+          });
+          this._effectRows.push(row);
+          row.add_action(button);
+        } else {
+          row.add_suffix(button);
+        }
+
+        row.add_prefix(previewButton);
+
+        group.add(row);
       }
     });
 
     // Some things can only be done once the widget is shown as we do not have access to
     // the toplevel widget before.
     this._widget.connect('realize', (widget) => {
-      const window = isGTK4() ? widget.get_root() : widget.get_toplevel();
+      const window = widget.get_root();
 
       // Show the version number in the title bar.
       window.set_title(`Burn-My-Windows ${this.metadata.version}`);
@@ -402,25 +286,16 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
           GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
             this._showUpdateInfoTimeout = 0;
 
-            if (isADW()) {
-              const toast = Adw.Toast.new(_('Burn-My-Windows has been updated!'));
-              toast.set_button_label(_('View Changelog'));
-              toast.set_action_name('prefs.changelog');
-              toast.set_timeout(0);
+            const toast = Adw.Toast.new(_('Burn-My-Windows has been updated!'));
+            toast.set_button_label(_('View Changelog'));
+            toast.set_action_name('prefs.changelog');
+            toast.set_timeout(0);
 
-              toast.connect('dismissed',
-                            () => this._settings.set_int('last-prefs-version',
-                                                         this.metadata.version));
+            toast.connect(
+              'dismissed',
+              () => this._settings.set_int('last-prefs-version', this.metadata.version));
 
-              window.add_toast(toast);
-            } else {
-              const infoBar = this._builder.get_object('update-info');
-              infoBar.connect('response', i => {
-                this._settings.set_int('last-prefs-version', this.metadata.version);
-                i.set_revealed(false);
-              });
-              infoBar.set_revealed(true);
-            }
+            window.add_toast(toast);
 
             return false;
           });
@@ -467,11 +342,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
               }
             ]);
 
-          if (isGTK4()) {
-            dialog.show();
-          } else {
-            dialog.show_all();
-          }
+          dialog.show();
         }
       });
 
@@ -486,39 +357,28 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
         // Starting with GNOME Shell 42, we have to hack our way through the widget tree
         // of the Adw.PreferencesWindow...
-        if (isADW()) {
-          const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
-          header.pack_start(menu);
-          header.set_title_widget(this._builder.get_object('profile-button'));
+        const header = this._findWidgetByType(window.get_content(), Adw.HeaderBar);
+        header.pack_start(menu);
+        header.set_title_widget(this._builder.get_object('profile-button'));
 
-          // GNOME Shell extensions are forced to use a AdwPreferencesWindow. This already
-          // includes a Gtk.ScrolledWindow as well as an Adw.Clamp. For the profile
-          // editing, we want to use an Adw.Flap which reveals itself from the top. This
-          // needs to be inserted in the widget hierarchy above the Adw.Clamp, else it
-          // would look ugly. Therefore, we fiddle around with the internal widgets...
-          const flap     = this._builder.get_object('profile-editor-flap');
-          const clamp    = this._findWidgetByType(window.get_content(), Adw.Clamp);
-          const viewport = clamp.get_parent();
-          viewport.get_parent().set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER);
-          viewport.set_child(flap);
+        // GNOME Shell extensions are forced to use a AdwPreferencesWindow. This already
+        // includes a Gtk.ScrolledWindow as well as an Adw.Clamp. For the profile
+        // editing, we want to use an Adw.Flap which reveals itself from the top. This
+        // needs to be inserted in the widget hierarchy above the Adw.Clamp, else it
+        // would look ugly. Therefore, we fiddle around with the internal widgets...
+        const flap     = this._builder.get_object('profile-editor-flap');
+        const clamp    = this._findWidgetByType(window.get_content(), Adw.Clamp);
+        const viewport = clamp.get_parent();
+        viewport.get_parent().set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER);
+        viewport.set_child(flap);
 
-          const scrolledWindow = Gtk.ScrolledWindow.new();
-          scrolledWindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-          scrolledWindow.set_propagate_natural_height(true);
-          scrolledWindow.set_vexpand(true);
-          scrolledWindow.set_child(clamp);
+        const scrolledWindow = Gtk.ScrolledWindow.new();
+        scrolledWindow.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        scrolledWindow.set_propagate_natural_height(true);
+        scrolledWindow.set_vexpand(true);
+        scrolledWindow.set_child(clamp);
 
-          flap.set_content(scrolledWindow);
-
-        } else if (isGTK4()) {
-          window.get_titlebar().pack_start(menu);
-          window.get_titlebar().set_title_widget(
-            this._builder.get_object('profile-button'));
-        } else {
-          window.get_titlebar().pack_start(menu);
-          window.get_titlebar().set_custom_title(
-            this._builder.get_object('profile-button'));
-        }
+        flap.set_content(scrolledWindow);
 
         const addURIAction = (name, uri) => {
           const action = Gio.SimpleAction.new(name, null);
@@ -567,71 +427,34 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
           const sponsors = this._getJSONResource('/credits/sponsors.json');
           let dialog;
 
-          // We try to use the special Adw.AboutWindow if it is available.
-          if (isADW() && Adw.AboutWindow) {
-            let formatSponsors = (sponsors) => {
-              return sponsors.map(s => {
-                if (s.url == '')
-                  return s.name;
-                else
-                  return `${s.name} ${s.url}`;
-              });
-            };
+          let formatSponsors = (sponsors) => {
+            return sponsors.map(s => {
+              if (s.url == '')
+                return s.name;
+              else
+                return `${s.name} ${s.url}`;
+            });
+          };
 
-            dialog = new Adw.AboutWindow({transient_for: window, modal: true});
-            dialog.set_application_icon('burn-my-windows-symbolic');
-            dialog.set_application_name('Burn-My-Windows');
-            dialog.set_version(`${this.metadata.version}`);
-            dialog.set_developer_name('Simon Schneegans');
-            dialog.set_issue_url('https://github.com/Schneegans/Burn-My-Windows/issues');
-            if (sponsors.gold.length > 0) {
-              dialog.add_credit_section(_('Gold Sponsors'),
-                                        formatSponsors(sponsors.gold));
-            }
-            if (sponsors.silver.length > 0) {
-              dialog.add_credit_section(_('Silver Sponsors'),
-                                        formatSponsors(sponsors.silver));
-            }
-            if (sponsors.bronze.length > 0) {
-              dialog.add_credit_section(_('Bronze Sponsors'),
-                                        formatSponsors(sponsors.bronze));
-            }
-            if (sponsors.past.length > 0) {
-              dialog.add_credit_section(_('Past Sponsors'),
-                                        formatSponsors(sponsors.past));
-            }
-
-          } else {
-
-            let formatSponsors = (sponsors) => {
-              return sponsors.map(s => {
-                if (s.url == '')
-                  return s.name;
-                else
-                  return `<a href="${s.url}">${s.name}</a>`;
-              });
-            };
-
-            dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
-            dialog.set_logo_icon_name('burn-my-windows-symbolic');
-            dialog.set_program_name(`Burn-My-Windows ${this.metadata.version}`);
-            dialog.set_authors(['Simon Schneegans']);
-            if (sponsors.gold.length > 0) {
-              dialog.add_credit_section(_('Gold Sponsors'),
-                                        formatSponsors(sponsors.gold));
-            }
-            if (sponsors.silver.length > 0) {
-              dialog.add_credit_section(_('Silver Sponsors'),
-                                        formatSponsors(sponsors.silver));
-            }
-            if (sponsors.bronze.length > 0) {
-              dialog.add_credit_section(_('Bronze Sponsors'),
-                                        formatSponsors(sponsors.bronze));
-            }
-            if (sponsors.past.length > 0) {
-              dialog.add_credit_section(_('Past Sponsors'),
-                                        formatSponsors(sponsors.past));
-            }
+          dialog = new Adw.AboutWindow({transient_for: window, modal: true});
+          dialog.set_application_icon('burn-my-windows-symbolic');
+          dialog.set_application_name('Burn-My-Windows');
+          dialog.set_version(`${this.metadata.version}`);
+          dialog.set_developer_name('Simon Schneegans');
+          dialog.set_issue_url('https://github.com/Schneegans/Burn-My-Windows/issues');
+          if (sponsors.gold.length > 0) {
+            dialog.add_credit_section(_('Gold Sponsors'), formatSponsors(sponsors.gold));
+          }
+          if (sponsors.silver.length > 0) {
+            dialog.add_credit_section(_('Silver Sponsors'),
+                                      formatSponsors(sponsors.silver));
+          }
+          if (sponsors.bronze.length > 0) {
+            dialog.add_credit_section(_('Bronze Sponsors'),
+                                      formatSponsors(sponsors.bronze));
+          }
+          if (sponsors.past.length > 0) {
+            dialog.add_credit_section(_('Past Sponsors'), formatSponsors(sponsors.past));
           }
 
           dialog.set_translator_credits([...translators].join('\n'));
@@ -639,11 +462,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
           dialog.set_website('https://github.com/Schneegans/Burn-My-Windows');
           dialog.set_license_type(Gtk.License.GPL_3_0);
 
-          if (isGTK4()) {
-            dialog.show();
-          } else {
-            dialog.show_all();
-          }
+          dialog.show();
         });
 
         group.add_action(aboutAction);
@@ -728,11 +547,6 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
       }
     });
 
-    // Show the widgets on GTK3.
-    if (!isGTK4()) {
-      this._widget.show_all();
-    }
-
     window.add(this._widget);
   }
 
@@ -814,17 +628,6 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     this._bindResetButton(settingsKey);
   }
 
-  // ----------------------------------------------------------------- GTK3 / GTK4 helpers
-
-  // Appends the given child widget to the given Gtk.Box.
-  gtkBoxAppend(box, child) {
-    if (isGTK4()) {
-      box.append(child);
-    } else {
-      box.pack_start(child, false, true, 0);
-    }
-  }
-
   // ----------------------------------------------------------------------- private stuff
 
   // This loads all settings from the profile given in the settings key 'active-profile'.
@@ -863,20 +666,11 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     updateProfileButtonMenuIfChanged('profile-high-priority');
 
     this.bindEntry('profile-app');
-
-    if (isADW()) {
-      this.bindComboRow('profile-animation-type');
-      this.bindComboRow('profile-window-type');
-      this.bindComboRow('profile-color-scheme');
-      this.bindComboRow('profile-power-mode');
-      this.bindComboRow('profile-power-profile');
-    } else {
-      this.bindComboBox('profile-animation-type');
-      this.bindComboBox('profile-window-type');
-      this.bindComboBox('profile-color-scheme');
-      this.bindComboBox('profile-power-mode');
-      this.bindComboBox('profile-power-profile');
-    }
+    this.bindComboRow('profile-animation-type');
+    this.bindComboRow('profile-window-type');
+    this.bindComboRow('profile-color-scheme');
+    this.bindComboRow('profile-power-mode');
+    this.bindComboRow('profile-power-profile');
     this.bindSwitch('profile-high-priority');
 
     // Connect all effect settings.
@@ -1047,14 +841,12 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
       default_width: 800,
       default_height: 450,
       modal: true,
-      transient_for: isGTK4() ? this._widget.get_root() : this._widget.get_toplevel()
+      transient_for: this._widget.get_root()
     });
 
     // Add a header bar to the window.
-    if (isGTK4()) {
-      const header = Gtk.HeaderBar.new();
-      window.set_titlebar(header);
-    }
+    const header = Gtk.HeaderBar.new();
+    window.set_titlebar(header);
 
     const box = new Gtk.Box({
       orientation: Gtk.Orientation.VERTICAL,
@@ -1074,16 +866,11 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
       pixel_size: 128,
     });
 
-    this.gtkBoxAppend(box, image);
-    this.gtkBoxAppend(box, label);
+    box.append(image);
+    box.append(label);
 
-    if (isGTK4()) {
-      window.set_child(box);
-      window.show();
-    } else {
-      window.add(box);
-      window.show_all();
-    }
+    window.set_child(box);
+    window.show();
   }
 
   // Helper function to show a message dialog. The dialog is modal and has a title, a
@@ -1092,53 +879,28 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
   // called when the button is clicked.
   // This method works on GTK3, GTK4, and libadwaita.
   _createMessageDialog(title, message, window, buttons) {
-    let dialog;
+    let dialog = new Adw.MessageDialog({
+      heading: title,
+      body: message,
+      body_use_markup: true,
+      modal: true,
+    });
 
-    if (isADW() && Adw.MessageDialog) {
-      dialog = new Adw.MessageDialog({
-        heading: title,
-        body: message,
-        body_use_markup: true,
-        modal: true,
-      });
+    buttons.forEach((button, i) => {
+      const response = i.toString();
+      dialog.add_response(response, button.label);
 
-      buttons.forEach((button, i) => {
-        const response = i.toString();
-        dialog.add_response(response, button.label);
+      if (button.default) {
+        dialog.set_default_response(response);
+        dialog.set_close_response(response);
+      }
 
-        if (button.default) {
-          dialog.set_default_response(response);
-          dialog.set_close_response(response);
-        }
+      if (button.destructive) {
+        dialog.set_response_appearance(response, Adw.ResponseAppearance.DESTRUCTIVE);
+      }
+    });
 
-        if (button.destructive) {
-          dialog.set_response_appearance(response, Adw.ResponseAppearance.DESTRUCTIVE);
-        }
-      });
-
-    } else {
-
-      dialog = new Gtk.MessageDialog({
-        text: title,
-        secondary_text: message,
-        secondary_use_markup: true,
-        modal: true,
-        title: '',
-      });
-
-      buttons.forEach((button, i) => {
-        dialog.add_button(button.label, i);
-
-        if (button.default) {
-          dialog.set_default_response(i);
-        }
-      });
-    }
-
-    if (isGTK4()) {
-      dialog.set_hide_on_close(true);
-    }
-
+    dialog.set_hide_on_close(true);
     dialog.set_transient_for(window);
 
     // If the dialog is closed or a button is clicked, we hide the dialog and call the

@@ -20,7 +20,7 @@ import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import Meta from 'gi://Meta';
 
-import {shellVersionIsAtLeast, getStringResource} from './utils.js';
+import {getStringResource} from './utils.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is the base class for all shaders of Burn-My-Windows. It automagically loads    //
@@ -186,10 +186,8 @@ export var Shader = GObject.registerClass(
       // to undo this. It is a pity that we have to do this here, as it is not really
       // required to be done each frame. But it's the only place where we can do it.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2650
-      if (shellVersionIsAtLeast(44, 2)) {
-        this.get_pipeline().set_blend(
-          'RGBA = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))');
-      }
+      this.get_pipeline().set_blend(
+        'RGBA = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))');
 
       this.set_uniform_float(this._uProgress, 1, [this._progress]);
       super.vfunc_paint_target(...params);

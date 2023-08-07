@@ -15,9 +15,7 @@
 'use strict';
 
 import Gio from 'gi://Gio';
-import Gtk from 'gi://Gtk';
 import GLib from 'gi://GLib';
-import Adw from 'gi://Adw';
 
 // Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
 // -2, and -1 are returned respectively.
@@ -40,38 +38,21 @@ const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVers
 // the standard log() functionality by prepending the extension's name and the location
 // where the message was logged. As the extensions name is part of the location, you
 // can more effectively watch the log output of GNOME Shell:
-// journalctl -f -o cat | grep -E 'particle-effects|'
-// This method is based on a similar script from the Fly-Pie GNOME Shell extension which
-// os published under the MIT License (https://github.com/Schneegans/Fly-Pie).
+// journalctl -f -o cat | grep -E 'burn-my-windows|'
 export function debug(message) {
   const stack = new Error().stack.split('\n');
 
   // Remove debug() function call from stack.
   stack.shift();
 
-  // Find the index of the extension directory (e.g. particles@schneegans.github.com) in
-  // the stack entry. We do not want to print the entire absolute file path.
-  // const extensionRoot = stack[0].indexOf(Extension.uuid);
-
   log('[' + stack[0] + '] ' + message);
-  // log('[' + stack[0].slice(extensionRoot) + '] ' + message);
 }
 
-// This method simply returns true if we are currently using GTK4.
-export function isGTK4() {
-  return Gtk.get_major_version() == 4;
-}
-
-// Starting with GNOME Shell 42, the settings dialog uses libadwaita (at least most of
-// the time - it seems that pop!_OS does not support libadwaita even on GNOME 42).
-export function isADW() {
-  return Adw && shellVersionIsAtLeast(42, 'beta');
-}
-
-// This method returns 'gtk3', 'gtk4', or 'adw' depending on the currently used GTK / and
-// or libadwaita version.
+// Currently, the extension supports only one set of UI files. In the past, there were
+// three different sets for GTK3, GTK4, and Adwaita. This method returns the name of the
+// current UI directory. It's still here since it might be useful in the future.
 export function getUIDir() {
-  return isADW() ? 'adw' : (isGTK4() ? 'gtk4' : 'gtk3');
+  return 'adw';
 }
 
 // This method returns true if the current GNOME Shell version matches the given

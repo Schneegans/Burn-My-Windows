@@ -20,7 +20,7 @@ import Meta from 'gi://Meta';
 import {fromVersion26} from './src/migrate.js';
 import {ProfileManager} from './src/ProfileManager.js';
 import {WindowPicker} from './src/WindowPicker.js';
-import {getStringResource, shellVersionIs, shellVersionIsAtLeast} from './src/utils.js';
+import {getStringResource} from './src/utils.js';
 
 import Apparition from './src/effects/Apparition.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
@@ -250,21 +250,9 @@ export default class BurnMyWindows extends Extension {
     // of the actor. However, if we are in the overview, we have to enlarge the clone of
     // the window as well.
     Workspace.prototype._addWindowClone = function(...params) {
-      const clone = extensionThis._origAddWindowClone.apply(this, params);
-
-      // The parameters of this method changed a bit through the versions...
-      let realWindow, container;
-
-      if (shellVersionIs(3, 36)) {
-        container  = clone[0];
-        realWindow = container.realWindow;
-      } else if (shellVersionIs(3, 38)) {
-        container  = clone._windowContainer;
-        realWindow = params[0].get_compositor_private();
-      } else {
-        container  = clone.window_container;
-        realWindow = params[0].get_compositor_private();
-      }
+      const clone      = extensionThis._origAddWindowClone.apply(this, params);
+      const container  = clone.window_container;
+      const realWindow = params[0].get_compositor_private();
 
       // Store the overview clone as temporary members of the real window actor. When we
       // set up the effect, we will check for the existence of these and enlarge the clone
@@ -277,16 +265,6 @@ export default class BurnMyWindows extends Extension {
         delete realWindow._bmwOverviewClone;
         delete realWindow._bmwOverviewCloneContainer;
       });
-
-      // This is actually needed for the window-close animation on GNOME Shell 3.36.
-      // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
-      // but not _doRemoveWindow. The latter is required to trigger the repositioning of
-      // the overview window layout. Therefore we call this method in addition.
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1363
-      if (shellVersionIs(3, 36)) {
-        container.connect('destroy', () => this._doRemoveWindow(container.metaWindow));
-      }
 
       return clone;
     };
@@ -512,7 +490,7 @@ export default class BurnMyWindows extends Extension {
         }
 
         // If the profile is still matching, we also check the color scheme.
-        if (matches && profileColorScheme != 0 && shellVersionIsAtLeast(42, 0)) {
+        if (matches && profileColorScheme != 0) {
           const colorScheme = this._shellSettings.get_string('color-scheme');
           matches &= (profileColorScheme == 1 && colorScheme == 'default') ||
             (profileColorScheme == 2 && colorScheme == 'prefer-dark');
@@ -591,7 +569,7 @@ export default class BurnMyWindows extends Extension {
     // If we are in the overview, we have to enlarge the window's clone as well. We also
     // disable the clone's overlay (e.g. its icon, name, and close button) during the
     // animation.
-    if (actor._bmwOverviewClone && shellVersionIsAtLeast(3, 38)) {
+    if (actor._bmwOverviewClone) {
       actor._bmwOverviewClone.overlayEnabled = false;
       actor._bmwOverviewCloneContainer.set_pivot_point(0.5, 0.5);
       actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
@@ -608,7 +586,7 @@ export default class BurnMyWindows extends Extension {
     const endID = shader.connect('end-animation', () => {
       shader.disconnect(endID);
 
-      if (actor._bmwOverviewClone && shellVersionIsAtLeast(3, 38)) {
+      if (actor._bmwOverviewClone) {
         actor._bmwOverviewClone.overlayEnabled   = true;
         actor._bmwOverviewCloneContainer.scale_x = 1.0;
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
@@ -646,10 +624,8 @@ export default class BurnMyWindows extends Extension {
       return true;
     }
 
-    // This was called "realWindow" in GNOME 3.36.
-    const propertyName = shellVersionIs(3, 36) ? 'realWindow' : '_windowActor';
-    const actor        = workspace._windows[index][propertyName];
-    const shader       = actor.get_effect('burn-my-windows-effect');
+    const actor  = workspace._windows[index]._windowActor;
+    const shader = actor.get_effect('burn-my-windows-effect');
 
     return shader == null;
   }
