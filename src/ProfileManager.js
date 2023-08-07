@@ -17,10 +17,6 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
-
-const Me = imports.misc.extensionUtils.getCurrentExtension();
-
 //////////////////////////////////////////////////////////////////////////////////////////
 // Burn-My-Windows allows applying different sets of effect settings under specific     //
 // circumstances. These settings are called "effect profiles". The ProfileManager       //
@@ -33,7 +29,9 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 export class ProfileManager {
   // ------------------------------------------------------------------------- constructor
 
-  constructor() {
+  constructor(metadata) {
+    this._metadata = metadata;
+
     this._makeProfilesDir();
     this.reloadProfiles();
   }
@@ -150,58 +148,6 @@ export class ProfileManager {
     return priority;
   }
 
-  // Profiles are named according to their configuration. This method returns a localized
-  // string describing the settings of the profile.
-  getProfileName(settings) {
-    let items = [];
-
-    // If an app is configured, use it as first component for the profile's name.
-    const app = settings.get_string('profile-app');
-    if (app != '') {
-      items.push(app);
-    }
-
-    // Now add components to the name for each non-default profile option. Make sure that
-    // these are the same strings as used in the UI files!
-    const addComponent = (settingsKey, options) => {
-      const option = settings.get_int(settingsKey);
-      if (option > 0) {
-        items.push(options[option - 1]);
-      }
-    };
-
-    // clang-format off
-    addComponent('profile-animation-type', [_('Opening Windows'),
-                                            _('Closing Windows')]);
-    addComponent('profile-window-type',    [_('Normal Windows'),
-                                            _('Dialog Windows')]);
-    addComponent('profile-color-scheme',   [_('Default Color Scheme'),
-                                            _('Dark Color Scheme')]);
-    addComponent('profile-power-mode',     [_('On Battery'),
-                                            _('Plugged In')]);
-    addComponent('profile-power-profile',  [_('Power-Saver Mode'),
-                                            _('Balanced Mode'),
-                                            _('Performance Mode'),
-                                            _('Power Saver or Balanced'),
-                                            _('Balanced or Performance')]);
-    // clang-format on
-
-    // If the profile is a high-priority profile, also add this..
-    if (settings.get_boolean('profile-high-priority')) {
-      items.push(_('High Priority'));
-    }
-
-    let name = '';
-
-    if (items.length == 0) {
-      name = _('Standard Profile');
-    } else {
-      name = items.join(' · ');
-    }
-
-    return name;
-  }
-
   // ----------------------------------------------------------------------- private stuff
 
   // Creates the directory ~/.config/burn-my-windows/profiles if it does not yet exist.
@@ -220,7 +166,7 @@ export class ProfileManager {
 
     // Expect USER extensions to have a schemas/ subfolder, otherwise assume a
     // SYSTEM extension that has been installed in the same prefix as the shell
-    const schemaDir = Me.dir.get_child('schemas');
+    const schemaDir = this._metadata.dir.get_child('schemas');
     let source;
     if (schemaDir.query_exists(null)) {
       source = Gio.SettingsSchemaSource.new_from_directory(

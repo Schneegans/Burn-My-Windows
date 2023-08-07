@@ -44,19 +44,11 @@ import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
 
-const Main      = imports.ui.main;
-const Workspace = imports.ui.workspace.Workspace;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
+import {WindowPreview} from 'resource:///org/gnome/shell/ui/windowPreview.js';
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-// The WindowPreview class is only available on GNOME Shell 3.38+;
-let WindowPreview = null;
-try {
-  WindowPreview = imports.ui.windowPreview.WindowPreview;
-} catch (error) {
-  // Nothing to be done, we are on GNOME Shell 3.36.
-}
-
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
@@ -67,7 +59,7 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 // to get this working. For more details, read the other comments in this file...       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-export default class Extension {
+export default class BurnMyWindows extends Extension {
 
   // ------------------------------------------------------------------------ public stuff
 
@@ -101,22 +93,23 @@ export default class Extension {
     ];
 
     // Load all of our resources.
-    this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
+    this._resources =
+      Gio.Resource.load(this.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
     // Store a reference to the settings object.
-    this._settings = ExtensionUtils.getSettings();
+    this._settings = this.getSettings();
 
     // Now we check whether the extension settings need to be migrated from a previous
     // version. If this is the case, we defer the profile loading until this is finished.
     const lastVersion = this._settings.get_int('last-extension-version');
-    if (lastVersion < Me.metadata.version) {
+    if (lastVersion < this.metadata.version) {
       if (lastVersion <= 26) {
         // If the profile migration fails for some reason, the callback will create a
         // default profile instead.
         fromVersion26().finally(() => {
           this._loadProfiles();
-          this._settings.set_int('last-extension-version', Me.metadata.version);
+          this._settings.set_int('last-extension-version', this.metadata.version);
         });
       } else {
         this._loadProfiles();
@@ -324,53 +317,50 @@ export default class Extension {
     };
 
     // With the code below, we hide the window-overlay (icon, label, close button) in the
-    // overview once the close-animation is running. As the WindowPreview class is only
-    // available on GNOME 3.38 and beyond, we cannot hide the overlay on GNOME 3.36.
-    if (WindowPreview) {
+    // overview once the close-animation is running.
 
-      // We will monkey-patch these methods.
-      this._origDeleteAll = WindowPreview.prototype._deleteAll;
-      this._origRestack   = WindowPreview.prototype._restack;
-      this._origInit      = WindowPreview.prototype._init;
+    // We will monkey-patch these methods.
+    this._origDeleteAll = WindowPreview.prototype._deleteAll;
+    this._origRestack   = WindowPreview.prototype._restack;
+    this._origInit      = WindowPreview.prototype._init;
 
-      // Whenever a WindowPreview is created, we connect to the referenced Meta.Window's
-      // 'unmanaged' signal to hide the overlay.
-      WindowPreview.prototype._init = function(...params) {
-        extensionThis._origInit.apply(this, params);
+    // Whenever a WindowPreview is created, we connect to the referenced Meta.Window's
+    // 'unmanaged' signal to hide the overlay.
+    WindowPreview.prototype._init = function(...params) {
+      extensionThis._origInit.apply(this, params);
 
-        // Hide the window's icon, name, and close button.
-        const connectionID = this.metaWindow.connect('unmanaged', () => {
-          if (this.window_container) {
-            this.overlayEnabled = false;
-            this._icon.visible  = false;
-          }
-        });
-
-        // Make sure to not call the callback above if the Meta.Window was not unmanaged
-        // before leaving the overview.
-        this.connect('destroy', () => {
-          this.metaWindow.disconnect(connectionID);
-        });
-      };
-
-      // The _deleteAll is called when the user clicks the X in the overview. We should
-      // not attempt to close windows twice. Due to the animation in the overview, the
-      // close button can be clicked twice which normally would lead to a crash.
-      WindowPreview.prototype._deleteAll = function() {
-        if (!this._closeRequested) {
-          extensionThis._origDeleteAll.apply(this);
+      // Hide the window's icon, name, and close button.
+      const connectionID = this.metaWindow.connect('unmanaged', () => {
+        if (this.window_container) {
+          this.overlayEnabled = false;
+          this._icon.visible  = false;
         }
-      };
+      });
 
-      // This is required, else WindowPreview's _restack() which is called by the
-      // "this.overlayEnabled = false", sometimes tries to access an already delete
-      // WindowPreview.
-      WindowPreview.prototype._restack = function() {
-        if (!this._closeRequested) {
-          extensionThis._origRestack.apply(this);
-        }
-      };
-    }
+      // Make sure to not call the callback above if the Meta.Window was not unmanaged
+      // before leaving the overview.
+      this.connect('destroy', () => {
+        this.metaWindow.disconnect(connectionID);
+      });
+    };
+
+    // The _deleteAll is called when the user clicks the X in the overview. We should
+    // not attempt to close windows twice. Due to the animation in the overview, the
+    // close button can be clicked twice which normally would lead to a crash.
+    WindowPreview.prototype._deleteAll = function() {
+      if (!this._closeRequested) {
+        extensionThis._origDeleteAll.apply(this);
+      }
+    };
+
+    // This is required, else WindowPreview's _restack() which is called by the
+    // "this.overlayEnabled = false", sometimes tries to access an already delete
+    // WindowPreview.
+    WindowPreview.prototype._restack = function() {
+      if (!this._closeRequested) {
+        extensionThis._origRestack.apply(this);
+      }
+    };
   }
 
   // This function could be called after the extension is uninstalled, disabled in GNOME
@@ -395,11 +385,9 @@ export default class Extension {
     Main.wm._shouldAnimateActor         = this._origShouldAnimateActor;
     Main.wm._waitForOverviewToHide      = this._origWaitForOverviewToHide;
 
-    if (WindowPreview) {
-      WindowPreview.prototype._deleteAll = this._origDeleteAll;
-      WindowPreview.prototype._restack   = this._origRestack;
-      WindowPreview.prototype._init      = this._origInit;
-    }
+    WindowPreview.prototype._deleteAll = this._origDeleteAll;
+    WindowPreview.prototype._restack   = this._origRestack;
+    WindowPreview.prototype._init      = this._origInit;
 
     this._settings = null;
   }
@@ -415,7 +403,7 @@ export default class Extension {
   _loadProfiles() {
 
     // Get all currently available profiles.
-    const profileManager = new ProfileManager();
+    const profileManager = new ProfileManager(this.metadata);
     this._profiles       = profileManager.getProfiles();
 
     // Whenever the properties of a profile is changed in the settings, we may have to
@@ -665,9 +653,4 @@ export default class Extension {
 
     return shader == null;
   }
-}
-
-// This function is called once when the extension is loaded, not enabled.
-function init() {
-  return new Extension();
 }

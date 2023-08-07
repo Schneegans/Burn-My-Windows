@@ -33,11 +33,8 @@ function toNumericVersion(x) {
   return x;
 }
 
-const Me                   = imports.misc.extensionUtils.getCurrentExtension();
 const Config               = imports.misc.config;
 const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVersion);
-
-const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 // This method can be used to write a message to GNOME Shell's log. This is enhances
 // the standard log() functionality by prepending the extension's name and the location
@@ -54,9 +51,10 @@ export function debug(message) {
 
   // Find the index of the extension directory (e.g. particles@schneegans.github.com) in
   // the stack entry. We do not want to print the entire absolute file path.
-  const extensionRoot = stack[0].indexOf(Me.metadata.uuid);
+  // const extensionRoot = stack[0].indexOf(Extension.uuid);
 
-  log('[' + stack[0].slice(extensionRoot) + '] ' + message);
+  log('[' + stack[0] + '] ' + message);
+  // log('[' + stack[0].slice(extensionRoot) + '] ' + message);
 }
 
 // This method simply returns true if we are currently using GTK4.

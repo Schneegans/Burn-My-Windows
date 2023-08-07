@@ -18,8 +18,8 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
-const Main         = imports.ui.main;
-const LookingGlass = imports.ui.lookingGlass;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as LookingGlass from 'resource:///org/gnome/shell/ui/lookingGlass.js';
 
 import {getStringResource} from './utils.js';
 

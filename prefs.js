@@ -45,10 +45,7 @@ import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
-
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
+import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // The preferences dialog is organized in pages, each of which is loaded from a         //
@@ -56,14 +53,9 @@ const Me             = imports.misc.extensionUtils.getCurrentExtension();
 // from the respective effects.                                                         //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-export default class ExtensionPreferences {
+export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
   // ------------------------------------------------------------ constructor / destructor
-
-  // This is used for setting up the translations.
-  constructor() {
-    ExtensionUtils.initTranslations();
-  }
 
   fillPreferencesWindow(window) {
     window.set_default_size(650, 750);
@@ -94,7 +86,8 @@ export default class ExtensionPreferences {
     ];
 
     // Load all of our resources.
-    this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
+    this._resources =
+      Gio.Resource.load(this.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
     // Load the CSS file for the settings dialog. If using libadwaita, we do not need an
@@ -125,10 +118,10 @@ export default class ExtensionPreferences {
     this._builder.add_from_resource(`/ui/${getUIDir()}/prefs.ui`);
 
     // Store a reference to the general settings object.
-    this._settings = ExtensionUtils.getSettings();
+    this._settings = this.getSettings();
 
     // This tracks all available effect profiles.
-    this._profileManager = new ProfileManager();
+    this._profileManager = new ProfileManager(this.metadata);
 
     // This is used to track all connections to properties of the current effect profile.
     // Whenever the current effect profile changes, all connections are disconnected.
@@ -396,7 +389,7 @@ export default class ExtensionPreferences {
       const window = isGTK4() ? widget.get_root() : widget.get_toplevel();
 
       // Show the version number in the title bar.
-      window.set_title(`Burn-My-Windows ${Me.metadata.version}`);
+      window.set_title(`Burn-My-Windows ${this.metadata.version}`);
 
       this._loadActiveProfile();
       this._updateProfileMenu();
@@ -404,7 +397,7 @@ export default class ExtensionPreferences {
       // Show an Adw.Toast or a Gtk.InfoBar whenever Burn-My-Windows was updated. We use a
       // small timeout so that it is not shown instantaneously.
       const lastVersion = this._settings.get_int('last-prefs-version');
-      if (lastVersion < Me.metadata.version) {
+      if (lastVersion < this.metadata.version) {
         this._showUpdateInfoTimeout =
           GLib.timeout_add(GLib.PRIORITY_DEFAULT, 2000, () => {
             this._showUpdateInfoTimeout = 0;
@@ -415,15 +408,15 @@ export default class ExtensionPreferences {
               toast.set_action_name('prefs.changelog');
               toast.set_timeout(0);
 
-              toast.connect(
-                'dismissed',
-                () => this._settings.set_int('last-prefs-version', Me.metadata.version));
+              toast.connect('dismissed',
+                            () => this._settings.set_int('last-prefs-version',
+                                                         this.metadata.version));
 
               window.add_toast(toast);
             } else {
               const infoBar = this._builder.get_object('update-info');
               infoBar.connect('response', i => {
-                this._settings.set_int('last-prefs-version', Me.metadata.version);
+                this._settings.set_int('last-prefs-version', this.metadata.version);
                 i.set_revealed(false);
               });
               infoBar.set_revealed(true);
@@ -555,7 +548,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
             null,
             'https://github.com/Schneegans/Burn-My-Windows/blob/main/docs/changelog.md',
             Gdk.CURRENT_TIME);
-          this._settings.set_int('last-prefs-version', Me.metadata.version)
+          this._settings.set_int('last-prefs-version', this.metadata.version)
         });
         group.add_action(changelogAction);
 
@@ -588,7 +581,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
             dialog = new Adw.AboutWindow({transient_for: window, modal: true});
             dialog.set_application_icon('burn-my-windows-symbolic');
             dialog.set_application_name('Burn-My-Windows');
-            dialog.set_version(`${Me.metadata.version}`);
+            dialog.set_version(`${this.metadata.version}`);
             dialog.set_developer_name('Simon Schneegans');
             dialog.set_issue_url('https://github.com/Schneegans/Burn-My-Windows/issues');
             if (sponsors.gold.length > 0) {
@@ -621,7 +614,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
             dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
             dialog.set_logo_icon_name('burn-my-windows-symbolic');
-            dialog.set_program_name(`Burn-My-Windows ${Me.metadata.version}`);
+            dialog.set_program_name(`Burn-My-Windows ${this.metadata.version}`);
             dialog.set_authors(['Simon Schneegans']);
             if (sponsors.gold.length > 0) {
               dialog.add_credit_section(_('Gold Sponsors'),
@@ -904,7 +897,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
   // configuration option of the profile is changed.
   _updateProfileButton() {
     this._builder.get_object('choose-profile-button').label =
-      this._profileManager.getProfileName(this.getProfileSettings());
+      this._getProfileName(this.getProfileSettings());
   }
 
   // This updates the list of available profiles in the dropdown of the profile-selection
@@ -918,12 +911,64 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
 
     // Then add an entry for each available profile.
     this._profileManager.getProfiles().forEach(profile => {
-      const label = this._profileManager.getProfileName(profile.settings);
+      const label = this._getProfileName(profile.settings);
       const item  = Gio.MenuItem.new(label, 'prefs.active-profile');
       item.set_action_and_target_value('prefs.active-profile',
                                        GLib.Variant.new_string(profile.path));
       profileSection.append_item(item);
     });
+  }
+
+  // Profiles are named according to their configuration. This method returns a localized
+  // string describing the settings of the profile.
+  _getProfileName(settings) {
+    let items = [];
+
+    // If an app is configured, use it as first component for the profile's name.
+    const app = settings.get_string('profile-app');
+    if (app != '') {
+      items.push(app);
+    }
+
+    // Now add components to the name for each non-default profile option. Make sure that
+    // these are the same strings as used in the UI files!
+    const addComponent = (settingsKey, options) => {
+      const option = settings.get_int(settingsKey);
+      if (option > 0) {
+        items.push(options[option - 1]);
+      }
+    };
+
+    // clang-format off
+    addComponent('profile-animation-type', [_('Opening Windows'),
+                                            _('Closing Windows')]);
+    addComponent('profile-window-type',    [_('Normal Windows'),
+                                            _('Dialog Windows')]);
+    addComponent('profile-color-scheme',   [_('Default Color Scheme'),
+                                            _('Dark Color Scheme')]);
+    addComponent('profile-power-mode',     [_('On Battery'),
+                                            _('Plugged In')]);
+    addComponent('profile-power-profile',  [_('Power-Saver Mode'),
+                                            _('Balanced Mode'),
+                                            _('Performance Mode'),
+                                            _('Power Saver or Balanced'),
+                                            _('Balanced or Performance')]);
+    // clang-format on
+
+    // If the profile is a high-priority profile, also add this..
+    if (settings.get_boolean('profile-high-priority')) {
+      items.push(_('High Priority'));
+    }
+
+    let name = '';
+
+    if (items.length == 0) {
+      name = _('Standard Profile');
+    } else {
+      name = items.join(' · ');
+    }
+
+    return name;
   }
 
   // This wrapper connects a given callback to a profile settings key. Use this instead of
