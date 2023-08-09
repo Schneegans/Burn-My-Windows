@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-02 21:54+0200\n"
-"PO-Revision-Date: 2023-07-23 08:05+0000\n"
+"PO-Revision-Date: 2023-08-10 18:48+0000\n"
 "Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sk/>\n"
@@ -135,7 +135,7 @@ msgstr "Studený vánok"
 
 #: src/effects/Fire.js:194
 msgid "Santa is Coming"
-msgstr "Santa je tu!"
+msgstr "Santa je tu"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -727,7 +727,7 @@ msgstr "Motív farieb"
 #: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr "Režim šetrenia energie"
+msgstr "Režim napájania"
 
 #: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
 #: resources/ui/adw/prefs.ui:158
