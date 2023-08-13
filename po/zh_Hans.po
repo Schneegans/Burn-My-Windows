@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 06:03+0200\n"
+"POT-Creation-Date: 2023-08-13 07:53+0200\n"
 "PO-Revision-Date: 2023-05-16 12:48+0000\n"
 "Last-Translator: aerowolf <aerowolf@tom.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -210,47 +210,47 @@ msgstr "Burn-My-Windows已更新！"
 msgid "View Changelog"
 msgstr "查看更新日志"
 
-#: prefs.js:570 prefs.js:602
+#: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
 msgstr "金牌赞助商"
 
-#: prefs.js:574 prefs.js:606
+#: prefs.js:575 prefs.js:607
 msgid "Silver Sponsors"
 msgstr "银牌赞助商"
 
-#: prefs.js:578 prefs.js:610
+#: prefs.js:579 prefs.js:611
 msgid "Bronze Sponsors"
 msgstr "铜牌赞助商"
 
-#: prefs.js:582 prefs.js:614
+#: prefs.js:583 prefs.js:615
 msgid "Past Sponsors"
 msgstr "往届赞助商"
 
-#: prefs.js:659
+#: prefs.js:660
 msgid "Delete this Profile?"
 msgstr "删除此配置吗？"
 
-#: prefs.js:660
+#: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr "当前效果配置文件设置的所有效果都将永久丢失。"
 
-#: prefs.js:663
+#: prefs.js:664
 msgid "Cancel"
 msgstr "取消"
 
-#: prefs.js:668
+#: prefs.js:669
 msgid "Delete"
 msgstr "删除"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:979
+#: prefs.js:980
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s 的预览"
 
-#: prefs.js:1001
+#: prefs.js:1002
 msgid "Close this Window to Preview the Effect!"
 msgstr "关闭此窗，预览效果!"
 
@@ -279,10 +279,14 @@ msgid "Donate"
 msgstr "捐赠"
 
 #: resources/ui/common/menus.ui:56
+msgid "Open Effect-Profile Directory"
+msgstr ""
+
+#: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
 msgstr "关于 Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:67
+#: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
 msgstr "新建配置…"
 

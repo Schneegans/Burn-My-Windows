@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 06:03+0200\n"
+"POT-Creation-Date: 2023-08-13 07:53+0200\n"
 "PO-Revision-Date: 2023-04-07 05:50+0000\n"
 "Last-Translator: SoftExpert <softexpert@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -211,48 +211,48 @@ msgstr "Burn-My-Windows a fost actualizat!"
 msgid "View Changelog"
 msgstr "Vizualizează jurnalul de modificări"
 
-#: prefs.js:570 prefs.js:602
+#: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
 msgstr "Sponsori Gold"
 
-#: prefs.js:574 prefs.js:606
+#: prefs.js:575 prefs.js:607
 msgid "Silver Sponsors"
 msgstr "Sponsori Argint"
 
-#: prefs.js:578 prefs.js:610
+#: prefs.js:579 prefs.js:611
 msgid "Bronze Sponsors"
 msgstr "Sponsori Bronz"
 
-#: prefs.js:582 prefs.js:614
+#: prefs.js:583 prefs.js:615
 msgid "Past Sponsors"
 msgstr "Sponsori din Trecut"
 
-#: prefs.js:659
+#: prefs.js:660
 msgid "Delete this Profile?"
 msgstr "Ștergeți acest profil?"
 
-#: prefs.js:660
+#: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 "Profilul curent cu toate setările sale de efect va fi pierdut definitiv."
 
-#: prefs.js:663
+#: prefs.js:664
 msgid "Cancel"
 msgstr "Anulează"
 
-#: prefs.js:668
+#: prefs.js:669
 msgid "Delete"
 msgstr "Șterge"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:979
+#: prefs.js:980
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Previzualizare pentru %s"
 
-#: prefs.js:1001
+#: prefs.js:1002
 msgid "Close this Window to Preview the Effect!"
 msgstr "Închide fereastra pentru previzualizare Efect!"
 
@@ -281,10 +281,14 @@ msgid "Donate"
 msgstr "Donează"
 
 #: resources/ui/common/menus.ui:56
+msgid "Open Effect-Profile Directory"
+msgstr ""
+
+#: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
 msgstr "Despre Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:67
+#: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
 msgstr "Adăugați un profil nou..."
 
