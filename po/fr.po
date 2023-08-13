@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 06:03+0200\n"
+"POT-Creation-Date: 2023-08-13 07:53+0200\n"
 "PO-Revision-Date: 2023-02-25 03:39+0000\n"
 "Last-Translator: SoftExpert <softexpert@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -210,48 +210,48 @@ msgstr "Burn-My-Windows a été mis à jour !"
 msgid "View Changelog"
 msgstr "Voir le journal des modifications"
 
-#: prefs.js:570 prefs.js:602
+#: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
 msgstr "Sponsors Or"
 
-#: prefs.js:574 prefs.js:606
+#: prefs.js:575 prefs.js:607
 msgid "Silver Sponsors"
 msgstr "Sponsors Argent"
 
-#: prefs.js:578 prefs.js:610
+#: prefs.js:579 prefs.js:611
 msgid "Bronze Sponsors"
 msgstr "Sponsors Bronze"
 
-#: prefs.js:582 prefs.js:614
+#: prefs.js:583 prefs.js:615
 msgid "Past Sponsors"
 msgstr "Anciens Sponsors"
 
-#: prefs.js:659
+#: prefs.js:660
 msgid "Delete this Profile?"
 msgstr "Supprimer ce profil ?"
 
-#: prefs.js:660
+#: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 "Le profil actuel avec tous ses réglages d'effet sera définitivement perdu."
 
-#: prefs.js:663
+#: prefs.js:664
 msgid "Cancel"
 msgstr "Annuler"
 
-#: prefs.js:668
+#: prefs.js:669
 msgid "Delete"
 msgstr "Supprimer"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:979
+#: prefs.js:980
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Aperçu pour %s"
 
-#: prefs.js:1001
+#: prefs.js:1002
 msgid "Close this Window to Preview the Effect!"
 msgstr "Fermez cette fenêtre pour un aperçu de l'effet !"
 
@@ -280,10 +280,14 @@ msgid "Donate"
 msgstr "Faire un don"
 
 #: resources/ui/common/menus.ui:56
+msgid "Open Effect-Profile Directory"
+msgstr ""
+
+#: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
 msgstr "À propos de Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:67
+#: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
 msgstr "Ajouter un nouveau profil..."
 

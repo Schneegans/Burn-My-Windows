@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 06:03+0200\n"
+"POT-Creation-Date: 2023-08-13 07:53+0200\n"
 "PO-Revision-Date: 2023-04-10 11:51+0000\n"
 "Last-Translator: Isaac Dias <mr-isaac@ig.com.br>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/burn-"
@@ -210,27 +210,27 @@ msgstr "Burn-My-Windows foi atualizada!"
 msgid "View Changelog"
 msgstr "Veja as alterações"
 
-#: prefs.js:570 prefs.js:602
+#: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
 msgstr "Patrocinadores Ouro"
 
-#: prefs.js:574 prefs.js:606
+#: prefs.js:575 prefs.js:607
 msgid "Silver Sponsors"
 msgstr "Patrocinadores Prata"
 
-#: prefs.js:578 prefs.js:610
+#: prefs.js:579 prefs.js:611
 msgid "Bronze Sponsors"
 msgstr "Patrocinadores Bronze"
 
-#: prefs.js:582 prefs.js:614
+#: prefs.js:583 prefs.js:615
 msgid "Past Sponsors"
 msgstr "Patrocinadores Anteriores"
 
-#: prefs.js:659
+#: prefs.js:660
 msgid "Delete this Profile?"
 msgstr "Excluir esse Perfil?"
 
-#: prefs.js:660
+#: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
@@ -238,21 +238,21 @@ msgstr ""
 "O perfil de efeito atual com todas as suas configurações de efeito será "
 "perdido permanentemente."
 
-#: prefs.js:663
+#: prefs.js:664
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: prefs.js:668
+#: prefs.js:669
 msgid "Delete"
 msgstr "Deletar"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:979
+#: prefs.js:980
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Visualização para %s"
 
-#: prefs.js:1001
+#: prefs.js:1002
 msgid "Close this Window to Preview the Effect!"
 msgstr "Feche essa Janela para Visualizar o Efeito!"
 
@@ -281,10 +281,14 @@ msgid "Donate"
 msgstr "Doe"
 
 #: resources/ui/common/menus.ui:56
+msgid "Open Effect-Profile Directory"
+msgstr ""
+
+#: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
 msgstr "Sobre o Burn-My-Windows"
 
-#: resources/ui/common/menus.ui:67
+#: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
 msgstr "Adicionar Novo Perfil..."
 
