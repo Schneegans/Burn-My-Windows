@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-13 07:53+0200\n"
-"PO-Revision-Date: 2023-08-13 04:15+0000\n"
+"PO-Revision-Date: 2023-08-13 06:07+0000\n"
 "Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -282,7 +282,7 @@ msgstr "Spenden"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Effektprofil-Verzeichnis öffnen"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
