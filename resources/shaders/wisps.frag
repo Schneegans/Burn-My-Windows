@@ -15,8 +15,10 @@
 // The content from common.glsl is automatically prepended to each shader effect.
 
 uniform vec2 uSeed;
-uniform vec3 uColor;
 uniform float uScale;
+uniform vec3 uColor1;
+uniform vec3 uColor2;
+uniform vec3 uColor3;
 
 const float WISPS_RADIUS    = 20.0;
 const float WISPS_SPEED     = 10.0;
@@ -28,7 +30,7 @@ const float SCALING         = 0.9;
 
 // Returns a grid of randomly moving points. Each grid cell contains one point which
 // moves on an ellipse.
-float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
+vec4 getWisps(vec2 texCoords, float gridSize, vec2 seed) {
 
   // Shift coordinates by a random offset and make sure the have a 1:1 aspect ratio.
   vec2 coords = (texCoords + hash22(seed)) * uSize;
@@ -56,13 +58,16 @@ float getWisps(vec2 texCoords, float gridSize, vec2 seed) {
 
   cellUV += offset;
 
+  vec3 color = tritone(hash12(cellID * seed * 1.256), uColor1, uColor2, uColor3);
+
   // Use distance to center of shifted / rotated UV coordinates to draw a glaring point.
   float dist = length(cellUV - 0.5) * gridSize / radius;
   if (dist < 1.0) {
-    return min(5.0, 0.01 / pow(dist, 2.0));
+    float alpha = min(5.0, 0.01 / pow(dist, 2.0));
+    return vec4(color * alpha, alpha);
   }
 
-  return 0.0;
+  return vec4(0.0);
 }
 
 void main() {
@@ -78,9 +83,9 @@ void main() {
   // Compute several layers of moving wisps.
   vec2 uv = (iTexCoord.st - 0.5) / mix(1.0, 0.5, progress) + 0.5;
   uv /= uScale;
-  float wisps = 0.0;
+  vec4 wisps = vec4(0.0);
   for (float i = 0.0; i < WISPS_LAYERS; ++i) {
-    wisps += getWisps(uv * 0.3, WISPS_SPACING, uSeed * (i + 1.0));
+    wisps = alphaOver(wisps, getWisps(uv * 0.3, WISPS_SPACING, uSeed * (i + 1.0)));
   }
 
   // Compute shrinking edge mask.
@@ -100,8 +105,8 @@ void main() {
   oColor.a *= windowMask * mask;
 
   // Add the wisps.
-  vec4 wispColor = wisps * vec4(uColor, min(wispsIn, 1.0 - wispsOut) * mask);
-  oColor         = alphaOver(oColor, wispColor);
+  wisps.a *= min(wispsIn, 1.0 - wispsOut) * mask;
+  oColor = alphaOver(oColor, wisps);
 
   // These are pretty useful for understanding how this works.
   // oColor = vec4(vec3(windowMask), 1.0);

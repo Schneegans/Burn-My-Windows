@@ -5,8 +5,7 @@ SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
-                          http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
   <kcfgfile name="" />
   <group name="">
     <entry name="Duration" type="UInt">
@@ -15,8 +14,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <entry name="Scale" type="Double">
       <default>1</default>
     </entry>
-    <entry name="Color" type="Color">
+    <entry name="Color1" type="Color">
       <default>#ff64c8</default>
+    </entry>
+    <entry name="Color2" type="Color">
+      <default>#6464ff</default>
+    </entry>
+    <entry name="Color3" type="Color">
+      <default>#64c8ff</default>
     </entry>
   </group>
 </kcfg>

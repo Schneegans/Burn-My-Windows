@@ -120,16 +120,22 @@ SPDX-License-Identifier: GPL-3.0-or-later
                   </object>
                 </child>
                 <child>
-                  <object class="GtkColorButton" id="wisps-color">
-                    <property name="use_alpha">0</property>
+                  <object class="GtkColorButton" id="wisps-color-1">
                     <property name="show_editor">1</property>
-                    <property name="margin-start">8</property>
-                    <property name="margin-end">8</property>
-                    <property name="width-request">250</property>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reset-wisps-color">
+                  <object class="GtkColorButton" id="wisps-color-2">
+                    <property name="show_editor">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkColorButton" id="wisps-color-3">
+                    <property name="show_editor">1</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="reset-wisps-colors">
                     <property name="icon-name">edit-clear-symbolic</property>
                     <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
                     <style>

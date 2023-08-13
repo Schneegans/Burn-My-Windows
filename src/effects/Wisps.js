@@ -46,16 +46,23 @@ var Wisps = class {
 
       // Store uniform locations of newly created shaders.
       shader._uSeed  = shader.get_uniform_location('uSeed');
-      shader._uColor = shader.get_uniform_location('uColor');
       shader._uScale = shader.get_uniform_location('uScale');
+      shader._uColor = [
+        shader.get_uniform_location('uColor1'),
+        shader.get_uniform_location('uColor2'),
+        shader.get_uniform_location('uColor3'),
+      ];
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        const c = Clutter.Color.from_string(settings.get_string('wisps-color'))[1];
+        for (let i = 1; i <= 3; i++) {
+          const c = Clutter.Color.from_string(settings.get_string('wisps-color-' + i))[1];
+          shader.set_uniform_float(shader._uColor[i - 1], 3,
+                                   [c.red / 255, c.green / 255, c.blue / 255]);
+        }
 
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-        shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
         shader.set_uniform_float(shader._uScale, 1, [settings.get_double('wisps-scale')]);
         // clang-format on
       });
@@ -89,7 +96,21 @@ var Wisps = class {
   bindPreferences(dialog) {
     dialog.bindAdjustment('wisps-animation-time');
     dialog.bindAdjustment('wisps-scale');
-    dialog.bindColorButton('wisps-color');
+    dialog.bindColorButton('wisps-color-1');
+    dialog.bindColorButton('wisps-color-2');
+    dialog.bindColorButton('wisps-color-3');
+
+    // Connect the buttons only once. The bindPreferences can be called multiple times...
+    if (!this._isConnected) {
+      this._isConnected = true;
+
+      // The wisps-color-reset button needs to be bound explicitly.
+      dialog.getBuilder().get_object('reset-wisps-colors').connect('clicked', () => {
+        dialog.getProfileSettings().reset('wisps-color-1');
+        dialog.getProfileSettings().reset('wisps-color-2');
+        dialog.getProfileSettings().reset('wisps-color-3');
+      });
+    }
   }
 
   // ---------------------------------------------------------------- API for extension.js
