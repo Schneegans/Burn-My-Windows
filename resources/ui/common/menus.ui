@@ -53,6 +53,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </section>
     <section>
       <item>
+        <attribute name="label" translatable="yes">Open Effect-Profile Directory</attribute>
+        <attribute name="action">prefs.profile-dir</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">About Burn-My-Windows</attribute>
         <attribute name="action">prefs.about</attribute>
       </item>
