@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-02 21:54+0200\n"
+"POT-Creation-Date: 2023-08-13 06:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,73 +17,73 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:220
-#: resources/ui/gtk3/prefs.ui:265 resources/ui/adw/prefs.ui:103
+#: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
+#: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
 msgstr ""
 
-#: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:221
-#: resources/ui/gtk3/prefs.ui:266 resources/ui/adw/prefs.ui:104
+#: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
+#: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
 msgstr ""
 
-#: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:249
-#: resources/ui/gtk3/prefs.ui:294 resources/ui/adw/prefs.ui:118
+#: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
+#: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
 msgstr ""
 
-#: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:250
-#: resources/ui/gtk3/prefs.ui:295 resources/ui/adw/prefs.ui:119
+#: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
+#: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
 msgstr ""
 
-#: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:278
-#: resources/ui/gtk3/prefs.ui:323 resources/ui/adw/prefs.ui:133
+#: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
+#: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
 msgstr ""
 
-#: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:279
-#: resources/ui/gtk3/prefs.ui:324 resources/ui/adw/prefs.ui:134
+#: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
+#: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
 msgstr ""
 
-#: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:307
-#: resources/ui/gtk3/prefs.ui:352 resources/ui/adw/prefs.ui:148
+#: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
+#: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
 msgstr ""
 
-#: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:308
-#: resources/ui/gtk3/prefs.ui:353 resources/ui/adw/prefs.ui:149
+#: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
+#: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
 msgstr ""
 
-#: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:336
-#: resources/ui/gtk3/prefs.ui:381 resources/ui/adw/prefs.ui:163
+#: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
+#: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
 msgstr ""
 
-#: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:337
-#: resources/ui/gtk3/prefs.ui:382 resources/ui/adw/prefs.ui:164
+#: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
+#: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
 msgstr ""
 
-#: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:338
-#: resources/ui/gtk3/prefs.ui:383 resources/ui/adw/prefs.ui:165
+#: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
+#: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
 msgstr ""
 
-#: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:339
-#: resources/ui/gtk3/prefs.ui:384 resources/ui/adw/prefs.ui:166
+#: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
+#: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
 msgstr ""
 
-#: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:340
-#: resources/ui/gtk3/prefs.ui:385 resources/ui/adw/prefs.ui:167
+#: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
+#: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
 msgstr ""
 
-#: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:387
-#: resources/ui/gtk3/prefs.ui:432 resources/ui/adw/prefs.ui:183
+#: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
+#: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
 msgstr ""
 
@@ -195,60 +195,60 @@ msgstr ""
 msgid "Wisps"
 msgstr ""
 
-#: prefs.js:256
+#: prefs.js:269
 msgid "Preview this effect"
 msgstr ""
 
-#: prefs.js:375 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
+#: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
 msgstr ""
 
-#: prefs.js:376 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
+#: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
 msgid "View Changelog"
 msgstr ""
 
-#: prefs.js:557 prefs.js:589
+#: prefs.js:570 prefs.js:602
 msgid "Gold Sponsors"
 msgstr ""
 
-#: prefs.js:561 prefs.js:593
+#: prefs.js:574 prefs.js:606
 msgid "Silver Sponsors"
 msgstr ""
 
-#: prefs.js:565 prefs.js:597
+#: prefs.js:578 prefs.js:610
 msgid "Bronze Sponsors"
 msgstr ""
 
-#: prefs.js:569 prefs.js:601
+#: prefs.js:582 prefs.js:614
 msgid "Past Sponsors"
 msgstr ""
 
-#: prefs.js:646
+#: prefs.js:659
 msgid "Delete this Profile?"
 msgstr ""
 
-#: prefs.js:647
+#: prefs.js:660
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 
-#: prefs.js:650
+#: prefs.js:663
 msgid "Cancel"
 msgstr ""
 
-#: prefs.js:655
+#: prefs.js:668
 msgid "Delete"
 msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:966
+#: prefs.js:979
 #, javascript-format
 msgid "Preview for %s"
 msgstr ""
 
-#: prefs.js:988
+#: prefs.js:1001
 msgid "Close this Window to Preview the Effect!"
 msgstr ""
 
@@ -668,79 +668,89 @@ msgstr ""
 msgid "Gradient"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:82 resources/ui/gtk3/prefs.ui:124
+#: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
-msgid "Effect Settings"
+msgid "Effect Selection"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:92 resources/ui/gtk3/prefs.ui:134
+#: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
 msgid "If multiple are selected, one is chosen randomly."
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:132 resources/ui/gtk3/prefs.ui:172
+#: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
+#: resources/ui/adw/prefs.ui:236
+msgid "All"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
+#: resources/ui/adw/prefs.ui:242
+msgid "None"
+msgstr ""
+
+#: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:142 resources/ui/gtk3/prefs.ui:182
+#: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:166 resources/ui/gtk3/prefs.ui:206
+#: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:184 resources/ui/gtk4/prefs.ui:219
-#: resources/ui/gtk4/prefs.ui:248 resources/ui/gtk4/prefs.ui:277
-#: resources/ui/gtk4/prefs.ui:306 resources/ui/gtk4/prefs.ui:335
-#: resources/ui/gtk3/prefs.ui:224 resources/ui/gtk3/prefs.ui:264
-#: resources/ui/gtk3/prefs.ui:293 resources/ui/gtk3/prefs.ui:322
-#: resources/ui/gtk3/prefs.ui:351 resources/ui/gtk3/prefs.ui:380
+#: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
+#: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
+#: resources/ui/gtk4/prefs.ui:342 resources/ui/gtk4/prefs.ui:371
+#: resources/ui/gtk3/prefs.ui:260 resources/ui/gtk3/prefs.ui:300
+#: resources/ui/gtk3/prefs.ui:329 resources/ui/gtk3/prefs.ui:358
+#: resources/ui/gtk3/prefs.ui:387 resources/ui/gtk3/prefs.ui:416
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:208 resources/ui/gtk3/prefs.ui:253
+#: resources/ui/gtk4/prefs.ui:244 resources/ui/gtk3/prefs.ui:289
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:237 resources/ui/gtk3/prefs.ui:282
+#: resources/ui/gtk4/prefs.ui:273 resources/ui/gtk3/prefs.ui:318
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:266 resources/ui/gtk3/prefs.ui:311
+#: resources/ui/gtk4/prefs.ui:302 resources/ui/gtk3/prefs.ui:347
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:295 resources/ui/gtk3/prefs.ui:340
+#: resources/ui/gtk4/prefs.ui:331 resources/ui/gtk3/prefs.ui:376
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:324 resources/ui/gtk3/prefs.ui:369
+#: resources/ui/gtk4/prefs.ui:360 resources/ui/gtk3/prefs.ui:405
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:356 resources/ui/gtk3/prefs.ui:401
+#: resources/ui/gtk4/prefs.ui:392 resources/ui/gtk3/prefs.ui:437
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:396 resources/ui/gtk3/prefs.ui:441
+#: resources/ui/gtk4/prefs.ui:432 resources/ui/gtk3/prefs.ui:477
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
 msgstr ""
 
-#: resources/ui/gtk4/prefs.ui:428 resources/ui/gtk3/prefs.ui:473
+#: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
 msgstr ""
