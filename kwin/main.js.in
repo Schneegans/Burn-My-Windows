@@ -9,7 +9,13 @@ const blacklist = [
     "ksmserver-logout-greeter ksmserver-logout-greeter",
 
     // KDE Plasma splash screen has to be animated only by the login effect.
-    "ksplashqml ksplashqml"
+    "ksplashqml ksplashqml",
+
+    // All the tooltips of IntelliJ IDEs use the same window class as their main window.
+    // This results in many awkward animations, so we have to blacklist them all.
+    // See https://github.com/Schneegans/Burn-My-Windows/issues/284 for details.
+    "jetbrains-studio jetbrains-studio", "jetbrains-clion jetbrains-clion",
+    "jetbrains-pycharm-ce jetbrains-pycharm-ce"
 ];
 
 class %EFFECT_CLASS% {
@@ -122,6 +128,7 @@ class %EFFECT_CLASS% {
         this.setupForcedRoles(window);
 
         effect.setUniform(this.shader, 'uForOpening', 1.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
 
         %ON_ANIMATION_BEGIN%
 
@@ -161,6 +168,7 @@ class %EFFECT_CLASS% {
         this.setupForcedRoles(window);
 
         effect.setUniform(this.shader, 'uForOpening', 0.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
 
         %ON_ANIMATION_BEGIN%
 

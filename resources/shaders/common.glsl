@@ -20,13 +20,14 @@
 
 // Each shader can access these standard input values:
 
-// vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
-// bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
-// float uProgress:   A value which transitions from 0 to 1 during the animation.
-// float uDuration:   The duration of the current animation in seconds.
-// vec2  uSize:       The size of uTexture in pixels.
-// float uPadding:    The empty area around the actual window (e.g. where the shadow
-//                    is drawn). For now, this will only be set on GNOME.
+// vec2  iTexCoord:     Texture coordinates for retrieving the window input color.
+// bool  uIsFullscreen: True if the window is maximized or in fullscreen mode.
+// bool  uForOpening:   True if a window-open animation is ongoing, false otherwise.
+// float uProgress:     A value which transitions from 0 to 1 during the animation.
+// float uDuration:     The duration of the current animation in seconds.
+// vec2  uSize:         The size of uTexture in pixels.
+// float uPadding:      The empty area around the actual window (e.g. where the shadow
+//                      is drawn). For now, this will only be set on GNOME.
 
 // Furthermore, there are two global methods for reading the window input color and
 // setting the shader output color. Both methods assume straight alpha:
@@ -35,6 +36,7 @@
 // void setOutputColor(vec4 outColor)
 
 uniform bool uForOpening;
+uniform bool uIsFullscreen;
 uniform float uProgress;
 uniform float uDuration;
 
@@ -168,14 +170,18 @@ float easeOutBack(float x, float e) {
 // --------------------------------------------------------------------- edge mask helpers
 
 // This method returns a mask which smoothly transitions towards zero when approaching
-// the window's borders. There is a variant which takes the transition area width in
+// the window's borders. If the window is currently maximized or in fullscreen mode, this
+// will return 1.0 everywhere. There is a variant which takes the transition area width in
 // pixels and one which takes this as a percentage.
 float getEdgeMask(vec2 uv, vec2 maxUV, float fadeWidth) {
   float mask = 1.0;
-  mask *= smoothstep(0.0, 1.0, clamp(uv.x / fadeWidth, 0.0, 1.0));
-  mask *= smoothstep(0.0, 1.0, clamp(uv.y / fadeWidth, 0.0, 1.0));
-  mask *= smoothstep(0.0, 1.0, clamp((maxUV.x - uv.x) / fadeWidth, 0.0, 1.0));
-  mask *= smoothstep(0.0, 1.0, clamp((maxUV.y - uv.y) / fadeWidth, 0.0, 1.0));
+
+  if (!uIsFullscreen) {
+    mask *= smoothstep(0.0, 1.0, clamp(uv.x / fadeWidth, 0.0, 1.0));
+    mask *= smoothstep(0.0, 1.0, clamp(uv.y / fadeWidth, 0.0, 1.0));
+    mask *= smoothstep(0.0, 1.0, clamp((maxUV.x - uv.x) / fadeWidth, 0.0, 1.0));
+    mask *= smoothstep(0.0, 1.0, clamp((maxUV.y - uv.y) / fadeWidth, 0.0, 1.0));
+  }
 
   return mask;
 }
