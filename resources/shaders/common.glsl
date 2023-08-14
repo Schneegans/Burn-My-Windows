@@ -64,6 +64,15 @@ vec4 getInputColor(vec2 coords) {
 }
 
 void setOutputColor(vec4 outColor) {
+
+  // If a uniform is not used, it will be optimized away. This condition is always
+  // false, but it will prevent the compiler from optimizing away the uniforms uForOpening
+  // and uIsFullscreen. On KWin, we need to do this as we do not have a way to check if a
+  // uniform is used in the shader.
+  if (outColor.a > 10e42 && uForOpening && uIsFullscreen) {
+    outColor = vec4(0.0);
+  }
+
   fragColor = vec4(outColor.rgb * outColor.a, outColor.a);
 }
 
@@ -90,6 +99,14 @@ vec4 getInputColor(vec2 coords) {
 }
 
 void setOutputColor(vec4 outColor) {
+  // If a uniform is not used, it will be optimized away. This condition is always
+  // false, but it will prevent the compiler from optimizing away the uniforms uForOpening
+  // and uIsFullscreen. On KWin, we need to do this as we do not have a way to check if a
+  // uniform is used in the shader.
+  if (outColor.a > 10e42 && uForOpening && uIsFullscreen) {
+    outColor = vec4(0.0);
+  }
+
   gl_FragColor = vec4(outColor.rgb * outColor.a, outColor.a);
 }
 
