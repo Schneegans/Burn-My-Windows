@@ -695,10 +695,22 @@ SPDX-License-Identifier: CC0-1.0
       <description>The size of the wisps.</description>
     </key>
 
-    <key name="wisps-color" type="s">
+    <key name="wisps-color-1" type="s">
       <default>"rgb(255, 100, 200)"</default>
-      <summary>Wisps Effect Color</summary>
-      <description>The color of the wisps effect.</description>
+      <summary>Wisps Effect Color 1</summary>
+      <description>A color of the wisps effect.</description>
+    </key>
+
+    <key name="wisps-color-2" type="s">
+      <default>"rgb(100, 100, 255)"</default>
+      <summary>Wisps Effect Color 2</summary>
+      <description>A color of the wisps effect.</description>
+    </key>
+
+    <key name="wisps-color-3" type="s">
+      <default>"rgb(100, 200, 255)"</default>
+      <summary>Wisps Effect Color 3</summary>
+      <description>A color of the wisps effect.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

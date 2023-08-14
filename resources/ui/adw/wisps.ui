@@ -78,17 +78,33 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Color</property>
-        <property name="activatable-widget">wisps-color</property>
         <child>
-          <object class="GtkColorButton" id="wisps-color">
-            <property name="use_alpha">0</property>
-            <property name="show_editor">1</property>
-            <property name="width-request">250</property>
-            <property name="valign">center</property>
+          <object class="GtkBox">
+            <style>
+              <class name="linked" />
+            </style>
+            <child>
+              <object class="GtkColorButton" id="wisps-color-1">
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="wisps-color-2">
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="wisps-color-3">
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-wisps-color">
+          <object class="GtkButton" id="reset-wisps-colors">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>

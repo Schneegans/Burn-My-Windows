@@ -13,6 +13,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - Two convenience buttons have been added to the preferences dialog. One allows you to select all effects, the other one allows you to deselect all effects.
 - A new main menu entry has been added which allows you to open the effect-profile directory. This is useful if you want to back up or share your profiles with others.
+- The Wisps effect now supports colorful wisps. You can now specify three colors for the effect. These colors make up a gradient which is used to color the wisps.
 
 #### Bug Fixes
 
