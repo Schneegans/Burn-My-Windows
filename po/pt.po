@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 07:53+0200\n"
+"POT-Creation-Date: 2023-08-18 06:16+0200\n"
 "PO-Revision-Date: 2023-01-11 16:48+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/burn-my-"
@@ -193,7 +193,7 @@ msgstr "Efeito de TV"
 msgid "TV Glitch"
 msgstr ""
 
-#: src/effects/Wisps.js:82
+#: src/effects/Wisps.js:89
 msgid "Wisps"
 msgstr "Faíscas"
 
@@ -339,7 +339,7 @@ msgstr "Tempo de Animação [ms]"
 #: resources/ui/gtk4/trex.ui:97 resources/ui/gtk4/trex.ui:143
 #: resources/ui/gtk4/trex.ui:189 resources/ui/gtk4/trex.ui:226
 #: resources/ui/gtk4/wisps.ui:51 resources/ui/gtk4/wisps.ui:97
-#: resources/ui/gtk4/wisps.ui:134 resources/ui/gtk4/energize-b.ui:51
+#: resources/ui/gtk4/wisps.ui:140 resources/ui/gtk4/energize-b.ui:51
 #: resources/ui/gtk4/energize-b.ui:97 resources/ui/gtk4/energize-b.ui:134
 #: resources/ui/gtk4/pixel-wheel.ui:51 resources/ui/gtk4/pixel-wheel.ui:97
 #: resources/ui/gtk4/pixel-wheel.ui:143 resources/ui/gtk4/glide.ui:51
@@ -371,7 +371,7 @@ msgstr "Tempo de Animação [ms]"
 #: resources/ui/gtk3/doom.ui:78 resources/ui/gtk3/doom.ui:123
 #: resources/ui/gtk3/doom.ui:168 resources/ui/gtk3/doom.ui:213
 #: resources/ui/gtk3/wisps.ui:64 resources/ui/gtk3/wisps.ui:109
-#: resources/ui/gtk3/wisps.ui:151 resources/ui/gtk3/energize-b.ui:64
+#: resources/ui/gtk3/wisps.ui:159 resources/ui/gtk3/energize-b.ui:64
 #: resources/ui/gtk3/energize-b.ui:109 resources/ui/gtk3/energize-b.ui:151
 #: resources/ui/gtk3/pixel-wheel.ui:71 resources/ui/gtk3/pixel-wheel.ui:116
 #: resources/ui/gtk3/pixel-wheel.ui:161 resources/ui/gtk3/glide.ui:85
@@ -412,7 +412,7 @@ msgstr "Tempo de Animação [ms]"
 #: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
 #: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
 #: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/wisps.ui:110 resources/ui/adw/energize-b.ui:37
 #: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
 #: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
 #: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/glide.ui:36
@@ -498,7 +498,7 @@ msgstr "Velocidade"
 #: resources/ui/gtk4/portal.ui:207 resources/ui/gtk4/incinerate.ui:216
 #: resources/ui/gtk4/snap.ui:115 resources/ui/gtk4/energize-a.ui:115
 #: resources/ui/gtk4/tv.ui:69 resources/ui/gtk3/tv-glitch.ui:231
-#: resources/ui/gtk3/glitch.ui:231 resources/ui/gtk3/wisps.ui:127
+#: resources/ui/gtk3/glitch.ui:231 resources/ui/gtk3/wisps.ui:129
 #: resources/ui/gtk3/energize-b.ui:127 resources/ui/gtk3/portal.ui:231
 #: resources/ui/gtk3/incinerate.ui:238 resources/ui/gtk3/energize-a.ui:127
 #: resources/ui/gtk3/tv.ui:75 resources/ui/adw/tv-glitch.ui:146
