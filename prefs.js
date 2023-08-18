@@ -395,6 +395,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
         addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
         addURIAction('donate-paypal', 'https://www.paypal.me/simonschneegans');
         addURIAction('wallpapers',    'https://github.com/Schneegans/ai-wallpapers');
+        addURIAction('profile-dir',   `file://${GLib.get_user_config_dir()}/burn-my-windows/profiles`);
         // clang-format on
 
         // The changelog action is a bit different, as it may get activated when the

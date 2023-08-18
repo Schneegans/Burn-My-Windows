@@ -12,9 +12,12 @@ SPDX-License-Identifier: CC-BY-4.0
 #### New Features
 
 - Two convenience buttons have been added to the preferences dialog. One allows you to select all effects, the other one allows you to deselect all effects.
+- A new main menu entry has been added which allows you to open the effect-profile directory. This is useful if you want to back up or share your profiles with others.
+- The Wisps effect now supports colorful wisps. You can now specify three colors for the effect. These colors make up a gradient which is used to color the wisps.
 
 #### Bug Fixes
 
+- Some effects (Fire, Incinerate, Energize A, Energize B) are faded towards the edges of the window. This used to look weird when the window is maximized. This has been fixed.
 - On KDE, the animations are not applied to IntelliJ IDEs anymore. These IDEs use windows for their tooltips which do not set the WM class correctly. This caused the animations to be applied to the tooltips as well making them unusable. This is rather a workaround than a fix, but makes the effect usable again in conjunction with IntelliJ IDEs.
 
 ## [Burn My Windows 35](https://github.com/schneegans/Burn-My-Windows/releases/tag/v35)

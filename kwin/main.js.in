@@ -14,8 +14,13 @@ const blacklist = [
     // All the tooltips of IntelliJ IDEs use the same window class as their main window.
     // This results in many awkward animations, so we have to blacklist them all.
     // See https://github.com/Schneegans/Burn-My-Windows/issues/284 for details.
-    "jetbrains-studio jetbrains-studio", "jetbrains-clion jetbrains-clion",
-    "jetbrains-pycharm-ce jetbrains-pycharm-ce"
+    "jetbrains-studio jetbrains-studio", "jetbrains-aqua jetbrains-aqua", 
+    "jetbrains-clion jetbrains-clion", "jetbrains-datagrip jetbrains-datagrip",
+    "jetbrains-dataspell jetbrains-dataspell", "jetbrains-goland jetbrains-goland",
+    "jetbrains-idea jetbrains-idea", "jetbrains-idea-ce jetbrains-idea-ce",
+    "jetbrains-phpstorm jetbrains-phpstorm", "jetbrains-pycharm jetbrains-pycharm", 
+    "jetbrains-pycharm-ce jetbrains-pycharm-ce", "jetbrains-rider jetbrains-rider",
+    "jetbrains-rubymine jetbrains-rubymine", "jetbrains-webstorm jetbrains-webstorm"
 ];
 
 class %EFFECT_CLASS% {
@@ -128,6 +133,7 @@ class %EFFECT_CLASS% {
         this.setupForcedRoles(window);
 
         effect.setUniform(this.shader, 'uForOpening', 1.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
 
         %ON_ANIMATION_BEGIN%
 
@@ -167,6 +173,7 @@ class %EFFECT_CLASS% {
         this.setupForcedRoles(window);
 
         effect.setUniform(this.shader, 'uForOpening', 0.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
 
         %ON_ANIMATION_BEGIN%
 

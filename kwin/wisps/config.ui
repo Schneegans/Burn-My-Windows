@@ -71,7 +71,17 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </widget>
             </item>
             <item row="1" column="1">
-                <widget class="KColorButton" name="kcfg_Color"></widget>
+                <layout class="QHBoxLayout" name="horizontalLayout">
+                    <item>
+                        <widget class="KColorButton" name="kcfg_Color1"></widget>
+                    </item>
+                    <item>
+                        <widget class="KColorButton" name="kcfg_Color2"></widget>
+                    </item>
+                    <item>
+                        <widget class="KColorButton" name="kcfg_Color3"></widget>
+                    </item>
+                </layout>
             </item>
         </layout>
     </widget>
