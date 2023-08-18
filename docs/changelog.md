@@ -15,6 +15,10 @@ SPDX-License-Identifier: CC-BY-4.0
 - A new main menu entry has been added which allows you to open the effect-profile directory. This is useful if you want to back up or share your profiles with others.
 - The Wisps effect now supports colorful wisps. You can now specify three colors for the effect. These colors make up a gradient which is used to color the wisps.
 
+#### Enhancements
+
+- Several translations have been updated. Thanks to all the translators!
+
 #### Bug Fixes
 
 - Some effects (Fire, Incinerate, Energize A, Energize B) are faded towards the edges of the window. This used to look weird when the window is maximized. This has been fixed.
