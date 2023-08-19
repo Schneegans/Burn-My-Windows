@@ -28,7 +28,11 @@ export function debug(message) {
   // Remove debug() function call from stack.
   stack.shift();
 
-  log('[' + stack[0] + '] ' + message);
+  // Find the index of the extension directory in the stack entry. We do not want to
+  // print the entire absolute file path.
+  const extensionRoot = stack[0].indexOf('burn-my-windows@schneegans.github.com');
+
+  log('[' + stack[0].slice(extensionRoot) + '] ' + message);
 }
 
 // Reads the contents of a file contained in the global resources archive. The data
