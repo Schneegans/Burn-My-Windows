@@ -19,7 +19,7 @@ LOCALES_MO     = $(patsubst po/%.po,locale/%/LC_MESSAGES/$(NAME).mo,$(LOCALES_PO
 ZIP_CONTENT = $(JS_FILES) $(LOCALES_MO) resources/$(NAME).gresource \
               schemas/org.gnome.shell.extensions.$(NAME).gschema.xml \
               schemas/org.gnome.shell.extensions.$(NAME)-profile.gschema.xml \
-              schemas/gschemas.compiled metadata.json LICENSE
+              metadata.json LICENSE
 
 # These seven recipes can be invoked by the user.
 .PHONY: zip install uninstall pot clean test references
@@ -91,11 +91,6 @@ $(ZIP_NAME): $(ZIP_CONTENT)
 	         "the extensions website, keep it smaller than 5 MB!"; \
 	    exit 1; \
 	 fi
-
-# Compiles the gschemas.compiled file from the gschema.xml file.
-schemas/gschemas.compiled: schemas/org.gnome.shell.extensions.$(NAME).gschema.xml schemas/org.gnome.shell.extensions.$(NAME)-profile.gschema.xml
-	@echo "Compiling schemas..."
-	@glib-compile-schemas schemas
 
 # Compiles the gresource file from the gresources.xml.
 resources/$(NAME).gresource: resources/$(NAME).gresource.xml
