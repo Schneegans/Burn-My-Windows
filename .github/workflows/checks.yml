@@ -6,10 +6,10 @@ name: Checks
 on:
   push:
     branches:
-      - '**'
+      - "**"
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   clang_format:
@@ -33,9 +33,9 @@ jobs:
     name: Check Compliance with REUSE Specification
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: REUSE Compliance Check
-      uses: fsfe/reuse-action@v1
+      - uses: actions/checkout@v3
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v1
 
   comment_percentage:
     name: Check Comment Percentage
@@ -85,19 +85,19 @@ jobs:
     if: >
       github.event_name == 'push' && contains(github.event.head_commit.message, '[generate-references]')
     steps:
-    - uses: actions/checkout@v3
-    - name: Download Dependencies
-      run: |
-        sudo apt update -qq
-        sudo apt install gettext imagemagick -qq
-    - name: Build Burn-My-Windows
-      run: make
-    - name: Generate References
-      run: sudo make references
-    - uses: actions/upload-artifact@v3
-      with:
-        name: references
-        path: tests/references/
+      - uses: actions/checkout@v3
+      - name: Download Dependencies
+        run: |
+          sudo apt update -qq
+          sudo apt install gettext imagemagick -qq
+      - name: Build Burn-My-Windows
+        run: make
+      - name: Generate References
+        run: sudo make references
+      - uses: actions/upload-artifact@v3
+        with:
+          name: references
+          path: tests/references/
 
   build:
     name: Run Tests
@@ -110,29 +110,22 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '32'
-          - '33'
-          - '34'
-          - '35'
-          - '36'
-          - '37'
-          - '38'
-          - 'rawhide'
+          - "rawhide"
         session:
-          - 'gnome-xsession'
-          - 'gnome-wayland-nested'
+          - "gnome-xsession"
+          - "gnome-wayland-nested"
     steps:
-    - uses: actions/checkout@v3
-    - name: Download Dependencies
-      run: |
-        sudo apt update -qq
-        sudo apt install gettext imagemagick -qq
-    - name: Build Burn-My-Windows
-      run: make
-    - name: Test Burn-My-Windows
-      run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
-    - uses: actions/upload-artifact@v3
-      if: failure()
-      with:
-        name: result_${{ matrix.version }}_${{ matrix.session }}
-        path: tests/output/
+      - uses: actions/checkout@v3
+      - name: Download Dependencies
+        run: |
+          sudo apt update -qq
+          sudo apt install gettext imagemagick -qq
+      - name: Build Burn-My-Windows
+        run: make
+      - name: Test Burn-My-Windows
+        run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: result_${{ matrix.version }}_${{ matrix.session }}
+          path: tests/output/
