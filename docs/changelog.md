@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 37](https://github.com/schneegans/Burn-My-Windows/releases/tag/v37)
+
+**Release Date:** TBD
+
+#### Changes
+
+- The extension has been ported to use ESM modules. This is a requirement for GNOME 45 and newer. As a consequence, the extension is no longer compatible with GNOME 44 and older.
+
 ## [Burn My Windows 36](https://github.com/schneegans/Burn-My-Windows/releases/tag/v36)
 
 **Release Date:** 2023-08-18
