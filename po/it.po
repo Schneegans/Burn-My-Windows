@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-18 06:16+0200\n"
-"PO-Revision-Date: 2023-07-27 15:06+0000\n"
+"PO-Revision-Date: 2023-08-20 15:51+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -681,7 +681,7 @@ msgstr "Gradiente"
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Selezione effetti"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
@@ -691,12 +691,12 @@ msgstr "Se ne vengono selezionati multipli, uno viene scelto a caso."
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
