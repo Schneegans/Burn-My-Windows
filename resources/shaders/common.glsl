@@ -69,7 +69,7 @@ void setOutputColor(vec4 outColor) {
   // false, but it will prevent the compiler from optimizing away the uniforms uForOpening
   // and uIsFullscreen. On KWin, we need to do this as we do not have a way to check if a
   // uniform is used in the shader.
-  if (outColor.a > 10e42 && uForOpening && uIsFullscreen) {
+  if (outColor.a > 1000.0 && uForOpening && uIsFullscreen) {
     outColor = vec4(0.0);
   }
 
@@ -103,7 +103,7 @@ void setOutputColor(vec4 outColor) {
   // false, but it will prevent the compiler from optimizing away the uniforms uForOpening
   // and uIsFullscreen. On KWin, we need to do this as we do not have a way to check if a
   // uniform is used in the shader.
-  if (outColor.a > 10e42 && uForOpening && uIsFullscreen) {
+  if (outColor.a > 1000.0 && uForOpening && uIsFullscreen) {
     outColor = vec4(0.0);
   }
 
