@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-18 06:16+0200\n"
-"PO-Revision-Date: 2023-07-23 08:05+0000\n"
+"PO-Revision-Date: 2023-08-24 22:51+0000\n"
 "Last-Translator: Reza Almanda <rezaalmanda27@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/id/>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -282,7 +282,7 @@ msgstr "Donasi"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Buka Direktori Efek-Profil"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
@@ -681,7 +681,7 @@ msgstr "Gradien"
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Pemilihan Efek"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
@@ -691,12 +691,12 @@ msgstr "Jika lebih dari satu terpilih, satu akan dipilih secara acak."
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
