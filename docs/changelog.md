@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 37](https://github.com/schneegans/Burn-My-Windows/releases/tag/v37)
+
+**Release Date:** 2023-08-26
+
+#### Bug Fixes
+
+- Fixed an issue which caused the effects to crash on KDE in some cases.
+
 ## [Burn My Windows 36](https://github.com/schneegans/Burn-My-Windows/releases/tag/v36)
 
 **Release Date:** 2023-08-18
