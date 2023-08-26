@@ -13,6 +13,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - Fixed an issue which caused the effects to crash on KDE in some cases.
 
+#### Enhancements
+
+- Several translations have been updated. Thanks to all the translators!
+
 ## [Burn My Windows 36](https://github.com/schneegans/Burn-My-Windows/releases/tag/v36)
 
 **Release Date:** 2023-08-18
