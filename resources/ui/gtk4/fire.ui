@@ -28,7 +28,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
                 <child>
                   <object class="GtkMenuButton" id="fire-preset-button">
-                    <property name="label">Choose a Preset</property>
+                    <property name="label" translatable="yes">Choose a Preset</property>
                   </object>
                 </child>
               </object>
