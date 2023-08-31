@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-18 06:16+0200\n"
+"POT-Creation-Date: 2023-08-31 07:30+0200\n"
 "PO-Revision-Date: 2023-01-31 11:35+0000\n"
 "Last-Translator: Ryan Y <ryuichi.ya220@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -359,79 +359,82 @@ msgstr "アニメーション時間（ミリ秒）"
 #: resources/ui/gtk4/fire.ui:120 resources/ui/gtk4/fire.ui:166
 #: resources/ui/gtk4/fire.ui:221 resources/ui/gtk4/fire.ui:280
 #: resources/ui/gtk4/pixel-wipe.ui:51 resources/ui/gtk4/pixel-wipe.ui:97
-#: resources/ui/gtk4/energize-a.ui:51 resources/ui/gtk4/energize-a.ui:97
-#: resources/ui/gtk4/energize-a.ui:134 resources/ui/gtk4/pixelate.ui:51
-#: resources/ui/gtk4/pixelate.ui:97 resources/ui/gtk4/pixelate.ui:143
-#: resources/ui/gtk4/tv.ui:51 resources/ui/gtk4/tv.ui:88
-#: resources/ui/gtk3/tv-glitch.ui:78 resources/ui/gtk3/tv-glitch.ui:123
-#: resources/ui/gtk3/tv-glitch.ui:168 resources/ui/gtk3/tv-glitch.ui:213
-#: resources/ui/gtk3/tv-glitch.ui:255 resources/ui/gtk3/glitch.ui:78
-#: resources/ui/gtk3/glitch.ui:123 resources/ui/gtk3/glitch.ui:168
-#: resources/ui/gtk3/glitch.ui:213 resources/ui/gtk3/glitch.ui:255
-#: resources/ui/gtk3/doom.ui:78 resources/ui/gtk3/doom.ui:123
-#: resources/ui/gtk3/doom.ui:168 resources/ui/gtk3/doom.ui:213
-#: resources/ui/gtk3/wisps.ui:64 resources/ui/gtk3/wisps.ui:109
-#: resources/ui/gtk3/wisps.ui:159 resources/ui/gtk3/energize-b.ui:64
-#: resources/ui/gtk3/energize-b.ui:109 resources/ui/gtk3/energize-b.ui:151
-#: resources/ui/gtk3/pixel-wheel.ui:71 resources/ui/gtk3/pixel-wheel.ui:116
-#: resources/ui/gtk3/pixel-wheel.ui:161 resources/ui/gtk3/glide.ui:85
-#: resources/ui/gtk3/glide.ui:130 resources/ui/gtk3/glide.ui:175
-#: resources/ui/gtk3/glide.ui:220 resources/ui/gtk3/glide.ui:265
-#: resources/ui/gtk3/apparition.ui:85 resources/ui/gtk3/apparition.ui:130
-#: resources/ui/gtk3/apparition.ui:175 resources/ui/gtk3/apparition.ui:220
-#: resources/ui/gtk3/apparition.ui:265 resources/ui/gtk3/portal.ui:78
-#: resources/ui/gtk3/portal.ui:123 resources/ui/gtk3/portal.ui:168
-#: resources/ui/gtk3/portal.ui:213 resources/ui/gtk3/portal.ui:255
-#: resources/ui/gtk3/incinerate.ui:71 resources/ui/gtk3/incinerate.ui:116
-#: resources/ui/gtk3/incinerate.ui:161 resources/ui/gtk3/incinerate.ui:220
-#: resources/ui/gtk3/incinerate.ui:262 resources/ui/gtk3/hexagon.ui:71
-#: resources/ui/gtk3/hexagon.ui:116 resources/ui/gtk3/hexagon.ui:161
-#: resources/ui/gtk3/hexagon.ui:203 resources/ui/gtk3/hexagon.ui:245
-#: resources/ui/gtk3/hexagon.ui:304 resources/ui/gtk3/fire.ui:110
-#: resources/ui/gtk3/fire.ui:154 resources/ui/gtk3/fire.ui:198
-#: resources/ui/gtk3/fire.ui:257 resources/ui/gtk3/fire.ui:321
-#: resources/ui/gtk3/pixel-wipe.ui:71 resources/ui/gtk3/pixel-wipe.ui:116
-#: resources/ui/gtk3/energize-a.ui:64 resources/ui/gtk3/energize-a.ui:109
-#: resources/ui/gtk3/energize-a.ui:151 resources/ui/gtk3/pixelate.ui:71
-#: resources/ui/gtk3/pixelate.ui:116 resources/ui/gtk3/pixelate.ui:161
-#: resources/ui/gtk3/tv.ui:57 resources/ui/gtk3/tv.ui:99
-#: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
-#: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
-#: resources/ui/adw/broken-glass.ui:159 resources/ui/adw/tv-glitch.ui:36
-#: resources/ui/adw/tv-glitch.ui:69 resources/ui/adw/tv-glitch.ui:102
-#: resources/ui/adw/tv-glitch.ui:135 resources/ui/adw/tv-glitch.ui:160
-#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
-#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
-#: resources/ui/adw/glitch.ui:160 resources/ui/adw/matrix.ui:36
-#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
-#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
-#: resources/ui/adw/matrix.ui:185 resources/ui/adw/doom.ui:36
-#: resources/ui/adw/doom.ui:69 resources/ui/adw/doom.ui:102
-#: resources/ui/adw/doom.ui:135 resources/ui/adw/paint-brush.ui:36
-#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:110 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
-#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/glide.ui:36
-#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
-#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
-#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
-#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
-#: resources/ui/adw/apparition.ui:169 resources/ui/adw/portal.ui:36
-#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
-#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
-#: resources/ui/adw/incinerate.ui:36 resources/ui/adw/incinerate.ui:69
-#: resources/ui/adw/incinerate.ui:102 resources/ui/adw/incinerate.ui:125
-#: resources/ui/adw/incinerate.ui:150 resources/ui/adw/hexagon.ui:36
-#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
-#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
-#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/fire.ui:52
-#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
-#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:199
-#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
+#: resources/ui/gtk4/snap.ui:51 resources/ui/gtk4/snap.ui:97
+#: resources/ui/gtk4/snap.ui:134 resources/ui/gtk4/energize-a.ui:51
+#: resources/ui/gtk4/energize-a.ui:97 resources/ui/gtk4/energize-a.ui:134
+#: resources/ui/gtk4/pixelate.ui:51 resources/ui/gtk4/pixelate.ui:97
+#: resources/ui/gtk4/pixelate.ui:143 resources/ui/gtk4/tv.ui:51
+#: resources/ui/gtk4/tv.ui:88 resources/ui/gtk3/tv-glitch.ui:78
+#: resources/ui/gtk3/tv-glitch.ui:123 resources/ui/gtk3/tv-glitch.ui:168
+#: resources/ui/gtk3/tv-glitch.ui:213 resources/ui/gtk3/tv-glitch.ui:255
+#: resources/ui/gtk3/glitch.ui:78 resources/ui/gtk3/glitch.ui:123
+#: resources/ui/gtk3/glitch.ui:168 resources/ui/gtk3/glitch.ui:213
+#: resources/ui/gtk3/glitch.ui:255 resources/ui/gtk3/doom.ui:78
+#: resources/ui/gtk3/doom.ui:123 resources/ui/gtk3/doom.ui:168
+#: resources/ui/gtk3/doom.ui:213 resources/ui/gtk3/wisps.ui:64
+#: resources/ui/gtk3/wisps.ui:109 resources/ui/gtk3/wisps.ui:159
+#: resources/ui/gtk3/energize-b.ui:64 resources/ui/gtk3/energize-b.ui:109
+#: resources/ui/gtk3/energize-b.ui:151 resources/ui/gtk3/pixel-wheel.ui:71
+#: resources/ui/gtk3/pixel-wheel.ui:116 resources/ui/gtk3/pixel-wheel.ui:161
+#: resources/ui/gtk3/glide.ui:85 resources/ui/gtk3/glide.ui:130
+#: resources/ui/gtk3/glide.ui:175 resources/ui/gtk3/glide.ui:220
+#: resources/ui/gtk3/glide.ui:265 resources/ui/gtk3/apparition.ui:85
+#: resources/ui/gtk3/apparition.ui:130 resources/ui/gtk3/apparition.ui:175
+#: resources/ui/gtk3/apparition.ui:220 resources/ui/gtk3/apparition.ui:265
+#: resources/ui/gtk3/portal.ui:78 resources/ui/gtk3/portal.ui:123
+#: resources/ui/gtk3/portal.ui:168 resources/ui/gtk3/portal.ui:213
+#: resources/ui/gtk3/portal.ui:255 resources/ui/gtk3/incinerate.ui:71
+#: resources/ui/gtk3/incinerate.ui:116 resources/ui/gtk3/incinerate.ui:161
+#: resources/ui/gtk3/incinerate.ui:220 resources/ui/gtk3/incinerate.ui:262
+#: resources/ui/gtk3/hexagon.ui:71 resources/ui/gtk3/hexagon.ui:116
+#: resources/ui/gtk3/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:203
+#: resources/ui/gtk3/hexagon.ui:245 resources/ui/gtk3/hexagon.ui:304
+#: resources/ui/gtk3/fire.ui:110 resources/ui/gtk3/fire.ui:154
+#: resources/ui/gtk3/fire.ui:198 resources/ui/gtk3/fire.ui:257
+#: resources/ui/gtk3/fire.ui:321 resources/ui/gtk3/pixel-wipe.ui:71
+#: resources/ui/gtk3/pixel-wipe.ui:116 resources/ui/gtk3/energize-a.ui:64
+#: resources/ui/gtk3/energize-a.ui:109 resources/ui/gtk3/energize-a.ui:151
+#: resources/ui/gtk3/pixelate.ui:71 resources/ui/gtk3/pixelate.ui:116
+#: resources/ui/gtk3/pixelate.ui:161 resources/ui/gtk3/tv.ui:57
+#: resources/ui/gtk3/tv.ui:99 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/glitch.ui:36
+#: resources/ui/adw/glitch.ui:69 resources/ui/adw/glitch.ui:102
+#: resources/ui/adw/glitch.ui:135 resources/ui/adw/glitch.ui:160
+#: resources/ui/adw/matrix.ui:36 resources/ui/adw/matrix.ui:69
+#: resources/ui/adw/matrix.ui:102 resources/ui/adw/matrix.ui:135
+#: resources/ui/adw/matrix.ui:160 resources/ui/adw/matrix.ui:185
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
+#: resources/ui/adw/trex.ui:36 resources/ui/adw/trex.ui:69
+#: resources/ui/adw/trex.ui:102 resources/ui/adw/trex.ui:135
+#: resources/ui/adw/trex.ui:160 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/energize-b.ui:37 resources/ui/adw/energize-b.ui:70
+#: resources/ui/adw/energize-b.ui:95 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
+#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
+#: resources/ui/adw/glide.ui:168 resources/ui/adw/apparition.ui:37
+#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
+#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
+#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
+#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
+#: resources/ui/adw/portal.ui:160 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
+#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
+#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:199 resources/ui/adw/pixel-wipe.ui:36
+#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
 #: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
 #: resources/ui/adw/energize-a.ui:94 resources/ui/adw/pixelate.ui:36
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
@@ -659,6 +662,11 @@ msgstr ""
 msgid "Presets"
 msgstr "プリセット"
 
+#: resources/ui/gtk4/fire.ui:31 resources/ui/gtk3/fire.ui:58
+#: resources/ui/adw/fire.ui:19
+msgid "Choose a Preset"
+msgstr "プリセットを選ぶ"
+
 #: resources/ui/gtk4/fire.ui:188 resources/ui/gtk3/fire.ui:220
 #: resources/ui/adw/fire.ui:129
 msgid "3D Noise"
@@ -766,10 +774,6 @@ msgstr ""
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
 msgstr "ノイズ"
-
-#: resources/ui/gtk3/fire.ui:58 resources/ui/adw/fire.ui:19
-msgid "Choose a Preset"
-msgstr "プリセットを選ぶ"
 
 #~ msgid "Effects"
 #~ msgstr "エフェクト"
