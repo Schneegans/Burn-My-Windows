@@ -33,7 +33,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <object class="GtkButton" id="reset-snap-animation-time">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
-            <property name="tooltip-text">Reset to Default Value</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
             <style>
               <class name="flat" />
             </style>
@@ -66,7 +66,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <object class="GtkButton" id="reset-snap-scale">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
-            <property name="tooltip-text">Reset to Default Value</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
             <style>
               <class name="flat" />
             </style>
@@ -91,7 +91,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <object class="GtkButton" id="reset-snap-color">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
-            <property name="tooltip-text">Reset to Default Value</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
             <style>
               <class name="flat" />
             </style>

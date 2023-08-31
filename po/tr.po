@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-18 06:16+0200\n"
-"PO-Revision-Date: 2023-05-27 03:16+0000\n"
+"PO-Revision-Date: 2023-08-20 15:51+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -159,7 +159,7 @@ msgstr "Matrix"
 
 #: src/effects/PaintBrush.js:102
 msgid "Paint Brush"
-msgstr ""
+msgstr "Boyama Fırçası"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
@@ -281,7 +281,7 @@ msgstr "Bağış"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Efekt Profil Dizinini Aç"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
@@ -549,7 +549,7 @@ msgstr "Piksel Boyutu"
 
 #: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "Fırça Boyutu"
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
@@ -680,7 +680,7 @@ msgstr "Gradyan"
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Efekt Seçimi"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
@@ -690,12 +690,12 @@ msgstr "Birden fazla seçilirse, rastgele biri uygulanır."
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "Tümü"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "Hiç"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
