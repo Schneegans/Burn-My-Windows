@@ -32,7 +32,7 @@ export function debug(message) {
   // print the entire absolute file path.
   const extensionRoot = stack[0].indexOf('burn-my-windows@schneegans.github.com');
 
-  log('[' + stack[0].slice(extensionRoot) + '] ' + message);
+  console.log('[' + stack[0].slice(extensionRoot) + '] ' + message);
 }
 
 // Reads the contents of a file contained in the global resources archive. The data
