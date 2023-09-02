@@ -21,7 +21,7 @@ import GLib from 'gi://GLib';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import * as LookingGlass from 'resource:///org/gnome/shell/ui/lookingGlass.js';
 
-import {getStringResource} from './utils.js';
+import * as utils from './utils.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is based on the window-picking functionality of the Blur-My-Shell extension.    //
@@ -34,8 +34,8 @@ export class WindowPicker {
   // ------------------------------------------------------------------------- constructor
 
   constructor() {
-    const iFace =
-      getStringResource('/interfaces/org.gnome.shell.extensions.burn-my-windows.xml');
+    const iFace = utils.getStringResource(
+      '/interfaces/org.gnome.shell.extensions.burn-my-windows.xml');
     this._dbus = Gio.DBusExportedObject.wrapJSObject(iFace, this);
   }
 

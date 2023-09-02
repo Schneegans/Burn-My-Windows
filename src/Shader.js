@@ -20,7 +20,7 @@ import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import Meta from 'gi://Meta';
 
-import {getStringResource} from './utils.js';
+import * as utils from './utils.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is the base class for all shaders of Burn-My-Windows. It automagically loads    //
@@ -203,8 +203,8 @@ export var Shader = GObject.registerClass(
     // This loads a GLSL file from the extension's resources to a JavaScript string. The
     // code from "common.glsl" is prepended automatically.
     _loadShaderResource(path) {
-      let common = getStringResource('/shaders/common.glsl');
-      let code   = getStringResource(path);
+      let common = utils.getStringResource('/shaders/common.glsl');
+      let code   = utils.getStringResource(path);
 
       // Add a trailing newline. Else the GLSL compiler complains...
       return common + '\n' + code + '\n';

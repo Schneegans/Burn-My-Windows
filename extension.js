@@ -20,7 +20,7 @@ import Meta from 'gi://Meta';
 import {fromVersion26} from './src/migrate.js';
 import {ProfileManager} from './src/ProfileManager.js';
 import {WindowPicker} from './src/WindowPicker.js';
-import {getStringResource} from './src/utils.js';
+import * as utils from './src/utils.js';
 
 import Apparition from './src/effects/Apparition.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
@@ -138,14 +138,14 @@ export default class BurnMyWindows extends Extension {
 
     // This is used to get the battery state.
     const UPowerProxy = Gio.DBusProxy.makeProxyWrapper(
-      getStringResource('/interfaces/org.freedesktop.UPower.xml'));
+      utils.getStringResource('/interfaces/org.freedesktop.UPower.xml'));
     this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
                                         '/org/freedesktop/UPower');
 
     // This is used to get the current power profile.
     try {
       const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
       this._powerProfilesProxy = new PowerProfilesProxy(
         Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
     } catch (e) {

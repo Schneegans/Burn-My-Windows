@@ -20,7 +20,7 @@ import GLib from 'gi://GLib';
 import Gdk from 'gi://Gdk';
 import Adw from 'gi://Adw';
 
-import {getStringResource} from './src/utils.js';
+import * as utils from './src/utils.js';
 import {ProfileManager} from './src/ProfileManager.js';
 
 import Apparition from './src/effects/Apparition.js';
@@ -157,7 +157,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     let hasPowerProfiles = false;
     try {
       const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
       let powerProfilesProxy = new PowerProfilesProxy(
         Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
 
@@ -849,7 +849,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
   // Reads the contents of a JSON file contained in the global resources archive. The data
   // is parsed and returned as a JavaScript object / array.
   _getJSONResource(path) {
-    return JSON.parse(getStringResource(path));
+    return JSON.parse(utils.getStringResource(path));
   }
 
   // This traverses the widget tree below the given parent recursively and returns the
