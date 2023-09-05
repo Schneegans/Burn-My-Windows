@@ -9,9 +9,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
-#### Changes
+#### Major Changes
 
-- The extension has been ported to use ESM modules. This is a requirement for GNOME 45 and newer. As a consequence, the extension is no longer compatible with GNOME 44 and older.
+- This is the first release of Burn-My-Windows supporting GNOME 45. This required a [major refactoring](https://github.com/Schneegans/Burn-My-Windows/pull/373/files) of the code base as GJS now uses ESM modules. As a consequence, this version is not compatible with older versions of GNOME Shell anymore. The old code base is still available on the `gnome-3.36-44` branch and if new features are added (especially translations), they can be backported to this branch.
 
 ## [Burn My Windows 37](https://github.com/schneegans/Burn-My-Windows/releases/tag/v37)
 
