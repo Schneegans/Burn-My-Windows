@@ -16,7 +16,8 @@
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
-import {ShaderFactory} from '../ShaderFactory.js';
+const ShaderFactory =
+  typeof global !== 'undefined' ? (await import('../ShaderFactory.js'))?.default : null;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This simple effect pixelates the window texture and hides the pixels in a wheel-like //
@@ -33,7 +34,7 @@ export default class Effect {
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
   constructor() {
-    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
+    this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
       shader._uPixelSize  = shader.get_uniform_location('uPixelSize');
       shader._uSpokeCount = shader.get_uniform_location('uSpokeCount');
@@ -51,7 +52,7 @@ export default class Effect {
   // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
-  getMinShellVersion() {
+  static getMinShellVersion() {
     return [3, 36];
   }
 
@@ -59,13 +60,13 @@ export default class Effect {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
   // (e.g. '*-animation-time').
-  getNick() {
+  static getNick() {
     return 'pixel-wheel';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  getLabel() {
+  static getLabel() {
     return _('Pixel Wheel');
   }
 
@@ -73,7 +74,7 @@ export default class Effect {
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
-  bindPreferences(dialog) {
+  static bindPreferences(dialog) {
     dialog.bindAdjustment('pixel-wheel-animation-time');
     dialog.bindAdjustment('pixel-wheel-pixel-size');
     dialog.bindAdjustment('pixel-wheel-spoke-count');
@@ -84,7 +85,7 @@ export default class Effect {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings) {
+  static getActorScale(settings) {
     return {x: 1.0, y: 1.0};
   }
 }

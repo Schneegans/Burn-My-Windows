@@ -185,7 +185,7 @@ export default class Effect {
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
   constructor() {
-    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
+    this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
       shader._uFadeWidth = shader.get_uniform_location("uFadeWidth");
 
@@ -201,7 +201,7 @@ export default class Effect {
   // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
-  getMinShellVersion() {
+  static getMinShellVersion() {
     return [3, 36];
   }
 
@@ -210,13 +210,13 @@ export default class Effect {
   // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
   // (e.g. '*-animation-time'). Also, the shader file and the settings UI files should be
   // named likes this.
-  getNick() {
+  static getNick() {
     return "simple-fade";
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  getLabel() {
+  static getLabel() {
     return _("Simple Fade Effect");
   }
 
@@ -224,7 +224,7 @@ export default class Effect {
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
-  bindPreferences(dialog) {
+  static bindPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
   }
 
@@ -233,7 +233,7 @@ export default class Effect {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings) {
+  static getActorScale(settings) {
     return { x: 1.0, y: 1.0 };
   }
 }
@@ -370,7 +370,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 In order to load the above `*.ui` file, add the following code to your effect's `bindPreferences()` method.
 
 ```javascript
-bindPreferences(dialog) {
+static bindPreferences(dialog) {
   // These connect the settings to the UI elements. Have a look at prefs.js
   // on how to bind other types of UI elements.
   dialog.bindAdjustment('simple-fade-animation-time');

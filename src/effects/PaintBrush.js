@@ -16,7 +16,8 @@
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
-import {ShaderFactory} from '../ShaderFactory.js';
+const ShaderFactory =
+  typeof global !== 'undefined' ? (await import('../ShaderFactory.js'))?.default : null;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect paints your windows with a thick paint brush.                            //
@@ -34,7 +35,7 @@ export default class Effect {
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
   constructor() {
-    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
+    this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // We import these modules in this function as they are not available in the
       // preferences process. This callback is only called within GNOME Shell's process.
       const {Clutter, GdkPixbuf, Cogl} = imports.gi;
@@ -79,7 +80,7 @@ export default class Effect {
   // ---------------------------------------------------------------------------- metadata
 
   // This effect is only available on GNOME Shell 40+.
-  getMinShellVersion() {
+  static getMinShellVersion() {
     return [40, 0];
   }
 
@@ -87,13 +88,13 @@ export default class Effect {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
   // (e.g. '*-animation-time').
-  getNick() {
+  static getNick() {
     return 'paint-brush';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  getLabel() {
+  static getLabel() {
     return _('Paint Brush');
   }
 
@@ -101,7 +102,7 @@ export default class Effect {
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
-  bindPreferences(dialog) {
+  static bindPreferences(dialog) {
     dialog.bindAdjustment('paint-brush-animation-time');
     dialog.bindAdjustment('paint-brush-size');
   }
@@ -111,7 +112,7 @@ export default class Effect {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings) {
+  static getActorScale(settings) {
     return {x: 1.0, y: 1.0};
   }
 }

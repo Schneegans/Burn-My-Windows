@@ -24,7 +24,7 @@ import {Shader} from './Shader.js';
 // possible in order to avoid memory leaks.                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-export class ShaderFactory {
+export default class ShaderFactory {
 
   // Creates a new ShaderFactory. Requires the nick of the effect and a callback function
   // which will be called whenever a new shader is created.

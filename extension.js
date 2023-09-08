@@ -437,7 +437,8 @@ export default class BurnMyWindows extends Extension {
 
     if (previewNick != '') {
       const activeProfile = this._settings.get_string('active-profile');
-      effect  = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
+      effect =
+        this._ALL_EFFECTS.find(effect => effect.constructor.getNick() == previewNick);
       profile = this._profiles.find(p => p.path == activeProfile);
 
       // Only preview the effect until the preview window is closed.
@@ -520,7 +521,8 @@ export default class BurnMyWindows extends Extension {
 
         // Create a list of all enabled effects of this profile.
         const enabled = this._ALL_EFFECTS.filter(effect => {
-          return profile.settings.get_boolean(`${effect.getNick()}-enable-effect`);
+          return profile.settings.get_boolean(
+            `${effect.constructor.getNick()}-enable-effect`);
         });
 
         // And then choose a random effect.
@@ -558,7 +560,8 @@ export default class BurnMyWindows extends Extension {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.getActorScale(profile.settings, forOpening, actor);
+    const actorScale =
+      effect.constructor.getActorScale(profile.settings, forOpening, actor);
 
     // All scaling is relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
@@ -609,8 +612,9 @@ export default class BurnMyWindows extends Extension {
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.
-    const duration =
-      testMode ? 5000 : profile.settings.get_int(effect.getNick() + '-animation-time');
+    const duration = testMode ?
+      5000 :
+      profile.settings.get_int(effect.constructor.getNick() + '-animation-time');
 
     // Finally start the animation!
     shader.beginAnimation(profile.settings, forOpening, testMode, duration, actor);
