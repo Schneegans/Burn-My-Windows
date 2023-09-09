@@ -102,7 +102,7 @@ export default class Effect {
   // bounds of the actor. This only works for GNOME 3.38+.
   // For this effect, we scale the actor vertically so that it covers the entire screen.
   // This ensures that the melted window will not be cut off.
-  getActorScale(settings, forOpening, actor) {
+  static getActorScale(settings, forOpening, actor) {
     let actorScale = 2.0 * Math.max(1.0, global.stage.height / actor.height);
     return {x: 1.0, y: actorScale};
   }
