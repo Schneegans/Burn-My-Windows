@@ -14,26 +14,41 @@
 
 'use strict';
 
-const {Clutter, Gio, Meta} = imports.gi;
+import Gio from 'gi://Gio';
+import Meta from 'gi://Meta';
 
-const Main          = imports.ui.main;
-const Workspace     = imports.ui.workspace.Workspace;
-const WindowManager = imports.ui.windowManager.WindowManager;
+import {fromVersion26} from './src/migrate.js';
+import {ProfileManager} from './src/ProfileManager.js';
+import {WindowPicker} from './src/WindowPicker.js';
+import * as utils from './src/utils.js';
 
-// The WindowPreview class is only available on GNOME Shell 3.38+;
-let WindowPreview = null;
-try {
-  WindowPreview = imports.ui.windowPreview.WindowPreview;
-} catch (error) {
-  // Nothing to be done, we are on GNOME Shell 3.36.
-}
+import Apparition from './src/effects/Apparition.js';
+import BrokenGlass from './src/effects/BrokenGlass.js';
+import Doom from './src/effects/Doom.js';
+import EnergizeA from './src/effects/EnergizeA.js';
+import EnergizeB from './src/effects/EnergizeB.js';
+import Fire from './src/effects/Fire.js';
+import Glide from './src/effects/Glide.js';
+import Glitch from './src/effects/Glitch.js';
+import Hexagon from './src/effects/Hexagon.js';
+import Incinerate from './src/effects/Incinerate.js';
+import Matrix from './src/effects/Matrix.js';
+import PaintBrush from './src/effects/PaintBrush.js';
+import Pixelate from './src/effects/Pixelate.js';
+import PixelWheel from './src/effects/PixelWheel.js';
+import PixelWipe from './src/effects/PixelWipe.js';
+import Portal from './src/effects/Portal.js';
+import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TRexAttack from './src/effects/TRexAttack.js';
+import TVEffect from './src/effects/TVEffect.js';
+import TVGlitch from './src/effects/TVGlitch.js';
+import Wisps from './src/effects/Wisps.js';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const migrate        = Me.imports.src.migrate;
-const utils          = Me.imports.src.utils;
-const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
-const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
+import {WindowPreview} from 'resource:///org/gnome/shell/ui/windowPreview.js';
+import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This extensions modifies the window-close and window-open animations with all kinds  //
@@ -44,7 +59,7 @@ const WindowPicker   = Me.imports.src.WindowPicker.WindowPicker;
 // to get this working. For more details, read the other comments in this file...       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-class Extension {
+export default class BurnMyWindows extends Extension {
 
   // ------------------------------------------------------------------------ public stuff
 
@@ -54,46 +69,47 @@ class Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new Me.imports.src.effects.Apparition.Apparition(),
-      new Me.imports.src.effects.BrokenGlass.BrokenGlass(),
-      new Me.imports.src.effects.Doom.Doom(),
-      new Me.imports.src.effects.EnergizeA.EnergizeA(),
-      new Me.imports.src.effects.EnergizeB.EnergizeB(),
-      new Me.imports.src.effects.Fire.Fire(),
-      new Me.imports.src.effects.Glide.Glide(),
-      new Me.imports.src.effects.Glitch.Glitch(),
-      new Me.imports.src.effects.Hexagon.Hexagon(),
-      new Me.imports.src.effects.Incinerate.Incinerate(),
-      new Me.imports.src.effects.Matrix.Matrix(),
-      new Me.imports.src.effects.PaintBrush.PaintBrush(),
-      new Me.imports.src.effects.Pixelate.Pixelate(),
-      new Me.imports.src.effects.PixelWheel.PixelWheel(),
-      new Me.imports.src.effects.PixelWipe.PixelWipe(),
-      new Me.imports.src.effects.Portal.Portal(),
-      new Me.imports.src.effects.SnapOfDisintegration.SnapOfDisintegration(),
-      new Me.imports.src.effects.TRexAttack.TRexAttack(),
-      new Me.imports.src.effects.TVEffect.TVEffect(),
-      new Me.imports.src.effects.TVGlitch.TVGlitch(),
-      new Me.imports.src.effects.Wisps.Wisps(),
+      new Apparition(),
+      new BrokenGlass(),
+      new Doom(),
+      new EnergizeA(),
+      new EnergizeB(),
+      new Fire(),
+      new Glide(),
+      new Glitch(),
+      new Hexagon(),
+      new Incinerate(),
+      new Matrix(),
+      new PaintBrush(),
+      new Pixelate(),
+      new PixelWheel(),
+      new PixelWipe(),
+      new Portal(),
+      new SnapOfDisintegration(),
+      new TRexAttack(),
+      new TVEffect(),
+      new TVGlitch(),
+      new Wisps(),
     ];
 
     // Load all of our resources.
-    this._resources = Gio.Resource.load(Me.path + '/resources/burn-my-windows.gresource');
+    this._resources =
+      Gio.Resource.load(this.path + '/resources/burn-my-windows.gresource');
     Gio.resources_register(this._resources);
 
     // Store a reference to the settings object.
-    this._settings = ExtensionUtils.getSettings();
+    this._settings = this.getSettings();
 
     // Now we check whether the extension settings need to be migrated from a previous
     // version. If this is the case, we defer the profile loading until this is finished.
     const lastVersion = this._settings.get_int('last-extension-version');
-    if (lastVersion < Me.metadata.version) {
+    if (lastVersion < this.metadata.version) {
       if (lastVersion <= 26) {
         // If the profile migration fails for some reason, the callback will create a
         // default profile instead.
-        migrate.fromVersion26().finally(() => {
+        fromVersion26().finally(() => {
           this._loadProfiles();
-          this._settings.set_int('last-extension-version', Me.metadata.version);
+          this._settings.set_int('last-extension-version', this.metadata.version);
         });
       } else {
         this._loadProfiles();
@@ -234,21 +250,9 @@ class Extension {
     // of the actor. However, if we are in the overview, we have to enlarge the clone of
     // the window as well.
     Workspace.prototype._addWindowClone = function(...params) {
-      const clone = extensionThis._origAddWindowClone.apply(this, params);
-
-      // The parameters of this method changed a bit through the versions...
-      let realWindow, container;
-
-      if (utils.shellVersionIs(3, 36)) {
-        container  = clone[0];
-        realWindow = container.realWindow;
-      } else if (utils.shellVersionIs(3, 38)) {
-        container  = clone._windowContainer;
-        realWindow = params[0].get_compositor_private();
-      } else {
-        container  = clone.window_container;
-        realWindow = params[0].get_compositor_private();
-      }
+      const clone      = extensionThis._origAddWindowClone.apply(this, params);
+      const container  = clone.window_container;
+      const realWindow = params[0].get_compositor_private();
 
       // Store the overview clone as temporary members of the real window actor. When we
       // set up the effect, we will check for the existence of these and enlarge the clone
@@ -261,16 +265,6 @@ class Extension {
         delete realWindow._bmwOverviewClone;
         delete realWindow._bmwOverviewCloneContainer;
       });
-
-      // This is actually needed for the window-close animation on GNOME Shell 3.36.
-      // On GNOME 3.36, the window clone's 'destroy' handler only calls _removeWindowClone
-      // but not _doRemoveWindow. The latter is required to trigger the repositioning of
-      // the overview window layout. Therefore we call this method in addition.
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/gnome-3-36/js/ui/workspace.js#L1877
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/workspace.js#L1363
-      if (utils.shellVersionIs(3, 36)) {
-        container.connect('destroy', () => this._doRemoveWindow(container.metaWindow));
-      }
 
       return clone;
     };
@@ -301,53 +295,50 @@ class Extension {
     };
 
     // With the code below, we hide the window-overlay (icon, label, close button) in the
-    // overview once the close-animation is running. As the WindowPreview class is only
-    // available on GNOME 3.38 and beyond, we cannot hide the overlay on GNOME 3.36.
-    if (WindowPreview) {
+    // overview once the close-animation is running.
 
-      // We will monkey-patch these methods.
-      this._origDeleteAll = WindowPreview.prototype._deleteAll;
-      this._origRestack   = WindowPreview.prototype._restack;
-      this._origInit      = WindowPreview.prototype._init;
+    // We will monkey-patch these methods.
+    this._origDeleteAll = WindowPreview.prototype._deleteAll;
+    this._origRestack   = WindowPreview.prototype._restack;
+    this._origInit      = WindowPreview.prototype._init;
 
-      // Whenever a WindowPreview is created, we connect to the referenced Meta.Window's
-      // 'unmanaged' signal to hide the overlay.
-      WindowPreview.prototype._init = function(...params) {
-        extensionThis._origInit.apply(this, params);
+    // Whenever a WindowPreview is created, we connect to the referenced Meta.Window's
+    // 'unmanaged' signal to hide the overlay.
+    WindowPreview.prototype._init = function(...params) {
+      extensionThis._origInit.apply(this, params);
 
-        // Hide the window's icon, name, and close button.
-        const connectionID = this.metaWindow.connect('unmanaged', () => {
-          if (this.window_container) {
-            this.overlayEnabled = false;
-            this._icon.visible  = false;
-          }
-        });
-
-        // Make sure to not call the callback above if the Meta.Window was not unmanaged
-        // before leaving the overview.
-        this.connect('destroy', () => {
-          this.metaWindow.disconnect(connectionID);
-        });
-      };
-
-      // The _deleteAll is called when the user clicks the X in the overview. We should
-      // not attempt to close windows twice. Due to the animation in the overview, the
-      // close button can be clicked twice which normally would lead to a crash.
-      WindowPreview.prototype._deleteAll = function() {
-        if (!this._closeRequested) {
-          extensionThis._origDeleteAll.apply(this);
+      // Hide the window's icon, name, and close button.
+      const connectionID = this.metaWindow.connect('unmanaged', () => {
+        if (this.window_container) {
+          this.overlayEnabled = false;
+          this._icon.visible  = false;
         }
-      };
+      });
 
-      // This is required, else WindowPreview's _restack() which is called by the
-      // "this.overlayEnabled = false", sometimes tries to access an already delete
-      // WindowPreview.
-      WindowPreview.prototype._restack = function() {
-        if (!this._closeRequested) {
-          extensionThis._origRestack.apply(this);
-        }
-      };
-    }
+      // Make sure to not call the callback above if the Meta.Window was not unmanaged
+      // before leaving the overview.
+      this.connect('destroy', () => {
+        this.metaWindow.disconnect(connectionID);
+      });
+    };
+
+    // The _deleteAll is called when the user clicks the X in the overview. We should
+    // not attempt to close windows twice. Due to the animation in the overview, the
+    // close button can be clicked twice which normally would lead to a crash.
+    WindowPreview.prototype._deleteAll = function() {
+      if (!this._closeRequested) {
+        extensionThis._origDeleteAll.apply(this);
+      }
+    };
+
+    // This is required, else WindowPreview's _restack() which is called by the
+    // "this.overlayEnabled = false", sometimes tries to access an already delete
+    // WindowPreview.
+    WindowPreview.prototype._restack = function() {
+      if (!this._closeRequested) {
+        extensionThis._origRestack.apply(this);
+      }
+    };
   }
 
   // This function could be called after the extension is uninstalled, disabled in GNOME
@@ -372,11 +363,9 @@ class Extension {
     Main.wm._shouldAnimateActor         = this._origShouldAnimateActor;
     Main.wm._waitForOverviewToHide      = this._origWaitForOverviewToHide;
 
-    if (WindowPreview) {
-      WindowPreview.prototype._deleteAll = this._origDeleteAll;
-      WindowPreview.prototype._restack   = this._origRestack;
-      WindowPreview.prototype._init      = this._origInit;
-    }
+    WindowPreview.prototype._deleteAll = this._origDeleteAll;
+    WindowPreview.prototype._restack   = this._origRestack;
+    WindowPreview.prototype._init      = this._origInit;
 
     this._settings = null;
   }
@@ -392,7 +381,7 @@ class Extension {
   _loadProfiles() {
 
     // Get all currently available profiles.
-    const profileManager = new ProfileManager();
+    const profileManager = new ProfileManager(this.metadata);
     this._profiles       = profileManager.getProfiles();
 
     // Whenever the properties of a profile is changed in the settings, we may have to
@@ -448,7 +437,8 @@ class Extension {
 
     if (previewNick != '') {
       const activeProfile = this._settings.get_string('active-profile');
-      effect  = this._ALL_EFFECTS.find(effect => effect.getNick() == previewNick);
+      effect =
+        this._ALL_EFFECTS.find(effect => effect.constructor.getNick() == previewNick);
       profile = this._profiles.find(p => p.path == activeProfile);
 
       // Only preview the effect until the preview window is closed.
@@ -501,7 +491,7 @@ class Extension {
         }
 
         // If the profile is still matching, we also check the color scheme.
-        if (matches && profileColorScheme != 0 && utils.shellVersionIsAtLeast(42, 0)) {
+        if (matches && profileColorScheme != 0) {
           const colorScheme = this._shellSettings.get_string('color-scheme');
           matches &= (profileColorScheme == 1 && colorScheme == 'default') ||
             (profileColorScheme == 2 && colorScheme == 'prefer-dark');
@@ -531,7 +521,8 @@ class Extension {
 
         // Create a list of all enabled effects of this profile.
         const enabled = this._ALL_EFFECTS.filter(effect => {
-          return profile.settings.get_boolean(`${effect.getNick()}-enable-effect`);
+          return profile.settings.get_boolean(
+            `${effect.constructor.getNick()}-enable-effect`);
         });
 
         // And then choose a random effect.
@@ -569,7 +560,8 @@ class Extension {
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
     // the transitions so that nothing changes. The window stays opaque and is scaled to
     // actorScale.
-    const actorScale = effect.getActorScale(profile.settings, forOpening, actor);
+    const actorScale =
+      effect.constructor.getActorScale(profile.settings, forOpening, actor);
 
     // All scaling is relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
@@ -580,7 +572,7 @@ class Extension {
     // If we are in the overview, we have to enlarge the window's clone as well. We also
     // disable the clone's overlay (e.g. its icon, name, and close button) during the
     // animation.
-    if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
+    if (actor._bmwOverviewClone) {
       actor._bmwOverviewClone.overlayEnabled = false;
       actor._bmwOverviewCloneContainer.set_pivot_point(0.5, 0.5);
       actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
@@ -597,7 +589,7 @@ class Extension {
     const endID = shader.connect('end-animation', () => {
       shader.disconnect(endID);
 
-      if (actor._bmwOverviewClone && utils.shellVersionIsAtLeast(3, 38)) {
+      if (actor._bmwOverviewClone) {
         actor._bmwOverviewClone.overlayEnabled   = true;
         actor._bmwOverviewCloneContainer.scale_x = 1.0;
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
@@ -620,8 +612,9 @@ class Extension {
 
     // To make things deterministic during testing, we set the effect duration to 5
     // seconds.
-    const duration =
-      testMode ? 5000 : profile.settings.get_int(effect.getNick() + '-animation-time');
+    const duration = testMode ?
+      5000 :
+      profile.settings.get_int(effect.constructor.getNick() + '-animation-time');
 
     // Finally start the animation!
     shader.beginAnimation(profile.settings, forOpening, testMode, duration, actor);
@@ -635,16 +628,9 @@ class Extension {
       return true;
     }
 
-    // This was called "realWindow" in GNOME 3.36.
-    const propertyName = utils.shellVersionIs(3, 36) ? 'realWindow' : '_windowActor';
-    const actor        = workspace._windows[index][propertyName];
-    const shader       = actor.get_effect('burn-my-windows-effect');
+    const actor  = workspace._windows[index]._windowActor;
+    const shader = actor.get_effect('burn-my-windows-effect');
 
     return shader == null;
   }
-}
-
-// This function is called once when the extension is loaded, not enabled.
-function init() {
-  return new Extension();
 }

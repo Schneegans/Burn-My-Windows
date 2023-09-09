@@ -14,14 +14,17 @@
 
 'use strict';
 
-const {Gio} = imports.gi;
+import Gio from 'gi://Gio';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
+import * as utils from '../utils.js';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
-const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
+// We import some modules only in the Shell process as they are not available in the
+// preferences process. They are used only in the creator function of the ShaderFactory
+// which is only called within GNOME Shell's process.
+const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
+const Clutter       = await utils.importInShellOnly('gi://Clutter');
+
+const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
@@ -34,20 +37,14 @@ const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var Fire = class {
-
+export default class Effect {
 
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
   constructor() {
-    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
-      // We import Clutter in this function as it is not available in the preferences
-      // process. This creator function of the ShaderFactory is only called within GNOME
-      // Shell's process.
-      const Clutter = imports.gi.Clutter;
-
+    this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store all uniform locations.
       shader._uGradient = [
         shader.get_uniform_location('uGradient1'),
@@ -82,7 +79,7 @@ var Fire = class {
   // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
-  getMinShellVersion() {
+  static getMinShellVersion() {
     return [3, 36];
   }
 
@@ -90,13 +87,13 @@ var Fire = class {
   // required. It should match the prefix of the settings keys which store whether the
   // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
   // (e.g. '*-animation-time').
-  getNick() {
+  static getNick() {
     return 'fire';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  getLabel() {
+  static getLabel() {
     return _('Fire');
   }
 
@@ -104,7 +101,7 @@ var Fire = class {
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
-  bindPreferences(dialog) {
+  static bindPreferences(dialog) {
 
     // Bind all properties.
     dialog.bindAdjustment('fire-animation-time');
@@ -118,8 +115,8 @@ var Fire = class {
     dialog.bindColorButton('fire-color-5');
 
     // Connect the buttons only once. The bindPreferences can be called multiple times...
-    if (!this._isConnected) {
-      this._isConnected = true;
+    if (!Effect._isConnected) {
+      Effect._isConnected = true;
 
       // The fire-gradient-reset button needs to be bound explicitly.
       dialog.getBuilder().get_object('reset-fire-colors').connect('clicked', () => {
@@ -131,7 +128,7 @@ var Fire = class {
       });
 
       // Initialize the fire-preset dropdown.
-      this._createFirePresets(dialog);
+      Effect._createFirePresets(dialog);
     }
   }
 
@@ -140,14 +137,14 @@ var Fire = class {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings) {
+  static getActorScale(settings, forOpening, actor) {
     return {x: 1.0, y: 1.0};
   }
 
   // ----------------------------------------------------------------------- private stuff
 
   // This populates the preset dropdown menu for the fire options.
-  _createFirePresets(dialog) {
+  static _createFirePresets(dialog) {
     dialog.getBuilder().get_object('fire-prefs').connect('realize', (widget) => {
       const presets = [
         {
@@ -228,7 +225,7 @@ var Fire = class {
 
       dialog.getBuilder().get_object('fire-preset-button').set_menu_model(menu);
 
-      const root = utils.isGTK4() ? widget.get_root() : widget.get_toplevel();
+      const root = widget.get_root();
       root.insert_action_group(groupName, group);
     });
   }

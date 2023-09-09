@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 38](https://github.com/schneegans/Burn-My-Windows/releases/tag/v38)
+
+**Release Date:** 2023-09-09
+
+#### Major Changes
+
+- This is the first release of Burn-My-Windows supporting GNOME 45. This required a [major refactoring](https://github.com/Schneegans/Burn-My-Windows/pull/373/files) of the code base as GJS now uses ESM modules. As a consequence, this version is not compatible with older versions of GNOME Shell anymore. The old code base is still available on the `gnome-3.36-44` branch and if new features are added (especially translations), they can be backported to this branch.
+
 ## [Burn My Windows 37](https://github.com/schneegans/Burn-My-Windows/releases/tag/v37)
 
 **Release Date:** 2023-08-26

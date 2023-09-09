@@ -14,13 +14,13 @@
 
 'use strict';
 
-const {Gio, Shell, GObject, Clutter, Meta} = imports.gi;
-const ByteArray                            = imports.byteArray;
+import Gio from 'gi://Gio';
+import Shell from 'gi://Shell';
+import GObject from 'gi://GObject';
+import Clutter from 'gi://Clutter';
+import Meta from 'gi://Meta';
 
-const Main           = imports.ui.main;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
+import * as utils from './utils.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This is the base class for all shaders of Burn-My-Windows. It automagically loads    //
@@ -47,7 +47,7 @@ const utils          = Me.imports.src.utils;
 //                         used to clean up any resources.
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var Shader = GObject.registerClass(
+export var Shader = GObject.registerClass(
   {
     Signals: {
       'begin-animation': {
@@ -191,10 +191,8 @@ var Shader = GObject.registerClass(
       // to undo this. It is a pity that we have to do this here, as it is not really
       // required to be done each frame. But it's the only place where we can do it.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2650
-      if (utils.shellVersionIsAtLeast(44, 2)) {
-        this.get_pipeline().set_blend(
-          'RGBA = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))');
-      }
+      this.get_pipeline().set_blend(
+        'RGBA = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))');
 
       this.set_uniform_float(this._uProgress, 1, [this._progress]);
       super.vfunc_paint_target(...params);
@@ -202,18 +200,11 @@ var Shader = GObject.registerClass(
 
     // --------------------------------------------------------------------- private stuff
 
-    // This loads the file at 'path' contained in the extension's resources to a
-    // JavaScript string.
-    _loadStringResource(path) {
-      const data = Gio.resources_lookup_data(path, 0);
-      return ByteArray.toString(ByteArray.fromGBytes(data));
-    }
-
     // This loads a GLSL file from the extension's resources to a JavaScript string. The
     // code from "common.glsl" is prepended automatically.
     _loadShaderResource(path) {
-      let common = this._loadStringResource('/shaders/common.glsl');
-      let code   = this._loadStringResource(path);
+      let common = utils.getStringResource('/shaders/common.glsl');
+      let code   = utils.getStringResource(path);
 
       // Add a trailing newline. Else the GLSL compiler complains...
       return common + '\n' + code + '\n';

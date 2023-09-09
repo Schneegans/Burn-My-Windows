@@ -14,15 +14,13 @@
 
 'use strict';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const ProfileManager = Me.imports.src.ProfileManager.ProfileManager;
-const utils          = Me.imports.src.utils;
+import {ProfileManager} from './ProfileManager.js';
+import * as utils from './utils.js';
 
 // Migrating from pre-27 versions is pretty involved. Before, all settings were stored in
 // the standard Gio.Settings backend. Now, there are effect profiles. Depending on the
 // settings one or two profiles may be required.
-async function fromVersion26() {
+export async function fromVersion26() {
   return utils
     .executeCommand(['dconf', 'dump', '/org/gnome/shell/extensions/burn-my-windows/'])
     .catch(r => utils.debug('Failed to get old settings for effect migration: ' + r))
