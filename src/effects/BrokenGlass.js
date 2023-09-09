@@ -18,7 +18,13 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 import * as utils from '../utils.js';
 
+// We import some modules only in the Shell process as they are not available in the
+// preferences process. They are used only in the creator function of the ShaderFactory
+// which is only called within GNOME Shell's process.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
+const Clutter       = await utils.importInShellOnly('gi://Clutter');
+const GdkPixbuf     = await utils.importInShellOnly('gi://GdkPixbuf');
+const Cogl          = await utils.importInShellOnly('gi://Cogl');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect shatters the window into pieces. For an explanation how this works, look //
@@ -47,10 +53,6 @@ export default class Effect {
   // newly created shader instance.
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
-      // We import these modules in this function as they are not available in the
-      // preferences process. This callback is only called within GNOME Shell's process.
-      const {Clutter, GdkPixbuf, Cogl} = imports.gi;
-
       // Create the texture in the first call.
       if (!this._shardTexture) {
         const shardData    = GdkPixbuf.Pixbuf.new_from_resource('/img/shards.png');

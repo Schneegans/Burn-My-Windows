@@ -20,7 +20,11 @@ const _ = imports.gettext.domain('burn-my-windows').gettext;
 
 import * as utils from '../utils.js';
 
+// We import some modules only in the Shell process as they are not available in the
+// preferences process. They are used only in the creator function of the ShaderFactory
+// which is only called within GNOME Shell's process.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
+const Clutter       = await utils.importInShellOnly('gi://Clutter');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
@@ -41,11 +45,6 @@ export default class Effect {
   // newly created shader instance.
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
-      // We import Clutter in this function as it is not available in the preferences
-      // process. This creator function of the ShaderFactory is only called within GNOME
-      // Shell's process.
-      const Clutter = imports.gi.Clutter;
-
       // Store all uniform locations.
       shader._uGradient = [
         shader.get_uniform_location('uGradient1'),
