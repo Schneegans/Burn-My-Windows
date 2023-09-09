@@ -125,7 +125,7 @@ export default class Effect {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  static getActorScale(settings) {
+  static getActorScale(settings, forOpening, actor) {
     const scale = 1.0 + 0.5 * settings.get_double('trex-scratch-warp');
     return {x: scale, y: scale};
   }
