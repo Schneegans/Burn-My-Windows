@@ -18,8 +18,9 @@ import Gio from 'gi://Gio';
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
-const ShaderFactory =
-  typeof global !== 'undefined' ? (await import('../ShaderFactory.js'))?.default : null;
+import * as utils from '../utils.js';
+
+const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //

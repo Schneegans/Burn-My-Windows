@@ -16,8 +16,9 @@
 
 const _ = imports.gettext.domain('burn-my-windows').gettext;
 
-const ShaderFactory =
-  typeof global !== 'undefined' ? (await import('../ShaderFactory.js'))?.default : null;
+import * as utils from '../utils.js';
+
+const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect shatters the window into pieces. For an explanation how this works, look //

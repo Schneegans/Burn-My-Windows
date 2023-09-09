@@ -165,11 +165,11 @@ void main() {
 
 "use strict";
 
-const GObject = imports.gi.GObject;
-
 const _ = imports.gettext.domain("burn-my-windows").gettext;
 
-import { ShaderFactory } from "../ShaderFactory.js";
+import * as utils from "../utils.js";
+
+const ShaderFactory = await utils.importInShellOnly("./ShaderFactory.js");
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect ...                                                                      //

@@ -35,6 +35,16 @@ export function debug(message) {
   console.log('[' + stack[0].slice(extensionRoot) + '] ' + message);
 }
 
+// This method can be used to import a module in the GNOME Shell process only. This
+// is useful if you want to use a module in extension.js, but not in the preferences
+// process. This method returns null if it is called in the preferences process.
+export async function importInShellOnly(module) {
+  if (typeof global !== 'undefined') {
+    return (await import(module)).default;
+  }
+  return null;
+}
+
 // Reads the contents of a file contained in the global resources archive. The data
 // is returned as a string.
 export function getStringResource(path) {
