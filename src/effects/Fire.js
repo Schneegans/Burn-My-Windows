@@ -116,8 +116,8 @@ export default class Effect {
     dialog.bindColorButton('fire-color-5');
 
     // Connect the buttons only once. The bindPreferences can be called multiple times...
-    if (!this._isConnected) {
-      this._isConnected = true;
+    if (!Effect._isConnected) {
+      Effect._isConnected = true;
 
       // The fire-gradient-reset button needs to be bound explicitly.
       dialog.getBuilder().get_object('reset-fire-colors').connect('clicked', () => {
@@ -129,7 +129,7 @@ export default class Effect {
       });
 
       // Initialize the fire-preset dropdown.
-      this._createFirePresets(dialog);
+      Effect._createFirePresets(dialog);
     }
   }
 
@@ -145,7 +145,7 @@ export default class Effect {
   // ----------------------------------------------------------------------- private stuff
 
   // This populates the preset dropdown menu for the fire options.
-  _createFirePresets(dialog) {
+  static _createFirePresets(dialog) {
     dialog.getBuilder().get_object('fire-prefs').connect('realize', (widget) => {
       const presets = [
         {
