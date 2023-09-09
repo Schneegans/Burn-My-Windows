@@ -14,14 +14,14 @@
 
 'use strict';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
-
 import * as utils from '../utils.js';
 
 // We import the ShaderFactory only in the Shell process as it is not required in the
 // preferences process. The preferences process does not create any shader instances, it
 // only uses the static metadata of the effect.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
+
+const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect melts your windows. Inspired by the legendary screen transitions of the  //
@@ -32,7 +32,6 @@ const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
 export default class Effect {
-
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each

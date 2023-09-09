@@ -45,6 +45,26 @@ export async function importInShellOnly(module) {
   return null;
 }
 
+// This method can be used to import a module in the preferences process only. This
+// is useful if you want to use a module in the preferences process, but not in
+// extension.js. This method returns null if it is called in the GNOME Shell process.
+export async function importInPrefsOnly(module) {
+  if (typeof global === 'undefined') {
+    return (await import(module));
+  }
+  return null;
+}
+
+// This method can be used to import gettext. This is done differently in the
+// GNOME Shell process and in the preferences process.
+export async function importGettext() {
+  if (typeof global === 'undefined') {
+    return (await import('resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js'))
+      .gettext;
+  }
+  return (await import('resource:///org/gnome/shell/extensions/extension.js')).gettext;
+}
+
 // Reads the contents of a file contained in the global resources archive. The data
 // is returned as a string.
 export function getStringResource(path) {

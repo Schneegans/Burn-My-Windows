@@ -14,14 +14,14 @@
 
 'use strict';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
-
 import * as utils from '../utils.js';
 
 // We import the ShaderFactory only in the Shell process as it is not required in the
 // preferences process. The preferences process does not create any shader instances, it
 // only uses the static metadata of the effect.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
+
+const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect pixelates the window texture and hides the pixels radially, starting     //

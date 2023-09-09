@@ -14,8 +14,6 @@
 
 'use strict';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
-
 import * as utils from '../utils.js';
 
 // We import some modules only in the Shell process as they are not available in the
@@ -25,6 +23,8 @@ const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 const Clutter       = await utils.importInShellOnly('gi://Clutter');
 const GdkPixbuf     = await utils.importInShellOnly('gi://GdkPixbuf');
 const Cogl          = await utils.importInShellOnly('gi://Cogl');
+
+const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect shatters the window into pieces. For an explanation how this works, look //

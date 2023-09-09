@@ -16,8 +16,6 @@
 
 import Gio from 'gi://Gio';
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
-
 import * as utils from '../utils.js';
 
 // We import some modules only in the Shell process as they are not available in the
@@ -25,6 +23,8 @@ import * as utils from '../utils.js';
 // which is only called within GNOME Shell's process.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 const Clutter       = await utils.importInShellOnly('gi://Clutter');
+
+const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is a homage to the good old Compiz days. However, it is implemented      //
