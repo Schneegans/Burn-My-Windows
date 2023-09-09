@@ -173,6 +173,12 @@ git clone https://github.com/Schneegans/Burn-My-Windows.git
 cd Burn-My-Windows
 ```
 
+If your GNOME Shell version is <= 45, you will have to checkout the `gnome-3.36-44` branch:
+
+```bash
+git checkout gnome-3.36-44
+```
+
 Now you will have to install the extension.
 The `make` command below compiles the locales, schemas and resources, creates a zip file of the extension and finally installs it with the `gnome-extensions` tool.
 
