@@ -21,20 +21,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <attribute name="label" translatable="yes">View Matching Wallpapers</attribute>
         <attribute name="action">prefs.wallpapers</attribute>
       </item>
+      <item>
+        <attribute name="label">View Donors Hall-of-Fame</attribute>
+        <attribute name="action">prefs.show-sponsors</attribute>
+      </item>
     </section>
     <section>
-      <item>
-        <attribute name="label" translatable="yes">Report a Bug</attribute>
-        <attribute name="action">prefs.bugs</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Create an Effect</attribute>
-        <attribute name="action">prefs.new-effect</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">Translate</attribute>
-        <attribute name="action">prefs.translate</attribute>
-      </item>
       <submenu>
         <attribute name="label" translatable="yes">Donate</attribute>
         <item>
@@ -50,6 +42,18 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <attribute name="action">prefs.donate-paypal</attribute>
         </item>
       </submenu>
+      <item>
+        <attribute name="label" translatable="yes">Report a Bug</attribute>
+        <attribute name="action">prefs.bugs</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Create an Effect</attribute>
+        <attribute name="action">prefs.new-effect</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Translate</attribute>
+        <attribute name="action">prefs.translate</attribute>
+      </item>
     </section>
     <section>
       <item>

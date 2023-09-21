@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 39](https://github.com/schneegans/Burn-My-Windows/releases/tag/v39)
+
+**Release Date:** TBD
+
+#### Enhancements
+
+- Instead of an always out-of-date list of sponsors, the main menu of the preferences dialog now contains a link to the new [list of all donors](https://schneegans.github.io/sponsors/). This list is semi-automatically updated whenever a new donation is received. Thanks to all the donors!
+
 ## [Burn My Windows 38](https://github.com/schneegans/Burn-My-Windows/releases/tag/v38)
 
 **Release Date:** 2023-09-09
