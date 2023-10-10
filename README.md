@@ -19,7 +19,8 @@ SPDX-License-Identifier: CC-BY-4.0
 <a href="scripts/cloc.sh"><img src="https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/Schneegans/8cf45f23253ff09b21196e7271378762/raw/comments.json" /></a>
 </p>
 
-**:warning: The code in the `main` branch is for GNOME Shell 45+. For older GNOME versions, please use the `gnome-3.36-44` branch.**
+> [!IMPORTANT]
+> The code in the `main` branch is for GNOME Shell 45+. For older GNOME versions, please use the `gnome-3.36-44` branch.\*\*
 
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/) for GNOME, many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
@@ -165,9 +166,11 @@ gnome-extensions enable burn-my-windows@schneegans.github.com
 
 You can either download the effects from the KDE store (a), download a stable version from GitHub (b) or clone the latest version directly with `git` (c).
 
-:warning: **You need at least KWin 5.25.0 for the Burn-My-Windows effects.**
+> [!IMPORTANT]
+> You need at least KWin 5.25.0 for the Burn-My-Windows effects.
 
-:warning: **If the color picker widgets in the effect settings do not work for you, you may have to install a package called `libkf5widgetsaddons-dev` (Kubuntu, KDE Neon, ...) or `kf5-kwidgetsaddons-devel`, `kwidgetsaddons-devel` (Fedora, OpenSuse, ...).**
+> [!NOTE]
+> If the color picker widgets in the effect settings do not work for you, you may have to install a package called `libkf5widgetsaddons-dev` (Kubuntu, KDE Neon, ...) or `kf5-kwidgetsaddons-devel`, `kwidgetsaddons-devel` (Fedora, OpenSuse, ...).
 
 ### a) Download from the KDE Store
 
