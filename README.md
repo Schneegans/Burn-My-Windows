@@ -89,13 +89,16 @@ Below is a table which summarizes the current availability for all effects.
 
 ## 💞 Show that you love Burn-My-Windows!
 
-While coding new features or translating Burn-My-Windows is the most awesome way to contribute, [providing financial support](https://schneegans.github.io/sponsors/) will encourage me to invest my spare time for developing free and open-source software.
+[![kofi](https://img.shields.io/badge/donate-on_Ko--fi-ff5e5b?logo=ko-fi)](https://ko-fi.com/schneegans)
+[![github](https://img.shields.io/badge/donate-on_GitHub-purple?logo=github)](https://github.com/sponsors/Schneegans)
+[![paypal](https://img.shields.io/badge/donate-on_PayPal-009cde?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE)
+[![crypto](https://img.shields.io/badge/donate-some_Crypto-f7931a?logo=bitcoin)](https://schneegans.cb.id)
 
-These awesome people have already donated to the development of my open-source projects:
+While coding new features or translating Burn-My-Windows is the most awesome way to contribute, providing financial support will encourage me to invest my spare time for developing free and open-source software.
+
+**These awesome people have already donated to the development of my open-source projects:**
 
 [![Sponsors](https://schneegans.github.io/sponsors/sponsors.svg)](https://schneegans.github.io/sponsors/)
-
-Do you want to show that you love it too? If you donate via [Ko-fi](https://ko-fi.com/schneegans), [GitHub](https://github.com/sponsors/Schneegans), or [PayPal](https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE), you will show up in this list as well!
 
 ## ⬇️ Installation (GNOME)
 
