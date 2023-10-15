@@ -89,10 +89,10 @@ Below is a table which summarizes the current availability for all effects.
 
 ## 💞 Show that you love Burn-My-Windows!
 
-[![kofi](https://img.shields.io/badge/donate-on_Ko--fi-ff5e5b?logo=ko-fi)](https://ko-fi.com/schneegans)
-[![github](https://img.shields.io/badge/donate-on_GitHub-purple?logo=github)](https://github.com/sponsors/Schneegans)
-[![paypal](https://img.shields.io/badge/donate-on_PayPal-009cde?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE)
-[![crypto](https://img.shields.io/badge/donate-some_Crypto-f7931a?logo=bitcoin)](https://schneegans.cb.id)
+[![kofi](https://img.shields.io/badge/Donate-on_Ko--fi-ff5e5b?logo=ko-fi)](https://ko-fi.com/schneegans)
+[![github](https://img.shields.io/badge/Donate-on_GitHub-purple?logo=github)](https://github.com/sponsors/Schneegans)
+[![paypal](https://img.shields.io/badge/Donate-on_PayPal-009cde?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=3F7UFL8KLVPXE)
+[![crypto](https://img.shields.io/badge/Donate-some_Crypto-f7931a?logo=bitcoin)](https://schneegans.cb.id)
 
 While coding new features or translating Burn-My-Windows is the most awesome way to contribute, providing financial support will encourage me to invest my spare time for developing free and open-source software.
 
