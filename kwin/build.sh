@@ -130,7 +130,7 @@ generate() {
 
   # Create an archive which can be uploaded to https://store.kde.org.
   # shellcheck disable=SC2046
-  tar -cjf "$DIR_NAME.tar.gz" -C "$BUILD_DIR/$DIR_NAME" $(ls "$BUILD_DIR/$DIR_NAME")
+  tar -czf "$DIR_NAME.tar.gz" -C "$BUILD_DIR/$DIR_NAME" $(ls "$BUILD_DIR/$DIR_NAME")
 }
 
 # Now run the above method for all supported effects.
@@ -152,4 +152,4 @@ generate "wisps"       "Wisps [Burn-My-Windows]"       "Let your windows be carr
 
 # Finally, create an archive for the effects.
 # shellcheck disable=SC2046
-tar -cjf "burn_my_windows_kwin4.tar.gz" -C "$BUILD_DIR" $(ls "$BUILD_DIR")
+tar -czf "burn_my_windows_kwin4.tar.gz" -C "$BUILD_DIR" $(ls "$BUILD_DIR")
