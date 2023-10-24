@@ -13,6 +13,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - Instead of an always out-of-date list of sponsors, the main menu of the preferences dialog now contains a link to the new [list of all donors](https://schneegans.github.io/sponsors/). This list is semi-automatically updated whenever a new donation is received. Thanks to all the donors!
 
+#### Bug Fixes
+
+- Fixed an issue with the archive format which caused a failure when installing the effects via KDE Discover.
+
 ## [Burn My Windows 38](https://github.com/schneegans/Burn-My-Windows/releases/tag/v38)
 
 **Release Date:** 2023-09-09
