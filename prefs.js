@@ -516,6 +516,8 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
         addURIAction('donate-kofi',   'https://ko-fi.com/schneegans');
         addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
         addURIAction('donate-paypal', 'https://www.paypal.me/simonschneegans');
+        addURIAction('donate-crypto', 'https://schneegans.cb.id');
+        addURIAction('show-sponsors', 'https://schneegans.github.io/sponsors');
         addURIAction('wallpapers',    'https://github.com/Schneegans/ai-wallpapers');
         addURIAction('profile-dir',   `file://${GLib.get_user_config_dir()}/burn-my-windows/profiles`);
         // clang-format on
@@ -547,74 +549,23 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
             }
           });
 
-          const sponsors = this._getJSONResource('/credits/sponsors.json');
           let dialog;
 
           // We try to use the special Adw.AboutWindow if it is available.
           if (utils.isADW() && Adw.AboutWindow) {
-            let formatSponsors = (sponsors) => {
-              return sponsors.map(s => {
-                if (s.url == '')
-                  return s.name;
-                else
-                  return `${s.name} ${s.url}`;
-              });
-            };
-
             dialog = new Adw.AboutWindow({transient_for: window, modal: true});
             dialog.set_application_icon('burn-my-windows-symbolic');
             dialog.set_application_name('Burn-My-Windows');
             dialog.set_version(`${Me.metadata.version}`);
             dialog.set_developer_name('Simon Schneegans');
             dialog.set_issue_url('https://github.com/Schneegans/Burn-My-Windows/issues');
-            if (sponsors.gold.length > 0) {
-              dialog.add_credit_section(_('Gold Sponsors'),
-                                        formatSponsors(sponsors.gold));
-            }
-            if (sponsors.silver.length > 0) {
-              dialog.add_credit_section(_('Silver Sponsors'),
-                                        formatSponsors(sponsors.silver));
-            }
-            if (sponsors.bronze.length > 0) {
-              dialog.add_credit_section(_('Bronze Sponsors'),
-                                        formatSponsors(sponsors.bronze));
-            }
-            if (sponsors.past.length > 0) {
-              dialog.add_credit_section(_('Past Sponsors'),
-                                        formatSponsors(sponsors.past));
-            }
 
           } else {
-
-            let formatSponsors = (sponsors) => {
-              return sponsors.map(s => {
-                if (s.url == '')
-                  return s.name;
-                else
-                  return `<a href="${s.url}">${s.name}</a>`;
-              });
-            };
 
             dialog = new Gtk.AboutDialog({transient_for: window, modal: true});
             dialog.set_logo_icon_name('burn-my-windows-symbolic');
             dialog.set_program_name(`Burn-My-Windows ${Me.metadata.version}`);
             dialog.set_authors(['Simon Schneegans']);
-            if (sponsors.gold.length > 0) {
-              dialog.add_credit_section(_('Gold Sponsors'),
-                                        formatSponsors(sponsors.gold));
-            }
-            if (sponsors.silver.length > 0) {
-              dialog.add_credit_section(_('Silver Sponsors'),
-                                        formatSponsors(sponsors.silver));
-            }
-            if (sponsors.bronze.length > 0) {
-              dialog.add_credit_section(_('Bronze Sponsors'),
-                                        formatSponsors(sponsors.bronze));
-            }
-            if (sponsors.past.length > 0) {
-              dialog.add_credit_section(_('Past Sponsors'),
-                                        formatSponsors(sponsors.past));
-            }
           }
 
           dialog.set_translator_credits([...translators].join('\n'));
