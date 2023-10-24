@@ -433,6 +433,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
         addURIAction('donate-kofi',   'https://ko-fi.com/schneegans');
         addURIAction('donate-github', 'https://github.com/sponsors/Schneegans');
         addURIAction('donate-paypal', 'https://www.paypal.me/simonschneegans');
+        addURIAction('donate-crypto', 'https://schneegans.cb.id');
         addURIAction('show-sponsors', 'https://schneegans.github.io/sponsors');
         addURIAction('wallpapers',    'https://github.com/Schneegans/ai-wallpapers');
         addURIAction('profile-dir',   `file://${GLib.get_user_config_dir()}/burn-my-windows/profiles`);

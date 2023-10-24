@@ -22,7 +22,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <attribute name="action">prefs.wallpapers</attribute>
       </item>
       <item>
-        <attribute name="label">View Donors Hall-of-Fame</attribute>
+        <attribute name="label" translatable="yes">View Donors Hall-of-Fame</attribute>
         <attribute name="action">prefs.show-sponsors</attribute>
       </item>
     </section>
@@ -40,6 +40,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <item>
           <attribute name="label">PayPal</attribute>
           <attribute name="action">prefs.donate-paypal</attribute>
+        </item>
+        <item>
+          <attribute name="label">Crypto</attribute>
+          <attribute name="action">prefs.donate-crypto</attribute>
         </item>
       </submenu>
       <item>

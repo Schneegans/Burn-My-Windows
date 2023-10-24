@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Enhancements
 
 - Instead of an always out-of-date list of sponsors, the main menu of the preferences dialog now contains a link to the new [list of all donors](https://schneegans.github.io/sponsors/). This list is semi-automatically updated whenever a new donation is received. Thanks to all the donors!
+- The possibility to [donate cryptocurrencies](https://schneegans.cb.id) has been added.
 
 #### Bug Fixes
 
