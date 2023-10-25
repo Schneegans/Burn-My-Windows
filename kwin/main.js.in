@@ -80,6 +80,8 @@ class %EFFECT_CLASS% {
             return window.hasDecoration;
         }
 
+        // This is primarily to avoid animating the AltTab popup.
+        // See https://github.com/Schneegans/Burn-My-Windows/issues/384 for details.
         if (!window.hasDecoration && window.onAllDesktops) {
             return false
         }
