@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Bug Fixes
 
+- Fixed an issue which caused overly large windows on GNOME for certain applications (e.g. KPatience) if they were re-opened after being closed in maximized state.
 - Fixed an issue with the archive format which caused a failure when installing the effects via KDE Discover.
 
 ## [Burn My Windows 38](https://github.com/schneegans/Burn-My-Windows/releases/tag/v38)
