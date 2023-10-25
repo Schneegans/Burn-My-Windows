@@ -603,6 +603,10 @@ class Extension {
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
       }
 
+      // Restore the original scale of the window actor.
+      actor.scale_x = 1.0;
+      actor.scale_y = 1.0;
+
       // Remove the shader and mark it being re-usable for future animations.
       actor.remove_effect(shader);
       shader.returnToFactory();
