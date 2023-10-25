@@ -80,6 +80,10 @@ class %EFFECT_CLASS% {
             return window.hasDecoration;
         }
 
+        if (!window.hasDecoration && window.onAllDesktops) {
+            return false
+        }
+
         if (blacklist.indexOf(window.windowClass) != -1) {
             return false;
         }
