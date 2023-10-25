@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2022-09-11 10:17+0000\n"
-"Last-Translator: Eshagh shahidani <eshagh094@gmail.com>\n"
+"PO-Revision-Date: 2023-09-11 00:58+0000\n"
+"Last-Translator: lijeyol367 <lijeyol367@nickolis.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fa/>\n"
 "Language: fa\n"
@@ -17,81 +17,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "باز کردن پنجره ها"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
 #: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "بستن پنجره ها"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
 #: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "پنجره های عادی"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "شکل پنجره ها"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
 #: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "طرح رنگ پیشفرض"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
 #: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "طرح رنگ تیره"
 
 #: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
 #: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "روی باتری"
 
 #: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
 #: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "وصله شده"
 
 #: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
 #: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "حالت ذخیره انرژی"
 
 #: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
 #: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "حالت متعادل"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
 #: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "حالت عملکرد"
 
 #: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
 #: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "ذخیره انرژی یا متعادل"
 
 #: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
 #: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "ذخیره انرژی یا متعادل"
 
 #: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
 #: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "اولویت بالا"
 
 #: src/ProfileManager.js:198
 msgid "Standard Profile"
-msgstr ""
+msgstr "نمایه استاندارد"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -103,15 +103,15 @@ msgstr "شیشهٔ شکسته"
 
 #: src/effects/Doom.js:88
 msgid "Doom"
-msgstr ""
+msgstr "عذاب"
 
 #: src/effects/EnergizeA.js:80
 msgid "Energize A"
-msgstr "انرژی آ"
+msgstr "انرژی 1"
 
 #: src/effects/EnergizeB.js:81
 msgid "Energize B"
-msgstr "انرژی ب"
+msgstr "انرژی 2"
 
 #: src/effects/Fire.js:100
 msgid "Fire"
@@ -119,7 +119,7 @@ msgstr "آتش"
 
 #: src/effects/Fire.js:154
 msgid "Default Fire"
-msgstr "آتش پیش‌گزیده"
+msgstr "آتش پیشفرض"
 
 #: src/effects/Fire.js:164
 msgid "Hell Fire"
@@ -135,15 +135,15 @@ msgstr "نسیم سرد"
 
 #: src/effects/Fire.js:194
 msgid "Santa is Coming"
-msgstr "بابانوئل می‌آید"
+msgstr "بابانوئل در حال برگشتن"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "سر خوردن"
 
 #: src/effects/Glitch.js:86
 msgid "Glitch"
-msgstr ""
+msgstr "باگ"
 
 #: src/effects/Hexagon.js:94
 msgid "Hexagon"
@@ -151,7 +151,7 @@ msgstr "شش‌ضلعی"
 
 #: src/effects/Incinerate.js:131
 msgid "Incinerate"
-msgstr ""
+msgstr "سوزاندن"
 
 #: src/effects/Matrix.js:114
 msgid "Matrix"
@@ -159,23 +159,23 @@ msgstr "ماتریکس"
 
 #: src/effects/PaintBrush.js:102
 msgid "Paint Brush"
-msgstr ""
+msgstr "برس نقاشی"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "پیکسلی"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "پیکسل چرخنده"
 
 #: src/effects/PixelWipe.js:101
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "پیکسل پاک کننده"
 
 #: src/effects/Portal.js:88
 msgid "Portal"
-msgstr ""
+msgstr "دروازه"
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
@@ -191,7 +191,7 @@ msgstr "جلوهٔ تلویزیون"
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
-msgstr ""
+msgstr "باگ تلویزیون"
 
 #: src/effects/Wisps.js:89
 msgid "Wisps"
@@ -199,11 +199,11 @@ msgstr "جرقه‌ها"
 
 #: prefs.js:269
 msgid "Preview this effect"
-msgstr ""
+msgstr "پیش نمایش این افکت"
 
 #: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows آپدیت شد!"
 
 #: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -228,21 +228,21 @@ msgstr "حامیان گذشته"
 
 #: prefs.js:660
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "این نمایه حذف شود؟"
 
 #: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
-msgstr ""
+msgstr "نمایه افکت فعلی با تمام تنظیمات افکت آن برای همیشه از بین خواهد رفت."
 
 #: prefs.js:664
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #: prefs.js:669
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:980
@@ -256,15 +256,15 @@ msgstr "برای پیش‌نمایش جلوه، پنجره را ببندید!"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr "بازدید از صفحهٔ خانه"
+msgstr "بازدید از صفحهٔ اصلی"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "مشاهده تصاویر پس زمینه منطبق"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
-msgstr "گزارش یک مشکل"
+msgstr "گزارش یک باگ"
 
 #: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
@@ -276,19 +276,19 @@ msgstr "ترجمه"
 
 #: resources/ui/common/menus.ui:39
 msgid "Donate"
-msgstr "اعانه"
+msgstr "دونیت"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "باز کردن پوشه نمایه افکت"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
-msgstr "دربارهٔ پنجره‌هایم را بسوزان"
+msgstr "دربارهٔ Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
-msgstr ""
+msgstr "اضافه کردن نمایه جدید..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -440,7 +440,7 @@ msgstr "زمان پویانمایی (میلی‌ثانیه)"
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr "بازنشانی به مقدار پیش‌گزیده"
+msgstr "بازنشانی به مقدار پیش‌ فرض"
 
 #: resources/ui/gtk4/broken-glass.ui:68 resources/ui/gtk4/tv-glitch.ui:69
 #: resources/ui/gtk4/glitch.ui:69 resources/ui/gtk4/matrix.ui:69
@@ -485,7 +485,7 @@ msgstr ""
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "قدرت"
 
 #: resources/ui/gtk4/tv-glitch.ui:161 resources/ui/gtk4/glitch.ui:161
 #: resources/ui/gtk4/fire.ui:138 resources/ui/gtk3/tv-glitch.ui:187
@@ -532,12 +532,12 @@ msgstr "رنگ نکته"
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "مقیاس افقی"
 
 #: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "مقیاس عمودی"
 
 #: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
 #: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
@@ -546,11 +546,11 @@ msgstr ""
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "اندازه پیکسل"
 
 #: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "اندازه برس"
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
@@ -566,27 +566,27 @@ msgstr "جلوهٔ انحنا"
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr "رنگ گوشت"
+msgstr "رنگ فلش"
 
 #: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "تعداد صحبت کردن"
 
 #: resources/ui/gtk4/glide.ui:115 resources/ui/gtk3/glide.ui:149
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "له کردن"
 
 #: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "شیب"
 
 #: resources/ui/gtk4/glide.ui:207 resources/ui/gtk3/glide.ui:239
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "تغییر مکان"
 
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
@@ -606,37 +606,37 @@ msgstr "شدّت مکش"
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "چرخیدن"
 
 #: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "سرعت دوران"
 
 #: resources/ui/gtk4/portal.ui:161 resources/ui/gtk3/portal.ui:187
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "جزئیات"
 
 #: resources/ui/gtk4/incinerate.ui:115 resources/ui/gtk3/incinerate.ui:135
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "آشفتگی"
 
 #: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "شروع از نشانه گر"
 
 #: resources/ui/gtk4/incinerate.ui:174 resources/ui/gtk3/incinerate.ui:192
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "اگر غیرفعال باشد، یک مکان تصادفی انتخاب می شود."
 
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr "عرض خط شبکه"
+msgstr "عرض خط مش"
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
@@ -661,7 +661,7 @@ msgstr "ممکن است بخواهید این را برای زمینه‌های 
 #: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
-msgstr "از پیش تنظیم شده‌ها"
+msgstr "تنظیمات از پیش تعیین شده"
 
 #: resources/ui/gtk4/fire.ui:31 resources/ui/gtk3/fire.ui:58
 #: resources/ui/adw/fire.ui:19
@@ -681,12 +681,12 @@ msgstr "آتش پویاتری ایجاد می‌کند اما به قدرت جی
 #: resources/ui/gtk4/fire.ui:239 resources/ui/gtk3/fire.ui:276
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr "گرادیان"
+msgstr "شیب"
 
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "انتخاب اثر"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
@@ -696,27 +696,27 @@ msgstr "اگر چند مورد انتخاب شود، یکی به صورت تصا
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "همه"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "هیچ"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "محدودیت های نمایه اثر"
 
 #: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "تعیین کنید که چه زمانی باید از تنظیمات افکت فعلی استفاده شود."
 
 #: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "نرم افزار ها"
 
 #: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
 #: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
@@ -728,52 +728,53 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "هر"
 
 #: resources/ui/gtk4/prefs.ui:244 resources/ui/gtk3/prefs.ui:289
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "نوع انیمیشن"
 
 #: resources/ui/gtk4/prefs.ui:273 resources/ui/gtk3/prefs.ui:318
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "نوع پنجره"
 
 #: resources/ui/gtk4/prefs.ui:302 resources/ui/gtk3/prefs.ui:347
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "طرح رنگی"
 
 #: resources/ui/gtk4/prefs.ui:331 resources/ui/gtk3/prefs.ui:376
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "حالت قدرت"
 
 #: resources/ui/gtk4/prefs.ui:360 resources/ui/gtk3/prefs.ui:405
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "نمایه قدرت"
 
 #: resources/ui/gtk4/prefs.ui:392 resources/ui/gtk3/prefs.ui:437
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "گزینه های پروفایل پیشرفته"
 
 #: resources/ui/gtk4/prefs.ui:432 resources/ui/gtk3/prefs.ui:477
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
 msgstr ""
+"از این نمایه استفاده کنید حتی اگر نمایه های منطبق بهتری وجود داشته باشد."
 
 #: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "حذف این نمایه..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "نویز"
 
 #~ msgid "General Options"
 #~ msgstr "انتخاب‌های عمومی"

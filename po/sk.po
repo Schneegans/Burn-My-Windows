@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2023-08-10 18:48+0000\n"
+"PO-Revision-Date: 2023-10-06 22:11+0000\n"
 "Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sk/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -103,7 +103,7 @@ msgstr "Črepiny"
 
 #: src/effects/Doom.js:88
 msgid "Doom"
-msgstr "Doom"
+msgstr "Všeobecný"
 
 #: src/effects/EnergizeA.js:80
 msgid "Energize A"
@@ -282,7 +282,7 @@ msgstr "Prispieť"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Otvoriť Effect-Profile adresár"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
@@ -533,12 +533,12 @@ msgstr "Farba špicu"
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Vodorovná mierka"
+msgstr "Horizontálna mierka"
 
 #: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr "Vodorovná mierka"
+msgstr "Vertikálna mierka"
 
 #: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
 #: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
@@ -687,7 +687,7 @@ msgstr "Prechod"
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Výber efektov"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
@@ -697,12 +697,12 @@ msgstr "Ak ich vyberiete viac, budú sa náhodne striedať."
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "Všetko"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "Žiadna"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
