@@ -5,9 +5,17 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 40 [backport release]](https://github.com/schneegans/Burn-My-Windows/releases/tag/v40)
+
+**Release Date:** 2023-10-26
+
+#### Enhancements
+
+- Ported the changes from Burn-My-Windows 39 to GNOME 3.36 - 44.
+
 ## [Burn My Windows 39](https://github.com/schneegans/Burn-My-Windows/releases/tag/v39)
 
-**Release Date:** TBD
+**Release Date:** 2023-10-26
 
 #### Enhancements
 
