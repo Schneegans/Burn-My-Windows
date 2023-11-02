@@ -30,17 +30,10 @@ void main() {
 
   // Create large noise waves and add some smaller noise waves.
   float noise = clamp(simplex2D(vec2(time, yPos * 0.002)) - 0.5, -1.0, 1.0);
-  noise *= 2;
-  if (abs(noise) > 0.5) {
-    noise -= sign(noise) * 0.5;
-  }else{
-    noise = 0;
-  }
-
   noise += (simplex2D(vec2(time * 10.0, yPos * 0.05)) - 0.5) * 0.15;
 
   // Apply the noise as x displacement for every line.
-  float xPos  = clamp(iTexCoord.x - displace * noise * abs(noise), 0.0, 1.0);
+  float xPos  = clamp(iTexCoord.x - displace * noise * noise * sign(noise), -1.0, 1.0);
   vec4 oColor = getInputColor(vec2(xPos, iTexCoord.y));
 
   // Mix in some random interference lines.
