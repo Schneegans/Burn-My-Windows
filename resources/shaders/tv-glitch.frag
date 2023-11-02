@@ -54,6 +54,12 @@ void main() {
 
   // Apply the noise as x displacement for every line.
   float xPos  = clamp(coords.x - displace * noise * noise * sign(noise), -1.0, 1.0);
+  // non-branching version of 
+  // if xPos > 1: xPos -=1
+  // elif xPos < -1: xPos +=1
+  // else: xPos = 0
+  xPos = mod(xPos + 1.0, 2.0) - 1.0;
+
   vec4 oColor = getInputColor(vec2(xPos, coords.y));
 
   // Mix in some random interference lines.
