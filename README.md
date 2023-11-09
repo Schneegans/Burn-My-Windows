@@ -20,7 +20,7 @@ SPDX-License-Identifier: CC-BY-4.0
 </p>
 
 > [!IMPORTANT]
-> The code in the `main` branch is for GNOME Shell 45+. For older GNOME versions, please use the `gnome-3.36-44` branch.\*\*
+> The code in the `main` branch is for GNOME Shell 45+. For older GNOME versions, please use the `gnome-3.36-44` branch.
 
 When I released the [Desktop Cube Extension](https://github.com/Schneegans/Desktop-Cube/) for GNOME, many people requested to revive one of the most useless features of Linux desktop history: Setting windows on fire!
 This extension is not only more useless than the cube, but it is also much more hacky. So I expect some bug! [Let's incinerate them all](https://github.com/Schneegans/Burn-My-Windows/issues)!
