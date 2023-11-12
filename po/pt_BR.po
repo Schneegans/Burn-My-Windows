@@ -8,17 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2023-08-31 03:58+0000\n"
-"Last-Translator: Fernando Lopes <118869201+plasmus777@users.noreply.github."
-"com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/burn-"
-"my-windows/core/pt_BR/>\n"
+"PO-Revision-Date: 2023-11-13 04:01+0000\n"
+"Last-Translator: Gustavo <gutojusto22@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.2-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -38,61 +37,61 @@ msgstr "Janelas Normais"
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr "Dialago de Janelas"
+msgstr "Janelas de Diálogo"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
 #: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr "Esquema de cores padrão"
+msgstr "Esquema de Cores Padrão"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
 #: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr "esquema de cores escuras"
+msgstr "Esquema de Cores Escuras"
 
 #: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
 #: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr "na bateria"
+msgstr "Na Bateria"
 
 #: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
 #: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr "No carregador"
+msgstr "No Carregador"
 
 #: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
 #: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr "Modo economia de energia"
+msgstr "Modo Economia de Energia"
 
 #: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
 #: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr "Modo balanceado"
+msgstr "Modo Balanceado"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
 #: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr "Modo performance"
+msgstr "Modo Performance"
 
 #: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
 #: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr "Economia de energia ou balanceado"
+msgstr "Economia de Energia ou Balanceado"
 
 #: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
 #: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr "Balanceado ou performance"
+msgstr "Balanceado ou Performance"
 
 #: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
 #: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr "Alta prioridade"
+msgstr "Alta Prioridade"
 
 #: src/ProfileManager.js:198
 msgid "Standard Profile"
-msgstr "Perfil padrão"
+msgstr "Perfil Padrão"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
@@ -128,7 +127,7 @@ msgstr "Fogo Do Inferno"
 
 #: src/effects/Fire.js:174
 msgid "Dark and Smutty"
-msgstr "Escuro e enferrujado"
+msgstr "Escuro e Enferrujado"
 
 #: src/effects/Fire.js:184
 msgid "Cold Breeze"
@@ -168,7 +167,7 @@ msgstr "Pixelizar"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Roda pixelizada"
+msgstr "Roda Pixelizada"
 
 #: src/effects/PixelWipe.js:101
 msgid "Pixel Wipe"
@@ -204,12 +203,12 @@ msgstr "Visualizar esse efeito"
 
 #: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr "Burn-My-Windows foi atualizada!"
+msgstr "Burn-My-Windows foi atualizado!"
 
 #: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
 msgid "View Changelog"
-msgstr "Veja as alterações"
+msgstr "Veja as Alterações"
 
 #: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
@@ -263,7 +262,7 @@ msgstr "Visite a Homepage"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr "Ver papéis de parede correspondentes"
+msgstr "Ver Papéis de Parede Correspondentes"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -271,7 +270,7 @@ msgstr "Reportar um Erro"
 
 #: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
-msgstr "Criar um efeito"
+msgstr "Criar um Efeito"
 
 #: resources/ui/common/menus.ui:35
 msgid "Translate"
@@ -475,7 +474,7 @@ msgstr "Força do Golpe"
 
 #: resources/ui/gtk4/broken-glass.ui:210 resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr "Partir do ponteiro do mouse"
+msgstr "Quebrar Partindo do Ponteiro do Mouse"
 
 #: resources/ui/gtk4/broken-glass.ui:219 resources/ui/adw/broken-glass.ui:148
 msgid ""
@@ -531,7 +530,7 @@ msgstr "Cor da Trilha"
 
 #: resources/ui/gtk4/matrix.ui:244 resources/ui/adw/matrix.ui:171
 msgid "Tip Color"
-msgstr "Cor da ponta"
+msgstr "Cor da Ponta"
 
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
@@ -600,12 +599,12 @@ msgstr "Intensidade do Giro"
 #: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr "Intensidade de Agitação"
+msgstr "Intensidade da Agitação"
 
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr "Intensidade de Sucção"
+msgstr "Intensidade da Sucção"
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
