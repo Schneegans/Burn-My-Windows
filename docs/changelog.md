@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 41](https://github.com/schneegans/Burn-My-Windows/releases/tag/v40)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+- Fixed a compatibility issue with Plasma 6. Thanks to [@CoelacanthusHex](https://github.com/CoelacanthusHex) for the fix!
+
 ## [Burn My Windows 40 [backport release]](https://github.com/schneegans/Burn-My-Windows/releases/tag/v40)
 
 **Release Date:** 2023-10-26
