@@ -61,8 +61,8 @@ var Incinerate = class {
           // position may change after the begin-animation signal is called, we set the
           // uStartPos uniform during the update callback.
           if (settings.get_boolean('incinerate-use-pointer')) {
-            this._startPointerPos = global.get_pointer();
-            this._actor           = actor;
+            shader._startPointerPos = global.get_pointer();
+            shader._actor           = actor;
 
           } else {
             // Else, a random position along the window boundary is used as start position
@@ -72,7 +72,7 @@ var Incinerate = class {
 
             shader.set_uniform_float(shader._uStartPos, 2, startPos);
 
-            this._startPointerPos = null;
+            shader._startPointerPos = null;
           }
 
           const c = Clutter.Color.from_string(settings.get_string('incinerate-color'))[1];
@@ -89,14 +89,14 @@ var Incinerate = class {
       // uniform during the update callback as the actor position may not be set up
       // properly before the begin animation callback.
       shader.connect('update-animation', (shader) => {
-        if (this._startPointerPos) {
-          const [x, y]               = this._startPointerPos;
-          const [ok, localX, localY] = this._actor.transform_stage_point(x, y);
+        if (shader._startPointerPos) {
+          const [x, y]               = shader._startPointerPos;
+          const [ok, localX, localY] = shader._actor.transform_stage_point(x, y);
 
           if (ok) {
             let startPos = [
-              Math.max(0.0, Math.min(1.0, localX / this._actor.width)),
-              Math.max(0.0, Math.min(1.0, localY / this._actor.height))
+              Math.max(0.0, Math.min(1.0, localX / shader._actor.width)),
+              Math.max(0.0, Math.min(1.0, localY / shader._actor.height))
             ];
             shader.set_uniform_float(shader._uStartPos, 2, startPos);
           }
