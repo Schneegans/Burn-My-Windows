@@ -5,6 +5,21 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [Burn My Windows 42](https://github.com/schneegans/Burn-My-Windows/releases/tag/v42)
+
+**Release Date:** TBD
+
+- Ported the changes from Burn-My-Windows 41 to GNOME 3.36 - 44.
+
+## [Burn My Windows 41](https://github.com/schneegans/Burn-My-Windows/releases/tag/v41)
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+- Fixed a compatibility issue with Plasma 6. Thanks to [@CoelacanthusHex](https://github.com/CoelacanthusHex) for the fix!
+- Fixed an issue which caused the origin of the Incinerate and Pixel Wipe effects to be reset to the current mouse position whenever another effect was started while an effect was still running.
+
 ## [Burn My Windows 40 [backport release]](https://github.com/schneegans/Burn-My-Windows/releases/tag/v40)
 
 **Release Date:** 2023-10-26
