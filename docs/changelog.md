@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Bug Fixes
 
 - Fixed a compatibility issue with Plasma 6. Thanks to [@CoelacanthusHex](https://github.com/CoelacanthusHex) for the fix!
+- Fixed an issue which caused the origin of the Incinerate and Pixel Wipe effects to be reset to the current mouse position whenever another effect was started while an effect was still running.
 
 ## [Burn My Windows 40 [backport release]](https://github.com/schneegans/Burn-My-Windows/releases/tag/v40)
 
