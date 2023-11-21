@@ -1,4 +1,5 @@
 {
+  "KPackageStructure": "KWin/Effect",
   "KPlugin": {
      "Name": "%NAME%",
      "Description": "%DESCRIPTION%",
