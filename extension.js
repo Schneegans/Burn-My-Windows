@@ -614,10 +614,10 @@ export default class BurnMyWindows extends Extension {
       }
     });
 
-    // To make things deterministic during testing, we set the effect duration to 5
+    // To make things deterministic during testing, we set the effect duration to 8
     // seconds.
     const duration = testMode ?
-      5000 :
+      8000 :
       profile.settings.get_int(effect.constructor.getNick() + '-animation-time');
 
     // Finally start the animation!

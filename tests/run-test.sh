@@ -140,10 +140,10 @@ test_effect() {
 
   sleep 1
   do_in_pod gnome-terminal
-  sleep 3
+  sleep 4
   find_target "${1}-open-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window open effect!"
   send_keystroke "Alt+F4"
-  sleep 3
+  sleep 4
   find_target "${1}-close-${SESSION}-${FEDORA_VERSION}.png" "Failed to test ${1} window close effect!"
 }
 
@@ -201,7 +201,7 @@ sleep 3
 # searching for a small snippet of the preferences dialog.
 echo "Opening Preferences."
 do_in_pod gnome-extensions prefs "${EXTENSION}"
-sleep 3
+sleep 10
 find_target "preferences-${SESSION}-${FEDORA_VERSION}.png" "Failed to open preferences!"
 send_keystroke "Alt+F4"
 
