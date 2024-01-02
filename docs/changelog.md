@@ -17,6 +17,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Enhancements
 
+- Several translations have been updated. Thanks to all the translators!
 - All CI jobs are now executed for GNOME 45 as well.
 
 #### Bug Fixes
