@@ -15,6 +15,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### Enhancements
+
+- Several translations have been updated. Thanks to all the translators!
+
 #### Bug Fixes
 
 - Fixed a compatibility issue with Plasma 6. Thanks to [@CoelacanthusHex](https://github.com/CoelacanthusHex) for the fix!
