@@ -20,6 +20,7 @@
        "KWin/Effect"
      ]
   },
+  "X-KDE-ConfigModule": "kcm_kwin4_genericscripted",
   "X-KDE-Ordering": "60",
   "X-KDE-PluginKeyword": "%DIR_NAME%",
   "X-KWin-Config-TranslationDomain": "burn-my-windows",
