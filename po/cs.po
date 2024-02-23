@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-02-10 08:01+0000\n"
+"PO-Revision-Date: 2024-02-24 15:02+0000\n"
 "Last-Translator: Miraficus <6325410@seznam.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/cs/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -653,7 +653,6 @@ msgstr "Barva záře"
 
 #: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
 #: resources/ui/adw/hexagon.ui:163
-#, fuzzy
 msgid "Additive Blending"
 msgstr "Přídavné míchání"
 
@@ -709,7 +708,6 @@ msgstr "Nic"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
-#, fuzzy
 msgid "Effect Profile Constraints"
 msgstr "Omezení profilu efektu"
 
