@@ -1,245 +1,10 @@
 [
   {
-    "Turkish": [
-      [
-        "tcreeper.earth@gmail.com",
-        "TCr3",
-        24
-      ],
-      [
-        "muhaaliss@pm.me",
-        "Muha Aliss",
-        52
-      ],
-      [
-        "libreajans@gmail.com",
-        "Sabri \u00dcnal",
-        74
-      ]
-    ]
-  },
-  {
-    "Lithuanian": [
-      [
-        "hazap@hotmail.com",
-        "Moo",
-        43
-      ]
-    ]
-  },
-  {
-    "Portuguese (Brazil)": [
-      [
-        "gutojusto22@gmail.com",
-        "Gustavo",
-        24
-      ],
-      [
-        "fefehex12@gmail.com",
-        "Fernando Lopes",
-        51
-      ],
-      [
-        "mr-isaac@ig.com.br",
-        "Isaac Dias",
-        93
-      ]
-    ]
-  },
-  {
-    "German": [
-      [
-        "atalanttore@googlemail.com",
-        "Ettore Atalan",
-        3
-      ],
-      [
-        "code@simonschneegans.de",
-        "Simon Schneegans",
-        122
-      ]
-    ]
-  },
-  {
-    "Esperanto": [
-      [
-        "phlostically@mailinator.com",
-        "phlostically",
-        72
-      ]
-    ]
-  },
-  {
-    "Russian": [
-      [
-        "sergei@racingrebel.com",
-        "\u041c\u0438\u0441\u0442\u0435\u0440 \u041f\u0435\u0440\u0435\u0432\u043e\u0434",
-        11
-      ],
-      [
-        "ddaudix@gmail.com",
-        "Daudix UFO",
-        31
-      ],
-      [
-        "eg.ermakov2016@yandex.ru",
-        "\u0415\u0433\u043e\u0440 \u0415\u0440\u043c\u0430\u043a\u043e\u0432",
-        33
-      ],
-      [
-        "franigoyt@gmail.com",
-        "ANIGO R. (AR)",
-        49
-      ],
-      [
-        "lenemter@gmail.com",
-        "lenemter",
-        49
-      ]
-    ]
-  },
-  {
-    "Romanian": [
-      [
-        "softexpert@gmail.com",
-        "SoftExpert",
-        132
-      ]
-    ]
-  },
-  {
-    "Ukrainian": [
-      [
-        "cakestwix1@gmail.com",
-        "CakesTwix",
-        35
-      ],
-      [
-        "911us@duck.com",
-        "Petro S.",
-        44
-      ],
-      [
-        "yuridm@gmail.com",
-        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
-        48
-      ]
-    ]
-  },
-  {
-    "Japanese": [
-      [
-        "ryuichi.ya220@gmail.com",
-        "Ryan Y",
-        79
-      ]
-    ]
-  },
-  {
-    "Czech": [
-      [
-        "yuridm@gmail.com",
-        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
-        1
-      ],
-      [
-        "jose1711@gmail.com",
-        "Jose Riha",
-        4
-      ],
-      [
-        "jiri.doubravsky@gmail.com",
-        "Ji\u0159\u00ed Doubravsk\u00fd",
-        60
-      ]
-    ]
-  },
-  {
-    "Portuguese": [
-      [
-        "dyegoaurelio@gmail.com",
-        "dyegoaurelio",
-        8
-      ],
-      [
-        "ssantos@web.de",
-        "ssantos",
-        57
-      ],
-      [
-        "pedro.hvn.2018@gmail.com",
-        "KrulesExGamer",
-        70
-      ]
-    ]
-  },
-  {
-    "Hungarian": [
-      [
-        "superh552@gmail.com",
-        "KinteLiX",
-        79
-      ]
-    ]
-  },
-  {
-    "Hebrew": [
-      [
-        "hvusvvnkl12345@gmail.com",
-        "\u05d9\u05d4\u05d5\u05d3\u05d4 \u05d0\u05dc\u05d9\u05e1\u05e3",
-        37
-      ]
-    ]
-  },
-  {
-    "Polish": [
-      [
-        "krzys.chorzempa@gmail.com",
-        "Krzysztof Chorzempa",
-        6
-      ],
-      [
-        "gnu.ewm@protonmail.com",
-        "Eryk Michalak",
-        10
-      ],
-      [
-        "sto@tutanota.de",
-        "WaldiS",
-        38
-      ],
-      [
-        "pwrzonca@gmail.com",
-        "Pawe\u0142 Rzo\u0144ca",
-        77
-      ]
-    ]
-  },
-  {
-    "Italian": [
-      [
-        "mario03@gmail.com",
-        "Mario",
-        1
-      ],
-      [
-        "mceyes@protonmail.com",
-        "Frankie McEyes",
-        2
-      ],
-      [
-        "albano_battistella@hotmail.com",
-        "albanobattistella",
-        132
-      ]
-    ]
-  },
-  {
     "Arabic": [
       [
-        "hamzah.abusamak@gmail.com",
-        "bonbonboi",
-        5
+        "fawaz27000@hotmail.com",
+        "fawaz006",
+        68
       ],
       [
         "dabsantamer@yahoo.com",
@@ -252,9 +17,9 @@
         7
       ],
       [
-        "fawaz27000@hotmail.com",
-        "fawaz006",
-        68
+        "hamzah.abusamak@gmail.com",
+        "bonbonboi",
+        5
       ]
     ]
   },
@@ -268,25 +33,59 @@
     ]
   },
   {
-    "Indonesian": [
+    "Chinese (Simplified)": [
       [
-        "rezaalmanda27@gmail.com",
-        "Reza Almanda",
-        58
+        "aerowolf@tom.com",
+        "aerowolf",
+        103
       ],
       [
-        "randompsyduck@duck.com",
-        "Sir-Ivysaur",
-        75
+        "poonsters6@gmail.com",
+        "merelymyself",
+        38
+      ],
+      [
+        "lyuutau@outlook.com",
+        "\u5218\u97ec",
+        34
+      ],
+      [
+        "coelacanthushex@gmail.com",
+        "Celeste Liu",
+        3
+      ]
+    ]
+  },
+  {
+    "Czech": [
+      [
+        "6325410@seznam.cz",
+        "Miraficus",
+        83
+      ],
+      [
+        "jiri.doubravsky@gmail.com",
+        "Ji\u0159\u00ed Doubravsk\u00fd",
+        60
+      ],
+      [
+        "jose1711@gmail.com",
+        "Jose Riha",
+        4
+      ],
+      [
+        "yuridm@gmail.com",
+        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
+        1
       ]
     ]
   },
   {
     "Dutch": [
       [
-        "code@simonschneegans.de",
-        "Simon Schneegans",
-        1
+        "vistausss@fastmail.com",
+        "Heimen Stoffels",
+        126
       ],
       [
         "philip.goto@gmail.com",
@@ -294,115 +93,27 @@
         7
       ],
       [
-        "vistausss@fastmail.com",
-        "Heimen Stoffels",
-        126
+        "code@simonschneegans.de",
+        "Simon Schneegans",
+        1
       ]
     ]
   },
   {
-    "Spanish": [
-      [
-        "jorgec2005@gmail.com",
-        "Jorge C",
-        5
-      ],
-      [
-        "fitojb@ubuntu.com",
-        "Adolfo Jayme Barrientos",
-        7
-      ],
-      [
-        "andres.segarra.aparicio@gmail.com",
-        "Andres Segarra",
-        10
-      ],
-      [
-        "fran-carro@hotmail.es",
-        "gallegonovato",
-        20
-      ],
-      [
-        "hasecilu@tuta.io",
-        "Ulices",
-        39
-      ],
-      [
-        "oscfdezdz@tuta.io",
-        "\u00d3scar Fern\u00e1ndez D\u00edaz",
-        60
-      ]
-    ]
-  },
-  {
-    "French": [
-      [
-        "matshot03@gmail.com",
-        "Mathis Chabrier",
-        2
-      ],
-      [
-        "brice.laurencin@gmail.com",
-        "Brice Laurencin",
-        7
-      ],
-      [
-        "redxxiii@zaclys.net",
-        "Reda",
-        10
-      ],
-      [
-        "theo.remon+weblate@uswery.eu",
-        "Th\u00e9o Remon",
-        22
-      ],
-      [
-        "mathieu.bousquet2@gmail.com",
-        "Mathieu B.",
-        26
-      ],
-      [
-        "bonnemainsnathan@gmail.com",
-        "Nathan",
-        38
-      ],
+    "English": [
       [
         "softexpert@gmail.com",
         "SoftExpert",
-        51
+        1
       ]
     ]
   },
   {
-    "Swedish": [
+    "Esperanto": [
       [
-        "obslsessed@duck.com",
-        "obslsessed",
-        5
-      ],
-      [
-        "droidbittin@gmail.com",
-        "Luna Jernberg",
-        9
-      ],
-      [
-        "swedishsailfishosuser@tutanota.com",
-        "Kristoffer Grundstr\u00f6m",
-        48
-      ]
-    ]
-  },
-  {
-    "Persian": [
-      [
-        "eshagh094@gmail.com",
-        "Eshagh shahidani",
-        65
-      ],
-      [
-        "lijeyol367@nickolis.com",
-        "lijeyol367",
-        82
+        "phlostically@mailinator.com",
+        "phlostically",
+        72
       ]
     ]
   },
@@ -416,6 +127,119 @@
     ]
   },
   {
+    "French": [
+      [
+        "softexpert@gmail.com",
+        "SoftExpert",
+        52
+      ],
+      [
+        "bonnemainsnathan@gmail.com",
+        "Nathan",
+        38
+      ],
+      [
+        "mathieu.bousquet2@gmail.com",
+        "Mathieu B.",
+        26
+      ],
+      [
+        "theo.remon+weblate@uswery.eu",
+        "Th\u00e9o Remon",
+        22
+      ],
+      [
+        "redxxiii@zaclys.net",
+        "Reda",
+        10
+      ],
+      [
+        "brice.laurencin@gmail.com",
+        "Brice Laurencin",
+        7
+      ],
+      [
+        "matshot03@gmail.com",
+        "Mathis Chabrier",
+        2
+      ]
+    ]
+  },
+  {
+    "German": [
+      [
+        "code@simonschneegans.de",
+        "Simon Schneegans",
+        122
+      ],
+      [
+        "atalanttore@googlemail.com",
+        "Ettore Atalan",
+        3
+      ]
+    ]
+  },
+  {
+    "Hebrew": [
+      [
+        "hvusvvnkl12345@gmail.com",
+        "\u05d9\u05d4\u05d5\u05d3\u05d4 \u05d0\u05dc\u05d9\u05e1\u05e3",
+        37
+      ]
+    ]
+  },
+  {
+    "Hungarian": [
+      [
+        "superh552@gmail.com",
+        "KinteLiX",
+        79
+      ]
+    ]
+  },
+  {
+    "Indonesian": [
+      [
+        "randompsyduck@duck.com",
+        "Sir-Ivysaur",
+        75
+      ],
+      [
+        "rezaalmanda27@gmail.com",
+        "Reza Almanda",
+        58
+      ]
+    ]
+  },
+  {
+    "Italian": [
+      [
+        "albano_battistella@hotmail.com",
+        "albanobattistella",
+        132
+      ],
+      [
+        "mceyes@protonmail.com",
+        "Frankie McEyes",
+        2
+      ],
+      [
+        "mario03@gmail.com",
+        "Mario",
+        1
+      ]
+    ]
+  },
+  {
+    "Japanese": [
+      [
+        "ryuichi.ya220@gmail.com",
+        "Ryan Y",
+        79
+      ]
+    ]
+  },
+  {
     "Korean": [
       [
         "darkcircle.0426@gmail.com",
@@ -425,54 +249,254 @@
     ]
   },
   {
-    "Slovak": [
+    "Lithuanian": [
       [
-        "salka.milan@googlemail.com",
-        "Milan \u0160alka",
-        12
-      ],
-      [
-        "jose1711@gmail.com",
-        "Jose Riha",
-        128
-      ]
-    ]
-  },
-  {
-    "Chinese (Simplified)": [
-      [
-        "coelacanthushex@gmail.com",
-        "Celeste Liu",
-        3
-      ],
-      [
-        "lyuutau@outlook.com",
-        "\u5218\u97ec",
-        34
-      ],
-      [
-        "poonsters6@gmail.com",
-        "merelymyself",
-        38
-      ],
-      [
-        "aerowolf@tom.com",
-        "aerowolf",
-        97
+        "hazap@hotmail.com",
+        "Moo",
+        43
       ]
     ]
   },
   {
     "Norwegian Bokm\u00e5l": [
       [
-        "code@simonschneegans.de",
-        "Simon Schneegans",
-        1
-      ],
-      [
         "epost@anotheragency.no",
         "Allan Nordh\u00f8y",
         44
+      ],
+      [
+        "code@simonschneegans.de",
+        "Simon Schneegans",
+        1
+      ]
+    ]
+  },
+  {
+    "Persian": [
+      [
+        "lijeyol367@nickolis.com",
+        "lijeyol367",
+        82
+      ],
+      [
+        "eshagh094@gmail.com",
+        "Eshagh shahidani",
+        65
+      ],
+      [
+        "dani.behzi@ubuntu.com",
+        "Danial Behzadi",
+        40
+      ]
+    ]
+  },
+  {
+    "Polish": [
+      [
+        "pwrzonca@gmail.com",
+        "Pawe\u0142 Rzo\u0144ca",
+        77
+      ],
+      [
+        "sto@tutanota.de",
+        "WaldiS",
+        38
+      ],
+      [
+        "gnu.ewm@protonmail.com",
+        "Eryk Michalak",
+        10
+      ],
+      [
+        "krzys.chorzempa@gmail.com",
+        "Krzysztof Chorzempa",
+        6
+      ]
+    ]
+  },
+  {
+    "Portuguese": [
+      [
+        "pedro.hvn.2018@gmail.com",
+        "KrulesExGamer",
+        70
+      ],
+      [
+        "ssantos@web.de",
+        "ssantos",
+        57
+      ],
+      [
+        "dyegoaurelio@gmail.com",
+        "dyegoaurelio",
+        8
+      ]
+    ]
+  },
+  {
+    "Portuguese (Brazil)": [
+      [
+        "mr-isaac@ig.com.br",
+        "Isaac Dias",
+        93
+      ],
+      [
+        "fefehex12@gmail.com",
+        "Fernando Lopes",
+        51
+      ],
+      [
+        "gutojusto22@gmail.com",
+        "Gustavo",
+        24
+      ]
+    ]
+  },
+  {
+    "Romanian": [
+      [
+        "softexpert@gmail.com",
+        "SoftExpert",
+        132
+      ]
+    ]
+  },
+  {
+    "Russian": [
+      [
+        "lenemter@gmail.com",
+        "lenemter",
+        49
+      ],
+      [
+        "franigoyt@gmail.com",
+        "ANIGO R. (AR)",
+        49
+      ],
+      [
+        "eg.ermakov2016@yandex.ru",
+        "\u0415\u0433\u043e\u0440 \u0415\u0440\u043c\u0430\u043a\u043e\u0432",
+        33
+      ],
+      [
+        "ddaudix@gmail.com",
+        "Daudix UFO",
+        31
+      ],
+      [
+        "sergei@racingrebel.com",
+        "\u041c\u0438\u0441\u0442\u0435\u0440 \u041f\u0435\u0440\u0435\u0432\u043e\u0434",
+        11
+      ]
+    ]
+  },
+  {
+    "Slovak": [
+      [
+        "jose1711@gmail.com",
+        "Jose Riha",
+        128
+      ],
+      [
+        "salka.milan@googlemail.com",
+        "Milan \u0160alka",
+        12
+      ]
+    ]
+  },
+  {
+    "Spanish": [
+      [
+        "oscfdezdz@tuta.io",
+        "\u00d3scar Fern\u00e1ndez D\u00edaz",
+        60
+      ],
+      [
+        "hasecilu@tuta.io",
+        "Ulices",
+        39
+      ],
+      [
+        "fran-carro@hotmail.es",
+        "gallegonovato",
+        20
+      ],
+      [
+        "andres.segarra.aparicio@gmail.com",
+        "Andres Segarra",
+        10
+      ],
+      [
+        "fitojb@ubuntu.com",
+        "Adolfo Jayme Barrientos",
+        7
+      ],
+      [
+        "jorgec2005@gmail.com",
+        "Jorge C",
+        5
+      ]
+    ]
+  },
+  {
+    "Swedish": [
+      [
+        "swedishsailfishosuser@tutanota.com",
+        "Kristoffer Grundstr\u00f6m",
+        50
+      ],
+      [
+        "droidbittin@gmail.com",
+        "Luna Jernberg",
+        9
+      ],
+      [
+        "obslsessed@duck.com",
+        "obslsessed",
+        5
+      ]
+    ]
+  },
+  {
+    "Turkish": [
+      [
+        "libreajans@gmail.com",
+        "Sabri \u00dcnal",
+        74
+      ],
+      [
+        "muhaaliss@pm.me",
+        "Muha Aliss",
+        52
+      ],
+      [
+        "tcreeper.earth@gmail.com",
+        "TCr3",
+        24
+      ]
+    ]
+  },
+  {
+    "Ukrainian": [
+      [
+        "yuridm@gmail.com",
+        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
+        48
+      ],
+      [
+        "911us@duck.com",
+        "Petro S.",
+        44
+      ],
+      [
+        "cakestwix1@gmail.com",
+        "CakesTwix",
+        35
+      ],
+      [
+        "sergiy.goncharuk.1@gmail.com",
+        "\u0421\u0435\u0440\u0433\u0456\u0439",
+        6
       ]
     ]
   }
