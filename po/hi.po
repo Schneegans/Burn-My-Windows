@@ -8,21 +8,18 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-02-23 09:01+0000\n"
-"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
-"core/sv/>\n"
-"Language: sv\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: hi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr "Öppnar fönster"
+msgstr ""
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
 #: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
@@ -32,7 +29,7 @@ msgstr ""
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
 #: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr "Normala fönster"
+msgstr ""
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
@@ -95,11 +92,11 @@ msgstr ""
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
-msgstr "Uppenbarelse"
+msgstr ""
 
 #: src/effects/BrokenGlass.js:137
 msgid "Broken Glass"
-msgstr "Trasigt glas"
+msgstr ""
 
 #: src/effects/Doom.js:88
 msgid "Doom"
@@ -107,35 +104,35 @@ msgstr ""
 
 #: src/effects/EnergizeA.js:80
 msgid "Energize A"
-msgstr "Stråla A"
+msgstr ""
 
 #: src/effects/EnergizeB.js:81
 msgid "Energize B"
-msgstr "Stråla B"
+msgstr ""
 
 #: src/effects/Fire.js:100
 msgid "Fire"
-msgstr "Eld"
+msgstr ""
 
 #: src/effects/Fire.js:154
 msgid "Default Fire"
-msgstr "Standardeld"
+msgstr ""
 
 #: src/effects/Fire.js:164
 msgid "Hell Fire"
-msgstr "Helveteseld"
+msgstr ""
 
 #: src/effects/Fire.js:174
 msgid "Dark and Smutty"
-msgstr "Mörk och smutsig"
+msgstr ""
 
 #: src/effects/Fire.js:184
 msgid "Cold Breeze"
-msgstr "Kall bris"
+msgstr ""
 
 #: src/effects/Fire.js:194
 msgid "Santa is Coming"
-msgstr "Jultomten kommer"
+msgstr ""
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -147,15 +144,15 @@ msgstr ""
 
 #: src/effects/Hexagon.js:94
 msgid "Hexagon"
-msgstr "Sexhörning"
+msgstr ""
 
 #: src/effects/Incinerate.js:131
 msgid "Incinerate"
-msgstr "Bränna"
+msgstr ""
 
 #: src/effects/Matrix.js:114
 msgid "Matrix"
-msgstr "Matris"
+msgstr ""
 
 #: src/effects/PaintBrush.js:102
 msgid "Paint Brush"
@@ -179,15 +176,15 @@ msgstr ""
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
-msgstr "Sönderfallsknäppning"
+msgstr ""
 
 #: src/effects/TRexAttack.js:112
 msgid "T-Rex Attack"
-msgstr "T-Rexattack"
+msgstr ""
 
 #: src/effects/TVEffect.js:78
 msgid "TV Effect"
-msgstr "TV-effekt"
+msgstr ""
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
@@ -195,7 +192,7 @@ msgstr ""
 
 #: src/effects/Wisps.js:89
 msgid "Wisps"
-msgstr "Feer"
+msgstr ""
 
 #: prefs.js:269
 msgid "Preview this effect"
@@ -208,23 +205,23 @@ msgstr ""
 #: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
 msgid "View Changelog"
-msgstr "Visa ändringslogg"
+msgstr ""
 
 #: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
-msgstr "Guldsponsorer"
+msgstr ""
 
 #: prefs.js:575 prefs.js:607
 msgid "Silver Sponsors"
-msgstr "Silversponsorer"
+msgstr ""
 
 #: prefs.js:579 prefs.js:611
 msgid "Bronze Sponsors"
-msgstr "Bronssponsorer"
+msgstr ""
 
 #: prefs.js:583 prefs.js:615
 msgid "Past Sponsors"
-msgstr "Sponsorer från förr"
+msgstr ""
 
 #: prefs.js:660
 msgid "Delete this Profile?"
@@ -248,15 +245,15 @@ msgstr ""
 #: prefs.js:980
 #, javascript-format
 msgid "Preview for %s"
-msgstr "Förhandsgranskning för %s"
+msgstr ""
 
 #: prefs.js:1002
 msgid "Close this Window to Preview the Effect!"
-msgstr "Stäng det här fönstret för att förhandsgranska effekten!"
+msgstr ""
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr "Besök hemsida"
+msgstr ""
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
@@ -264,19 +261,19 @@ msgstr ""
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
-msgstr "Rapportera en bugg"
+msgstr ""
 
 #: resources/ui/common/menus.ui:31
 msgid "Create an Effect"
-msgstr "Skapa en effekt"
+msgstr ""
 
 #: resources/ui/common/menus.ui:35
 msgid "Translate"
-msgstr "Översätt"
+msgstr ""
 
 #: resources/ui/common/menus.ui:39
 msgid "Donate"
-msgstr "Donera"
+msgstr ""
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
@@ -284,7 +281,7 @@ msgstr ""
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
-msgstr "Om Bränn-mitt-Windows"
+msgstr ""
 
 #: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
@@ -320,7 +317,7 @@ msgstr ""
 #: resources/ui/adw/snap.ui:14 resources/ui/adw/energize-a.ui:14
 #: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
 msgid "Animation Time [ms]"
-msgstr "Animationens tid [ms]"
+msgstr ""
 
 #: resources/ui/gtk4/broken-glass.ui:50 resources/ui/gtk4/broken-glass.ui:96
 #: resources/ui/gtk4/broken-glass.ui:142 resources/ui/gtk4/broken-glass.ui:188
@@ -440,7 +437,7 @@ msgstr "Animationens tid [ms]"
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr "Återställ till standardvärde"
+msgstr ""
 
 #: resources/ui/gtk4/broken-glass.ui:68 resources/ui/gtk4/tv-glitch.ui:69
 #: resources/ui/gtk4/glitch.ui:69 resources/ui/gtk4/matrix.ui:69
@@ -460,27 +457,25 @@ msgstr "Återställ till standardvärde"
 #: resources/ui/adw/fire.ui:63 resources/ui/adw/snap.ui:47
 #: resources/ui/adw/energize-a.ui:47
 msgid "Scale"
-msgstr "Skala"
+msgstr ""
 
 #: resources/ui/gtk4/broken-glass.ui:114 resources/ui/adw/broken-glass.ui:81
 msgid "Gravity"
-msgstr "Tyngdkraft"
+msgstr ""
 
 #: resources/ui/gtk4/broken-glass.ui:160 resources/ui/adw/broken-glass.ui:114
 msgid "Blow Force"
-msgstr "Blåskraft"
+msgstr ""
 
 #: resources/ui/gtk4/broken-glass.ui:210 resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr "Spränga från muspekarens plats"
+msgstr ""
 
 #: resources/ui/gtk4/broken-glass.ui:219 resources/ui/adw/broken-glass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
-"Skärvorna kommer att flyga iväg från där din muspekare befann sig när rutan "
-"stängdes."
 
 #: resources/ui/gtk4/tv-glitch.ui:115 resources/ui/gtk4/glitch.ui:115
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
@@ -494,7 +489,7 @@ msgstr ""
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
 #: resources/ui/adw/fire.ui:96
 msgid "Speed"
-msgstr "Hastighet"
+msgstr ""
 
 #: resources/ui/gtk4/tv-glitch.ui:207 resources/ui/gtk4/glitch.ui:207
 #: resources/ui/gtk4/wisps.ui:115 resources/ui/gtk4/energize-b.ui:115
@@ -510,25 +505,25 @@ msgstr "Hastighet"
 #: resources/ui/adw/incinerate.ui:136 resources/ui/adw/snap.ui:80
 #: resources/ui/adw/energize-a.ui:80 resources/ui/adw/tv.ui:47
 msgid "Color"
-msgstr "Färg"
+msgstr ""
 
 #: resources/ui/gtk4/matrix.ui:115 resources/ui/gtk4/apparition.ui:68
 #: resources/ui/gtk3/apparition.ui:104 resources/ui/adw/matrix.ui:80
 #: resources/ui/adw/apparition.ui:48
 msgid "Randomness"
-msgstr "Slumpmässighet"
+msgstr ""
 
 #: resources/ui/gtk4/matrix.ui:161 resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr "Vertikal överskjutning"
+msgstr ""
 
 #: resources/ui/gtk4/matrix.ui:207 resources/ui/adw/matrix.ui:146
 msgid "Trail Color"
-msgstr "Spårets färg"
+msgstr ""
 
 #: resources/ui/gtk4/matrix.ui:244 resources/ui/adw/matrix.ui:171
 msgid "Tip Color"
-msgstr "Färg på dricksen"
+msgstr ""
 
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
@@ -555,19 +550,19 @@ msgstr ""
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr "Klo riva skala"
+msgstr ""
 
 #: resources/ui/gtk4/trex.ui:115 resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr "Klo riva räknare"
+msgstr ""
 
 #: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr "Warp-effekt"
+msgstr ""
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr "Färg för bränningen"
+msgstr ""
 
 #: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
 #: resources/ui/adw/pixel-wheel.ui:47
@@ -592,17 +587,17 @@ msgstr ""
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr "Virvelns intensitet"
+msgstr ""
 
 #: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr "Skakningens intensitet"
+msgstr ""
 
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr "Sugningens intensitet"
+msgstr ""
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
@@ -622,7 +617,7 @@ msgstr ""
 #: resources/ui/gtk4/incinerate.ui:115 resources/ui/gtk3/incinerate.ui:135
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr "Turbulens"
+msgstr ""
 
 #: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
 #: resources/ui/adw/incinerate.ui:113
@@ -637,52 +632,52 @@ msgstr ""
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr "Mesh linjebredd"
+msgstr ""
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr "Linje färg"
+msgstr ""
 
 #: resources/ui/gtk4/hexagon.ui:198 resources/ui/gtk3/hexagon.ui:221
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr "Glöd färg"
+msgstr ""
 
 #: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr "Tillsatsblandning"
+msgstr ""
 
 #: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr "Du kan behöva aktivera det här för mörka fönsterteman."
+msgstr ""
 
 #: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
-msgstr "Förinställningar"
+msgstr ""
 
 #: resources/ui/gtk4/fire.ui:31 resources/ui/gtk3/fire.ui:58
 #: resources/ui/adw/fire.ui:19
 msgid "Choose a Preset"
-msgstr "Välj en förinställning"
+msgstr ""
 
 #: resources/ui/gtk4/fire.ui:188 resources/ui/gtk3/fire.ui:220
 #: resources/ui/adw/fire.ui:129
 msgid "3D Noise"
-msgstr "3D-ljud"
+msgstr ""
 
 #: resources/ui/gtk4/fire.ui:197 resources/ui/gtk3/fire.ui:229
 #: resources/ui/adw/fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Skapar en mer dynamisk eld, men kräver mer GPU-kraft."
+msgstr ""
 
 #: resources/ui/gtk4/fire.ui:239 resources/ui/gtk3/fire.ui:276
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr "Gradient"
+msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
@@ -692,7 +687,7 @@ msgstr ""
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Om flera val är gjorda så väljs ett slumpvist."
+msgstr ""
 
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
@@ -775,36 +770,3 @@ msgstr ""
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
 msgstr ""
-
-#~ msgid "General Options"
-#~ msgstr "Generella alternativ"
-
-#~ msgid "Welcome to Burn-My-Windows!"
-#~ msgstr "Välkommen till Bränn-mitt-Windows!"
-
-#~ msgid "If you like this extension, recommend it to your friends :)"
-#~ msgstr "Rekommendera det här tillägget till dina vänner om du gillar det :)"
-
-#~ msgid "Open Window Animation"
-#~ msgstr "Öppna fönsteranimation"
-
-#~ msgid "Choose Effects"
-#~ msgstr "Välj effekter"
-
-#~ msgid "Close Window Animation"
-#~ msgstr "Stäng fönsteranimation"
-
-#~ msgid "Also Add Effects to Dialogs"
-#~ msgstr "Lägg också till effekter till dialogrutor"
-
-#~ msgid "Disable on Battery Power"
-#~ msgstr "Inaktivera på batteriström"
-
-#~ msgid "Preview this Effect"
-#~ msgstr "Förhandsgranska den här effekten"
-
-#~ msgid "Effect Options"
-#~ msgstr "Effektalternativ"
-
-#~ msgid "Go Back"
-#~ msgstr "Gå tillbaka"

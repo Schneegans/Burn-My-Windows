@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2022-09-11 10:17+0000\n"
-"Last-Translator: Юрій Дмитренко <yuridm@gmail.com>\n"
+"PO-Revision-Date: 2024-02-24 15:02+0000\n"
+"Last-Translator: Miraficus <6325410@seznam.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/cs/>\n"
 "Language: cs\n"
@@ -17,85 +17,85 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.1-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Otevírání oken"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
 #: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Zavírání oken"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
 #: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Normálni okna"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Dialogová okna"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
 #: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Výchozí barevný motiv"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
 #: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Tmavý motiv"
 
 #: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
 #: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Napájeno z baterie"
 
 #: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
 #: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Připojeno k nabíječce"
 
 #: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
 #: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Úsporný režim"
 
 #: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
 #: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Vyvážený režim"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
 #: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Vysoký výkon"
 
 #: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
 #: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Úsporný režim nebo vyvážený"
 
 #: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
 #: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Vyvážený nebo vysoký výkon"
 
 #: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
 #: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Vysoká priorita"
 
 #: src/ProfileManager.js:198
 msgid "Standard Profile"
-msgstr ""
+msgstr "Standartní profil"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
-msgstr ""
+msgstr "Zjevení"
 
 #: src/effects/BrokenGlass.js:137
 msgid "Broken Glass"
@@ -103,7 +103,7 @@ msgstr "Střepy"
 
 #: src/effects/Doom.js:88
 msgid "Doom"
-msgstr ""
+msgstr "Doom"
 
 #: src/effects/EnergizeA.js:80
 msgid "Energize A"
@@ -139,19 +139,19 @@ msgstr "Santa přichází"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Klouzání"
 
 #: src/effects/Glitch.js:86
 msgid "Glitch"
-msgstr ""
+msgstr "Závada"
 
 #: src/effects/Hexagon.js:94
 msgid "Hexagon"
-msgstr ""
+msgstr "Šestiúhelník"
 
 #: src/effects/Incinerate.js:131
 msgid "Incinerate"
-msgstr ""
+msgstr "Spálení"
 
 #: src/effects/Matrix.js:114
 msgid "Matrix"
@@ -159,27 +159,27 @@ msgstr "Matrix"
 
 #: src/effects/PaintBrush.js:102
 msgid "Paint Brush"
-msgstr ""
+msgstr "Štětec"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelovat"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Pixelové kolo"
 
 #: src/effects/PixelWipe.js:101
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Setření pixelů"
 
 #: src/effects/Portal.js:88
 msgid "Portal"
-msgstr ""
+msgstr "Portál"
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "Bleskový rozpad"
 
 #: src/effects/TRexAttack.js:112
 msgid "T-Rex Attack"
@@ -191,7 +191,7 @@ msgstr "Televize"
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
-msgstr ""
+msgstr "Závada televizoru"
 
 #: src/effects/Wisps.js:89
 msgid "Wisps"
@@ -199,11 +199,11 @@ msgstr "Obláčky"
 
 #: prefs.js:269
 msgid "Preview this effect"
-msgstr ""
+msgstr "Vyzkoušejte tento efekt"
 
 #: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows byl aktualizován!"
 
 #: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -212,37 +212,39 @@ msgstr "Zobrazit historii změn"
 
 #: prefs.js:571 prefs.js:603
 msgid "Gold Sponsors"
-msgstr ""
+msgstr "Zlatí sponzoři"
 
 #: prefs.js:575 prefs.js:607
 msgid "Silver Sponsors"
-msgstr ""
+msgstr "Stříbrní sponzoři"
 
 #: prefs.js:579 prefs.js:611
 msgid "Bronze Sponsors"
-msgstr ""
+msgstr "Bronzoví sponzoři"
 
 #: prefs.js:583 prefs.js:615
 msgid "Past Sponsors"
-msgstr ""
+msgstr "Bývalí sponzoři"
 
 #: prefs.js:660
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Odstranit tento profil?"
 
 #: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Aktuální profil efektu spolu s veškerým nastavením efektů bude trvale "
+"odstraněn."
 
 #: prefs.js:664
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušit"
 
 #: prefs.js:669
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:980
@@ -260,7 +262,7 @@ msgstr "Navštívit web"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Zobrazit odpovídajíci tapety"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -280,15 +282,15 @@ msgstr "Přispět"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Otevřít Effect-Profile adresář"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "O Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Pridat nový profil…"
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -484,7 +486,7 @@ msgstr "Střepy odletí z místa, kde byl ukazatel myši při zavírání okna."
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Intenzita"
 
 #: resources/ui/gtk4/tv-glitch.ui:161 resources/ui/gtk4/glitch.ui:161
 #: resources/ui/gtk4/fire.ui:138 resources/ui/gtk3/tv-glitch.ui:187
@@ -532,12 +534,12 @@ msgstr "Barva hrotu"
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Horizontální měřítko"
 
 #: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Vertikální měřitko"
 
 #: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
 #: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
@@ -546,11 +548,11 @@ msgstr ""
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "Velikost pixelu"
 
 #: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "Velikost štětce"
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
@@ -571,92 +573,93 @@ msgstr "Barva blesku"
 #: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "Počet paprsků"
 
 #: resources/ui/gtk4/glide.ui:115 resources/ui/gtk3/glide.ui:149
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Rozmáčknout"
 
 #: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Naklonění"
 
 #: resources/ui/gtk4/glide.ui:207 resources/ui/gtk3/glide.ui:239
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Posunutí"
 
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Intenzita víru"
 
 #: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Intenzita otřesu"
 
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Intenzita odsání"
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Vír"
 
 #: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Rychlost otáčení"
 
 #: resources/ui/gtk4/portal.ui:161 resources/ui/gtk3/portal.ui:187
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: resources/ui/gtk4/incinerate.ui:115 resources/ui/gtk3/incinerate.ui:135
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "Turbulence"
 
 #: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Začít od kurzoru"
 
 #: resources/ui/gtk4/incinerate.ui:174 resources/ui/gtk3/incinerate.ui:192
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Pokud je v poloze vypnuto, bude použita náhodná lokace."
 
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
+#, fuzzy
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Šiřka čáry sítě"
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr ""
+msgstr "Barva čáry"
 
 #: resources/ui/gtk4/hexagon.ui:198 resources/ui/gtk3/hexagon.ui:221
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr ""
+msgstr "Barva záře"
 
 #: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "Přídavné míchání"
 
 #: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Tuto funkci můžete povolit pro tmavé motivy oken."
 
 #: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
 #: resources/ui/adw/fire.ui:14
@@ -686,7 +689,7 @@ msgstr "Přechod"
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Výběr efektů"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
@@ -696,27 +699,27 @@ msgstr "Pokud vyberete více, budou se střídat náhodně."
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "Všechno"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "Nic"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Omezení profilu efektu"
 
 #: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Definujte, kdy se má použít aktuální nastavení efektu."
 
 #: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Aplikace"
 
 #: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
 #: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
@@ -728,52 +731,52 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Libovolné"
 
 #: resources/ui/gtk4/prefs.ui:244 resources/ui/gtk3/prefs.ui:289
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Typ animace"
 
 #: resources/ui/gtk4/prefs.ui:273 resources/ui/gtk3/prefs.ui:318
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Typ okna"
 
 #: resources/ui/gtk4/prefs.ui:302 resources/ui/gtk3/prefs.ui:347
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Barevný motiv"
 
 #: resources/ui/gtk4/prefs.ui:331 resources/ui/gtk3/prefs.ui:376
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Režim napájení"
 
 #: resources/ui/gtk4/prefs.ui:360 resources/ui/gtk3/prefs.ui:405
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Profil napájení"
 
 #: resources/ui/gtk4/prefs.ui:392 resources/ui/gtk3/prefs.ui:437
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Pokročilé volby profilu"
 
 #: resources/ui/gtk4/prefs.ui:432 resources/ui/gtk3/prefs.ui:477
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Použijte tento profil, i když existují lépe odpovídající profily."
 
 #: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Odstranit tento profil…"
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "Šum"
 
 #~ msgid "General Options"
 #~ msgstr "Obecné možnosti"
