@@ -48,7 +48,7 @@ pot: $(JS_FILES) $(UI_FILES)
 
 # This runs several tests in containerized versions of GNOME Shell.
 test:
-	@ for version in 39 ; do \
+	@ for version in 39 "rawhide" ; do \
 	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
 	    echo ; \
 	    echo "Running Tests on Fedora $$version ($$session)." ; \
@@ -59,7 +59,7 @@ test:
 
 # This re-generates all reference images required by the tests.
 references:
-	@ for version in 39 ; do \
+	@ for version in 39 "rawhide" ; do \
 	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
 	    echo ; \
 	    echo "Generating References for Fedora $$version ($$session)." ; \
