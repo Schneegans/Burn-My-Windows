@@ -134,7 +134,7 @@ do_in_pod 'echo "export GSK_RENDERER=cairo" >> .bash_profile'
 # ----------------------------------------------------- wait for the container to start up
 
 echo "Waiting for D-Bus."
-do_in_pod wait-user-bus.sh > /dev/null 2>&1
+sleep 5
 
 
 # ----------------------------------------------------- install the to-be-tested extension
