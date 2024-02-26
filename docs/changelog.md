@@ -17,8 +17,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Enhancements
 
+- The extension has been updated to work with GNOME 46.
 - Several translations have been updated. Thanks to all the translators!
-- All CI jobs are now executed for GNOME 45 as well.
+- All CI jobs are now executed for GNOME 45 and GNOME 46 as well.
 
 #### Bug Fixes
 
