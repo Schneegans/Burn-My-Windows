@@ -1,0 +1,13 @@
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: CC0-1.0
+-->
+
+<node>
+    <interface name="org.gnome.shell.extensions.BurnMyWindows">
+        <method name="PickWindow" />
+        <signal name="WindowPicked">
+            <arg name="window" type="s" />
+        </signal>
+    </interface>
+</node>

@@ -29,6 +29,8 @@
 #                    -v 35: GNOME Shell 41
 #                    -v 36: GNOME Shell 42
 #                    -v 37: GNOME Shell 43
+#                    -v 38: GNOME Shell 44
+#                    -v rawhide: The current GNOME Shell version of Fedora Rawhide
 # -s session:        This can either be "gnome-xsession" or "gnome-wayland-nested".
 
 # Exit on error.
@@ -60,7 +62,8 @@ EXTENSION="burn-my-windows@schneegans.github.com"
 # All references images of the effects are captured at & cropped to this region
 # in the center of the screen. This is kind of arbitrary, but has been choosen so that
 # something is visible from each effect.
-CROP="100x100+900+500"
+EFFECT_CROP="100x100+900+500"
+PREFS_CROP="100x100+700+300"
 
 # Run the container. For more info, visit https://github.com/Schneegans/gnome-shell-pod.
 POD=$(podman run --rm --cap-add=SYS_NICE --cap-add=IPC_LOCK -td "${IMAGE}")
@@ -95,10 +98,11 @@ set_setting() {
                       set org.gnome.shell.extensions.burn-my-windows "${1}" "${2}"
 }
 
-# This makes a screen capture (cropped to $CROP) inside the container and stores it
-# on the host relative to this script with the given file name.
+# This makes a screen capture (cropped to either $EFFECT_CROP or P$REFS_CROP as given through the
+# second parameter) inside the container and stores it on the host relative to this script with the
+# given file name.
 capture() {
-  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${CROP} ${1}"
+  podman cp "${POD}:/opt/Xvfb_screen0" - | tar xf - --to-command "convert xwd:- -crop ${2} ${1}"
 }
 
 # This opens the extensions preferences dialog and captures two images: One during the
@@ -109,22 +113,28 @@ capture() {
 capture_effect() {
   echo "Capturing ${1} effect."
 
-  set_setting "open-preview-effect" "${1}"
-  set_setting "close-preview-effect" "${1}"
+  set_setting "preview-effect" "${1}"
 
   sleep 1
   do_in_pod gnome-terminal
   sleep 3
-  capture "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png"
+  capture "tests/references/${1}-open-${SESSION}-${FEDORA_VERSION}.png" "${EFFECT_CROP}"
   send_keystroke "Alt+F4"
   sleep 3
-  capture "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png"
+  capture "tests/references/${1}-close-${SESSION}-${FEDORA_VERSION}.png" "${EFFECT_CROP}"
 }
+
+
+# -------------------------------------------------------------- set GSK_RENDERER to cairo
+
+echo "Make sure to use Cairo GTK rendering backend."
+do_in_pod 'echo "export GSK_RENDERER=cairo" >> .bash_profile'
+
 
 # ----------------------------------------------------- wait for the container to start up
 
 echo "Waiting for D-Bus."
-do_in_pod wait-user-bus.sh > /dev/null 2>&1
+sleep 5
 
 
 # ----------------------------------------------------- install the to-be-tested extension
@@ -139,7 +149,7 @@ do_in_pod gnome-extensions install "${EXTENSION}.zip"
 
 # Starting with GNOME 40, there is a "Welcome Tour" dialog popping up at first launch.
 # We disable this beforehand.
-if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
+if [[ "${FEDORA_VERSION}" -gt 33 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
   echo "Disabling welcome tour."
   do_in_pod gsettings set org.gnome.shell welcome-dialog-last-shown-version "999" || true
 fi
@@ -156,7 +166,7 @@ do_in_pod gnome-extensions enable "${EXTENSION}"
 
 # Starting with GNOME 40, the overview is the default mode. We close this here by hitting
 # the super key.
-if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
+if [[ "${FEDORA_VERSION}" -gt 33 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
   echo "Closing Overview."
   send_keystroke "super"
 fi
@@ -171,7 +181,7 @@ sleep 3
 echo "Opening Preferences."
 do_in_pod gnome-extensions prefs "${EXTENSION}"
 sleep 3
-capture "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png"
+capture "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png" "${PREFS_CROP}"
 send_keystroke "Alt+F4"
 
 # The test mode ensures that the animations are "frozen" and do not change in time.
@@ -193,12 +203,12 @@ capture_effect "tv"
 capture_effect "tv-glitch"
 capture_effect "wisps"
 
-if [[ "${FEDORA_VERSION}" -gt 32 ]]; then
+if [[ "${FEDORA_VERSION}" -gt 32 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
   capture_effect "apparition"
   capture_effect "doom"
 fi
 
-if [[ "${FEDORA_VERSION}" -gt 33 ]]; then
+if [[ "${FEDORA_VERSION}" -gt 33 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
   capture_effect "trex"
   capture_effect "broken-glass"
   capture_effect "matrix"

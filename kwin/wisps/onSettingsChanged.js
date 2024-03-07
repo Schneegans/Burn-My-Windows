@@ -7,4 +7,6 @@
 
 effect.setUniform(this.shader, 'uDuration', this.duration * 0.001);
 effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
-effect.setUniform(this.shader, 'uColor', this.readRGBConfig('Color'));
+effect.setUniform(this.shader, 'uColor1', this.readRGBConfig('Color1'));
+effect.setUniform(this.shader, 'uColor2', this.readRGBConfig('Color2'));
+effect.setUniform(this.shader, 'uColor3', this.readRGBConfig('Color3'));

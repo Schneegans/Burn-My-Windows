@@ -14,18 +14,17 @@
 
 'use strict';
 
-const GObject = imports.gi.GObject;
+import GObject from 'gi://GObject';
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
+import {Shader} from './Shader.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// Each effect of Burn-My-Windows owns an instance of this class. It is used to created //
+// Each effect of Burn-My-Windows owns an instance of this class. It is used to create  //
 // shaders whenever a new one is required. It tries to re-use old shaders as much as    //
 // possible in order to avoid memory leaks.                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var ShaderFactory = class {
+export default class ShaderFactory {
 
   // Creates a new ShaderFactory. Requires the nick of the effect and a callback function
   // which will be called whenever a new shader is created.
@@ -62,8 +61,7 @@ var ShaderFactory = class {
       // Only try to register the new type once.
       if (GObject.type_from_name(typeName) == null) {
         const outerThis = this;
-        GObject.registerClass({GTypeName: typeName},
-                              class Shader extends Me.imports.src.Shader.Shader {
+        GObject.registerClass({GTypeName: typeName}, class ShaderImp extends Shader {
           // This will actually load the GLSL source code from the resources.
           _init() {
             super._init(outerThis._nick);

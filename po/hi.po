@@ -1,0 +1,780 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Simon Schneegans
+# This file is distributed under the same license as the burn-my-windows package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: burn-my-windows\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-08-31 07:30+0200\n"
+"PO-Revision-Date: 2024-02-26 11:01+0000\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/hi/>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
+
+#: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
+#: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
+msgid "Opening Windows"
+msgstr "विंडोज़ खोलते समय"
+
+#: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
+#: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
+msgid "Closing Windows"
+msgstr "विंडोज़ बंद करते समय"
+
+#: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
+#: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
+msgid "Normal Windows"
+msgstr "सामान्य विंडोज़"
+
+#: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
+#: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
+msgid "Dialog Windows"
+msgstr "डायलॉग विंडोज़"
+
+#: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
+#: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
+msgid "Default Color Scheme"
+msgstr "डिफ़ॉल्ट रंग योजना"
+
+#: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
+#: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
+msgid "Dark Color Scheme"
+msgstr "गहरी रंग योजना"
+
+#: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
+#: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
+msgid "On Battery"
+msgstr "बैटरी पर"
+
+#: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
+#: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
+msgid "Plugged In"
+msgstr "जब प्लग इन हो"
+
+#: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
+#: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
+msgid "Power-Saver Mode"
+msgstr "पावर-सेवर मोड"
+
+#: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
+#: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
+msgid "Balanced Mode"
+msgstr "संतुलित मोड"
+
+#: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
+#: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
+msgid "Performance Mode"
+msgstr "प्रदर्शन मोड"
+
+#: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
+#: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
+msgid "Power Saver or Balanced"
+msgstr "पावर सेवर या संतुलित"
+
+#: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
+#: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
+msgid "Balanced or Performance"
+msgstr "संतुलित या प्रदर्शन"
+
+#: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
+#: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
+msgid "High Priority"
+msgstr "उच्च प्राथमिकता"
+
+#: src/ProfileManager.js:198
+msgid "Standard Profile"
+msgstr "मानक प्रोफ़ाइल"
+
+#: src/effects/Apparition.js:78
+msgid "Apparition"
+msgstr "प्रेतछाया"
+
+#: src/effects/BrokenGlass.js:137
+msgid "Broken Glass"
+msgstr "टूटा हुआ शीशा"
+
+#: src/effects/Doom.js:88
+msgid "Doom"
+msgstr "कयामत"
+
+#: src/effects/EnergizeA.js:80
+msgid "Energize A"
+msgstr "ऊर्जावान A"
+
+#: src/effects/EnergizeB.js:81
+msgid "Energize B"
+msgstr "ऊर्जावान B"
+
+#: src/effects/Fire.js:100
+msgid "Fire"
+msgstr "आग"
+
+#: src/effects/Fire.js:154
+msgid "Default Fire"
+msgstr "डिफ़ॉल्ट आग"
+
+#: src/effects/Fire.js:164
+msgid "Hell Fire"
+msgstr "नरक की आग"
+
+#: src/effects/Fire.js:174
+msgid "Dark and Smutty"
+msgstr "अँधेरी और मैली"
+
+#: src/effects/Fire.js:184
+msgid "Cold Breeze"
+msgstr "ठंडी हवा"
+
+#: src/effects/Fire.js:194
+msgid "Santa is Coming"
+msgstr "सांता आ रहा है"
+
+#: src/effects/Glide.js:78
+msgid "Glide"
+msgstr "फिसलन"
+
+#: src/effects/Glitch.js:86
+msgid "Glitch"
+msgstr "गड़बड़ी"
+
+#: src/effects/Hexagon.js:94
+msgid "Hexagon"
+msgstr "षटकोण"
+
+#: src/effects/Incinerate.js:131
+msgid "Incinerate"
+msgstr "भस्म"
+
+#: src/effects/Matrix.js:114
+msgid "Matrix"
+msgstr "आव्यूह"
+
+#: src/effects/PaintBrush.js:102
+msgid "Paint Brush"
+msgstr "पेंट ब्रश"
+
+#: src/effects/Pixelate.js:74
+msgid "Pixelate"
+msgstr "पिक्सेलेट"
+
+#: src/effects/PixelWheel.js:74
+msgid "Pixel Wheel"
+msgstr "पिक्सेल व्हील"
+
+#: src/effects/PixelWipe.js:101
+msgid "Pixel Wipe"
+msgstr "पिक्सेल वाइप"
+
+#: src/effects/Portal.js:88
+msgid "Portal"
+msgstr "द्वार"
+
+#: src/effects/SnapOfDisintegration.js:114
+msgid "Snap of Disintegration"
+msgstr "विघटन की चुटकी"
+
+#: src/effects/TRexAttack.js:112
+msgid "T-Rex Attack"
+msgstr "T-Rex का हमला"
+
+#: src/effects/TVEffect.js:78
+msgid "TV Effect"
+msgstr "TV प्रभाव"
+
+#: src/effects/TVGlitch.js:87
+msgid "TV Glitch"
+msgstr "TV की गड़बड़ी"
+
+#: src/effects/Wisps.js:89
+msgid "Wisps"
+msgstr "विसप्स"
+
+#: prefs.js:269
+msgid "Preview this effect"
+msgstr "इस प्रभाव का पूर्वावलोकन करें"
+
+#: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
+msgid "Burn-My-Windows has been updated!"
+msgstr "Burn-My-Windows अपडेट कर दिया गया है!"
+
+#: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
+#: resources/ui/gtk3/prefs.ui:96
+msgid "View Changelog"
+msgstr "चेंजलॉग देखें"
+
+#: prefs.js:571 prefs.js:603
+msgid "Gold Sponsors"
+msgstr "स्वर्ण प्रायोजक"
+
+#: prefs.js:575 prefs.js:607
+msgid "Silver Sponsors"
+msgstr "रजत प्रायोजक"
+
+#: prefs.js:579 prefs.js:611
+msgid "Bronze Sponsors"
+msgstr "कांस्य प्रायोजक"
+
+#: prefs.js:583 prefs.js:615
+msgid "Past Sponsors"
+msgstr "पिछले प्रायोजक"
+
+#: prefs.js:660
+msgid "Delete this Profile?"
+msgstr "यह प्रोफ़ाइल हटाएं?"
+
+#: prefs.js:661
+msgid ""
+"The current effect profile with all its effect settings will be permanently "
+"lost."
+msgstr ""
+"वर्तमान प्रभाव प्रोफ़ाइल अपनी सभी प्रभाव सेटिंग्स के साथ स्थायी रूप से खो "
+"जाएगी।"
+
+#: prefs.js:664
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: prefs.js:669
+msgid "Delete"
+msgstr "हटाएं"
+
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:980
+#, javascript-format
+msgid "Preview for %s"
+msgstr "%s का पूर्वावलोकन"
+
+#: prefs.js:1002
+msgid "Close this Window to Preview the Effect!"
+msgstr "प्रभाव का पूर्वावलोकन करने के लिए इस विंडो को बंद करें!"
+
+#: resources/ui/common/menus.ui:13
+msgid "Visit Homepage"
+msgstr "मुखपृष्ठ पर जाएँ"
+
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr "मिलते-जुलते वॉलपेपर देखें"
+
+#: resources/ui/common/menus.ui:27
+msgid "Report a Bug"
+msgstr "बग रिपोर्ट करें"
+
+#: resources/ui/common/menus.ui:31
+msgid "Create an Effect"
+msgstr "एक प्रभाव पैदा करें"
+
+#: resources/ui/common/menus.ui:35
+msgid "Translate"
+msgstr "अनुवाद"
+
+#: resources/ui/common/menus.ui:39
+msgid "Donate"
+msgstr "दान करें"
+
+#: resources/ui/common/menus.ui:56
+msgid "Open Effect-Profile Directory"
+msgstr "इफ़ेक्ट-प्रोफ़ाइल डॉयरेक्टरी खोलें"
+
+#: resources/ui/common/menus.ui:62
+msgid "About Burn-My-Windows"
+msgstr "Burn-My-Windows के बारे में"
+
+#: resources/ui/common/menus.ui:73
+msgid "Add New Profile..."
+msgstr "नई प्रोफ़ाइल जोड़ें…"
+
+#: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
+#: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
+#: resources/ui/gtk4/doom.ui:22 resources/ui/gtk4/paint-brush.ui:23
+#: resources/ui/gtk4/trex.ui:23 resources/ui/gtk4/wisps.ui:23
+#: resources/ui/gtk4/energize-b.ui:23 resources/ui/gtk4/pixel-wheel.ui:23
+#: resources/ui/gtk4/glide.ui:23 resources/ui/gtk4/apparition.ui:22
+#: resources/ui/gtk4/portal.ui:23 resources/ui/gtk4/incinerate.ui:23
+#: resources/ui/gtk4/hexagon.ui:23 resources/ui/gtk4/fire.ui:46
+#: resources/ui/gtk4/pixel-wipe.ui:23 resources/ui/gtk4/snap.ui:23
+#: resources/ui/gtk4/energize-a.ui:23 resources/ui/gtk4/pixelate.ui:23
+#: resources/ui/gtk4/tv.ui:23 resources/ui/gtk3/tv-glitch.ui:52
+#: resources/ui/gtk3/glitch.ui:52 resources/ui/gtk3/doom.ui:52
+#: resources/ui/gtk3/wisps.ui:38 resources/ui/gtk3/energize-b.ui:38
+#: resources/ui/gtk3/pixel-wheel.ui:45 resources/ui/gtk3/glide.ui:59
+#: resources/ui/gtk3/apparition.ui:59 resources/ui/gtk3/portal.ui:52
+#: resources/ui/gtk3/incinerate.ui:45 resources/ui/gtk3/hexagon.ui:45
+#: resources/ui/gtk3/fire.ui:84 resources/ui/gtk3/pixel-wipe.ui:45
+#: resources/ui/gtk3/energize-a.ui:38 resources/ui/gtk3/pixelate.ui:45
+#: resources/ui/gtk3/tv.ui:31 resources/ui/adw/broken-glass.ui:15
+#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/glitch.ui:14
+#: resources/ui/adw/matrix.ui:14 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/paint-brush.ui:14 resources/ui/adw/trex.ui:14
+#: resources/ui/adw/wisps.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/glide.ui:14
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/portal.ui:14
+#: resources/ui/adw/incinerate.ui:14 resources/ui/adw/hexagon.ui:14
+#: resources/ui/adw/fire.ui:30 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/snap.ui:14 resources/ui/adw/energize-a.ui:14
+#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
+msgid "Animation Time [ms]"
+msgstr "एनीमेशन समय [ms]"
+
+#: resources/ui/gtk4/broken-glass.ui:50 resources/ui/gtk4/broken-glass.ui:96
+#: resources/ui/gtk4/broken-glass.ui:142 resources/ui/gtk4/broken-glass.ui:188
+#: resources/ui/gtk4/broken-glass.ui:244 resources/ui/gtk4/tv-glitch.ui:51
+#: resources/ui/gtk4/tv-glitch.ui:97 resources/ui/gtk4/tv-glitch.ui:143
+#: resources/ui/gtk4/tv-glitch.ui:189 resources/ui/gtk4/tv-glitch.ui:226
+#: resources/ui/gtk4/glitch.ui:51 resources/ui/gtk4/glitch.ui:97
+#: resources/ui/gtk4/glitch.ui:143 resources/ui/gtk4/glitch.ui:189
+#: resources/ui/gtk4/glitch.ui:226 resources/ui/gtk4/matrix.ui:51
+#: resources/ui/gtk4/matrix.ui:97 resources/ui/gtk4/matrix.ui:143
+#: resources/ui/gtk4/matrix.ui:189 resources/ui/gtk4/matrix.ui:226
+#: resources/ui/gtk4/matrix.ui:263 resources/ui/gtk4/doom.ui:50
+#: resources/ui/gtk4/doom.ui:96 resources/ui/gtk4/doom.ui:142
+#: resources/ui/gtk4/doom.ui:188 resources/ui/gtk4/paint-brush.ui:51
+#: resources/ui/gtk4/paint-brush.ui:97 resources/ui/gtk4/trex.ui:51
+#: resources/ui/gtk4/trex.ui:97 resources/ui/gtk4/trex.ui:143
+#: resources/ui/gtk4/trex.ui:189 resources/ui/gtk4/trex.ui:226
+#: resources/ui/gtk4/wisps.ui:51 resources/ui/gtk4/wisps.ui:97
+#: resources/ui/gtk4/wisps.ui:140 resources/ui/gtk4/energize-b.ui:51
+#: resources/ui/gtk4/energize-b.ui:97 resources/ui/gtk4/energize-b.ui:134
+#: resources/ui/gtk4/pixel-wheel.ui:51 resources/ui/gtk4/pixel-wheel.ui:97
+#: resources/ui/gtk4/pixel-wheel.ui:143 resources/ui/gtk4/glide.ui:51
+#: resources/ui/gtk4/glide.ui:97 resources/ui/gtk4/glide.ui:143
+#: resources/ui/gtk4/glide.ui:189 resources/ui/gtk4/glide.ui:235
+#: resources/ui/gtk4/apparition.ui:50 resources/ui/gtk4/apparition.ui:96
+#: resources/ui/gtk4/apparition.ui:142 resources/ui/gtk4/apparition.ui:188
+#: resources/ui/gtk4/apparition.ui:234 resources/ui/gtk4/portal.ui:51
+#: resources/ui/gtk4/portal.ui:97 resources/ui/gtk4/portal.ui:143
+#: resources/ui/gtk4/portal.ui:189 resources/ui/gtk4/portal.ui:226
+#: resources/ui/gtk4/incinerate.ui:51 resources/ui/gtk4/incinerate.ui:97
+#: resources/ui/gtk4/incinerate.ui:143 resources/ui/gtk4/incinerate.ui:198
+#: resources/ui/gtk4/incinerate.ui:235 resources/ui/gtk4/hexagon.ui:51
+#: resources/ui/gtk4/hexagon.ui:97 resources/ui/gtk4/hexagon.ui:143
+#: resources/ui/gtk4/hexagon.ui:180 resources/ui/gtk4/hexagon.ui:217
+#: resources/ui/gtk4/hexagon.ui:272 resources/ui/gtk4/fire.ui:74
+#: resources/ui/gtk4/fire.ui:120 resources/ui/gtk4/fire.ui:166
+#: resources/ui/gtk4/fire.ui:221 resources/ui/gtk4/fire.ui:280
+#: resources/ui/gtk4/pixel-wipe.ui:51 resources/ui/gtk4/pixel-wipe.ui:97
+#: resources/ui/gtk4/snap.ui:51 resources/ui/gtk4/snap.ui:97
+#: resources/ui/gtk4/snap.ui:134 resources/ui/gtk4/energize-a.ui:51
+#: resources/ui/gtk4/energize-a.ui:97 resources/ui/gtk4/energize-a.ui:134
+#: resources/ui/gtk4/pixelate.ui:51 resources/ui/gtk4/pixelate.ui:97
+#: resources/ui/gtk4/pixelate.ui:143 resources/ui/gtk4/tv.ui:51
+#: resources/ui/gtk4/tv.ui:88 resources/ui/gtk3/tv-glitch.ui:78
+#: resources/ui/gtk3/tv-glitch.ui:123 resources/ui/gtk3/tv-glitch.ui:168
+#: resources/ui/gtk3/tv-glitch.ui:213 resources/ui/gtk3/tv-glitch.ui:255
+#: resources/ui/gtk3/glitch.ui:78 resources/ui/gtk3/glitch.ui:123
+#: resources/ui/gtk3/glitch.ui:168 resources/ui/gtk3/glitch.ui:213
+#: resources/ui/gtk3/glitch.ui:255 resources/ui/gtk3/doom.ui:78
+#: resources/ui/gtk3/doom.ui:123 resources/ui/gtk3/doom.ui:168
+#: resources/ui/gtk3/doom.ui:213 resources/ui/gtk3/wisps.ui:64
+#: resources/ui/gtk3/wisps.ui:109 resources/ui/gtk3/wisps.ui:159
+#: resources/ui/gtk3/energize-b.ui:64 resources/ui/gtk3/energize-b.ui:109
+#: resources/ui/gtk3/energize-b.ui:151 resources/ui/gtk3/pixel-wheel.ui:71
+#: resources/ui/gtk3/pixel-wheel.ui:116 resources/ui/gtk3/pixel-wheel.ui:161
+#: resources/ui/gtk3/glide.ui:85 resources/ui/gtk3/glide.ui:130
+#: resources/ui/gtk3/glide.ui:175 resources/ui/gtk3/glide.ui:220
+#: resources/ui/gtk3/glide.ui:265 resources/ui/gtk3/apparition.ui:85
+#: resources/ui/gtk3/apparition.ui:130 resources/ui/gtk3/apparition.ui:175
+#: resources/ui/gtk3/apparition.ui:220 resources/ui/gtk3/apparition.ui:265
+#: resources/ui/gtk3/portal.ui:78 resources/ui/gtk3/portal.ui:123
+#: resources/ui/gtk3/portal.ui:168 resources/ui/gtk3/portal.ui:213
+#: resources/ui/gtk3/portal.ui:255 resources/ui/gtk3/incinerate.ui:71
+#: resources/ui/gtk3/incinerate.ui:116 resources/ui/gtk3/incinerate.ui:161
+#: resources/ui/gtk3/incinerate.ui:220 resources/ui/gtk3/incinerate.ui:262
+#: resources/ui/gtk3/hexagon.ui:71 resources/ui/gtk3/hexagon.ui:116
+#: resources/ui/gtk3/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:203
+#: resources/ui/gtk3/hexagon.ui:245 resources/ui/gtk3/hexagon.ui:304
+#: resources/ui/gtk3/fire.ui:110 resources/ui/gtk3/fire.ui:154
+#: resources/ui/gtk3/fire.ui:198 resources/ui/gtk3/fire.ui:257
+#: resources/ui/gtk3/fire.ui:321 resources/ui/gtk3/pixel-wipe.ui:71
+#: resources/ui/gtk3/pixel-wipe.ui:116 resources/ui/gtk3/energize-a.ui:64
+#: resources/ui/gtk3/energize-a.ui:109 resources/ui/gtk3/energize-a.ui:151
+#: resources/ui/gtk3/pixelate.ui:71 resources/ui/gtk3/pixelate.ui:116
+#: resources/ui/gtk3/pixelate.ui:161 resources/ui/gtk3/tv.ui:57
+#: resources/ui/gtk3/tv.ui:99 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/glitch.ui:36
+#: resources/ui/adw/glitch.ui:69 resources/ui/adw/glitch.ui:102
+#: resources/ui/adw/glitch.ui:135 resources/ui/adw/glitch.ui:160
+#: resources/ui/adw/matrix.ui:36 resources/ui/adw/matrix.ui:69
+#: resources/ui/adw/matrix.ui:102 resources/ui/adw/matrix.ui:135
+#: resources/ui/adw/matrix.ui:160 resources/ui/adw/matrix.ui:185
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
+#: resources/ui/adw/trex.ui:36 resources/ui/adw/trex.ui:69
+#: resources/ui/adw/trex.ui:102 resources/ui/adw/trex.ui:135
+#: resources/ui/adw/trex.ui:160 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/energize-b.ui:37 resources/ui/adw/energize-b.ui:70
+#: resources/ui/adw/energize-b.ui:95 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
+#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
+#: resources/ui/adw/glide.ui:168 resources/ui/adw/apparition.ui:37
+#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
+#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
+#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
+#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
+#: resources/ui/adw/portal.ui:160 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
+#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
+#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:199 resources/ui/adw/pixel-wipe.ui:36
+#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/pixelate.ui:36
+#: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
+#: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
+msgid "Reset to Default Value"
+msgstr "डिफ़ॉल्ट मान पर रीसेट करें"
+
+#: resources/ui/gtk4/broken-glass.ui:68 resources/ui/gtk4/tv-glitch.ui:69
+#: resources/ui/gtk4/glitch.ui:69 resources/ui/gtk4/matrix.ui:69
+#: resources/ui/gtk4/wisps.ui:69 resources/ui/gtk4/energize-b.ui:69
+#: resources/ui/gtk4/glide.ui:69 resources/ui/gtk4/incinerate.ui:69
+#: resources/ui/gtk4/hexagon.ui:69 resources/ui/gtk4/fire.ui:92
+#: resources/ui/gtk4/snap.ui:69 resources/ui/gtk4/energize-a.ui:69
+#: resources/ui/gtk3/tv-glitch.ui:97 resources/ui/gtk3/glitch.ui:97
+#: resources/ui/gtk3/wisps.ui:83 resources/ui/gtk3/energize-b.ui:83
+#: resources/ui/gtk3/glide.ui:104 resources/ui/gtk3/incinerate.ui:90
+#: resources/ui/gtk3/hexagon.ui:90 resources/ui/gtk3/fire.ui:128
+#: resources/ui/gtk3/energize-a.ui:83 resources/ui/adw/broken-glass.ui:48
+#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/glitch.ui:47
+#: resources/ui/adw/matrix.ui:47 resources/ui/adw/wisps.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/glide.ui:47
+#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/hexagon.ui:47
+#: resources/ui/adw/fire.ui:63 resources/ui/adw/snap.ui:47
+#: resources/ui/adw/energize-a.ui:47
+msgid "Scale"
+msgstr "पैमाना"
+
+#: resources/ui/gtk4/broken-glass.ui:114 resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "गुरुत्व"
+
+#: resources/ui/gtk4/broken-glass.ui:160 resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "प्रहार का बल"
+
+#: resources/ui/gtk4/broken-glass.ui:210 resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "सूचक स्थान से चकनाचूर"
+
+#: resources/ui/gtk4/broken-glass.ui:219 resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+"खिड़की बंद करते समय आपका माउस पॉइंटर जहां था, वहां से टुकड़े उड़ जाएंगे।"
+
+#: resources/ui/gtk4/tv-glitch.ui:115 resources/ui/gtk4/glitch.ui:115
+#: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
+#: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
+msgid "Strength"
+msgstr "ताकत"
+
+#: resources/ui/gtk4/tv-glitch.ui:161 resources/ui/gtk4/glitch.ui:161
+#: resources/ui/gtk4/fire.ui:138 resources/ui/gtk3/tv-glitch.ui:187
+#: resources/ui/gtk3/glitch.ui:187 resources/ui/gtk3/fire.ui:172
+#: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
+#: resources/ui/adw/fire.ui:96
+msgid "Speed"
+msgstr "गति"
+
+#: resources/ui/gtk4/tv-glitch.ui:207 resources/ui/gtk4/glitch.ui:207
+#: resources/ui/gtk4/wisps.ui:115 resources/ui/gtk4/energize-b.ui:115
+#: resources/ui/gtk4/portal.ui:207 resources/ui/gtk4/incinerate.ui:216
+#: resources/ui/gtk4/snap.ui:115 resources/ui/gtk4/energize-a.ui:115
+#: resources/ui/gtk4/tv.ui:69 resources/ui/gtk3/tv-glitch.ui:231
+#: resources/ui/gtk3/glitch.ui:231 resources/ui/gtk3/wisps.ui:129
+#: resources/ui/gtk3/energize-b.ui:127 resources/ui/gtk3/portal.ui:231
+#: resources/ui/gtk3/incinerate.ui:238 resources/ui/gtk3/energize-a.ui:127
+#: resources/ui/gtk3/tv.ui:75 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/wisps.ui:80
+#: resources/ui/adw/energize-b.ui:81 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/incinerate.ui:136 resources/ui/adw/snap.ui:80
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/tv.ui:47
+msgid "Color"
+msgstr "रंग"
+
+#: resources/ui/gtk4/matrix.ui:115 resources/ui/gtk4/apparition.ui:68
+#: resources/ui/gtk3/apparition.ui:104 resources/ui/adw/matrix.ui:80
+#: resources/ui/adw/apparition.ui:48
+msgid "Randomness"
+msgstr "बेतरतीबी"
+
+#: resources/ui/gtk4/matrix.ui:161 resources/ui/adw/matrix.ui:113
+msgid "Vertical Overshooting"
+msgstr "लंबवत ओवरशूटिंग"
+
+#: resources/ui/gtk4/matrix.ui:207 resources/ui/adw/matrix.ui:146
+msgid "Trail Color"
+msgstr "पगडंडी का रंग"
+
+#: resources/ui/gtk4/matrix.ui:244 resources/ui/adw/matrix.ui:171
+msgid "Tip Color"
+msgstr "टिप का रंग"
+
+#: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "क्षैतिज पैमाना"
+
+#: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "लंबवत पैमाना"
+
+#: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
+#: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
+#: resources/ui/gtk3/doom.ui:187 resources/ui/gtk3/pixel-wheel.ui:135
+#: resources/ui/gtk3/pixel-wipe.ui:90 resources/ui/gtk3/pixelate.ui:135
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
+#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
+msgid "Pixel Size"
+msgstr "पिक्सेल आकार"
+
+#: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "ब्रश का आकार"
+
+#: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
+msgid "Claw Scratch Scale"
+msgstr "पंजे का स्क्रैच स्केल"
+
+#: resources/ui/gtk4/trex.ui:115 resources/ui/adw/trex.ui:80
+msgid "Claw Scratch Count"
+msgstr "पंजे की खरोंच गिनती"
+
+#: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
+msgid "Warp Effect"
+msgstr "वार्प का प्रभाव"
+
+#: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
+msgid "Flash Color"
+msgstr "फ़्लैश रंग"
+
+#: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "स्पोक की गिनती"
+
+#: resources/ui/gtk4/glide.ui:115 resources/ui/gtk3/glide.ui:149
+#: resources/ui/adw/glide.ui:80
+msgid "Squish"
+msgstr "स्क्विश"
+
+#: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
+#: resources/ui/adw/glide.ui:113
+msgid "Tilt"
+msgstr "झुकाव"
+
+#: resources/ui/gtk4/glide.ui:207 resources/ui/gtk3/glide.ui:239
+#: resources/ui/adw/glide.ui:146
+msgid "Shift"
+msgstr "शिफ्ट"
+
+#: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "घुमाव की तीव्रता"
+
+#: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "झटकों की तीव्रता"
+
+#: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "सक्शन की तीव्रता"
+
+#: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "घुमावदार"
+
+#: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "घूर्णन गति"
+
+#: resources/ui/gtk4/portal.ui:161 resources/ui/gtk3/portal.ui:187
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "विवरण"
+
+#: resources/ui/gtk4/incinerate.ui:115 resources/ui/gtk3/incinerate.ui:135
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "उथल-पुथल"
+
+#: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "पॉइंटर से प्रारंभ करें"
+
+#: resources/ui/gtk4/incinerate.ui:174 resources/ui/gtk3/incinerate.ui:192
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "यदि अक्षम किया गया है, तो एक यादृच्छिक स्थान चुना जाएगा।"
+
+#: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "मेष रेखा की चौड़ाई"
+
+#: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "रेखा रंग"
+
+#: resources/ui/gtk4/hexagon.ui:198 resources/ui/gtk3/hexagon.ui:221
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "चमकदार रंग"
+
+#: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "योगात्मक सम्मिश्रण"
+
+#: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "आप इसे डार्क विंडो थीम के लिए सक्षम करना चाह सकते हैं।"
+
+#: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "प्रीसेट"
+
+#: resources/ui/gtk4/fire.ui:31 resources/ui/gtk3/fire.ui:58
+#: resources/ui/adw/fire.ui:19
+msgid "Choose a Preset"
+msgstr "प्रीसेट चुनें"
+
+#: resources/ui/gtk4/fire.ui:188 resources/ui/gtk3/fire.ui:220
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "3D शोर"
+
+#: resources/ui/gtk4/fire.ui:197 resources/ui/gtk3/fire.ui:229
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+"अधिक गतिशील आग पैदा करता है लेकिन इसके लिए अधिक GPU शक्ति की आवश्यकता होती "
+"है।"
+
+#: resources/ui/gtk4/fire.ui:239 resources/ui/gtk3/fire.ui:276
+#: resources/ui/adw/fire.ui:152
+msgid "Gradient"
+msgstr "ग्रेडियेंट"
+
+#: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
+#: resources/ui/adw/prefs.ui:224
+msgid "Effect Selection"
+msgstr "प्रभाव चयन"
+
+#: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
+#: resources/ui/adw/prefs.ui:225
+msgid "If multiple are selected, one is chosen randomly."
+msgstr "यदि एकाधिक का चयन किया जाता है, तो एक को यादृच्छिक रूप से चुना जाता है।"
+
+#: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
+#: resources/ui/adw/prefs.ui:236
+msgid "All"
+msgstr "सभी"
+
+#: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
+#: resources/ui/adw/prefs.ui:242
+msgid "None"
+msgstr "कोई नहीं"
+
+#: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
+#: resources/ui/adw/prefs.ui:65
+msgid "Effect Profile Constraints"
+msgstr "प्रभाव प्रोफ़ाइल बाधाएँ"
+
+#: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
+#: resources/ui/adw/prefs.ui:66
+msgid "Define when the current effect settings should be used."
+msgstr "परिभाषित करें कि वर्तमान प्रभाव सेटिंग्स का उपयोग कब किया जाना चाहिए।"
+
+#: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
+#: resources/ui/adw/prefs.ui:70
+msgid "Application"
+msgstr "एप्लिकेशन"
+
+#: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
+#: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
+#: resources/ui/gtk4/prefs.ui:342 resources/ui/gtk4/prefs.ui:371
+#: resources/ui/gtk3/prefs.ui:260 resources/ui/gtk3/prefs.ui:300
+#: resources/ui/gtk3/prefs.ui:329 resources/ui/gtk3/prefs.ui:358
+#: resources/ui/gtk3/prefs.ui:387 resources/ui/gtk3/prefs.ui:416
+#: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
+#: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
+#: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
+msgid "Any"
+msgstr "कोई"
+
+#: resources/ui/gtk4/prefs.ui:244 resources/ui/gtk3/prefs.ui:289
+#: resources/ui/adw/prefs.ui:98
+msgid "Animation Type"
+msgstr "एनिमेशन प्रकार"
+
+#: resources/ui/gtk4/prefs.ui:273 resources/ui/gtk3/prefs.ui:318
+#: resources/ui/adw/prefs.ui:113
+msgid "Window Type"
+msgstr "विंडो प्रकार"
+
+#: resources/ui/gtk4/prefs.ui:302 resources/ui/gtk3/prefs.ui:347
+#: resources/ui/adw/prefs.ui:128
+msgid "Color Scheme"
+msgstr "रंग योजना"
+
+#: resources/ui/gtk4/prefs.ui:331 resources/ui/gtk3/prefs.ui:376
+#: resources/ui/adw/prefs.ui:143
+msgid "Power Mode"
+msgstr "पावर मोड"
+
+#: resources/ui/gtk4/prefs.ui:360 resources/ui/gtk3/prefs.ui:405
+#: resources/ui/adw/prefs.ui:158
+msgid "Power Profile"
+msgstr "पावर प्रोफ़ाइल"
+
+#: resources/ui/gtk4/prefs.ui:392 resources/ui/gtk3/prefs.ui:437
+#: resources/ui/adw/prefs.ui:179
+msgid "Advanced Profile Options"
+msgstr "उन्नत प्रोफ़ाइल विकल्प"
+
+#: resources/ui/gtk4/prefs.ui:432 resources/ui/gtk3/prefs.ui:477
+#: resources/ui/adw/prefs.ui:184
+msgid "Use this profile even if there are better matching profiles."
+msgstr "बेहतर मिलान वाली प्रोफ़ाइल होने पर भी इस प्रोफ़ाइल का उपयोग करें।"
+
+#: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
+#: resources/ui/adw/prefs.ui:204
+msgid "Delete this Profile..."
+msgstr "इस प्रोफ़ाइल को हटाएँ..।"
+
+#: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "शोर"

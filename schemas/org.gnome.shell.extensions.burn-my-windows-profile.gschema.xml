@@ -1,0 +1,826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: CC0-1.0
+-->
+
+<schemalist>
+
+  <schema path="/org/gnome/shell/extensions/burn-my-windows-profile/" id="org.gnome.shell.extensions.burn-my-windows-profile">
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Profile Options                                                               -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="profile-app" type="s">
+      <default>""</default>
+      <summary>Profile App</summary>
+      <description>The application name for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-animation-type" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Animation Type</summary>
+      <description>The animation types for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-window-type" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Window Type</summary>
+      <description>The window types for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-color-scheme" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Color Scheme</summary>
+      <description>The desktop color schemes for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-power-mode" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Profile Power Mode</summary>
+      <description>The power mode for which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-power-profile" type="i">
+      <default>0</default>
+      <range min="0" max="5" />
+      <summary>Profile Power Profile</summary>
+      <description>The power profiles in which the current effect settings should be used.</description>
+    </key>
+
+    <key name="profile-high-priority" type="b">
+      <default>false</default>
+      <summary>Profile High Priority</summary>
+      <description>Use this profile even if there are better matching profiles.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Apparition Effect Options                                                     -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="apparition-enable-effect" type="b">
+      <default>false</default>
+      <summary>Apparition Enable Effect</summary>
+      <description>Use the apparition effect.</description>
+    </key>
+
+    <key name="apparition-animation-time" type="i">
+      <default>300</default>
+      <summary>Apparition Animation Time</summary>
+      <description>The time the apparition effect takes.</description>
+    </key>
+
+    <key name="apparition-randomness" type="d">
+      <default>0.5</default>
+      <summary>Apparition Randomness</summary>
+      <description>The amount of randomness of the apparition effect.</description>
+    </key>
+
+    <key name="apparition-twirl-intensity" type="d">
+      <default>5.0</default>
+      <summary>Apparition Twirl Intensity</summary>
+      <description>The amount of twirling of the apparition effect.</description>
+    </key>
+
+    <key name="apparition-shake-intensity" type="d">
+      <default>3.0</default>
+      <summary>Apparition Shake Intensity</summary>
+      <description>The amount of shaking of the apparition effect.</description>
+    </key>
+
+    <key name="apparition-suction-intensity" type="d">
+      <default>0.75</default>
+      <summary>Apparition Suction Intensity</summary>
+      <description>The amount of suction of the apparition effect.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Pixelate Options                                                              -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="pixelate-enable-effect" type="b">
+      <default>false</default>
+      <summary>Pixelate Enable Effect</summary>
+      <description>Use the Pixelate effect.</description>
+    </key>
+
+    <key name="pixelate-animation-time" type="i">
+      <default>500</default>
+      <summary>Pixelate Animation Time</summary>
+      <description>The time the Pixelate effect takes.</description>
+    </key>
+
+    <key name="pixelate-noise" type="d">
+      <default>40</default>
+      <summary>Pixelate Noise</summary>
+      <description>The noise of the effect.</description>
+    </key>
+
+    <key name="pixelate-pixel-size" type="i">
+      <default>10</default>
+      <summary>Pixelate Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Pixel Wipe Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="pixel-wipe-enable-effect" type="b">
+      <default>false</default>
+      <summary>Pixel Wipe Enable Effect</summary>
+      <description>Use the Pixel Wipe effect.</description>
+    </key>
+
+    <key name="pixel-wipe-animation-time" type="i">
+      <default>1000</default>
+      <summary>Pixel Wipe Animation Time</summary>
+      <description>The time the Pixel Wipe effect takes.</description>
+    </key>
+
+    <key name="pixel-wipe-pixel-size" type="i">
+      <default>10</default>
+      <summary>Pixel Wipe Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Pixel Wheel Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="pixel-wheel-enable-effect" type="b">
+      <default>false</default>
+      <summary>Pixel Wheel Enable Effect</summary>
+      <description>Use the Pixel Wheel effect.</description>
+    </key>
+
+    <key name="pixel-wheel-animation-time" type="i">
+      <default>300</default>
+      <summary>Pixel Wheel Animation Time</summary>
+      <description>The time the Pixel Wheel effect takes.</description>
+    </key>
+
+    <key name="pixel-wheel-spoke-count" type="i">
+      <default>12</default>
+      <summary>Pixel Wheel Spoke Count</summary>
+      <description>The number of sections in the wheel.</description>
+    </key>
+
+    <key name="pixel-wheel-pixel-size" type="d">
+      <default>10</default>
+      <summary>Pixel Wheel Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Doom Options                                                                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="doom-enable-effect" type="b">
+      <default>false</default>
+      <summary>Doom Enable Effect</summary>
+      <description>Use the Doom effect.</description>
+    </key>
+
+    <key name="doom-animation-time" type="i">
+      <default>1000</default>
+      <summary>Doom Animation Time</summary>
+      <description>The time the Doom effect takes.</description>
+    </key>
+
+    <key name="doom-horizontal-scale" type="d">
+      <default>10.0</default>
+      <summary>Doom Horizontal Scale</summary>
+      <description>The X scale of the effect.</description>
+    </key>
+
+    <key name="doom-vertical-scale" type="d">
+      <default>10.0</default>
+      <summary>Doom Vertical Scale</summary>
+      <description>The Y scale of the effect.</description>
+    </key>
+
+    <key name="doom-pixel-size" type="i">
+      <default>10</default>
+      <summary>Doom Pixel Size</summary>
+      <description>The size of the maximum pixelation.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Fire Options                                                                  -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="fire-enable-effect" type="b">
+      <default>true</default>
+      <summary>Fire Enable Effect</summary>
+      <description>Use the fire effect.</description>
+    </key>
+
+    <key name="fire-animation-time" type="i">
+      <default>1500</default>
+      <summary>Fire Animation Time</summary>
+      <description>The time the fire effect takes.</description>
+    </key>
+
+    <key name="fire-movement-speed" type="d">
+      <default>0.5</default>
+      <summary>Fire Movement Speed</summary>
+      <description>The speed at which the fire moves.</description>
+    </key>
+
+    <key name="fire-scale" type="d">
+      <default>1.0</default>
+      <summary>Fire Scale</summary>
+      <description>The size of the fire.</description>
+    </key>
+
+    <key name="fire-3d-noise" type="b">
+      <default>false</default>
+      <summary>Fire 3D Noise</summary>
+      <description>Use a 3D noise for the fire.</description>
+    </key>
+
+    <key name="fire-color-1" type="s">
+      <default>"rgba(76, 51, 25, 0.0)"</default>
+      <summary>Fire Color 1</summary>
+      <description>The first color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-2" type="s">
+      <default>"rgba(180, 55, 30, 0.7)"</default>
+      <summary>Fire Color 2</summary>
+      <description>The second color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-3" type="s">
+      <default>"rgba(255, 76, 38, 0.9)"</default>
+      <summary>Fire Color 3</summary>
+      <description>The third color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-4" type="s">
+      <default>"rgba(255, 166, 25, 1)"</default>
+      <summary>Fire Color 4</summary>
+      <description>The fourth color of the fire gradient.</description>
+    </key>
+
+    <key name="fire-color-5" type="s">
+      <default>"rgba(255, 255, 255, 1)"</default>
+      <summary>Fire Color 5</summary>
+      <description>The fifth color of the fire gradient.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Glide Options                                                                 -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="glide-enable-effect" type="b">
+      <default>false</default>
+      <summary>Glide Enable Effect</summary>
+      <description>Use the glide effect.</description>
+    </key>
+
+    <key name="glide-animation-time" type="i">
+      <default>250</default>
+      <summary>Glide Animation Time</summary>
+      <description>The time the glide effect takes.</description>
+    </key>
+
+    <key name="glide-scale" type="d">
+      <default>0.95</default>
+      <summary>Glide Scale</summary>
+      <description>The scale of the window.</description>
+    </key>
+
+    <key name="glide-squish" type="d">
+      <default>0.15</default>
+      <summary>Glide Squish</summary>
+      <description>The amount of squishing.</description>
+    </key>
+
+    <key name="glide-tilt" type="d">
+      <default>-0.3</default>
+      <summary>Glide Tilt</summary>
+      <description>The amount of tilting.</description>
+    </key>
+
+    <key name="glide-shift" type="d">
+      <default>-0.05</default>
+      <summary>Glide Shift</summary>
+      <description>The amount of shifting.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Matrix Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="matrix-enable-effect" type="b">
+      <default>false</default>
+      <summary>Matrix Enable Effect</summary>
+      <description>Use the matrix effect.</description>
+    </key>
+
+    <key name="matrix-animation-time" type="i">
+      <default>1500</default>
+      <summary>Matrix Animation Time</summary>
+      <description>The time the matrix effect takes.</description>
+    </key>
+
+    <key name="matrix-scale" type="i">
+      <default>20</default>
+      <summary>Matrix Scale</summary>
+      <description>The size of the matrix letters.</description>
+    </key>
+
+    <key name="matrix-randomness" type="d">
+      <default>1.0</default>
+      <summary>Matrix Randomness</summary>
+      <description>The randomness of the matrix effect.</description>
+    </key>
+
+    <key name="matrix-tip-color" type="s">
+      <default>"rgb(255, 255, 255)"</default>
+      <summary>Matrix Tip Color</summary>
+      <description>The color of the matrix trail tips.</description>
+    </key>
+
+    <key name="matrix-trail-color" type="s">
+      <default>"rgb(25, 255, 89)"</default>
+      <summary>Matrix Trail Color</summary>
+      <description>The color matrix trails.</description>
+    </key>
+
+    <key name="matrix-overshoot" type="d">
+      <default>0.25</default>
+      <summary>Matrix Overshoot</summary>
+      <description>The vertical overshooting of the matrix effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- TV Effect Options                                                             -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="tv-enable-effect" type="b">
+      <default>false</default>
+      <summary>TV Enable Effect</summary>
+      <description>Use the tv effect.</description>
+    </key>
+
+    <key name="tv-animation-time" type="i">
+      <default>400</default>
+      <summary>TV Animation Time</summary>
+      <description>The time the tv effect takes.</description>
+    </key>
+
+    <key name="tv-effect-color" type="s">
+      <default>"rgb(255, 255, 255)"</default>
+      <summary>TV Effect Color</summary>
+      <description>The color of the TV effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Paint-Brush Options                                                           -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="paint-brush-enable-effect" type="b">
+      <default>false</default>
+      <summary>Paint Brush Enable Effect</summary>
+      <description>Use the paint-brush effect.</description>
+    </key>
+
+    <key name="paint-brush-animation-time" type="i">
+      <default>1000</default>
+      <summary>Paint Brush Animation Time</summary>
+      <description>The time the paint-brush effect takes.</description>
+    </key>
+
+    <key name="paint-brush-size" type="i">
+      <default>3</default>
+      <summary>Paint Brush Size</summary>
+      <description>Affects the number of paint strokes.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- T-Rex Attack Options                                                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="trex-enable-effect" type="b">
+      <default>false</default>
+      <summary>T-Rex Enable Effect</summary>
+      <description>Use the trex effect.</description>
+    </key>
+
+    <key name="trex-animation-time" type="i">
+      <default>1000</default>
+      <summary>T-Rex Animation Time</summary>
+      <description>The time the trex effect takes.</description>
+    </key>
+
+    <key name="trex-scratch-color" type="s">
+      <default>"rgb(170, 0, 0)"</default>
+      <summary>Claw Scratch Color</summary>
+      <description>The color of the claw scratches.</description>
+    </key>
+
+    <key name="trex-scratch-scale" type="d">
+      <default>1.0</default>
+      <summary>Claw Scratch Scale</summary>
+      <description>Size of the claw scratches.</description>
+    </key>
+
+    <key name="trex-scratch-warp" type="d">
+      <default>0.15</default>
+      <summary>Claw Scratch Warp</summary>
+      <description>Intensity of the claw scratch warp effect.</description>
+    </key>
+
+    <key name="trex-scratch-count" type="i">
+      <default>5</default>
+      <summary>Claw Scratch Count</summary>
+      <description>Number of claw scratches drawn on top of each other.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Hexagon Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="hexagon-enable-effect" type="b">
+      <default>false</default>
+      <summary>Hexagon Enable Effect</summary>
+      <description>Use the Hexagon effect.</description>
+    </key>
+
+    <key name="hexagon-animation-time" type="i">
+      <default>1500</default>
+      <summary>Hexagon Animation Time</summary>
+      <description>The time the Hexagon effect takes.</description>
+    </key>
+
+    <key name="hexagon-scale" type="d">
+      <default>3.0</default>
+      <summary>Hexagon Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="hexagon-line-width" type="d">
+      <default>2.0</default>
+      <summary>Hexagon Line Width</summary>
+      <description>The width of the lines.</description>
+    </key>
+
+    <key name="hexagon-line-color" type="s">
+      <default>"rgba(200, 255, 255, 0.5)"</default>
+      <summary>Hexagon Line Color</summary>
+      <description>The color of the lines.</description>
+    </key>
+
+    <key name="hexagon-glow-color" type="s">
+      <default>"rgba(20, 80, 255, 0.5)"</default>
+      <summary>Hexagon Glow Color</summary>
+      <description>The color of the glow effect.</description>
+    </key>
+
+    <key name="hexagon-additive-blending" type="b">
+      <default>true</default>
+      <summary>Hexagon Additive Blending</summary>
+      <description>Use additive blending for the line and the glow.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Incinerate Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="incinerate-enable-effect" type="b">
+      <default>false</default>
+      <summary>Incinerate Enable Effect</summary>
+      <description>Use the Incinerate effect.</description>
+    </key>
+
+    <key name="incinerate-animation-time" type="i">
+      <default>2000</default>
+      <summary>Incinerate Animation Time</summary>
+      <description>The time the Incinerate effect takes.</description>
+    </key>
+
+    <key name="incinerate-scale" type="d">
+      <default>1.0</default>
+      <summary>Incinerate Scale</summary>
+      <description>The scale of the effect.</description>
+    </key>
+
+    <key name="incinerate-turbulence" type="d">
+      <default>0.3</default>
+      <summary>Incinerate Turbulence</summary>
+      <description>The turbulence of the effect.</description>
+    </key>
+
+    <key name="incinerate-color" type="s">
+      <default>"rgb(255, 180, 127)"</default>
+      <summary>Incinerate Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <key name="incinerate-use-pointer" type="b">
+      <default>true</default>
+      <summary>Incinerate Use Pointer</summary>
+      <description>Use the pointer location for the incinerate effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Energize A Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="energize-a-enable-effect" type="b">
+      <default>false</default>
+      <summary>Energize A Enable Effect</summary>
+      <description>Use the Energize A effect.</description>
+    </key>
+
+    <key name="energize-a-animation-time" type="i">
+      <default>2000</default>
+      <summary>Energize A Animation Time</summary>
+      <description>The time the Energize A effect takes.</description>
+    </key>
+
+    <key name="energize-a-scale" type="d">
+      <default>1.0</default>
+      <summary>Energize A Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="energize-a-color" type="s">
+      <default>"rgb(255, 200, 50)"</default>
+      <summary>Energize A Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Energize B Options                                                            -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="energize-b-enable-effect" type="b">
+      <default>false</default>
+      <summary>Energize B Enable Effect</summary>
+      <description>Use the Energize B effect.</description>
+    </key>
+
+    <key name="energize-b-animation-time" type="i">
+      <default>1000</default>
+      <summary>Energize B Animation Time</summary>
+      <description>The time the Energize B effect takes.</description>
+    </key>
+
+    <key name="energize-b-scale" type="d">
+      <default>1.0</default>
+      <summary>Energize B Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="energize-b-color" type="s">
+      <default>"rgb(160, 180, 255)"</default>
+      <summary>Energize B Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Glitch Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="glitch-enable-effect" type="b">
+      <default>false</default>
+      <summary>Glitch Enable Effect</summary>
+      <description>Use the Glitch effect.</description>
+    </key>
+
+    <key name="glitch-animation-time" type="i">
+      <default>750</default>
+      <summary>Glitch Animation Time</summary>
+      <description>The time the Glitch effect takes.</description>
+    </key>
+
+    <key name="glitch-scale" type="d">
+      <default>1.0</default>
+      <summary>Glitch Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="glitch-strength" type="d">
+      <default>2.0</default>
+      <summary>Glitch Strength</summary>
+      <description>The intensity of the effect.</description>
+    </key>
+
+    <key name="glitch-speed" type="d">
+      <default>2.0</default>
+      <summary>Glitch Speed</summary>
+      <description>The speed of the effect.</description>
+    </key>
+
+    <key name="glitch-color" type="s">
+      <default>"rgb(100, 160, 255)"</default>
+      <summary>Glitch Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- TV Glitch Options                                                             -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="tv-glitch-enable-effect" type="b">
+      <default>false</default>
+      <summary>TV Glitch Enable Effect</summary>
+      <description>Use the TV Glitch effect.</description>
+    </key>
+
+    <key name="tv-glitch-animation-time" type="i">
+      <default>750</default>
+      <summary>TV Glitch Animation Time</summary>
+      <description>The time the TV Glitch effect takes.</description>
+    </key>
+
+    <key name="tv-glitch-scale" type="d">
+      <default>1.0</default>
+      <summary>TV Glitch Scale</summary>
+      <description>The size of the effect.</description>
+    </key>
+
+    <key name="tv-glitch-strength" type="d">
+      <default>2.0</default>
+      <summary>TV Glitch Strength</summary>
+      <description>The intensity of the effect.</description>
+    </key>
+
+    <key name="tv-glitch-speed" type="d">
+      <default>2.0</default>
+      <summary>TV Glitch Speed</summary>
+      <description>The speed of the effect.</description>
+    </key>
+
+    <key name="tv-glitch-color" type="s">
+      <default>"rgb(100, 160, 255)"</default>
+      <summary>TV Glitch Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Wisps Effect Options                                                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="wisps-enable-effect" type="b">
+      <default>false</default>
+      <summary>Wisps Enable Effect</summary>
+      <description>Use the wisps effect.</description>
+    </key>
+
+    <key name="wisps-animation-time" type="i">
+      <default>1500</default>
+      <summary>Wisps Animation Time</summary>
+      <description>The time the wisps effect takes.</description>
+    </key>
+
+    <key name="wisps-scale" type="d">
+      <default>1.0</default>
+      <summary>Wisps Scale</summary>
+      <description>The size of the wisps.</description>
+    </key>
+
+    <key name="wisps-color-1" type="s">
+      <default>"rgb(255, 100, 200)"</default>
+      <summary>Wisps Effect Color 1</summary>
+      <description>A color of the wisps effect.</description>
+    </key>
+
+    <key name="wisps-color-2" type="s">
+      <default>"rgb(100, 100, 255)"</default>
+      <summary>Wisps Effect Color 2</summary>
+      <description>A color of the wisps effect.</description>
+    </key>
+
+    <key name="wisps-color-3" type="s">
+      <default>"rgb(100, 200, 255)"</default>
+      <summary>Wisps Effect Color 3</summary>
+      <description>A color of the wisps effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Broken Glass Effect Options                                                   -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="broken-glass-enable-effect" type="b">
+      <default>false</default>
+      <summary>Broken Glass Enable Effect</summary>
+      <description>Use the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-animation-time" type="i">
+      <default>1000</default>
+      <summary>Broken Glass Animation Time</summary>
+      <description>The time the broken glass effect takes.</description>
+    </key>
+
+    <key name="broken-glass-scale" type="d">
+      <default>1.0</default>
+      <summary>Broken Glass Scale</summary>
+      <description>The size of the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-gravity" type="d">
+      <default>-1.0</default>
+      <summary>Broken Glass Gravity</summary>
+      <description>The gravity of the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-blow-force" type="d">
+      <default>0.5</default>
+      <summary>Broken Glass Blow Force</summary>
+      <description>The blow force of the broken glass effect.</description>
+    </key>
+
+    <key name="broken-glass-use-pointer" type="b">
+      <default>false</default>
+      <summary>Broken Glass Use Pointer</summary>
+      <description>Use the pointer location for the broken glass effect.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Portal Options                                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="portal-enable-effect" type="b">
+      <default>false</default>
+      <summary>Portal Enable Effect</summary>
+      <description>Use the Portal effect.</description>
+    </key>
+
+    <key name="portal-animation-time" type="i">
+      <default>1250</default>
+      <summary>Portal Animation Time</summary>
+      <description>The time the Portal effect takes.</description>
+    </key>
+
+    <key name="portal-color" type="s">
+      <default>"rgb(121, 233, 24)"</default>
+      <summary>Portal Color</summary>
+      <description>The color of the effect.</description>
+    </key>
+
+    <key name="portal-rotation-speed" type="d">
+      <default>0.3</default>
+      <summary>Portal Rotation Speed</summary>
+      <description>The angular speed of the portal.</description>
+    </key>
+
+    <key name="portal-whirling" type="d">
+      <default>1.0</default>
+      <summary>Portal Whirling</summary>
+      <description>The amount of distortion.</description>
+    </key>
+
+    <key name="portal-details" type="d">
+      <default>15.0</default>
+      <summary>Portal Details</summary>
+      <description>The amount of details in the portal.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Snap of Disintegration Effect Options                                         -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="snap-enable-effect" type="b">
+      <default>false</default>
+      <summary>Snap Enable Effect</summary>
+      <description>Use the snap effect.</description>
+    </key>
+
+    <key name="snap-animation-time" type="i">
+      <default>1500</default>
+      <summary>Snap Animation Time</summary>
+      <description>The time the snap effect takes.</description>
+    </key>
+
+    <key name="snap-scale" type="d">
+      <default>3.0</default>
+      <summary>Snap Scale</summary>
+      <description>The size of the snap effect.</description>
+    </key>
+
+    <key name="snap-color" type="s">
+      <default>"rgb(50, 40, 35)"</default>
+      <summary>Snap Effect Color</summary>
+      <description>The color of the dust.</description>
+    </key>
+
+  </schema>
+
+</schemalist>

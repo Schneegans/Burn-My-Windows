@@ -2,16 +2,17 @@
     "uuid": "burn-my-windows@schneegans.github.com",
     "description": "Disintegrate your windows with style.",
     "name": "Burn My Windows",
+    "donations": {
+        "kofi": "schneegans",
+        "github": "schneegans",
+        "paypal": "simonschneegans"
+    },
     "gettext-domain": "burn-my-windows",
     "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
     "shell-version": [
-        "3.36",
-        "3.38",
-        "40",
-        "41",
-        "42",
-        "43"
+        "45",
+        "46"
     ],
     "url": "https://github.com/Schneegans/Burn-My-Windows",
-    "version": 25
+    "version": 41
 }

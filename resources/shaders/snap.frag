@@ -37,7 +37,7 @@ void main() {
 
   vec4 oColor = vec4(0.0);
 
-  for (float i = 0; i < DUST_LAYERS; ++i) {
+  for (float i = 0.0; i < DUST_LAYERS; ++i) {
 
     // Create a random direction.
     float factor   = DUST_LAYERS == 1.0 ? 0.0 : i / (DUST_LAYERS - 1.0);
@@ -84,7 +84,7 @@ void main() {
       windowColor.rgb = mix(windowColor.rgb, dustColor, progress);
 
       // Dissolve and blend the layers.
-      if (dustMap.x - progress > 0) {
+      if (dustMap.x - progress > 0.0) {
         oColor = windowColor;
       }
     }

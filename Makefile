@@ -9,7 +9,7 @@ DOMAIN   := schneegans.github.com
 ZIP_NAME := $(NAME)@$(DOMAIN).zip
 
 # Some of the recipes below depend on some of these files.
-JS_FILES       = $(wildcard src/*.js extension.js prefs.js)
+JS_FILES       = $(wildcard src/*.js src/*/*.js extension.js prefs.js)
 UI_FILES       = $(shell find resources -type f -and \( -name "*.ui" \))
 RESOURCE_FILES = $(shell find resources -mindepth 2 -type f)
 LOCALES_PO     = $(wildcard po/*.po)
@@ -17,7 +17,9 @@ LOCALES_MO     = $(patsubst po/%.po,locale/%/LC_MESSAGES/$(NAME).mo,$(LOCALES_PO
 
 # These files will be included in the extension zip file.
 ZIP_CONTENT = $(JS_FILES) $(LOCALES_MO) resources/$(NAME).gresource \
-              schemas/gschemas.compiled metadata.json LICENSE
+              schemas/org.gnome.shell.extensions.$(NAME).gschema.xml \
+              schemas/org.gnome.shell.extensions.$(NAME)-profile.gschema.xml \
+              metadata.json LICENSE
 
 # These seven recipes can be invoked by the user.
 .PHONY: zip install uninstall pot clean test references
@@ -46,7 +48,7 @@ pot: $(JS_FILES) $(UI_FILES)
 
 # This runs several tests in containerized versions of GNOME Shell.
 test:
-	@ for version in 32 33 34 35 36 37 ; do \
+	@ for version in 39 "rawhide" ; do \
 	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
 	    echo ; \
 	    echo "Running Tests on Fedora $$version ($$session)." ; \
@@ -57,7 +59,7 @@ test:
 
 # This re-generates all reference images required by the tests.
 references:
-	@ for version in 32 33 34 35 36 37 ; do \
+	@ for version in 39 "rawhide" ; do \
 	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
 	    echo ; \
 	    echo "Generating References for Fedora $$version ($$session)." ; \
@@ -89,11 +91,6 @@ $(ZIP_NAME): $(ZIP_CONTENT)
 	         "the extensions website, keep it smaller than 5 MB!"; \
 	    exit 1; \
 	 fi
-
-# Compiles the gschemas.compiled file from the gschema.xml file.
-schemas/gschemas.compiled: schemas/org.gnome.shell.extensions.$(NAME).gschema.xml
-	@echo "Compiling schemas..."
-	@glib-compile-schemas schemas
 
 # Compiles the gresource file from the gresources.xml.
 resources/$(NAME).gresource: resources/$(NAME).gresource.xml

@@ -38,7 +38,7 @@ journalctl -f -o cat | grep -E 'burn-my-windows|'
 For the sake of this tutorial, we will create a **"Simple Fade"** effect.
 Of course, you can replace any occurrence of this name and its nick `simple-fade` with your custom effect name.
 
-Three simple steps are required to create a new effect. 
+Three simple steps are required to create a new effect.
 You will have to ...
 
 1. add preferences keys for enabling the effect,
@@ -47,9 +47,9 @@ You will have to ...
 
 ### 1. Expanding the Schema
 
-For enabling the new effect, the boolean settings keys `simple-fade-open-effect`, `simple-fade-close-effect`, and `simple-fade-animation-time` are required.
+For enabling the new effect, the boolean settings keys `simple-fade-enable-effect` and `simple-fade-animation-time` are required.
 In this example, we also add a floating point value for storing another property of the effect - we will use them later in the tutorial.
-Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows.gschema.xml).
+Just copy the XML code below to the file [`schemas/org.gnome.shell.extensions.burn-my-windows-profile.gschema.xml`](../schemas/org.gnome.shell.extensions.burn-my-windows-profile.gschema.xml).
 Just remember to replace `simple-fade` with your custom name!
 
 ```xml
@@ -57,16 +57,10 @@ Just remember to replace `simple-fade` with your custom name!
 <!-- Simple Fade Effect Options                                                    -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-<key name="simple-fade-close-effect" type="b">
+<key name="simple-fade-enable-effect" type="b">
   <default>false</default>
-  <summary>Simple Fade Close Effect</summary>
-  <description>Use the Simple Fade effect for window closing.</description>
-</key>
-
-<key name="simple-fade-open-effect" type="b">
-  <default>false</default>
-  <summary>Simple Fade Open Effect</summary>
-  <description>Use the Simple Fade effect for window opening.</description>
+  <summary>Simple Fade Enable Effect</summary>
+  <description>Use the Simple Fade effect.</description>
 </key>
 
 <key name="simple-fade-animation-time" type="i">
@@ -84,7 +78,7 @@ Just remember to replace `simple-fade` with your custom name!
 
 ### 2. Creating the Effect Class
 
-You will have to create a new GLSL file called `resources/shaders/simple-fade.frag` and a new JavaScript source file called `src/SimpleFade.js`.
+You will have to create a new GLSL file called `resources/shaders/simple-fade.frag` and a new JavaScript source file called `src/effects/SimpleFade.js`.
 Simply paste the following source code to the respective file.
 Please study this code carefully, all of it is explained with inline comments.
 
@@ -92,16 +86,31 @@ Please study this code carefully, all of it is explained with inline comments.
   <summary>Expand this to show the GLSL code.</summary>
 
 ```glsl
+//////////////////////////////////////////////////////////////////////////////////////////
+//          )                                                   (                       //
+//       ( /(   (  (               )    (       (  (  (         )\ )    (  (            //
+//       )\()) ))\ )(   (         (     )\ )    )\))( )\  (    (()/( (  )\))(  (        //
+//      ((_)\ /((_|()\  )\ )      )\  '(()/(   ((_)()((_) )\ )  ((_)))\((_)()\ )\       //
+//      | |(_|_))( ((_)_(_/(    _((_))  )(_))  _(()((_|_)_(_/(  _| |((_)(()((_|(_)      //
+//      | '_ \ || | '_| ' \))  | '  \()| || |  \ V  V / | ' \)) _` / _ \ V  V (_-<      //
+//      |_.__/\_,_|_| |_||_|   |_|_|_|  \_, |   \_/\_/|_|_||_|\__,_\___/\_/\_//__/      //
+//                                 |__/                                                 //
+//////////////////////////////////////////////////////////////////////////////////////////
+
+// SPDX-FileCopyrightText: Your Name <your@email.com>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 // The content from common.glsl is automatically prepended to each shader effect. This
 // provides the standard input:
 
-// vec2  iTexCoord:   Texture coordinates for retrieving the window input color.
-// bool  uForOpening: True if a window-open animation is ongoing, false otherwise.
-// float uProgress:   A value which transitions from 0 to 1 during the animation.
-// float uDuration:   The duration of the current animation in seconds.
-// vec2  uSize:       The size of uTexture in pixels.
-// float uPadding:    The empty area around the actual window (e.g. where the shadow
-//                    is drawn). For now, this will only be set on GNOME.
+// vec2  iTexCoord:     Texture coordinates for retrieving the window input color.
+// bool  uIsFullscreen: True if the window is maximized or in fullscreen mode.
+// bool  uForOpening:   True if a window-open animation is ongoing, false otherwise.
+// float uProgress:     A value which transitions from 0 to 1 during the animation.
+// float uDuration:     The duration of the current animation in seconds.
+// vec2  uSize:         The size of uTexture in pixels.
+// float uPadding:      The empty area around the actual window (e.g. where the shadow
+//                      is drawn). For now, this will only be set on GNOME.
 
 // Furthermore, there are two global methods for reading the window input color and
 // setting the shader output color. Both methods assume straight alpha:
@@ -154,16 +163,16 @@ void main() {
 // SPDX-FileCopyrightText: Your Name <your@email.com>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-'use strict';
+"use strict";
 
-const GObject = imports.gi.GObject;
+import * as utils from "../utils.js";
 
-const _ = imports.gettext.domain('burn-my-windows').gettext;
+// We import the ShaderFactory only in the Shell process as it is not required in the
+// preferences process. The preferences process does not create any shader instances, it
+// only uses the static metadata of the effect.
+const ShaderFactory = await utils.importInShellOnly("./ShaderFactory.js");
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Me             = imports.misc.extensionUtils.getCurrentExtension();
-const utils          = Me.imports.src.utils;
-const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
+const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect ...                                                                      //
@@ -173,21 +182,21 @@ const ShaderFactory  = Me.imports.src.ShaderFactory.ShaderFactory;
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
-var SimpleFade = class {
-
+export default class Effect {
   // The constructor creates a ShaderFactory which will be used by extension.js to create
   // shader instances for this effect. The shaders will be automagically created using the
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
   constructor() {
-    this.shaderFactory = new ShaderFactory(this.getNick(), (shader) => {
-
+    this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uFadeWidth = shader.get_uniform_location('uFadeWidth');
+      shader._uFadeWidth = shader.get_uniform_location("uFadeWidth");
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
-        shader.set_uniform_float(shader._uFadeWidth, 1, [settings.get_double('simple-fade-width')]);
+      shader.connect("begin-animation", (shader, settings) => {
+        shader.set_uniform_float(shader._uFadeWidth, 1, [
+          settings.get_double("simple-fade-width"),
+        ]);
       });
     });
   }
@@ -195,32 +204,31 @@ var SimpleFade = class {
   // ---------------------------------------------------------------------------- metadata
 
   // The effect is available on all GNOME Shell versions supported by this extension.
-  getMinShellVersion() {
+  static getMinShellVersion() {
     return [3, 36];
   }
 
   // This will be called in various places where a unique identifier for this effect is
   // required. It should match the prefix of the settings keys which store whether the
-  // effect is enabled currently (e.g. '*-close-effect'), and its animation time
-  // (e.g. '*-animation-time').
-  getNick() {
-    return 'simple-fade';
+  // effect is enabled currently (e.g. '*-enable-effect'), and its animation time
+  // (e.g. '*-animation-time'). Also, the shader file and the settings UI files should be
+  // named likes this.
+  static getNick() {
+    return "simple-fade";
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
-  getLabel() {
-    return _('Simple Fade Effect');
+  static getLabel() {
+    return _("Simple Fade Effect");
   }
 
   // -------------------------------------------------------------------- API for prefs.js
 
-  // This is called by the preferences dialog. It loads the settings page for this effect,
-  // binds all properties to the settings and appends the page to the main stack of the
-  // preferences dialog.
-  getPreferences(dialog) {
+  // This is called by the preferences dialog whenever a new effect profile is loaded. It
+  // binds all user interface elements to the respective settings keys of the profile.
+  static bindPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
-    return null;
   }
 
   // ---------------------------------------------------------------- API for extension.js
@@ -228,8 +236,8 @@ var SimpleFade = class {
   // The getActorScale() is called from extension.js to adjust the actor's size during the
   // animation. This is useful if the effect requires drawing something beyond the usual
   // bounds of the actor. This only works for GNOME 3.38+.
-  getActorScale(settings) {
-    return {x: 1.0, y: 1.0};
+  static getActorScale(settings, forOpening, actor) {
+    return { x: 1.0, y: 1.0 };
   }
 }
 ```
@@ -243,14 +251,16 @@ Both, [`extension.js`](../extension.js) and [`prefs.js`](../prefs.js) define an 
 Like this:
 
 ```javascript
+import SimpleFade from './src/effects/SimpleFade.js';
+
+...
+
 const ALL_EFFECTS = [
   ...
-  new Me.imports.src.SimpleFade.SimpleFade(),
+  new SimpleFade(),
   ...
 ];
 ```
-
-
 
 ### Testing your Effect
 
@@ -267,17 +277,11 @@ gnome-extensions prefs burn-my-windows@schneegans.github.com
 ## Adding a Preferences Page
 
 There should be two sliders in this example: The animation duration and the width of the fading gradient.
-
-If your effect supports GNOME Shell 3.3x _and_ GNOME Shell 40+, you will have to provide three `*.ui` files for this.
-This is because starting with GNOME Shell 40, the preference dialog uses GTK4, before it used to use GTK3.
-Starting with GNOME Shell 42, it uses `libadwaita` which requires different UI files again.
-We will load the respective file in the `getPreferences()` method of your new effect class.
-
-Just save the code below to `resources/ui/gtk3/SimpleFade.ui`, `resources/ui/gtk4/SimpleFade.ui`, and `resources/ui/adw/SimpleFade.ui` respectively.
+Just save the code below to `resources/ui/adw/simple-fade.ui`.
 Remember to replace any occurrence of `simple-fade` with your effect's nick-name!
 
 <details>
-  <summary>Expand this to show the GTK3 code.</summary>
+  <summary>Expand this to show the UI code.</summary>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -287,7 +291,7 @@ SPDX-FileCopyrightText: Your Name <your@email.com>
 SPDX-License-Identifier: GPL-3.0-or-later
 -->
 
-<interface>
+<interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
     <property name="upper">5000</property>
@@ -303,288 +307,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="page-increment">0.1</property>
   </object>
 
-  <object class="GtkBox" id="simple-fade-prefs">
-    <property name="orientation">vertical</property>
-
-    <child>
-      <object class="GtkFrame">
-        <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
-            <style>
-              <class name="rich-list" />
-            </style>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Animation Time [ms]</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-animation-time</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-animation-time">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Fade Width</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-width</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-width">
-                        <child>
-                          <object class="GtkImage">
-                            <property name="icon-name">edit-clear-symbolic</property>
-                            <property name="icon-size">1</property>
-                          </object>
-                        </child>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-          </object>
-        </child>
-      </object>
-    </child>
-
-  </object>
-
-</interface>
-```
-
-</details>
-
-
-
-
-<details>
-  <summary>Expand this to show the GTK4 code.</summary>
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: Your Name <your@email.com>
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
-<interface>
-
-  <object class="GtkAdjustment" id="simple-fade-animation-time">
-    <property name="upper">5000</property>
-    <property name="lower">100</property>
-    <property name="step-increment">10</property>
-    <property name="page-increment">100</property>
-  </object>
-
-  <object class="GtkAdjustment" id="simple-fade-width">
-    <property name="upper">1</property>
-    <property name="lower">0</property>
-    <property name="step-increment">0.01</property>
-    <property name="page-increment">0.1</property>
-  </object>
-
-  <object class="GtkBox" id="simple-fade-prefs">
-    <property name="orientation">vertical</property>
-
-    <child>
-      <object class="GtkFrame">
-        <child>
-          <object class="GtkListBox">
-            <property name="selection-mode">none</property>
-            <property name="show-separators">1</property>
-            <style>
-              <class name="rich-list" />
-            </style>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Animation Time [ms]</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-animation-time</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-animation-time">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-            <child>
-              <object class="GtkListBoxRow">
-                <property name="activatable">0</property>
-                <child>
-                  <object class="GtkBox">
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="label" translatable="yes">Fade Width</property>
-                        <property name="xalign">0</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkScale">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">2</property>
-                        <property name="value-pos">left</property>
-                        <property name="width-request">300</property>
-                        <property name="adjustment">simple-fade-width</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="reset-simple-fade-width">
-                        <property name="icon-name">edit-clear-symbolic</property>
-                        <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
-                    </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-
-          </object>
-        </child>
-      </object>
-    </child>
-
-  </object>
-
-</interface>
-```
-
-</details>
-
-
-<details>
-  <summary>Expand this to show the libadwaita code.</summary>
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-SPDX-FileCopyrightText: Your Name <your@email.com>
-SPDX-License-Identifier: GPL-3.0-or-later
--->
-
-<interface>
-
-  <object class="GtkAdjustment" id="simple-fade-animation-time">
-    <property name="upper">5000</property>
-    <property name="lower">100</property>
-    <property name="step-increment">10</property>
-    <property name="page-increment">100</property>
-  </object>
-
-  <object class="GtkAdjustment" id="simple-fade-width">
-    <property name="upper">1</property>
-    <property name="lower">0</property>
-    <property name="step-increment">0.01</property>
-    <property name="page-increment">0.1</property>
-  </object>
-
-  <object class="AdwActionRow" id="simple-fade-prefs">
+  <object class="AdwExpanderRow" id="simple-fade-prefs">
 
     <child>
       <object class="AdwActionRow">
@@ -647,21 +370,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 ### Loading the Preferences Page
 
-In order to load the above `*.ui` files, add the following code to your effect's `getPreferences()` method.
+In order to load the above `*.ui` file, add the following code to your effect's `bindPreferences()` method.
 
 ```javascript
-static getPreferences(dialog) {
-
-  // Add the settings page to the builder.
-  dialog.getBuilder().add_from_resource(`/ui/${utils.getUIDir()}/SimpleFade.ui`);
-
+static bindPreferences(dialog) {
   // These connect the settings to the UI elements. Have a look at prefs.js
   // on how to bind other types of UI elements.
   dialog.bindAdjustment('simple-fade-animation-time');
   dialog.bindAdjustment('simple-fade-width');
-
-  // Finally, return the new settings page.
-  return dialog.getBuilder().get_object('simple-fade-prefs');
 }
 ```
 
