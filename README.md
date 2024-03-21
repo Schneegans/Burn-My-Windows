@@ -177,23 +177,25 @@ You can either download the effects from the KDE store (a), download a stable ve
 
 ### a) Download from the KDE Store
 
-Here are links to all effects which are currently available in the KDE store;
+Here are links to all effects which are currently available in the KDE store:
 
-- [Doom](https://store.kde.org/p/1898739)
-- [Energize A](https://store.kde.org/p/1884310)
-- [Energize B](https://store.kde.org/p/1884311)
-- [Fire](https://store.kde.org/p/1884307)
-- [Glide](https://store.kde.org/p/1935778)
-- [Glitch](https://store.kde.org/p/1972813)
-- [Hexagon](https://store.kde.org/p/1884309)
-- [Incinerate](https://store.kde.org/p/1861183)
-- [Pixelate](https://store.kde.org/p/1898742)
-- [Pixel Wheel](https://store.kde.org/p/1898746)
-- [Pixel Wipe](https://store.kde.org/p/1898748)
-- [Portal](https://store.kde.org/p/1959879)
-- [TV-Effect](https://store.kde.org/p/1884312)
-- [TV-Glitch](https://store.kde.org/p/1982142)
-- [Wisps](https://store.kde.org/p/1884313)
+| Plasma 5                                       | Plasma 6                                       |
+| ---------------------------------------------- | ---------------------------------------------- |
+| [Doom](https://store.kde.org/p/1898739)        | [Doom](https://store.kde.org/p/2133831)        |
+| [Energize A](https://store.kde.org/p/1884310)  | [Energize A](https://store.kde.org/p/2133829)  |
+| [Energize B](https://store.kde.org/p/1884311)  | [Energize B](https://store.kde.org/p/2133828)  |
+| [Fire](https://store.kde.org/p/1884307)        | [Fire](https://store.kde.org/p/2133822)        |
+| [Glide](https://store.kde.org/p/1935778)       | [Glide](https://store.kde.org/p/2133839)       |
+| [Glitch](https://store.kde.org/p/1972813)      | [Glitch](https://store.kde.org/p/2133844)      |
+| [Hexagon](https://store.kde.org/p/1884309)     | [Hexagon](https://store.kde.org/p/2133836)     |
+| [Incinerate](https://store.kde.org/p/1861183)  | [Incinerate](https://store.kde.org/p/2133817)  |
+| [Pixelate](https://store.kde.org/p/1898742)    | [Pixelate](https://store.kde.org/p/2133832)    |
+| [Pixel Wheel](https://store.kde.org/p/1898746) | [Pixel Wheel](https://store.kde.org/p/2133833) |
+| [Pixel Wipe](https://store.kde.org/p/1898748)  | [Pixel Wipe](https://store.kde.org/p/2133834)  |
+| [Portal](https://store.kde.org/p/1959879)      | [Portal](https://store.kde.org/p/2133842)      |
+| [TV-Effect](https://store.kde.org/p/1884312)   | [TV-Effect](https://store.kde.org/p/2133825)   |
+| [TV-Glitch](https://store.kde.org/p/1982142)   | [TV-Glitch](https://store.kde.org/p/2133819)   |
+| [Wisps](https://store.kde.org/p/1884313)       | [Wisps](https://store.kde.org/p/2133824)       |
 
 You can also directly get the effects from within your system settings.
 Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effects...".
