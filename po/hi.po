@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-02-26 11:01+0000\n"
+"PO-Revision-Date: 2024-03-28 18:01+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/hi/>\n"
@@ -22,22 +22,22 @@ msgstr ""
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr "विंडोज़ खोलते समय"
+msgstr "विंडो खोलते समय"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
 #: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr "विंडोज़ बंद करते समय"
+msgstr "विंडो बंद करते समय"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
 #: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr "सामान्य विंडोज़"
+msgstr "सामान्य विंडो"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr "डायलॉग विंडोज़"
+msgstr "डायलॉग विंडो"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
 #: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
@@ -175,7 +175,7 @@ msgstr "पिक्सेल वाइप"
 
 #: src/effects/Portal.js:88
 msgid "Portal"
-msgstr "द्वार"
+msgstr "पोर्टल"
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
