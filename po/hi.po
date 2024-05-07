@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-03-28 18:01+0000\n"
+"PO-Revision-Date: 2024-05-08 03:07+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/hi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.4-rc\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -37,12 +37,12 @@ msgstr "सामान्य विंडो"
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr "डायलॉग विंडो"
+msgstr "संवाद विंडो"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
 #: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr "डिफ़ॉल्ट रंग योजना"
+msgstr "तयशुदा रंग योजना"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
 #: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
@@ -119,7 +119,7 @@ msgstr "आग"
 
 #: src/effects/Fire.js:154
 msgid "Default Fire"
-msgstr "डिफ़ॉल्ट आग"
+msgstr "तयशुदा आग"
 
 #: src/effects/Fire.js:164
 msgid "Hell Fire"
@@ -163,15 +163,15 @@ msgstr "पेंट ब्रश"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr "पिक्सेलेट"
+msgstr "पिक्सलेट"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "पिक्सेल व्हील"
+msgstr "पिक्सल व्हील"
 
 #: src/effects/PixelWipe.js:101
 msgid "Pixel Wipe"
-msgstr "पिक्सेल वाइप"
+msgstr "पिक्सल वाइप"
 
 #: src/effects/Portal.js:88
 msgid "Portal"
@@ -244,7 +244,7 @@ msgstr "रद्द करें"
 
 #: prefs.js:669
 msgid "Delete"
-msgstr "हटाएं"
+msgstr "मिटाएं"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:980
@@ -258,7 +258,7 @@ msgstr "प्रभाव का पूर्वावलोकन करने
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr "मुखपृष्ठ पर जाएँ"
+msgstr "मुखपृष्ठ पर जाएं"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
@@ -282,7 +282,7 @@ msgstr "दान करें"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr "इफ़ेक्ट-प्रोफ़ाइल डॉयरेक्टरी खोलें"
+msgstr "इफ़ेक्ट-प्रोफ़ाइल निर्देशिका खोलें"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
@@ -442,7 +442,7 @@ msgstr "एनीमेशन समय [ms]"
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr "डिफ़ॉल्ट मान पर रीसेट करें"
+msgstr "तयशुदा मान पर रीसेट करें"
 
 #: resources/ui/gtk4/broken-glass.ui:68 resources/ui/gtk4/tv-glitch.ui:69
 #: resources/ui/gtk4/glitch.ui:69 resources/ui/gtk4/matrix.ui:69
@@ -480,8 +480,7 @@ msgstr "सूचक स्थान से चकनाचूर"
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
-msgstr ""
-"खिड़की बंद करते समय आपका माउस पॉइंटर जहां था, वहां से टुकड़े उड़ जाएंगे।"
+msgstr "खिड़की बंद करते समय आपका माउस सूचक जहां था, वहां से टुकड़े उड़ जाएंगे।"
 
 #: resources/ui/gtk4/tv-glitch.ui:115 resources/ui/gtk4/glitch.ui:115
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
@@ -548,7 +547,7 @@ msgstr "लंबवत पैमाना"
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr "पिक्सेल आकार"
+msgstr "पिक्सल आकार"
 
 #: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
@@ -564,7 +563,7 @@ msgstr "पंजे की खरोंच गिनती"
 
 #: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr "वार्प का प्रभाव"
+msgstr "वार्प प्रभाव"
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
@@ -588,7 +587,7 @@ msgstr "झुकाव"
 #: resources/ui/gtk4/glide.ui:207 resources/ui/gtk3/glide.ui:239
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr "शिफ्ट"
+msgstr "बदलाव"
 
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
@@ -603,7 +602,7 @@ msgstr "झटकों की तीव्रता"
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr "सक्शन की तीव्रता"
+msgstr "चूषण तीव्रता"
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
@@ -628,7 +627,7 @@ msgstr "उथल-पुथल"
 #: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr "पॉइंटर से प्रारंभ करें"
+msgstr "सूचक से प्रारंभ करें"
 
 #: resources/ui/gtk4/incinerate.ui:174 resources/ui/gtk3/incinerate.ui:192
 #: resources/ui/adw/incinerate.ui:114
@@ -638,7 +637,7 @@ msgstr "यदि अक्षम किया गया है, तो एक �
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr "मेष रेखा की चौड़ाई"
+msgstr "जाल रेखा की चौड़ाई"
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
@@ -710,7 +709,7 @@ msgstr "कोई नहीं"
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr "प्रभाव प्रोफ़ाइल बाधाएँ"
+msgstr "प्रभाव प्रोफ़ाइल बाधाएं"
 
 #: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
 #: resources/ui/adw/prefs.ui:66
@@ -720,7 +719,7 @@ msgstr "परिभाषित करें कि वर्तमान प�
 #: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr "एप्लिकेशन"
+msgstr "अनुप्रयोग"
 
 #: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
 #: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
@@ -772,7 +771,7 @@ msgstr "बेहतर मिलान वाली प्रोफ़ाइल
 #: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr "इस प्रोफ़ाइल को हटाएँ..।"
+msgstr "इस प्रोफ़ाइल को मिटाएं…"
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
