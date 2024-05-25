@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [unreleased]
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+- Fixed an issue in the KDE metadata files which caused a warning in the logs on KDE Plasma 6. Thanks to [@nask0](https://github.com/nask0) for the fix!
+
 ## [Burn My Windows 42 [backport release]](https://github.com/schneegans/Burn-My-Windows/releases/tag/v42)
 
 **Release Date:** 2024-02-27
