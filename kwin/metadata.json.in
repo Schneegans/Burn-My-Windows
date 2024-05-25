@@ -13,7 +13,7 @@
      "Id": "%DIR_NAME%",
      "License": "GPLv3",
      "Version": "1.0",
-     "EnabledByDefault": "false",
+     "EnabledByDefault": false,
      "Website": "https://github.com/Schneegans/Burn-My-Windows/",
      "BugReportUrl": "https://github.com/Schneegans/Burn-My-Windows/issues",
      "ServiceTypes": [
