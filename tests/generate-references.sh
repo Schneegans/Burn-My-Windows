@@ -180,7 +180,7 @@ sleep 3
 # First we open the preferences and capture a portion of the dialog
 echo "Opening Preferences."
 do_in_pod gnome-extensions prefs "${EXTENSION}"
-sleep 3
+sleep 5
 capture "tests/references/preferences-${SESSION}-${FEDORA_VERSION}.png" "${PREFS_CROP}"
 send_keystroke "Alt+F4"
 
