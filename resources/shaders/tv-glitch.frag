@@ -49,11 +49,17 @@ void main() {
   float yPos     = uScale * uSize.y * (coords.y + uSeed * 10.0);
 
   // Create large noise waves and add some smaller noise waves.
-  float noise = clamp(simplex2D(vec2(time, yPos * 0.002)) - 0.5, 0.0, 1.0);
+  float noise = clamp(simplex2D(vec2(time, yPos * 0.002)) - 0.5, -1.0, 1.0);
   noise += (simplex2D(vec2(time * 10.0, yPos * 0.05)) - 0.5) * 0.15;
 
   // Apply the noise as x displacement for every line.
-  float xPos  = clamp(coords.x - displace * noise * noise, 0.0, 1.0);
+  float xPos  = clamp(coords.x - displace * noise * noise * sign(noise), -1.0, 1.0);
+  // non-branching version of 
+  // if xPos > 1: xPos -=1
+  // elif xPos < -1: xPos +=1
+  // else: xPos = 0
+  xPos = mod(xPos + 1.0, 2.0) - 1.0;
+
   vec4 oColor = getInputColor(vec2(xPos, coords.y));
 
   // Mix in some random interference lines.
