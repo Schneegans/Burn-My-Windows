@@ -61,10 +61,9 @@ export default class Effect {
       // And update all uniforms at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         for (let i = 1; i <= 5; i++) {
-          const c = Clutter.Color.from_string(settings.get_string('fire-color-' + i))[1];
           shader.set_uniform_float(
             shader._uGradient[i - 1], 4,
-            [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+            utils.parseColor(settings.get_string('fire-color-' + i)));
         }
 
         // clang-format off

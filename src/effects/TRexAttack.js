@@ -61,10 +61,8 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        const c = Clutter.Color.from_string(settings.get_string('trex-scratch-color'))[1];
-
         // clang-format off
-        shader.set_uniform_float(shader._uFlashColor,    4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+        shader.set_uniform_float(shader._uFlashColor,    4, utils.parseColor(settings.get_string('trex-scratch-color')));
         shader.set_uniform_float(shader._uSeed,          2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
         shader.set_uniform_float(shader._uClawSize,      1, [settings.get_double('trex-scratch-scale')]);
         shader.set_uniform_float(shader._uNumClaws,      1, [settings.get_int('trex-scratch-count')]);

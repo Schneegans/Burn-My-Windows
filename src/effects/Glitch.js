@@ -48,11 +48,9 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        const c = Clutter.Color.from_string(settings.get_string('glitch-color'))[1];
-
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  1, [testMode ? 0 : Math.random()]);
-        shader.set_uniform_float(shader._uColor, 4, [c.red / 255, c.green / 255, c.blue / 255, c.alpha / 255]);
+        shader.set_uniform_float(shader._uColor, 4, utils.parseColor(settings.get_string('glitch-color')));
         shader.set_uniform_float(shader._uScale, 1, [settings.get_double('glitch-scale')]);
         shader.set_uniform_float(shader._uStrength, 1, [settings.get_double('glitch-strength')]);
         shader.set_uniform_float(shader._uSpeed, 1, [settings.get_double('glitch-speed')]);

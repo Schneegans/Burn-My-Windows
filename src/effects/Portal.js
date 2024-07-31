@@ -49,11 +49,9 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        const c = Clutter.Color.from_string(settings.get_string('portal-color'))[1];
-
         // clang-format off
         shader.set_uniform_float(shader._uSeed,  2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
-        shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+        shader.set_uniform_float(shader._uColor, 3, utils.parseColor(settings.get_string('portal-color')));
         shader.set_uniform_float(shader._uDetails,       1, [settings.get_double('portal-details')]);
         shader.set_uniform_float(shader._uRotationSpeed, 1, [settings.get_double('portal-rotation-speed')]);
         shader.set_uniform_float(shader._uWhirling,         1, [settings.get_double('portal-whirling')]);

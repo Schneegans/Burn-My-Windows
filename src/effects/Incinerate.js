@@ -72,11 +72,9 @@ export default class Effect {
             shader._startPointerPos = null;
           }
 
-          const c = Clutter.Color.from_string(settings.get_string('incinerate-color'))[1];
-
           // clang-format off
           shader.set_uniform_float(shader._uSeed,       2, seed);
-          shader.set_uniform_float(shader._uColor,      3, [c.red / 255, c.green / 255, c.blue / 255]);
+          shader.set_uniform_float(shader._uColor,      3, utils.parseColor(settings.get_string('incinerate-color')));
           shader.set_uniform_float(shader._uScale,      1, [settings.get_double('incinerate-scale')]);
           shader.set_uniform_float(shader._uTurbulence, 1, [settings.get_double('incinerate-turbulence')]);
           // clang-format on

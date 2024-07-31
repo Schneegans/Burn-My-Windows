@@ -50,20 +50,13 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
-        // Get the two configurable colors. They are directly injected into the shader
-        // code below.
-        const gc =
-          Clutter.Color.from_string(settings.get_string('hexagon-glow-color'))[1];
-        const lc =
-          Clutter.Color.from_string(settings.get_string('hexagon-line-color'))[1];
-
         // clang-format off
         shader.set_uniform_float(shader._uAdditiveBlending, 1, [settings.get_boolean('hexagon-additive-blending')]);
         shader.set_uniform_float(shader._uSeed,             2, [testMode ? 0 : Math.random(), testMode ? 0 : Math.random()]);
         shader.set_uniform_float(shader._uScale,            1, [settings.get_double('hexagon-scale')]);
         shader.set_uniform_float(shader._uLineWidth,        1, [settings.get_double('hexagon-line-width')]);
-        shader.set_uniform_float(shader._uGlowColor,        4, [gc.red / 255, gc.green / 255, gc.blue / 255, gc.alpha / 255]);
-        shader.set_uniform_float(shader._uLineColor,        4, [lc.red / 255, lc.green / 255, lc.blue / 255, lc.alpha / 255]);
+        shader.set_uniform_float(shader._uGlowColor,        4, utils.parseColor(settings.get_string('hexagon-glow-color')));
+        shader.set_uniform_float(shader._uLineColor,        4, utils.parseColor(settings.get_string('hexagon-line-color')));
         // clang-format on
       });
     });

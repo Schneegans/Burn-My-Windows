@@ -104,3 +104,46 @@ export async function executeCommand(argv, input = null, cancellable = null) {
     });
   });
 }
+
+// Converts a hex, rgb, or rgba CSS-like color string to four numbers
+// representing rgba values.
+export function parseColor(color) {
+  // Function to convert hex component to a number
+  function hexToDecimal(hex) {
+    return parseInt(hex, 16);
+  }
+
+  // Default RGBA values.
+  let r = 0, g = 0, b = 0, a = 1;
+
+  // Hex format.
+  if (color.startsWith('#')) {
+    const hex = color.slice(1);
+    if (hex.length === 3) {
+      // 3-digit hex
+      r = hexToDecimal(hex[0] + hex[0]);
+      g = hexToDecimal(hex[1] + hex[1]);
+      b = hexToDecimal(hex[2] + hex[2]);
+    } else if (hex.length === 6) {
+      // 6-digit hex
+      r = hexToDecimal(hex.substring(0, 2));
+      g = hexToDecimal(hex.substring(2, 4));
+      b = hexToDecimal(hex.substring(4, 6));
+    }
+  }
+  // rgb() or rgba() format.
+  else if (color.startsWith('rgb')) {
+    // Extract the values inside the parentheses
+    const rgbValues = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([0-9.]+))?\)/);
+    if (rgbValues) {
+      r = parseInt(rgbValues[1], 10);
+      g = parseInt(rgbValues[2], 10);
+      b = parseInt(rgbValues[3], 10);
+      if (rgbValues[4] !== undefined) {
+        a = parseFloat(rgbValues[4]);
+      }
+    }
+  }
+
+  return [ r/255, g/255, b/255, a ];
+}
