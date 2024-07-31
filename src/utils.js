@@ -145,5 +145,5 @@ export function parseColor(color) {
     }
   }
 
-  return [ r/255, g/255, b/255, a ];
+  return [r / 255, g / 255, b / 255, a];
 }

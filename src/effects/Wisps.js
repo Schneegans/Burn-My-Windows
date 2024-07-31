@@ -52,7 +52,8 @@ export default class Effect {
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         for (let i = 1; i <= 3; i++) {
-          shader.set_uniform_float(shader._uColor[i - 1], 3,
+          shader.set_uniform_float(
+            shader._uColor[i - 1], 3,
             utils.parseColor(settings.get_string('wisps-color-' + i)));
         }
 
