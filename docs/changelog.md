@@ -9,6 +9,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### Enhancements
+
+- Ported the extension to GNOME 47.
+
 #### Bug Fixes
 
 - Fixed an issue in the KDE metadata files which caused a warning in the logs on KDE Plasma 6. Thanks to [@nask0](https://github.com/nask0) for the fix!
