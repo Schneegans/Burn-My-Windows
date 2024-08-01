@@ -165,7 +165,7 @@ export async function executeCommand(argv, input = null, cancellable = null) {
 export function parseColor(string) {
   let color;
   if (shellVersionIsAtLeast(47, 'alpha')) {
-    color = Cogl.Color.from_string(color)[1];
+    color = Cogl.Color.from_string(string)[1];
   } else {
     color = Clutter.Color.from_string(string)[1];
   }
