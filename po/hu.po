@@ -8,110 +8,110 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2023-02-06 11:38+0000\n"
-"Last-Translator: KinteLiX <superh552@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/hu/>\n"
+"PO-Revision-Date: 2024-08-17 16:09+0000\n"
+"Last-Translator: atomkapa atomkapa <atomkapa@gmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.7\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Ablakok megnyitása"
 
 #: src/ProfileManager.js:176 resources/ui/gtk4/prefs.ui:257
 #: resources/ui/gtk3/prefs.ui:302 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Ablakok bezárása"
 
 #: src/ProfileManager.js:177 resources/ui/gtk4/prefs.ui:285
 #: resources/ui/gtk3/prefs.ui:330 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Normál ablakok"
 
 #: src/ProfileManager.js:178 resources/ui/gtk4/prefs.ui:286
 #: resources/ui/gtk3/prefs.ui:331 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Párbeszédablakok"
 
 #: src/ProfileManager.js:179 resources/ui/gtk4/prefs.ui:314
 #: resources/ui/gtk3/prefs.ui:359 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Alapértelmezett téma"
 
 #: src/ProfileManager.js:180 resources/ui/gtk4/prefs.ui:315
 #: resources/ui/gtk3/prefs.ui:360 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Sötét téma"
 
 #: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
 #: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Akkumulátoron"
 
 #: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
 #: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Csatlakoztatva"
 
 #: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
 #: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Energiatakarékos üzemmód"
 
 #: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
 #: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Kiegyensúlyozott üzemmód"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
 #: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Teljesítmény üzemmód"
 
 #: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
 #: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Enerigiatakarékos vagy kiegyensúlyozott üzemmód"
 
 #: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
 #: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Kiegyensúlyozott vagy teljesítmény üzemmód"
 
 #: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
 #: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Magas Prioritás"
 
 #: src/ProfileManager.js:198
 msgid "Standard Profile"
-msgstr ""
+msgstr "Alapértelmezett Profil"
 
 #: src/effects/Apparition.js:78
 msgid "Apparition"
-msgstr "Jelenés"
+msgstr "Megjelenés"
 
 #: src/effects/BrokenGlass.js:137
 msgid "Broken Glass"
-msgstr "Szilánkok"
+msgstr "Betört üveg"
 
 #: src/effects/Doom.js:88
 msgid "Doom"
-msgstr "Végzet"
+msgstr "Doom"
 
 #: src/effects/EnergizeA.js:80
 msgid "Energize A"
-msgstr "Energia A"
+msgstr "Energiát! A"
 
 #: src/effects/EnergizeB.js:81
 msgid "Energize B"
-msgstr "Energia B"
+msgstr "Energiát! B"
 
 #: src/effects/Fire.js:100
 msgid "Fire"
@@ -127,15 +127,15 @@ msgstr "Pokoli tűz"
 
 #: src/effects/Fire.js:174
 msgid "Dark and Smutty"
-msgstr "Sötét és kormos"
+msgstr "Sötét és kormos tűz"
 
 #: src/effects/Fire.js:184
 msgid "Cold Breeze"
-msgstr "Hideg szellő"
+msgstr "Fagyos szellő"
 
 #: src/effects/Fire.js:194
 msgid "Santa is Coming"
-msgstr "Jön a télapó"
+msgstr "Télapó itt van"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -159,7 +159,7 @@ msgstr "Mátrix"
 
 #: src/effects/PaintBrush.js:102
 msgid "Paint Brush"
-msgstr ""
+msgstr "Ecset"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
@@ -167,7 +167,7 @@ msgstr "Pixelezés"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Pixelciklus"
+msgstr "Pixelkerék"
 
 #: src/effects/PixelWipe.js:101
 msgid "Pixel Wipe"
@@ -179,7 +179,7 @@ msgstr "Portál"
 
 #: src/effects/SnapOfDisintegration.js:114
 msgid "Snap of Disintegration"
-msgstr "Hírtelen felbomlás"
+msgstr "Thanos csettintése"
 
 #: src/effects/TRexAttack.js:112
 msgid "T-Rex Attack"
@@ -203,7 +203,7 @@ msgstr "Nézze elő ezt a hatást"
 
 #: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "A Burn-My-Windows frissült!"
 
 #: prefs.js:389 resources/ui/common/menus.ui:17 resources/ui/gtk4/prefs.ui:56
 #: resources/ui/gtk3/prefs.ui:96
@@ -228,21 +228,21 @@ msgstr "Korábbi szponzorok"
 
 #: prefs.js:660
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Biztosan törli a profilt?"
 
 #: prefs.js:661
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
-msgstr ""
+msgstr "A jelenlegi profil minden beállítással együtt örökre elveszik."
 
 #: prefs.js:664
 msgid "Cancel"
-msgstr ""
+msgstr "Mégse"
 
 #: prefs.js:669
 msgid "Delete"
-msgstr ""
+msgstr "Törlés"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:980
@@ -260,7 +260,7 @@ msgstr "Honlap meglátogatása"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Passzoló háttérképek megtekintése"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -280,7 +280,7 @@ msgstr "Adományozás"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Az effektbeállításokat tartalmazó mappa megnyitása"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
@@ -288,7 +288,7 @@ msgstr "A Burn-My-Windowsról"
 
 #: resources/ui/common/menus.ui:73
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Új Profil Hozzáadása..."
 
 #: resources/ui/gtk4/broken-glass.ui:22 resources/ui/gtk4/tv-glitch.ui:23
 #: resources/ui/gtk4/glitch.ui:23 resources/ui/gtk4/matrix.ui:23
@@ -551,11 +551,11 @@ msgstr "Pixelméret"
 
 #: resources/ui/gtk4/paint-brush.ui:69 resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "Ecset mérete"
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr "Korom karmolás skálája"
+msgstr "Karmolás mérete"
 
 #: resources/ui/gtk4/trex.ui:115 resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
@@ -592,42 +592,42 @@ msgstr "Elmozdítás"
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Pörgés intenzitása"
 
 #: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Rázkódás intenzitása"
 
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Szívóerő Intenzitása"
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Örvénylés"
 
 #: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Forgás sebessége"
 
 #: resources/ui/gtk4/portal.ui:161 resources/ui/gtk3/portal.ui:187
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Részletesség"
 
 #: resources/ui/gtk4/incinerate.ui:115 resources/ui/gtk3/incinerate.ui:135
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr "Légörvény"
+msgstr "Turbulencia"
 
 #: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr "Mutatónál kezdje"
+msgstr "Kezdés a mutatónál"
 
 #: resources/ui/gtk4/incinerate.ui:174 resources/ui/gtk3/incinerate.ui:192
 #: resources/ui/adw/incinerate.ui:114
@@ -637,7 +637,7 @@ msgstr "Ha ki van kapcsolva, egy véletlenszerű hely lesz választva."
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Körvonal Vastagsága"
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
@@ -652,12 +652,12 @@ msgstr "Világítás színe"
 #: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "Beolvadó Színek"
 
 #: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr "Lehet, hogy szeretné bekapcsolni ezt a sötét témájú ablaktémákoknak."
+msgstr "Sötét témájú ablakokhoz ajánlott."
 
 #: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
 #: resources/ui/adw/fire.ui:14
@@ -667,7 +667,7 @@ msgstr "Sablonok"
 #: resources/ui/gtk4/fire.ui:31 resources/ui/gtk3/fire.ui:58
 #: resources/ui/adw/fire.ui:19
 msgid "Choose a Preset"
-msgstr ""
+msgstr "Válassz egy sablont"
 
 #: resources/ui/gtk4/fire.ui:188 resources/ui/gtk3/fire.ui:220
 #: resources/ui/adw/fire.ui:129
@@ -682,42 +682,45 @@ msgstr "Egy dinamikusabb tüzet készít, de több GPU erőt igényel."
 #: resources/ui/gtk4/fire.ui:239 resources/ui/gtk3/fire.ui:276
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr "Gradiens"
+msgstr "Árnyalatok"
 
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Effektus kiválasztása"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
 msgid "If multiple are selected, one is chosen randomly."
 msgstr ""
+"Ha több is ki van választva, minden alkalommal egy véletlenszerű lesz "
+"használva."
 
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
 msgid "All"
-msgstr ""
+msgstr "Mind"
 
 #: resources/ui/gtk4/prefs.ui:124 resources/ui/gtk3/prefs.ui:166
 #: resources/ui/adw/prefs.ui:242
 msgid "None"
-msgstr ""
+msgstr "Egyik sem"
 
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Profil Beállításai"
 
 #: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
 msgstr ""
+"Határozza meg, mikor legyenek használatban az aktuális effektbeállítások."
 
 #: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Applikáció"
 
 #: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
 #: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
@@ -729,47 +732,47 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Bármelyik"
 
 #: resources/ui/gtk4/prefs.ui:244 resources/ui/gtk3/prefs.ui:289
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Animációtípus"
 
 #: resources/ui/gtk4/prefs.ui:273 resources/ui/gtk3/prefs.ui:318
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Ablaktípus"
 
 #: resources/ui/gtk4/prefs.ui:302 resources/ui/gtk3/prefs.ui:347
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Téma"
 
 #: resources/ui/gtk4/prefs.ui:331 resources/ui/gtk3/prefs.ui:376
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Energiaforrás módja"
 
 #: resources/ui/gtk4/prefs.ui:360 resources/ui/gtk3/prefs.ui:405
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Energiagazdálkodási beállítás"
 
 #: resources/ui/gtk4/prefs.ui:392 resources/ui/gtk3/prefs.ui:437
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Haladó beállítások"
 
 #: resources/ui/gtk4/prefs.ui:432 resources/ui/gtk3/prefs.ui:477
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Profil használata akkor is, ha van másik, ami jobban megfelelő lenne."
 
 #: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Profil Törlése..."
 
 #: resources/ui/gtk4/pixelate.ui:69 resources/ui/gtk3/pixelate.ui:90
 #: resources/ui/adw/pixelate.ui:47
