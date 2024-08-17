@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-08-17 16:09+0000\n"
+"PO-Revision-Date: 2024-08-18 17:09+0000\n"
 "Last-Translator: atomkapa atomkapa <atomkapa@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/"
 "burn-my-windows/core/hu/>\n"
@@ -199,7 +199,7 @@ msgstr "Szálak"
 
 #: prefs.js:269
 msgid "Preview this effect"
-msgstr "Nézze elő ezt a hatást"
+msgstr "Előnézet"
 
 #: prefs.js:388 resources/ui/gtk4/prefs.ui:50 resources/ui/gtk3/prefs.ui:86
 msgid "Burn-My-Windows has been updated!"
