@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Enhancements
 
 - Ported the extension to GNOME 47.
+- Several translations have been updated. Thanks to all the translators!
 
 #### Bug Fixes
 
