@@ -5,9 +5,9 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
-## [unreleased]
+## [Burn My Windows 43](https://github.com/schneegans/Burn-My-Windows/releases/tag/v43)
 
-**Release Date:** TBD
+**Release Date:** 2024-08-26
 
 #### Enhancements
 
