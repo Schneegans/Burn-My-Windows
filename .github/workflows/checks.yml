@@ -91,7 +91,6 @@ jobs:
       matrix:
         version:
           - "39"
-          - "rawhide"
         session:
           - "gnome-xsession"
           - "gnome-wayland-nested"

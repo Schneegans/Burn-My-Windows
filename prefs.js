@@ -46,23 +46,6 @@ import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
-import * as Config from 'resource:///org/gnome/Shell/Extensions/js/misc/config.js';
-
-const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVersion);
-
-// Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
-// -2, and -1 are returned respectively.
-function toNumericVersion(x) {
-  switch (x) {
-    case 'alpha':
-      return -3;
-    case 'beta':
-      return -2;
-    case 'rc':
-      return -1;
-  }
-  return x;
-}
 
 // Currently, the extension supports only one set of UI files. In the past, there were
 // three different sets for GTK3, GTK4, and Adwaita. This method returns the name of the
@@ -70,21 +53,6 @@ function toNumericVersion(x) {
 function getUIDir() {
   return 'adw';
 }
-
-// This method returns true if the current GNOME Shell version is at least as high as the
-// given arguments. Supports "alpha" and "beta" for the minor version number.
-function shellVersionIsAtLeast(major, minor) {
-  if (GS_MAJOR > major) {
-    return true;
-  }
-
-  if (GS_MAJOR == major) {
-    return GS_MINOR >= toNumericVersion(minor);
-  }
-
-  return false;
-}
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // The preferences dialog is organized in pages, each of which is loaded from a         //
@@ -231,7 +199,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     // Now add all the rows.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
-      if (shellVersionIsAtLeast(minMajor, minMinor)) {
+      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
 
         const uiFile = `/ui/${getUIDir()}/${effect.getNick()}.ui`;
 
@@ -691,7 +659,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     // Connect all effect settings.
     this._ALL_EFFECTS.forEach(effect => {
       const [minMajor, minMinor] = effect.getMinShellVersion();
-      if (shellVersionIsAtLeast(minMajor, minMinor)) {
+      if (utils.shellVersionIsAtLeast(minMajor, minMinor)) {
         this.bindSwitch(`${effect.getNick()}-enable-effect`);
         effect.bindPreferences(this);
       }

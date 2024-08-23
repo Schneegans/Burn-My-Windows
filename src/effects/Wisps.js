@@ -52,9 +52,9 @@ export default class Effect {
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings, forOpening, testMode) => {
         for (let i = 1; i <= 3; i++) {
-          const c = Clutter.Color.from_string(settings.get_string('wisps-color-' + i))[1];
-          shader.set_uniform_float(shader._uColor[i - 1], 3,
-                                   [c.red / 255, c.green / 255, c.blue / 255]);
+          shader.set_uniform_float(
+            shader._uColor[i - 1], 3,
+            utils.parseColor(settings.get_string('wisps-color-' + i)));
         }
 
         // clang-format off

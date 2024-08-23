@@ -11,8 +11,9 @@
     "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
     "shell-version": [
         "45",
-        "46"
+        "46",
+        "47"
     ],
     "url": "https://github.com/Schneegans/Burn-My-Windows",
-    "version": 41
+    "version": 43
 }

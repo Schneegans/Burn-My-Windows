@@ -17,6 +17,61 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 
+// We import some modules optionally. This file is used in the preferences process as well
+// as in the GNOME Shell process. Some modules are only available or required in one of
+// these processes.
+const Clutter = await importInShellOnly('gi://Clutter');
+const Cogl    = await importInShellOnly('gi://Cogl');
+
+// We import the Config module. This is done differently in the GNOME Shell process and in
+// the preferences process.
+const Config = await importConfig();
+
+// Returns the given argument, except for "alpha", "beta", and "rc". In these cases -3,
+// -2, and -1 are returned respectively.
+function toNumericVersion(x) {
+  switch (x) {
+    case 'alpha':
+      return -3;
+    case 'beta':
+      return -2;
+    case 'rc':
+      return -1;
+  }
+  return x;
+}
+
+const [GS_MAJOR, GS_MINOR] = Config.PACKAGE_VERSION.split('.').map(toNumericVersion);
+
+// This method returns true if the current GNOME Shell version matches the given
+// arguments.
+export function shellVersionIs(major, minor) {
+  return GS_MAJOR == major && GS_MINOR == toNumericVersion(minor);
+}
+
+// This method returns true if the current GNOME Shell version is at least as high as the
+// given arguments. Supports "alpha" and "beta" for the minor version number.
+export function shellVersionIsAtLeast(major, minor = 0) {
+  if (GS_MAJOR > major) {
+    return true;
+  }
+
+  if (GS_MAJOR == major) {
+    return GS_MINOR >= toNumericVersion(minor);
+  }
+
+  return false;
+}
+
+// This method can be used to import the Config module.
+export async function importConfig() {
+  if (typeof global === 'undefined') {
+    return (await import('resource:///org/gnome/Shell/Extensions/js/misc/config.js'));
+  }
+  return (await import('resource:///org/gnome/shell/misc/config.js'));
+}
+
+
 // This method can be used to write a message to GNOME Shell's log. This is enhances
 // the standard log() functionality by prepending the extension's name and the location
 // where the message was logged. As the extensions name is part of the location, you
@@ -103,4 +158,18 @@ export async function executeCommand(argv, input = null, cancellable = null) {
       }
     });
   });
+}
+
+// Converts a hex, rgb, or rgba CSS-like color string to four numbers
+// representing rgba values.
+export function parseColor(string) {
+  let color;
+  if (shellVersionIsAtLeast(47, 'alpha')) {
+    color = Cogl.Color.from_string(string)[1];
+  } else {
+    color = Clutter.Color.from_string(string)[1];
+  }
+
+
+  return [color.red / 255, color.green / 255, color.blue / 255, color.alpha / 255];
 }

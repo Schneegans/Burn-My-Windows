@@ -65,13 +65,9 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        const c1 =
-          Clutter.Color.from_string(settings.get_string('matrix-trail-color'))[1];
-        const c2 = Clutter.Color.from_string(settings.get_string('matrix-tip-color'))[1];
-
         // clang-format off
-        shader.set_uniform_float(shader._uTrailColor, 3, [c1.red / 255, c1.green / 255, c1.blue / 255]);
-        shader.set_uniform_float(shader._uTipColor,   3, [c2.red / 255, c2.green / 255, c2.blue / 255]);
+        shader.set_uniform_float(shader._uTrailColor, 3, utils.parseColor(settings.get_string('matrix-trail-color')));
+        shader.set_uniform_float(shader._uTipColor,   3, utils.parseColor(settings.get_string('matrix-tip-color')));
         shader.set_uniform_float(shader._uLetterSize, 1, [settings.get_int('matrix-scale')]);
         shader.set_uniform_float(shader._uRandomness, 1, [settings.get_double('matrix-randomness')]);
         shader.set_uniform_float(shader._uOverShoot,  1, [settings.get_double('matrix-overshoot')]);

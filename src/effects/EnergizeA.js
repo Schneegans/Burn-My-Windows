@@ -45,10 +45,8 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        const c = Clutter.Color.from_string(settings.get_string('energize-a-color'))[1];
-
         // clang-format off
-        shader.set_uniform_float(shader._uColor, 3, [c.red / 255, c.green / 255, c.blue / 255]);
+        shader.set_uniform_float(shader._uColor, 3, utils.parseColor(settings.get_string('energize-a-color')));
         shader.set_uniform_float(shader._uScale, 1, [settings.get_double('energize-a-scale')]);
         // clang-format on
       });
