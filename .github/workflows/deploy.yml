@@ -6,48 +6,50 @@ name: Deploy
 on:
   push:
     tags:
-      - '**'
+      - "**"
 
 jobs:
   gnome_bundle:
     name: Bundle GNOME Shell Extension
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Install Dependencies
-      run: |
-        sudo apt-get update -q
-        sudo apt-get install gettext
-    - name: Create Release
-      run: |
-        make zip
-    - name: Upload Release
-      uses: svenstaro/upload-release-action@2.2.1
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: burn-my-windows@schneegans.github.com.zip
-        tag: ${{ github.ref }}
-        overwrite: true
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install gettext
+      - name: Create Release
+        run: |
+          make zip
+      - name: Upload Release
+        uses: svenstaro/upload-release-action@2.9.0
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: burn-my-windows@schneegans.github.com.zip
+          tag: ${{ github.ref }}
+          overwrite: true
+          draft: true
 
   kwin_bundle:
     name: Bundle KWin Effect
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-    - name: Install Dependencies
-      run: |
-        sudo apt-get update -q
-        sudo apt-get install gettext clang-format
-    - name: Create Release
-      run: |
-        ./kwin/build.sh
-    - name: Upload Release
-      uses: svenstaro/upload-release-action@2.2.1
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: kwin/*.tar.gz
-        tag: ${{ github.ref }}
-        overwrite: true
-        file_glob: true
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install gettext clang-format
+      - name: Create Release
+        run: |
+          ./kwin/build.sh
+      - name: Upload Release
+        uses: svenstaro/upload-release-action@2.9.0
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: kwin/*.tar.gz
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
+          draft: true
