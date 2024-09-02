@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-08-09 19:09+0000\n"
+"PO-Revision-Date: 2024-09-03 23:09+0000\n"
 "Last-Translator: symegac <97731141+symegac@users.noreply.github.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/da/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: src/ProfileManager.js:175 resources/ui/gtk4/prefs.ui:256
 #: resources/ui/gtk3/prefs.ui:301 resources/ui/adw/prefs.ui:103
@@ -52,37 +52,37 @@ msgstr "Mørkt farveskema"
 #: src/ProfileManager.js:181 resources/ui/gtk4/prefs.ui:343
 #: resources/ui/gtk3/prefs.ui:388 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "På batteri"
 
 #: src/ProfileManager.js:182 resources/ui/gtk4/prefs.ui:344
 #: resources/ui/gtk3/prefs.ui:389 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Tilsluttet"
 
 #: src/ProfileManager.js:183 resources/ui/gtk4/prefs.ui:372
 #: resources/ui/gtk3/prefs.ui:417 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Energisparetilstand"
 
 #: src/ProfileManager.js:184 resources/ui/gtk4/prefs.ui:373
 #: resources/ui/gtk3/prefs.ui:418 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Balanceret tilstand"
 
 #: src/ProfileManager.js:185 resources/ui/gtk4/prefs.ui:374
 #: resources/ui/gtk3/prefs.ui:419 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Ydelsestilstand"
 
 #: src/ProfileManager.js:186 resources/ui/gtk4/prefs.ui:375
 #: resources/ui/gtk3/prefs.ui:420 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Energisparetilstand eller balanceret"
 
 #: src/ProfileManager.js:187 resources/ui/gtk4/prefs.ui:376
 #: resources/ui/gtk3/prefs.ui:421 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Balanceret eller ydelsestilstand"
 
 #: src/ProfileManager.js:192 resources/ui/gtk4/prefs.ui:423
 #: resources/ui/gtk3/prefs.ui:468 resources/ui/adw/prefs.ui:183
@@ -143,7 +143,7 @@ msgstr "Glid"
 
 #: src/effects/Glitch.js:86
 msgid "Glitch"
-msgstr ""
+msgstr "Skærmfejl"
 
 #: src/effects/Hexagon.js:94
 msgid "Hexagon"
@@ -191,7 +191,7 @@ msgstr "TV-effekt"
 
 #: src/effects/TVGlitch.js:87
 msgid "TV Glitch"
-msgstr ""
+msgstr "TV-skærmfejl"
 
 #: src/effects/Wisps.js:89
 msgid "Wisps"
@@ -262,7 +262,7 @@ msgstr "Besøg hjemmesiden"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Vis passende baggrundsbilleder"
 
 #: resources/ui/common/menus.ui:27
 msgid "Report a Bug"
@@ -462,7 +462,7 @@ msgstr "Nulstil til standardværdi"
 #: resources/ui/adw/fire.ui:63 resources/ui/adw/snap.ui:47
 #: resources/ui/adw/energize-a.ui:47
 msgid "Scale"
-msgstr ""
+msgstr "Størrelse"
 
 #: resources/ui/gtk4/broken-glass.ui:114 resources/ui/adw/broken-glass.ui:81
 msgid "Gravity"
@@ -474,13 +474,15 @@ msgstr "Slagkraft"
 
 #: resources/ui/gtk4/broken-glass.ui:210 resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "Knus fra musepositionen"
 
 #: resources/ui/gtk4/broken-glass.ui:219 resources/ui/adw/broken-glass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"Glasskårene flyver væk fra der, hvor din musemarkør befandt sig ved lukning "
+"af vinduet."
 
 #: resources/ui/gtk4/tv-glitch.ui:115 resources/ui/gtk4/glitch.ui:115
 #: resources/ui/gtk3/tv-glitch.ui:142 resources/ui/gtk3/glitch.ui:142
@@ -533,12 +535,12 @@ msgstr "Spidsens farve"
 #: resources/ui/gtk4/doom.ui:68 resources/ui/gtk3/doom.ui:97
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Vandret skalering"
 
 #: resources/ui/gtk4/doom.ui:114 resources/ui/gtk3/doom.ui:142
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Lodret skalering"
 
 #: resources/ui/gtk4/doom.ui:160 resources/ui/gtk4/pixel-wheel.ui:115
 #: resources/ui/gtk4/pixel-wipe.ui:69 resources/ui/gtk4/pixelate.ui:115
@@ -555,11 +557,11 @@ msgstr "Penselstørrelse"
 
 #: resources/ui/gtk4/trex.ui:69 resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "Klokradsstørrelse"
 
 #: resources/ui/gtk4/trex.ui:115 resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "Klokradsantal"
 
 #: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
@@ -567,7 +569,7 @@ msgstr ""
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "Blitzfarve"
 
 #: resources/ui/gtk4/pixel-wheel.ui:69 resources/ui/gtk3/pixel-wheel.ui:90
 #: resources/ui/adw/pixel-wheel.ui:47
@@ -582,32 +584,32 @@ msgstr ""
 #: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Hældning"
 
 #: resources/ui/gtk4/glide.ui:207 resources/ui/gtk3/glide.ui:239
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Forskydning"
 
 #: resources/ui/gtk4/apparition.ui:114 resources/ui/gtk3/apparition.ui:149
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Hvirvelintensitet"
 
 #: resources/ui/gtk4/apparition.ui:160 resources/ui/gtk3/apparition.ui:194
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Rystelsesintensitet"
 
 #: resources/ui/gtk4/apparition.ui:206 resources/ui/gtk3/apparition.ui:239
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Sugeintensitet"
 
 #: resources/ui/gtk4/portal.ui:69 resources/ui/gtk3/portal.ui:142
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Hvirvling"
 
 #: resources/ui/gtk4/portal.ui:115 resources/ui/gtk3/portal.ui:97
 #: resources/ui/adw/portal.ui:47
@@ -627,17 +629,17 @@ msgstr "Turbulens"
 #: resources/ui/gtk4/incinerate.ui:165 resources/ui/gtk3/incinerate.ui:183
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Start ved musemarkør"
 
 #: resources/ui/gtk4/incinerate.ui:174 resources/ui/gtk3/incinerate.ui:192
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Hvis dette er deaktiveret, vælges en tilfældig placering."
 
 #: resources/ui/gtk4/hexagon.ui:115 resources/ui/gtk3/hexagon.ui:135
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "Gitterlinjebredde"
 
 #: resources/ui/gtk4/hexagon.ui:161 resources/ui/gtk3/hexagon.ui:179
 #: resources/ui/adw/hexagon.ui:113
@@ -652,12 +654,13 @@ msgstr "Glødfarve"
 #: resources/ui/gtk4/hexagon.ui:239 resources/ui/gtk3/hexagon.ui:267
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "Additiv farveblanding"
 
 #: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
 #: resources/ui/adw/hexagon.ui:164
+#, fuzzy
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "Du får måske brug for at aktivere dette for mørke vinduestemaer."
 
 #: resources/ui/gtk4/fire.ui:22 resources/ui/gtk3/fire.ui:44
 #: resources/ui/adw/fire.ui:14
@@ -707,17 +710,18 @@ msgstr "Ingen"
 #: resources/ui/gtk4/prefs.ui:168 resources/ui/gtk3/prefs.ui:208
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Rediger profilbegrænsninger"
 
 #: resources/ui/gtk4/prefs.ui:178 resources/ui/gtk3/prefs.ui:218
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Definer, hvornår de aktuelle effektindstillinger skal bruges."
 
 #: resources/ui/gtk4/prefs.ui:202 resources/ui/gtk3/prefs.ui:242
 #: resources/ui/adw/prefs.ui:70
+#, fuzzy
 msgid "Application"
-msgstr ""
+msgstr "Applikation"
 
 #: resources/ui/gtk4/prefs.ui:220 resources/ui/gtk4/prefs.ui:255
 #: resources/ui/gtk4/prefs.ui:284 resources/ui/gtk4/prefs.ui:313
@@ -728,8 +732,9 @@ msgstr ""
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
+#, fuzzy
 msgid "Any"
-msgstr ""
+msgstr "Hvilken som helst"
 
 #: resources/ui/gtk4/prefs.ui:244 resources/ui/gtk3/prefs.ui:289
 #: resources/ui/adw/prefs.ui:98
@@ -749,12 +754,12 @@ msgstr "Farveskema"
 #: resources/ui/gtk4/prefs.ui:331 resources/ui/gtk3/prefs.ui:376
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Strømtilstand"
 
 #: resources/ui/gtk4/prefs.ui:360 resources/ui/gtk3/prefs.ui:405
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Strømprofil"
 
 #: resources/ui/gtk4/prefs.ui:392 resources/ui/gtk3/prefs.ui:437
 #: resources/ui/adw/prefs.ui:179
@@ -764,7 +769,7 @@ msgstr "Avancerede profilindstillinger"
 #: resources/ui/gtk4/prefs.ui:432 resources/ui/gtk3/prefs.ui:477
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Benyt denne profil, selv hvis der er mere passende profiler."
 
 #: resources/ui/gtk4/prefs.ui:464 resources/ui/gtk3/prefs.ui:509
 #: resources/ui/adw/prefs.ui:204
