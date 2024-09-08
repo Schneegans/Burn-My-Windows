@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-31 07:30+0200\n"
-"PO-Revision-Date: 2024-09-03 23:09+0000\n"
+"PO-Revision-Date: 2024-09-09 18:09+0000\n"
 "Last-Translator: symegac <97731141+symegac@users.noreply.github.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/da/>\n"
@@ -94,8 +94,9 @@ msgid "Standard Profile"
 msgstr "Standardprofil"
 
 #: src/effects/Apparition.js:78
+#, fuzzy
 msgid "Apparition"
-msgstr ""
+msgstr "Åndesyn"
 
 #: src/effects/BrokenGlass.js:137
 msgid "Broken Glass"
@@ -282,7 +283,7 @@ msgstr "Doner"
 
 #: resources/ui/common/menus.ui:56
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Åbn effektprofil-filkatalog"
 
 #: resources/ui/common/menus.ui:62
 msgid "About Burn-My-Windows"
@@ -521,8 +522,9 @@ msgid "Randomness"
 msgstr "Tilfældighed"
 
 #: resources/ui/gtk4/matrix.ui:161 resources/ui/adw/matrix.ui:113
+#, fuzzy
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "Vertikal overskridelse"
 
 #: resources/ui/gtk4/matrix.ui:207 resources/ui/adw/matrix.ui:146
 msgid "Trail Color"
@@ -565,7 +567,7 @@ msgstr "Klokradsantal"
 
 #: resources/ui/gtk4/trex.ui:161 resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "Forvridningseffekt"
 
 #: resources/ui/gtk4/trex.ui:207 resources/ui/adw/trex.ui:146
 msgid "Flash Color"
@@ -578,8 +580,9 @@ msgstr "Antal eger"
 
 #: resources/ui/gtk4/glide.ui:115 resources/ui/gtk3/glide.ui:149
 #: resources/ui/adw/glide.ui:80
+#, fuzzy
 msgid "Squish"
-msgstr ""
+msgstr "Komprimering"
 
 #: resources/ui/gtk4/glide.ui:161 resources/ui/gtk3/glide.ui:194
 #: resources/ui/adw/glide.ui:113
@@ -658,7 +661,6 @@ msgstr "Additiv farveblanding"
 
 #: resources/ui/gtk4/hexagon.ui:248 resources/ui/gtk3/hexagon.ui:276
 #: resources/ui/adw/hexagon.ui:164
-#, fuzzy
 msgid "You may want to enable this for dark window themes."
 msgstr "Du får måske brug for at aktivere dette for mørke vinduestemaer."
 
@@ -685,17 +687,17 @@ msgstr "Skaber en mere dynamisk ild men kræver mere GPU-kraft."
 #: resources/ui/gtk4/fire.ui:239 resources/ui/gtk3/fire.ui:276
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr ""
+msgstr "Farveforløb"
 
 #: resources/ui/gtk4/prefs.ui:91 resources/ui/gtk3/prefs.ui:133
 #: resources/ui/adw/prefs.ui:224
 msgid "Effect Selection"
-msgstr ""
+msgstr "Effektudvælgelse"
 
 #: resources/ui/gtk4/prefs.ui:101 resources/ui/gtk3/prefs.ui:143
 #: resources/ui/adw/prefs.ui:225
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "Hvis flere er valgt, vælges en tilfældigt."
 
 #: resources/ui/gtk4/prefs.ui:118 resources/ui/gtk3/prefs.ui:160
 #: resources/ui/adw/prefs.ui:236
