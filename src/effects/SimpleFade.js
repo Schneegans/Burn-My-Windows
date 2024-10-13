@@ -77,7 +77,10 @@ export default class Effect {
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
-    // Empty for now... Code is added here later in the tutorial!
+    // These connect the settings to the UI elements. Have a look at prefs.js
+    // on how to bind other types of UI elements.
+    dialog.bindAdjustment('simple-fade-animation-time');
+    dialog.bindAdjustment('simple-fade-width');
   }
 
   // ---------------------------------------------------------------- API for extension.js
