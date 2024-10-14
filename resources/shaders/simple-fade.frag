@@ -109,11 +109,14 @@ float noise(vec2 st) {
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
+// The width of the fading effect is loaded from the settings.
+uniform float uFadeWidth;
+
 precision mediump float;
 
 const bool RAINBOW = true; 
 const float COLOR_SPEED = 0.5;
-const vec4 COLOR = vec3(0.0,1.0,0.0);
+const vec4 COLOR = vec4(0.0,1.0,0.0,1.0);
 
 void main() {
 
