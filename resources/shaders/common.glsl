@@ -173,16 +173,203 @@ vec3 lighten(vec3 color, float fac) { return color + (vec3(1.0) - color) * fac; 
 // Taken from here:
 // https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
 
-float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
+// //easeXQuads
+// float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
 
-float easeInQuad(float x) { return x * x; }
+// float easeInQuad(float x) { return x * x; }
 
-float easeInBack(float x, float e) { return x * x * ((e + 1.0) * x - e); }
+// // easeInOutQuad: accelerates, then decelerates
+// float easeInOutQuad(float x) {
+//     return (x < 0.5) ? (2.0 * x * x) : (-1.0 + (4.0 - 2.0 * x) * x);
+// }
 
-float easeOutBack(float x, float e) {
-  float p = x - 1.0;
-  return p * p * ((e + 1.0) * p + e) + 1.0;
+// //easeXBack
+// float easeInBack(float x, float e) { return x * x * ((e + 1.0) * x - e); }
+
+// float easeOutBack(float x, float e) {
+//   float p = x - 1.0;
+//   return p * p * ((e + 1.0) * p + e) + 1.0;
+// }
+
+// float easeInOutBack(float x, float e) {
+//     float s = e * 1.525;  // Change tension for in-out behavior
+//     return (x < 0.5) 
+//         ? (x * x * ((s + 1.0) * 2.0 * x - s)) * 0.5 
+//         : ((x - 1.0) * (x - 1.0) * ((s + 1.0) * 2.0 * (x - 1.0) + s) + 1.0) * 0.5 + 0.5;
+// }
+
+//rewrite in order and labeled
+//see graphs here https://easings.net/
+
+// 1. easeInSine
+float easeInSine(float x) {
+    return 1.0 - cos((x * 3.14159265) / 2.0);
 }
+
+// 2. easeOutSine
+float easeOutSine(float x) {
+    return sin((x * 3.14159265) / 2.0);
+}
+
+// 3. easeInOutSine
+float easeInOutSine(float x) {
+    return -(cos(3.14159265 * x) - 1.0) / 2.0;
+}
+
+// 4. easeInQuad
+float easeInQuad(float x) {
+    return x * x;
+}
+
+// 5. easeOutQuad
+float easeOutQuad(float x) {
+    return 1.0 - (1.0 - x) * (1.0 - x);
+}
+
+// 6. easeInOutQuad
+float easeInOutQuad(float x) {
+    return (x < 0.5) ? 2.0 * x * x : 1.0 - pow(-2.0 * x + 2.0, 2.0) / 2.0;
+}
+
+// 7. easeInCubic
+float easeInCubic(float x) {
+    return x * x * x;
+}
+
+// 8. easeOutCubic
+float easeOutCubic(float x) {
+    return 1.0 - pow(1.0 - x, 3.0);
+}
+
+// 9. easeInOutCubic
+float easeInOutCubic(float x) {
+    return (x < 0.5) ? 4.0 * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 3.0) / 2.0;
+}
+
+// 10. easeInQuart
+float easeInQuart(float x) {
+    return x * x * x * x;
+}
+
+// 11. easeOutQuart
+float easeOutQuart(float x) {
+    return 1.0 - pow(1.0 - x, 4.0);
+}
+
+// 12. easeInOutQuart
+float easeInOutQuart(float x) {
+    return (x < 0.5) ? 8.0 * x * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 4.0) / 2.0;
+}
+
+// 13. easeInQuint
+float easeInQuint(float x) {
+    return x * x * x * x * x;
+}
+
+// 14. easeOutQuint
+float easeOutQuint(float x) {
+    return 1.0 - pow(1.0 - x, 5.0);
+}
+
+// 15. easeInOutQuint
+float easeInOutQuint(float x) {
+    return (x < 0.5) ? 16.0 * x * x * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 5.0) / 2.0;
+}
+
+// 16. easeInExpo
+float easeInExpo(float x) {
+    return (x == 0.0) ? 0.0 : pow(2.0, 10.0 * (x - 1.0));
+}
+
+// 17. easeOutExpo
+float easeOutExpo(float x) {
+    return (x == 1.0) ? 1.0 : 1.0 - pow(2.0, -10.0 * x);
+}
+
+// 18. easeInOutExpo
+float easeInOutExpo(float x) {
+    if (x == 0.0) return 0.0;
+    if (x == 1.0) return 1.0;
+    return (x < 0.5) ? pow(2.0, 20.0 * x - 10.0) / 2.0 : (2.0 - pow(2.0, -20.0 * x + 10.0)) / 2.0;
+}
+
+// 19. easeInCirc
+float easeInCirc(float x) {
+    return 1.0 - sqrt(1.0 - pow(x, 2.0));
+}
+
+// 20. easeOutCirc
+float easeOutCirc(float x) {
+    return sqrt(1.0 - pow(x - 1.0, 2.0));
+}
+
+// 21. easeInOutCirc
+float easeInOutCirc(float x) {
+    return (x < 0.5) ? (1.0 - sqrt(1.0 - pow(2.0 * x, 2.0))) / 2.0 : (sqrt(1.0 - pow(-2.0 * x + 2.0, 2.0)) + 1.0) / 2.0;
+}
+
+// 22. easeInBack
+float easeInBack(float x, float s) {
+    return x * x * ((s + 1.0) * x - s);
+}
+
+// 23. easeOutBack
+float easeOutBack(float x, float s) {
+    float p = x - 1.0;
+    return p * p * ((s + 1.0) * p + s) + 1.0;
+}
+
+// 24. easeInOutBack
+float easeInOutBack(float x, float s) {
+    float k = s * 1.525;
+    return (x < 0.5) ? (pow(2.0 * x, 2.0) * ((k + 1.0) * 2.0 * x - k)) / 2.0 : (pow(2.0 * x - 2.0, 2.0) * ((k + 1.0) * (x * 2.0 - 2.0) + k) + 2.0) / 2.0;
+}
+
+// 25. easeInElastic
+float easeInElastic(float x) {
+    if (x == 0.0 || x == 1.0) return x;
+    return -pow(2.0, 10.0 * x - 10.0) * sin((x * 10.0 - 10.75) * (2.0 * 3.14159265) / 3.0);
+}
+
+// 26. easeOutElastic
+float easeOutElastic(float x) {
+    if (x == 0.0 || x == 1.0) return x;
+    return pow(2.0, -10.0 * x) * sin((x * 10.0 - 0.75) * (2.0 * 3.14159265) / 3.0) + 1.0;
+}
+
+// 27. easeInOutElastic
+float easeInOutElastic(float x) {
+    if (x == 0.0 || x == 1.0) return x;
+    return (x < 0.5) ? -(pow(2.0, 20.0 * x - 10.0) * sin((20.0 * x - 11.125) * (2.0 * 3.14159265) / 4.5)) / 2.0
+                     : (pow(2.0, -20.0 * x + 10.0) * sin((20.0 * x - 11.125) * (2.0 * 3.14159265) / 4.5)) / 2.0 + 1.0;
+}
+
+// 28. easeInBounce
+float easeInBounce(float x) {
+    return 1.0 - easeOutBounce(1.0 - x);
+}
+
+// 29. easeOutBounce
+float easeOutBounce(float x) {
+    if (x < 1.0 / 2.75) {
+        return 7.5625 * x * x;
+    } else if (x < 2.0 / 2.75) {
+        float p = x - 1.5 / 2.75;
+        return 7.5625 * p * p + 0.75;
+    } else if (x < 2.5 / 2.75) {
+        float p = x - 2.25 / 2.75;
+        return 7.5625 * p * p + 0.9375;
+    } else {
+        float p = x - 2.625 / 2.75;
+        return 7.5625 * p * p + 0.984375;
+    }
+}
+
+// 30. easeInOutBounce
+float easeInOutBounce(float x) {
+    return (x < 0.5) ? (1.0 - easeOutBounce(1.0 - 2.0 * x)) / 2.0 : (1.0 + easeOutBounce(2.0 * x - 1.0)) / 2.0;
+}
+
 
 // --------------------------------------------------------------------- edge mask helpers
 
