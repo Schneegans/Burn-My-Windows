@@ -119,6 +119,10 @@ uniform float uFadeWidth;
 
 void main() {
 
+    vec2 uv = iTexCoord.st * uSize / vec2(400, 600) / 1.0;
+    setOutputColor(vec4(uv.x,uv.y,0.0,1.0));
+
+/*
   //todo: make these uniform values later
   bool RAINBOW = true;
   float COLOR_SPEED = 0.5;
@@ -200,7 +204,7 @@ void main() {
   oColor *= (shape3 * nprog);
 
   setOutputColor(oColor);
-
+*/
 
   // // Get the color from the window texture.
   // vec4 oColor = getInputColor(iTexCoord.st);

@@ -174,29 +174,16 @@ vec3 lighten(vec3 color, float fac) { return color + (vec3(1.0) - color) * fac; 
 // https://gitlab.gnome.org/GNOME/mutter/-/blob/main/clutter/clutter/clutter-easing.c
 
 // //easeXQuads
-// float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
+float easeOutQuad(float x) { return -1.0 * x * (x - 2.0); }
 
-// float easeInQuad(float x) { return x * x; }
+float easeInQuad(float x) { return x * x; }
 
-// // easeInOutQuad: accelerates, then decelerates
-// float easeInOutQuad(float x) {
-//     return (x < 0.5) ? (2.0 * x * x) : (-1.0 + (4.0 - 2.0 * x) * x);
-// }
+float easeInBack(float x, float e) { return x * x * ((e + 1.0) * x - e); }
 
-// //easeXBack
-// float easeInBack(float x, float e) { return x * x * ((e + 1.0) * x - e); }
-
-// float easeOutBack(float x, float e) {
-//   float p = x - 1.0;
-//   return p * p * ((e + 1.0) * p + e) + 1.0;
-// }
-
-// float easeInOutBack(float x, float e) {
-//     float s = e * 1.525;  // Change tension for in-out behavior
-//     return (x < 0.5) 
-//         ? (x * x * ((s + 1.0) * 2.0 * x - s)) * 0.5 
-//         : ((x - 1.0) * (x - 1.0) * ((s + 1.0) * 2.0 * (x - 1.0) + s) + 1.0) * 0.5 + 0.5;
-// }
+float easeOutBack(float x, float e) {
+  float p = x - 1.0;
+  return p * p * ((e + 1.0) * p + e) + 1.0;
+}
 
 //rewrite in order and labeled
 //see graphs here https://easings.net/
@@ -216,15 +203,15 @@ float easeInOutSine(float x) {
     return -(cos(3.14159265 * x) - 1.0) / 2.0;
 }
 
-// 4. easeInQuad
-float easeInQuad(float x) {
-    return x * x;
-}
+// // 4. easeInQuad
+// float easeInQuad(float x) {
+//     return x * x;
+// }
 
-// 5. easeOutQuad
-float easeOutQuad(float x) {
-    return 1.0 - (1.0 - x) * (1.0 - x);
-}
+// // 5. easeOutQuad
+// float easeOutQuad(float x) {
+//     return 1.0 - (1.0 - x) * (1.0 - x);
+// }
 
 // 6. easeInOutQuad
 float easeInOutQuad(float x) {
@@ -308,16 +295,16 @@ float easeInOutCirc(float x) {
     return (x < 0.5) ? (1.0 - sqrt(1.0 - pow(2.0 * x, 2.0))) / 2.0 : (sqrt(1.0 - pow(-2.0 * x + 2.0, 2.0)) + 1.0) / 2.0;
 }
 
-// 22. easeInBack
-float easeInBack(float x, float s) {
-    return x * x * ((s + 1.0) * x - s);
-}
+// // 22. easeInBack
+// float easeInBack(float x, float s) {
+//     return x * x * ((s + 1.0) * x - s);
+// }
 
-// 23. easeOutBack
-float easeOutBack(float x, float s) {
-    float p = x - 1.0;
-    return p * p * ((s + 1.0) * p + s) + 1.0;
-}
+// // 23. easeOutBack
+// float easeOutBack(float x, float s) {
+//     float p = x - 1.0;
+//     return p * p * ((s + 1.0) * p + s) + 1.0;
+// }
 
 // 24. easeInOutBack
 float easeInOutBack(float x, float s) {
