@@ -114,97 +114,191 @@ float noise(vec2 st) {
     return mix(a, b, u.x) + (c - a) * u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
 }
 
+// 1. easeInSine
+float easeInSine(float x) {
+    return 1.0 - cos((x * 3.14159265) / 2.0);
+}
+
+// 2. easeOutSine
+float easeOutSine(float x) {
+    return sin((x * 3.14159265) / 2.0);
+}
+
+// 3. easeInOutSine
+float easeInOutSine(float x) {
+    return -(cos(3.14159265 * x) - 1.0) / 2.0;
+}
+
+// 6. easeInOutQuad
+float easeInOutQuad(float x) {
+    return (x < 0.5) ? 2.0 * x * x : 1.0 - pow(-2.0 * x + 2.0, 2.0) / 2.0;
+}
+
 // The width of the fading effect is loaded from the settings.
 uniform float uFadeWidth;
 
 void main() {
 
-    vec2 uv = iTexCoord.st * uSize / vec2(400, 600) / 1.0;
-    setOutputColor(vec4(uv.x,uv.y,0.0,1.0));
 
-/*
-  //todo: make these uniform values later
-  bool RAINBOW = true;
-  float COLOR_SPEED = 0.5;
-  vec4 COLOR = vec4(0.0, 1.0, 0.0,1.0);
-
-  //this will be used a lot
-  vec2 uv = iTexCoord.st * uSize / vec2(400, 600) / 1.0;
-
-  // float prog = uForOpening ? 1.0 - easeOutQuad(uProgress) : easeOutQuad(uProgress);
-  float prog_linear = uForOpening ? 1.0 - uProgress : uProgress;
-
-  // float prog_eioc = easeInOutCubic(prog_linear);
-  float prog_eios = easeInOutSine(prog_linear);
-
-  //negative progress
-  float nprog = remap(
-    prog_eios,
-    0.0,1.0, 
-    1.0,0.0
-    );
-
-  //remap 10 to zero
-  float rttz = remap(
-    prog_eios,
-    0.0,1.0, 
-    10.0,0.0
-    );
-  
-  //remap 0 to 100
-  float rztoh = remap(
-    prog_eios,
-    0.0,1.0, 
-    0.0,100.0
-    );
-  
-  vec4 thisCOLOR = COLOR;
-
-  //only if rainbow is true 
-  if (RAINBOW)
-  {
-    vec3 xuv = vec3(uv.x,uv.y,1.0);
-    vec3 hsl = rgbToHsl(xuv.rgb);  // Convert RGB to HSL
-
-    // Offset the hue by a certain amount
-    float hueOffset = prog_eios * COLOR_SPEED;  // Example: Offset by 0.1 (corresponds to 36 degrees)
-    hsl.x = mod(hsl.x + hueOffset, 1.0);  // Add the hue offset and wrap around
-
-    vec3 nRGB = hslToRgb(hsl.rgb);
-    thisCOLOR = vec4(nRGB.x,nRGB.y,nRGB.x,1.0);
-  }
-
-  float tempx = pow(distance(uv.x,0.5),4.0);
-  float tempy = pow(distance(uv.y,0.5),4.0);
-  float shape00 = tempx+tempy;
-  
-  //
-  float shape01 = remap(
-    shape00,
-    0.0,1.0, 
-    0.0,rztoh
-    );
-  float shape02 = pow(shape01,rttz);
-
-  //this is the shape with color, and a bit of noise
-  vec3 swc = shape02 * thisCOLOR.rgb * 25.0 * noise(uv * 10.0);
-
-  //get the window color, and add the swc
-  vec4 oColor = getInputColor(iTexCoord.st);
-  oColor += swc;
-
-  //this is the fade out shape
-  float shape3 = remap(
-    1.0 - shape00,
-    0.0,1.0, 
-    0.0,3.0
-    );
+    // float prog_linear = uForOpening ? 1.0 - uProgress : uProgress;
+    // vec2 uv = iTexCoord.st * uSize / vec2(400, 600) / 1.0;
+    // setOutputColor(vec4(uv.x,uv.y,0.0,prog_linear));
 
 
-  oColor *= (shape3 * nprog);
+    //todo: make these uniform values later
+    bool RAINBOW = true;
+    float COLOR_SPEED = 1.0;
+    vec4 COLOR = vec4(0.0, 1.0, 0.0,1.0);
 
-  setOutputColor(oColor);
-*/
+    //this will be used a lot
+    float aspectRatio = uSize.x / uSize.y;
+    // float usx = uSize.x * 0.5 * aspectRatio;
+    // float usy = uSize.y * 0.5 * aspectRatio;
+    float usx = uSize.x * 0.85 * aspectRatio;
+    float usy = uSize.y * 0.85 * aspectRatio;
+    vec2 uv = iTexCoord.st * uSize / vec2(usx,usy);
+    // vec2 uv = iTexCoord.st * uSize;
+
+
+    // float prog = uForOpening ? 1.0 - easeOutQuad(uProgress) : easeOutQuad(uProgress);
+    float prog_linear = uForOpening ? uProgress : 1.0 - uProgress;
+    // float prog_linear = uForOpening ? 1.0 - uProgress : uProgress;
+    // float prog_linear = uProgress;
+
+    // float prog_eioc = easeInOutCubic(prog_linear);
+    float prog_eios = easeInOutSine(prog_linear);
+
+    float uprog = prog_linear;
+
+    //negative progress
+    float nprog = remap(
+        uprog,
+        0.0,1.0, 
+        1.0,0.0
+        );
+
+    //remap 10 to zero
+    float rttz = remap(
+        uprog,
+        0.0,1.0, 
+        10.0,0.0
+        );
+    
+    
+    //remap 0 to 100
+    float rztoh = remap(
+        uprog,
+        0.0,1.0, 
+        0.0,50.0
+        );
+    
+    vec4 thisCOLOR = COLOR;
+
+    // setOutputColor(vec4(thisCOLOR.r,thisCOLOR.g,thisCOLOR.b,prog_eios));
+
+    //only if rainbow is true 
+    if (RAINBOW)
+    {
+        vec3 xuv = vec3(uv.x,uv.y,1.0);
+        vec3 hsl = rgbToHsl(xuv);  // Convert RGB to HSL
+
+        // Offset the hue by a certain amount
+        float hueOffset = uprog * COLOR_SPEED;  // Example: Offset by 0.1 (corresponds to 36 degrees)
+        hsl.x = mod(hsl.x + hueOffset, 1.0);  // Add the hue offset and wrap around
+
+        vec3 nRGB = hslToRgb(hsl.rgb);
+        thisCOLOR = vec4(nRGB,1.0);
+    }
+
+
+    float half_uxx = (uSize.x / usx) / 2.0;
+    float half_uxy = (uSize.y / usy) / 2.0;
+
+    float tempx = pow(distance(uv.x, half_uxx ),4.0);
+    float tempy = pow(distance(uv.y, half_uxy ),4.0);
+    float shape00 = tempx+tempy;
+
+    //
+    float shape01 = remap(
+        shape00,
+        0.0,1.0, 
+        0.0,rztoh
+        );
+    float shape02 = pow(shape01,rttz);
+
+    //setOutputColor( vec4(shape02,shape02,shape02,1.0) );
+
+
+
+    //this is the shape with color, and a bit of noise
+    vec3 swc = shape02 * thisCOLOR.rgb * 2.0 * noise(uv * 0.5);
+
+    //setOutputColor(vec4(swc.r,swc.g,swc.b,prog_eios));
+
+
+    //get the window color, and add the swc
+    vec4 oColor = getInputColor(iTexCoord.st);
+    oColor.r += swc.r;
+    oColor.g += swc.g;
+    oColor.b += swc.b;
+    // oColor.a = 1.0;
+
+    //setOutputColor(oColor);
+
+
+    //this is the fade out shape
+    // float shape03 = remap(
+    //     1.0 - shape00,
+    //     0.0,1.0, 
+    //     0.0,3.0
+    //     );
+
+    // shape03 = 1.0 - shape00;
+    // oColor.a *= clamp(shape03, 0.0, 1.0);
+
+
+    //latestart_rush
+
+    // float x = 0.0;
+    // if (uForOpening)
+    // {
+    //     float lsr = remap(
+    //         clamp(prog_linear,0.0,0.25),
+    //         0.0,0.25, 
+    //         0.0,1.0
+    //         );
+    //     x = easeOutQuad( clamp(lsr,0.0,1.0) );
+    // }
+    // else
+    // {
+    //     float lsr = remap(
+    //         clamp(prog_linear,0.85,1.0),
+    //         0.85,1.0, 
+    //         0.0,1.0
+    //         );
+    //     x = easeOutQuad( clamp(lsr,0.0,1.0) );
+    // }
+
+    // float lsr = remap(
+    //     clamp(prog_linear,0.0,0.25),
+    //     0.0,0.25, 
+    //     0.0,1.0
+    //     );
+    // oColor.a *= easeOutQuad( clamp(lsr,0.0,1.0) );
+
+    // oColor.a *= uprog;
+    // oColor.a *= easeInOutQuad(prog_linear);
+    // oColor.a *= x;
+
+    float lsr = remap(
+        clamp(prog_linear,0.0,0.25),
+        0.0,0.25, 
+        0.0,1.0
+        );
+    oColor.a *= easeInOutQuad( clamp(lsr,0.0,1.0) );
+
+    setOutputColor(oColor);
+
 
   // // Get the color from the window texture.
   // vec4 oColor = getInputColor(iTexCoord.st);
