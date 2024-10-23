@@ -7,21 +7,21 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 <interface domain="burn-my-windows">
 
-  <object class="GtkAdjustment" id="simple-fade-animation-time">
+  <object class="GtkAdjustment" id="focus-animation-time">
     <property name="upper">5000</property>
     <property name="lower">100</property>
     <property name="step-increment">10</property>
     <property name="page-increment">100</property>
   </object>
 
-  <object class="GtkAdjustment" id="simple-fade-width">
-    <property name="upper">1</property>
+  <object class="GtkAdjustment" id="focus-blur-ammout">
+    <property name="upper">100</property>
     <property name="lower">0</property>
-    <property name="step-increment">0.01</property>
-    <property name="page-increment">0.1</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">10</property>
   </object>
 
-  <object class="AdwExpanderRow" id="simple-fade-prefs">
+  <object class="AdwExpanderRow" id="focus-prefs">
 
     <child>
       <object class="AdwActionRow">
@@ -33,11 +33,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="digits">0</property>
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
-            <property name="adjustment">simple-fade-animation-time</property>
+            <property name="adjustment">focus-animation-time</property>
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-simple-fade-animation-time">
+          <object class="GtkButton" id="reset-focus-animation-time">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -51,7 +51,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
     <child>
       <object class="AdwActionRow">
-        <property name="title" translatable="yes">Fade Width</property>
+        <property name="title" translatable="yes">Blur Ammout</property>
         <child>
           <object class="GtkScale">
             <property name="valign">center</property>
@@ -59,11 +59,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="digits">2</property>
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
-            <property name="adjustment">simple-fade-width</property>
+            <property name="adjustment">focus-blur-ammout</property>
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-simple-fade-width">
+          <object class="GtkButton" id="reset-focus-blur-ammout">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>

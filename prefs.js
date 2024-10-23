@@ -44,7 +44,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
-import SimpleFade from './src/effects/SimpleFade.js';
+import Focus from './src/effects/Focus.js';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
@@ -91,7 +91,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       TVEffect,
       TVGlitch,
       Wisps,
-      SimpleFade,
+      Focus,
     ];
 
     // Load all of our resources.

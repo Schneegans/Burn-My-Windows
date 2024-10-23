@@ -826,22 +826,22 @@ SPDX-License-Identifier: CC0-1.0
     <!-- Simple Fade Effect Options                                                    -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
-    <key name="simple-fade-enable-effect" type="b">
+    <key name="focus-enable-effect" type="b">
       <default>false</default>
-      <summary>Simple Fade Enable Effect</summary>
-      <description>Use the Simple Fade effect.</description>
+      <summary>Focus Enable Effect</summary>
+      <description>Use the Focus effect.</description>
     </key>
 
-    <key name="simple-fade-animation-time" type="i">
-      <default>1500</default>
-      <summary>Simple Fade Animation Time</summary>
-      <description>The time the Simple Fade effect takes.</description>
+    <key name="focus-animation-time" type="i">
+      <default>500</default>
+      <summary>Focus Animation Time</summary>
+      <description>The time the Focus effect takes.</description>
     </key>
 
-    <key name="simple-fade-width" type="d">
-      <default>0.1</default>
-      <summary>Simple Fade Width</summary>
-      <description>Width of the fading effect.</description>
+    <key name="focus-blur-ammout" type="i">
+      <default>50</default>
+      <summary>Focus Blur Ammout</summary>
+      <description>The Blue Amount before Focusing.</description>
     </key>
 
   </schema>

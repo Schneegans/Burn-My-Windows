@@ -9,7 +9,7 @@
 //                                 |__/                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// SPDX-FileCopyrightText: Your Name <your@email.com>
+// SPDX-FileCopyrightText: Justin Garza JGarza9788@gmail.com
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 "use strict";
@@ -39,12 +39,12 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uFadeWidth = shader.get_uniform_location("uFadeWidth");
+      shader._uBlurAmount = shader.get_uniform_location("uBlurAmount");
 
       // Write all uniform values at the start of each animation.
       shader.connect("begin-animation", (shader, settings) => {
-        shader.set_uniform_float(shader._uFadeWidth, 1, [
-          settings.get_double("simple-fade-width"),
+        shader.set_uniform_float(shader._uBlurAmount, 1, [
+          settings.get_int("focus-blur-ammout"),
         ]);
       });
     });
@@ -63,13 +63,13 @@ export default class Effect {
   // (e.g. '*-animation-time'). Also, the shader file and the settings UI files should be
   // named likes this.
   static getNick() {
-    return "simple-fade";
+    return "focus";
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return _("Simple Fade Effect");
+    return _("Focus Effect");
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -79,8 +79,8 @@ export default class Effect {
   static bindPreferences(dialog) {
     // These connect the settings to the UI elements. Have a look at prefs.js
     // on how to bind other types of UI elements.
-    dialog.bindAdjustment('simple-fade-animation-time');
-    dialog.bindAdjustment('simple-fade-width');
+    dialog.bindAdjustment('focus-animation-time');
+    dialog.bindAdjustment('focus-blur-ammout');
   }
 
   // ---------------------------------------------------------------- API for extension.js

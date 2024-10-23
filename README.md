@@ -50,6 +50,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
 | **TV Glitch** <br> This effect combines the Glitch and the TV Effect.                                                                                                             | <img src ="docs/pics/tv-glitch.gif" />                                                |
 | **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies!                                                                                   | <img src ="docs/pics/wisps.gif" />                                                    |
+| **Focus** <br> Focus Dude, Focus                                                                                   | <img src ="docs/pics/focus.gif" />                                                    |
 | **Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md) |
 
 ## ✅ Supported Versions

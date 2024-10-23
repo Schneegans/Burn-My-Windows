@@ -43,7 +43,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
-import SimpleFade from './src/effects/SimpleFade.js';
+import Focus from './src/effects/Focus.js';
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
@@ -91,7 +91,7 @@ export default class BurnMyWindows extends Extension {
       new TVEffect(),
       new TVGlitch(),
       new Wisps(),
-      new SimpleFade(),
+      new Focus(),
     ];
 
     // Load all of our resources.
