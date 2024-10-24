@@ -42,20 +42,24 @@ float easeInOutSine(float x) {
 }
 
 // A simple blur function
-vec4 blur( vec2 uv, float radius) {
-    vec4 color = vec4(0.0);
-    float totalWeight = 0.0;
+vec4 blur(vec2 uv, float radius) {
+  vec4 color = vec4(0.0);
 
-    // Sample in a small area around the pixel
-    for (float x = -radius; x <= radius; x++) {
-        for (float y = -radius; y <= radius; y++) {
-            vec2 offset = vec2(x, y) / uSize;
-            color += getInputColor(uv + offset);
-            totalWeight += 1.0;
-        }
+  const float tau        = 6.28318530718;
+  const float directions = 15.0;
+  const float samples    = 5.0;
+
+  for (float d = 0.0; d < tau; d += tau / directions) {
+    for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
+      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / uSize;
+      color += getInputColor(uv + offset);
     }
-    return color / totalWeight;
+  }
+
+  return color / samples / directions;
 }
+
+
 // The width of the fading effect is loaded from the settings.
 uniform float uBlurAmount;
 
