@@ -231,17 +231,44 @@ SPDX-License-Identifier: GPL-3.0-or-later
               <class name="linked" />
             </style>
 
-            <child>
-              <object class="GtkButton" id="choose-all-effects-button">
-                <property name="label" translatable="yes">All</property>
-              </object>
-            </child>
+        <child>
+            <object class="GtkBox" id="items_container">
+                <!-- <property name="orientation">horizontal</property> -->
+                <property name="orientation">vertical</property>
+                <property name="spacing">5</property>
 
-            <child>
-              <object class="GtkButton" id="choose-no-effects-button">
-                <property name="label" translatable="yes">None</property>
-              </object>
-            </child>
+                <child>
+                    <object class="GtkBox" id="items_AllNone">
+                        <property name="orientation">horizontal</property>
+                        <!-- <property name="orientation">vertical</property> -->
+                        <!-- <property name="spacing">5</property> -->
+                        <property name="homogeneous">true</property>
+                        <style>
+                          <class name="linked" />
+                        </style>
+
+                        <child>
+                          <object class="GtkButton" id="choose-all-effects-button">
+                            <property name="label" translatable="yes">All</property>
+                          </object>
+                        </child>
+
+                        <child>
+                          <object class="GtkButton" id="choose-no-effects-button">
+                            <property name="label" translatable="yes">None</property>
+                          </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkSearchEntry" id="search_entry">
+                        <property name="placeholder-text">Search...</property>
+                    </object>
+                </child>
+
+            </object>
+        </child>
 
           </object>
         </child>
