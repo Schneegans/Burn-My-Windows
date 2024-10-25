@@ -29,6 +29,7 @@ import Doom from './src/effects/Doom.js';
 import EnergizeA from './src/effects/EnergizeA.js';
 import EnergizeB from './src/effects/EnergizeB.js';
 import Fire from './src/effects/Fire.js';
+import Focus from './src/effects/Focus.js';
 import Glide from './src/effects/Glide.js';
 import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
@@ -44,7 +45,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
-import Focus from './src/effects/Focus.js';
+
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
@@ -76,6 +77,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       EnergizeA,
       EnergizeB,
       Fire,
+      Focus,
       Glide,
       Glitch,
       Hexagon,
@@ -91,7 +93,6 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       TVEffect,
       TVGlitch,
       Wisps,
-      Focus,
     ];
 
     // Load all of our resources.
