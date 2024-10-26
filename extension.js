@@ -28,6 +28,7 @@ import Doom from './src/effects/Doom.js';
 import EnergizeA from './src/effects/EnergizeA.js';
 import EnergizeB from './src/effects/EnergizeB.js';
 import Fire from './src/effects/Fire.js';
+import Focus from './src/effects/Focus.js';
 import Glide from './src/effects/Glide.js';
 import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
@@ -43,6 +44,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
+
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
@@ -69,26 +71,13 @@ export default class BurnMyWindows extends Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new Apparition(),
-      new BrokenGlass(),
-      new Doom(),
-      new EnergizeA(),
-      new EnergizeB(),
-      new Fire(),
-      new Glide(),
-      new Glitch(),
-      new Hexagon(),
-      new Incinerate(),
-      new Matrix(),
-      new PaintBrush(),
-      new Pixelate(),
-      new PixelWheel(),
-      new PixelWipe(),
-      new Portal(),
-      new SnapOfDisintegration(),
-      new TRexAttack(),
-      new TVEffect(),
-      new TVGlitch(),
+      new Apparition(), new BrokenGlass(), new Doom(),
+      new EnergizeA(),  new EnergizeB(),   new Fire(),
+      new Focus(),      new Glide(),       new Glitch(),
+      new Hexagon(),    new Incinerate(),  new Matrix(),
+      new PaintBrush(), new Pixelate(),    new PixelWheel(),
+      new PixelWipe(),  new Portal(),      new SnapOfDisintegration(),
+      new TRexAttack(), new TVEffect(),    new TVGlitch(),
       new Wisps(),
     ];
 

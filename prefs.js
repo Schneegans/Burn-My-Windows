@@ -29,6 +29,7 @@ import Doom from './src/effects/Doom.js';
 import EnergizeA from './src/effects/EnergizeA.js';
 import EnergizeB from './src/effects/EnergizeB.js';
 import Fire from './src/effects/Fire.js';
+import Focus from './src/effects/Focus.js';
 import Glide from './src/effects/Glide.js';
 import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
@@ -44,6 +45,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
+
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
@@ -69,28 +71,12 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      Apparition,
-      BrokenGlass,
-      Doom,
-      EnergizeA,
-      EnergizeB,
-      Fire,
-      Glide,
-      Glitch,
-      Hexagon,
-      Incinerate,
-      Matrix,
-      PaintBrush,
-      Pixelate,
-      PixelWheel,
-      PixelWipe,
-      Portal,
-      SnapOfDisintegration,
-      TRexAttack,
-      TVEffect,
-      TVGlitch,
-      Wisps,
+      Apparition, BrokenGlass, Doom,       EnergizeA, EnergizeB,  Fire,
+      Focus,      Glide,       Glitch,     Hexagon,   Incinerate, Matrix,
+      PaintBrush, Pixelate,    PixelWheel, PixelWipe, Portal,     SnapOfDisintegration,
+      TRexAttack, TVEffect,    TVGlitch,   Wisps,
     ];
+
 
     // Load all of our resources.
     this._resources =
@@ -104,6 +90,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     this._builder = new Gtk.Builder();
     this._builder.add_from_resource(`/ui/common/menus.ui`);
     this._builder.add_from_resource(`/ui/${getUIDir()}/prefs.ui`);
+
 
     // Store a reference to the general settings object.
     this._settings = this.getSettings();
@@ -133,6 +120,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     } catch (e) {
       // Maybe the service is masked...
     }
+
 
     let powerProfileRow = this._builder.get_object('profile-power-profile');
     powerProfileRow.set_visible(hasPowerProfiles);
@@ -172,6 +160,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
           }
         }
       });
+
 
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('general-prefs');
@@ -273,6 +262,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
         group.add(row);
       }
     });
+
 
     // Some things can only be done once the widget is shown as we do not have access to
     // the toplevel widget before.
