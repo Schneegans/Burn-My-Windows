@@ -42,6 +42,8 @@ uniform float uDuration;
 
 #if defined(KWIN)  // --------------------------------------------------------------------
 
+#include "colormanagement.glsl"
+
 uniform sampler2D sampler;
 uniform int textureWidth;
 uniform int textureHeight;
@@ -74,6 +76,8 @@ void setOutputColor(vec4 outColor) {
   }
 
   fragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+  fragColor = sourceEncodingToNitsInDestinationColorspace(fragColor);
+  fragColor = nitsToDestinationEncoding(fragColor);
 }
 
 #elif defined(KWIN_LEGACY)  // -----------------------------------------------------------
