@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## Burn My Windows 44 [upcoming release]
+
+**Release Date:** TBD
+
+#### New Features
+
+- **New Effect: Focus.** Focus Dude, Focus. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+
 ## [Burn My Windows 43](https://github.com/schneegans/Burn-My-Windows/releases/tag/v43)
 
 **Release Date:** 2024-08-23
