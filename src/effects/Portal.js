@@ -82,6 +82,10 @@ export default class Effect {
     return _('Portal');
   }
 
+  //this can be used for searching, and helping people find the effect they are looking for
+  static description = "The Portal effect creates a swirling, colorful portal animation that teleports the window as if through an alternate dimension. With customizable color, rotation speed, and whirling details, it adds a whimsical, otherworldly transition reminiscent of sci-fi portals.";
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
