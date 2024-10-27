@@ -821,6 +821,35 @@ SPDX-License-Identifier: CC0-1.0
       <description>The color of the dust.</description>
     </key>
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Simple Fade Effect Options                                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="focus-enable-effect" type="b">
+      <default>false</default>
+      <summary>Focus Enable Effect</summary>
+      <description>Use the Focus effect.</description>
+    </key>
+
+    <key name="focus-animation-time" type="i">
+      <default>500</default>
+      <summary>Focus Animation Time</summary>
+      <description>The time the Focus effect takes.</description>
+    </key>
+
+    <key name="focus-blur-amount" type="i">
+      <default>50</default>
+      <summary>Focus Blur Amount</summary>
+      <description>The Blur Amount before Focusing.</description>
+    </key>
+
+    <key name="focus-blur-quality" type="i">
+      <default>5</default>
+      <summary>Focus Blur Quality</summary>
+      <description>The Quality of the Blur (Setting this too high may increase GPU load and affect performance)</description>
+    </key>
+
   </schema>
 
 </schemalist>
