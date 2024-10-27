@@ -83,6 +83,10 @@ export default class Effect {
     return _('Hexagon');
   }
 
+  //this can be used for searching, and helping people find the effect they are looking for
+  static description = "The Hexagon effect overlays a glowing hexagonal grid on the window, gradually shrinking each hexagon cell until the window is completely dissolved. The effect includes customizable line color, glow color, scale, and line width, adding a futuristic grid-based dissolution.";
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
