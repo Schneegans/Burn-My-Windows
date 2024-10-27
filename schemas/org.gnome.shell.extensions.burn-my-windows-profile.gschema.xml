@@ -845,7 +845,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="focus-blur-quality" type="i">
-      <default>5</default>
+      <default>3</default>
       <summary>Focus Blur Quality</summary>
       <description>The Quality of the Blur (Setting this too high may increase GPU load and affect performance)</description>
     </key>
