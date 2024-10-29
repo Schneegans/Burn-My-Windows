@@ -42,7 +42,9 @@ uniform float uDuration;
 
 #if defined(KWIN)  // --------------------------------------------------------------------
 
+#if defined(PLASMA6)
 #include "colormanagement.glsl"
+#endif
 
 uniform sampler2D sampler;
 uniform int textureWidth;
@@ -76,11 +78,18 @@ void setOutputColor(vec4 outColor) {
   }
 
   fragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+
+#if defined(PLASMA6)
   fragColor = sourceEncodingToNitsInDestinationColorspace(fragColor);
   fragColor = nitsToDestinationEncoding(fragColor);
+#endif
 }
 
 #elif defined(KWIN_LEGACY)  // -----------------------------------------------------------
+
+#if defined(PLASMA6)
+#include "colormanagement.glsl"
+#endif
 
 uniform sampler2D sampler;
 uniform int textureWidth;
@@ -112,6 +121,11 @@ void setOutputColor(vec4 outColor) {
   }
 
   gl_FragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+
+#if defined(PLASMA6)
+  fragColor = sourceEncodingToNitsInDestinationColorspace(fragColor);
+  fragColor = nitsToDestinationEncoding(fragColor);
+#endif
 }
 
 #else  // GNOME --------------------------------------------------------------------------
