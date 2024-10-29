@@ -173,5 +173,6 @@ generate "wisps"       "Wisps [Burn-My-Windows]"       "Let your windows be carr
 
 # Finally, create an archive for the effects.
 # shellcheck disable=SC2046
-tar -czf "burn_my_windows_kwin5.tar.gz" -C "$BUILD_DIR" $(ls "$BUILD_DIR" | grep kwin5)
-tar -czf "burn_my_windows_kwin6.tar.gz" -C "$BUILD_DIR" $(ls "$BUILD_DIR" | grep kwin6)
+cd "$BUILD_DIR"
+tar -czf "../burn_my_windows_kwin5.tar.gz" kwin5*
+tar -czf "../burn_my_windows_kwin6.tar.gz" kwin6*
