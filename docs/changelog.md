@@ -11,7 +11,15 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### New Features
 
-- **New Effect: Focus.** Focus Dude, Focus. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+- **New Effect: Focus.** Focus dude, focus. This effect is available both for GNOME and KDE. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+
+#### Other Changes
+
+- There are now different effect packages for Plasma 5 and Plasma 6. Please make sure to install the correct one for your system.
+
+#### Bug Fixes
+
+- The effects now work on Plasma 6 even if an ICC profile is set.
 
 ## [Burn My Windows 43](https://github.com/schneegans/Burn-My-Windows/releases/tag/v43)
 
