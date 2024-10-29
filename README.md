@@ -213,14 +213,23 @@ Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects
 Execute this command to download the latest stable release:
 
 ```bash
-wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin4.tar.gz
+# For Plasma 5
+wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin5.tar.gz
+
+# For Plasma 6
+wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin6.tar.gz
 ```
 
 Install it by executing the following commands.
 
 ```bash
 mkdir -p ~/.local/share/kwin/effects
-tar -xf burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 5
+tar -xf burn_my_windows_kwin5.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 6
+tar -xf burn_my_windows_kwin6.tar.gz -C ~/.local/share/kwin/effects
 ```
 
 Then select the desired effects in the system settings under "Desktop Effects".
@@ -239,7 +248,12 @@ Now you will have to build the effects and copy them to your KWin effect directo
 ```bash
 ./kwin/build.sh
 mkdir -p ~/.local/share/kwin/effects
-tar -xf kwin/burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 5
+tar -xf kwin/burn_my_windows_kwin5.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 6
+tar -xf kwin/burn_my_windows_kwin6.tar.gz -C ~/.local/share/kwin/effects
 ```
 
 That's it!
