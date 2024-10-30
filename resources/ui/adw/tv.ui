@@ -21,7 +21,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="tv-animation-time">
-                <property name="upper">10000</property>
+                <property name="upper">3000</property>
                 <property name="lower">100</property>
                 <property name="step-increment">1</property>
                 <property name="page-increment">100</property>
