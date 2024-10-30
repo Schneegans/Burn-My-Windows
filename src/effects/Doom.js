@@ -87,6 +87,12 @@ export default class Effect {
     return _('Doom');
   }
 
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Doom effect melts the window, creating a vertical, pixelated distortion inspired by the classic screen transitions of the original Doom game. The effect stretches and scales the window, giving it a liquefied appearance as it dissolves downward.';
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

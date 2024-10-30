@@ -76,6 +76,12 @@ export default class Effect {
     return _('Focus');
   }
 
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Focus effect applies a blur to the window, simulating a depth-of-field look where the window gradually blurs to draw visual focus elsewhere. The effect has a customizable blur amount, creating an aesthetic softening of the window edges.';
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

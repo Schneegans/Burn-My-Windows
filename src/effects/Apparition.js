@@ -27,6 +27,7 @@ const _ = await utils.importGettext();
 // This effect hides the actor by violently sucking it into the void of magic.          //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
@@ -79,6 +80,12 @@ export default class Effect {
   static getLabel() {
     return _('Apparition');
   }
+
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Apparition effect makes the actor disappear by drawing it into a vortex-like void, accompanied by shaking, twirling, and suction animations to create a dramatic vanishing effect.';
+
 
   // -------------------------------------------------------------------- API for prefs.js
 

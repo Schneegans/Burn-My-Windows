@@ -74,6 +74,12 @@ export default class Effect {
     return _('Pixel Wheel');
   }
 
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Pixel Wheel effect pixelates the window and gradually obscures it in a wheel-like pattern with customizable pixel size and spoke count, creating a unique radial fade-out transition.';
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

@@ -75,6 +75,12 @@ export default class Effect {
     return _('Energize B');
   }
 
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Energize B effect mimics the transporter effect from Star Trek: The Next Generation, with a smooth color glow and scale adjustment, creating an appearance of the window being energized or transported in a futuristic style.';
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

@@ -138,6 +138,12 @@ export default class Effect {
     return _('Broken Glass');
   }
 
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Broken Glass effect shatters the window into independent shards, simulating a glass-breaking effect with pieces scaling, rotating, and moving as if blown away from a central epicenter. The shards can appear to break away from the cursor\'s position if enabled.';
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

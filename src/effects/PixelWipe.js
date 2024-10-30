@@ -100,6 +100,12 @@ export default class Effect {
     return _('Pixel Wipe');
   }
 
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Pixel Wipe effect pixelates the window and gradually hides pixels in a radial pattern starting from the mouse pointer position, offering a unique transition with a customizable pixel size.';
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

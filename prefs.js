@@ -178,6 +178,21 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       });
     });
 
+    this._searchEntry = this._builder.get_object('search_entry');
+    this._searchEntry.connect('search-changed', () => {
+      const query = this._searchEntry.get_text().toLowerCase();
+
+      this._effectRows.forEach(er => {
+        if (query === '') {
+          er.show();  // Show all effects if query is empty
+        } else {
+          // Show or hide each effect based on query match
+          const showEffect = er.searchtext.toLowerCase().includes(query);
+          showEffect ? er.show() : er.hide();
+        }
+      });
+    });
+
     // Then add a preferences group for the effect expander rows.
     const group = this._builder.get_object('effects-group');
 
@@ -238,6 +253,9 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
         } else {
           row.set_title(effect.getLabel());
         }
+
+        // this is the fix for the merge issue when an effect doesn't have a discription
+        row.searchtext = effect.getLabel() + effect?.description ?? '';
 
         // Un-expand any previously expanded effect row. This way we ensure that there
         // is only one expanded row at any time.
