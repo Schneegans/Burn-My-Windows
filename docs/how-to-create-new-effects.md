@@ -294,7 +294,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
-    <property name="upper">5000</property>
+    <property name="upper">3000</property>
     <property name="lower">100</property>
     <property name="step-increment">10</property>
     <property name="page-increment">100</property>

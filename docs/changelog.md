@@ -15,6 +15,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Other Changes
 
+- The animation duration of all effects can now be adjusted between 100ms and 3000ms. This makes fine adjustments easier as with the previous 1000ms to 10s range.
 - There are now different effect packages for Plasma 5 and Plasma 6. Please make sure to install the correct one for your system.
 
 #### Bug Fixes
