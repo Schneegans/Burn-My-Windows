@@ -178,28 +178,29 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       });
     });
 
-    //search for effect feature
-    this._searchEntry = this._builder.get_object("search_entry")
-    this._searchEntry.connect('search-changed', () => {
-      const query = this._searchEntry.get_text().toLowerCase();
-  
-      this._effectRows.forEach(er => {
-          if (query === "") {
+    // search for effect feature
+    this._searchEntry =
+      this._builder.get_object('search_entry') this._searchEntry.connect(
+        'search-changed', () => {
+          const query = this._searchEntry.get_text().toLowerCase();
+
+          this._effectRows.forEach(er => {
+            if (query === '') {
               er.show();  // Show all effects if query is empty
-          } else {
+            } else {
               // Show or hide each effect based on query match
               const showEffect = er.name.toLowerCase().includes(query);
               showEffect ? er.show() : er.hide();
 
-              //TODO
-              //maybe add a fuzzy search later 
+              // TODO
+              // maybe add a fuzzy search later
               /*
-              const showEffect = utils.fuzzyMatch(er.name.toLowerCase(), query.toLowerCase());
-              showEffect ? er.show() : er.hide();
+              const showEffect = utils.fuzzyMatch(er.name.toLowerCase(),
+              query.toLowerCase()); showEffect ? er.show() : er.hide();
               */
-          }
-      });
-    });
+            }
+          });
+        });
 
     // Then add a preferences group for the effect expander rows.
     const group = this._builder.get_object('effects-group');
@@ -262,7 +263,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
           row.set_title(effect.getLabel());
         }
 
-        //this is the fix for the merge issue when an effect doesn't have a discription
+        // this is the fix for the merge issue when an effect doesn't have a discription
         row.name = effect.getLabel();
 
 
