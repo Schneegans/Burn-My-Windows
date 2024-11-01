@@ -179,8 +179,8 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     });
 
     // search for effect feature
-    this._searchEntry =
-      this._builder.get_object('search_entry') this._searchEntry.connect(
+    this._searchEntry = this._builder.get_object('search_entry');
+    this._searchEntry.connect(
         'search-changed', () => {
           const query = this._searchEntry.get_text().toLowerCase();
 
