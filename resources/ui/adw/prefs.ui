@@ -246,7 +246,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           <!-- Search Entry -->
           <child>
             <object class="GtkSearchEntry" id="search_entry">
-              <property name="placeholder-text">Search...</property>
+              <property name="placeholder-text" translatable="yes">Search...</property>
               <layout>
                 <property name="column">0</property>
                 <property name="row">1</property>
