@@ -222,8 +222,10 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <property name="margin-end">20</property>
 
     <child>
-      <object class="AdwPreferencesGroup" id="">
-        
+      <object class="AdwPreferencesGroup">
+         <property name="title" translatable="yes">Effect Selection</property>
+         <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+         
         <child>
           <object class="GtkGrid" id="selection-controls">
             <property name="row-spacing">5</property>
