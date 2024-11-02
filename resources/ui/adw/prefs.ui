@@ -223,8 +223,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
     <child>
       <object class="AdwPreferencesGroup">
-         <property name="title" translatable="yes">Effect Selection</property>
-         <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
+        <!--these are extra title and description that is not needed-->
+        <!-- <property name="title" translatable="yes">Effect Selection</property> -->
+        <!-- <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property> -->
          
         <child>
           <object class="GtkGrid" id="selection-controls">
