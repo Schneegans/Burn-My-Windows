@@ -216,10 +216,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
 
   <object class="AdwPreferencesPage" id="general-prefs">
-    <property name="margin-top">20</property>
-    <property name="margin-bottom">20</property>
-    <property name="margin-start">20</property>
-    <property name="margin-end">20</property>
 
     <child>
       <object class="AdwPreferencesGroup">
