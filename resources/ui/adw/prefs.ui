@@ -334,7 +334,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwPreferencesGroup" id="effects-group">
         <property name="margin-top">10</property>
-        <property name="margin-bottom">0</property>
+        <property name="margin-bottom">20</property>
         <property name="margin-start">0</property>
         <property name="margin-end">0</property>
       </object>
