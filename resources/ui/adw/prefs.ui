@@ -219,108 +219,46 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
     <child>
       <object class="AdwPreferencesGroup">
-        <!--these are extra title and description that is not needed-->
-        <!-- <property name="title" translatable="yes">Effect Selection</property> -->
-        <!-- <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property> -->
-         
-        <child>
-          <object class="GtkGrid" id="selection-controls">
-            <property name="row-spacing">5</property>
-            <property name="column-spacing">5</property>
+        <property name="margin-top">10</property>
+        <property name="title" translatable="yes">Effect Selection</property>
+        <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
 
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">horizontal</property>
+            <property name="spacing">5</property>
+
+            <!-- Search Entry -->
             <child>
-              <object class="AdwPreferencesGroup" id="header-text">
-                <property name="title" translatable="yes">Effect Selection</property>
-                <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">0</property>
-                  <property name="column-span">8</property>
-                </layout>
+              <object class="GtkSearchEntry" id="search_entry">
+                <property name="hexpand">true</property>
+                <property name="placeholder-text" translatable="yes">Search...</property>
               </object>
             </child>
 
-          <!-- Search Entry -->
-          <child>
-            <object class="GtkSearchEntry" id="search_entry">
-              <property name="placeholder-text" translatable="yes">Search...</property>
-              <layout>
-                <property name="column">0</property>
-                <property name="row">1</property>
-                <property name="column-span">8</property>
-              </layout>
-            </object>
-          </child>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">horizontal</property>
+                <property name="homogeneous">true</property>
 
-          
-          <!-- maybe later add a way to only show enabled|disabled|both -->
+                <style>
+                  <class name="linked" />
+                </style>
 
-          <!-- <child>
-            <object class="GtkBox">
-              <property name="orientation">horizontal</property>
-              <property name="hexpand">true</property>
-              <property name="homogeneous">true</property>
-              <layout>
-                <property name="column">0</property>
-                <property name="row">1</property>
-                <property name="column-span">3</property>
-              </layout>
+                <child>
+                  <object class="GtkButton" id="choose-all-effects-button">
+                    <property name="label" translatable="yes">Enable All</property>
+                  </object>
+                </child>
 
-              <style>
-                <class name="linked" />
-              </style>
+                <child>
+                  <object class="GtkButton" id="choose-no-effects-button">
+                    <property name="label" translatable="yes">Disable All</property>
+                  </object>
+                </child>
 
-              <child>
-                <object class="GtkButton" id="show-enabled-effects-button">
-                  <property name="label" translatable="yes">Show Enabled</property>
-                </object>
-              </child>
-
-              <child>
-                <object class="GtkButton" id="show-disabled-effects-button">
-                  <property name="label" translatable="yes">Show Disable</property>
-                </object>
-              </child>
-
-              <child>
-                <object class="GtkButton" id="show-all-effects-button">
-                  <property name="label" translatable="yes">Show All</property>
-                </object>
-              </child>
-
-            </object>
-          </child>  -->
-
-
-          <child>
-            <object class="GtkBox">
-              <property name="orientation">horizontal</property>
-              <property name="hexpand">true</property>
-              <property name="homogeneous">true</property>
-              <layout>
-                <property name="column">8</property>
-                <property name="row">1</property>
-                <property name="column-span">2</property>
-              </layout>
-
-              <style>
-                <class name="linked" />
-              </style>
-
-              <child>
-                <object class="GtkButton" id="choose-all-effects-button">
-                  <property name="label" translatable="yes">Enable All</property>
-                </object>
-              </child>
-
-              <child>
-                <object class="GtkButton" id="choose-no-effects-button">
-                  <property name="label" translatable="yes">Disable All</property>
-                </object>
-              </child>
-
-            </object>
-          </child>
+              </object>
+            </child>
 
           </object>
         </child>
@@ -338,7 +276,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </child>
 
   </object>
-
 
 
 </interface>
