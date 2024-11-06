@@ -29,7 +29,7 @@ jobs:
           file: burn-my-windows@schneegans.github.com.zip
           tag: ${{ github.ref }}
           overwrite: true
-          draft: true
+          prerelease: true
 
   kwin_bundle:
     name: Bundle KWin Effect
@@ -52,4 +52,4 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
-          draft: true
+          prerelease: true
