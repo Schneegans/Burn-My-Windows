@@ -32,5 +32,5 @@ jobs:
         run: sudo $GITHUB_WORKSPACE/tests/generate-references.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
       - uses: actions/upload-artifact@v3
         with:
-          name: references-${{ matrix.version }}-${{ matrix.session }}
-          path: tests/references/
+          name: references-${{ matrix.session }}-${{ matrix.version }}
+          path: tests/references/*${{ matrix.session }}-${{ matrix.version }}.png
