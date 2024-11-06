@@ -60,7 +60,7 @@ EFFECT_CROP="100x100+900+500"
 PREFS_CROP="100x100+700+300"
 
 # Run the container. For more info, visit https://github.com/Schneegans/gnome-shell-pod.
-POD=$(podman run --rm --cap-add=SYS_NICE --cap-add=IPC_LOCK --cap-add=CAP_SYS_ADMIN -td "${IMAGE}")
+POD=$(podman run --rm --cap-add=SYS_NICE --cap-add=IPC_LOCK -td "${IMAGE}")
 
 # Properly shutdown podman when this script is exited.
 quit() {
