@@ -1,503 +1,524 @@
 [
   {
     "Arabic": [
-      [
-        "fawaz27000@hotmail.com",
-        "fawaz006",
-        68
-      ],
-      [
-        "dabsantamer@yahoo.com",
-        "tamer dab",
-        7
-      ],
-      [
-        "yamen.malik2@gmail.com",
-        "Yamen Malik",
-        7
-      ],
-      [
-        "hamzah.abusamak@gmail.com",
-        "bonbonboi",
-        5
-      ]
+      {
+        "email": "fawaz27000@hotmail.com",
+        "full_name": "fawaz006",
+        "change_count": 64
+      },
+      {
+        "email": "dabsantamer@yahoo.com",
+        "full_name": "tamer dab",
+        "change_count": 7
+      },
+      {
+        "email": "yamen.malik2@gmail.com",
+        "full_name": "Yamen Malik",
+        "change_count": 7
+      },
+      {
+        "email": "hamzah.abusamak@gmail.com",
+        "full_name": "bonbonboi",
+        "change_count": 5
+      }
     ]
   },
   {
     "Azerbaijani": [
-      [
-        "xxmn77@gmail.com",
-        "X\u0259yyam Qocayev",
-        67
-      ]
+      {
+        "email": "xxmn77@gmail.com",
+        "full_name": "X\u0259yyam Qocayev",
+        "change_count": 63
+      }
     ]
   },
   {
-    "Chinese (Simplified)": [
-      [
-        "aerowolf@tom.com",
-        "aerowolf",
-        103
-      ],
-      [
-        "poonsters6@gmail.com",
-        "merelymyself",
-        38
-      ],
-      [
-        "lyuutau@outlook.com",
-        "\u5218\u97ec",
-        34
-      ],
-      [
-        "coelacanthushex@gmail.com",
-        "Celeste Liu",
-        3
-      ]
+    "Chinese (Simplified Han script)": [
+      {
+        "email": "aerowolf_sn@qq.com",
+        "full_name": "aerowolf",
+        "change_count": 101
+      },
+      {
+        "email": "poonsters6@gmail.com",
+        "full_name": "merelymyself",
+        "change_count": 32
+      },
+      {
+        "email": "lyuutau@outlook.com",
+        "full_name": "\u5218\u97ec",
+        "change_count": 30
+      },
+      {
+        "email": "coelacanthushex@gmail.com",
+        "full_name": "Celeste Liu",
+        "change_count": 3
+      }
+    ]
+  },
+  {
+    "Chinese (Traditional Han script)": [
+      {
+        "email": "ghost20090105@gmail.com",
+        "full_name": "GholtsMxv",
+        "change_count": 120
+      }
     ]
   },
   {
     "Czech": [
-      [
-        "6325410@seznam.cz",
-        "Miraficus",
-        83
-      ],
-      [
-        "jiri.doubravsky@gmail.com",
-        "Ji\u0159\u00ed Doubravsk\u00fd",
-        60
-      ],
-      [
-        "jose1711@gmail.com",
-        "Jose Riha",
-        4
-      ],
-      [
-        "yuridm@gmail.com",
-        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
-        1
-      ]
+      {
+        "email": "6325410@seznam.cz",
+        "full_name": "Miraficus",
+        "change_count": 77
+      },
+      {
+        "email": "jiri.doubravsky@gmail.com",
+        "full_name": "Ji\u0159\u00ed Doubravsk\u00fd",
+        "change_count": 60
+      },
+      {
+        "email": "jose1711@gmail.com",
+        "full_name": "Jose Riha",
+        "change_count": 4
+      },
+      {
+        "email": "yuridm@gmail.com",
+        "full_name": "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
+        "change_count": 1
+      }
+    ]
+  },
+  {
+    "Danish": [
+      {
+        "email": "symmetricalmegalomania@gmail.com",
+        "full_name": "symegac",
+        "change_count": 129
+      }
     ]
   },
   {
     "Dutch": [
-      [
-        "vistausss@fastmail.com",
-        "Heimen Stoffels",
-        126
-      ],
-      [
-        "philip.goto@gmail.com",
-        "Philip Goto",
-        7
-      ],
-      [
-        "code@simonschneegans.de",
-        "Simon Schneegans",
-        1
-      ]
+      {
+        "email": "vistausss@fastmail.com",
+        "full_name": "Heimen Stoffels",
+        "change_count": 122
+      },
+      {
+        "email": "philip.goto@gmail.com",
+        "full_name": "Philip Goto",
+        "change_count": 5
+      },
+      {
+        "email": "code@simonschneegans.de",
+        "full_name": "Simon Schneegans",
+        "change_count": 1
+      }
     ]
   },
   {
     "English": [
-      [
-        "softexpert@gmail.com",
-        "SoftExpert",
-        1
-      ]
+      {
+        "email": "softexpert@gmail.com",
+        "full_name": "SoftExpert",
+        "change_count": 1
+      }
     ]
   },
   {
     "Esperanto": [
-      [
-        "phlostically@mailinator.com",
-        "phlostically",
-        72
-      ]
+      {
+        "email": "phlostically@mailinator.com",
+        "full_name": "phlostically",
+        "change_count": 68
+      }
     ]
   },
   {
     "Finnish": [
-      [
-        "jiri.gronroos@iki.fi",
-        "Jiri Gr\u00f6nroos",
-        47
-      ]
+      {
+        "email": "jiri.gronroos@iki.fi",
+        "full_name": "Jiri Gr\u00f6nroos",
+        "change_count": 43
+      },
+      {
+        "email": "jouko.tiilikainen@gmail.com",
+        "full_name": "Tinde (Joke)",
+        "change_count": 3
+      }
     ]
   },
   {
     "French": [
-      [
-        "softexpert@gmail.com",
-        "SoftExpert",
-        52
-      ],
-      [
-        "bonnemainsnathan@gmail.com",
-        "Nathan",
-        38
-      ],
-      [
-        "mathieu.bousquet2@gmail.com",
-        "Mathieu B.",
-        26
-      ],
-      [
-        "theo.remon+weblate@uswery.eu",
-        "Th\u00e9o Remon",
-        22
-      ],
-      [
-        "redxxiii@zaclys.net",
-        "Reda",
-        10
-      ],
-      [
-        "brice.laurencin@gmail.com",
-        "Brice Laurencin",
-        7
-      ],
-      [
-        "matshot03@gmail.com",
-        "Mathis Chabrier",
-        2
-      ]
+      {
+        "email": "softexpert@gmail.com",
+        "full_name": "SoftExpert",
+        "change_count": 52
+      },
+      {
+        "email": "bonnemainsnathan@gmail.com",
+        "full_name": "Nathan",
+        "change_count": 38
+      },
+      {
+        "email": "mathieu.bousquet2@gmail.com",
+        "full_name": "Mathieu B.",
+        "change_count": 26
+      },
+      {
+        "email": "theo.remon+weblate@uswery.eu",
+        "full_name": "Th\u00e9o Remon",
+        "change_count": 22
+      },
+      {
+        "email": "redxxiii@zaclys.net",
+        "full_name": "Reda",
+        "change_count": 6
+      },
+      {
+        "email": "brice.laurencin@gmail.com",
+        "full_name": "Brice Laurencin",
+        "change_count": 5
+      },
+      {
+        "email": "matshot03@gmail.com",
+        "full_name": "Mathis Chabrier",
+        "change_count": 2
+      }
     ]
   },
   {
     "German": [
-      [
-        "code@simonschneegans.de",
-        "Simon Schneegans",
-        122
-      ],
-      [
-        "atalanttore@googlemail.com",
-        "Ettore Atalan",
-        3
-      ]
+      {
+        "email": "code@simonschneegans.de",
+        "full_name": "Simon Schneegans",
+        "change_count": 123
+      },
+      {
+        "email": "atalanttore@googlemail.com",
+        "full_name": "Ettore Atalan",
+        "change_count": 3
+      }
     ]
   },
   {
     "Hebrew": [
-      [
-        "hvusvvnkl12345@gmail.com",
-        "\u05d9\u05d4\u05d5\u05d3\u05d4 \u05d0\u05dc\u05d9\u05e1\u05e3",
-        37
-      ]
+      {
+        "email": "hvusvvnkl12345@gmail.com",
+        "full_name": "\u05d9\u05d4\u05d5\u05d3\u05d4 \u05d0\u05dc\u05d9\u05e1\u05e3",
+        "change_count": 33
+      }
+    ]
+  },
+  {
+    "Hindi": [
+      {
+        "email": "weblate.scrambled777@simplelogin.com",
+        "full_name": "Scrambled777",
+        "change_count": 154
+      }
     ]
   },
   {
     "Hungarian": [
-      [
-        "superh552@gmail.com",
-        "KinteLiX",
-        79
-      ]
+      {
+        "email": "atomkapa@gmail.com",
+        "full_name": "atomkapa atomkapa",
+        "change_count": 87
+      },
+      {
+        "email": "superh552@gmail.com",
+        "full_name": "KinteLiX",
+        "change_count": 75
+      }
     ]
   },
   {
     "Indonesian": [
-      [
-        "randompsyduck@duck.com",
-        "Sir-Ivysaur",
-        75
-      ],
-      [
-        "rezaalmanda27@gmail.com",
-        "Reza Almanda",
-        58
-      ]
+      {
+        "email": "randompsyduck@duck.com",
+        "full_name": "Sir-Ivysaur",
+        "change_count": 71
+      },
+      {
+        "email": "rezaalmanda27@gmail.com",
+        "full_name": "Reza Almanda",
+        "change_count": 56
+      }
     ]
   },
   {
     "Italian": [
-      [
-        "albano_battistella@hotmail.com",
-        "albanobattistella",
-        132
-      ],
-      [
-        "mceyes@protonmail.com",
-        "Frankie McEyes",
-        2
-      ],
-      [
-        "mario03@gmail.com",
-        "Mario",
-        1
-      ]
+      {
+        "email": "albano_battistella@hotmail.com",
+        "full_name": "albanobattistella",
+        "change_count": 131
+      },
+      {
+        "email": "mceyes@protonmail.com",
+        "full_name": "Frankie McEyes",
+        "change_count": 2
+      },
+      { "email": "mario03@gmail.com", "full_name": "Mario", "change_count": 1 }
     ]
   },
   {
     "Japanese": [
-      [
-        "ryuichi.ya220@gmail.com",
-        "Ryan Y",
-        79
-      ]
+      {
+        "email": "ryuichi.ya220@gmail.com",
+        "full_name": "Ryan Y",
+        "change_count": 75
+      }
     ]
   },
   {
     "Korean": [
-      [
-        "darkcircle.0426@gmail.com",
-        "Seong-ho Cho",
-        134
-      ]
+      {
+        "email": "darkcircle.0426@gmail.com",
+        "full_name": "Seong-ho Cho",
+        "change_count": 128
+      }
     ]
   },
   {
     "Lithuanian": [
-      [
-        "hazap@hotmail.com",
-        "Moo",
-        43
-      ]
+      { "email": "hazap@hotmail.com", "full_name": "Moo", "change_count": 79 }
     ]
   },
   {
     "Norwegian Bokm\u00e5l": [
-      [
-        "epost@anotheragency.no",
-        "Allan Nordh\u00f8y",
-        44
-      ],
-      [
-        "code@simonschneegans.de",
-        "Simon Schneegans",
-        1
-      ]
+      {
+        "email": "epost@anotheragency.no",
+        "full_name": "Allan Nordh\u00f8y",
+        "change_count": 40
+      },
+      {
+        "email": "code@simonschneegans.de",
+        "full_name": "Simon Schneegans",
+        "change_count": 1
+      }
     ]
   },
   {
     "Persian": [
-      [
-        "lijeyol367@nickolis.com",
-        "lijeyol367",
-        82
-      ],
-      [
-        "eshagh094@gmail.com",
-        "Eshagh shahidani",
-        65
-      ],
-      [
-        "dani.behzi@ubuntu.com",
-        "Danial Behzadi",
-        40
-      ]
+      {
+        "email": "lijeyol367@nickolis.com",
+        "full_name": "lijeyol367",
+        "change_count": 80
+      },
+      {
+        "email": "eshagh094@gmail.com",
+        "full_name": "Eshagh shahidani",
+        "change_count": 61
+      },
+      {
+        "email": "dani.behzi@ubuntu.com",
+        "full_name": "Danial Behzadi",
+        "change_count": 39
+      }
     ]
   },
   {
     "Polish": [
-      [
-        "pwrzonca@gmail.com",
-        "Pawe\u0142 Rzo\u0144ca",
-        77
-      ],
-      [
-        "sto@tutanota.de",
-        "WaldiS",
-        38
-      ],
-      [
-        "gnu.ewm@protonmail.com",
-        "Eryk Michalak",
-        10
-      ],
-      [
-        "krzys.chorzempa@gmail.com",
-        "Krzysztof Chorzempa",
-        6
-      ]
+      {
+        "email": "pwrzonca@gmail.com",
+        "full_name": "Pawe\u0142 Rzo\u0144ca",
+        "change_count": 73
+      },
+      { "email": "sto@tutanota.de", "full_name": "WaldiS", "change_count": 38 },
+      {
+        "email": "gnu.ewm@protonmail.com",
+        "full_name": "Eryk Michalak",
+        "change_count": 10
+      },
+      {
+        "email": "krzys.chorzempa@gmail.com",
+        "full_name": "Krzysztof Chorzempa",
+        "change_count": 4
+      }
     ]
   },
   {
     "Portuguese": [
-      [
-        "pedro.hvn.2018@gmail.com",
-        "KrulesExGamer",
-        70
-      ],
-      [
-        "ssantos@web.de",
-        "ssantos",
-        57
-      ],
-      [
-        "dyegoaurelio@gmail.com",
-        "dyegoaurelio",
-        8
-      ]
+      {
+        "email": "pedro.hvn.2018@gmail.com",
+        "full_name": "KrulesExGamer",
+        "change_count": 65
+      },
+      { "email": "ssantos@web.de", "full_name": "ssantos", "change_count": 55 },
+      {
+        "email": "dyegoaurelio@gmail.com",
+        "full_name": "dyegoaurelio",
+        "change_count": 8
+      }
     ]
   },
   {
     "Portuguese (Brazil)": [
-      [
-        "mr-isaac@ig.com.br",
-        "Isaac Dias",
-        93
-      ],
-      [
-        "fefehex12@gmail.com",
-        "Fernando Lopes",
-        51
-      ],
-      [
-        "gutojusto22@gmail.com",
-        "Gustavo",
-        24
-      ]
+      {
+        "email": "mr-isaac@ig.com.br",
+        "full_name": "Isaac Dias",
+        "change_count": 89
+      },
+      {
+        "email": "fefehex12@gmail.com",
+        "full_name": "Fernando Lopes",
+        "change_count": 49
+      },
+      {
+        "email": "gutojusto22@gmail.com",
+        "full_name": "Gustavo",
+        "change_count": 24
+      }
     ]
   },
   {
     "Romanian": [
-      [
-        "softexpert@gmail.com",
-        "SoftExpert",
-        132
-      ]
+      {
+        "email": "softexpert@gmail.com",
+        "full_name": "SoftExpert",
+        "change_count": 126
+      }
     ]
   },
   {
     "Russian": [
-      [
-        "lenemter@gmail.com",
-        "lenemter",
-        49
-      ],
-      [
-        "franigoyt@gmail.com",
-        "ANIGO R. (AR)",
-        49
-      ],
-      [
-        "eg.ermakov2016@yandex.ru",
-        "\u0415\u0433\u043e\u0440 \u0415\u0440\u043c\u0430\u043a\u043e\u0432",
-        33
-      ],
-      [
-        "ddaudix@gmail.com",
-        "Daudix UFO",
-        31
-      ],
-      [
-        "sergei@racingrebel.com",
-        "\u041c\u0438\u0441\u0442\u0435\u0440 \u041f\u0435\u0440\u0435\u0432\u043e\u0434",
-        11
-      ]
+      {
+        "email": "lenemter@gmail.com",
+        "full_name": "lenemter",
+        "change_count": 49
+      },
+      {
+        "email": "franigoyt@gmail.com",
+        "full_name": "ANIGO R. (AR)",
+        "change_count": 45
+      },
+      {
+        "email": "eg.ermakov2016@yandex.ru",
+        "full_name": "\u0415\u0433\u043e\u0440 \u0415\u0440\u043c\u0430\u043a\u043e\u0432",
+        "change_count": 33
+      },
+      {
+        "email": "ddaudix@gmail.com",
+        "full_name": "David Lapshin",
+        "change_count": 31
+      },
+      {
+        "email": "sergei@racingrebel.com",
+        "full_name": "\u041c\u0438\u0441\u0442\u0435\u0440 \u041f\u0435\u0440\u0435\u0432\u043e\u0434",
+        "change_count": 11
+      }
     ]
   },
   {
     "Slovak": [
-      [
-        "jose1711@gmail.com",
-        "Jose Riha",
-        128
-      ],
-      [
-        "salka.milan@googlemail.com",
-        "Milan \u0160alka",
-        12
-      ]
+      {
+        "email": "jose1711@gmail.com",
+        "full_name": "Jose Riha",
+        "change_count": 124
+      },
+      {
+        "email": "salka.milan@googlemail.com",
+        "full_name": "Milan \u0160alka",
+        "change_count": 10
+      }
     ]
   },
   {
     "Spanish": [
-      [
-        "oscfdezdz@tuta.io",
-        "\u00d3scar Fern\u00e1ndez D\u00edaz",
-        60
-      ],
-      [
-        "hasecilu@tuta.io",
-        "Ulices",
-        39
-      ],
-      [
-        "fran-carro@hotmail.es",
-        "gallegonovato",
-        20
-      ],
-      [
-        "andres.segarra.aparicio@gmail.com",
-        "Andres Segarra",
-        10
-      ],
-      [
-        "fitojb@ubuntu.com",
-        "Adolfo Jayme Barrientos",
-        7
-      ],
-      [
-        "jorgec2005@gmail.com",
-        "Jorge C",
-        5
-      ]
+      {
+        "email": "oscfdezdz@tuta.io",
+        "full_name": "\u00d3scar Fern\u00e1ndez D\u00edaz",
+        "change_count": 59
+      },
+      {
+        "email": "hasecilu@tuta.io",
+        "full_name": "Ulices",
+        "change_count": 35
+      },
+      {
+        "email": "fran-carro@hotmail.es",
+        "full_name": "gallegonovato",
+        "change_count": 25
+      },
+      {
+        "email": "andres.segarra.aparicio@gmail.com",
+        "full_name": "Andres Segarra",
+        "change_count": 10
+      },
+      {
+        "email": "fitojb@ubuntu.com",
+        "full_name": "Adolfo Jayme Barrientos",
+        "change_count": 7
+      },
+      {
+        "email": "jorgec2005@gmail.com",
+        "full_name": "Jorge C",
+        "change_count": 4
+      }
     ]
   },
   {
     "Swedish": [
-      [
-        "swedishsailfishosuser@tutanota.com",
-        "Kristoffer Grundstr\u00f6m",
-        50
-      ],
-      [
-        "droidbittin@gmail.com",
-        "Luna Jernberg",
-        9
-      ],
-      [
-        "obslsessed@duck.com",
-        "obslsessed",
-        5
-      ]
+      {
+        "email": "swedishsailfishosuser@tutanota.com",
+        "full_name": "Kristoffer Grundstr\u00f6m",
+        "change_count": 46
+      },
+      {
+        "email": "droidbittin@gmail.com",
+        "full_name": "Luna Jernberg",
+        "change_count": 9
+      },
+      {
+        "email": "obslsessed@duck.com",
+        "full_name": "obslsessed",
+        "change_count": 5
+      }
     ]
   },
   {
     "Turkish": [
-      [
-        "libreajans@gmail.com",
-        "Sabri \u00dcnal",
-        74
-      ],
-      [
-        "muhaaliss@pm.me",
-        "Muha Aliss",
-        52
-      ],
-      [
-        "tcreeper.earth@gmail.com",
-        "TCr3",
-        24
-      ]
+      {
+        "email": "noreply+13144@weblate.org",
+        "full_name": "Deleted User",
+        "change_count": 72
+      },
+      {
+        "email": "muhaaliss@pm.me",
+        "full_name": "Muha Aliss",
+        "change_count": 48
+      },
+      {
+        "email": "tcreeper.earth@gmail.com",
+        "full_name": "TCr3",
+        "change_count": 24
+      }
     ]
   },
   {
     "Ukrainian": [
-      [
-        "yuridm@gmail.com",
-        "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
-        48
-      ],
-      [
-        "911us@duck.com",
-        "Petro S.",
-        44
-      ],
-      [
-        "cakestwix1@gmail.com",
-        "CakesTwix",
-        35
-      ],
-      [
-        "sergiy.goncharuk.1@gmail.com",
-        "\u0421\u0435\u0440\u0433\u0456\u0439",
-        6
-      ]
+      {
+        "email": "yuridm@gmail.com",
+        "full_name": "\u042e\u0440\u0456\u0439 \u0414\u043c\u0438\u0442\u0440\u0435\u043d\u043a\u043e",
+        "change_count": 44
+      },
+      {
+        "email": "911us@duck.com",
+        "full_name": "Petro S.",
+        "change_count": 44
+      },
+      {
+        "email": "cakestwix1@gmail.com",
+        "full_name": "CakesTwix",
+        "change_count": 35
+      },
+      {
+        "email": "sergiy.goncharuk.1@gmail.com",
+        "full_name": "\u0421\u0435\u0440\u0433\u0456\u0439",
+        "change_count": 4
+      }
     ]
   }
 ]

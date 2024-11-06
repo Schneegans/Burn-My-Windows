@@ -447,7 +447,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
           const translators = new Set();
           this._getJSONResource('/credits/translators.json').forEach(i => {
             for (const j of Object.values(i)) {
-              j.forEach(k => translators.add(k[1]));
+              j.forEach(k => translators.add(k.full_name));
             }
           });
 
