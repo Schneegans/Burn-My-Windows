@@ -11,6 +11,8 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### New Features
 
+<a href="https://youtu.be/hEdFfzqy2J0"><img align="right" src ="pics/bmw44.jpg" /></a>
+
 - **New Effect: Focus.** Focus dude, focus. This effect is available both for GNOME and KDE. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
 - Effect Search: There is now a search bar in the preferences dialog which allows you to quickly find the effect you are looking for. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
 
