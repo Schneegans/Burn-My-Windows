@@ -19,6 +19,7 @@ SPDX-License-Identifier: CC-BY-4.0
 - The animation duration of all effects can now be adjusted between 0.1s and 3s. This makes fine adjustments easier than with the previous 0.1s to 10s range.
 - There are now different effect packages for Plasma 5 and Plasma 6. Please make sure to install the correct one for your system.
 - Many translations have been updated. Thanks to all the translators!
+- The CI jobs now run only on X11. In addition to GNOME 45, they now also run on GNOME 46 and GNOME 47.
 
 #### Bug Fixes
 

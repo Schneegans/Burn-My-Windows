@@ -10,6 +10,16 @@ jobs:
   references:
     name: Generate References
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - "39"
+          - "40"
+          - "41"
+          - "rawhide"
+        session:
+          - "gnome-xsession"
     steps:
       - uses: actions/checkout@v4
       - name: Download Dependencies
@@ -19,8 +29,8 @@ jobs:
       - name: Build Burn-My-Windows
         run: make
       - name: Generate References
-        run: sudo make references
-      - uses: actions/upload-artifact@v3
+        run: sudo $GITHUB_WORKSPACE/tests/generate-references.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
+      - uses: actions/upload-artifact@v4
         with:
-          name: references
-          path: tests/references/
+          name: references-${{ matrix.session }}-${{ matrix.version }}
+          path: tests/references/*${{ matrix.session }}-${{ matrix.version }}.png

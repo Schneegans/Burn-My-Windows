@@ -91,9 +91,11 @@ jobs:
       matrix:
         version:
           - "39"
+          - "40"
+          - "41"
+          - "rawhide"
         session:
           - "gnome-xsession"
-          - "gnome-wayland-nested"
     steps:
       - uses: actions/checkout@v4
       - name: Download Dependencies
@@ -104,7 +106,7 @@ jobs:
         run: make
       - name: Test Burn-My-Windows
         run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: result_${{ matrix.version }}_${{ matrix.session }}

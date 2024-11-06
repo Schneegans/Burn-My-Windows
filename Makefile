@@ -46,28 +46,6 @@ pot: $(JS_FILES) $(UI_FILES)
 	          --output=po/$(NAME).pot \
 	          $(JS_FILES) $(UI_FILES)
 
-# This runs several tests in containerized versions of GNOME Shell.
-test:
-	@ for version in 39 "rawhide" ; do \
-	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
-	    echo ; \
-	    echo "Running Tests on Fedora $$version ($$session)." ; \
-	    echo ; \
-	    ./tests/run-test.sh -s $$session -v $$version ; \
-	  done \
-	done
-
-# This re-generates all reference images required by the tests.
-references:
-	@ for version in 39 "rawhide" ; do \
-	  for session in "gnome-xsession" "gnome-wayland-nested" ; do \
-	    echo ; \
-	    echo "Generating References for Fedora $$version ($$session)." ; \
-	    echo ; \
-	    ./tests/generate-references.sh -s $$session -v $$version ; \
-	  done \
-	done
-
 # This removes all temporary files created with the other recipes.
 clean:
 	rm -rf $(ZIP_NAME) \
