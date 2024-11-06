@@ -24,13 +24,7 @@
 # The scripts supports two arguments:
 #
 # -v fedora_version: This determines the version of GNOME Shell to test agains.
-#                    -v 32: GNOME Shell 3.36
-#                    -v 33: GNOME Shell 3.38
-#                    -v 34: GNOME Shell 40
-#                    -v 35: GNOME Shell 41
-#                    -v 36: GNOME Shell 42
-#                    -v 37: GNOME Shell 43
-#                    -v 38: GNOME Shell 44
+#                    -v 39: GNOME Shell 45
 #                    -v rawhide: The current GNOME Shell version of Fedora Rawhide
 # -s session:        This can either be "gnome-xsession" or "gnome-wayland-nested".
 
@@ -212,6 +206,7 @@ set_setting "test-mode" true
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
+test_effect "focus"
 test_effect "glide"
 test_effect "glitch"
 test_effect "hexagon"

@@ -10,10 +10,8 @@ jobs:
   references:
     name: Generate References
     runs-on: ubuntu-22.04
-    if: >
-      github.event_name == 'push' && contains(github.event.head_commit.message, '[generate-references]')
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Download Dependencies
         run: |
           sudo apt update -qq
