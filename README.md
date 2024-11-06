@@ -192,7 +192,7 @@ Here are links to all effects which are currently available in the KDE store:
 | [Energize A](https://store.kde.org/p/1884310)  | [Energize A](https://store.kde.org/p/2133829)  |
 | [Energize B](https://store.kde.org/p/1884311)  | [Energize B](https://store.kde.org/p/2133828)  |
 | [Fire](https://store.kde.org/p/1884307)        | [Fire](https://store.kde.org/p/2133822)        |
-| [Focus - coming soon,maybe]                    | [Focus - coming soon,maybe]                    |
+| [Focus](https://store.kde.org/p/2221217)       | [Focus](https://store.kde.org/p/2221219)       |
 | [Glide](https://store.kde.org/p/1935778)       | [Glide](https://store.kde.org/p/2133839)       |
 | [Glitch](https://store.kde.org/p/1972813)      | [Glitch](https://store.kde.org/p/2133844)      |
 | [Hexagon](https://store.kde.org/p/1884309)     | [Hexagon](https://store.kde.org/p/2133836)     |
