@@ -212,6 +212,7 @@ set_setting "test-mode" true
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
+test_effect "focus"
 test_effect "glide"
 test_effect "glitch"
 test_effect "hexagon"
