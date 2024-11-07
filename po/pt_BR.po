@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: 2023-11-13 04:01+0000\n"
-"Last-Translator: Gustavo <gutojusto22@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/burn-"
-"my-windows/core/pt_BR/>\n"
+"PO-Revision-Date: 2024-11-08 14:00+0000\n"
+"Last-Translator: J Janz <weblate@jjanz.net>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -65,7 +65,7 @@ msgstr "O Papai Noel está Chegando"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "Foco"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -239,7 +239,7 @@ msgstr "Ver Papéis de Parede Correspondentes"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "Ver Hall-da-Fama de Doadores"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -519,11 +519,11 @@ msgstr "Gradiente"
 
 #: resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "Quantidade de Desfoque"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "Qualidade do Desfoque"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -585,15 +585,15 @@ msgstr "Se vários forem selecionados, um é escolhido aleatoriamente."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "Procurar…"
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "Ativar Todos"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "Desativar Todos"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
