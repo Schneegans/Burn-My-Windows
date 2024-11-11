@@ -1,0 +1,593 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Simon Schneegans
+# This file is distributed under the same license as the burn-my-windows package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: burn-my-windows\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-03 09:13+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/effects/Apparition.js:80
+msgid "Apparition"
+msgstr ""
+
+#: src/effects/BrokenGlass.js:138
+msgid "Broken Glass"
+msgstr ""
+
+#: src/effects/Doom.js:87
+msgid "Doom"
+msgstr ""
+
+#: src/effects/EnergizeA.js:74
+msgid "Energize A"
+msgstr ""
+
+#: src/effects/EnergizeB.js:75
+msgid "Energize B"
+msgstr ""
+
+#: src/effects/Fire.js:96
+msgid "Fire"
+msgstr ""
+
+#: src/effects/Fire.js:150
+msgid "Default Fire"
+msgstr ""
+
+#: src/effects/Fire.js:160
+msgid "Hell Fire"
+msgstr ""
+
+#: src/effects/Fire.js:170
+msgid "Dark and Smutty"
+msgstr ""
+
+#: src/effects/Fire.js:180
+msgid "Cold Breeze"
+msgstr ""
+
+#: src/effects/Fire.js:190
+msgid "Santa is Coming"
+msgstr ""
+
+#: src/effects/Focus.js:76
+msgid "Focus"
+msgstr ""
+
+#: src/effects/Glide.js:78
+msgid "Glide"
+msgstr ""
+
+#: src/effects/Glitch.js:80
+msgid "Glitch"
+msgstr ""
+
+#: src/effects/Hexagon.js:83
+msgid "Hexagon"
+msgstr ""
+
+#: src/effects/Incinerate.js:126
+msgid "Incinerate"
+msgstr ""
+
+#: src/effects/Matrix.js:109
+msgid "Matrix"
+msgstr ""
+
+#: src/effects/PaintBrush.js:101
+msgid "Paint Brush"
+msgstr ""
+
+#: src/effects/Pixelate.js:74
+msgid "Pixelate"
+msgstr ""
+
+#: src/effects/PixelWheel.js:74
+msgid "Pixel Wheel"
+msgstr ""
+
+#: src/effects/PixelWipe.js:100
+msgid "Pixel Wipe"
+msgstr ""
+
+#: src/effects/Portal.js:82
+msgid "Portal"
+msgstr ""
+
+#: src/effects/SnapOfDisintegration.js:110
+msgid "Snap of Disintegration"
+msgstr ""
+
+#: src/effects/TRexAttack.js:109
+msgid "T-Rex Attack"
+msgstr ""
+
+#: src/effects/TVEffect.js:73
+msgid "TV Effect"
+msgstr ""
+
+#: src/effects/TVGlitch.js:81
+msgid "TV Glitch"
+msgstr ""
+
+#: src/effects/Wisps.js:85
+msgid "Wisps"
+msgstr ""
+
+#: prefs.js:236
+msgid "Preview this effect"
+msgstr ""
+
+#: prefs.js:313
+msgid "Burn-My-Windows has been updated!"
+msgstr ""
+
+#: prefs.js:314 resources/ui/common/menus.ui:17
+msgid "View Changelog"
+msgstr ""
+
+#: prefs.js:496
+msgid "Delete this Profile?"
+msgstr ""
+
+#: prefs.js:497
+msgid ""
+"The current effect profile with all its effect settings will be permanently "
+"lost."
+msgstr ""
+
+#: prefs.js:500
+msgid "Cancel"
+msgstr ""
+
+#: prefs.js:505
+msgid "Delete"
+msgstr ""
+
+#: prefs.js:737 resources/ui/adw/prefs.ui:103
+msgid "Opening Windows"
+msgstr ""
+
+#: prefs.js:738 resources/ui/adw/prefs.ui:104
+msgid "Closing Windows"
+msgstr ""
+
+#: prefs.js:739 resources/ui/adw/prefs.ui:118
+msgid "Normal Windows"
+msgstr ""
+
+#: prefs.js:740 resources/ui/adw/prefs.ui:119
+msgid "Dialog Windows"
+msgstr ""
+
+#: prefs.js:741 resources/ui/adw/prefs.ui:133
+msgid "Default Color Scheme"
+msgstr ""
+
+#: prefs.js:742 resources/ui/adw/prefs.ui:134
+msgid "Dark Color Scheme"
+msgstr ""
+
+#: prefs.js:743 resources/ui/adw/prefs.ui:148
+msgid "On Battery"
+msgstr ""
+
+#: prefs.js:744 resources/ui/adw/prefs.ui:149
+msgid "Plugged In"
+msgstr ""
+
+#: prefs.js:745 resources/ui/adw/prefs.ui:163
+msgid "Power-Saver Mode"
+msgstr ""
+
+#: prefs.js:746 resources/ui/adw/prefs.ui:164
+msgid "Balanced Mode"
+msgstr ""
+
+#: prefs.js:747 resources/ui/adw/prefs.ui:165
+msgid "Performance Mode"
+msgstr ""
+
+#: prefs.js:748 resources/ui/adw/prefs.ui:166
+msgid "Power Saver or Balanced"
+msgstr ""
+
+#: prefs.js:749 resources/ui/adw/prefs.ui:167
+msgid "Balanced or Performance"
+msgstr ""
+
+#: prefs.js:754 resources/ui/adw/prefs.ui:183
+msgid "High Priority"
+msgstr ""
+
+#: prefs.js:760
+msgid "Standard Profile"
+msgstr ""
+
+#. Translators: %s will be replaced by the effect's name.
+#: prefs.js:840
+#, javascript-format
+msgid "Preview for %s"
+msgstr ""
+
+#: prefs.js:859
+msgid "Close this Window to Preview the Effect!"
+msgstr ""
+
+#: resources/ui/common/menus.ui:13
+msgid "Visit Homepage"
+msgstr ""
+
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr ""
+
+#: resources/ui/common/menus.ui:25
+msgid "View Donors Hall-of-Fame"
+msgstr ""
+
+#: resources/ui/common/menus.ui:31
+msgid "Donate"
+msgstr ""
+
+#: resources/ui/common/menus.ui:50
+msgid "Report a Bug"
+msgstr ""
+
+#: resources/ui/common/menus.ui:54
+msgid "Create an Effect"
+msgstr ""
+
+#: resources/ui/common/menus.ui:58
+msgid "Translate"
+msgstr ""
+
+#: resources/ui/common/menus.ui:64
+msgid "Open Effect-Profile Directory"
+msgstr ""
+
+#: resources/ui/common/menus.ui:70
+msgid "About Burn-My-Windows"
+msgstr ""
+
+#: resources/ui/common/menus.ui:81
+msgid "Add New Profile..."
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
+#: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
+#: resources/ui/adw/doom.ui:14 resources/ui/adw/paint-brush.ui:14
+#: resources/ui/adw/trex.ui:14 resources/ui/adw/wisps.ui:14
+#: resources/ui/adw/energize-b.ui:15 resources/ui/adw/pixel-wheel.ui:14
+#: resources/ui/adw/glide.ui:14 resources/ui/adw/apparition.ui:15
+#: resources/ui/adw/portal.ui:14 resources/ui/adw/incinerate.ui:14
+#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/fire.ui:30
+#: resources/ui/adw/pixel-wipe.ui:14 resources/ui/adw/snap.ui:14
+#: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
+#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
+msgid "Animation Time [ms]"
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
+#: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
+#: resources/ui/adw/broken-glass.ui:159 resources/ui/adw/tv-glitch.ui:36
+#: resources/ui/adw/tv-glitch.ui:69 resources/ui/adw/tv-glitch.ui:102
+#: resources/ui/adw/tv-glitch.ui:135 resources/ui/adw/tv-glitch.ui:160
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/doom.ui:36
+#: resources/ui/adw/doom.ui:69 resources/ui/adw/doom.ui:102
+#: resources/ui/adw/doom.ui:135 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
+#: resources/ui/adw/wisps.ui:110 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
+#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/incinerate.ui:36 resources/ui/adw/incinerate.ui:69
+#: resources/ui/adw/incinerate.ui:102 resources/ui/adw/incinerate.ui:125
+#: resources/ui/adw/incinerate.ui:150 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/fire.ui:52
+#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
+#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:199
+#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
+#: resources/ui/adw/snap.ui:36 resources/ui/adw/snap.ui:69
+#: resources/ui/adw/snap.ui:94 resources/ui/adw/focus.ui:50
+#: resources/ui/adw/focus.ui:76 resources/ui/adw/focus.ui:102
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/pixelate.ui:36
+#: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
+#: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
+msgid "Reset to Default Value"
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/tv-glitch.ui:47
+#: resources/ui/adw/glitch.ui:47 resources/ui/adw/matrix.ui:47
+#: resources/ui/adw/wisps.ui:47 resources/ui/adw/energize-b.ui:48
+#: resources/ui/adw/glide.ui:47 resources/ui/adw/incinerate.ui:47
+#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/fire.ui:63
+#: resources/ui/adw/snap.ui:47 resources/ui/adw/energize-a.ui:47
+msgid "Scale"
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr ""
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+
+#: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
+msgid "Strength"
+msgstr ""
+
+#: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
+#: resources/ui/adw/fire.ui:96
+msgid "Speed"
+msgstr ""
+
+#: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
+#: resources/ui/adw/wisps.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/portal.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/energize-a.ui:80
+#: resources/ui/adw/tv.ui:47
+msgid "Color"
+msgstr ""
+
+#: resources/ui/adw/matrix.ui:80 resources/ui/adw/apparition.ui:48
+msgid "Randomness"
+msgstr ""
+
+#: resources/ui/adw/matrix.ui:113
+msgid "Vertical Overshooting"
+msgstr ""
+
+#: resources/ui/adw/matrix.ui:146
+msgid "Trail Color"
+msgstr ""
+
+#: resources/ui/adw/matrix.ui:171
+msgid "Tip Color"
+msgstr ""
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr ""
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr ""
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
+#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
+msgid "Pixel Size"
+msgstr ""
+
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr ""
+
+#: resources/ui/adw/trex.ui:47
+msgid "Claw Scratch Scale"
+msgstr ""
+
+#: resources/ui/adw/trex.ui:80
+msgid "Claw Scratch Count"
+msgstr ""
+
+#: resources/ui/adw/trex.ui:113
+msgid "Warp Effect"
+msgstr ""
+
+#: resources/ui/adw/trex.ui:146
+msgid "Flash Color"
+msgstr ""
+
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr ""
+
+#: resources/ui/adw/glide.ui:80
+msgid "Squish"
+msgstr ""
+
+#: resources/ui/adw/glide.ui:113
+msgid "Tilt"
+msgstr ""
+
+#: resources/ui/adw/glide.ui:146
+msgid "Shift"
+msgstr ""
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr ""
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr ""
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr ""
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr ""
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr ""
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr ""
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr ""
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr ""
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr ""
+
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr ""
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr ""
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr ""
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr ""
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr ""
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:19
+msgid "Choose a Preset"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr ""
+
+#: resources/ui/adw/fire.ui:152
+msgid "Gradient"
+msgstr ""
+
+#: resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr ""
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:65
+msgid "Effect Profile Constraints"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:66
+msgid "Define when the current effect settings should be used."
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:70
+msgid "Application"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
+#: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
+#: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
+msgid "Any"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:98
+msgid "Animation Type"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:113
+msgid "Window Type"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:128
+msgid "Color Scheme"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:143
+msgid "Power Mode"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:158
+msgid "Power Profile"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:179
+msgid "Advanced Profile Options"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:184
+msgid "Use this profile even if there are better matching profiles."
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:204
+msgid "Delete this Profile..."
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:223
+msgid "Effect Selection"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:224
+msgid "If multiple are selected, one is chosen randomly."
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:235
+msgid "Search..."
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:250
+msgid "Enable All"
+msgstr ""
+
+#: resources/ui/adw/prefs.ui:256
+msgid "Disable All"
+msgstr ""
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr ""
