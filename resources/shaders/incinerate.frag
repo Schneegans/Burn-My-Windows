@@ -78,7 +78,7 @@ void main() {
   // Now we compute a 2D gradient in [0..1] which covers the entire window. The dark
   // regions will be burned first, the bright regions in the end. We mix a radial gradient
   // with some noise. The center of the radial gradient is positioned at uStartPos.
-  float circle = length(iTexCoord - uStartPos);
+  float circle = length((iTexCoord - uStartPos) * (uSize.xy / max(uSize.x, uSize.y)));
 
   vec2 uv = iTexCoord / uScale * uSize / 1.5;
   float smokeNoise =
