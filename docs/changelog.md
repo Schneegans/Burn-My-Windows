@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [unreleased]
+
+**Release Date:** TBD
+
+#### Other Changes
+
+- The fire of the Incinerate effect now propagates circularly. This makes the effect look more natural as it does not mimic the window's aspect ratio anymore. Thanks to [@rcmz](https://github.com/rcmz) for this contribution!
+
 ## [Burn My Windows 44](https://github.com/schneegans/Burn-My-Windows/releases/tag/v44)
 
 **Release Date:** 2024-11-06
