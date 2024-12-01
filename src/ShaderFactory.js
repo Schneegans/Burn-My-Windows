@@ -61,7 +61,7 @@ export default class ShaderFactory {
       // Only try to register the new type once.
       if (GObject.type_from_name(typeName) == null) {
         const outerThis = this;
-        GObject.registerClass({GTypeName: typeName}, class ShaderImp extends Shader{
+        GObject.registerClass({GTypeName: typeName}, class ShaderImp extends Shader {
           // This will actually load the GLSL source code from the resources.
           _init() {
             super._init(outerThis._nick);
