@@ -32,21 +32,25 @@
 
 // The width of the fading effect is loaded from the settings.
 
+// use 8BitStyle or not
 uniform bool u8BitStyle;
 
+//these are for the 4 point stars (or sparks)
 uniform bool uEnable4PStars;
 uniform float u4PStars;
 uniform vec4 u4PSColor;
 uniform float u4PSRotation;
 
+//these are for the Rays
 uniform bool uEnableRays;
 uniform vec4 uRaysColor;
 
+//these are for the 5 pointed stars
 uniform bool uEnable5pStars;
 uniform float uRings;
 uniform float uRingRotation;
 uniform float uStarPerRing;
-
+// and the colors they change over time
 uniform vec4 uStarColor0;
 uniform vec4 uStarColor1;
 uniform vec4 uStarColor2;
@@ -54,6 +58,7 @@ uniform vec4 uStarColor3;
 uniform vec4 uStarColor4;
 uniform vec4 uStarColor5;
 
+//helps to find the angle
 vec3 getPosByAngle(float angle)
 {
     return vec3(cos(angle), sin(angle), 0);
@@ -216,6 +221,7 @@ where x is time, and p is 2.0,4.0,8.0,10.0 ... or any positive even number
 
 }
 
+//this gives us the jerky 8bit growth effect.
 float eightBitScale(float progress)
 {
     float scale = 1.0;
@@ -258,7 +264,7 @@ float eightBitScale(float progress)
     return scale;
 }
 
-
+//use to scale the window
 vec2 scaleUV(vec2 uv, vec2 scale)
 {
   // Put texture coordinate origin to center of window.
@@ -382,61 +388,63 @@ vec4 get5PStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
 
 void main() {
 
-  //basic [0..1]
+  // Calculate the animation progress, flipping direction if opening
+  // 'uProgress' varies from 0 to 1, depending on the animation phase
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
-  //this will be our output
-  vec4 oColor = vec4(0.0,0.0,0.0,0.0);
+  // Initialize the output color to fully transparent black
+  vec4 oColor = vec4(0.0, 0.0, 0.0, 0.0);
 
-  //old 8bit style 
+  // Check if the 8-bit style is enabled
   if (u8BitStyle)
   {
+    // Scale UV coordinates using a custom 8-bit scaling function
     float scale8bit = eightBitScale(progress);
 
+    // Fetch the color based on the scaled texture coordinates
     oColor = getInputColor(
-      scaleUV(iTexCoord.st,vec2(scale8bit,scale8bit))
+      scaleUV(iTexCoord.st, vec2(scale8bit, scale8bit))
     );
-
   }
   else
   {
+    // Non-8-bit style: Calculate scaling factors using easing functions
+    vec2 scaleV2 = vec2(easeInOutSine(progress), easeInQuad(progress));
 
-    //Scale 
-    vec2 scaleV2 = vec2(easeInOutSine(progress),easeInQuad( progress ));
-
+    // Fetch the color based on the scaled texture coordinates
     oColor = getInputColor(
-      scaleUV(iTexCoord.st,scaleV2)
+      scaleUV(iTexCoord.st, scaleV2)
     );
-    float oColorAlpha = oColor.a; //saving this for later 
 
+    // Store the alpha value of the fetched color for later use
+    float oColorAlpha = oColor.a;
 
+    // Calculate the aspect ratio of the render area
     float aspect = uSize.x / uSize.y;
-    vec2 starUV = vec2(iTexCoord.s - 0.5,1.0 - iTexCoord.t) * vec2(aspect, 1.0);
 
+    // Transform UV coordinates for star effects
+    vec2 starUV = vec2(iTexCoord.s - 0.5, 1.0 - iTexCoord.t) * vec2(aspect, 1.0);
 
+    // If four-point stars are enabled, overlay them on the current color
     if (uEnable4PStars)
     {
-      oColor = alphaOver(oColor,get4pStars(starUV,progress));
+      oColor = alphaOver(oColor, get4pStars(starUV, progress));
     }
 
+    // If rays are enabled, overlay them on the current color
     if (uEnableRays)
     {
-      oColor = alphaOver(oColor,getRays(progress));
+      oColor = alphaOver(oColor, getRays(progress));
     }
 
-
+    // If five-point stars are enabled, overlay them using stored alpha
     if (uEnable5pStars)
     {
-      oColor = alphaOver(oColor,get5PStars(starUV,aspect,progress,oColorAlpha));
+      oColor = alphaOver(oColor, get5PStars(starUV, aspect, progress, oColorAlpha));
     }
-
   }
 
-
-
-  
+  // Set the final output color to the computed value
   setOutputColor(oColor);
-
-  
 
 }
