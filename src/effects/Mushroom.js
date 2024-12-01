@@ -133,7 +133,7 @@ export default class Effect {
     dialog.bindColorButton('mushroom-star-color-3');
     dialog.bindColorButton('mushroom-star-color-4');
     dialog.bindColorButton('mushroom-star-color-5');
-    // dialog.bindColorButton('star-color-6');
+
     dialog.bindSwitch('mushroom-4pstars-enable');
     dialog.bindAdjustment('mushroom-4pstars-count');
     dialog.bindColorButton('mushroom-4pstars-color');
@@ -147,13 +147,15 @@ export default class Effect {
     dialog.bindAdjustment('mushroom-5pstarring-rotation');
     dialog.bindAdjustment('mushroom-5pstars-count');
 
-
-    // Connect the buttons only once. The bindPreferences can be called multiple times...
+    // Ensure the button connections and other bindings happen only once,
+    // even if the bindPreferences function is called multiple times.
     if (!Effect._isConnected) {
       Effect._isConnected = true;
 
-      // The star-gradient-reset button needs to be bound explicitly.
+      // Bind the "reset-star-colors" button to reset all star colors to their default
+      // values.
       dialog.getBuilder().get_object('reset-star-colors').connect('clicked', () => {
+        // Reset each mushroom star color setting.
         dialog.getProfileSettings().reset('mushroom-star-color-0');
         dialog.getProfileSettings().reset('mushroom-star-color-1');
         dialog.getProfileSettings().reset('mushroom-star-color-2');
@@ -162,10 +164,13 @@ export default class Effect {
         dialog.getProfileSettings().reset('mushroom-star-color-5');
       });
 
+      // Initialize the preset dropdown menu for mushroom star colors.
       Effect._createMushroomPresets(dialog);
 
-      // enables and disables prefs
+      // Function to enable or disable specific preferences based on the state.
+      // If `state` is true, the preferences are disabled; if false, they are enabled.
       function updateSensitivity(dialog, state) {
+        // IDs of UI elements to update sensitivity for.
         const ids = [
           'mushroom-4pstars-enable', 'mushroom-4pstars-count-scale',
           'mushroom-4pstars-color', 'mushroom-4pstars-rotation-scale',
@@ -177,31 +182,36 @@ export default class Effect {
           'mushroom-star-color-preset-button'
         ];
 
+        // Iterate over each ID, update sensitivity if the object supports the method.
         ids.forEach(id => {
           const obj = dialog.getBuilder().get_object(id);
-
           if (obj && typeof obj.set_sensitive === 'function') {
-            obj.set_sensitive(!state);  // Disable if state is ON, enable if OFF
+            obj.set_sensitive(!state);  // Disable if state is true, enable if false.
           } else {
+            // Log a warning if the object is null or doesn't support set_sensitive.
             log(`Warning: Object with ID '${
               id}' does not support set_sensitive or is null.`);
           }
         });
       }
 
-      // Connect the state-set signal to 8BitSwitch
+      // Get the "mushroom-8bit-enable" switch widget to toggle sensitivity of
+      // preferences.
       const switchWidget = dialog.getBuilder().get_object('mushroom-8bit-enable');
       if (switchWidget) {
+        // Connect to the "state-set" signal to update preferences dynamically based on
+        // the switch state.
         switchWidget.connect('state-set', (widget, state) => {
-          updateSensitivity(dialog,
-                            state);  // Call the function when the signal is triggered
+          updateSensitivity(dialog, state);  // Update sensitivity when the state changes.
         });
 
-        // Call the function manually on startup, based on the initial state of the switch
+        // Manually call the update function on startup, using the initial state of the
+        // switch.
         const initialState =
-          switchWidget.get_active();  // Get the initial state of the switch
+          switchWidget.get_active();  // Get the current state of the switch.
         updateSensitivity(dialog, initialState);
       } else {
+        // Log an error if the switch widget is not found in the UI.
         log('Error: \'mushroom-8bit-enable\' switch widget not found.');
       }
     }
@@ -218,14 +228,21 @@ export default class Effect {
 
   // ---------------------------------------------------------------- Presets
 
-  // This populates the preset dropdown menu for the fire options.
+  // This function initializes the preset dropdown menu for configuring fire options.
+  // It defines multiple color presets for the "mushroom star" effect and sets up
+  // the logic to apply these presets when selected.
+
   static _createMushroomPresets(dialog) {
+    // Retrieve the builder object for the dialog and connect to the "realize" event of
+    // the button.
     dialog.getBuilder()
       .get_object('mushroom-star-color-preset-button')
       .connect('realize', (widget) => {
+        // Define an array of color presets, each with a name and six color values (RGBA
+        // format).
         const presets = [
           {
-            name: _('Default Colors'),
+            name: _('Default Colors'),  // Default yellow-green-to-cyan palette
             color0: 'rgba(233,249,0,1.0)',
             color1: 'rgba(233,249,0,1.0)',
             color2: 'rgba(91,255,0,1.0)',
@@ -234,7 +251,7 @@ export default class Effect {
             color5: 'rgba(0,240,236,1.0)',
           },
           {
-            name: _('Red White and Blue'),
+            name: _('Red White and Blue'),  // A patriotic palette of red, white, and blue
             color0: 'rgba(255, 0, 0, 1.0)',
             color1: 'rgba(255, 0, 0, 1.0)',
             color2: 'rgba(255,255,255, 1.0)',
@@ -243,7 +260,7 @@ export default class Effect {
             color5: 'rgba(0,0,255, 1.0)'
           },
           {
-            name: _('Rainbow'),
+            name: _('Rainbow'),                 // A vivid rainbow spectrum of colors
             color0: 'rgba(255, 69, 58, 1.0)',   // Bold Red
             color1: 'rgba(255, 140, 0, 1.0)',   // Bold Orange
             color2: 'rgba(255, 223, 0, 1.0)',   // Bold Yellow
@@ -252,7 +269,8 @@ export default class Effect {
             color5: 'rgba(148, 0, 211, 1.0)'    // Bold Purple
           },
           {
-            name: _('Cattuccino Colors'),
+            name: _('Cattuccino Colors'),  // A soft pastel palette inspired by a
+                                           // cappuccino theme
             color0: 'rgba(239, 146, 160, 1.0)',
             color1: 'rgba(246, 178, 138, 1.0)',
             color2: 'rgba(240, 217, 169, 1.0)',
@@ -261,27 +279,35 @@ export default class Effect {
             color5: 'rgba(205, 170, 247, 1.0)'
           },
           {
-            name: _('Dracula Colors'),
-            color0: 'rgba(40, 42, 54, 1.0)',   // Red
-            color1: 'rgba(68, 71, 90, 1.0)',   // Orange
-            color2: 'rgba(90, 94, 119, 1.0)',  // Yellow
-            color3: 'rgba(90, 94, 119, 1.0)',  // Green
-            color4: 'rgba(68, 71, 90, 1.0)',   // Purple
-            color5: 'rgba(40, 42, 54, 1.0)'    // Cyan
+            name: _('Dracula Colors'),  // A dark palette inspired by the Dracula theme
+            color0: 'rgba(40, 42, 54, 1.0)',   // Dark Grey
+            color1: 'rgba(68, 71, 90, 1.0)',   // Medium Grey
+            color2: 'rgba(90, 94, 119, 1.0)',  // Light Grey
+            color3: 'rgba(90, 94, 119, 1.0)',  // Light Grey
+            color4: 'rgba(68, 71, 90, 1.0)',   // Medium Grey
+            color5: 'rgba(40, 42, 54, 1.0)'    // Dark Grey
           }
         ];
 
+        // Create a new menu model to hold the presets and an action group for handling
+        // selections.
         const menu      = Gio.Menu.new();
         const group     = Gio.SimpleActionGroup.new();
         const groupName = 'presets';
 
-        // Add all presets.
+        // Iterate over the presets to populate the menu.
         presets.forEach((preset, i) => {
+          // Define an action name based on the preset index.
           const actionName = 'mushroom' + i;
+
+          // Append the preset name to the menu.
           menu.append(preset.name, groupName + '.' + actionName);
+
+          // Create a new action for the preset.
           let action = Gio.SimpleAction.new(actionName, null);
 
-          // Load the preset on activation.
+          // Connect the action to a function that loads the preset colors into the
+          // dialog.
           action.connect('activate', () => {
             dialog.getProfileSettings().set_string('mushroom-star-color-0',
                                                    preset.color0);
@@ -297,13 +323,16 @@ export default class Effect {
                                                    preset.color5);
           });
 
+          // Add the action to the action group.
           group.add_action(action);
         });
 
+        // Assign the populated menu to the preset button.
         dialog.getBuilder()
           .get_object('mushroom-star-color-preset-button')
           .set_menu_model(menu);
 
+        // Insert the action group into the root widget for handling the presets.
         const root = widget.get_root();
         root.insert_action_group(groupName, group);
       });

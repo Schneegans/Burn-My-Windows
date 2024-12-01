@@ -217,89 +217,102 @@ Below are text-based "graphs" of some easing functions, where the horizontal axi
 */
 
 
+// Quadratic Easing
+// Smooth acceleration and deceleration using quadratic (t^2) curves.
+
 float easeInOutQuad(float t) {
+    // Accelerates for the first half, decelerates for the second half.
     return t < 0.5 ? 2.0 * t * t : -1.0 + (4.0 - 2.0 * t) * t;
 }
 
 // Cubic Easing
+// Smoother transitions compared to quadratic easing using cubic (t^3) curves.
+
 float easeInCubic(float t) {
+    // Starts slow and accelerates as t increases.
     return t * t * t;
 }
 
 float easeOutCubic(float t) {
+    // Starts fast and decelerates as t approaches 1.0.
     float f = t - 1.0;
     return f * f * f + 1.0;
 }
 
 float easeInOutCubic(float t) {
+    // Combines easeIn and easeOut cubic behavior for smooth transitions.
     return t < 0.5 ? 4.0 * t * t * t : (t - 1.0) * (2.0 * t - 2.0) * (2.0 * t - 2.0) + 1.0;
 }
 
 // Quartic Easing
+// Even smoother transitions than cubic, using quartic (t^4) curves.
+
 float easeInQuart(float t) {
+    // Starts very slow and accelerates steeply.
     return t * t * t * t;
 }
 
 float easeOutQuart(float t) {
+    // Starts steeply and slows down dramatically.
     float f = t - 1.0;
     return 1.0 - f * f * f * f;
 }
 
 float easeInOutQuart(float t) {
+    // Combines easeIn and easeOut quartic behavior for very smooth transitions.
     return t < 0.5 ? 8.0 * t * t * t * t : 1.0 - 8.0 * (t - 1.0) * (t - 1.0) * (t - 1.0) * (t - 1.0);
 }
 
 // Sine Easing
+// Smooth, wave-like acceleration and deceleration using sine curves.
+
 float easeInSine(float t) {
+    // Starts very slow, following a sine wave curve.
     return 1.0 - cos((t * 3.141592653589793) / 2.0);
 }
 
 float easeOutSine(float t) {
+    // Starts fast and slows down following a sine wave curve.
     return sin((t * 3.141592653589793) / 2.0);
 }
 
 float easeInOutSine(float t) {
+    // Smooth start and end, mimicking half a sine wave.
     return -0.5 * (cos(3.141592653589793 * t) - 1.0);
 }
 
 // Exponential Easing
+// Sharp transitions with rapid acceleration and deceleration.
+
 float easeInExpo(float t) {
+    // Very slow start, accelerates exponentially.
     return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
 }
 
 float easeOutExpo(float t) {
+    // Starts fast and slows down exponentially.
     return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
 }
 
 float easeInOutExpo(float t) {
+    // Combines easeIn and easeOut exponential for sharp transitions.
     if (t == 0.0) return 0.0;
     if (t == 1.0) return 1.0;
     return t < 0.5 ? 0.5 * pow(2.0, 20.0 * t - 10.0) : 1.0 - 0.5 * pow(2.0, -20.0 * t + 10.0);
 }
 
 // Back Easing
-/*
-float easeInBack(float t) {
-    const float c1 = 1.70158;
-    return (c1 + 1.0) * t * t * t - c1 * t * t;
-}
-*/
-
-/*
-float easeOutBack(float t) {
-    const float c1 = 1.70158;
-    float f = t - 1.0;
-    return 1.0 + (c1 + 1.0) * f * f * f + c1 * f * f;
-}
-*/
+// Creates an overshooting effect for more dynamic animations.
 
 float easeInOutBack(float t) {
+    // Uses constants to define the overshooting magnitude.
     const float c1 = 1.70158;
     const float c2 = c1 * 1.525;
     return t < 0.5
         ? (pow(2.0 * t, 2.0) * ((c2 + 1.0) * 2.0 * t - c2)) / 2.0
         : (pow(2.0 * t - 2.0, 2.0) * ((c2 + 1.0) * (t * 2.0 - 2.0) + c2) + 2.0) / 2.0;
 }
+
 
 
 // --------------------------------------------------------------------- edge mask helpers
@@ -594,21 +607,29 @@ This ensures a linear transformation from the old range to the new range.
 */
 
 // Remap for float
+// Maps a float value from one range [oldMin, oldMax] to another range [newMin, newMax].
+// This is useful for normalizing or scaling scalar values to fit within a desired range.
 float remap(float value, float oldMin, float oldMax, float newMin, float newMax) {
     return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
 }
 
 // Remap for vec2
+// Maps a 2D vector (vec2) from one range [oldMin, oldMax] to another range [newMin, newMax].
+// Each component of the vec2 is individually scaled and transformed.
 vec2 remap(vec2 value, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax) {
     return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
 }
 
 // Remap for vec3
+// Maps a 3D vector (vec3) from one range [oldMin, oldMax] to another range [newMin, newMax].
+// Each component of the vec3 is individually scaled and transformed.
 vec3 remap(vec3 value, vec3 oldMin, vec3 oldMax, vec3 newMin, vec3 newMax) {
     return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
 }
 
 // Remap for vec4
+// Maps a 4D vector (vec4) from one range [oldMin, oldMax] to another range [newMin, newMax].
+// Each component of the vec4 is individually scaled and transformed.
 vec4 remap(vec4 value, vec4 oldMin, vec4 oldMax, vec4 newMin, vec4 newMax) {
     return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
 }
