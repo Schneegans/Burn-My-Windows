@@ -44,7 +44,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
-
+import Mushroom from './src/effects/Mushroom.js';
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
@@ -78,7 +78,7 @@ export default class BurnMyWindows extends Extension {
       new PaintBrush(), new Pixelate(),    new PixelWheel(),
       new PixelWipe(),  new Portal(),      new SnapOfDisintegration(),
       new TRexAttack(), new TVEffect(),    new TVGlitch(),
-      new Wisps(),
+      new Wisps(),      new Mushroom(),
     ];
 
     // Load all of our resources.

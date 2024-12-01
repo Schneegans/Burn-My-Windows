@@ -41,6 +41,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi.                                                                                      | <img src ="docs/pics/hexagon.gif" />                                                  |
 | **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect.                                                                                              | <img src ="docs/pics/incinerate.gif" />                                               |
 | **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.                                                                             | <img src ="docs/pics/matrix.gif" />                                                   |
+| **Mushroom** <br> Inspired by your favorite italian plumber!                                                                                                                      | <img src ="docs/pics/mushroom.gif" />                                                 |
 | **Paint Brush** <br> Paint or erase your windows with a thick paint brush.                                                                                                        | <img src ="docs/pics/paint-brush.gif" />                                              |
 | **Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.                                                                                 | <img src ="docs/pics/pixelate.gif" />                                                 |
 | **Pixel Wheel** <br> This simple effect pixelates the window and hides the pixels in a wheel-like fashion.                                                                        | <img src ="docs/pics/pixel-wheel.gif" />                                              |
@@ -77,6 +78,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
+<tr><td>Mushroom</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>✅</tr>
 <tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>

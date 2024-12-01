@@ -202,6 +202,107 @@ float easeOutBack(float x, float e) {
   return p * p * ((e + 1.0) * p + e) + 1.0;
 }
 
+
+// https://easings.net/
+
+// Quadratic Easing
+/*
+float easeInQuad(float t) {
+    return t * t;
+}
+*/
+
+/*
+float easeOutQuad(float t) {
+    return t * (2.0 - t);
+}
+*/
+
+float easeInOutQuad(float t) {
+    return t < 0.5 ? 2.0 * t * t : -1.0 + (4.0 - 2.0 * t) * t;
+}
+
+// Cubic Easing
+float easeInCubic(float t) {
+    return t * t * t;
+}
+
+float easeOutCubic(float t) {
+    float f = t - 1.0;
+    return f * f * f + 1.0;
+}
+
+float easeInOutCubic(float t) {
+    return t < 0.5 ? 4.0 * t * t * t : (t - 1.0) * (2.0 * t - 2.0) * (2.0 * t - 2.0) + 1.0;
+}
+
+// Quartic Easing
+float easeInQuart(float t) {
+    return t * t * t * t;
+}
+
+float easeOutQuart(float t) {
+    float f = t - 1.0;
+    return 1.0 - f * f * f * f;
+}
+
+float easeInOutQuart(float t) {
+    return t < 0.5 ? 8.0 * t * t * t * t : 1.0 - 8.0 * (t - 1.0) * (t - 1.0) * (t - 1.0) * (t - 1.0);
+}
+
+// Sine Easing
+float easeInSine(float t) {
+    return 1.0 - cos((t * 3.141592653589793) / 2.0);
+}
+
+float easeOutSine(float t) {
+    return sin((t * 3.141592653589793) / 2.0);
+}
+
+float easeInOutSine(float t) {
+    return -0.5 * (cos(3.141592653589793 * t) - 1.0);
+}
+
+// Exponential Easing
+float easeInExpo(float t) {
+    return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
+}
+
+float easeOutExpo(float t) {
+    return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
+}
+
+float easeInOutExpo(float t) {
+    if (t == 0.0) return 0.0;
+    if (t == 1.0) return 1.0;
+    return t < 0.5 ? 0.5 * pow(2.0, 20.0 * t - 10.0) : 1.0 - 0.5 * pow(2.0, -20.0 * t + 10.0);
+}
+
+// Back Easing
+/*
+float easeInBack(float t) {
+    const float c1 = 1.70158;
+    return (c1 + 1.0) * t * t * t - c1 * t * t;
+}
+*/
+
+/*
+float easeOutBack(float t) {
+    const float c1 = 1.70158;
+    float f = t - 1.0;
+    return 1.0 + (c1 + 1.0) * f * f * f + c1 * f * f;
+}
+*/
+
+float easeInOutBack(float t) {
+    const float c1 = 1.70158;
+    const float c2 = c1 * 1.525;
+    return t < 0.5
+        ? (pow(2.0 * t, 2.0) * ((c2 + 1.0) * 2.0 * t - c2)) / 2.0
+        : (pow(2.0 * t - 2.0, 2.0) * ((c2 + 1.0) * (t * 2.0 - 2.0) + c2) + 2.0) / 2.0;
+}
+
+
 // --------------------------------------------------------------------- edge mask helpers
 
 // This method returns a mask which smoothly transitions towards zero when approaching
@@ -469,4 +570,27 @@ float simplex3DFractal(vec3 m) {
 
   return 0.5333333 * simplex3D(m * rot1) + 0.2666667 * simplex3D(2.0 * m * rot2) +
          0.1333333 * simplex3D(4.0 * m * rot3) + 0.0666667 * simplex3D(8.0 * m);
+}
+
+
+// --------------------------------------------------------------------------------- remap 
+
+// Remap for float
+float remap(float value, float oldMin, float oldMax, float newMin, float newMax) {
+    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+}
+
+// Remap for vec2
+vec2 remap(vec2 value, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax) {
+    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+}
+
+// Remap for vec3
+vec3 remap(vec3 value, vec3 oldMin, vec3 oldMax, vec3 newMin, vec3 newMax) {
+    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+}
+
+// Remap for vec4
+vec4 remap(vec4 value, vec4 oldMin, vec4 oldMax, vec4 newMin, vec4 newMax) {
+    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
 }
