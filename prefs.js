@@ -35,6 +35,7 @@ import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
 import Matrix from './src/effects/Matrix.js';
+import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
 import Pixelate from './src/effects/Pixelate.js';
 import PixelWheel from './src/effects/PixelWheel.js';
@@ -71,10 +72,29 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      Apparition, BrokenGlass, Doom,       EnergizeA, EnergizeB,  Fire,
-      Focus,      Glide,       Glitch,     Hexagon,   Incinerate, Matrix,
-      PaintBrush, Pixelate,    PixelWheel, PixelWipe, Portal,     SnapOfDisintegration,
-      TRexAttack, TVEffect,    TVGlitch,   Wisps,
+      Apparition,
+      BrokenGlass,
+      Doom,
+      EnergizeA,
+      EnergizeB,
+      Fire,
+      Focus,
+      Glide,
+      Glitch,
+      Hexagon,
+      Incinerate,
+      Matrix,
+      Mushroom,
+      PaintBrush,
+      Pixelate,
+      PixelWheel,
+      PixelWipe,
+      Portal,
+      SnapOfDisintegration,
+      TRexAttack,
+      TVEffect,
+      TVGlitch,
+      Wisps,
     ];
 
 

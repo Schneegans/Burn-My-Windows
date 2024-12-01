@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Justin Garza JGarza9788@gmail.com
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+
+  <!-- Main container for the mushroom preferences section -->
+  <object class="AdwExpanderRow" id="mushroom-prefs">
+
+    <!-- Animation Time Adjustment Section -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the animation time adjustment slider -->
+        <property name="title" translatable="yes">Animation Time [ms]</property>
+        <child>
+          <!-- Slider for adjusting animation duration -->
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property> <!-- Display the current value -->
+            <property name="digits">0</property> <!-- Number of decimal places -->
+            <property name="value-pos">left</property> <!-- Position of the displayed value -->
+            <property name="width-request">300</property> <!-- Width of the slider -->
+            <!-- Adjustment settings for the slider -->
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="mushroom-animation-time">
+                <property name="upper">5000</property> <!-- Maximum value -->
+                <property name="lower">100</property> <!-- Minimum value -->
+                <property name="step-increment">10</property> <!-- Smallest increment -->
+                <property name="page-increment">100</property> <!-- Larger increment -->
+              </object>
+            </property>
+          </object>
+        </child>
+        <!-- Button to reset animation time to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-animation-time">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" /> <!-- Flat button style -->
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- 8Bit Style Toggle Section -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title and description for 8Bit style toggle -->
+        <property name="title" translatable="yes">8Bit Style</property>
+        <property name="subtitle" translatable="yes">If ON an old 8Bit Style will be used</property>
+        <!-- Toggle switch for enabling or disabling 8Bit style -->
+        <property name="activatable-widget">mushroom-8bit-enable</property>
+        <child>
+          <object class="GtkSwitch" id="mushroom-8bit-enable">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <!-- Button to reset the 8Bit style toggle to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-8bit-enable">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Toggle for showing 4-Point Stars (Sparks) -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for enabling or disabling 4-point stars -->
+        <property name="title" translatable="yes">Show 4Point Stars (Sparks)</property>
+        <!-- Switch for toggling visibility of 4-point stars -->
+        <property name="activatable-widget">mushroom-4pstars-enable</property>
+        <child>
+          <object class="GtkSwitch" id="mushroom-4pstars-enable">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <!-- Button to reset 4-point stars visibility to default -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-4pstars-enable">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Adjustment for 4-Point Stars Count -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the slider controlling the count of 4-point stars -->
+        <property name="title" translatable="yes">4Point Star (Sparks) Count</property>
+        <!-- Slider for adjusting the count of 4-point stars -->
+        <child>
+          <object class="GtkScale" id="mushroom-4pstars-count-scale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <!-- Adjustment settings for the slider -->
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="mushroom-4pstars-count">
+                <property name="upper">100</property> <!-- Maximum count -->
+                <property name="lower">0</property> <!-- Minimum count -->
+                <property name="step-increment">1</property> <!-- Step size -->
+                <property name="page-increment">5</property> <!-- Page increment size -->
+              </object>
+            </property>
+          </object>
+        </child>
+        <!-- Button to reset 4-point stars count to default -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-4pstars-count">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Color Picker for 4-Point Stars -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the 4-point stars color picker -->
+        <property name="title" translatable="yes">4Point Star (Sparks) Color</property>
+        <!-- Color picker for customizing the 4-point stars -->
+        <child>
+          <object class="GtkBox">
+            <style>
+              <class name="linked" />
+            </style>
+            <child>
+              <object class="GtkColorButton" id="mushroom-4pstars-color">
+                <property name="use_alpha">1</property> <!-- Enable alpha channel -->
+                <property name="show_editor">1</property> <!-- Show advanced editor -->
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Button to reset the color picker to default -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-4pstars-color">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Rays Toggle -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for enabling or disabling rays -->
+        <property name="title" translatable="yes">Show Rays</property>
+        <!-- Toggle switch for controlling the visibility of rays -->
+        <property name="activatable-widget">mushroom-rays-enable</property>
+        <child>
+          <object class="GtkSwitch" id="mushroom-rays-enable">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <!-- Button to reset the rays toggle to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-rays-enable">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Rays Color Picker -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the rays color picker -->
+        <property name="title" translatable="yes">Rays Color</property>
+        <!-- Color picker for customizing rays -->
+        <child>
+          <object class="GtkBox">
+            <style>
+              <class name="linked" />
+            </style>
+            <child>
+              <object class="GtkColorButton" id="mushroom-rays-color">
+                <property name="use_alpha">1</property> <!-- Enable alpha channel -->
+                <property name="show_editor">1</property> <!-- Show advanced editor -->
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Button to reset the rays color picker to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-rays-color">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Star Rings Toggle -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for enabling or disabling star rings -->
+        <property name="title" translatable="yes">Show Star Rings</property>
+        <!-- Toggle switch for controlling the visibility of star rings -->
+        <property name="activatable-widget">mushroom-5pstars-enable</property>
+        <child>
+          <object class="GtkSwitch" id="mushroom-5pstars-enable">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <!-- Button to reset the star rings toggle to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-5pstars-enable">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Star Rings Count Adjustment -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the slider controlling the number of star rings -->
+        <property name="title" translatable="yes">Star Rings Count</property>
+        <!-- Slider for adjusting the number of star rings -->
+        <child>
+          <object class="GtkScale" id="mushroom-5pstarring-count-scale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <!-- Adjustment settings for the slider -->
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="mushroom-5pstarring-count">
+                <property name="upper">10</property> <!-- Maximum count -->
+                <property name="lower">1</property> <!-- Minimum count -->
+                <property name="step-increment">1</property> <!-- Step size -->
+                <property name="page-increment">3</property> <!-- Page increment size -->
+              </object>
+            </property>
+          </object>
+        </child>
+        <!-- Button to reset the star rings count to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-5pstarring-count">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Star Rings Rotation Adjustment -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the slider controlling the rotation of star rings -->
+        <property name="title" translatable="yes">Star Ring Rotation</property>
+        <!-- Slider for adjusting the rotation of star rings -->
+        <child>
+          <object class="GtkScale" id="mushroom-5pstarring-rotation-scale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <!-- Adjustment settings for the slider -->
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="mushroom-5pstarring-rotation">
+                <property name="upper">5.0</property> <!-- Maximum rotation -->
+                <property name="lower">-5.0</property> <!-- Minimum rotation -->
+                <property name="step-increment">0.25</property> <!-- Step size -->
+                <property name="page-increment">1.0</property> <!-- Page increment size -->
+              </object>
+            </property>
+          </object>
+        </child>
+        <!-- Button to reset the star rings rotation to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-5pstarring-rotation">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Stars Per Star Ring Count Adjustment -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the slider controlling the number of stars per ring -->
+        <property name="title" translatable="yes">Stars Per Star Ring Count</property>
+        <!-- Slider for adjusting the number of stars per star ring -->
+        <child>
+          <object class="GtkScale" id="mushroom-5pstars-count-scale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <!-- Adjustment settings for the slider -->
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="mushroom-5pstars-count">
+                <property name="upper">10</property> <!-- Maximum stars per ring -->
+                <property name="lower">1</property> <!-- Minimum stars per ring -->
+                <property name="step-increment">1</property> <!-- Step size -->
+                <property name="page-increment">3</property> <!-- Page increment size -->
+              </object>
+            </property>
+          </object>
+        </child>
+        <!-- Button to reset the stars per ring count to its default value -->
+        <child>
+          <object class="GtkButton" id="reset-mushroom-5pstars-count">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Star Color Presets -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for selecting color presets -->
+        <property name="title" translatable="yes">Color Presets</property>
+        <property name="activatable-widget">mushroom-star-color-preset-button</property>
+        <!-- Dropdown menu for selecting predefined color presets -->
+        <child>
+          <object class="GtkMenuButton" id="mushroom-star-color-preset-button">
+            <property name="valign">center</property>
+            <property name="label" translatable="yes">Choose a Preset</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Star Gradient Color Adjustment -->
+    <child>
+      <object class="AdwActionRow">
+        <!-- Title for the star gradient color settings -->
+        <property name="title" translatable="yes">Star Gradient</property>
+        <!-- Box containing multiple color pickers for gradient customization -->
+        <child>
+          <object class="GtkBox">
+            <style>
+              <class name="linked" />
+            </style>
+            <!-- Individual color pickers for each gradient step -->
+            <child>
+              <object class="GtkColorButton" id="mushroom-star-color-0">
+                <property name="use_alpha">1</property> <!-- Enable alpha channel -->
+                <property name="show_editor">1</property> <!-- Show advanced editor -->
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="mushroom-star-color-1">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="mushroom-star-color-2">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="mushroom-star-color-3">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="mushroom-star-color-4">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="mushroom-star-color-5">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <!-- Button to reset all star gradient colors to their default values -->
+        <child>
+          <object class="GtkButton" id="reset-star-colors">
+            <property name="icon-name">edit-clear-symbolic</property> <!-- Reset icon -->
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </object>
+
+
+</interface>
