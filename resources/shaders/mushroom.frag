@@ -382,11 +382,13 @@ vec4 get5PStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
 
 void main() {
 
-
+  //basic [0..1]
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
+  //this will be our output
   vec4 oColor = vec4(0.0,0.0,0.0,0.0);
 
+  //old 8bit style 
   if (u8BitStyle)
   {
     float scale8bit = eightBitScale(progress);

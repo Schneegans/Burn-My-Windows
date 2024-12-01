@@ -30,17 +30,6 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-
-// Ease-in-out cubic for alpha
-float easeInOutCubic(float x) {
-    return x < 0.5 ? 4.0 * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 3.0) / 2.0;
-}
-
-// Ease-in-out sine for blur
-float easeInOutSine(float x) {
-    return -(cos(3.14159265 * x) - 1.0) / 2.0;
-}
-
 // A simple blur function
 vec4 blur(vec2 uv, float radius, float samples) {
   vec4 color = vec4(0.0);

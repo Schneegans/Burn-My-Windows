@@ -204,19 +204,18 @@ float easeOutBack(float x, float e) {
 
 
 // https://easings.net/
-
-// Quadratic Easing
 /*
-float easeInQuad(float t) {
-    return t * t;
-}
+Easing functions define the rate of change of a parameter over time, commonly used in animations, UI transitions, and game development. They provide a way to make movements more natural or visually appealing rather than linear and mechanical. Popular categories of easing functions include:
+
+Linear: Constant speed from start to finish.
+Quadratic (Ease In, Ease Out, Ease In Out): Changes at varying rates, with smoother starts or stops.
+Cubic: Similar to quadratic but allows for even more nuanced transitions.
+Exponential: Drastic changes at the start or end, often used for dramatic effects.
+Bounce: Mimics a bouncing object with oscillations.
+Elastic: Simulates the behavior of a spring, with overshooting and oscillations.
+Below are text-based "graphs" of some easing functions, where the horizontal axis represents time and the vertical axis represents progress.
 */
 
-/*
-float easeOutQuad(float t) {
-    return t * (2.0 - t);
-}
-*/
 
 float easeInOutQuad(float t) {
     return t < 0.5 ? 2.0 * t * t : -1.0 + (4.0 - 2.0 * t) * t;
@@ -574,6 +573,25 @@ float simplex3DFractal(vec3 m) {
 
 
 // --------------------------------------------------------------------------------- remap 
+
+
+/*
+These functions remap a given value from one range to another. 
+The remap operation is particularly useful in shader programming 
+to scale or normalize data, ensuring compatibility across various 
+input ranges. Each version of the remap function supports a 
+different data type:
+
+1. float: Remap a single scalar value.
+2. vec2: Remap a 2D vector.
+3. vec3: Remap a 3D vector.
+4. vec4: Remap a 4D vector.
+
+The general formula used is:
+    newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin)
+
+This ensures a linear transformation from the old range to the new range.
+*/
 
 // Remap for float
 float remap(float value, float oldMin, float oldMax, float newMin, float newMax) {
