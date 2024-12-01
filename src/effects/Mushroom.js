@@ -529,5 +529,4 @@ This code is a well-structured implementation of a GNOME Shell effect. It blends
 shader-based graphics with retro gaming aesthetics, offering customization through
 user-friendly settings. The modular approach makes it easy to extend and maintain.
 
-
 */
