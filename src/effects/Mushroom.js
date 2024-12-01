@@ -308,6 +308,4 @@ export default class Effect {
         root.insert_action_group(groupName, group);
       });
   }
-
-  
 }
