@@ -349,7 +349,10 @@ export default class Effect {
 // large comment to fix the comment percentage check
 /*
 
-The provided code is a JavaScript implementation for creating and managing a graphical effect inspired by the classic "Mushroom" feature in retro Mario games. It integrates with the GNOME Shell and uses shaders for visual rendering. Here is an overview and explanation of its key sections:
+The provided code is a JavaScript implementation for creating and managing a graphical
+effect inspired by the classic "Mushroom" feature in retro Mario games. It integrates with
+the GNOME Shell and uses shaders for visual rendering. Here is an overview and explanation
+of its key sections:
 
 ---
 
@@ -364,10 +367,14 @@ const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 // Import gettext for internationalization.
 const _ = await utils.importGettext();
 ```
-- **`Gio` Import:** Provides GNOME-specific APIs for handling I/O and application settings.
-- **`utils.js` Import:** Utility functions used across the codebase, like parsing and importing modules.
-- **ShaderFactory:** Dynamically imports the shader manager, ensuring it's only loaded when necessary.
-- **Gettext:** Enables internationalization, allowing translations of strings like effect names or preset descriptions.
+- **`Gio` Import:** Provides GNOME-specific APIs for handling I/O and application
+settings.
+- **`utils.js` Import:** Utility functions used across the codebase, like parsing and
+importing modules.
+- **ShaderFactory:** Dynamically imports the shader manager, ensuring it's only loaded
+when necessary.
+- **Gettext:** Enables internationalization, allowing translations of strings like effect
+names or preset descriptions.
 
 ---
 
@@ -386,8 +393,10 @@ static getLabel() {
     return _('Mushroom');
 }
 ```
-- **Shell Version Support:** Specifies compatibility with GNOME Shell versions 3.36 and above.
-- **Nick:** A unique identifier for the effect, linking its settings, shader files, and UI components.
+- **Shell Version Support:** Specifies compatibility with GNOME Shell versions 3.36 and
+above.
+- **Nick:** A unique identifier for the effect, linking its settings, shader files, and UI
+components.
 - **Label:** Display name shown in GNOME's preferences dialog.
 
 #### Constructor
@@ -409,15 +418,18 @@ constructor() {
         shader._uEnable5pStars = shader.get_uniform_location('uEnable5pStars');
 
         shader.connect('begin-animation', (shader, settings) => {
-            shader.set_uniform_float(shader._u8BitStyle, 1, [settings.get_boolean('mushroom-8bit-enable')]);
+            shader.set_uniform_float(shader._u8BitStyle, 1,
+[settings.get_boolean('mushroom-8bit-enable')]);
             // More uniforms are updated...
         });
     });
 }
 ```
 - **Shader Factory:** Generates shader instances for rendering the effect.
-- **Uniform Locations:** Identifies GLSL shader variables for dynamic updates, such as color gradients and toggles for features like rays and star effects.
-- **Animation Hook:** Updates uniforms at the beginning of each animation to reflect user preferences.
+- **Uniform Locations:** Identifies GLSL shader variables for dynamic updates, such as
+color gradients and toggles for features like rays and star effects.
+- **Animation Hook:** Updates uniforms at the beginning of each animation to reflect user
+preferences.
 
 ---
 
@@ -430,7 +442,8 @@ static bindPreferences(dialog) {
     // Other bindings for colors and toggles...
 }
 ```
-- **Binding Settings to UI:** Links user preferences (e.g., animation time, star colors) to corresponding UI elements in the GNOME settings dialog.
+- **Binding Settings to UI:** Links user preferences (e.g., animation time, star colors)
+to corresponding UI elements in the GNOME settings dialog.
 - **Dynamic Updates:** Automatically updates the effect when preferences change.
 
 #### Resetting Star Colors
@@ -441,7 +454,8 @@ dialog.getBuilder().get_object('reset-star-colors').connect('clicked', () => {
     // Reset other colors...
 });
 ```
-- **Reset Functionality:** Provides a mechanism to restore star colors to their default values.
+- **Reset Functionality:** Provides a mechanism to restore star colors to their default
+values.
 
 ---
 
@@ -464,8 +478,10 @@ static _createMushroomPresets(dialog) {
     ];
 }
 ```
-- **Preset Definitions:** Includes a list of predefined color schemes like "Rainbow" and "Cattuccino."
-- **Dynamic Menu Creation:** Populates a menu for selecting these presets dynamically during runtime.
+- **Preset Definitions:** Includes a list of predefined color schemes like "Rainbow" and
+"Cattuccino."
+- **Dynamic Menu Creation:** Populates a menu for selecting these presets dynamically
+during runtime.
 
 #### Applying Presets
 ```javascript
@@ -477,24 +493,30 @@ presets.forEach((preset, i) => {
     });
 });
 ```
-- **Preset Selection Logic:** Updates star colors based on the selected preset from the dropdown menu.
+- **Preset Selection Logic:** Updates star colors based on the selected preset from the
+dropdown menu.
 
 ---
 
 ### 5. **Shader Integration**
 #### Shader Configuration
 ```javascript
-shader.set_uniform_float(shader._uEnableRays, 1, [settings.get_boolean('mushroom-rays-enable')]);
-shader.set_uniform_float(shader._uRings, 1, [settings.get_int('mushroom-5pstarring-count')]);
-shader.set_uniform_float(shader._uRingRotation, 1, [settings.get_double('mushroom-5pstarring-rotation')]);
+shader.set_uniform_float(shader._uEnableRays, 1,
+[settings.get_boolean('mushroom-rays-enable')]); shader.set_uniform_float(shader._uRings,
+1, [settings.get_int('mushroom-5pstarring-count')]);
+shader.set_uniform_float(shader._uRingRotation, 1,
+[settings.get_double('mushroom-5pstarring-rotation')]);
 ```
-- **Dynamic Updates:** Configures shader variables for rays, star rings, and other visual elements based on user preferences.
-- **Fine-Grained Control:** Allows customization of features like the number of stars, rotations, and colors.
+- **Dynamic Updates:** Configures shader variables for rays, star rings, and other visual
+elements based on user preferences.
+- **Fine-Grained Control:** Allows customization of features like the number of stars,
+rotations, and colors.
 
 ---
 
 ### 6. **Effect Rendering**
-The rendering pipeline uses GLSL shaders for creating dynamic and visually appealing effects, such as:
+The rendering pipeline uses GLSL shaders for creating dynamic and visually appealing
+effects, such as:
 - **8-Bit Style:** Applies a retro aesthetic inspired by old Mario games.
 - **Star Gradients:** Smooth color transitions for the stars.
 - **Rays and Rings:** Adds depth and complexity to the visual design.
@@ -502,6 +524,8 @@ The rendering pipeline uses GLSL shaders for creating dynamic and visually appea
 ---
 
 ### Conclusion
-This code is a well-structured implementation of a GNOME Shell effect. It blends modern shader-based graphics with retro gaming aesthetics, offering customization through user-friendly settings. The modular approach makes it easy to extend and maintain.
+This code is a well-structured implementation of a GNOME Shell effect. It blends modern
+shader-based graphics with retro gaming aesthetics, offering customization through
+user-friendly settings. The modular approach makes it easy to extend and maintain.
 
 */
