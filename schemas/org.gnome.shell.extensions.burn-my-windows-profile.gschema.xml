@@ -823,7 +823,7 @@ SPDX-License-Identifier: CC0-1.0
 
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!-- Simple Fade Effect Options                                                    -->
+    <!-- Focus Effect Options                                                    -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
     <key name="focus-enable-effect" type="b">
@@ -849,6 +849,203 @@ SPDX-License-Identifier: CC0-1.0
       <summary>Focus Blur Quality</summary>
       <description>The Quality of the Blur (Setting this too high may increase GPU load and affect performance)</description>
     </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Mushroom Effect Options                                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="mushroom-enable-effect" type="b">
+      <default>false</default>
+      <summary>mushroom Enable Effect</summary>
+      <description>Use the mushroom effect.</description>
+    </key>
+
+    <key name="mushroom-animation-time" type="i">
+      <default>1500</default>
+      <summary>mushroom Animation Time</summary>
+      <description>The time the mushroom effect takes.</description>
+    </key>
+
+    <key name="mushroom-8bit-enable" type="b">
+      <default>true</default>
+      <summary>mushroom 8Bit Animation</summary>
+      <description>use the old style.</description>
+    </key>
+
+    <key name="mushroom-4pstars-enable" type="b">
+      <default>true</default>
+      <summary>Enable the 4Pointed Stars</summary>
+      <description>Enable the 4Pointed Stars</description>
+    </key>
+    
+    <key name="mushroom-4pstars-count" type="i">
+      <default>4</default>
+      <summary>The Number of 4Pointed Stars</summary>
+      <description>The Number of 4Pointed Stars</description>
+    </key>
+
+    <key name="mushroom-4pstars-color" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
+      <summary>The 4Pointed Star Color</summary>
+      <description>The 4Pointed Star Color</description>
+    </key>
+
+    <key name="mushroom-4pstars-rotation" type="d">
+      <default>0.3</default>
+      <summary>The Number of Rotations the 4Pointed Stars do</summary>
+      <description>The Number of Rotations the 4Pointed Stars do</description>
+    </key>
+
+    <key name="mushroom-rays-enable" type="b">
+      <default>true</default>
+      <summary>Enable the Rays</summary>
+      <description>use the old style.</description>
+    </key>
+
+    <key name="mushroom-rays-color" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
+      <summary>The Rays Color</summary>
+      <description>The Rays Color</description>
+    </key>
+
+    <key name="mushroom-5pstars-enable" type="b">
+      <default>true</default>
+      <summary>Enable the 5 Pointed Stars</summary>
+      <description>Enable the 5 Pointed Stars</description>
+    </key>
+
+    <key name="mushroom-5pstarring-count" type="i">
+      <default>3</default>
+      <summary>Number of Rings of 5Pointed Stars</summary>
+      <description>Number of Rings of 5 Pointed Stars</description>
+    </key>
+
+    <key name="mushroom-5pstarring-rotation" type="d">
+      <default>1.33</default>
+      <summary>The Number of Rotations/Cycles the 5Pointed Stars do</summary>
+      <description>The Number of Rotations/Cycles the 5Pointed Stars do</description>
+    </key>
+
+    <key name="mushroom-5pstars-count" type="i">
+      <default>5</default>
+      <summary>The Number of 5Pointed Stars in each Ring</summary>
+      <description>The Number of 5Pointed Stars in each Ring</description>
+    </key>
+
+    <key name="mushroom-star-color-0" type="s">
+      <default>"rgba(233, 249, 1, 1.0)"</default>
+      <summary>Star Color 1</summary>
+      <description>The Nth color of the Star gradient.</description>
+    </key>
+
+    <key name="mushroom-star-color-1" type="s">
+      <default>"rgba(233, 249, 1, 1.0)"</default>
+      <summary>Star Color 1</summary>
+      <description>The Nth color of the Star gradient.</description>
+    </key>
+
+    <key name="mushroom-star-color-2" type="s">
+      <default>"rgba(91, 255, 1, 1.0)"</default>
+      <summary>Star Color 1</summary>
+      <description>The Nth color of the Star gradient.</description>
+    </key>
+
+    <key name="mushroom-star-color-3" type="s">
+      <default>"rgba(91, 255, 1, 1.0)"</default>
+      <summary>Star Color 1</summary>
+      <description>The Nth color of the Star gradient.</description>
+    </key>
+
+    <key name="mushroom-star-color-4" type="s">
+      <default>"rgba(0, 240, 236, 1.0)"</default>
+      <summary>Star Color 1</summary>
+      <description>The Nth color of the Star gradient.</description>
+    </key>
+
+    <key name="mushroom-star-color-5" type="s">
+      <default>"rgba(0, 240, 236, 1.0)"</default>
+      <summary>Star Color 1</summary>
+      <description>The Nth color of the Star gradient.</description>
+    </key>
+
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Aura Glow Effect Options                                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="aura-glow-enable-effect" type="b">
+      <default>false</default>
+      <summary>Aura Glow Enable Effect</summary>
+      <description>Use the Aura Glow  effect.</description>
+    </key>
+
+    <key name="aura-glow-animation-time" type="i">
+      <default>1500</default>
+      <summary>Aura Glow Animation Time</summary>
+      <description>The time the Aura Glow effect takes.</description>
+    </key>
+
+    <key name="aura-glow-random-color" type="b">
+      <default>false</default>
+      <summary>Aura Glow Random Color Offset</summary>
+      <description>Ramdomize the color offset</description>
+    </key>
+
+    <key name="aura-glow-color-offset" type="d">
+      <default>0.0</default>
+      <summary>Aura Glow Color Offset</summary>
+      <description>Changes the inital color of the glow</description>
+    </key>
+
+    <key name="aura-glow-color-speed" type="d">
+      <default>1.0</default>
+      <summary>Aura Glow Color Speed</summary>
+      <description>The Speed at which the color changes</description>
+    </key>
+
+    <key name="aura-glow-color-saturation" type="d">
+      <default>1.0</default>
+      <summary>Aura Glow Color Saturation</summary>
+      <description>Amount of color in the effect</description>
+    </key>
+
+    <!-- <key name="aura-glow-adjust-light-theme" type="b">
+      <default>false</default>
+      <summary>Aura Glow Adjust for light theme</summary>
+      <description>darken the window before adding color for light theme</description>
+    </key> -->
+
+    <key name="aura-glow-edge-size" type="d">
+      <default>1.0</default>
+      <summary>Aura Glow Size of the Color Edge</summary>
+      <description>Size of the Color Edge</description>
+    </key>
+
+    <key name="aura-glow-edge-shape" type="d">
+      <default>-1.0</default>
+      <summary>Aura Glow Edge Shape</summary>
+      <description>The Shape at the end of the animation</description>
+    </key>
+
+    <key name="aura-glow-edge-hardness" type="d">
+      <default>0.0</default>
+      <summary>Aura Glow Edge Hardness</summary>
+      <description>The Hardness of the Edge</description>
+    </key>
+
+    <key name="aura-glow-blur" type="d">
+      <default>50.0</default>
+      <summary>Aura Glow Blur</summary>
+      <description>Changes the Blue Amount</description>
+    </key>
+
+    <key name="aura-glow-fade-out" type="d">
+      <default>0.0</default>
+      <summary>Aura Glow Fade Out</summary>
+      <description>The Percent at which the window will fade out</description>
+    </key>
+
 
   </schema>
 
