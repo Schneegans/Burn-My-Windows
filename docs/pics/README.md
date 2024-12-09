@@ -12,3 +12,5 @@ GIF width/height: 320×180 pixels
 number of frames: 60
 number of colors: 256
 loop count: 0 (endless)
+
+The animation should starts 1s into the gif.
