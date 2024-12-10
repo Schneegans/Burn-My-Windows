@@ -1,273 +1,268 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Simon Schneegans
-# This file is distributed under the same license as the Burn-My-Windows package.
+# This file is distributed under the same license as the burn-my-windows package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Burn-My-Windows\n"
+"Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: 2024-12-10 19:19+0000\n"
-"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
-"core/nl/>\n"
-"Language: nl\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
-msgstr "Verschijning"
+msgstr ""
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr "Gebroken glas"
+msgstr ""
 
 #: src/effects/Doom.js:87
 msgid "Doom"
-msgstr "Verdoemenis"
+msgstr ""
 
 #: src/effects/EnergizeA.js:74
 msgid "Energize A"
-msgstr "Stimulatie A"
+msgstr ""
 
 #: src/effects/EnergizeB.js:75
 msgid "Energize B"
-msgstr "Stimulatie B"
+msgstr ""
 
 #: src/effects/Fire.js:96
 msgid "Fire"
-msgstr "Vuur"
+msgstr ""
 
 #: src/effects/Fire.js:150
 msgid "Default Fire"
-msgstr "Normaal vuur"
+msgstr ""
 
 #: src/effects/Fire.js:160
 msgid "Hell Fire"
-msgstr "Hellevuur"
+msgstr ""
 
 #: src/effects/Fire.js:170
 msgid "Dark and Smutty"
-msgstr "Donker en zwart"
+msgstr ""
 
 #: src/effects/Fire.js:180
 msgid "Cold Breeze"
-msgstr "Koude wind"
+msgstr ""
 
 #: src/effects/Fire.js:190
 msgid "Santa is Coming"
-msgstr "Kerstmanvuur"
+msgstr ""
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr "Focus"
+msgstr ""
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr "Glijden"
+msgstr ""
 
 #: src/effects/Glitch.js:80
 msgid "Glitch"
-msgstr "Verstoring"
+msgstr ""
 
 #: src/effects/Hexagon.js:83
 msgid "Hexagon"
-msgstr "Hexagon"
+msgstr ""
 
 #: src/effects/Incinerate.js:126
 msgid "Incinerate"
-msgstr "Verbranden"
+msgstr ""
 
 #: src/effects/Matrix.js:109
 msgid "Matrix"
-msgstr "Matrix"
+msgstr ""
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
-msgstr "Verfkwast"
+msgstr ""
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr "Pixelvorming"
+msgstr ""
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Pixelwiel"
+msgstr ""
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "Pixelwisser"
+msgstr ""
 
 #: src/effects/Portal.js:82
 msgid "Portal"
-msgstr "Portaal"
+msgstr ""
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
-msgstr "Uiteenvallen"
+msgstr ""
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
-msgstr "T-Rex-aanval"
+msgstr ""
 
 #: src/effects/TVEffect.js:73
 msgid "TV Effect"
-msgstr "Tv-effect"
+msgstr ""
 
 #: src/effects/TVGlitch.js:81
 msgid "TV Glitch"
-msgstr "Tv-hapering"
+msgstr ""
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
-msgstr "Dwaallicht"
+msgstr ""
 
 #: prefs.js:236
 msgid "Preview this effect"
-msgstr "Effect voorvertonen"
+msgstr ""
 
 #: prefs.js:313
 msgid "Burn-My-Windows has been updated!"
-msgstr "Burn-My-Windows is bijgewerkt!"
+msgstr ""
 
 #: prefs.js:314 resources/ui/common/menus.ui:17
 msgid "View Changelog"
-msgstr "Wijzigingslog bekijken"
+msgstr ""
 
 #: prefs.js:496
 msgid "Delete this Profile?"
-msgstr "Profiel verwijderen?"
+msgstr ""
 
 #: prefs.js:497
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
-"Let op: hierdoor wordt het huidige profiel met alle bijbehorende voorkeuren "
-"verwijderd."
 
 #: prefs.js:500
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr ""
 
 #: prefs.js:505
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr ""
 
 #: prefs.js:737 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr "Vensters openen"
+msgstr ""
 
 #: prefs.js:738 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr "Vensters sluiten"
+msgstr ""
 
 #: prefs.js:739 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr "Normale vensters"
+msgstr ""
 
 #: prefs.js:740 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr "Dialoogvensters"
+msgstr ""
 
 #: prefs.js:741 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr "Standaardthema"
+msgstr ""
 
 #: prefs.js:742 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr "Donker thema"
+msgstr ""
 
 #: prefs.js:743 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr "Op accu"
+msgstr ""
 
 #: prefs.js:744 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr "Op netstroom"
+msgstr ""
 
 #: prefs.js:745 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr "Energiebesparingsmodus"
+msgstr ""
 
 #: prefs.js:746 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr "Gebalanceerde modus"
+msgstr ""
 
 #: prefs.js:747 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr "Prestatiemodus"
+msgstr ""
 
 #: prefs.js:748 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr "Energiebesparing of gebalanceerd"
+msgstr ""
 
 #: prefs.js:749 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr "Gebalanceerd of prestaties"
+msgstr ""
 
 #: prefs.js:754 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr "Hoge prioriteit"
+msgstr ""
 
 #: prefs.js:760
 msgid "Standard Profile"
-msgstr "Standaardprofiel"
+msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:840
 #, javascript-format
 msgid "Preview for %s"
-msgstr "%s-voorvertoning"
+msgstr ""
 
 #: prefs.js:859
 msgid "Close this Window to Preview the Effect!"
-msgstr "Sluit dit venster om het effect voor te vertonen!"
+msgstr ""
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr "Website openen"
+msgstr ""
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr "Bijpassende achtergronden tonen"
+msgstr ""
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr "Bekĳk de ere­galerij van donateurs"
+msgstr ""
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
-msgstr "Doneren"
+msgstr ""
 
 #: resources/ui/common/menus.ui:50
 msgid "Report a Bug"
-msgstr "Bug melden"
+msgstr ""
 
 #: resources/ui/common/menus.ui:54
 msgid "Create an Effect"
-msgstr "Effect creëren"
+msgstr ""
 
 #: resources/ui/common/menus.ui:58
 msgid "Translate"
-msgstr "Vertalen"
+msgstr ""
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
-msgstr "Effect­profiel­map openen"
+msgstr ""
 
 #: resources/ui/common/menus.ui:70
 msgid "About Burn-My-Windows"
-msgstr "Over Burn-My-Windows"
+msgstr ""
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr "Profiel toevoegen…"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
@@ -281,7 +276,7 @@ msgstr "Profiel toevoegen…"
 #: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
 #: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
 msgid "Animation Time [ms]"
-msgstr "Animatieduur [in ms]"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
 #: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
@@ -328,7 +323,7 @@ msgstr "Animatieduur [in ms]"
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr "Standaardwaarde herstellen"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/tv-glitch.ui:47
 #: resources/ui/adw/glitch.ui:47 resources/ui/adw/matrix.ui:47
@@ -337,35 +332,34 @@ msgstr "Standaardwaarde herstellen"
 #: resources/ui/adw/hexagon.ui:47 resources/ui/adw/fire.ui:63
 #: resources/ui/adw/snap.ui:47 resources/ui/adw/energize-a.ui:47
 msgid "Scale"
-msgstr "Schaal"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:81
 msgid "Gravity"
-msgstr "Zwaartekracht"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:114
 msgid "Blow Force"
-msgstr "Windkracht"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr "Uiteenvallen bij cursorpositie"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
-"De stukken vliegen weg vanaf de cursorpositie na het sluiten van een venster."
 
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr "Kracht"
+msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
 #: resources/ui/adw/fire.ui:96
 msgid "Speed"
-msgstr "Snelheid"
+msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
 #: resources/ui/adw/wisps.ui:80 resources/ui/adw/energize-b.ui:81
@@ -373,303 +367,227 @@ msgstr "Snelheid"
 #: resources/ui/adw/snap.ui:80 resources/ui/adw/energize-a.ui:80
 #: resources/ui/adw/tv.ui:47
 msgid "Color"
-msgstr "Kleur"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:80 resources/ui/adw/apparition.ui:48
 msgid "Randomness"
-msgstr "Willekeurigheid"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr "Verticale verspringing"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:146
 msgid "Trail Color"
-msgstr "Sleepspoorkleur"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:171
 msgid "Tip Color"
-msgstr "Piekkleur"
+msgstr ""
 
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Horizontale schaal"
+msgstr ""
 
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr "Verticale schaal"
+msgstr ""
 
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr "Pixelgrootte"
+msgstr ""
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr "Kwastgrootte"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr "Schaal van pootkrabben"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr "Aantal pootkrabben"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr "Vervormingseffect"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr "Flitskleur"
+msgstr ""
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr "Aantal spaken"
+msgstr ""
 
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr "Pletten"
+msgstr ""
 
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr "Kantelen"
+msgstr ""
 
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr "Verschuiven"
+msgstr ""
 
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr "Wervelintensiteit"
+msgstr ""
 
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr "Schudintensiteit"
+msgstr ""
 
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr "Zuigintensiteit"
+msgstr ""
 
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr "Draaisnelheid"
+msgstr ""
 
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr "Werveling"
+msgstr ""
 
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr "Details"
+msgstr ""
 
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr "Turbulentie"
+msgstr ""
 
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr "Beginnen bij cursor"
+msgstr ""
 
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr "Schakel uit om vanaf een willekeurige schermlocatie te beginnen."
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr "Gaaslijnbreedte"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr "Lijnkleur"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr "Gloeikleur"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr "Overvloeien"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr "Dit is mogelijk nuttig bij het gebruik van donkere thema's."
+msgstr ""
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
-msgstr "Voorinstellingen"
+msgstr ""
 
 #: resources/ui/adw/fire.ui:19
 msgid "Choose a Preset"
-msgstr "Kies een voorinstelling"
+msgstr ""
 
 #: resources/ui/adw/fire.ui:129
 msgid "3D Noise"
-msgstr "3D-ruis"
+msgstr ""
 
 #: resources/ui/adw/fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Zorgt voor een speels vuur, maar vereist meer computerkracht."
+msgstr ""
 
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr "Verloop"
+msgstr ""
 
 #: resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr "Vervagings­sterkte"
+msgstr ""
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr "Vervagings­kwaliteit"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr "Effectbeperkingen"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
 msgstr ""
-"Geef aan wanneer de huidige effectvoorkeuren dienen te worden gebruikt."
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr "App"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr "Elke"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr "Soort animatie"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr "Soort venster"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr "Thema"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr "Energiemodus"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr "Energieprofiel"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr "Geavanceerde profielopties"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr "Gebruik dit profiel, zelfs als er beter overeenkomende profielen zijn."
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr "Profiel verwijderen…"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:223
 msgid "Effect Selection"
-msgstr "Effect­selectie"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:224
 msgid "If multiple are selected, one is chosen randomly."
 msgstr ""
-"Als er meerdere effecten zijn geselecteerd, dan wordt er willekeurig gekozen."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr "Zoeken…"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr "Alles inschakelen"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr "Alles uitschakelen"
+msgstr ""
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr "Ruis"
-
-#~ msgid "Gold Sponsors"
-#~ msgstr "Gouden sponsoren"
-
-#~ msgid "Silver Sponsors"
-#~ msgstr "Zilveren sponsoren"
-
-#~ msgid "Bronze Sponsors"
-#~ msgstr "Bronzen sponsoren"
-
-#~ msgid "Past Sponsors"
-#~ msgstr "Voormalige sponsoren"
-
-#~ msgid "All"
-#~ msgstr "Alles"
-
-#~ msgid "None"
-#~ msgstr "Geen"
-
-#~ msgid "Effect Settings"
-#~ msgstr "Effectvoorkeuren"
-
-#~ msgid "Effects"
-#~ msgstr "Effecten"
-
-#~ msgid "Use this effect when opening windows"
-#~ msgstr "Effect gebruiken bij openen van vensters"
-
-#~ msgid "Use this effect when closing windows"
-#~ msgstr "Effect gebruiken bij sluiten van vensters"
-
-#~ msgid "General Options"
-#~ msgstr "Algemene voorkeuren"
-
-#~ msgid "Welcome to Burn-My-Windows!"
-#~ msgstr "Welkom bij ‘Burn-My-Windows’!"
-
-#~ msgid "If you like this extension, recommend it to your friends :)"
-#~ msgstr ""
-#~ "Als u deze uitbreiding leuk vindt, deel hem dan met vrienden en "
-#~ "kennissen. :)"
-
-#~ msgid "Open Window Animation"
-#~ msgstr "Animatie bij openen van vensters"
-
-#~ msgid "Choose Effects"
-#~ msgstr "Kies de effecten"
-
-#~ msgid "Close Window Animation"
-#~ msgstr "Animatie bij sluiten van vensters"
-
-#~ msgid "Also Add Effects to Dialogs"
-#~ msgstr "Dialoogvensters ook voorzien van effecten"
-
-#~ msgid "Disable on Battery Power"
-#~ msgstr "Uitschakelen bij gebruik van accu"
-
-#~ msgid "Disable in Power-Save Mode"
-#~ msgstr "Uitschakelen in energiebesparingsmodus"
-
-#~ msgid "Preview this Effect"
-#~ msgstr "Voorvertonen"
-
-#~ msgid "Effect Options"
-#~ msgstr "Effectvoorkeuren"
-
-#~ msgid "Go Back"
-#~ msgstr "Scherm sluiten"
-
-#~ msgid "Via PayPal"
-#~ msgstr "Via PayPal"
-
-#~ msgid "Via GitHub"
-#~ msgstr "Via GitHub"
+msgstr ""
