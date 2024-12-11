@@ -8,261 +8,265 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-12-12 21:00+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
-msgstr ""
+msgstr "தோற்றம்"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr ""
+msgstr "உடைந்த கண்ணாடி"
 
 #: src/effects/Doom.js:87
 msgid "Doom"
-msgstr ""
+msgstr "டூம்"
 
 #: src/effects/EnergizeA.js:74
 msgid "Energize A"
-msgstr ""
+msgstr "ஒரு ஆற்றல்"
 
 #: src/effects/EnergizeB.js:75
 msgid "Energize B"
-msgstr ""
+msgstr "ஆற்றல் ஆ"
 
 #: src/effects/Fire.js:96
 msgid "Fire"
-msgstr ""
+msgstr "தீ"
 
 #: src/effects/Fire.js:150
 msgid "Default Fire"
-msgstr ""
+msgstr "இயல்புநிலை Fire"
 
 #: src/effects/Fire.js:160
 msgid "Hell Fire"
-msgstr ""
+msgstr "நரக நெருப்பு"
 
 #: src/effects/Fire.js:170
 msgid "Dark and Smutty"
-msgstr ""
+msgstr "இருண்ட மற்றும் ச்முட்டி"
 
 #: src/effects/Fire.js:180
 msgid "Cold Breeze"
-msgstr ""
+msgstr "குளிர் காற்று"
 
 #: src/effects/Fire.js:190
 msgid "Santa is Coming"
-msgstr ""
+msgstr "சாண்டா வருகிறார்"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "குவி"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "சறுக்கு"
 
 #: src/effects/Glitch.js:80
 msgid "Glitch"
-msgstr ""
+msgstr "தடுமாற்றம்"
 
 #: src/effects/Hexagon.js:83
 msgid "Hexagon"
-msgstr ""
+msgstr "அறுகோண"
 
 #: src/effects/Incinerate.js:126
 msgid "Incinerate"
-msgstr ""
+msgstr "எரியும்"
 
 #: src/effects/Matrix.js:109
 msgid "Matrix"
-msgstr ""
+msgstr "அணி"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
-msgstr ""
+msgstr "Paint மின்தொடி"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "பிக்சலேட்"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "படப்புள்ளி சக்கரம்"
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "படப்புள்ளி துடைப்பது"
 
 #: src/effects/Portal.js:82
 msgid "Portal"
-msgstr ""
+msgstr "போர்டல்"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
-msgstr ""
+msgstr "சிதைவின் நொறுக்குதல்"
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
-msgstr ""
+msgstr "டி-ரெக்ச் தாக்குதல்"
 
 #: src/effects/TVEffect.js:73
 msgid "TV Effect"
-msgstr ""
+msgstr "டிவி விளைவு"
 
 #: src/effects/TVGlitch.js:81
 msgid "TV Glitch"
-msgstr ""
+msgstr "டிவி தடுமாற்றம்"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
-msgstr ""
+msgstr "விருப்பங்கள்"
 
 #: prefs.js:236
 msgid "Preview this effect"
-msgstr ""
+msgstr "இந்த விளைவை முன்னோட்டமிடுங்கள்"
 
 #: prefs.js:313
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "பர்ன்-மை-விண்டோச் புதுப்பிக்கப்பட்டுள்ளது!"
 
 #: prefs.js:314 resources/ui/common/menus.ui:17
 msgid "View Changelog"
-msgstr ""
+msgstr "சேஞ்ச்லாக் காண்க"
 
 #: prefs.js:496
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "இந்த சுயவிவரத்தை நீக்கவா?"
 
 #: prefs.js:497
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"அதன் அனைத்து விளைவு அமைப்புகளுடன் தற்போதைய விளைவு சுயவிவரம் நிரந்தரமாக இழக்கப்படும்."
 
 #: prefs.js:500
 msgid "Cancel"
-msgstr ""
+msgstr "ரத்துசெய்"
 
 #: prefs.js:505
 msgid "Delete"
-msgstr ""
+msgstr "நீக்கு"
 
 #: prefs.js:737 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "சன்னல்களைத் திறக்கிறது"
 
 #: prefs.js:738 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "சன்னல்களை மூடுவது"
 
 #: prefs.js:739 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "சாதாரண சாளரங்கள்"
 
 #: prefs.js:740 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "உரையாடல் சாளரங்கள்"
 
 #: prefs.js:741 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "இயல்புநிலை வண்ணத் திட்டம்"
 
 #: prefs.js:742 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "இருண்ட வண்ண திட்டம்"
 
 #: prefs.js:743 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "பேட்டரியில்"
 
 #: prefs.js:744 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "செருகப்பட்டது"
 
 #: prefs.js:745 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "பவர்-சேவர் பயன்முறை"
 
 #: prefs.js:746 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "சீரான பயன்முறை"
 
 #: prefs.js:747 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "செயல்திறன் பயன்முறை"
 
 #: prefs.js:748 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "பவர் சேவர் அல்லது சீரான"
 
 #: prefs.js:749 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "சீரான அல்லது செயல்திறன்"
 
 #: prefs.js:754 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "அதிக முன்னுரிமை"
 
 #: prefs.js:760
 msgid "Standard Profile"
-msgstr ""
+msgstr "நிலையான சுயவிவரம்"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:840
 #, javascript-format
 msgid "Preview for %s"
-msgstr ""
+msgstr "%s க்கான முன்னோட்டம்"
 
 #: prefs.js:859
 msgid "Close this Window to Preview the Effect!"
-msgstr ""
+msgstr "விளைவை முன்னோட்டமிட இந்த சாளரத்தை மூடு!"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr ""
+msgstr "முகப்புப்பக்கத்தைப் பார்வையிடவும்"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "பொருந்தக்கூடிய வால்பேப்பர்களைக் காண்க"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "நன்கொடையாளர்களைக் காண்க ஆல்-ஆஃப்-ஃபேம்"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
-msgstr ""
+msgstr "நன்கொடை"
 
 #: resources/ui/common/menus.ui:50
 msgid "Report a Bug"
-msgstr ""
+msgstr "ஒரு பிழையைப் புகாரளிக்கவும்"
 
 #: resources/ui/common/menus.ui:54
 msgid "Create an Effect"
-msgstr ""
+msgstr "ஒரு விளைவை உருவாக்கவும்"
 
 #: resources/ui/common/menus.ui:58
 msgid "Translate"
-msgstr ""
+msgstr "மொழிபெயர்த்திடு"
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "திறந்த விளைவு-சுயவிவர அடைவு"
 
 #: resources/ui/common/menus.ui:70
 msgid "About Burn-My-Windows"
-msgstr ""
+msgstr "எரியும்-என்-சாளரத்தைப் பற்றி"
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr ""
+msgstr "புதிய சுயவிவரத்தைச் சேர்க்கவும் ..."
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
@@ -276,7 +280,7 @@ msgstr ""
 #: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
 #: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
 msgid "Animation Time [ms]"
-msgstr ""
+msgstr "அனிமேசன் நேரம் [எம்.எச்]"
 
 #: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
 #: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
@@ -323,7 +327,7 @@ msgstr ""
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr ""
+msgstr "இயல்புநிலை மதிப்புக்கு மீட்டமைக்கவும்"
 
 #: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/tv-glitch.ui:47
 #: resources/ui/adw/glitch.ui:47 resources/ui/adw/matrix.ui:47
@@ -332,34 +336,35 @@ msgstr ""
 #: resources/ui/adw/hexagon.ui:47 resources/ui/adw/fire.ui:63
 #: resources/ui/adw/snap.ui:47 resources/ui/adw/energize-a.ui:47
 msgid "Scale"
-msgstr ""
+msgstr "அளவு"
 
 #: resources/ui/adw/broken-glass.ui:81
 msgid "Gravity"
-msgstr ""
+msgstr "ஈர்ப்பு"
 
 #: resources/ui/adw/broken-glass.ui:114
 msgid "Blow Force"
-msgstr ""
+msgstr "ஊதி ஆற்றல்"
 
 #: resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "சுட்டிக்காட்டி இருப்பிடத்திலிருந்து சிதறுங்கள்"
 
 #: resources/ui/adw/broken-glass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
+"சாளரத்தை மூடும்போது உங்கள் சுட்டி சுட்டிக்காட்டி இருந்த இடத்திலிருந்து துண்டுகள் பறக்கும்."
 
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "வலிமை"
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
 #: resources/ui/adw/fire.ui:96
 msgid "Speed"
-msgstr ""
+msgstr "வேகம்"
 
 #: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
 #: resources/ui/adw/wisps.ui:80 resources/ui/adw/energize-b.ui:81
@@ -367,227 +372,230 @@ msgstr ""
 #: resources/ui/adw/snap.ui:80 resources/ui/adw/energize-a.ui:80
 #: resources/ui/adw/tv.ui:47
 msgid "Color"
-msgstr ""
+msgstr "நிறம்"
 
 #: resources/ui/adw/matrix.ui:80 resources/ui/adw/apparition.ui:48
 msgid "Randomness"
-msgstr ""
+msgstr "சீரற்ற தன்மை"
 
 #: resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "செங்குத்து ஓவர்சூட்டிங்"
 
 #: resources/ui/adw/matrix.ui:146
 msgid "Trail Color"
-msgstr ""
+msgstr "பாதை நிறம்"
 
 #: resources/ui/adw/matrix.ui:171
 msgid "Tip Color"
-msgstr ""
+msgstr "முனை நிறம்"
 
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "கிடைமட்ட அளவு"
 
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "செங்குத்து அளவு"
 
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "படப்புள்ளி அளவு"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "தூரிகை அளவு"
 
 #: resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "நகம் கீறல் அளவு"
 
 #: resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "நகம் கீறல் எண்ணிக்கை"
 
 #: resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "வார்ப் விளைவு"
 
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "ஃபிளாச் நிறம்"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "பேசப்பட்ட எண்ணிக்கை"
 
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "ச்க்விச்"
 
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "சாய்"
 
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "உயர்த்து"
 
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "சுழல் தீவிரம்"
 
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "குலுக்கல் தீவிரம்"
 
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "உறிஞ்சும் தீவிரம்"
 
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "சுழற்சி விரைவு"
 
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "சுழல்"
 
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "விவரங்கள்"
 
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "(காற்றுக்)கொந்தளிப்பு"
 
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "சுட்டிக்காட்டி தொடங்கவும்"
 
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "முடக்கப்பட்டால், ஒரு சீரற்ற இடம் தேர்வு செய்யப்படும்."
 
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "கண்ணி வரி அகலம்"
 
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr ""
+msgstr "வரி நிறம்"
 
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr ""
+msgstr "பளபளப்பான நிறம்"
 
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "சேர்க்கை கலத்தல்"
 
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "இருண்ட சாளர கருப்பொருள்களுக்கு இதை இயக்க நீங்கள் விரும்பலாம்."
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
-msgstr ""
+msgstr "முன்னமைவுகள்"
 
 #: resources/ui/adw/fire.ui:19
 msgid "Choose a Preset"
-msgstr ""
+msgstr "முன்னமைவைத் தேர்வுசெய்க"
 
 #: resources/ui/adw/fire.ui:129
 msgid "3D Noise"
-msgstr ""
+msgstr "3 டி ஒலி"
 
 #: resources/ui/adw/fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
 msgstr ""
+"மிகவும் மாறும் நெருப்பை உருவாக்குகிறது, ஆனால் அதிக சி.பீ.யூ ஆற்றல் தேவைப்படுகிறது."
 
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr ""
+msgstr "சரிவு"
 
 #: resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "மங்கலான தொகை"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "மங்கலான தகுதி"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "விளைவு சுயவிவரக் கட்டுப்பாடுகள்"
 
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
 msgstr ""
+"தற்போதைய விளைவு அமைப்புகள் எப்போது பயன்படுத்தப்பட வேண்டும் என்பதை வரையறுக்கவும்."
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "பயன்பாடு"
 
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "ஏதேனும்"
 
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "அனிமேசன் வகை"
 
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "சாளரம் வகை"
 
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "வண்ணத் திட்டம்"
 
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "ஆற்றல் முறை"
 
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "ஆற்றல் சுயவிவரம்"
 
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "மேம்பட்ட சுயவிவர விருப்பங்கள்"
 
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
 msgstr ""
+"சிறந்த பொருந்தக்கூடிய சுயவிவரங்கள் இருந்தாலும் இந்த சுயவிவரத்தைப் பயன்படுத்தவும்."
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "இந்த சுயவிவரத்தை நீக்கு ..."
 
 #: resources/ui/adw/prefs.ui:223
 msgid "Effect Selection"
-msgstr ""
+msgstr "விளைவு தேர்வு"
 
 #: resources/ui/adw/prefs.ui:224
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "பல தேர்ந்தெடுக்கப்பட்டால், ஒன்று தோராயமாக தேர்ந்தெடுக்கப்படுகிறது."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "தேடுங்கள் ..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "அனைத்தையும் இயக்கு"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "அனைத்தையும் முடக்கு"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "இரைச்சல்"
