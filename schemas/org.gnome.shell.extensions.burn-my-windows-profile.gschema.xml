@@ -866,40 +866,34 @@ SPDX-License-Identifier: CC0-1.0
       <description>The time the mushroom effect takes.</description>
     </key>
 
-    <key name="mushroom-8bit-enable" type="b">
+    <!-- <key name="mushroom-8bit-enable" type="b">
       <default>true</default>
       <summary>mushroom 8Bit Animation</summary>
       <description>use the old style.</description>
+    </key> -->
+
+    <key name="mushroom-scale-style" type="d">
+      <default>1.0</default>
+      <summary>8Bit or Smooth Scaling</summary>
+      <description>How the window scales</description>
     </key>
 
-    <key name="mushroom-4pstars-enable" type="b">
-      <default>true</default>
-      <summary>Enable the 4Pointed Stars</summary>
-      <description>Enable the 4Pointed Stars</description>
-    </key>
-    
-    <key name="mushroom-4pstars-count" type="i">
+    <key name="mushroom-spark-count" type="i">
       <default>4</default>
-      <summary>The Number of 4Pointed Stars</summary>
-      <description>The Number of 4Pointed Stars</description>
+      <summary>The Number of Sparks</summary>
+      <description>The Number of Sparks</description>
     </key>
 
-    <key name="mushroom-4pstars-color" type="s">
+    <key name="mushroom-spark-color" type="s">
       <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>The 4Pointed Star Color</summary>
-      <description>The 4Pointed Star Color</description>
+      <summary>The Sparks Color</summary>
+      <description>The Sparks Color</description>
     </key>
 
-    <key name="mushroom-4pstars-rotation" type="d">
+    <key name="mushroom-spark-rotation" type="d">
       <default>0.3</default>
-      <summary>The Number of Rotations the 4Pointed Stars do</summary>
-      <description>The Number of Rotations the 4Pointed Stars do</description>
-    </key>
-
-    <key name="mushroom-rays-enable" type="b">
-      <default>true</default>
-      <summary>Enable the Rays</summary>
-      <description>use the old style.</description>
+      <summary>The Number of Rotations the Sparks do</summary>
+      <description>The Number of Rotations the Sparks do</description>
     </key>
 
     <key name="mushroom-rays-color" type="s">
@@ -908,28 +902,22 @@ SPDX-License-Identifier: CC0-1.0
       <description>The Rays Color</description>
     </key>
 
-    <key name="mushroom-5pstars-enable" type="b">
-      <default>true</default>
-      <summary>Enable the 5 Pointed Stars</summary>
-      <description>Enable the 5 Pointed Stars</description>
-    </key>
-
-    <key name="mushroom-5pstarring-count" type="i">
+    <key name="mushroom-ring-count" type="i">
       <default>3</default>
-      <summary>Number of Rings of 5Pointed Stars</summary>
-      <description>Number of Rings of 5 Pointed Stars</description>
+      <summary>Number of Rings</summary>
+      <description>Number of Rings</description>
     </key>
 
-    <key name="mushroom-5pstarring-rotation" type="d">
+    <key name="mushroom-ring-rotation" type="d">
       <default>1.33</default>
-      <summary>The Number of Rotations/Cycles the 5Pointed Stars do</summary>
-      <description>The Number of Rotations/Cycles the 5Pointed Stars do</description>
+      <summary>The Number of Rotations/Cycles the Stars do</summary>
+      <description>The Number of Rotations/Cycles the Stars do</description>
     </key>
 
-    <key name="mushroom-5pstars-count" type="i">
+    <key name="mushroom-star-count" type="i">
       <default>5</default>
-      <summary>The Number of 5Pointed Stars in each Ring</summary>
-      <description>The Number of 5Pointed Stars in each Ring</description>
+      <summary>The Number of Stars in each Ring</summary>
+      <description>The Number of Stars in each Ring</description>
     </key>
 
     <key name="mushroom-star-color-0" type="s">

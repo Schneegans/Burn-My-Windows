@@ -32,24 +32,22 @@
 
 // The width of the fading effect is loaded from the settings.
 
-// use 8BitStyle or not
-uniform bool u8BitStyle;
+// use 8BitStyle or not (sliding scale)
+uniform float uScaleStyle;
 
-//these are for the 4 point stars (or sparks)
-uniform bool uEnable4PStars;
-uniform float u4PStars;
-uniform vec4 u4PSColor;
-uniform float u4PSRotation;
+//these are for the sparks
+uniform float uSparkCount;
+uniform vec4 uSparkColor;
+uniform float uSparkRotation;
 
 //these are for the Rays
-uniform bool uEnableRays;
 uniform vec4 uRaysColor;
 
-//these are for the 5 pointed stars
-uniform bool uEnable5pStars;
-uniform float uRings;
+//these are for the stars
+uniform float uRingCount;
 uniform float uRingRotation;
-uniform float uStarPerRing;
+uniform float uStarCount;
+
 // and the colors they change over time
 uniform vec4 uStarColor0;
 uniform vec4 uStarColor1;
@@ -58,6 +56,9 @@ uniform vec4 uStarColor3;
 uniform vec4 uStarColor4;
 uniform vec4 uStarColor5;
 
+//seed
+uniform vec2 uSeed;
+
 //helps to find the angle
 vec3 getPosByAngle(float angle)
 {
@@ -65,6 +66,7 @@ vec3 getPosByAngle(float angle)
 }
 
 
+//gets the mask of a Star
 float getStar(vec2 uv, vec2 center, float npoints, float radiusRatio, float size, float rotation)
 {
 
@@ -104,56 +106,65 @@ float getStar(vec2 uv, vec2 center, float npoints, float radiusRatio, float size
 }
 
 
-float getStarWithFade(vec2 uv, vec2 center, float npoints, float radiusRatio, float size, float rotation)
+//use to scale the window
+vec2 scaleUV(vec2 uv, vec2 scale)
 {
-    float radiusMax = 1.0;
-    float radiusMin = radiusMax * radiusRatio;
-    
-    float PI = 3.1415926;
-    float starangle = 2.0 * PI / npoints; // Angle between points on the star
+  // Put texture coordinate origin to center of window.
+  uv = uv * 2.0 - 1.0;
 
-    // Offset rotation to ensure one point is always up when rotation = 0
-    rotation += PI / 2.0 - starangle / 1.0;
+  //scale
+  uv /= mix(vec2(1.0,1.0), vec2(0.0,0.0), scale);
 
-    // Define the positions for the outer and inner points of the star's initial angle, rotated by `rotation`
-    vec3 p0 = (radiusMax * size) * getPosByAngle(rotation);             // Outer point, rotated by `rotation`
-    vec3 p1 = (radiusMin * size) * getPosByAngle(starangle + rotation);  // Inner point, also rotated
+  // scale from center
+  uv = uv * 0.5 + 0.5;
 
-    // Calculate the position of the current fragment relative to the star's center
-    vec2 curPosuv = (uv - center);      // Center UV coordinates, then scale to fit the star size
-    float curRadius = length(curPosuv);         // Radius from center, no need to scale further
-    float curPosAngle = atan(curPosuv.y, curPosuv.x) - rotation; // Calculate angle and adjust by `rotation`
+  return uv;
+}
 
-    // Determine the fractional position within the current star segment
-    float a = fract(curPosAngle / starangle); // Fractional angle position within one segment
-    if (a >= 0.5)
-        a = 1.0 - a; // Ensure we are within the first half of the segment (symmetry)
-
-    // Calculate the current point on the star segment, applying rotation
-    a = a * starangle;                          // Actual angle for this position on the segment
-    vec3 curPos = curRadius * getPosByAngle(a + rotation); // Final position, rotated
-
-    // Calculate directions for edge detection using cross product
-    vec3 dir0 = p1 - p0;  // Vector from outer to inner point
-    vec3 dir1 = curPos - p0; // Vector from outer point to current position
-    
-    float crossZ = dir0.x * dir1.y - dir0.y * dir1.x;
-    
-    float result = remap(
-        crossZ,
-        0.0,0.03,//0.0275,
-        0.0,1.0 //hardness [1.0,100]
+//rotates the UV
+//needs to use this once since it rotates around the middle (i.e. 0.5)
+vec2 rotateUV(vec2 uv, float rotation)
+{
+    float mid = 0.5;
+    return vec2(
+        cos(rotation) * (uv.x - mid) + sin(rotation) * (uv.y - mid) + mid,
+        cos(rotation) * (uv.y - mid) - sin(rotation) * (uv.x - mid) + mid
     );
-    
-    //brightness 
-    result = result * 7.0;
-    result = clamp(result,0.0,1.0);
-    result = easeInSine(result);
-    
-    return result;
+}
+
+//this returns the Spark
+float getSpark(vec2 uv, vec2 center, float brightness, float size, float rotation)
+{
+  brightness = clamp(brightness,0.001,1.0);
+  size = clamp(size,0.001,1.0);
+  float bn = mix(0.0,0.07,brightness); //recalculate size
+  
+  uv = (uv + vec2(0.5)) ;
+  uv = (uv - center) ;//Center UV coordinates, then scale to fit the star size
+  uv = scaleUV(uv, vec2(1.0 - size));
+  uv = rotateUV(uv, rotation); //rotate the UV
+
+  //this is basically the brightness
+  float p = mix(-1.0,1000.0,easeInExpo(bn));
+
+  float m = mix(
+      0.0,
+      1.0,
+      clamp(
+          pow(abs(uv.x-0.5)*2.0,p) + pow(abs(uv.y-0.5)*2.0,p),0.0,1.0
+      )
+      );
+
+  
+  float mask = easeInSine(1.0 - (m - bn)) - 0.004 ;
+  mask = clamp(mask,0.0,1.0);
+  
+  return mask;
+  
 }
 
 
+//returns the star's color
 vec4 getStarColor(float v, float alpha) {
     // Clamp v to ensure it's in [0.0, 1.0]
     v = clamp(v, 0.0, 1.0);
@@ -201,8 +212,8 @@ vec4 getStarColor(float v, float alpha) {
     return vec4(0.0, 0.0, 0.0, 1.0);
 }
 
-float zeroStartEnd(float t, float max_size, float power)
-{
+
+
 // 1|    __________
 //  |   /          \
 //  |  /            \
@@ -214,11 +225,11 @@ graph above ... where t is close to 0, or 1 the result will fade to zero
 i.e. this is just the function of power(x,p) shifted
 where x is time, and p is 2.0,4.0,8.0,10.0 ... or any positive even number
 */
-
+float zeroStartEnd(float t, float max_size, float power)
+{
   float s = -1.0 * pow((t-0.5)/(0.5),power)+1.0;
   s = clamp(s,0.0,1.0) * max_size;
   return s;
-
 }
 
 //this gives us the jerky 8bit growth effect.
@@ -264,48 +275,50 @@ float eightBitScale(float progress)
     return scale;
 }
 
-//use to scale the window
-vec2 scaleUV(vec2 uv, vec2 scale)
+
+//gets all the sparks
+vec4 getSparks(float progress)
 {
-  // Put texture coordinate origin to center of window.
-  uv = uv * 2.0 - 1.0;
+  //the UV for this function
+  float aspect = uSize.x / uSize.y;
+  vec2 uv = iTexCoord.st * vec2(aspect,1.0);
 
-  //scale
-  uv /= mix(vec2(1.0,1.0), vec2(0.0,0.0), scale);
-
-  // scale from center
-  uv = uv * 0.5 + 0.5;
-
-  return uv;
-}
-
-
-
-vec4 get4pStars(vec2 starUV, float progress)
-{
   //this will be the result to return 
   vec4 result = vec4(0.0);
 
-  vec2 h = vec2(0.0);
+  // 0 at the edges
+  float xEdge = -1.0 * pow((uv.x-(aspect*0.5))/(aspect*0.5),8.0)+1.0;
+  xEdge = clamp(xEdge,0.0,1.0);
+
+  //declare some variables before the loop
+  vec2 h = vec2(0.0); 
   float y = 0.0;
+  float x = 0.0;
 
-  for (float x = 0.0; x < u4PStars; ++x) 
+  //loop for each spart
+  for (float xusp = 0.0; xusp < uSparkCount; ++xusp) 
   {
-      h = hash21(x);
-      y = mix( 0.0 - h.y , 1.0+(1.0-h.y) , (1.0 - progress));
+      //calculate some variables
+      h = hash21(xusp + uSeed.x);
+      y = mix( 0.0 - h.y , 1.0+(1.0-h.y) , progress);
+      y = clamp(y,0.0,1.0);
 
-      float a4ps = getStarWithFade(
-        starUV, 
-        vec2( sin(h.x * 6.28 ) * 0.66, y),      //position (x, y)
-        4.0,                                    //nPoints
-        0.33,                                   //radiusRatio
-        zeroStartEnd(y,0.1 ,4.0),               //Size  
-        progress * 6.28 * float(u4PSRotation)   //rotation
+      x = 0.66 * sin(h.x * 6.28) ;
+      x += 0.5 * aspect;
+
+      //here we get the mask for the spark
+      float a4ps = getSpark(
+        uv, 
+        vec2( x , y),      //position (x, y)
+        zeroStartEnd(y,1.0 ,4.0) * xEdge ,//Brightness
+        zeroStartEnd(y,0.5 ,4.0) * xEdge,//Size  
+        progress * 6.28 * float(uSparkRotation)   //rotation
         );
 
+      //set it to the results
       result = alphaOver(
         result,
-        vec4(u4PSColor.r,u4PSColor.g,u4PSColor.b,u4PSColor.a * a4ps)
+        vec4(uSparkColor.r,uSparkColor.g,uSparkColor.b,uSparkColor.a * a4ps)
         );
   }
 
@@ -313,17 +326,24 @@ vec4 get4pStars(vec2 starUV, float progress)
   return result;
 }
 
+//gets the Rays
 vec4 getRays(float progress)
 {
+  //create the UV for it
   vec2 rayUV = iTexCoord.st;
   rayUV *= vec2(10.0,0.5);
   rayUV.y += progress * -1.0;
+  rayUV.x += uSeed.y;
   
+  //gets the ray 
   float ray = simplex2D(rayUV);
+  //0 around the edges 
   ray *= zeroStartEnd(iTexCoord.t,1.0,8.0);
+  ray *= zeroStartEnd(iTexCoord.s,1.0,8.0);
+  // 0 at the begining and end of the animation
   ray *= zeroStartEnd(progress,1.0,8.0);
 
-
+  //adjust the numbers and clamp
   ray = remap(
     ray * 1.10,
     0.0,1.0,
@@ -331,11 +351,13 @@ vec4 getRays(float progress)
   );
   ray = clamp(ray,0.0,1.0);
 
+  //return
   return vec4(uRaysColor.r,uRaysColor.g,uRaysColor.b,uRaysColor.a * ray);
 
 }
 
-vec4 get5PStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
+//returns the stars
+vec4 getStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
 {
   //this will be the result to return 
   vec4 result = vec4(0.0);
@@ -344,19 +366,19 @@ vec4 get5PStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
   float y = 0.0;
 
   //for each ring
-  for (float r = 0.0; r < uRings; ++r) 
+  for (float r = 0.0; r < uRingCount; ++r) 
   {
     
-    float spread = r*(1.0/uRings);
+    float spread = r*(1.0/uRingCount);
     y = mix( 0.0 - spread , 1.0+(1.0-spread) , 1.0 - progress);
     y = clamp(y,0.00001,0.99999);
 
     //each star in each ring
-    for (float s = 0.0; s < uStarPerRing; ++s) 
+    for (float s = 0.0; s < uStarCount; ++s) 
     {
       float a5ps = getStar(
         starUV, 
-        vec2( sin(progress * uRingRotation * 6.28 + (s*(6.28/uStarPerRing))) * aspect * 0.33 , y),  //position (x, y)
+        vec2( sin(progress * uRingRotation * 6.28 + (s*(6.28/uStarCount))) * aspect * 0.33 , y),  //position (x, y)
         5.0,                                                                                            //nPoints
         0.5,                                                                                            //radiusRatio
         zeroStartEnd(y,0.1,2.0),                                                                        //Size   
@@ -365,7 +387,7 @@ vec4 get5PStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
       a5ps = clamp(a5ps,0.0,1.0);
 
       // //put the star in back or the front of the window 
-      float depth = cos(progress * uRingRotation * 6.28 + (s*(6.28/uStarPerRing)) );
+      float depth = cos(progress * uRingRotation * 6.28 + (s*(6.28/uStarCount)) );
       if (depth < 0.0)
       {
         result = alphaOver(result,getStarColor(y,a5ps));
@@ -395,54 +417,47 @@ void main() {
   // Initialize the output color to fully transparent black
   vec4 oColor = vec4(0.0, 0.0, 0.0, 0.0);
 
-  // Check if the 8-bit style is enabled
-  if (u8BitStyle)
+
+  //get scales
+  float scale8bit = eightBitScale(progress);
+  vec2 scaleV2 = vec2(easeInOutSine(progress), easeInQuad(progress));
+
+  vec2 fscale = mix(vec2(scale8bit),scaleV2,uScaleStyle);
+
+  // Fetch the color based on the scaled texture coordinates
+  oColor = getInputColor(
+    scaleUV(iTexCoord.st, fscale)
+  );
+
+  // Store the alpha value of the fetched color for later use
+  float oColorAlpha = oColor.a;
+
+  // Calculate the aspect ratio of the render area
+  float aspect = uSize.x / uSize.y;
+
+  // Transform UV coordinates for star effects
+  // starUV.x [-0.5 , 0.5]
+  // starUV.y [1.0 , 0.0]
+  vec2 starUV = vec2(iTexCoord.s - 0.5, 1.0 - iTexCoord.t) * vec2(aspect, 1.0);
+
+  // If four-point stars are enabled, overlay them on the current color
+  if (uSparkCount > 0.0)
   {
-    // Scale UV coordinates using a custom 8-bit scaling function
-    float scale8bit = eightBitScale(progress);
-
-    // Fetch the color based on the scaled texture coordinates
-    oColor = getInputColor(
-      scaleUV(iTexCoord.st, vec2(scale8bit, scale8bit))
-    );
+    oColor = alphaOver(oColor, getSparks(progress));
   }
-  else
+
+  // If rays are enabled, overlay them on the current color
+  if (uRaysColor.a > 0.0)
   {
-    // Non-8-bit style: Calculate scaling factors using easing functions
-    vec2 scaleV2 = vec2(easeInOutSine(progress), easeInQuad(progress));
-
-    // Fetch the color based on the scaled texture coordinates
-    oColor = getInputColor(
-      scaleUV(iTexCoord.st, scaleV2)
-    );
-
-    // Store the alpha value of the fetched color for later use
-    float oColorAlpha = oColor.a;
-
-    // Calculate the aspect ratio of the render area
-    float aspect = uSize.x / uSize.y;
-
-    // Transform UV coordinates for star effects
-    vec2 starUV = vec2(iTexCoord.s - 0.5, 1.0 - iTexCoord.t) * vec2(aspect, 1.0);
-
-    // If four-point stars are enabled, overlay them on the current color
-    if (uEnable4PStars)
-    {
-      oColor = alphaOver(oColor, get4pStars(starUV, progress));
-    }
-
-    // If rays are enabled, overlay them on the current color
-    if (uEnableRays)
-    {
-      oColor = alphaOver(oColor, getRays(progress));
-    }
-
-    // If five-point stars are enabled, overlay them using stored alpha
-    if (uEnable5pStars)
-    {
-      oColor = alphaOver(oColor, get5PStars(starUV, aspect, progress, oColorAlpha));
-    }
+    oColor = alphaOver(oColor, getRays(progress));
   }
+
+  // If five-point stars are enabled, overlay them using stored alpha
+  if (uRingCount > 0.0 && uStarCount > 0.0)
+  {
+    oColor = alphaOver(oColor, getStars(starUV, aspect, progress, oColorAlpha));
+  }
+
 
   // Set the final output color to the computed value
   setOutputColor(oColor);

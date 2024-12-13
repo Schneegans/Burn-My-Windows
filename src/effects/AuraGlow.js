@@ -174,8 +174,7 @@ export default class Effect {
     const colorOffset = dialog.getBuilder().get_object('aura-glow-color-offset-scale');
     const actionRow   = dialog.getBuilder().get_object('aura-glow-action-row');
 
-    if (colorOffset == null)
-    {
+    if (colorOffset == null) {
       log('colorOffset is null');
     }
 
@@ -207,7 +206,6 @@ export default class Effect {
 
     // Function to update the subtitle based on the slider value
     const updateSubtitle = () => {
-
       const value = colorOffset.get_value();  // Get the current slider value
       const index = Math.round(value * 20);   // Map value [0.0, 1.0] to index [0, 10]
       actionRow.set_subtitle(
