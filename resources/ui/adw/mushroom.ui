@@ -52,7 +52,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwActionRow">
         
-        <property name="title" translatable="yes">Color Presets</property>
+        <property name="title" translatable="yes">Effect Presets</property>
         <property name="activatable-widget">mushroom-star-color-preset-button</property>
         
         <child>
