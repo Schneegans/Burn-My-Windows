@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: 2024-09-09 18:09+0000\n"
+"PO-Revision-Date: 2024-12-14 08:00+0000\n"
 "Last-Translator: symegac <97731141+symegac@users.noreply.github.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/da/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9-rc\n"
 
 #: src/effects/Apparition.js:80
 #, fuzzy
@@ -66,7 +66,7 @@ msgstr "Julemanden kommer"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "Fokus"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -240,7 +240,7 @@ msgstr "Vis passende baggrundsbilleder"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "Vis donor-æresgalleriet"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -522,11 +522,11 @@ msgstr "Farveforløb"
 
 #: resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "Sløringsmængde"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "Sløringskvalitet"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -590,15 +590,15 @@ msgstr "Hvis flere er valgt, vælges en tilfældigt."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "Søg..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "Aktivér alle"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "Deaktiver alle"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
