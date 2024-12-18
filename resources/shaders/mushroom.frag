@@ -121,16 +121,6 @@ vec2 scaleUV(vec2 uv, vec2 scale)
   return uv;
 }
 
-//rotates the UV
-//needs to use this once since it rotates around the middle (i.e. 0.5)
-vec2 rotateUV(vec2 uv, float rotation)
-{
-    float mid = 0.5;
-    return vec2(
-        cos(rotation) * (uv.x - mid) + sin(rotation) * (uv.y - mid) + mid,
-        cos(rotation) * (uv.y - mid) - sin(rotation) * (uv.x - mid) + mid
-    );
-}
 
 //this returns the Spark
 float getSpark(vec2 uv, vec2 center, float brightness, float size, float rotation)
@@ -142,7 +132,7 @@ float getSpark(vec2 uv, vec2 center, float brightness, float size, float rotatio
   uv = (uv + vec2(0.5)) ;
   uv = (uv - center) ;//Center UV coordinates, then scale to fit the star size
   uv = scaleUV(uv, vec2(1.0 - size));
-  uv = rotateUV(uv, rotation); //rotate the UV
+  uv = rotate(uv, rotation, vec2(0.5)); //rotate the UV
 
   //this is basically the brightness
   float p = mix(-1.0,1000.0,easeInExpo(bn));
@@ -349,10 +339,11 @@ vec4 getRays(float progress)
     0.0,1.0,
     -5.0,1.0
   );
-  ray = clamp(ray,0.0,1.0);
+
+  float alpha = clamp(uRaysColor.a * ray,0.0,1.0);
 
   //return
-  return vec4(uRaysColor.r,uRaysColor.g,uRaysColor.b,uRaysColor.a * ray);
+  return vec4(uRaysColor.r,uRaysColor.g,uRaysColor.b,alpha);
 
 }
 
@@ -451,6 +442,7 @@ void main() {
   {
     oColor = alphaOver(oColor, getRays(progress));
   }
+
 
   // If five-point stars are enabled, overlay them using stored alpha
   if (uRingCount > 0.0 && uStarCount > 0.0)

@@ -136,7 +136,6 @@ void main() {
             progress, 0.0, ((uSize.x + (uPadding*2.0)) / uSize.x) 
             ,0.0, 1.0 
             );
-        progress = clamp(progress,0.0,1.0);
     }
     
 
@@ -196,7 +195,7 @@ void main() {
     vec3 color = cos(progress*uColorSpeed+uv.xyx+vec3(0,2,4)).xyz;
     //coloroffset 
     float colorOffset = (uRandomColorOffset) ? hash12(uSeed) : uColorOffset ;
-    color = offsetHue(color, colorOffset);
+    color = offsetHue(color, colorOffset + 0.10);
     //clamp and saturate
     color = clamp(color * uColorSaturation,vec3(0.0),vec3(1.0));
      

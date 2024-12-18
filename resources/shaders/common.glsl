@@ -385,6 +385,15 @@ vec2 rotate(vec2 a, float angle) {
     );
 }
 
+//rotates a given 2d vector, around a given center (angle is in radians)
+vec2 rotate(vec2 a, float angle, vec2 center)
+{
+    return vec2(
+        cos(angle) * (a.x - center.x) + sin(angle) * (a.y - center.y) + center.x,
+        cos(angle) * (a.y - center.y) - sin(angle) * (a.x - center.x) + center.y
+    );
+}
+
 // --------------------------------------------------------------------------------- noise
 
 // These noise algorithms are based on implementations by various authors from
@@ -613,26 +622,42 @@ This ensures a linear transformation from the old range to the new range.
 // Maps a float value from one range [oldMin, oldMax] to another range [newMin, newMax].
 // This is useful for normalizing or scaling scalar values to fit within a desired range.
 float remap(float value, float oldMin, float oldMax, float newMin, float newMax) {
-    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
 }
 
 // Remap for vec2
 // Maps a 2D vector (vec2) from one range [oldMin, oldMax] to another range [newMin, newMax].
 // Each component of the vec2 is individually scaled and transformed.
 vec2 remap(vec2 value, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax) {
-    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
 }
 
 // Remap for vec3
 // Maps a 3D vector (vec3) from one range [oldMin, oldMax] to another range [newMin, newMax].
 // Each component of the vec3 is individually scaled and transformed.
 vec3 remap(vec3 value, vec3 oldMin, vec3 oldMax, vec3 newMin, vec3 newMax) {
-    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
 }
 
 // Remap for vec4
 // Maps a 4D vector (vec4) from one range [oldMin, oldMax] to another range [newMin, newMax].
 // Each component of the vec4 is individually scaled and transformed.
 vec4 remap(vec4 value, vec4 oldMin, vec4 oldMax, vec4 newMin, vec4 newMax) {
-    return newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
 }
