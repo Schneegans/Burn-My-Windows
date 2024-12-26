@@ -1034,6 +1034,53 @@ SPDX-License-Identifier: CC0-1.0
       <description>The Percent at which the window will fade out</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- RGBWarp Effect Options                                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="rgbwarp-enable-effect" type="b">
+      <default>false</default>
+      <summary>RGBWarp Enable Effect</summary>
+      <description>Use the RGBWarp.</description>
+    </key>
+
+    <key name="rgbwarp-animation-time" type="i">
+      <default>1500</default>
+      <summary>RGBWarp Animation Time</summary>
+      <description>The time the RGBWarp effect takes.</description>
+    </key>
+
+    <key name="rgbwarp-wavesize" type="d">
+      <default>1.0</default>
+      <summary>RGBWarp Width</summary>
+      <description>Width of the effect.</description>
+    </key>
+
+    <key name="rgbwarp-brightness" type="d">
+      <default>1.0</default>
+      <summary>RGBWarp Brightness</summary>
+      <description>brightness of the effect.</description>
+    </key>
+
+    <key name="rgbwarp-offset-r" type="d">
+      <default>1.0</default>
+      <summary>RGBWarp Red Offset</summary>
+      <description>Red offset of the effect.</description>
+    </key>
+
+    <key name="rgbwarp-offset-g" type="d">
+      <default>0.80</default>
+      <summary>RGBWarp Green Offset</summary>
+      <description>Green offset of the effect.</description>
+    </key>
+
+    <key name="rgbwarp-offset-b" type="d">
+      <default>0.60</default>
+      <summary>RGBWarp Blue Offset</summary>
+      <description>Blue offset of the effect.</description>
+    </key>
+
+
 
   </schema>
 

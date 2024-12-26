@@ -235,7 +235,8 @@ export default class Effect {
             color5: 'rgba(0,240,236,1.0)',
           },
           {
-            name: _('Red White and Blue 🇺🇸'),  // A patriotic palette of red, white, and blue
+            name:
+              _('Red White and Blue 🇺🇸'),  // A patriotic palette of red, white, and blue
             ScaleStyle: 1.0,
             SparkCount: 4,
             SparkColor: 'rgba(255,255,255,1.0)',
@@ -270,7 +271,7 @@ export default class Effect {
           },
           {
             name: _('Cattuccino 😺'),  // A soft pastel palette inspired by a
-                                           // cappuccino theme
+                                       // cappuccino theme
             ScaleStyle: 1.0,
             SparkCount: 4,
             SparkColor: 'rgba(255,255,255,1.0)',
@@ -313,12 +314,12 @@ export default class Effect {
             RingCount: 0,
             RingRotation: 1.33,
             StarCount: 7,
-            color0: 'rgba(255,255,255,0.0)',  
-            color1: 'rgba(255,255,255,0.0)',  
-            color2: 'rgba(255,255,255,0.0)',  
-            color3: 'rgba(255,255,255,0.0)',  
-            color4: 'rgba(255,255,255,0.0)',  
-            color5: 'rgba(255,255,255,0.0)',  
+            color0: 'rgba(255,255,255,0.0)',
+            color1: 'rgba(255,255,255,0.0)',
+            color2: 'rgba(255,255,255,0.0)',
+            color3: 'rgba(255,255,255,0.0)',
+            color4: 'rgba(255,255,255,0.0)',
+            color5: 'rgba(255,255,255,0.0)',
           }
         ];
 

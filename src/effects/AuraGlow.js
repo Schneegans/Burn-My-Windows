@@ -155,19 +155,21 @@ export default class Effect {
     if (randColor) {
       // Connect to the "toggled" signal to update preferences dynamically
       randColor.connect('toggled', (widget) => {
-        const state = widget.get_active(); // Retrieve the state directly
-        EnableDisablePref(dialog, state);  // Update sensitivity when the state changes
+        const state = widget.get_active();  // Retrieve the state directly
+        EnableDisablePref(dialog, state);   // Update sensitivity when the state changes
       });
-    
-      // Manually call the update function on startup, using the initial state of the switch
-      const initialState = randColor.get_active();  // Get the initial state of the check button
+
+      // Manually call the update function on startup, using the initial state of the
+      // switch
+      const initialState =
+        randColor.get_active();  // Get the initial state of the check button
       EnableDisablePref(dialog, initialState);
     } else {
       // Log an error if the switch widget is not found in the UI
       log('Error: \'aura-glow-random-color\' switch widget not found.');
     }
 
-    //if we use a switch instead of a checkbox
+    // if we use a switch instead of a checkbox
     /*
     const switchWidget = dialog.getBuilder().get_object('aura-glow-random-color');
     if (switchWidget) {
