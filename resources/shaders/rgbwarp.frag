@@ -30,18 +30,11 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-
 uniform float uWavesize;
 uniform float uBrightness;
 uniform float uStretchR;
 uniform float uStretchG;
 uniform float uStretchB;
-
-// float wavesize = 1.0;
-// float brightness = 1.0;
-// float stretchR = 0.25;
-// float stretchG = 0.20;
-// float stretchB = 0.15;
 
 
 float FadeInOut(float t, float power)
@@ -66,14 +59,15 @@ void main() {
 
   // the UV
   vec2 uv = iTexCoord.st;
+  //flipped the uv
   vec2 f = vec2(uv.x,1.0 - uv.y);
 
+  // w is the wave
   float w = 0.0;
 
   float p = mix(0.0, 1.0 + uWavesize, progress);
   w = 1.0 - abs(p -  f.y);
   w = clamp(w,0.0,1.0);
-
 
   w = pow(w, mix(100.0,1.0,uWavesize) );
 
@@ -90,27 +84,9 @@ void main() {
   oColor.g = getInputColor(uv + vec2(0.0,w * uStretchG ) ).g * mix(1.0, uBrightness, FadeInOut(progress,4));
   oColor.b = getInputColor(uv + vec2(0.0,w * uStretchB ) ).b * mix(1.0, uBrightness, FadeInOut(progress,4));
 
-  // float stretchA = min(min(uStretchR,uStretchG),uStretchB);
-  // oColor.a = getInputColor(uv).a * mask * (1.0 - w);
-
-  // float mask = (oColor.r + oColor.g + oColor.b)/3.0;
-  // float mask = max(max(oColor.r,oColor.g),oColor.b);
-  // oColor.a = getInputColor(uv).a * progress;
-
-  //this will not work well on very dark themes
-  // float mask = (oColor.r + oColor.g + oColor.b)/3.0;
-  // if (mask >  0.0)
-  // {
-  //   oColor.a = getInputColor(uv).a;
-  // }
-
-
+  //if you can think of a better way to handle the alpha ... try that
   oColor.a = getInputColor(uv).a * easeInOutSine(progress) * mask;
-    
-  // float a = getInputColor(uv).a * easeOutExpo(progress);
-  // oColor.a = clamp(a,0.0,1.0);
-  // oColor.a = getInputColor(uv).a ;
-  // oColor.a = mask * getInputColor(uv).a * cmax ;
+
 
   setOutputColor(oColor);
 }

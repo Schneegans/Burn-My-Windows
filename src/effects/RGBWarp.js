@@ -9,7 +9,7 @@
 //                                 |__/                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-// SPDX-FileCopyrightText: Your Name <your@email.com>
+// SPDX-FileCopyrightText: Justin Garza JGarza9788@gmail.com
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 'use strict';
@@ -24,8 +24,7 @@ const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This effect ...                                                                      //
-// <- Please add a description of your effect here ->                                   //
+// This effect warps the Red Green Blue values                                          //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported

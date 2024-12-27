@@ -48,6 +48,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **Pixel Wheel** <br> This simple effect pixelates the window and hides the pixels in a wheel-like fashion.                                                                        | <img src ="docs/pics/pixel-wheel.gif" />                                              |
 | **Pixel Wipe** <br> This effect pixelates the window and hides the pixels radially, starting from the pointer position.                                                           | <img src ="docs/pics/pixel-wipe.gif" />                                               |
 | **Portal** <br> This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series...                  | <img src ="docs/pics/portal.gif" />                                                   |
+| **RGB Warp** <br> Red Blue and Green go bye bye.                                                                                                       | <img src ="docs/pics/rgbwarp.gif" />                                                     |
 | **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.                                                                                                       | <img src ="docs/pics/snap.gif" />                                                     |
 | **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!                                                                                                      | <img src ="docs/pics/trex.gif" />                                                     |
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
@@ -86,6 +87,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
+<tr><td>RGB Warp</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
