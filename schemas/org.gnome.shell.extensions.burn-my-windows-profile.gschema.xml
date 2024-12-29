@@ -1080,7 +1080,51 @@ SPDX-License-Identifier: CC0-1.0
       <description>Blue offset of the effect.</description>
     </key>
 
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Team Rocket Effect Options                                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+    <key name="team-rocket-enable-effect" type="b">
+      <default>false</default>
+      <summary>Team Rocket Enable Effect</summary>
+      <description>Use the Team Rocket effect.</description>
+    </key>
+
+    <key name="team-rocket-animation-time" type="i">
+      <default>1500</default>
+      <summary>Team Rocket Animation Time</summary>
+      <description>The time the Team Rocket effect takes.</description>
+    </key>
+
+    <key name="team-rocket-x" type="d">
+      <default>0.0</default>
+      <summary>Team Rocket X</summary>
+      <description>X position</description>
+    </key>
+
+    <key name="team-rocket-y" type="d">
+      <default>0.0</default>
+      <summary>Team Rocket Y</summary>
+      <description>Y position</description>
+    </key>
+
+    <key name="team-rocket-win-rot" type="b">
+      <default>false</default>
+      <summary>Rotate the Window</summary>
+      <description>Rotate the Window</description>
+    </key>
+    
+    <key name="team-rocket-sparkle-rot" type="d">
+      <default>0.33</default>
+      <summary>Sparkle Rotation</summary>
+      <description>Sparkle Rotation</description>
+    </key>
+
+    <key name="team-rocket-sparkle-size" type="d">
+      <default>0.75</default>
+      <summary>Sparkle Size</summary>
+      <description>Sparkle Size</description>
+    </key>
 
   </schema>
 

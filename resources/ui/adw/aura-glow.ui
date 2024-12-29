@@ -42,7 +42,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
     </child>
     
 
-    <!-- <child>
+    <child>
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Random Color</property>
         <property name="activatable-widget">aura-glow-random-color</property>
@@ -62,19 +62,19 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
       </object>
-    </child> -->
+    </child>
 
     <child>
       <object class="AdwActionRow" id="aura-glow-action-row">
         <property name="title" translatable="yes">Color Offset</property>
         <property name="subtitle" translatable="yes">Red</property>
-      <child>
+      <!-- <child>
         <object class="GtkCheckButton" id="aura-glow-random-color">
           <property name="label" translatable="yes">random</property>
           <property name="valign">center</property>
           <property name="active">true</property>
         </object>
-      </child>
+      </child> -->
         <child>
           <object class="GtkScale" id="aura-glow-color-offset-scale">
             <property name="valign">center</property>

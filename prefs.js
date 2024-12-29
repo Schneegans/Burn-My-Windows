@@ -44,6 +44,7 @@ import PixelWipe from './src/effects/PixelWipe.js';
 import Portal from './src/effects/Portal.js';
 import RGBWarp from './src/effects/RGBWarp.js';
 import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
@@ -82,8 +83,8 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       Matrix,     Mushroom,   PaintBrush,
       Pixelate,   PixelWheel, PixelWipe,
       Portal,     RGBWarp,    SnapOfDisintegration,
-      TRexAttack, TVEffect,   TVGlitch,
-      Wisps,
+      TeamRocket, TRexAttack, TVEffect,
+      TVGlitch,   Wisps,
     ];
 
 

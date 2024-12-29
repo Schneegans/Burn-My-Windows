@@ -42,6 +42,7 @@ import PixelWipe from './src/effects/PixelWipe.js';
 import Portal from './src/effects/Portal.js';
 import RGBWarp from './src/effects/RGBWarp.js';
 import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
@@ -80,8 +81,8 @@ export default class BurnMyWindows extends Extension {
       new Glide(),      new Glitch(),     new Hexagon(),     new Incinerate(),
       new Matrix(),     new PaintBrush(), new Pixelate(),    new PixelWheel(),
       new PixelWipe(),  new Portal(),     new RGBWarp(),     new SnapOfDisintegration(),
-      new TRexAttack(), new TVEffect(),   new TVGlitch(),    new Wisps(),
-      new Mushroom(),
+      new TeamRocket(), new TRexAttack(), new TVEffect(),    new TVGlitch(),
+      new Wisps(),      new Mushroom(),
 
     ];
 

@@ -45,8 +45,7 @@ float FadeInOut(float t, float power)
 }
 
 
-// The width of the fading effect is loaded from the settings.
-uniform float uFadeWidth;
+
 
 void main() {
 

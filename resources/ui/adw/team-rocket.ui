@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Justin Garza JGarza9788@gmail.com
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+
+  <!-- Main container for the team-rocket preferences section -->
+  <object class="AdwExpanderRow" id="team-rocket-prefs">
+
+    <!-- Animation Time Adjustment Section -->
+    <child>
+      <object class="AdwActionRow">
+        
+        <property name="title" translatable="yes">Animation Time [ms]</property>
+        <child>
+          
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property> 
+            <property name="digits">0</property> 
+            <property name="value-pos">left</property> 
+            <property name="width-request">300</property> 
+            
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="team-rocket-animation-time">
+                <property name="upper">5000</property> 
+                <property name="lower">100</property> 
+                <property name="step-increment">10</property> 
+                <property name="page-increment">100</property> 
+              </object>
+            </property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkButton" id="reset-team-rocket-animation-time">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" /> 
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    
+    <child>
+      <object class="AdwActionRow">
+        
+        <property name="title" translatable="yes">X</property>
+        <!-- <property name="subtitle" translatable="yes"></property> -->
+        
+        <child>
+          <object class="GtkScale" >
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="team-rocket-x">
+                <property name="upper">1.0</property> 
+                <property name="lower">-1.0</property> 
+                <property name="step-increment">0.01</property> 
+                <property name="page-increment">0.1</property> 
+              </object>
+            </property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkButton" id="reset-team-rocket-x">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        
+        <property name="title" translatable="yes">Y</property>
+        <!-- <property name="subtitle" translatable="yes"></property> -->
+        
+        <child>
+          <object class="GtkScale" >
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="team-rocket-y">
+                <property name="upper">1.0</property> 
+                <property name="lower">-1.0</property> 
+                <property name="step-increment">0.01</property> 
+                <property name="page-increment">0.1</property> 
+              </object>
+            </property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkButton" id="reset-team-rocket-y">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Rotate Window</property>
+        <property name="activatable-widget">team-rocket-win-rot</property>
+        <child>
+          <object class="GtkSwitch" id="team-rocket-win-rot">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-team-rocket-win-rot">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        
+        <property name="title" translatable="yes">Sparkle Size</property>
+        <!-- <property name="subtitle" translatable="yes"></property> -->
+        
+        <child>
+          <object class="GtkScale" >
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="team-rocket-sparkle-size">
+                <property name="upper">1.0</property> 
+                <property name="lower">0.5</property> 
+                <property name="step-increment">0.1</property> 
+                <property name="page-increment">0.25</property> 
+              </object>
+            </property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkButton" id="reset-team-rocket-sparkle-size">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        
+        <property name="title" translatable="yes">Sparkle Rotation</property>
+        <!-- <property name="subtitle" translatable="yes"></property> -->
+        
+        <child>
+          <object class="GtkScale" >
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="team-rocket-sparkle-rot">
+                <property name="upper">1.0</property> 
+                <property name="lower">-1.0</property> 
+                <property name="step-increment">0.1</property> 
+                <property name="page-increment">0.25</property> 
+              </object>
+            </property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkButton" id="reset-team-rocket-sparkle-rot">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </object>
+
+
+</interface>
