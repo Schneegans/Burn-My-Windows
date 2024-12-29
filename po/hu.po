@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: 2024-08-18 17:09+0000\n"
+"PO-Revision-Date: 2024-12-30 20:06+0000\n"
 "Last-Translator: atomkapa atomkapa <atomkapa@gmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/burn-my-"
-"windows/core/hu/>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"burn-my-windows/core/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -65,7 +65,7 @@ msgstr "Télapó itt van"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "Fókuszálás"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -237,7 +237,7 @@ msgstr "Passzoló háttérképek megtekintése"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "Támogatók"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -517,11 +517,11 @@ msgstr "Árnyalatok"
 
 #: resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "Homályosítás mértéke"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "Homályosítás minősége"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -586,15 +586,15 @@ msgstr ""
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "Keresés..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "Összes bekapcsolása"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "Összes kikapcsolása"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
