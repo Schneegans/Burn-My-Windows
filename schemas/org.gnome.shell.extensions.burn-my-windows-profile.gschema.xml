@@ -1096,6 +1096,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>The time the Team Rocket effect takes.</description>
     </key>
 
+    <key name="team-rocket-window-time" type="d">
+      <default>0.5</default>
+      <summary>The time for the window animation</summary>
+      <description>time for window animation</description>
+    </key>
+
     <key name="team-rocket-x" type="d">
       <default>0.0</default>
       <summary>Team Rocket X</summary>
