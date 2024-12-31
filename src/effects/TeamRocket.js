@@ -39,6 +39,7 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
+      shader._uWT        = shader.get_uniform_location('uWT');
       shader._uXpos        = shader.get_uniform_location('uXpos');
       shader._uYpos        = shader.get_uniform_location('uYpos');
       shader._uWinRot      = shader.get_uniform_location('uWinRot');
@@ -49,6 +50,10 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
+        shader.set_uniform_float(shader._uWT, 1, [
+          settings.get_double('team-rocket-window-time'),
+        ]);
+
         shader.set_uniform_float(shader._uXpos, 1, [
           settings.get_double('team-rocket-x'),
         ]);
@@ -105,6 +110,7 @@ export default class Effect {
     // Empty for now... Code is added here later in the tutorial!
 
     dialog.bindAdjustment('team-rocket-animation-time');
+    dialog.bindAdjustment('team-rocket-window-time');
     dialog.bindAdjustment('team-rocket-x');
     dialog.bindAdjustment('team-rocket-y');
 

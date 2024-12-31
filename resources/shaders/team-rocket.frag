@@ -33,6 +33,7 @@
 // The width of the fading effect is loaded from the settings.
 // uniform float uFadeWidth;
 
+uniform float uWT;
 uniform float uXpos;
 uniform float uYpos;
 uniform float uSparkleRot;
@@ -122,16 +123,21 @@ void main() {
   // scale progress ... the first half of the animation
   float scalep = remap(
     progress,
-    0.0,0.6, 
+    //0.0,clamp(uWT + 0.1,0.0,1.0),
+    // 0.0,0.6,
+    0.0,uWT+0.1,
     0.0,1.0
     );
 
-  scalep = easeInOutQuad(scalep);
+  // scalep = easeInOutSine(scalep);
+  scalep = easeOutQuad(scalep);
 
  // sparkle progress ... the second half of the animation
   float sparkp = remap(
     progress,
-    0.4,1.0,
+    // clamp((1.0 - uWT) - 0.1,0.0,1.0),1.0,
+    // 0.4,1.0,
+    uWT-0.1,1.0,
     0.0,1.0
     );
   sparkp = easeInOutSine(sparkp);
@@ -144,7 +150,11 @@ void main() {
 
   // // this is the offset of the window... don't let them go too far each way
   vec2 offset = vec2(uXpos,uYpos*-1.0) * 0.20;
-  vec2 scaleOffset = mix(vec2(0.0),offset,scalep);
+  vec2 scaleOffset = mix(
+    vec2(0.0),
+    vec2(uXpos,uYpos*-1.0) * 0.50,
+    scalep
+    );
 
   //the UV for this function
   float aspect = uSize.x / uSize.y;
