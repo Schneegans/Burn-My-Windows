@@ -123,8 +123,6 @@ void main() {
   // scale progress ... the first half of the animation
   float scalep = remap(
     progress,
-    //0.0,clamp(uWT + 0.1,0.0,1.0),
-    // 0.0,0.6,
     0.0,uWT+0.1,
     0.0,1.0
     );
@@ -135,8 +133,6 @@ void main() {
  // sparkle progress ... the second half of the animation
   float sparkp = remap(
     progress,
-    // clamp((1.0 - uWT) - 0.1,0.0,1.0),1.0,
-    // 0.4,1.0,
     uWT-0.1,1.0,
     0.0,1.0
     );

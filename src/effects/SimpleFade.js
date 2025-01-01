@@ -24,8 +24,8 @@ const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 const _ = await utils.importGettext();
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This effect was inspired by Team Rocket Blasting Off again!                          //
-// https://c.tenor.com/0ag0MVXUaQEAAAAd/tenor.gif                                       //
+// This effect ...                                                                      //
+// <- Please add a description of your effect here ->                                   //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // The effect class can be used to get some metadata (like the effect's name or supported
@@ -39,43 +39,15 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uWT          = shader.get_uniform_location('uWT');
-      shader._uXpos        = shader.get_uniform_location('uXpos');
-      shader._uYpos        = shader.get_uniform_location('uYpos');
-      shader._uWinRot      = shader.get_uniform_location('uWinRot');
-      shader._uSparkleRot  = shader.get_uniform_location('uSparkleRot');
-      shader._uSparkleSize = shader.get_uniform_location('uSparkleSize');
-
-      shader._uSeed = shader.get_uniform_location('uSeed');
+    //   shader._uFadeWidth = shader.get_uniform_location('uFadeWidth');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        shader.set_uniform_float(shader._uWT, 1, [
-          settings.get_double('team-rocket-window-time'),
-        ]);
 
-        shader.set_uniform_float(shader._uXpos, 1, [
-          settings.get_double('team-rocket-x'),
-        ]);
+        // shader.set_uniform_float(shader._uFadeWidth, 1, [
+        //   settings.get_double('simple-fade-width'),
+        // ]);
 
-        shader.set_uniform_float(shader._uYpos, 1, [
-          settings.get_double('team-rocket-y'),
-        ]);
-
-        shader.set_uniform_float(shader._uWinRot, 1,
-                                 [settings.get_boolean('team-rocket-win-rot')]);
-
-        shader.set_uniform_float(shader._uSparkleRot, 1, [
-          settings.get_double('team-rocket-sparkle-rot'),
-        ]);
-
-        shader.set_uniform_float(shader._uSparkleSize, 1, [
-          settings.get_double('team-rocket-sparkle-size'),
-        ]);
-
-        // this will be used with a has function to get a random number
-        // clang-format off
-        shader.set_uniform_float(shader._uSeed,  2, [Math.random(), Math.random()]);
       });
     });
   }
@@ -93,13 +65,13 @@ export default class Effect {
   // (e.g. '*-animation-time'). Also, the shader file and the settings UI files should be
   // named likes this.
   static getNick() {
-    return 'team-rocket';
+    return 'simple-fade';
   }
 
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return _('TeamRocket');
+    return _('Simple Fade Effect');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -108,16 +80,6 @@ export default class Effect {
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
     // Empty for now... Code is added here later in the tutorial!
-
-    dialog.bindAdjustment('team-rocket-animation-time');
-    dialog.bindAdjustment('team-rocket-window-time');
-    dialog.bindAdjustment('team-rocket-x');
-    dialog.bindAdjustment('team-rocket-y');
-
-    dialog.bindSwitch('team-rocket-win-rot');
-
-    dialog.bindAdjustment('team-rocket-sparkle-rot');
-    dialog.bindAdjustment('team-rocket-sparkle-size');
   }
 
   // ---------------------------------------------------------------- API for extension.js
