@@ -401,32 +401,32 @@ the list below might not be 100% correct, please pull request if changes need to
 
 ### **Ubuntu**
 ```bash
-sudo apt install make gettext libglib2.0-dev-bin
+sudo apt install make gettext libglib2.0-dev-bin clang-format
 ```
 
 ### **Fedora/RHEL**
 ```bash
-sudo dnf install make gettext glib2-devel
+sudo dnf install make gettext glib2-devel clang-format
 ```
 
 ### **Arch Linux**
 ```bash
-sudo pacman -S base-devel gettext glib2
+sudo pacman -S base-devel gettext glib2 clang-format
 ```
 
 ### **openSUSE**
 ```bash
-sudo zypper install make gettext-tools glib2-devel
+sudo zypper install make gettext-tools glib2-devel clang-format
 ```
 
 ### **Alpine Linux**
 For minimal distributions like Alpine:
 ```bash
-sudo apk add build-base gettext-dev glib-dev
+sudo apk add build-base gettext-dev glib-dev clang-format
 ```
 
 ### **Gentoo**
 ```bash
-sudo emerge --ask sys-devel/make sys-devel/gettext dev-libs/glib
+sudo emerge --ask sys-devel/make sys-devel/gettext dev-libs/glib clang-format
 ```
 
