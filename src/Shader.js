@@ -66,7 +66,7 @@ export var Shader = GObject.registerClass({
   // resolving any #includes in this file.
   _init(nick) {
     this._nick = nick;
-
+    
     // This will call vfunc_build_pipeline().
     super._init();
 

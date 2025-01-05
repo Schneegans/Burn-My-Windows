@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Justin Garza JGarza9788@gmail.com
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+
+  <!-- Main container for the unicorn-fart preferences section -->
+  <object class="AdwExpanderRow" id="unicorn-fart-prefs">
+
+    <!-- Animation Time Adjustment Section -->
+    <child>
+      <object class="AdwActionRow">
+        
+        <property name="title" translatable="yes">Animation Time [ms]</property>
+        <child>
+          
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property> 
+            <property name="digits">0</property> 
+            <property name="value-pos">left</property> 
+            <property name="width-request">300</property> 
+            
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-animation-time">
+                <property name="upper">5000</property> 
+                <property name="lower">100</property> 
+                <property name="step-increment">10</property> 
+                <property name="page-increment">100</property> 
+              </object>
+            </property>
+          </object>
+        </child>
+        
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-animation-time">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" /> 
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+
+
+    <!-- Switch for Enabling Particles -->
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Enable Particles</property>
+        <property name="activatable-widget">unicorn-fart-particles-enable</property>
+        <child>
+          <object class="GtkSwitch" id="unicorn-fart-particles-enable">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-particles-enable">
+            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Particle Size Adjustment -->
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Particle Size</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-particle-size">
+                <property name="upper">100.0</property>
+                <property name="lower">1.0</property>
+                <property name="step-increment">1.0</property>
+                <property name="page-increment">10.0</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-particle-size">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Particle Speed Adjustment -->
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Particle Speed</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-particle-speed">
+                <property name="upper">50.0</property>
+                <property name="lower">0.1</property>
+                <property name="step-increment">0.1</property>
+                <property name="page-increment">1.0</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-particle-speed">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Particle Color Random</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-particle-color-random">
+                <property name="upper">100.0</property>
+                <property name="lower">0.1</property>
+                <property name="step-increment">0.1</property>
+                <property name="page-increment">1.0</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-particle-color-random">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Particle Color Speed</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-particle-color-speed">
+                <property name="upper">100.0</property>
+                <property name="lower">0.1</property>
+                <property name="step-increment">0.1</property>
+                <property name="page-increment">1.0</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-particle-color-speed">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Spark Count</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-spark-count">
+                <property name="upper">100</property>
+                <property name="lower">0</property>
+                <property name="step-increment">1</property>
+                <property name="page-increment">10</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-spark-count">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Spark Start</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-spark-start">
+                <property name="upper">0.5</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.01</property>
+                <property name="page-increment">0.1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-spark-start">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Spark End</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-spark-end">
+                <property name="upper">1.0</property>
+                <property name="lower">0.5</property>
+                <property name="step-increment">0.01</property>
+                <property name="page-increment">0.1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-spark-end">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Spark offset</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-spark-offset">
+                <property name="upper">0.5</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.1</property>
+                <property name="page-increment">0.25</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-spark-offset">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Star Count</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-star-count">
+                <property name="upper">50</property>
+                <property name="lower">0</property>
+                <property name="step-increment">1</property>
+                <property name="page-increment">5</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-star-count">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Star Rotation</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-star-rotation">
+                <property name="upper">3.0</property>
+                <property name="lower">-3.0</property>
+                <property name="step-increment">0.1</property>
+                <property name="page-increment">0.5</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-star-rotation">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Star Size</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-star-size">
+                <property name="upper">1.0</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.1</property>
+                <property name="page-increment">0.5</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-star-size">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Star Start</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-star-start">
+                <property name="upper">0.5</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.01</property>
+                <property name="page-increment">0.1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-star-start">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Star End</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-star-end">
+                <property name="upper">1.0</property>
+                <property name="lower">0.5</property>
+                <property name="step-increment">0.01</property>
+                <property name="page-increment">0.1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-star-end">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Blur Quality</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="unicorn-fart-blur-quality">
+                <property name="upper">10.0</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.01</property>
+                <property name="page-increment">0.1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-blur-quality">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+
+    <!-- Particle Colors -->
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Particle Colors</property>
+        <child>
+          <object class="GtkBox">
+            <style>
+              <class name="linked" />
+            </style>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-particle-color-0">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-particle-color-1">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-particle-color-2">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-particle-color-3">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-particle-color-4">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-particle-color-5">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-particle-colors">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Values</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Star Gradient Colors -->
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Star Colors</property>
+        <child>
+          <object class="GtkBox">
+            <style>
+              <class name="linked" />
+            </style>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-star-color-0">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-star-color-1">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-star-color-2">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-star-color-3">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-star-color-4">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="unicorn-fart-star-color-5">
+                <property name="use_alpha">1</property>
+                <property name="show_editor">1</property>
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-unicorn-fart-star-colors">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Values</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </object>
+
+</interface>
+

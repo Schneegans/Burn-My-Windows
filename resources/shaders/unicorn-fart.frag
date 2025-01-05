@@ -31,27 +31,60 @@
 // void setOutputColor(vec4 outColor)
 
 // The width of the fading effect is loaded from the settings.
-// uniform float uFadeWidth;
+
+uniform bool uParticles;
+uniform float uParticleSize;
+uniform float uParticleSpeed;
+uniform float uParticleColorRandom;
+uniform float uParticleColorSpeed;
+uniform float uSparkCount;
+uniform vec2 uSparkStartEnd;
+uniform float uSparkOffset;
+uniform float uStarCount;
+uniform float uStarRot;
+uniform float uStarSize;
+uniform vec2 uStarStartEnd;
+uniform float uBlurQuality;
+uniform float uSeed;
+
+
+//particle colors
+uniform vec4 uParticleColor0; 
+uniform vec4 uParticleColor1; 
+uniform vec4 uParticleColor2; 
+uniform vec4 uParticleColor3; 
+uniform vec4 uParticleColor4; 
+uniform vec4 uParticleColor5; 
+
+//star colors
+uniform vec4 uStarColor0; 
+uniform vec4 uStarColor1; 
+uniform vec4 uStarColor2; 
+uniform vec4 uStarColor3; 
+uniform vec4 uStarColor4; 
+uniform vec4 uStarColor5; 
+
+
+
+/*
+bool uParticles = True;
+float uParticleSize = 100.0;
+float uParticleSpeed = 10.0;
+float uParticleColorRandom = 1.0;
+float uParticleColorSpeed = 1.0;
 
 float uSparkCount = 50.0;
 vec2 uSparkStartEnd = vec2(0.1,0.75);
 float uSparkOffset = 0.25;
-
-float uBlurQuality = 5.0;
-vec4 uSeed = vec4(1.0,0.1,0.5,1.0);
 
 float uStarCount = 5.0;
 float uStarRot = 1.0;
 float uStarSize = 0.1;
 vec2 uStarStartEnd = vec2(0.0,0.66);
 
-//pastel
-// vec4 uParticleColor0 = vec4(1.0, 0.8, 0.8, 1.0); 
-// vec4 uParticleColor1 = vec4(1.0, 1.0, 0.8, 1.0); 
-// vec4 uParticleColor2 = vec4(0.8, 1.0, 0.8, 1.0); 
-// vec4 uParticleColor3 = vec4(0.8, 0.8, 1.0, 1.0); 
-// vec4 uParticleColor4 = vec4(1.0, 0.8, 1.0, 1.0); 
-// vec4 uParticleColor5 = vec4(0.8, 1.0, 1.0, 1.0); 
+float uBlurQuality = 5.0;
+vec4 uSeed = vec4(1.0,0.1,0.5,1.0);
+
 
 //bold colors
 vec4 uParticleColor0 = vec4(1.0, 0.0, 0.0, 0.0); 
@@ -68,7 +101,7 @@ vec4 uStarColor2 = vec4(0.0, 1.0, 0.0, 0.0);
 vec4 uStarColor3 = vec4(0.0, 0.0, 1.0, 0.0); 
 vec4 uStarColor4 = vec4(1.0, 0.0, 1.0, 0.0); 
 vec4 uStarColor5 = vec4(1.0, 0.0, 0.0, 0.0); 
-
+*/
 
 
 
@@ -430,7 +463,7 @@ vec4 getStars(float t)
   for (float i = 0.0; i < uStarCount ; ++i)
   {
 
-    vec4 v4 = hash41( i * uSeed.x);
+    vec4 v4 = hash41( i * uSeed);
 
     //the X and Y position ... at the end
     vec3 pos = getPosByAngle( (i/uStarCount) * tau + (uStarRot * tau * t) );
@@ -477,11 +510,10 @@ vec4 getParticles(float alpha)
 {
   vec2 uv = iTexCoord.st;
 
-  float particles = pow((simplex3D(vec3(uv * 50.0, 10.0 * uProgress ))), 3.0);
+  float particles = pow((simplex3D(vec3(uv * uParticleSize, uParticleSpeed * uProgress ))), 3.0);
 
-  float pc = pow((simplex3D(vec3(uv * 50, 10.0 * uProgress ))), 1.0);
+  float pc = simplex3D(vec3(uv * uParticleColorRandom, uParticleColorSpeed * uProgress ));
   vec4 particleColor = getParticleColors(pc,1.0);
-
 
   particles *= alpha;
 
@@ -502,36 +534,36 @@ void main() {
   );
   ztomo = easeInOutSine(ztomo);
 
-  //out Expo
-  float oExpo = easeOutExpo(progress);
-  float iExpo = easeInExpo(progress);
+  //progress variants
+  // float oExpo = easeOutExpo(progress);
+  // float iExpo = easeInExpo(progress);
   float ioSine = easeInOutSine(progress);
-  float ioSine_r = 1.0 - ioSine;
 
-  vec2 uv = iTexCoord.st;
+  //get blured version of the window
+  vec4 oColor =  blur(iTexCoord.st, ztomo * 100.0,uBlurQuality);
 
-  // // change the center 
-  // uv = uv * 2.0 - 1.0;
-  // //scale
-  // uv /= ioSine_r;
-  // //re-center
-  // uv = uv * 0.5 + 0.5;
-
-  //get color
-  vec4 oColor =  blur(uv, ztomo * 100.0,uBlurQuality);
+  //apply mask 
   oColor.a *= getMask(1.0 - ioSine);
 
   //get and apply particles
-  vec4 particles = getParticles(oColor.a);
-  oColor = mix(oColor,particles,ztomo);
+  if (uParticles)
+  {
+    vec4 particles = getParticles(oColor.a);
+    oColor = mix(oColor,particles,ztomo);
+  }
 
   //get and apply sparks
-  float sparks = getSparks(progress);
-  oColor = alphaOver(oColor, vec4(1.0,1.0,1.0,sparks));
+  if (uSparkCount > 0)
+  {
+    float sparks = getSparks(progress);
+    oColor = alphaOver(oColor, vec4(1.0,1.0,1.0,sparks));
+  }
 
-
-  oColor = alphaOver(oColor, getStars(mix(0.0001,0.999,progress)));
-
+  //get and apply stars
+  if (uStarCount > 0 )
+  {
+    oColor = alphaOver(oColor, getStars(mix(0.0001,0.999,progress)));
+  }
 
   setOutputColor(oColor);
 }
