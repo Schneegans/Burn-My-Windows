@@ -39,16 +39,17 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-    //   shader._uFadeWidth = shader.get_uniform_location('uFadeWidth');
+      //   shader._uFadeWidth = shader.get_uniform_location('uFadeWidth');
 
       // Write all uniform values at the start of each animation.
-      shader.connect('begin-animation', (shader, settings) => {
+      shader.connect('begin-animation',
+                     (shader, settings) => {
 
-        // shader.set_uniform_float(shader._uFadeWidth, 1, [
-        //   settings.get_double('simple-fade-width'),
-        // ]);
+                       // shader.set_uniform_float(shader._uFadeWidth, 1, [
+                       //   settings.get_double('simple-fade-width'),
+                       // ]);
 
-      });
+                     });
     });
   }
 
