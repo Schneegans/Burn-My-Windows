@@ -353,8 +353,36 @@ export default class Effect {
             Starcolor4: 'rgba(255,255,102,1.0)',   // Light yellow
             Starcolor5: 'rgba(255,255,255,1.0)',   // White (hottest point)
             
+          },
+          {
+            name: _('Mystic 🪄'),
+            SparkCount: 100,
+            SparkStart: 0.0,
+            SparkEnd: 1.0,
+            SparkOffset: 1.0,
 
+            StarCount: 25,
+            StarRot: 3.0,
+            StarSize: 0.10,
+            StarStart: 0.0,
+            StarEnd: 1.0,
 
+            BlurQuality:5.0,
+
+            Sparkcolor0: 'rgba(75,0,130,1.0)',      // Indigo
+            Sparkcolor1: 'rgba(138,43,226,1.0)',    // Blue-violet
+            Sparkcolor2: 'rgba(0,191,255,1.0)',     // Deep sky blue
+            Sparkcolor3: 'rgba(0,255,127,1.0)',     // Spring green
+            Sparkcolor4: 'rgba(173,255,47,1.0)',    // Green-yellow
+            Sparkcolor5: 'rgba(255,20,147,1.0)',    // Deep pink
+
+            Starcolor0: 'rgba(75,0,130,1.0)',      // Indigo
+            Starcolor1: 'rgba(138,43,226,1.0)',    // Blue-violet
+            Starcolor2: 'rgba(0,191,255,1.0)',     // Deep sky blue
+            Starcolor3: 'rgba(0,255,127,1.0)',     // Spring green
+            Starcolor4: 'rgba(173,255,47,1.0)',    // Green-yellow
+            Starcolor5: 'rgba(255,20,147,1.0)',    // Deep pink
+            
           },
         ];
 
