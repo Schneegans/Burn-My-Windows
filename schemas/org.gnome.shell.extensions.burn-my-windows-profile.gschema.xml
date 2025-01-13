@@ -1149,36 +1149,6 @@ SPDX-License-Identifier: CC0-1.0
       <description>The time the Unicorn Fart effect takes.</description>
     </key>
 
-    <!-- particles -->
-    <key name="unicorn-fart-particles-enable" type="b">
-      <default>false</default>
-      <summary>Enable Particles</summary>
-      <description>Toggle whether particles are enabled in the effect.</description>
-    </key>
-
-    <key name="unicorn-fart-particle-size" type="d">
-      <default>1.0</default>
-      <summary>Particle Size</summary>
-      <description>Set the size of the particles.</description>
-    </key>
-
-    <key name="unicorn-fart-particle-speed" type="d">
-      <default>1.0</default>
-      <summary>Particle Speed</summary>
-      <description>Control the speed of the particles.</description>
-    </key>
-
-    <key name="unicorn-fart-particle-color-random" type="d">
-      <default>0.0</default>
-      <summary>Particle Color Randomness</summary>
-      <description>Adjust the randomness of particle colors.</description>
-    </key>
-
-    <key name="unicorn-fart-particle-color-speed" type="d">
-      <default>1.0</default>
-      <summary>Particle Color Change Speed</summary>
-      <description>Set the speed of particle color transitions.</description>
-    </key>
 
     <!-- sparks -->
     <key name="unicorn-fart-spark-count" type="i">
@@ -1200,26 +1170,26 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="unicorn-fart-spark-offset" type="d">
-      <default>0.0</default>
+      <default>0.5</default>
       <summary>Spark Offset</summary>
       <description>Set the positional offset for sparks.</description>
     </key>
 
     <!-- stars -->
     <key name="unicorn-fart-star-count" type="i">
-      <default>5</default>
+      <default>6</default>
       <summary>Number of Stars</summary>
       <description>Set the total number of stars displayed.</description>
     </key>
 
     <key name="unicorn-fart-star-rotation" type="d">
-      <default>0.0</default>
+      <default>0.33</default>
       <summary>Star Rotation</summary>
       <description>Control the rotational angle of stars.</description>
     </key>
 
     <key name="unicorn-fart-star-size" type="d">
-      <default>1.0</default>
+      <default>0.1</default>
       <summary>Star Size</summary>
       <description>Set the size of the stars.</description>
     </key>
@@ -1250,38 +1220,38 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- particle colors -->
-    <key name="unicorn-fart-particle-color-0" type="s">
-      <default>"rgba(255, 0, 0, 1.0)"</default>
+    <key name="unicorn-fart-spark-color-0" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
       <summary>Primary Particle Color</summary>
       <description>Set the first color used for particles.</description>
     </key>
 
-    <key name="unicorn-fart-particle-color-1" type="s">
-      <default>"rgba(0, 255, 0, 1.0)"</default>
+    <key name="unicorn-fart-spark-color-1" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
       <summary>Secondary Particle Color</summary>
       <description>Set the second color used for particles.</description>
     </key>
 
-    <key name="unicorn-fart-particle-color-2" type="s">
-      <default>"rgba(0, 0, 255, 1.0)"</default>
+    <key name="unicorn-fart-spark-color-2" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
       <summary>Tertiary Particle Color</summary>
       <description>Set the third color used for particles.</description>
     </key>
 
-    <key name="unicorn-fart-particle-color-3" type="s">
-      <default>"rgba(255, 255, 0, 1.0)"</default>
+    <key name="unicorn-fart-spark-color-3" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
       <summary>Quaternary Particle Color</summary>
       <description>Set the fourth color used for particles.</description>
     </key>
 
-    <key name="unicorn-fart-particle-color-4" type="s">
-      <default>"rgba(255, 0, 255, 1.0)"</default>
+    <key name="unicorn-fart-spark-color-4" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
       <summary>Quinary Particle Color</summary>
       <description>Set the fifth color used for particles.</description>
     </key>
 
-    <key name="unicorn-fart-particle-color-5" type="s">
-      <default>"rgba(0, 255, 255, 1.0)"</default>
+    <key name="unicorn-fart-spark-color-5" type="s">
+      <default>"rgba(255, 255, 255, 1.0)"</default>
       <summary>Senary Particle Color</summary>
       <description>Set the sixth color used for particles.</description>
     </key>
@@ -1294,31 +1264,31 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="unicorn-fart-star-color-1" type="s">
-      <default>"rgba(0, 255, 0, 1.0)"</default>
+      <default>"rgba(255, 255, 0, 1.0)"</default>
       <summary>Secondary Star Color</summary>
       <description>Set the second color used for stars.</description>
     </key>
 
     <key name="unicorn-fart-star-color-2" type="s">
-      <default>"rgba(0, 0, 255, 1.0)"</default>
+      <default>"rgba(0, 255, 0, 1.0)"</default>
       <summary>Tertiary Star Color</summary>
       <description>Set the third color used for stars.</description>
     </key>
 
     <key name="unicorn-fart-star-color-3" type="s">
-      <default>"rgba(255, 255, 0, 1.0)"</default>
+      <default>"rgba(0, 255, 255, 1.0)"</default>
       <summary>Quaternary Star Color</summary>
       <description>Set the fourth color used for stars.</description>
     </key>
 
     <key name="unicorn-fart-star-color-4" type="s">
-      <default>"rgba(255, 0, 255, 1.0)"</default>
+      <default>"rgba(0, 0, 255, 1.0)"</default>
       <summary>Quinary Star Color</summary>
       <description>Set the fifth color used for stars.</description>
     </key>
 
     <key name="unicorn-fart-star-color-5" type="s">
-      <default>"rgba(0, 255, 255, 1.0)"</default>
+      <default>"rgba(255, 0, 255, 1.0)"</default>
       <summary>Senary Star Color</summary>
       <description>Set the sixth color used for stars.</description>
     </key>

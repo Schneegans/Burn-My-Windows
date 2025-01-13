@@ -32,29 +32,24 @@
 
 // The width of the fading effect is loaded from the settings.
 
-uniform bool uParticles;
-uniform float uParticleSize;
-uniform float uParticleSpeed;
-uniform float uParticleColorRandom;
-uniform float uParticleColorSpeed;
 uniform float uSparkCount;
-uniform vec2 uSparkStartEnd;
+uniform vec2  uSparkStartEnd;
 uniform float uSparkOffset;
 uniform float uStarCount;
 uniform float uStarRot;
 uniform float uStarSize;
-uniform vec2 uStarStartEnd;
+uniform vec2  uStarStartEnd;
 uniform float uBlurQuality;
 uniform float uSeed;
 
 
 //particle colors
-uniform vec4 uParticleColor0; 
-uniform vec4 uParticleColor1; 
-uniform vec4 uParticleColor2; 
-uniform vec4 uParticleColor3; 
-uniform vec4 uParticleColor4; 
-uniform vec4 uParticleColor5; 
+uniform vec4 uSparkColor0; 
+uniform vec4 uSparkColor1; 
+uniform vec4 uSparkColor2; 
+uniform vec4 uSparkColor3; 
+uniform vec4 uSparkColor4; 
+uniform vec4 uSparkColor5; 
 
 //star colors
 uniform vec4 uStarColor0; 
@@ -63,47 +58,6 @@ uniform vec4 uStarColor2;
 uniform vec4 uStarColor3; 
 uniform vec4 uStarColor4; 
 uniform vec4 uStarColor5; 
-
-
-
-/*
-bool uParticles = True;
-float uParticleSize = 100.0;
-float uParticleSpeed = 10.0;
-float uParticleColorRandom = 1.0;
-float uParticleColorSpeed = 1.0;
-
-float uSparkCount = 50.0;
-vec2 uSparkStartEnd = vec2(0.1,0.75);
-float uSparkOffset = 0.25;
-
-float uStarCount = 5.0;
-float uStarRot = 1.0;
-float uStarSize = 0.1;
-vec2 uStarStartEnd = vec2(0.0,0.66);
-
-float uBlurQuality = 5.0;
-vec4 uSeed = vec4(1.0,0.1,0.5,1.0);
-
-
-//bold colors
-vec4 uParticleColor0 = vec4(1.0, 0.0, 0.0, 0.0); 
-vec4 uParticleColor1 = vec4(1.0, 1.0, 0.0, 0.0); 
-vec4 uParticleColor2 = vec4(0.0, 1.0, 0.0, 0.0); 
-vec4 uParticleColor3 = vec4(0.0, 0.0, 1.0, 0.0); 
-vec4 uParticleColor4 = vec4(1.0, 0.0, 1.0, 0.0); 
-vec4 uParticleColor5 = vec4(0.0, 1.0, 1.0, 0.0); 
-
-
-vec4 uStarColor0 = vec4(1.0, 0.0, 0.0, 0.0); 
-vec4 uStarColor1 = vec4(1.0, 1.0, 0.0, 0.0); 
-vec4 uStarColor2 = vec4(0.0, 1.0, 0.0, 0.0); 
-vec4 uStarColor3 = vec4(0.0, 0.0, 1.0, 0.0); 
-vec4 uStarColor4 = vec4(1.0, 0.0, 1.0, 0.0); 
-vec4 uStarColor5 = vec4(1.0, 0.0, 0.0, 0.0); 
-*/
-
-
 
 
 // Define a constant for 2 * PI (tau), which represents a full circle in radians.
@@ -253,61 +207,9 @@ float FadeInOut(float t, float power)
   return s;
 }
 
-float getSparks(float t)
-{
 
-
-  //the UV for this function
-  float aspect = uSize.x / uSize.y;
-  vec2 uv = iTexCoord.st * vec2(aspect,1.0);
-
-  float result = 0.0;
-
-
-  for (float i = 0.0; i < uSparkCount ; ++i)
-  {
-
-    vec4 v4 = hash41( i * uSeed.x);
-
-
-    // float speed = (1.0  - t) ;//* v4.y;
-
-    //the X and Y position ... at the end
-    vec3 pos = getPosByAngle( (i/uSparkCount) * tau + (v4.x * 0.3) );
-
-    //the distance the spark will travel
-    float d = mix(0.33,0.34,v4.z) ;
-    d = mix(
-      uSparkStartEnd.x + (v4.z * uSparkOffset),
-      uSparkStartEnd.y - (v4.y * uSparkOffset),
-      (1.0  - t)
-      );
-
-    float s = getSpark(
-      uv,
-      vec2(0.5 * aspect,0.5) + ( pos.xy * d  ), //position (x, y)
-      FadeInOut(t,8.0) * 0.9 ,//Brightness
-      FadeInOut(t,8.0) * (v4.w * 0.5) ,//Size  
-      0.0  //rotation
-      );
-
-    result += s;
-
-  }
-
-
-  // result =  pow(result,1.0);
-
-  result *= FadeInOut(iTexCoord.s,8.0);
-  result *= FadeInOut(iTexCoord.t,8.0);
-
-  return clamp(result,0.0,1.0);
-
-}
-
-
-//returns the particle's color
-vec4 getParticleColors(float v, float alpha) {
+//returns the Spark's color
+vec4 getSparkColors(float v, float alpha) {
     // Clamp v to ensure it's in [0.0, 1.0]
     v = clamp(v, 0.0, 1.0);
 
@@ -322,12 +224,12 @@ vec4 getParticleColors(float v, float alpha) {
 
     // Define color values
     vec4 colors[6];
-    colors[0] = uParticleColor0 ;
-    colors[1] = uParticleColor1 ;
-    colors[2] = uParticleColor2 ;
-    colors[3] = uParticleColor3 ;
-    colors[4] = uParticleColor4 ;
-    colors[5] = uParticleColor5 ;
+    colors[0] = uSparkColor0 ;
+    colors[1] = uSparkColor1 ;
+    colors[2] = uSparkColor2 ;
+    colors[3] = uSparkColor3 ;
+    colors[4] = uSparkColor4 ;
+    colors[5] = uSparkColor5 ;
 
     // Assign alpha values
     for (int i = 0; i < 6; ++i) {
@@ -353,6 +255,69 @@ vec4 getParticleColors(float v, float alpha) {
     // Fallback (should never be reached)
     return vec4(0.0, 0.0, 0.0, 1.0);
 }
+
+
+
+vec4 getSparks(float t)
+{
+
+
+  //the UV for this function
+  float aspect = uSize.x / uSize.y;
+  vec2 uv = iTexCoord.st * vec2(aspect,1.0);
+
+  vec4 result = vec4(0.0);
+
+  //for each spark
+  for (float i = 0.0; i < uSparkCount ; ++i)
+  {
+    //random values
+    vec4 v4 = hash41( i * uSeed);
+
+    //the X and Y position ... at the end
+    vec3 pos = getPosByAngle( (i/uSparkCount) * tau + (v4.x * 0.3) );
+
+    //the distance the spark will travel
+    float d = mix(0.33,0.34,v4.z) ;
+    d = mix(
+      uSparkStartEnd.x + (v4.z * uSparkOffset),
+      uSparkStartEnd.y - (v4.y * uSparkOffset),
+      (1.0  - t)
+      );
+
+    float s = getSpark(
+      uv,
+      vec2(0.5 * aspect,0.5) + ( pos.xy * d  ), //position (x, y)
+      FadeInOut(t,8.0) * 0.9 ,//Brightness
+      FadeInOut(t,8.0) * (v4.w * 0.5) ,//Size  
+      0.0  //rotation
+      );
+
+    
+    //set the color
+    vec4 c = getSparkColors( hash11(v4.w) ,1.0);
+    s = clamp(s*2.0,0.0,1.0);
+    c.rgb *= s;
+    c.a *= s;
+
+    result += c ;
+
+  }
+
+  //make it bright
+  result.a =  pow(result.a,2.0);
+
+  //fade at endges
+  result.a *= FadeInOut(iTexCoord.s,4.0);
+  result.a *= FadeInOut(iTexCoord.t,4.0);
+
+  return clamp(result,vec4(0.0),vec4(1.0));
+  // return result;
+
+}
+
+
+
 
 
 vec4 getStarColors(float v, float alpha) {
@@ -444,6 +409,7 @@ float getStar(vec2 uv, vec2 center, float npoints, float radiusRatio, float size
 }
 
 
+//convert the XY to angle
 float XYtoAngle(vec2 XY)
 {
   return atan(XY.y, XY.x);  
@@ -457,12 +423,13 @@ vec4 getStars(float t)
   float aspect = uSize.x / uSize.y;
   vec2 uv = iTexCoord.st * vec2(aspect,1.0);
 
-  float result = 0.0;
+  // float result = 0.0;
+  vec4 result = vec4(0.0);
 
-
+  //loop for each star
   for (float i = 0.0; i < uStarCount ; ++i)
   {
-
+    //random values for this star
     vec4 v4 = hash41( i * uSeed);
 
     //the X and Y position ... at the end
@@ -486,39 +453,22 @@ vec4 getStars(float t)
       PI  //rotation
       );
 
-    result += s;
+
+    s *= FadeInOut(iTexCoord.s,4.0);
+    s *= FadeInOut(iTexCoord.t,4.0);
+    s = clamp(s,0.0,1.0);
+    
+    //the color is based on it's starting location
+    vec4 color = getStarColors( i/uStarCount ,1.0);
+    result += vec4(color.rgb * s,s * color.a);
 
   }
 
-  result *= FadeInOut(iTexCoord.s,8.0);
-  result *= FadeInOut(iTexCoord.t,8.0);
-  result = clamp(result,0.0,1.0);
 
-
-  vec4 color = getStarColors( 
-    (XYtoAngle(iTexCoord.st * 2.0 - 1.0) + PI) / tau
-    , 1.0);
-
-  return vec4(color.rgb,result);
+  return result;
   
 }
 
-
-
-//gets the particles
-vec4 getParticles(float alpha)
-{
-  vec2 uv = iTexCoord.st;
-
-  float particles = pow((simplex3D(vec3(uv * uParticleSize, uParticleSpeed * uProgress ))), 3.0);
-
-  float pc = simplex3D(vec3(uv * uParticleColorRandom, uParticleColorSpeed * uProgress ));
-  vec4 particleColor = getParticleColors(pc,1.0);
-
-  particles *= alpha;
-
-  return vec4(particleColor.rgb,particles);
-}
 
 
 void main() {
@@ -537,32 +487,34 @@ void main() {
   //progress variants
   // float oExpo = easeOutExpo(progress);
   // float iExpo = easeInExpo(progress);
+  // float oQuad = easeOutQuad(progress);
+  float ioCubic = easeInOutCubic(progress);
   float ioSine = easeInOutSine(progress);
+  
+  vec2 uv = iTexCoord.st;
+  //center
+  uv = uv * 2.0 - 1.0;
+  //scale
+  uv /= mix(vec2(0.5,0.5), vec2(0.0,0.0), ioCubic);
+  // scale from center
+  uv = uv * 0.5 + 0.5;
 
   //get blured version of the window
-  vec4 oColor =  blur(iTexCoord.st, ztomo * 100.0,uBlurQuality);
+  vec4 oColor =  blur(uv, ioCubic * 200.0,uBlurQuality);
 
-  //apply mask 
-  oColor.a *= getMask(1.0 - ioSine);
-
-  //get and apply particles
-  if (uParticles)
-  {
-    vec4 particles = getParticles(oColor.a);
-    oColor = mix(oColor,particles,ztomo);
-  }
+  oColor.a *= (1.0 - ioSine);
 
   //get and apply sparks
   if (uSparkCount > 0)
   {
-    float sparks = getSparks(progress);
-    oColor = alphaOver(oColor, vec4(1.0,1.0,1.0,sparks));
+    vec4 sparks = getSparks(ioSine);
+    oColor = alphaOver(oColor, sparks);
   }
 
   //get and apply stars
   if (uStarCount > 0 )
   {
-    oColor = alphaOver(oColor, getStars(mix(0.0001,0.999,progress)));
+    oColor = alphaOver(oColor, getStars(mix(0.0001,0.999,ioSine)));
   }
 
   setOutputColor(oColor);
