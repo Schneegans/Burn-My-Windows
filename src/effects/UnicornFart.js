@@ -273,7 +273,7 @@ export default class Effect {
             StarStart: 0.0,
             StarEnd: 1.0,
 
-            BlurQuality:5.0,
+            BlurQuality: 5.0,
 
             Sparkcolor0: 'rgba(255,255,255,1.0)',
             Sparkcolor1: 'rgba(255,255,255,1.0)',
@@ -305,7 +305,7 @@ export default class Effect {
             StarStart: 0.0,
             StarEnd: 1.0,
 
-            BlurQuality:5.0,
+            BlurQuality: 5.0,
 
             Sparkcolor0: 'rgba(255,255,255,1.0)',
             Sparkcolor1: 'rgba(255,255,255,1.0)',
@@ -337,22 +337,22 @@ export default class Effect {
             StarStart: 0.0,
             StarEnd: 1.0,
 
-            BlurQuality:5.0,
+            BlurQuality: 5.0,
 
-            Sparkcolor0: 'rgba(255,0,0,1.0)',       // Deep red
-            Sparkcolor1: 'rgba(255,69,0,1.0)',      // Fiery orange-red
-            Sparkcolor2: 'rgba(255,140,0,1.0)',     // Orange
-            Sparkcolor3: 'rgba(255,215,0,1.0)',     // Bright yellow
-            Sparkcolor4: 'rgba(255,255,102,1.0)',   // Light yellow
-            Sparkcolor5: 'rgba(255,255,255,1.0)',   // White (hottest point)
+            Sparkcolor0: 'rgba(255,0,0,1.0)',      // Deep red
+            Sparkcolor1: 'rgba(255,69,0,1.0)',     // Fiery orange-red
+            Sparkcolor2: 'rgba(255,140,0,1.0)',    // Orange
+            Sparkcolor3: 'rgba(255,215,0,1.0)',    // Bright yellow
+            Sparkcolor4: 'rgba(255,255,102,1.0)',  // Light yellow
+            Sparkcolor5: 'rgba(255,255,255,1.0)',  // White (hottest point)
 
-            Starcolor0: 'rgba(255,0,0,1.0)',       // Deep red
-            Starcolor1: 'rgba(255,69,0,1.0)',      // Fiery orange-red
-            Starcolor2: 'rgba(255,140,0,1.0)',     // Orange
-            Starcolor3: 'rgba(255,215,0,1.0)',     // Bright yellow
-            Starcolor4: 'rgba(255,255,102,1.0)',   // Light yellow
-            Starcolor5: 'rgba(255,255,255,1.0)',   // White (hottest point)
-            
+            Starcolor0: 'rgba(255,0,0,1.0)',      // Deep red
+            Starcolor1: 'rgba(255,69,0,1.0)',     // Fiery orange-red
+            Starcolor2: 'rgba(255,140,0,1.0)',    // Orange
+            Starcolor3: 'rgba(255,215,0,1.0)',    // Bright yellow
+            Starcolor4: 'rgba(255,255,102,1.0)',  // Light yellow
+            Starcolor5: 'rgba(255,255,255,1.0)',  // White (hottest point)
+
           },
           {
             name: _('Mystic 🪄'),
@@ -367,22 +367,22 @@ export default class Effect {
             StarStart: 0.0,
             StarEnd: 1.0,
 
-            BlurQuality:5.0,
+            BlurQuality: 5.0,
 
-            Sparkcolor0: 'rgba(75,0,130,1.0)',      // Indigo
-            Sparkcolor1: 'rgba(138,43,226,1.0)',    // Blue-violet
-            Sparkcolor2: 'rgba(0,191,255,1.0)',     // Deep sky blue
-            Sparkcolor3: 'rgba(0,255,127,1.0)',     // Spring green
-            Sparkcolor4: 'rgba(173,255,47,1.0)',    // Green-yellow
-            Sparkcolor5: 'rgba(255,20,147,1.0)',    // Deep pink
+            Sparkcolor0: 'rgba(75,0,130,1.0)',    // Indigo
+            Sparkcolor1: 'rgba(138,43,226,1.0)',  // Blue-violet
+            Sparkcolor2: 'rgba(0,191,255,1.0)',   // Deep sky blue
+            Sparkcolor3: 'rgba(0,255,127,1.0)',   // Spring green
+            Sparkcolor4: 'rgba(173,255,47,1.0)',  // Green-yellow
+            Sparkcolor5: 'rgba(255,20,147,1.0)',  // Deep pink
 
-            Starcolor0: 'rgba(75,0,130,1.0)',      // Indigo
-            Starcolor1: 'rgba(138,43,226,1.0)',    // Blue-violet
-            Starcolor2: 'rgba(0,191,255,1.0)',     // Deep sky blue
-            Starcolor3: 'rgba(0,255,127,1.0)',     // Spring green
-            Starcolor4: 'rgba(173,255,47,1.0)',    // Green-yellow
-            Starcolor5: 'rgba(255,20,147,1.0)',    // Deep pink
-            
+            Starcolor0: 'rgba(75,0,130,1.0)',    // Indigo
+            Starcolor1: 'rgba(138,43,226,1.0)',  // Blue-violet
+            Starcolor2: 'rgba(0,191,255,1.0)',   // Deep sky blue
+            Starcolor3: 'rgba(0,255,127,1.0)',   // Spring green
+            Starcolor4: 'rgba(173,255,47,1.0)',  // Green-yellow
+            Starcolor5: 'rgba(255,20,147,1.0)',  // Deep pink
+
           },
         ];
 
@@ -406,33 +406,54 @@ export default class Effect {
           // Connect the action to a function that loads the preset colors into the
           // dialog.
           action.connect('activate', () => {
-            dialog.getProfileSettings().set_int('unicorn-fart-spark-count',preset.SparkCount);
-            dialog.getProfileSettings().set_double('unicorn-fart-spark-start',preset.SparkStart);
-            dialog.getProfileSettings().set_double('unicorn-fart-spark-end',preset.SparkEnd);
-            dialog.getProfileSettings().set_double('unicorn-fart-spark-offset',preset.SparkOffset);
+            dialog.getProfileSettings().set_int('unicorn-fart-spark-count',
+                                                preset.SparkCount);
+            dialog.getProfileSettings().set_double('unicorn-fart-spark-start',
+                                                   preset.SparkStart);
+            dialog.getProfileSettings().set_double('unicorn-fart-spark-end',
+                                                   preset.SparkEnd);
+            dialog.getProfileSettings().set_double('unicorn-fart-spark-offset',
+                                                   preset.SparkOffset);
 
-            dialog.getProfileSettings().set_int('unicorn-fart-star-count',preset.StarCount);
-            dialog.getProfileSettings().set_double('unicorn-fart-star-rotation',preset.StarRot);
-            dialog.getProfileSettings().set_double('unicorn-fart-star-size',preset.StarSize);
-            dialog.getProfileSettings().set_double('unicorn-fart-star-start',preset.StarStart);
-            dialog.getProfileSettings().set_double('unicorn-fart-star-end',preset.StarEnd);
+            dialog.getProfileSettings().set_int('unicorn-fart-star-count',
+                                                preset.StarCount);
+            dialog.getProfileSettings().set_double('unicorn-fart-star-rotation',
+                                                   preset.StarRot);
+            dialog.getProfileSettings().set_double('unicorn-fart-star-size',
+                                                   preset.StarSize);
+            dialog.getProfileSettings().set_double('unicorn-fart-star-start',
+                                                   preset.StarStart);
+            dialog.getProfileSettings().set_double('unicorn-fart-star-end',
+                                                   preset.StarEnd);
 
-            dialog.getProfileSettings().set_double('unicorn-fart-blur-quality',preset.BlurQuality);
-            
-            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-0',preset.Sparkcolor0);
-            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-1',preset.Sparkcolor1);
-            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-2',preset.Sparkcolor2);
-            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-3',preset.Sparkcolor3);
-            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-4',preset.Sparkcolor4);
-            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-5',preset.Sparkcolor5);
+            dialog.getProfileSettings().set_double('unicorn-fart-blur-quality',
+                                                   preset.BlurQuality);
 
-            dialog.getProfileSettings().set_string('unicorn-fart-star-color-0',preset.Starcolor0);
-            dialog.getProfileSettings().set_string('unicorn-fart-star-color-1',preset.Starcolor1);
-            dialog.getProfileSettings().set_string('unicorn-fart-star-color-2',preset.Starcolor2);
-            dialog.getProfileSettings().set_string('unicorn-fart-star-color-3',preset.Starcolor3);
-            dialog.getProfileSettings().set_string('unicorn-fart-star-color-4',preset.Starcolor4);
-            dialog.getProfileSettings().set_string('unicorn-fart-star-color-5',preset.Starcolor5);
+            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-0',
+                                                   preset.Sparkcolor0);
+            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-1',
+                                                   preset.Sparkcolor1);
+            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-2',
+                                                   preset.Sparkcolor2);
+            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-3',
+                                                   preset.Sparkcolor3);
+            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-4',
+                                                   preset.Sparkcolor4);
+            dialog.getProfileSettings().set_string('unicorn-fart-spark-color-5',
+                                                   preset.Sparkcolor5);
 
+            dialog.getProfileSettings().set_string('unicorn-fart-star-color-0',
+                                                   preset.Starcolor0);
+            dialog.getProfileSettings().set_string('unicorn-fart-star-color-1',
+                                                   preset.Starcolor1);
+            dialog.getProfileSettings().set_string('unicorn-fart-star-color-2',
+                                                   preset.Starcolor2);
+            dialog.getProfileSettings().set_string('unicorn-fart-star-color-3',
+                                                   preset.Starcolor3);
+            dialog.getProfileSettings().set_string('unicorn-fart-star-color-4',
+                                                   preset.Starcolor4);
+            dialog.getProfileSettings().set_string('unicorn-fart-star-color-5',
+                                                   preset.Starcolor5);
           });
 
           // Add the action to the action group.
@@ -440,9 +461,7 @@ export default class Effect {
         });
 
         // Assign the populated menu to the preset button.
-        dialog.getBuilder()
-          .get_object('unicorn-fart-preset-button')
-          .set_menu_model(menu);
+        dialog.getBuilder().get_object('unicorn-fart-preset-button').set_menu_model(menu);
 
         // Insert the action group into the root widget for handling the presets.
         const root = widget.get_root();
