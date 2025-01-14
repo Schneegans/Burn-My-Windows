@@ -39,14 +39,14 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uWT        = shader.get_uniform_location('uWT');
+      shader._uWT          = shader.get_uniform_location('uWT');
       shader._uXpos        = shader.get_uniform_location('uXpos');
       shader._uYpos        = shader.get_uniform_location('uYpos');
       shader._uWinRot      = shader.get_uniform_location('uWinRot');
       shader._uSparkleRot  = shader.get_uniform_location('uSparkleRot');
       shader._uSparkleSize = shader.get_uniform_location('uSparkleSize');
 
-      shader._uSeed    = shader.get_uniform_location('uSeed');
+      shader._uSeed = shader.get_uniform_location('uSeed');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
@@ -63,7 +63,7 @@ export default class Effect {
         ]);
 
         shader.set_uniform_float(shader._uWinRot, 1,
-          [settings.get_boolean('team-rocket-win-rot')]);
+                                 [settings.get_boolean('team-rocket-win-rot')]);
 
         shader.set_uniform_float(shader._uSparkleRot, 1, [
           settings.get_double('team-rocket-sparkle-rot'),

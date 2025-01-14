@@ -173,7 +173,7 @@ export default class Effect {
     */
 
     // if we use a switch instead of a checkbox
-    
+
     const switchWidget = dialog.getBuilder().get_object('aura-glow-random-color');
     if (switchWidget) {
       // Connect to the "state-set" signal to update preferences dynamically based on
@@ -191,7 +191,7 @@ export default class Effect {
       // Log an error if the switch widget is not found in the UI.
       log('Error: \'aura-glow-random-color\' switch widget not found.');
     }
-    
+
 
     // Retrieve the necessary objects
     const colorOffset = dialog.getBuilder().get_object('aura-glow-color-offset-scale');
