@@ -5,6 +5,36 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [unreleased]
+
+**Release Date:** TBD
+
+#### Other Changes
+
+- The fire of the Incinerate effect now propagates circularly. This makes the effect look more natural as it does not mimic the window's aspect ratio anymore. Thanks to [@rcmz](https://github.com/rcmz) for this contribution!
+
+## [Burn My Windows 44](https://github.com/schneegans/Burn-My-Windows/releases/tag/v44)
+
+**Release Date:** 2024-11-06
+
+#### New Features
+
+<a href="https://youtu.be/hEdFfzqy2J0"><img align="right" src ="pics/bmw44.jpg" /></a>
+
+- **New Effect: Focus.** Focus dude, focus. This effect is available both for GNOME and KDE. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+- Effect Search: There is now a search bar in the preferences dialog which allows you to quickly find the effect you are looking for. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+
+#### Other Changes
+
+- The animation duration of all effects can now be adjusted between 0.1s and 3s. This makes fine adjustments easier than with the previous 0.1s to 10s range.
+- There are now different effect packages for Plasma 5 and Plasma 6. Please make sure to install the correct one for your system.
+- Many translations have been updated. Thanks to all the translators!
+- The CI jobs now run only on X11. In addition to GNOME 45, they now also run on GNOME 46 and GNOME 47.
+
+#### Bug Fixes
+
+- The effects now work on Plasma 6 even if an ICC profile is set. Thanks to [@Zamundaaa](https://github.com/Zamundaaa) for helping here!
+
 ## [Burn My Windows 43](https://github.com/schneegans/Burn-My-Windows/releases/tag/v43)
 
 **Release Date:** 2024-08-23

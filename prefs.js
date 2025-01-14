@@ -24,6 +24,7 @@ import * as utils from './src/utils.js';
 import {ProfileManager} from './src/ProfileManager.js';
 
 import Apparition from './src/effects/Apparition.js';
+import AuraGlow from './src/effects/AuraGlow.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
 import Doom from './src/effects/Doom.js';
 import EnergizeA from './src/effects/EnergizeA.js';
@@ -35,17 +36,21 @@ import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
 import Matrix from './src/effects/Matrix.js';
+import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
 import Pixelate from './src/effects/Pixelate.js';
 import PixelWheel from './src/effects/PixelWheel.js';
 import PixelWipe from './src/effects/PixelWipe.js';
 import Portal from './src/effects/Portal.js';
+import RGBWarp from './src/effects/RGBWarp.js';
 import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
 
+import UnicornFart from './src/effects/UnicornFart.js';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
@@ -71,10 +76,15 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      Apparition, BrokenGlass, Doom,       EnergizeA, EnergizeB,  Fire,
-      Focus,      Glide,       Glitch,     Hexagon,   Incinerate, Matrix,
-      PaintBrush, Pixelate,    PixelWheel, PixelWipe, Portal,     SnapOfDisintegration,
-      TRexAttack, TVEffect,    TVGlitch,   Wisps,
+      Apparition, AuraGlow,   BrokenGlass,
+      Doom,       EnergizeA,  EnergizeB,
+      Fire,       Focus,      Glide,
+      Glitch,     Hexagon,    Incinerate,
+      Matrix,     Mushroom,   PaintBrush,
+      Pixelate,   PixelWheel, PixelWipe,
+      Portal,     RGBWarp,    SnapOfDisintegration,
+      TeamRocket, TRexAttack, TVEffect,
+      TVGlitch,   Wisps,      UnicornFart,
     ];
 
 
@@ -178,25 +188,37 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       });
     });
 
-    this._searchEntry = this._builder.get_object("search_entry")
+    // search for effect feature
+    this._searchEntry = this._builder.get_object('search_entry');
     this._searchEntry.connect('search-changed', () => {
       const query = this._searchEntry.get_text().toLowerCase();
-  
-      this._effectRows.forEach(er => {
-          if (query === "") {
-              er.show();  // Show all effects if query is empty
-          } else {
-              // Show or hide each effect based on query match
-              const showEffect = er.name.toLowerCase().includes(query);
-              showEffect ? er.show() : er.hide();
 
-              //TODO
-              //maybe add a fuzzy search later 
-              /*
-              const showEffect = utils.fuzzyMatch(er.name.toLowerCase(), query.toLowerCase());
-              showEffect ? er.show() : er.hide();
-              */
+      this._effectRows.forEach(row => {
+        if (query === '') {
+          row.show();  // Show all effects if query is empty
+        } else {
+          // Show or hide each effect based on query match
+          const showEffect = row.name.toLowerCase().includes(query);
+
+          // old code
+          //  showEffect ? er.show() : er.hide();
+
+          // new code ...auto-expand
+          if (showEffect) {
+            row.show();
+            row.set_expanded(true);
+          } else {
+            row.set_expanded(false);
+            row.hide();
           }
+
+          // TODO
+          // maybe add a fuzzy search later
+          /*
+          const showEffect = utils.fuzzyMatch(er.name.toLowerCase(),
+          query.toLowerCase()); showEffect ? er.show() : er.hide();
+          */
+        }
       });
     });
 
@@ -261,7 +283,9 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
           row.set_title(effect.getLabel());
         }
 
-        row.name = effect.getLabel() + effect?.description !== undefined ? effect?.description : "" ;
+        // this is the fix for the merge issue when an effect doesn't have a discription
+        row.name = effect.getLabel();
+
 
         // Un-expand any previously expanded effect row. This way we ensure that there
         // is only one expanded row at any time.
@@ -444,7 +468,7 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
           const translators = new Set();
           this._getJSONResource('/credits/translators.json').forEach(i => {
             for (const j of Object.values(i)) {
-              j.forEach(k => translators.add(k[1]));
+              j.forEach(k => translators.add(k.full_name));
             }
           });
 

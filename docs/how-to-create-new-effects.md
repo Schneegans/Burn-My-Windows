@@ -294,7 +294,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 <interface domain="burn-my-windows">
 
   <object class="GtkAdjustment" id="simple-fade-animation-time">
-    <property name="upper">5000</property>
+    <property name="upper">3000</property>
     <property name="lower">100</property>
     <property name="step-increment">10</property>
     <property name="page-increment">100</property>
@@ -394,3 +394,39 @@ make install && pkill -f '.Extensions' && sleep 2 ; gnome-extensions prefs burn-
 That's it!
 If you have any questions, feel free to [ask them on the discussions board](https://github.com/Schneegans/Burn-My-Windows/discussions).
 If you are happy with your effect, submit a pull request, and it may get included in the next version!
+
+
+## Install Dependencies (if needed)
+the list below might not be 100% correct, please pull request if changes need to be made
+
+### **Ubuntu**
+```bash
+sudo apt install make gettext libglib2.0-dev-bin clang-format
+```
+
+### **Fedora/RHEL**
+```bash
+sudo dnf install make gettext glib2-devel clang-format
+```
+
+### **Arch Linux**
+```bash
+sudo pacman -S base-devel gettext glib2 clang-format
+```
+
+### **openSUSE**
+```bash
+sudo zypper install make gettext-tools glib2-devel clang-format
+```
+
+### **Alpine Linux**
+For minimal distributions like Alpine:
+```bash
+sudo apk add build-base gettext-dev glib-dev clang-format
+```
+
+### **Gentoo**
+```bash
+sudo emerge --ask sys-devel/make sys-devel/gettext dev-libs/glib clang-format
+```
+

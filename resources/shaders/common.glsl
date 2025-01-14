@@ -42,6 +42,10 @@ uniform float uDuration;
 
 #if defined(KWIN)  // --------------------------------------------------------------------
 
+#if defined(PLASMA6)
+#include "colormanagement.glsl"
+#endif
+
 uniform sampler2D sampler;
 uniform int textureWidth;
 uniform int textureHeight;
@@ -74,9 +78,18 @@ void setOutputColor(vec4 outColor) {
   }
 
   fragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+
+#if defined(PLASMA6)
+  fragColor = sourceEncodingToNitsInDestinationColorspace(fragColor);
+  fragColor = nitsToDestinationEncoding(fragColor);
+#endif
 }
 
 #elif defined(KWIN_LEGACY)  // -----------------------------------------------------------
+
+#if defined(PLASMA6)
+#include "colormanagement.glsl"
+#endif
 
 uniform sampler2D sampler;
 uniform int textureWidth;
@@ -108,6 +121,11 @@ void setOutputColor(vec4 outColor) {
   }
 
   gl_FragColor = vec4(outColor.rgb * outColor.a, outColor.a);
+
+#if defined(PLASMA6)
+  fragColor = sourceEncodingToNitsInDestinationColorspace(fragColor);
+  fragColor = nitsToDestinationEncoding(fragColor);
+#endif
 }
 
 #else  // GNOME --------------------------------------------------------------------------
@@ -167,6 +185,55 @@ vec3 darken(vec3 color, float fac) { return color * (1.0 - fac); }
 // color will be white.
 vec3 lighten(vec3 color, float fac) { return color + (vec3(1.0) - color) * fac; }
 
+
+//change the color based on an offset amount 
+vec3 offsetHue(vec3 color, float hueOffset) {
+    // Convert RGB to HSV
+    float maxC = max(max(color.r, color.g), color.b);
+    float minC = min(min(color.r, color.g), color.b);
+    float delta = maxC - minC;
+
+    float hue = 0.0;
+    if (delta > 0.0) {
+        if (maxC == color.r) {
+            hue = mod((color.g - color.b) / delta, 6.0);
+        } else if (maxC == color.g) {
+            hue = (color.b - color.r) / delta + 2.0;
+        } else {
+            hue = (color.r - color.g) / delta + 4.0;
+        }
+    }
+    hue /= 6.0;
+
+    float saturation = (maxC > 0.0) ? (delta / maxC) : 0.0;
+    float value = maxC;
+
+    // Offset the hue
+    hue = mod(hue + hueOffset, 1.0);
+
+    // Convert HSV back to RGB
+    float c = value * saturation;
+    float x = c * (1.0 - abs(mod(hue * 6.0, 2.0) - 1.0));
+    float m = value - c;
+
+    vec3 rgb;
+    if (hue < 1.0 / 6.0) {
+        rgb = vec3(c, x, 0.0);
+    } else if (hue < 2.0 / 6.0) {
+        rgb = vec3(x, c, 0.0);
+    } else if (hue < 3.0 / 6.0) {
+        rgb = vec3(0.0, c, x);
+    } else if (hue < 4.0 / 6.0) {
+        rgb = vec3(0.0, x, c);
+    } else if (hue < 5.0 / 6.0) {
+        rgb = vec3(x, 0.0, c);
+    } else {
+        rgb = vec3(c, 0.0, x);
+    }
+
+    return rgb + m;
+}
+
 // ---------------------------------------------------------------------- easing functions
 
 // Here are some basic easing function. More can be added if required!
@@ -183,6 +250,119 @@ float easeOutBack(float x, float e) {
   float p = x - 1.0;
   return p * p * ((e + 1.0) * p + e) + 1.0;
 }
+
+
+// https://easings.net/
+/*
+Easing functions define the rate of change of a parameter over time, commonly used in animations, UI transitions, and game development. They provide a way to make movements more natural or visually appealing rather than linear and mechanical. Popular categories of easing functions include:
+
+Linear: Constant speed from start to finish.
+Quadratic (Ease In, Ease Out, Ease In Out): Changes at varying rates, with smoother starts or stops.
+Cubic: Similar to quadratic but allows for even more nuanced transitions.
+Exponential: Drastic changes at the start or end, often used for dramatic effects.
+Bounce: Mimics a bouncing object with oscillations.
+Elastic: Simulates the behavior of a spring, with overshooting and oscillations.
+Below are text-based "graphs" of some easing functions, where the horizontal axis represents time and the vertical axis represents progress.
+*/
+
+
+// Quadratic Easing
+// Smooth acceleration and deceleration using quadratic (t^2) curves.
+
+float easeInOutQuad(float t) {
+    // Accelerates for the first half, decelerates for the second half.
+    return t < 0.5 ? 2.0 * t * t : -1.0 + (4.0 - 2.0 * t) * t;
+}
+
+// Cubic Easing
+// Smoother transitions compared to quadratic easing using cubic (t^3) curves.
+
+float easeInCubic(float t) {
+    // Starts slow and accelerates as t increases.
+    return t * t * t;
+}
+
+float easeOutCubic(float t) {
+    // Starts fast and decelerates as t approaches 1.0.
+    float f = t - 1.0;
+    return f * f * f + 1.0;
+}
+
+float easeInOutCubic(float t) {
+    // Combines easeIn and easeOut cubic behavior for smooth transitions.
+    return t < 0.5 ? 4.0 * t * t * t : (t - 1.0) * (2.0 * t - 2.0) * (2.0 * t - 2.0) + 1.0;
+}
+
+// Quartic Easing
+// Even smoother transitions than cubic, using quartic (t^4) curves.
+
+float easeInQuart(float t) {
+    // Starts very slow and accelerates steeply.
+    return t * t * t * t;
+}
+
+float easeOutQuart(float t) {
+    // Starts steeply and slows down dramatically.
+    float f = t - 1.0;
+    return 1.0 - f * f * f * f;
+}
+
+float easeInOutQuart(float t) {
+    // Combines easeIn and easeOut quartic behavior for very smooth transitions.
+    return t < 0.5 ? 8.0 * t * t * t * t : 1.0 - 8.0 * (t - 1.0) * (t - 1.0) * (t - 1.0) * (t - 1.0);
+}
+
+// Sine Easing
+// Smooth, wave-like acceleration and deceleration using sine curves.
+
+float easeInSine(float t) {
+    // Starts very slow, following a sine wave curve.
+    return 1.0 - cos((t * 3.141592653589793) / 2.0);
+}
+
+float easeOutSine(float t) {
+    // Starts fast and slows down following a sine wave curve.
+    return sin((t * 3.141592653589793) / 2.0);
+}
+
+float easeInOutSine(float t) {
+    // Smooth start and end, mimicking half a sine wave.
+    return -0.5 * (cos(3.141592653589793 * t) - 1.0);
+}
+
+// Exponential Easing
+// Sharp transitions with rapid acceleration and deceleration.
+
+float easeInExpo(float t) {
+    // Very slow start, accelerates exponentially.
+    return t == 0.0 ? 0.0 : pow(2.0, 10.0 * (t - 1.0));
+}
+
+float easeOutExpo(float t) {
+    // Starts fast and slows down exponentially.
+    return t == 1.0 ? 1.0 : 1.0 - pow(2.0, -10.0 * t);
+}
+
+float easeInOutExpo(float t) {
+    // Combines easeIn and easeOut exponential for sharp transitions.
+    if (t == 0.0) return 0.0;
+    if (t == 1.0) return 1.0;
+    return t < 0.5 ? 0.5 * pow(2.0, 20.0 * t - 10.0) : 1.0 - 0.5 * pow(2.0, -20.0 * t + 10.0);
+}
+
+// Back Easing
+// Creates an overshooting effect for more dynamic animations.
+
+float easeInOutBack(float t) {
+    // Uses constants to define the overshooting magnitude.
+    const float c1 = 1.70158;
+    const float c2 = c1 * 1.525;
+    return t < 0.5
+        ? (pow(2.0 * t, 2.0) * ((c2 + 1.0) * 2.0 * t - c2)) / 2.0
+        : (pow(2.0 * t - 2.0, 2.0) * ((c2 + 1.0) * (t * 2.0 - 2.0) + c2) + 2.0) / 2.0;
+}
+
+
 
 // --------------------------------------------------------------------- edge mask helpers
 
@@ -248,7 +428,19 @@ float getWinding(vec2 a, vec2 b) { return cross(vec3(a, 0.0), vec3(b, 0.0)).z; }
 
 // Rotates the given 2D vector a clockwise by the angle alpha (given in radians).
 vec2 rotate(vec2 a, float angle) {
-  return vec2(a.x * cos(angle) - a.y * sin(angle), a.x * sin(angle) + a.y * cos(angle));
+  return vec2(
+    a.x * cos(angle) - a.y * sin(angle), 
+    a.x * sin(angle) + a.y * cos(angle)
+    );
+}
+
+//rotates a given 2d vector, around a given center (angle is in radians)
+vec2 rotate(vec2 a, float angle, vec2 center)
+{
+    return vec2(
+        cos(angle) * (a.x - center.x) + sin(angle) * (a.y - center.y) + center.x,
+        cos(angle) * (a.y - center.y) - sin(angle) * (a.x - center.x) + center.y
+    );
 }
 
 // --------------------------------------------------------------------------------- noise
@@ -451,4 +643,70 @@ float simplex3DFractal(vec3 m) {
 
   return 0.5333333 * simplex3D(m * rot1) + 0.2666667 * simplex3D(2.0 * m * rot2) +
          0.1333333 * simplex3D(4.0 * m * rot3) + 0.0666667 * simplex3D(8.0 * m);
+}
+
+
+// --------------------------------------------------------------------------------- remap 
+
+
+/*
+These functions remap a given value from one range to another. 
+The remap operation is particularly useful in shader programming 
+to scale or normalize data, ensuring compatibility across various 
+input ranges. Each version of the remap function supports a 
+different data type:
+
+1. float: Remap a single scalar value.
+2. vec2: Remap a 2D vector.
+3. vec3: Remap a 3D vector.
+4. vec4: Remap a 4D vector.
+
+The general formula used is:
+    newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin)
+
+This ensures a linear transformation from the old range to the new range.
+*/
+
+// Remap for float
+// Maps a float value from one range [oldMin, oldMax] to another range [newMin, newMax].
+// This is useful for normalizing or scaling scalar values to fit within a desired range.
+float remap(float value, float oldMin, float oldMax, float newMin, float newMax) {
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
+}
+
+// Remap for vec2
+// Maps a 2D vector (vec2) from one range [oldMin, oldMax] to another range [newMin, newMax].
+// Each component of the vec2 is individually scaled and transformed.
+vec2 remap(vec2 value, vec2 oldMin, vec2 oldMax, vec2 newMin, vec2 newMax) {
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
+}
+
+// Remap for vec3
+// Maps a 3D vector (vec3) from one range [oldMin, oldMax] to another range [newMin, newMax].
+// Each component of the vec3 is individually scaled and transformed.
+vec3 remap(vec3 value, vec3 oldMin, vec3 oldMax, vec3 newMin, vec3 newMax) {
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
+}
+
+// Remap for vec4
+// Maps a 4D vector (vec4) from one range [oldMin, oldMax] to another range [newMin, newMax].
+// Each component of the vec4 is individually scaled and transformed.
+vec4 remap(vec4 value, vec4 oldMin, vec4 oldMax, vec4 newMin, vec4 newMax) {
+    return clamp(
+      newMin + (value - oldMin) * (newMax - newMin) / (oldMax - oldMin),
+      newMin,
+      newMax
+      );
 }

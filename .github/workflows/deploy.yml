@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install Dependencies
         run: |
           sudo apt-get update -q
@@ -29,14 +29,14 @@ jobs:
           file: burn-my-windows@schneegans.github.com.zip
           tag: ${{ github.ref }}
           overwrite: true
-          draft: true
+          prerelease: true
 
   kwin_bundle:
     name: Bundle KWin Effect
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install Dependencies
         run: |
           sudo apt-get update -q
@@ -52,4 +52,4 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           file_glob: true
-          draft: true
+          prerelease: true

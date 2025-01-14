@@ -199,6 +199,17 @@ export default class Effect {
           color3: 'rgba(207,235,255,0.84)',
           color4: 'rgb(208,243,255)',
           color5: 'rgb(255,255,255)'
+        },
+        // i don't think he'll notice if i sneak this in
+        {
+          name: _('Nuclear ☢️'),
+          scale: 1.5,
+          speed: 0.5,
+          color1: 'rgba(0,0,0,0)',
+          color2: 'rgba(2, 40, 0, 0.3)',
+          color3: 'rgba(0, 200, 50, 0.9)',
+          color4: 'rgba(255, 255, 0, 1.0)',
+          color5: 'rgba(255, 255, 255, 1.0)'
         }
       ];
 

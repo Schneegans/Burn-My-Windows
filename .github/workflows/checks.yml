@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Download Clang-Format
         run: |
           sudo apt update -qq
@@ -33,9 +33,9 @@ jobs:
     name: Check Compliance with REUSE Specification
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: REUSE Compliance Check
-        uses: fsfe/reuse-action@v1
+        uses: fsfe/reuse-action@v4
 
   comment_percentage:
     name: Check Comment Percentage
@@ -43,12 +43,12 @@ jobs:
     if: github.event_name == 'pull_request'
     steps:
       - name: Checkout Current Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: current
           ref: ${{ github.ref }}
       - name: Checkout Base Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: base
           ref: ${{ github.base_ref }}
@@ -74,7 +74,7 @@ jobs:
     name: Run ShellCheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Run ShellCheck
         run: |
           find $GITHUB_WORKSPACE -type f -and \( -name "*.sh" \) | xargs shellcheck
@@ -91,11 +91,13 @@ jobs:
       matrix:
         version:
           - "39"
+          - "40"
+          - "41"
+          - "rawhide"
         session:
           - "gnome-xsession"
-          - "gnome-wayland-nested"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Download Dependencies
         run: |
           sudo apt update -qq
@@ -104,7 +106,7 @@ jobs:
         run: make
       - name: Test Burn-My-Windows
         run: sudo $GITHUB_WORKSPACE/tests/run-test.sh -v ${{ matrix.version }} -s ${{ matrix.session }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: result_${{ matrix.version }}_${{ matrix.session }}

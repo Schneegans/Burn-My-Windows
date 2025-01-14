@@ -30,23 +30,27 @@ This extension is not only more useless than the cube, but it is also much more 
 | Effect                                                                                                                                                                            | Preview                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | **Apparition** <br> This effect hides your windows by violently sucking them into the void of magic!                                                                              | <img src ="docs/pics/apparition.gif" />                                               |
+| **Aura Glow** <br> A radiant edge-lit animation                                                                              | <img src ="docs/pics/aura-glow.gif" />                                               |
 | **Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!                | <img src ="docs/pics/broken-glass.gif" />                                             |
 | **Doom** <br> Melt your windows. Inspired by the legendary screen transitions of the original Doom.                                                                               | <img src ="docs/pics/doom.gif" />                                                     |
 | **Energize A** <br> Beam your windows away!                                                                                                                                       | <img src ="docs/pics/energize-a.gif" />                                               |
 | **Energize B** <br> Using different transporter technology results in an alternative visual effect.                                                                               | <img src ="docs/pics/energize-b.gif" />                                               |
-| **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days.                        | <img src ="docs/pics/fire.gif" />                                                    |
-| **Focus** <br> Focus Dude, Focus                                                                                   | <img src ="docs/pics/focus.gif" />                                                    |
+| **Fire** <br> The classic effect inspired by Compiz. However, this is implemented using a GLSL shader and not with a particle system like in the old days.                        | <img src ="docs/pics/fire.gif" />                                                     |
+| **Focus** <br> Focus dude, focus!                                                                                                                                                 | <img src ="docs/pics/focus.gif" />                                                    |
 | **Glide** <br> This very simple effect fades the window to transparency with subtle 3D effects.                                                                                   | <img src ="docs/pics/glide.gif" />                                                    |
 | **Glitch** <br> This effect applies some intentional graphics issues to your windows.                                                                                             | <img src ="docs/pics/glitch.gif" />                                                   |
 | **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi.                                                                                      | <img src ="docs/pics/hexagon.gif" />                                                  |
 | **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect.                                                                                              | <img src ="docs/pics/incinerate.gif" />                                               |
 | **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.                                                                             | <img src ="docs/pics/matrix.gif" />                                                   |
+| **Mushroom** <br> Inspired by your favorite italian plumber!                                                                                                                      | <img src ="docs/pics/mushroom.gif" />                                                 |
 | **Paint Brush** <br> Paint or erase your windows with a thick paint brush.                                                                                                        | <img src ="docs/pics/paint-brush.gif" />                                              |
 | **Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.                                                                                 | <img src ="docs/pics/pixelate.gif" />                                                 |
 | **Pixel Wheel** <br> This simple effect pixelates the window and hides the pixels in a wheel-like fashion.                                                                        | <img src ="docs/pics/pixel-wheel.gif" />                                              |
 | **Pixel Wipe** <br> This effect pixelates the window and hides the pixels radially, starting from the pointer position.                                                           | <img src ="docs/pics/pixel-wipe.gif" />                                               |
 | **Portal** <br> This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series...                  | <img src ="docs/pics/portal.gif" />                                                   |
+| **RGB Warp** <br> Red Blue and Green go bye bye.                                                                                                                                  | <img src ="docs/pics/rgbwarp.gif" />                                                  |
 | **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.                                                                                                       | <img src ="docs/pics/snap.gif" />                                                     |
+| **TeamRocket** <br> ... is blasting off again!                                                                                                                                    | <img src ="docs/pics/teamrocket.gif" />                                               |
 | **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!                                                                                                      | <img src ="docs/pics/trex.gif" />                                                     |
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
 | **TV Glitch** <br> This effect combines the Glitch and the TV Effect.                                                                                                             | <img src ="docs/pics/tv-glitch.gif" />                                                |
@@ -66,24 +70,27 @@ Below is a table which summarizes the current availability for all effects.
 </tr>
 <tr><td></td>                        <td>3.36</td> <td>3.38</td><td>40+</td><td>5.25.0+</td></tr>
 <tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td> <td>  </td>   </tr>
+<tr><td>Aura Glow</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>Doom</td>                    <td>  </td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Focus</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<!--^this is hypothetical ...i hope you don't mind-->
 <tr><td>Glide</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Glitch</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
+<tr><td>Mushroom</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>✅</tr>
 <tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
+<tr><td>RGB Warp</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
+<tr><td>TeamRocket</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
@@ -193,7 +200,7 @@ Here are links to all effects which are currently available in the KDE store:
 | [Energize A](https://store.kde.org/p/1884310)  | [Energize A](https://store.kde.org/p/2133829)  |
 | [Energize B](https://store.kde.org/p/1884311)  | [Energize B](https://store.kde.org/p/2133828)  |
 | [Fire](https://store.kde.org/p/1884307)        | [Fire](https://store.kde.org/p/2133822)        |
-| [Focus - coming soon,maybe]                    | [Focus - coming soon,maybe]                    |
+| [Focus](https://store.kde.org/p/2221217)       | [Focus](https://store.kde.org/p/2221219)       |
 | [Glide](https://store.kde.org/p/1935778)       | [Glide](https://store.kde.org/p/2133839)       |
 | [Glitch](https://store.kde.org/p/1972813)      | [Glitch](https://store.kde.org/p/2133844)      |
 | [Hexagon](https://store.kde.org/p/1884309)     | [Hexagon](https://store.kde.org/p/2133836)     |
@@ -214,14 +221,23 @@ Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects
 Execute this command to download the latest stable release:
 
 ```bash
-wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin4.tar.gz
+# For Plasma 5
+wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin5.tar.gz
+
+# For Plasma 6
+wget https://github.com/Schneegans/Burn-My-Windows/releases/latest/download/burn_my_windows_kwin6.tar.gz
 ```
 
 Install it by executing the following commands.
 
 ```bash
 mkdir -p ~/.local/share/kwin/effects
-tar -xf burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 5
+tar -xf burn_my_windows_kwin5.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 6
+tar -xf burn_my_windows_kwin6.tar.gz -C ~/.local/share/kwin/effects
 ```
 
 Then select the desired effects in the system settings under "Desktop Effects".
@@ -240,7 +256,12 @@ Now you will have to build the effects and copy them to your KWin effect directo
 ```bash
 ./kwin/build.sh
 mkdir -p ~/.local/share/kwin/effects
-tar -xf kwin/burn_my_windows_kwin4.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 5
+tar -xf kwin/burn_my_windows_kwin5.tar.gz -C ~/.local/share/kwin/effects
+
+# For Plasma 6
+tar -xf kwin/burn_my_windows_kwin6.tar.gz -C ~/.local/share/kwin/effects
 ```
 
 That's it!
