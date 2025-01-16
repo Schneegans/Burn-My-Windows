@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: 2024-02-21 16:01+0000\n"
+"PO-Revision-Date: 2024-12-29 13:00+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fa/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -65,7 +65,7 @@ msgstr "بابانوئل می‌آید"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "تمرکز"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -237,7 +237,7 @@ msgstr "دیدن کاغذدیواری‌های مطابق"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "دیدن تالار افتخار حامیان"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -516,11 +516,11 @@ msgstr "گرادیان"
 
 #: resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "مقدار کدری"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "کیفیت کدری"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -583,19 +583,19 @@ msgstr "اگر چند مورد انتخاب شود، یکی به صورت تصا
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "جست‌وجو…"
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "به کار انداختن همه"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "از کار انداختن همه"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr "نویز"
+msgstr "نوفه"
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "حامیان طلایی"
