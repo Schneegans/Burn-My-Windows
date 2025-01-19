@@ -54,6 +54,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!                                                                                                      | <img src ="docs/pics/trex.gif" />                                                     |
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
 | **TV Glitch** <br> This effect combines the Glitch and the TV Effect.                                                                                                             | <img src ="docs/pics/tv-glitch.gif" />                                                |
+| **Unicorn Fart** <br> Sniff the Rainbow!                                                                                   | <img src ="docs/pics/unicorn-fart.gif" />                                                    |
 | **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies!                                                                                   | <img src ="docs/pics/wisps.gif" />                                                    |
 | **Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md) |
 
@@ -94,6 +95,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
 <tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
+<tr><td>Unicorn Fart</td>            <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 <tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
 </table>
 
