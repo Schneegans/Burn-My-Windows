@@ -80,6 +80,10 @@ export default class Effect {
     return _('Glitch');
   }
 
+  //this can be used for searching, and helping people find the effect they are looking for
+  static description = "The Glitch effect introduces visual distortions that mimic digital glitches, adding randomized color shifts, scaling, and jitter to create a dynamic, corrupted look for the window.";
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

@@ -74,6 +74,10 @@ export default class Effect {
     return _('Energize A');
   }
 
+  //this can be used for searching, and helping people find the effect they are looking for
+  static description = "The Energize A effect resembles the classic transporter effect from Star Trek: The Original Series, with a glowing color and scale transformation that creates an appearance of the window being transported or energized.";
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

@@ -73,6 +73,10 @@ export default class Effect {
     return _('TV Effect');
   }
 
+  //this can be used for searching, and helping people find the effect they are looking for
+  static description = "The TV Effect fades the window out by first making it transparent from the top and bottom edges towards the center, then collapsing the remaining line from the sides to the middle, mimicking an old television shutdown effect with a customizable color.";
+
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

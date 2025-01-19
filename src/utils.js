@@ -173,3 +173,19 @@ export function parseColor(string) {
 
   return [color.red / 255, color.green / 255, color.blue / 255, color.alpha / 255];
 }
+
+
+//used for searching
+// Simple fuzzy match function
+//NOTE: i'll improve the fuzzy function before rolling this out
+/*
+function fuzzyMatch(text, query) {
+  let queryIndex = 0;
+  for (let i = 0; i < text.length && queryIndex < query.length; i++) {
+      if (text[i] === query[queryIndex]) {
+          queryIndex++;
+      }
+  }
+  return queryIndex === query.length;  // Returns true if all chars in query matched in order
+}
+*/
