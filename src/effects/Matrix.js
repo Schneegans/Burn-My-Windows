@@ -109,11 +109,6 @@ export default class Effect {
     return _('Matrix');
   }
 
-  // this can be used for searching, and helping people find the effect they are looking
-  // for
-  static description =
-    'The Matrix effect overlays a cascading grid of random letters, mimicking the iconic \'Matrix\' code with customizable trail and tip colors, randomness, and letter size. The letters flow downward at variable speeds, creating a dynamic, glitchy animation reminiscent of digital rain.';
-
 
   // -------------------------------------------------------------------- API for prefs.js
 

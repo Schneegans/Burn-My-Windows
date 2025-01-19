@@ -81,11 +81,6 @@ export default class Effect {
     return _('TV Glitch');
   }
 
-  // this can be used for searching, and helping people find the effect they are looking
-  // for
-  static description =
-    'The TV Glitch effect combines a glitchy distortion with a TV shutdown animation. The effect distorts the window with randomized pixelation, scale, and speed before collapsing into a central line, creating a retro, glitchy TV shutdown experience.';
-
 
   // -------------------------------------------------------------------- API for prefs.js
 

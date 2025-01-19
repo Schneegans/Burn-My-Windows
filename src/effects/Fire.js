@@ -96,11 +96,6 @@ export default class Effect {
     return _('Fire');
   }
 
-  // this can be used for searching, and helping people find the effect they are looking
-  // for
-  static description =
-    'The Fire effect adds a dynamic fire-like animation to the window, using a vertical noise shader to simulate flames with customizable color gradients and movement speed. This effect pays homage to the classic Compiz fire effect, with a modern implementation through shader techniques.';
-
 
   // -------------------------------------------------------------------- API for prefs.js
 

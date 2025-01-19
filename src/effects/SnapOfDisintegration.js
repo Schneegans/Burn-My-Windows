@@ -110,10 +110,6 @@ export default class Effect {
     return _('Snap of Disintegration');
   }
 
-  // this can be used for searching, and helping people find the effect they are looking
-  // for
-  static description =
-    'The Snap of Disintegration effect dissolves the window into a cloud of dust particles, simulating a gradual disintegration. Using a layered dust texture, this effect creates the appearance of the window breaking apart into floating particles with customizable color and scale.';
 
   // -------------------------------------------------------------------- API for prefs.js
 

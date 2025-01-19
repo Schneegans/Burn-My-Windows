@@ -81,12 +81,6 @@ export default class Effect {
     return _('Apparition');
   }
 
-  // this can be used for searching, and helping people find the effect they are looking
-  // for
-  static description =
-    'The Apparition effect makes the actor disappear by drawing it into a vortex-like void, accompanied by shaking, twirling, and suction animations to create a dramatic vanishing effect.';
-
-
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

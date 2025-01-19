@@ -109,11 +109,6 @@ export default class Effect {
     return _('T-Rex Attack');
   }
 
-  // this can be used for searching, and helping people find the effect they are looking
-  // for
-  static description =
-    'The T-Rex Attack effect simulates a window being violently torn apart by claw scratches. With customizable claw size, color, and warp intensity, this effect creates a dramatic and ferocious attack animation, as if a T-Rex has ripped through the screen.';
-
 
   // -------------------------------------------------------------------- API for prefs.js
 
