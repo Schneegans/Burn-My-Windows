@@ -101,8 +101,10 @@ export default class Effect {
     return _('Paint Brush');
   }
 
-  //this can be used for searching, and helping people find the effect they are looking for
-  static description = "The Paint Brush effect overlays the window with thick brush strokes, giving it an artistic, hand-painted appearance. The brush size is customizable, adding a tactile, textured look reminiscent of painted canvas.";
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Paint Brush effect overlays the window with thick brush strokes, giving it an artistic, hand-painted appearance. The brush size is customizable, adding a tactile, textured look reminiscent of painted canvas.';
 
 
   // -------------------------------------------------------------------- API for prefs.js

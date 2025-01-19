@@ -78,8 +78,10 @@ export default class Effect {
     return _('Glide');
   }
 
-  //this can be used for searching, and helping people find the effect they are looking for
-  static description = "The Glide effect gently fades the window to transparency while adding a subtle 3D look through scale, squish, tilt, and shift transformations, creating a smooth, immersive transition.";
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Glide effect gently fades the window to transparency while adding a subtle 3D look through scale, squish, tilt, and shift transformations, creating a smooth, immersive transition.';
 
 
   // -------------------------------------------------------------------- API for prefs.js

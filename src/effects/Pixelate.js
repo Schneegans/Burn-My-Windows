@@ -74,8 +74,10 @@ export default class Effect {
     return _('Pixelate');
   }
 
-  //this can be used for searching, and helping people find the effect they are looking for
-  static description = "The Pixelate effect transforms the window into a pixelated mosaic, gradually obscuring it by increasing pixel size and randomly hiding pixels until the window fully disappears. This effect offers a playful, retro-inspired transition.";
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Pixelate effect transforms the window into a pixelated mosaic, gradually obscuring it by increasing pixel size and randomly hiding pixels until the window fully disappears. This effect offers a playful, retro-inspired transition.';
 
 
   // -------------------------------------------------------------------- API for prefs.js

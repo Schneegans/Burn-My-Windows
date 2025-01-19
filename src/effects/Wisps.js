@@ -85,10 +85,12 @@ export default class Effect {
     return _('Wisps');
   }
 
-  //this can be used for searching, and helping people find the effect they are looking for
-  static description = "The Wisps effect carries the window away with a dreamy overlay of animated, fairy-like points that drift across the screen. This ethereal effect uses multiple grids of colorful, randomly moving points, with customizable colors and scale, to create a magical transition.";
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Wisps effect carries the window away with a dreamy overlay of animated, fairy-like points that drift across the screen. This ethereal effect uses multiple grids of colorful, randomly moving points, with customizable colors and scale, to create a magical transition.';
 
-  
+
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

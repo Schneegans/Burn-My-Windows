@@ -126,8 +126,10 @@ export default class Effect {
     return _('Incinerate');
   }
 
-  //this can be used for searching, and helping people find the effect they are looking for
-  static description = "The Incinerate effect simulates a burning transition where flames consume the window, starting from a random edge or the mouse pointer position. This fiery effect includes customizable color, scale, and turbulence, creating a dramatic dissolve into ashes.";
+  // this can be used for searching, and helping people find the effect they are looking
+  // for
+  static description =
+    'The Incinerate effect simulates a burning transition where flames consume the window, starting from a random edge or the mouse pointer position. This fiery effect includes customizable color, scale, and turbulence, creating a dramatic dissolve into ashes.';
 
 
   // -------------------------------------------------------------------- API for prefs.js
