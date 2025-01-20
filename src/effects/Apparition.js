@@ -27,7 +27,6 @@ const _ = await utils.importGettext();
 // This effect hides the actor by violently sucking it into the void of magic.          //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.

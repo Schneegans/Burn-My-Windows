@@ -65,8 +65,6 @@ export var Shader = GObject.registerClass({
   // vfunc_build_pipeline()) from the resource file resources/shaders/<nick>.glsl
   // resolving any #includes in this file.
   _init(nick) {
-    log(`Shader initialized with params: ${JSON.stringify(nick)}`);
-
     this._nick = nick;
 
     // This will call vfunc_build_pipeline().
@@ -98,7 +96,6 @@ export var Shader = GObject.registerClass({
 
     // Clean up if the animation finished or was interrupted.
     this._timeline.connect('stopped', (t, finished) => {
-      // log(`Shader initialized with params: ${JSON.stringify(t)}`);
       this.endAnimation();
     });
   }
@@ -154,9 +151,6 @@ export var Shader = GObject.registerClass({
   endAnimation() {
     // This will call endAnimation() again, so we can return for now.
     if (this._timeline.is_playing()) {
-      // log(`Shader initialized with params:
-      // ${JSON.stringify(this._timeline.is_playing())}`);
-
       this._timeline.stop();
       return;
     }

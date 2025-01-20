@@ -82,7 +82,6 @@ export default class Effect {
     return _('Portal');
   }
 
-
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It

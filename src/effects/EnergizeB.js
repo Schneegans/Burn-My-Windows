@@ -75,7 +75,6 @@ export default class Effect {
     return _('Energize B');
   }
 
-
   // -------------------------------------------------------------------- API for prefs.js
 
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
