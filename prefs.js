@@ -24,6 +24,7 @@ import * as utils from './src/utils.js';
 import {ProfileManager} from './src/ProfileManager.js';
 
 import Apparition from './src/effects/Apparition.js';
+import AuraGlow from './src/effects/AuraGlow.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
 import Doom from './src/effects/Doom.js';
 import EnergizeA from './src/effects/EnergizeA.js';
@@ -35,17 +36,21 @@ import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
 import Matrix from './src/effects/Matrix.js';
+import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
 import Pixelate from './src/effects/Pixelate.js';
 import PixelWheel from './src/effects/PixelWheel.js';
 import PixelWipe from './src/effects/PixelWipe.js';
 import Portal from './src/effects/Portal.js';
+import RGBWarp from './src/effects/RGBWarp.js';
 import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
+import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
 
+import UnicornFart from './src/effects/UnicornFart.js';
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 
@@ -71,10 +76,15 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      Apparition, BrokenGlass, Doom,       EnergizeA, EnergizeB,  Fire,
-      Focus,      Glide,       Glitch,     Hexagon,   Incinerate, Matrix,
-      PaintBrush, Pixelate,    PixelWheel, PixelWipe, Portal,     SnapOfDisintegration,
-      TRexAttack, TVEffect,    TVGlitch,   Wisps,
+      Apparition, AuraGlow,   BrokenGlass,
+      Doom,       EnergizeA,  EnergizeB,
+      Fire,       Focus,      Glide,
+      Glitch,     Hexagon,    Incinerate,
+      Matrix,     Mushroom,   PaintBrush,
+      Pixelate,   PixelWheel, PixelWipe,
+      Portal,     RGBWarp,    SnapOfDisintegration,
+      TeamRocket, TRexAttack, TVEffect,
+      TVGlitch,   Wisps,      UnicornFart,
     ];
 
 
