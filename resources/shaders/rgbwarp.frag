@@ -45,6 +45,7 @@ float FadeInOut(float t, float power)
 }
 
 
+
 void main() {
 
   // Calculate the progression value based on the animation direction.
@@ -62,6 +63,7 @@ void main() {
   // w is the wave
   float w = 0.0;
 
+
   //w will be used to calculate the the size of the wave
   float p = mix(0.0, 1.0 + uWavesize, progress);
   w = 1.0 - abs(p -  f.y);
@@ -72,11 +74,13 @@ void main() {
   vec4 oColor = vec4(0.0);
 
   // outputs for RGB is based on the color of the window, times uStreatch(RG and B), and another multipler for the brightness
+
   oColor.r = getInputColor(uv + vec2(0.0,w * uStretchR ) ).r * mix(1.0, uBrightness, FadeInOut(progress,4));
   oColor.g = getInputColor(uv + vec2(0.0,w * uStretchG ) ).g * mix(1.0, uBrightness, FadeInOut(progress,4));
   oColor.b = getInputColor(uv + vec2(0.0,w * uStretchB ) ).b * mix(1.0, uBrightness, FadeInOut(progress,4));
 
   //if you can think of a better way to handle the alpha ... try that
+
   if (oColor.r + oColor.g + oColor.b > 0.0)
   {
     oColor.a = getInputColor(uv).a ;
@@ -85,6 +89,7 @@ void main() {
   {
     oColor.a = 0.0;
   }
+
 
 
   setOutputColor(oColor);

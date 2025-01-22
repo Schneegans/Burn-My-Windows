@@ -32,6 +32,7 @@
 
 // The width of the fading effect is loaded from the settings.
 
+
 //variables
 uniform float uSparkCount; //number of sparkles
 uniform vec2  uSparkStartEnd; // the start and end of the sparkles
@@ -42,6 +43,7 @@ uniform float uStarSize; // the size of the stars
 uniform vec2  uStarStartEnd; //start and end of the star's movement
 uniform float uBlurQuality; // blurquality for the window
 uniform float uSeed; // a random number
+
 
 
 //particle colors
@@ -517,6 +519,7 @@ void main() {
   {
     oColor = alphaOver(oColor, getStars(mix(0.0001,0.999,ioSine)));
   }
+
 
   //output
   setOutputColor(oColor);

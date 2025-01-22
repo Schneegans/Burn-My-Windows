@@ -41,6 +41,7 @@ uniform float uSparkleSize; // the size of the star
 uniform bool uWinRot; //window rotation... but it's more of a warp
 uniform vec2 uSeed; // and random numbers
 
+
 //use to scale the window
 vec2 scaleUV(vec2 uv, vec2 scale, vec2 centerOffset)
 {
@@ -54,6 +55,7 @@ vec2 scaleUV(vec2 uv, vec2 scale, vec2 centerOffset)
   // scale from center
   uv = uv * 0.5 + 0.5;
   
+
   return uv;
 }
 

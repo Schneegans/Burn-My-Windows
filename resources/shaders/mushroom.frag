@@ -367,7 +367,9 @@ vec4 getStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
     //each star in each ring
     for (float s = 0.0; s < uStarCount; ++s) 
     {
+
       //this returns a Star
+
       float a5ps = getStar(
         starUV, 
         vec2( sin(progress * uRingRotation * 6.28 + (s*(6.28/uStarCount))) * aspect * 0.33 , y),  //position (x, y)
@@ -382,6 +384,7 @@ vec4 getStars(vec2 starUV, float aspect, float progress, float oColorAlpha)
       float depth = cos(progress * uRingRotation * 6.28 + (s*(6.28/uStarCount)) );
 
       //if we want the star behind or infront of the window 
+
       if (depth < 0.0)
       {
         result = alphaOver(result,getStarColor(y,a5ps));

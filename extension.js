@@ -49,6 +49,9 @@ import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import UnicornFart from './src/effects/UnicornFart.js';
 import Wisps from './src/effects/Wisps.js';
+import Mushroom from './src/effects/Mushroom.js';
+
+import UnicornFart from './src/effects/UnicornFart.js';
 
 
 
