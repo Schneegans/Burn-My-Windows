@@ -31,15 +31,15 @@
 // void setOutputColor(vec4 outColor)
 
 // The width of the fading effect is loaded from the settings.
-// uniform float uFadeWidth;
 
-uniform float uWT;
-uniform float uXpos;
-uniform float uYpos;
-uniform float uSparkleRot;
-uniform float uSparkleSize;
-uniform bool uWinRot;
-uniform vec2 uSeed;
+//variables 
+uniform float uWT; //window time ... how we split the time between the window and the sparkle/star
+uniform float uXpos; // the Xposition of the star
+uniform float uYpos; // the Yposition of the star
+uniform float uSparkleRot; //the rotation of the star
+uniform float uSparkleSize; // the size of the star
+uniform bool uWinRot; //window rotation... but it's more of a warp
+uniform vec2 uSeed; // and random numbers
 
 //use to scale the window
 vec2 scaleUV(vec2 uv, vec2 scale, vec2 centerOffset)
@@ -54,7 +54,6 @@ vec2 scaleUV(vec2 uv, vec2 scale, vec2 centerOffset)
   // scale from center
   uv = uv * 0.5 + 0.5;
   
-
   return uv;
 }
 
