@@ -30,7 +30,6 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-uniform float uWavesize;
 uniform float uBrightness;
 uniform float uStretchR;
 uniform float uStretchG;
@@ -65,10 +64,10 @@ void main() {
 
 
   //w will be used to calculate the the size of the wave
-  float p = mix(0.0, 1.0 + uWavesize, progress);
+  float p = mix(0.0, 1.0 + 1.0, progress);
   w = 1.0 - abs(p -  f.y);
   w = clamp(w,0.0,1.0);
-  w = pow(w, mix(100.0,1.0,uWavesize) );
+  w = pow(w, mix(100.0,1.0,1.0) );
 
   //starting output color
   vec4 oColor = vec4(0.0);

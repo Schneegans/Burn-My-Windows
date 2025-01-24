@@ -150,7 +150,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
             <property name="adjustment">
             <object class="GtkAdjustment" id="aura-glow-color-saturation">
-              <property name="upper">5.0</property>
+              <property name="upper">1.0</property>
               <property name="lower">0.0</property>
               <property name="step-increment">0.10</property>
               <property name="page-increment">0.25</property>

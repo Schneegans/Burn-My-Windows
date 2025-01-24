@@ -38,7 +38,6 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uWavesize   = shader.get_uniform_location('uWavesize');
       shader._uBrightness = shader.get_uniform_location('uBrightness');
       shader._uStretchR   = shader.get_uniform_location('uStretchR');
       shader._uStretchG   = shader.get_uniform_location('uStretchG');
@@ -46,9 +45,6 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        shader.set_uniform_float(shader._uWavesize, 1, [
-          settings.get_double('rgbwarp-wavesize'),
-        ]);
 
         shader.set_uniform_float(shader._uBrightness, 1, [
           settings.get_double('rgbwarp-brightness'),
@@ -88,7 +84,7 @@ export default class Effect {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return _('RGB Warp Effect');
+    return _('RGB Warp');
   }
 
   // -------------------------------------------------------------------- API for prefs.js
@@ -99,7 +95,6 @@ export default class Effect {
     // Empty for now... Code is added here later in the tutorial!
 
     dialog.bindAdjustment('rgbwarp-animation-time');
-    dialog.bindAdjustment('rgbwarp-wavesize');
     dialog.bindAdjustment('rgbwarp-brightness');
     dialog.bindAdjustment('rgbwarp-offset-r');
     dialog.bindAdjustment('rgbwarp-offset-g');

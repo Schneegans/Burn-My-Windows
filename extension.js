@@ -47,13 +47,7 @@ import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
-import UnicornFart from './src/effects/UnicornFart.js';
 import Wisps from './src/effects/Wisps.js';
-import Mushroom from './src/effects/Mushroom.js';
-
-import UnicornFart from './src/effects/UnicornFart.js';
-
-
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
@@ -86,8 +80,7 @@ export default class BurnMyWindows extends Extension {
       new Matrix(),     new PaintBrush(), new Pixelate(),    new PixelWheel(),
       new PixelWipe(),  new Portal(),     new RGBWarp(),     new SnapOfDisintegration(),
       new TeamRocket(), new TRexAttack(), new TVEffect(),    new TVGlitch(),
-      new Wisps(),      new Mushroom(),   new UnicornFart(),
-
+      new Wisps(),      new Mushroom()   
     ];
 
     // Load all of our resources.

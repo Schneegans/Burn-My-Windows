@@ -99,7 +99,7 @@ export default class Effect {
   // This will be shown in the sidebar of the preferences dialog as well as in the
   // drop-down menus where the user can choose the effect.
   static getLabel() {
-    return _('TeamRocket');
+    return _('Team Rocket');
   }
 
   // -------------------------------------------------------------------- API for prefs.js

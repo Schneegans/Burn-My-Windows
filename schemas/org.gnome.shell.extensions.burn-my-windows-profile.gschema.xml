@@ -987,13 +987,13 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="aura-glow-color-speed" type="d">
-      <default>1.0</default>
+      <default>5.0</default>
       <summary>Aura Glow Color Speed</summary>
       <description>The Speed at which the color changes</description>
     </key>
 
     <key name="aura-glow-color-saturation" type="d">
-      <default>1.0</default>
+      <default>0.5</default>
       <summary>Aura Glow Color Saturation</summary>
       <description>Amount of color in the effect</description>
     </key>
@@ -1109,13 +1109,13 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="team-rocket-y" type="d">
-      <default>0.0</default>
+      <default>0.5</default>
       <summary>Team Rocket Y</summary>
       <description>Y position</description>
     </key>
 
     <key name="team-rocket-win-rot" type="b">
-      <default>false</default>
+      <default>true</default>
       <summary>Rotate the Window</summary>
       <description>Rotate the Window</description>
     </key>
@@ -1133,165 +1133,6 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
 
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!-- Unicorn Fart Options                                                          -->
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
-    <key name="unicorn-fart-enable-effect" type="b">
-      <default>false</default>
-      <summary>Unicorn Fart Enable Effect</summary>
-      <description>Use the Unicorn Fart effect.</description>
-    </key>
-
-    <key name="unicorn-fart-animation-time" type="i">
-      <default>1500</default>
-      <summary>Unicorn Fart Animation Time</summary>
-      <description>The time the Unicorn Fart effect takes.</description>
-    </key>
-
-
-    <!-- sparks -->
-    <key name="unicorn-fart-spark-count" type="i">
-      <default>25</default>
-      <summary>Number of Sparks</summary>
-      <description>Set the total number of sparks generated.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-start" type="d">
-      <default>0.0</default>
-      <summary>Spark Start Point</summary>
-      <description>Define the starting position for sparks.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-end" type="d">
-      <default>1.0</default>
-      <summary>Spark End Point</summary>
-      <description>Define the ending position for sparks.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-offset" type="d">
-      <default>0.5</default>
-      <summary>Spark Offset</summary>
-      <description>Set the positional offset for sparks.</description>
-    </key>
-
-    <!-- stars -->
-    <key name="unicorn-fart-star-count" type="i">
-      <default>6</default>
-      <summary>Number of Stars</summary>
-      <description>Set the total number of stars displayed.</description>
-    </key>
-
-    <key name="unicorn-fart-star-rotation" type="d">
-      <default>0.33</default>
-      <summary>Star Rotation</summary>
-      <description>Control the rotational angle of stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-size" type="d">
-      <default>0.1</default>
-      <summary>Star Size</summary>
-      <description>Set the size of the stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-start" type="d">
-      <default>0.0</default>
-      <summary>Star Start Point</summary>
-      <description>Define the starting position for stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-end" type="d">
-      <default>1.0</default>
-      <summary>Star End Point</summary>
-      <description>Define the ending position for stars.</description>
-    </key>
-
-    <!-- blur -->
-    <key name="unicorn-fart-blur-quality" type="d">
-      <default>5.0</default>
-      <summary>Blur Quality</summary>
-      <description>Set the quality level for the blur effect.</description>
-    </key>
-
-    <key name="unicorn-fart-seed" type="d">
-      <default>1.0</default>
-      <summary>Random Seed</summary>
-      <description>Define the seed value for random effects.</description>
-    </key>
-
-    <!-- particle colors -->
-    <key name="unicorn-fart-spark-color-0" type="s">
-      <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>Primary Particle Color</summary>
-      <description>Set the first color used for particles.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-color-1" type="s">
-      <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>Secondary Particle Color</summary>
-      <description>Set the second color used for particles.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-color-2" type="s">
-      <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>Tertiary Particle Color</summary>
-      <description>Set the third color used for particles.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-color-3" type="s">
-      <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>Quaternary Particle Color</summary>
-      <description>Set the fourth color used for particles.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-color-4" type="s">
-      <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>Quinary Particle Color</summary>
-      <description>Set the fifth color used for particles.</description>
-    </key>
-
-    <key name="unicorn-fart-spark-color-5" type="s">
-      <default>"rgba(255, 255, 255, 1.0)"</default>
-      <summary>Senary Particle Color</summary>
-      <description>Set the sixth color used for particles.</description>
-    </key>
-
-    <!-- star colors -->
-    <key name="unicorn-fart-star-color-0" type="s">
-      <default>"rgba(255, 0, 0, 1.0)"</default>
-      <summary>Primary Star Color</summary>
-      <description>Set the first color used for stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-color-1" type="s">
-      <default>"rgba(255, 255, 0, 1.0)"</default>
-      <summary>Secondary Star Color</summary>
-      <description>Set the second color used for stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-color-2" type="s">
-      <default>"rgba(0, 255, 0, 1.0)"</default>
-      <summary>Tertiary Star Color</summary>
-      <description>Set the third color used for stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-color-3" type="s">
-      <default>"rgba(0, 255, 255, 1.0)"</default>
-      <summary>Quaternary Star Color</summary>
-      <description>Set the fourth color used for stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-color-4" type="s">
-      <default>"rgba(0, 0, 255, 1.0)"</default>
-      <summary>Quinary Star Color</summary>
-      <description>Set the fifth color used for stars.</description>
-    </key>
-
-    <key name="unicorn-fart-star-color-5" type="s">
-      <default>"rgba(255, 0, 255, 1.0)"</default>
-      <summary>Senary Star Color</summary>
-      <description>Set the sixth color used for stars.</description>
-    </key>
 
   </schema>
 

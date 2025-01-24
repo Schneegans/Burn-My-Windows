@@ -201,7 +201,7 @@ export default class Effect {
         // format).
         const presets = [
           {
-            name: _('8Bit Plumber (Default)'),
+            name: _('8Bit Plumber'),
             ScaleStyle: 0.0,
             SparkCount: 0,
             SparkColor: 'rgba(255,255,255,0.0)',
