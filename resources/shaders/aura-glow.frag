@@ -85,7 +85,7 @@ void main() {
     if (uPadding > 0.0)
     {
         progress = remap(
-            progress, 0.0, ((uSize.x + (uPadding*2.0)) / uSize.x) 
+            progress, 0.0, ((uSize.x - (uPadding*2.0)) / uSize.x) 
             ,0.0, 1.0 
             );
     }
