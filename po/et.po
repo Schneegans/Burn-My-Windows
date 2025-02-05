@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-03 09:13+0100\n"
-"PO-Revision-Date: 2024-11-12 18:00+0000\n"
+"PO-Revision-Date: 2025-02-04 12:01+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/et/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -141,13 +141,14 @@ msgstr ""
 
 #: prefs.js:496
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Kas kustutame selle profiili?"
 
 #: prefs.js:497
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Praegune profiil koos kõikide seadistatud efektidega läheb jäädavalt kaotsi."
 
 #: prefs.js:500
 msgid "Cancel"
@@ -159,15 +160,15 @@ msgstr "Kustuta"
 
 #: prefs.js:737 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "Avame aknaid"
 
 #: prefs.js:738 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Sulgeme aknaid"
 
 #: prefs.js:739 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "Tavalised aknad"
 
 #: prefs.js:740 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
