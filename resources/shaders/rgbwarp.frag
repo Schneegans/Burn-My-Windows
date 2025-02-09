@@ -10,6 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // SPDX-FileCopyrightText: Justin Garza JGarza9788@gmail.com
+// SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // The content from common.glsl is automatically prepended to each shader effect. This
@@ -31,65 +32,43 @@
 // void setOutputColor(vec4 outColor)
 
 uniform float uBrightness;
-uniform float uStretchR;
-uniform float uStretchG;
-uniform float uStretchB;
+uniform float uSpeedR;
+uniform float uSpeedG;
+uniform float uSpeedB;
 
-
-float FadeInOut(float t, float power)
-{
-  float s = -1.0 * pow((t-0.5)/(0.5),power)+1.0;
-  s = clamp(s,0.0,1.0);
+float FadeInOut(float t, float power) {
+  float s = -1.0 * pow((t - 0.5) / (0.5), power) + 1.0;
+  s       = clamp(s, 0.0, 1.0);
   return s;
 }
-
-
 
 void main() {
 
   // Calculate the progression value based on the animation direction.
-  // If opening, use uProgress as-is; if closing, invert the progression.
-  float progress = uForOpening ? uProgress : 1.0 - uProgress;
+  float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
-  //progress will now go from 0.5 to 1.0
-  progress = mix(0.5,1.0,progress);
+  // Percentage of the progress time which is spent until all pixels start moving up.
+  float minSpeed     = min(uSpeedR, min(uSpeedG, uSpeedB));
+  float waveTime     = mix(0.1, 0.9, minSpeed);
+  float waveProgress = progress / waveTime;
 
-  // the UV
-  vec2 uv = iTexCoord.st;
-  //flipped the uv
-  vec2 f = vec2(uv.x,1.0 - uv.y);
+  // Gradient from top to bottom (0 at top, 1 at bottom).
+  float t = iTexCoord.t;
 
-  // w is the wave
-  float w = 0.0;
+  // Calculate the vertical wave offset.
+  float offset = max(waveProgress - t, 0.0);
+  offset /= (1.0 / waveTime) - 1.0;
+  offset *= (1.0 - waveTime);
 
+  vec4 colorR = getInputColor(iTexCoord + vec2(0.0, offset * (uSpeedR - minSpeed + 1.0)));
+  vec4 colorG = getInputColor(iTexCoord + vec2(0.0, offset * (uSpeedG - minSpeed + 1.0)));
+  vec4 colorB = getInputColor(iTexCoord + vec2(0.0, offset * (uSpeedB - minSpeed + 1.0)));
 
-  //w will be used to calculate the the size of the wave
-  float p = mix(0.0, 1.0 + 1.0, progress);
-  w = 1.0 - abs(p -  f.y);
-  w = clamp(w,0.0,1.0);
-  w = pow(w, mix(100.0,1.0,1.0) );
+  vec4 oColor =
+    vec4(colorR.r, colorG.g, colorB.b, (colorR.a + colorG.a + colorB.a) / 3.0);
+  oColor.rgb *= mix(1.0, uBrightness, FadeInOut(progress, 4));
 
-  //starting output color
-  vec4 oColor = vec4(0.0);
-
-  // outputs for RGB is based on the color of the window, times uStreatch(RG and B), and another multipler for the brightness
-
-  oColor.r = getInputColor(uv + vec2(0.0,w * uStretchR ) ).r * mix(1.0, uBrightness, FadeInOut(progress,4));
-  oColor.g = getInputColor(uv + vec2(0.0,w * uStretchG ) ).g * mix(1.0, uBrightness, FadeInOut(progress,4));
-  oColor.b = getInputColor(uv + vec2(0.0,w * uStretchB ) ).b * mix(1.0, uBrightness, FadeInOut(progress,4));
-
-  //if you can think of a better way to handle the alpha ... try that
-
-  if (oColor.r + oColor.g + oColor.b > 0.0)
-  {
-    oColor.a = getInputColor(uv).a ;
-  }
-  else
-  {
-    oColor.a = 0.0;
-  }
-
-
+  oColor.a *= getRelativeEdgeMask(0.1);
 
   setOutputColor(oColor);
 }

@@ -39,28 +39,18 @@ export default class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
       shader._uBrightness = shader.get_uniform_location('uBrightness');
-      shader._uStretchR   = shader.get_uniform_location('uStretchR');
-      shader._uStretchG   = shader.get_uniform_location('uStretchG');
-      shader._uStretchB   = shader.get_uniform_location('uStretchB');
+      shader._uSpeedR     = shader.get_uniform_location('uSpeedR');
+      shader._uSpeedG     = shader.get_uniform_location('uSpeedG');
+      shader._uSpeedB     = shader.get_uniform_location('uSpeedB');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-
-        shader.set_uniform_float(shader._uBrightness, 1, [
-          settings.get_double('rgbwarp-brightness'),
-        ]);
-
-        shader.set_uniform_float(shader._uStretchR, 1, [
-          settings.get_double('rgbwarp-offset-r'),
-        ]);
-
-        shader.set_uniform_float(shader._uStretchG, 1, [
-          settings.get_double('rgbwarp-offset-g'),
-        ]);
-
-        shader.set_uniform_float(shader._uStretchB, 1, [
-          settings.get_double('rgbwarp-offset-b'),
-        ]);
+        // clang-format off
+        shader.set_uniform_float(shader._uBrightness, 1, [settings.get_double('rgbwarp-brightness')]);
+        shader.set_uniform_float(shader._uSpeedR,     1, [settings.get_double('rgbwarp-speed-r')]);
+        shader.set_uniform_float(shader._uSpeedG,     1, [settings.get_double('rgbwarp-speed-g')]);
+        shader.set_uniform_float(shader._uSpeedB,     1, [settings.get_double('rgbwarp-speed-b')]);
+        // clang-format on
       });
     });
   }
@@ -92,13 +82,11 @@ export default class Effect {
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
-    // Empty for now... Code is added here later in the tutorial!
-
     dialog.bindAdjustment('rgbwarp-animation-time');
     dialog.bindAdjustment('rgbwarp-brightness');
-    dialog.bindAdjustment('rgbwarp-offset-r');
-    dialog.bindAdjustment('rgbwarp-offset-g');
-    dialog.bindAdjustment('rgbwarp-offset-b');
+    dialog.bindAdjustment('rgbwarp-speed-r');
+    dialog.bindAdjustment('rgbwarp-speed-g');
+    dialog.bindAdjustment('rgbwarp-speed-b');
   }
 
   // ---------------------------------------------------------------- API for extension.js

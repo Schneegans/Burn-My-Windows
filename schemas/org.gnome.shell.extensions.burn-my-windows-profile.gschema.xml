@@ -957,7 +957,6 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
 
-
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Aura Glow Effect Options                                                    -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -965,7 +964,7 @@ SPDX-License-Identifier: CC0-1.0
     <key name="aura-glow-enable-effect" type="b">
       <default>false</default>
       <summary>Aura Glow Enable Effect</summary>
-      <description>Use the Aura Glow  effect.</description>
+      <description>Use the Aura Glow effect.</description>
     </key>
 
     <key name="aura-glow-animation-time" type="i">
@@ -1045,7 +1044,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="rgbwarp-animation-time" type="i">
-      <default>1500</default>
+      <default>750</default>
       <summary>RGBWarp Animation Time</summary>
       <description>The time the RGBWarp effect takes.</description>
     </key>
@@ -1062,22 +1061,22 @@ SPDX-License-Identifier: CC0-1.0
       <description>brightness of the effect.</description>
     </key>
 
-    <key name="rgbwarp-offset-r" type="d">
+    <key name="rgbwarp-speed-r" type="d">
       <default>1.0</default>
-      <summary>RGBWarp Red Offset</summary>
-      <description>Red offset of the effect.</description>
+      <summary>RGBWarp Red Speed</summary>
+      <description>Red speed of the effect.</description>
     </key>
 
-    <key name="rgbwarp-offset-g" type="d">
+    <key name="rgbwarp-speed-g" type="d">
       <default>0.90</default>
-      <summary>RGBWarp Green Offset</summary>
-      <description>Green offset of the effect.</description>
+      <summary>RGBWarp Green Speed</summary>
+      <description>Green speed of the effect.</description>
     </key>
 
-    <key name="rgbwarp-offset-b" type="d">
+    <key name="rgbwarp-speed-b" type="d">
       <default>0.80</default>
-      <summary>RGBWarp Blue Offset</summary>
-      <description>Blue offset of the effect.</description>
+      <summary>RGBWarp Blue Speed</summary>
+      <description>Blue speed of the effect.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -1131,7 +1130,6 @@ SPDX-License-Identifier: CC0-1.0
       <summary>Sparkle Size</summary>
       <description>Sparkle Size</description>
     </key>
-
 
 
   </schema>
