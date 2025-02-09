@@ -172,6 +172,4 @@ export function parseColor(string) {
 
 
   return [color.red / 255, color.green / 255, color.blue / 255, color.alpha / 255];
-
 }
-

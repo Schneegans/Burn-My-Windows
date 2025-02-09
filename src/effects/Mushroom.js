@@ -271,7 +271,7 @@ export default class Effect {
           },
           {
             name: _('Cattuccino 😺'),  // A soft pastel palette inspired by a
-                                       // cappuccino theme
+                                      // cappuccino theme
             ScaleStyle: 1.0,
             SparkCount: 4,
             SparkColor: 'rgba(255,255,255,1.0)',

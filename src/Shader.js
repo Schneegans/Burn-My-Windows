@@ -61,7 +61,6 @@ export var Shader = GObject.registerClass({
 },
 
                                           class Shader extends Shell.GLSLEffect {
-
   // --------------------------------------------
   // The constructor automagically loads the shader's source code (in
   // vfunc_build_pipeline()) from the resource file resources/shaders/<nick>.glsl
@@ -209,6 +208,4 @@ export var Shader = GObject.registerClass({
     // Add a trailing newline. Else the GLSL compiler complains...
     return common + '\n' + code + '\n';
   }
-
 });
-

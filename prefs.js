@@ -83,7 +83,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       Pixelate,   PixelWheel, PixelWipe,
       Portal,     RGBWarp,    SnapOfDisintegration,
       TeamRocket, TRexAttack, TVEffect,
-      TVGlitch,   Wisps,      
+      TVGlitch,   Wisps,
     ];
 
 

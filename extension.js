@@ -80,7 +80,7 @@ export default class BurnMyWindows extends Extension {
       new Matrix(),     new PaintBrush(), new Pixelate(),    new PixelWheel(),
       new PixelWipe(),  new Portal(),     new RGBWarp(),     new SnapOfDisintegration(),
       new TeamRocket(), new TRexAttack(), new TVEffect(),    new TVGlitch(),
-      new Wisps(),      new Mushroom()   
+      new Wisps(),      new Mushroom()
     ];
 
     // Load all of our resources.
