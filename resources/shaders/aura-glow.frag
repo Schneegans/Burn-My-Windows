@@ -56,23 +56,6 @@ uniform float uEdgeSize;
 // soft <--> hard
 uniform float uEdgeHardness;
 
-// A simple blur function
-vec4 blur(vec2 uv, float radius, float samples) {
-  vec4 color = vec4(0.0);
-
-  const float tau        = 6.28318530718;
-  const float directions = 15.0;
-
-  for (float d = 0.0; d < tau; d += tau / directions) {
-    for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
-      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / uSize;
-      color += getInputColor(uv + offset);
-    }
-  }
-
-  return color / samples / directions;
-}
-
 void main() {
 
   // This gradually dissolves from [1..0] from the outside to the center. We
@@ -146,25 +129,11 @@ void main() {
     // calculate this before saturating it
     float b = (color.r + color.g + color.b) / 3.0;
 
-    oColor = blur(iTexCoord.st, b * uBlur * mask1, 7.0);
+    oColor = getBlurredInputColor(iTexCoord.st, b * uBlur * mask1, 7.0);
   }
 
   // apply masks and colors
   oColor.a *= mask0;
-
-  // i was doing this to try to adjust for light mode
-  //  i don;t like the way these make the effect look
-  //       ...maybe a toggle for it later
-  /*
-  float oColorPercent = (oColor.r + oColor.g + oColor.b)/3.0;
-  oColor.r = mix(oColor.r , 1.0 - oColor.r, mask1 * oColorPercent);
-  oColor.g = mix(oColor.g , 1.0 - oColor.g, mask1 * oColorPercent);
-  oColor.b = mix(oColor.b , 1.0 - oColor.b, mask1 * oColorPercent);
-  // --or
-  oColor.r = mix(oColor.r , 0.0, mask1 * oColorPercent);
-  oColor.g = mix(oColor.g , 0.0, mask1 * oColorPercent);
-  oColor.b = mix(oColor.b , 0.0, mask1 * oColorPercent);
-  */
 
   oColor += mask1 * vec4(color.rgb, 1.0);
   oColor.a *= oColorAlpha;

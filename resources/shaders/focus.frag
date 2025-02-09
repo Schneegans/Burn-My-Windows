@@ -30,37 +30,6 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-// A simple blur function
-vec4 blur(vec2 uv, float radius, float samples) {
-  // Initialize the color accumulator to zero.
-  vec4 color = vec4(0.0);
-
-  // Define a constant for 2 * PI (tau), which represents a full circle in radians.
-  const float tau = 6.28318530718;
-
-  // Number of directions for sampling around the circle.
-  const float directions = 15.0;
-
-  // Outer loop iterates over multiple directions evenly spaced around a circle.
-  for (float d = 0.0; d < tau; d += tau / directions) {
-    // Inner loop samples along each direction, with decreasing intensity.
-    for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
-      // Calculate the offset for this sample based on direction, radius, and step.
-      // The (1.0 - s) term ensures more sampling occurs closer to the center.
-      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / uSize;
-
-      // Add the sampled color at the offset position to the accumulator.
-      color += getInputColor(uv + offset);
-    }
-  }
-
-  // Normalize the accumulated color by dividing by the total number of samples
-  // and directions to ensure the result is averaged.
-  return color / samples / directions;
-}
-
-
-
 // The width of the fading effect is loaded from the settings.
 uniform float uBlurAmount;
 uniform float uBlurQuality;
@@ -83,7 +52,7 @@ void main() {
 
     // Apply the calculated blur effect to the texture at the current texture coordinates.
     // The blur function uses the blur amount and quality (uBlurQuality) for sampling.
-    vec4 texColor = blur(iTexCoord.st, blurAmount, uBlurQuality);
+    vec4 texColor = getBlurredInputColor(iTexCoord.st, blurAmount, uBlurQuality);
 
     // Calculate the alpha value for the transition using eased progress.
     // This determines how transparent the final color will appear.
