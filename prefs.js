@@ -192,33 +192,33 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     this._searchEntry.connect('search-changed', () => {
       const query = this._searchEntry.get_text().toLowerCase();
 
+      // If only one effect is left, we will expand it automatically.
+      let lastRow = null;
+      let numRows = 0;
+
       this._effectRows.forEach(row => {
+        row.set_expanded(false);
+
         if (query === '') {
           row.show();  // Show all effects if query is empty
         } else {
           // Show or hide each effect based on query match
           const showEffect = row.name.toLowerCase().includes(query);
 
-          // old code
-          //  showEffect ? er.show() : er.hide();
-
-          // new code ...auto-expand
           if (showEffect) {
             row.show();
-            row.set_expanded(true);
+            lastRow = row;
+            numRows++;
           } else {
-            row.set_expanded(false);
             row.hide();
           }
-
-          // TODO
-          // maybe add a fuzzy search later
-          /*
-          const showEffect = utils.fuzzyMatch(er.name.toLowerCase(),
-          query.toLowerCase()); showEffect ? er.show() : er.hide();
-          */
         }
       });
+
+      // If only one effect is left, we expand it automatically.
+      if (numRows === 1) {
+        lastRow.set_expanded(true);
+      }
     });
 
     // Then add a preferences group for the effect expander rows.
