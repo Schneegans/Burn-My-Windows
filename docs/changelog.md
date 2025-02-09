@@ -11,6 +11,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Other Changes
 
+- If after filtering the effects in the preferences dialog only one effect is left, the effect's settings are shown immediately.
 - The fire of the Incinerate effect now propagates circularly. This makes the effect look more natural as it does not mimic the window's aspect ratio anymore. Thanks to [@rcmz](https://github.com/rcmz) for this contribution!
 
 ## [Burn My Windows 44](https://github.com/schneegans/Burn-My-Windows/releases/tag/v44)
