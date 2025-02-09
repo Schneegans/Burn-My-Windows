@@ -50,32 +50,17 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        shader.set_uniform_float(shader._uWT, 1, [
-          settings.get_double('team-rocket-window-time'),
-        ]);
-
-        shader.set_uniform_float(shader._uXpos, 1, [
-          settings.get_double('team-rocket-x'),
-        ]);
-
-        shader.set_uniform_float(shader._uYpos, 1, [
-          settings.get_double('team-rocket-y'),
-        ]);
-
-        shader.set_uniform_float(shader._uWinRot, 1,
-                                 [settings.get_boolean('team-rocket-win-rot')]);
-
-        shader.set_uniform_float(shader._uSparkleRot, 1, [
-          settings.get_double('team-rocket-sparkle-rot'),
-        ]);
-
-        shader.set_uniform_float(shader._uSparkleSize, 1, [
-          settings.get_double('team-rocket-sparkle-size'),
-        ]);
-
-        // this will be used with a has function to get a random number
         // clang-format off
-        shader.set_uniform_float(shader._uSeed,  2, [Math.random(), Math.random()]);
+        shader.set_uniform_float(shader._uWT,          1, [settings.get_double('team-rocket-window-time')]);
+        shader.set_uniform_float(shader._uXpos,        1, [settings.get_double('team-rocket-x')]);
+        shader.set_uniform_float(shader._uYpos,        1, [settings.get_double('team-rocket-y')]);
+        shader.set_uniform_float(shader._uWinRot,      1, [settings.get_boolean('team-rocket-win-rot')]);
+        shader.set_uniform_float(shader._uSparkleRot,  1, [settings.get_double('team-rocket-sparkle-rot')]);
+        shader.set_uniform_float(shader._uSparkleSize, 1, [settings.get_double('team-rocket-sparkle-size')]);
+        // clang-format on
+
+        // This will be used with a hash function to get a random number.
+        shader.set_uniform_float(shader._uSeed, 2, [Math.random(), Math.random()]);
       });
     });
   }
@@ -107,8 +92,6 @@ export default class Effect {
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
-    // Empty for now... Code is added here later in the tutorial!
-
     dialog.bindAdjustment('team-rocket-animation-time');
     dialog.bindAdjustment('team-rocket-window-time');
     dialog.bindAdjustment('team-rocket-x');
