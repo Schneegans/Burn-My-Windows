@@ -89,7 +89,6 @@ jobs:
           - "39"
           - "40"
           - "41"
-          - "rawhide"
         session:
           - "gnome-xsession"
     steps:
