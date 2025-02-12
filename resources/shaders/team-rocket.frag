@@ -91,7 +91,7 @@ graph above ... where t is close to 0, or 1 the result will fade to zero
 i.e. this is just the function of power(x,p) shifted
 where x is time, and p is 2.0,4.0,8.0,10.0 ... or any positive even number
 */
-float FadeInOut(float t, float power) {
+float fadeInOut(float t, float power) {
   float s = -1.0 * pow((t - 0.5) / (0.5), power) + 1.0;
   s       = clamp(s, 0.0, 1.0);
   return s;
@@ -105,23 +105,15 @@ void main() {
   // If opening, use uProgress as-is; if closing, invert the progression.
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
-  // scale progress ... the first half of the animation
+  // Scale progress ... the first half of the animation.
   float scalep = remap(progress, 0.0, uWT + 0.1, 0.0, 1.0);
+  scalep       = easeOutQuad(scalep);
 
-  // scalep = easeInOutSine(scalep);
-  scalep = easeOutQuad(scalep);
-
-  // sparkle progress ... the second half of the animation
+  // Sparkle progress ... the second half of the animation.
   float sparkp = remap(progress, uWT - 0.1, 1.0, 0.0, 1.0);
   sparkp       = easeInOutSine(sparkp);
 
-  /*
-  the window will scale between 0.0 and 0.6 (of the progress)
-  the sparkle will bet between 0.4 and 1.0 (of the progress)
-  ... so there is a tab bit of over lap
-  */
-
-  // // this is the offset of the window... don't let them go too far each way
+  // This is the offset of the window... don't let them go too far each way.
   vec2 offset      = vec2(uXpos, uYpos * -1.0) * 0.20;
   vec2 scaleOffset = mix(vec2(0.0), vec2(uXpos, uYpos * -1.0) * 0.50, scalep);
 
@@ -132,14 +124,10 @@ void main() {
   // get and adjust
   vec2 uv2 = iTexCoord.st;
   uv2      = uv2 * 2.0 - 1.0;
-
-  // offset
   uv2 -= (scaleOffset / vec2(aspect, 1.0)) * scalep;
+  uv2 /= 1.0 - scalep;
 
-  // scale
-  uv2 /= mix(1.0, 0.0, scalep);
-
-  // rotation and if we are gonna rotate or not
+  // Rotation and if we are gonna rotate or not.
   vec3 rot = vec3(0.0);
   if (uWinRot) {
     rot = hash32(uSeed);
@@ -148,7 +136,7 @@ void main() {
     rot *= 0.1;
   }
 
-  // rotate around x, y , and z
+  // Rotate around x, y , and z.
   uv2.x /= mix(1.0, rot.x * TAU * uv2.y, scalep);
   uv2.y /= mix(1.0, rot.y * TAU * uv2.x, scalep);
   uv2 = rotate(uv2, rot.z * TAU * scalep);
@@ -156,23 +144,18 @@ void main() {
   // re-center
   uv2 = uv2 * 0.5 + 0.5;
 
-  // gets the window
-  vec4 oColor = getInputColor(uv2);
-
-  // the sparksize will bet between 25.0 and 50.0
+  // Get the sparkle.
   float size = mix(25.0, 50.0, uSparkleSize);
-
-  // get the sparkle
   float sparkle =
-    getSpark(uv, offset + vec2(0.5 * aspect, 0.5), FadeInOut(sparkp, 2) * uSparkleSize,
-             FadeInOut(sparkp, 2) * size, sparkp * TAU * float(uSparkleRot));
-  // fade out at the edges
-  sparkle *= FadeInOut(iTexCoord.t, 8);
-  sparkle *= FadeInOut(iTexCoord.s, 8);
+    getSpark(uv, offset + vec2(0.5 * aspect, 0.5), fadeInOut(sparkp, 2) * uSparkleSize,
+             fadeInOut(sparkp, 2) * size, sparkp * TAU * float(uSparkleRot));
+  // Fade out at the edges.
+  sparkle *= fadeInOut(iTexCoord.t, 8);
+  sparkle *= fadeInOut(iTexCoord.s, 8);
 
-  // set it to the results
-  oColor = alphaOver(oColor, vec4(1.0, 1.0, 1.0, sparkle));
+  // Combine the final color.
+  vec4 oColor = getInputColor(uv2);
+  oColor      = alphaOver(oColor, vec4(1.0, 1.0, 1.0, sparkle));
 
-  // output the color
   setOutputColor(oColor);
 }
