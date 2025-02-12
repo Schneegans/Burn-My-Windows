@@ -10,6 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // SPDX-FileCopyrightText: Justin Garza <JGarza9788@gmail.com>
+// SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 'use strict';
@@ -36,7 +37,6 @@ export default class Effect {
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
 
-
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
@@ -44,58 +44,22 @@ export default class Effect {
       shader._uRandomColorOffset = shader.get_uniform_location('uRandomColorOffset');
       shader._uColorOffset       = shader.get_uniform_location('uColorOffset');
       shader._uColorSaturation   = shader.get_uniform_location('uColorSaturation');
-
-      shader._uEdgeSize     = shader.get_uniform_location('uEdgeSize');
-      shader._uEdgeShape    = shader.get_uniform_location('uEdgeShape');
-      shader._uEdgeHardness = shader.get_uniform_location('uEdgeHardness');
-
-      shader._uBlur    = shader.get_uniform_location('uBlur');
-      shader._uFadeOut = shader.get_uniform_location('uFadeOut');
-      shader._uSeed    = shader.get_uniform_location('uSeed');
-
+      shader._uEdgeSize          = shader.get_uniform_location('uEdgeSize');
+      shader._uEdgeHardness      = shader.get_uniform_location('uEdgeHardness');
+      shader._uBlur              = shader.get_uniform_location('uBlur');
+      shader._uSeed              = shader.get_uniform_location('uSeed');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
-        shader.set_uniform_float(shader._uColorSpeed, 1, [
-          settings.get_double('aura-glow-color-speed'),
-        ]);
-
-        shader.set_uniform_float(shader._uRandomColorOffset, 1,
-                                 [settings.get_boolean('aura-glow-random-color')]);
-
-        shader.set_uniform_float(shader._uColorOffset, 1, [
-          settings.get_double('aura-glow-color-offset'),
-        ]);
-
-        shader.set_uniform_float(shader._uColorSaturation, 1, [
-          settings.get_double('aura-glow-color-saturation'),
-        ]);
-
-        shader.set_uniform_float(shader._uEdgeSize, 1, [
-          settings.get_double('aura-glow-edge-size'),
-        ]);
-        shader.set_uniform_float(shader._uEdgeShape, 1, [
-          settings.get_double('aura-glow-edge-shape'),
-        ]);
-        shader.set_uniform_float(shader._uEdgeHardness, 1, [
-          settings.get_double('aura-glow-edge-hardness'),
-        ]);
-
-        shader.set_uniform_float(shader._uBlur, 1, [
-          settings.get_double('aura-glow-blur'),
-        ]);
-
-        shader.set_uniform_float(shader._uFadeOut, 1, [
-          settings.get_double('aura-glow-fade-out'),
-        ]);
-
-        // shader.set_uniform_float(shader._uLightTheme, 1, [
-        //   Effect.getCurrentThemeMode(),
-        // ]);
-
-        // this will be used with a has function to get a random number
         // clang-format off
-        shader.set_uniform_float(shader._uSeed,  2, [Math.random(), Math.random()]);
+        shader.set_uniform_float(shader._uColorSpeed,        1, [settings.get_double('aura-glow-color-speed')]);
+        shader.set_uniform_float(shader._uRandomColorOffset, 1, [settings.get_boolean('aura-glow-random-color')]);
+        shader.set_uniform_float(shader._uColorOffset,       1, [settings.get_double('aura-glow-color-offset')]);
+        shader.set_uniform_float(shader._uColorSaturation,   1, [settings.get_double('aura-glow-color-saturation')]);
+        shader.set_uniform_float(shader._uEdgeSize,          1, [settings.get_double('aura-glow-edge-size')]);
+        shader.set_uniform_float(shader._uEdgeHardness,      1, [settings.get_double('aura-glow-edge-hardness')]);
+        shader.set_uniform_float(shader._uBlur,              1, [settings.get_double('aura-glow-blur')]);
+        shader.set_uniform_float(shader._uSeed,              2, [Math.random(), Math.random()]);
         // clang-format on
       });
     });
@@ -130,117 +94,35 @@ export default class Effect {
   // This is called by the preferences dialog whenever a new effect profile is loaded. It
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
-    // Empty for now... Code is added here later in the tutorial!
     dialog.bindAdjustment('aura-glow-animation-time');
     dialog.bindAdjustment('aura-glow-color-speed');
     dialog.bindSwitch('aura-glow-random-color');
     dialog.bindAdjustment('aura-glow-color-offset');
     dialog.bindAdjustment('aura-glow-color-saturation');
-
     dialog.bindAdjustment('aura-glow-edge-size');
-    dialog.bindAdjustment('aura-glow-edge-shape');
     dialog.bindAdjustment('aura-glow-edge-hardness');
-
     dialog.bindAdjustment('aura-glow-blur');
-    dialog.bindAdjustment('aura-glow-fade-out');
 
     // enable and disable the one slider
-    function EnableDisablePref(dialog, state) {
+    function enableDisablePref(dialog, state) {
       dialog.getBuilder()
         .get_object('aura-glow-color-offset-scale')
         .set_sensitive(!state);
     }
 
-    // if we use a checkbox instead of a switch
-    /*
-    const randColor = dialog.getBuilder().get_object('aura-glow-random-color');
-    if (randColor) {
-      // Connect to the "toggled" signal to update preferences dynamically
-      randColor.connect('toggled', (widget) => {
-        const state = widget.get_active();  // Retrieve the state directly
-        EnableDisablePref(dialog, state);   // Update sensitivity when the state changes
-      });
-
-      // Manually call the update function on startup, using the initial state of the
-      // switch
-      const initialState =
-        randColor.get_active();  // Get the initial state of the check button
-      EnableDisablePref(dialog, initialState);
-    } else {
-      // Log an error if the switch widget is not found in the UI
-      log('Error: \'aura-glow-random-color\' switch widget not found.');
-    }
-    */
-
-    // if we use a switch instead of a checkbox
-
     const switchWidget = dialog.getBuilder().get_object('aura-glow-random-color');
-    if (switchWidget) {
-      // Connect to the "state-set" signal to update preferences dynamically based on
-      // the switch state.
-      switchWidget.connect('state-set', (widget, state) => {
-        EnableDisablePref(dialog, state);  // Update sensitivity when the state changes.
-      });
 
-      // Manually call the update function on startup, using the initial state of the
-      // switch.
-      const initialState =
-        switchWidget.get_active();  // Get the current state of the switch.
-      EnableDisablePref(dialog, initialState);
-    } else {
-      // Log an error if the switch widget is not found in the UI.
-      log('Error: \'aura-glow-random-color\' switch widget not found.');
-    }
+    // Connect to the "state-set" signal to update preferences dynamically based on
+    // the switch state.
+    switchWidget.connect('state-set', (widget, state) => {
+      enableDisablePref(dialog, state);  // Update sensitivity when the state changes.
+    });
 
-
-    // Retrieve the necessary objects
-    const colorOffset = dialog.getBuilder().get_object('aura-glow-color-offset-scale');
-    const actionRow   = dialog.getBuilder().get_object('aura-glow-action-row');
-
-    if (colorOffset == null) {
-      log('colorOffset is null');
-    }
-
-
-    // Define an array of color names based on the slider value
-    const colorNames = [
-      'Red',             // 0.00
-      'Reddish-Orange',  // 0.05
-      'Orange',          // 0.10
-      'Yellow-Orange',   // 0.15
-      'Yellow-Green',    // 0.20
-      'Lime Green',      // 0.25
-      'Green',           // 0.30
-      'Greenish-Cyan',   // 0.35
-      'Aqua',            // 0.40
-      'Light Cyan',      // 0.45
-      'Cyan',            // 0.50
-      'Sky Cyan',        // 0.55
-      'Sky Blue',        // 0.60
-      'Light Blue',      // 0.65
-      'Blue',            // 0.70
-      'Indigo',          // 0.75
-      'Purple',          // 0.80
-      'Magenta',         // 0.85
-      'Pinkish-Red',     // 0.90
-      'Crimson',         // 0.95
-      'Red'              // 1.00 (wraps around)
-    ];
-
-    // Function to update the subtitle based on the slider value
-    const updateSubtitle = () => {
-      const value = colorOffset.get_value();  // Get the current slider value
-      const index = Math.round(value * 20);   // Map value [0.0, 1.0] to index [0, 10]
-      actionRow.set_subtitle(
-        colorNames[index]);  // Update subtitle with the corresponding color
-    };
-
-    // Connect the value-changed signal to the updateSubtitle function
-    // Connect the value-changed signal to the updateSubtitle function
-    colorOffset.connect('value-changed', updateSubtitle);
-
-    // Initialize the subtitle on load
-    updateSubtitle();
+    // Manually call the update function on startup, using the initial state of the
+    // switch.
+    const initialState =
+      switchWidget.get_active();  // Get the current state of the switch.
+    enableDisablePref(dialog, initialState);
   }
 
   // ---------------------------------------------------------------- API for extension.js

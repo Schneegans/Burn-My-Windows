@@ -968,7 +968,7 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="aura-glow-animation-time" type="i">
-      <default>1500</default>
+      <default>750</default>
       <summary>Aura Glow Animation Time</summary>
       <description>The time the Aura Glow effect takes.</description>
     </key>
@@ -986,51 +986,33 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <key name="aura-glow-color-speed" type="d">
-      <default>5.0</default>
+      <default>2.5</default>
       <summary>Aura Glow Color Speed</summary>
       <description>The Speed at which the color changes</description>
     </key>
 
     <key name="aura-glow-color-saturation" type="d">
-      <default>0.5</default>
+      <default>0.75</default>
       <summary>Aura Glow Color Saturation</summary>
       <description>Amount of color in the effect</description>
     </key>
 
-    <!-- <key name="aura-glow-adjust-light-theme" type="b">
-      <default>false</default>
-      <summary>Aura Glow Adjust for light theme</summary>
-      <description>darken the window before adding color for light theme</description>
-    </key> -->
-
     <key name="aura-glow-edge-size" type="d">
-      <default>1.0</default>
+      <default>0.75</default>
       <summary>Aura Glow Size of the Color Edge</summary>
       <description>Size of the Color Edge</description>
     </key>
 
-    <key name="aura-glow-edge-shape" type="d">
-      <default>-1.0</default>
-      <summary>Aura Glow Edge Shape</summary>
-      <description>The Shape at the end of the animation</description>
-    </key>
-
     <key name="aura-glow-edge-hardness" type="d">
-      <default>0.0</default>
+      <default>0.25</default>
       <summary>Aura Glow Edge Hardness</summary>
       <description>The Hardness of the Edge</description>
     </key>
 
     <key name="aura-glow-blur" type="d">
-      <default>50.0</default>
+      <default>15.0</default>
       <summary>Aura Glow Blur</summary>
       <description>Changes the Blue Amount</description>
-    </key>
-
-    <key name="aura-glow-fade-out" type="d">
-      <default>0.0</default>
-      <summary>Aura Glow Fade Out</summary>
-      <description>The Percent at which the window will fade out</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

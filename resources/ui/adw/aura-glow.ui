@@ -40,7 +40,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </child>
       </object>
     </child>
-    
+
 
     <child>
       <object class="AdwActionRow">
@@ -53,7 +53,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </child>
         <child>
           <object class="GtkButton" id="reset-aura-glow-random-color">
-            <property name="icon-name">edit-clear-symbolic</property> 
+            <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
             <style>
@@ -66,15 +66,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
     <child>
       <object class="AdwActionRow" id="aura-glow-action-row">
-        <property name="title" translatable="yes">Color Offset</property>
-        <property name="subtitle" translatable="yes">Red</property>
-      <!-- <child>
-        <object class="GtkCheckButton" id="aura-glow-random-color">
-          <property name="label" translatable="yes">random</property>
-          <property name="valign">center</property>
-          <property name="active">true</property>
-        </object>
-      </child> -->
+        <property name="title" translatable="yes">Start Color Hue</property>
+
         <child>
           <object class="GtkScale" id="aura-glow-color-offset-scale">
             <property name="valign">center</property>
@@ -117,8 +110,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-color-speed">
-                <property name="upper">10.0</property>
-                <property name="lower">-10.0</property>
+                <property name="upper">5.0</property>
+                <property name="lower">-5.0</property>
                 <property name="step-increment">0.25</property>
                 <property name="page-increment">1.0</property>
               </object>
@@ -149,12 +142,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
-            <object class="GtkAdjustment" id="aura-glow-color-saturation">
-              <property name="upper">1.0</property>
-              <property name="lower">0.0</property>
-              <property name="step-increment">0.10</property>
-              <property name="page-increment">0.25</property>
-            </object>
+              <object class="GtkAdjustment" id="aura-glow-color-saturation">
+                <property name="upper">1.0</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.10</property>
+                <property name="page-increment">0.25</property>
+              </object>
             </property>
           </object>
         </child>
@@ -171,28 +164,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
       </object>
     </child>
 
-    <!-- <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Adjust For Light Theme</property>
-        <property name="activatable-widget">aura-glow-adjust-light-theme</property>
-        <child>
-          <object class="GtkSwitch" id="aura-glow-adjust-light-theme">
-            <property name="valign">center</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-aura-glow-adjust-light-theme">
-            <property name="icon-name">edit-clear-symbolic</property> 
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child> -->
-
     <child>
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Edge Size</property>
@@ -204,12 +175,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
-            <object class="GtkAdjustment" id="aura-glow-edge-size">
-              <property name="upper">1.0</property>
-              <property name="lower">0.0</property>
-              <property name="step-increment">0.05</property>
-              <property name="page-increment">0.10</property>
-            </object>
+              <object class="GtkAdjustment" id="aura-glow-edge-size">
+                <property name="upper">1.0</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.05</property>
+                <property name="page-increment">0.10</property>
+              </object>
             </property>
           </object>
         </child>
@@ -228,42 +199,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
 
     <child>
       <object class="AdwActionRow">
-        <property name="title" translatable="yes">Edge Shape</property>
-        <property name="subtitle" translatable="yes">-1.0 (Star-ish) to 2.0 (Square)</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">2</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-            <object class="GtkAdjustment" id="aura-glow-edge-shape">
-              <property name="upper">2.0</property>
-              <property name="lower">-1.0</property>
-              <property name="step-increment">0.10</property>
-              <property name="page-increment">0.25</property>
-            </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-aura-glow-edge-shape">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
         <property name="title" translatable="yes">Edge Hardness</property>
-        <property name="subtitle" translatable="yes">0.0 (soft/blurry) to 1.0 (sharp/hard)</property>
         <child>
           <object class="GtkScale">
             <property name="valign">center</property>
@@ -272,12 +208,12 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
-            <object class="GtkAdjustment" id="aura-glow-edge-hardness">
-              <property name="upper">1.0</property>
-              <property name="lower">0.0</property>
-              <property name="step-increment">0.10</property>
-              <property name="page-increment">0.25</property>
-            </object>
+              <object class="GtkAdjustment" id="aura-glow-edge-hardness">
+                <property name="upper">1.0</property>
+                <property name="lower">0.0</property>
+                <property name="step-increment">0.10</property>
+                <property name="page-increment">0.25</property>
+              </object>
             </property>
           </object>
         </child>
@@ -297,7 +233,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Blur Amount</property>
-        <property name="subtitle" translatable="yes">0 is Off</property>
         <child>
           <object class="GtkScale">
             <property name="valign">center</property>
@@ -307,7 +242,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-blur">
-                <property name="upper">100.0</property>
+                <property name="upper">30.0</property>
                 <property name="lower">0.0</property>
                 <property name="step-increment">0.50</property>
                 <property name="page-increment">1.00</property>
@@ -317,39 +252,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </child>
         <child>
           <object class="GtkButton" id="reset-aura-glow-blur">
-            <property name="icon-name">edit-clear-symbolic</property>
-            <property name="valign">center</property>
-            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
-            <style>
-              <class name="flat" />
-            </style>
-          </object>
-        </child>
-      </object>
-    </child>
-
-    <child>
-      <object class="AdwActionRow">
-        <property name="title" translatable="yes">Fade Out</property>
-        <child>
-          <object class="GtkScale">
-            <property name="valign">center</property>
-            <property name="draw-value">1</property>
-            <property name="digits">2</property>
-            <property name="value-pos">left</property>
-            <property name="width-request">300</property>
-            <property name="adjustment">
-            <object class="GtkAdjustment" id="aura-glow-fade-out">
-              <property name="upper">0.75</property>
-              <property name="lower">0.0</property>
-              <property name="step-increment">0.10</property>
-              <property name="page-increment">0.25</property>
-            </object>
-            </property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="reset-aura-glow-fade-out">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>

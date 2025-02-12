@@ -10,6 +10,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // SPDX-FileCopyrightText: Justin Garza <JGarza9788@gmail.com>
+// SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // The content from common.glsl is automatically prepended to each shader effect. This
@@ -30,121 +31,87 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-// The width of the fading effect is loaded from the settings.
 uniform float uColorSpeed;
 uniform bool uRandomColorOffset;
 uniform float uColorOffset;
 uniform float uColorSaturation;
-uniform float uFadeOut;
 uniform float uBlur;
 uniform vec2 uSeed;
-
-/*
-this controls the end shape
--5.0 large Star
--3.0 Star
-1.0 Dimond
-2.0 Circle
-3.0 Squircle
-5.0 Square
-*/
-uniform float uEdgeShape;
-
-// the size of the edge color
 uniform float uEdgeSize;
-
-// soft <--> hard
 uniform float uEdgeHardness;
 
 void main() {
 
-  // This gradually dissolves from [1..0] from the outside to the center. We
-  // switch the direction for opening and closing.
+  // We simply inverse the progress for opening windows.
   float progress = uForOpening ? uProgress : 1.0 - uProgress;
 
-  // adjusting for Gnome
-  if (uPadding > 0.0) {
-    progress = remap(progress, 0.0, ((uSize.x - (uPadding * 2.0)) / uSize.x), 0.0, 1.0);
+  // Map UV to window content (without the shadow padding).
+  vec2 uv = (iTexCoord.st - 0.5) * uSize / (vec2(1.0) - vec2(uPadding * 2.0) / uSize);
+  uv      = uv / uSize + 0.5;
+
+  // We want the shapes of the masks at the end of the animation to have a 1:1 aspect
+  // ratio. For this, we scale the UV coordinates based on the aspect ratio of the window
+  // and later blend between the original UV and the 1:1 UV based on the progress.
+  vec2 oneToOneUV = uv;
+  oneToOneUV -= 0.5;
+
+  if (uSize.x > uSize.y) {
+    oneToOneUV.y *= uSize.y / uSize.x;
+  } else {
+    oneToOneUV.x *= uSize.x / uSize.y;
   }
 
-  // Get the color from the window texture.
-  vec4 oColor = getInputColor(iTexCoord.st);
+  oneToOneUV += 0.5;
 
-  // Calculate the aspect ratio of the render area
-  float aspect = uSize.x / uSize.y;
+  uv = mix(oneToOneUV, uv, progress);
 
-  // standard uv
-  vec2 uv = iTexCoord.st;
+  // This blends between a square-shaped gradient towards the window edges and a circular
+  // gradient.
+  float shape    = mix(2.0, 100.0, pow(progress, 5.0));
+  float gradient = pow(abs(uv.x - 0.5) * 2.0, shape) + pow(abs(uv.y - 0.5) * 2.0, shape);
+  gradient += simplex2D((iTexCoord + uSeed)) * 0.5;
 
-  // tuv is for when progress is near 0
-  vec2 tuv = uv;
-  tuv -= 0.5;       // Shift UV coordinates to center (from [-0.5 to 0.5])
-  tuv.x *= aspect;  // Scale x-coordinate to match aspect ratio
-  tuv += 0.5;       // Shift UV coordinates back (from [0 to 1])
+  // This mask is used for the color overlay.
+  float glowMask = (progress - gradient) / mix(uEdgeSize, 0.5, progress);
+  glowMask       = 1.0 - clamp(glowMask - progress, 0.0, 1.0);
 
-  // mixing the UVs
-  uv = mix(tuv, uv, easeOutExpo(progress));
+  // Quickly fade out the glow mask at the end of the animation.
+  glowMask *= easeOutSine(min(1.0, (1.0 - progress) * 4.0));
 
-  // this controls the shape
-  // -1.0 would be a diamond-ish
-  // 0.0 would be a rounded diamond
-  // 1.0 would be a circle
-  // 2.0  will be sqircle
-  // 1000.0 will be very square
-  float p = mix(uEdgeShape, 1000.0, easeInExpo(progress));
-
-  // this will be used later to make a mask
-  float m =
-    mix(0.0, 1.0,
-        clamp(pow(abs(uv.x - 0.5) * 2.0, p) + pow(abs(uv.y - 0.5) * 2.0, p), 0.0, 1.0));
-
-  // this calculates the edge of the effect
-  float edge = abs(m - progress);
-  float e    = mix(0.0, uEdgeSize, 1.0 - progress);
-  edge       = remap(edge, 0.0, e, 0.0, 1.0);
-  edge       = clamp(edge, 0.0, 1.0);
-  edge       = 1.0 - edge;
-
-  // this is the mask
-  float mask = (m > progress) ? 0.0 : 1.0;
-
-  // we need two of these
-  float mask0 = mix(mask, mask + edge, 1.0 - uEdgeHardness);
-  float mask1 = mix(edge, edge * mask, uEdgeHardness);
-
-  // calculate color
-  vec3 color = cos(progress * uColorSpeed + uv.xyx + vec3(0, 2, 4)).xyz;
-  // coloroffset
-  float colorOffset = (uRandomColorOffset) ? hash12(uSeed) : uColorOffset;
-  color             = offsetHue(color, colorOffset + 0.10);
-  // clamp and saturate
-  color = clamp(color * uColorSaturation, vec3(0.0), vec3(1.0));
-
-  // save this for later
-  float oColorAlpha = oColor.a;
-
-  // blur-ify
+  // Get the color from the window texture. We gradually blur the input color based on
+  // the progress of the animation. We also slightly scale the UV coordinates to make
+  // the window scale up during the animation.
+  vec2 windowUV = (iTexCoord.st - 0.5) * mix(1.1, 1.0, easeOutCubic(progress)) + 0.5;
+  vec4 windowColor;
   if (uBlur > 0.0) {
-    // used for blur later ...
-    // calculate this before saturating it
-    float b = (color.r + color.g + color.b) / 3.0;
-
-    oColor = getBlurredInputColor(iTexCoord.st, b * uBlur * mask1, 7.0);
+    windowColor = getBlurredInputColor(windowUV, (1.0 - progress) * uBlur, 3.0);
+  } else {
+    windowColor = getInputColor(windowUV);
   }
+  glowMask *= windowColor.a;
 
-  // apply masks and colors
-  oColor.a *= mask0;
+  vec3 glowColor    = cos(progress * uColorSpeed + uv.xyx + vec3(0, 2, 4)).xyz;
+  float colorOffset = (uRandomColorOffset) ? hash12(uSeed) : uColorOffset;
+  glowColor         = offsetHue(glowColor, colorOffset + 0.1);
+  glowColor         = clamp(glowColor * uColorSaturation, vec3(0.0), vec3(1.0));
 
-  oColor += mask1 * vec4(color.rgb, 1.0);
-  oColor.a *= oColorAlpha;
+  windowColor.rgb += glowColor * glowMask;
 
-  // i want to fade out the last ~10% of the animation
-  float lastfade = remap(progress, 0.0, uFadeOut, 0.0, 1.0);
-  lastfade       = clamp(lastfade, 0.0, 1.0);
-  lastfade       = easeInSine(lastfade);
+  // To make this look better on light themes, we also add some color non-additively.
+  windowColor = alphaOver(windowColor, vec4(glowColor, glowMask * 0.2));
 
-  // apply the lastfade
-  oColor.a *= lastfade;
+  // A mask which will crop the window gradually into a circle.
+  float softCrop = 1.0 - smoothstep(progress - 0.5, progress + 0.5, gradient);
+  float hardCrop = 1.0 - smoothstep(progress - 0.05, progress + 0.05, gradient);
+  float cropMask = mix(softCrop, hardCrop, uEdgeHardness);
 
-  setOutputColor(oColor);
+  // Quickly fade in the alpha mask at the beginning of the animation.
+  cropMask *= easeInSine(min(1.0, progress * 2.0));
+
+  // Quickly fade out the alpha mask at the end of the animation.
+  cropMask = max(cropMask, 1.0 - easeOutSine(min(1.0, (1.0 - progress) * 4.0)));
+
+  windowColor.a *= cropMask;
+
+  setOutputColor(windowColor);
 }
