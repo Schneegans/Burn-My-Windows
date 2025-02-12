@@ -18,10 +18,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Download Clang-Format
-        run: |
-          sudo apt update -qq
-          sudo apt install clang-format -qq
       - name: Run Clang-Format
         run: scripts/clang-format.sh
       - name: Compare Results
