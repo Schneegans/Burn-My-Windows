@@ -9,8 +9,16 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### New Features
+
+- **New Effect: Aura Glow!** This effect adds a glowing aura to your windows. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+- **New Effect: Mushroom!** This overly ridiculous effect is inspired by the animation of Super Mario when he eats a mushroom. Thanks again to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+- **New Effect: RGB Warp!** This effect warps the colors of your windows separating the color channels. Thanks once more to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+- **New Effect: Team Rocket!** Do you remember what happened when Team Rocket failed again? Thanks the fourth time to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+
 #### Other Changes
 
+- If after filtering the effects in the preferences dialog only one effect is left, the effect's settings are shown immediately.
 - The fire of the Incinerate effect now propagates circularly. This makes the effect look more natural as it does not mimic the window's aspect ratio anymore. Thanks to [@rcmz](https://github.com/rcmz) for this contribution!
 
 ## [Burn My Windows 44](https://github.com/schneegans/Burn-My-Windows/releases/tag/v44)

@@ -203,6 +203,10 @@ send_keystroke "Alt+F4"
 echo "Entering test mode."
 set_setting "test-mode" true
 
+test_effect "apparition"
+test_effect "broken-glass"
+test_effect "aura-glow"
+test_effect "doom"
 test_effect "energize-a"
 test_effect "energize-b"
 test_effect "fire"
@@ -211,24 +215,17 @@ test_effect "glide"
 test_effect "glitch"
 test_effect "hexagon"
 test_effect "incinerate"
+test_effect "matrix"
 test_effect "pixelate"
 test_effect "pixel-wheel"
 test_effect "pixel-wipe"
 test_effect "portal"
+test_effect "rgb-warp"
+test_effect "snap"
+test_effect "team-rocket"
+test_effect "trex"
 test_effect "tv"
 test_effect "tv-glitch"
 test_effect "wisps"
-
-if [[ "${FEDORA_VERSION}" -gt 32 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
-  test_effect "apparition"
-  test_effect "doom"
-fi
-
-if [[ "${FEDORA_VERSION}" -gt 33 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
-  test_effect "trex"
-  test_effect "broken-glass"
-  test_effect "matrix"
-  test_effect "snap"
-fi
 
 echo "All tests executed successfully."

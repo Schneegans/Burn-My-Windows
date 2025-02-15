@@ -30,57 +30,38 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-
-// Ease-in-out cubic for alpha
-float easeInOutCubic(float x) {
-    return x < 0.5 ? 4.0 * x * x * x : 1.0 - pow(-2.0 * x + 2.0, 3.0) / 2.0;
-}
-
-// Ease-in-out sine for blur
-float easeInOutSine(float x) {
-    return -(cos(3.14159265 * x) - 1.0) / 2.0;
-}
-
-// A simple blur function
-vec4 blur(vec2 uv, float radius, float samples) {
-  vec4 color = vec4(0.0);
-
-  const float tau        = 6.28318530718;
-  const float directions = 15.0;
-
-  for (float d = 0.0; d < tau; d += tau / directions) {
-    for (float s = 0.0; s < 1.0; s += 1.0 / samples) {
-      vec2 offset = vec2(cos(d), sin(d)) * radius * (1.0 - s) / uSize;
-      color += getInputColor(uv + offset);
-    }
-  }
-
-  return color / samples / directions;
-}
-
-
 // The width of the fading effect is loaded from the settings.
 uniform float uBlurAmount;
 uniform float uBlurQuality;
 
 void main() {
 
+    // Calculate the progression value based on the animation direction.
+    // If opening, use uProgress as-is; if closing, invert the progression.
     float progl = uForOpening ? uProgress : 1.0 - uProgress;
 
-    float easedProgressBlur = easeInOutSine(progl);  // Blur easing
-    float easedProgressAlpha = easeInOutCubic(progl);  // Alpha easing
+    // Apply easing functions to the progression value:
+    // - easedProgressBlur: Used for controlling the blur effect smoothly.
+    // - easedProgressAlpha: Used for controlling the alpha (opacity) transition.
+    float easedProgressBlur = easeInOutSine(progl);  // Sine-based smooth easing for blur.
+    float easedProgressAlpha = easeInOutCubic(progl);  // Cubic-based smooth easing for alpha.
 
-    // Control blur amount using easedProgressBlur
+    // Calculate the blur amount by interpolating (mixing) between the maximum blur (uBlurAmount)
+    // and zero blur based on the eased progression value.
     float blurAmount = mix(uBlurAmount, 0.0, easedProgressBlur);
 
-    // Apply blur
-    vec4 texColor = blur( iTexCoord.st, blurAmount, uBlurQuality);
+    // Apply the calculated blur effect to the texture at the current texture coordinates.
+    // The blur function uses the blur amount and quality (uBlurQuality) for sampling.
+    vec4 texColor = getBlurredInputColor(iTexCoord.st, blurAmount, uBlurQuality);
 
-    // Control alpha using easedProgressAlpha
+    // Calculate the alpha value for the transition using eased progress.
+    // This determines how transparent the final color will appear.
     float alpha = easedProgressAlpha;
 
-    // Set final color with alpha transition
+    // Apply the alpha transition to the final texture color.
+    // Multiply the texture's alpha channel by the computed alpha value.
     texColor.a *= alpha;
 
+    // Output the final color with the applied blur and alpha transition.
     setOutputColor(texColor);
 }

@@ -30,6 +30,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | Effect                                                                                                                                                                            | Preview                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | **Apparition** <br> This effect hides your windows by violently sucking them into the void of magic!                                                                              | <img src ="docs/pics/apparition.gif" />                                               |
+| **Aura Glow** <br> A radiant edge-lit animation                                                                                                                                   | <img src ="docs/pics/aura-glow.gif" />                                                |
 | **Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!                | <img src ="docs/pics/broken-glass.gif" />                                             |
 | **Doom** <br> Melt your windows. Inspired by the legendary screen transitions of the original Doom.                                                                               | <img src ="docs/pics/doom.gif" />                                                     |
 | **Energize A** <br> Beam your windows away!                                                                                                                                       | <img src ="docs/pics/energize-a.gif" />                                               |
@@ -41,12 +42,15 @@ This extension is not only more useless than the cube, but it is also much more 
 | **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi.                                                                                      | <img src ="docs/pics/hexagon.gif" />                                                  |
 | **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect.                                                                                              | <img src ="docs/pics/incinerate.gif" />                                               |
 | **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.                                                                             | <img src ="docs/pics/matrix.gif" />                                                   |
+| **Mushroom** <br> Inspired by your favorite italian plumber!                                                                                                                      | <img src ="docs/pics/mushroom.gif" />                                                 |
 | **Paint Brush** <br> Paint or erase your windows with a thick paint brush.                                                                                                        | <img src ="docs/pics/paint-brush.gif" />                                              |
 | **Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.                                                                                 | <img src ="docs/pics/pixelate.gif" />                                                 |
 | **Pixel Wheel** <br> This simple effect pixelates the window and hides the pixels in a wheel-like fashion.                                                                        | <img src ="docs/pics/pixel-wheel.gif" />                                              |
 | **Pixel Wipe** <br> This effect pixelates the window and hides the pixels radially, starting from the pointer position.                                                           | <img src ="docs/pics/pixel-wipe.gif" />                                               |
 | **Portal** <br> This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series...                  | <img src ="docs/pics/portal.gif" />                                                   |
+| **RGB Warp** <br> Red Blue and Green go bye bye.                                                                                                                                  | <img src ="docs/pics/rgbwarp.gif" />                                                  |
 | **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.                                                                                                       | <img src ="docs/pics/snap.gif" />                                                     |
+| **TeamRocket** <br> ... is blasting off again!                                                                                                                                    | <img src ="docs/pics/teamrocket.gif" />                                               |
 | **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!                                                                                                      | <img src ="docs/pics/trex.gif" />                                                     |
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
 | **TV Glitch** <br> This effect combines the Glitch and the TV Effect.                                                                                                             | <img src ="docs/pics/tv-glitch.gif" />                                                |
@@ -61,32 +65,36 @@ Below is a table which summarizes the current availability for all effects.
 <table width="100%">
 <tr>
 <td></td>
-<td colspan="3"><strong>GNOME</strong></td>
+<td colspan="4"><strong>GNOME</strong></td>
 <td colspan="1"><strong>KWin</strong></td>
 </tr>
-<tr><td></td>                        <td>3.36</td> <td>3.38</td><td>40+</td><td>5.25.0+</td></tr>
-<tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>Doom</td>                    <td>  </td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Focus</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Glide</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Glitch</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td> <td>  </td>   </tr>
-<tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
-<tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td> <td>✅</td>   </tr>
+<tr><td></td>                        <td>3.36</td> <td>3.38</td><td>40-44</td><td>45+</td><td>5.25.0+</td></tr>
+<tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Aura Glow</td>               <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Doom</td>                    <td>  </td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Energize B</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Fire</td>                    <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Focus</td>                   <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Glide</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Glitch</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Mushroom</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>RGB Warp</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>TeamRocket</td>              <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 </table>
 
 ## 💞 Show that you love Burn-My-Windows!

@@ -182,6 +182,10 @@ send_keystroke "Alt+F4"
 echo "Entering test mode."
 set_setting "test-mode" true
 
+capture_effect "apparition"
+capture_effect "broken-glass"
+capture_effect "aura-glow"
+capture_effect "doom"
 capture_effect "energize-a"
 capture_effect "energize-b"
 capture_effect "fire"
@@ -190,24 +194,17 @@ capture_effect "glide"
 capture_effect "glitch"
 capture_effect "hexagon"
 capture_effect "incinerate"
+capture_effect "matrix"
 capture_effect "pixelate"
 capture_effect "pixel-wheel"
 capture_effect "pixel-wipe"
 capture_effect "portal"
+capture_effect "rgb-warp"
+capture_effect "snap"
+capture_effect "team-rocket"
+capture_effect "trex"
 capture_effect "tv"
 capture_effect "tv-glitch"
 capture_effect "wisps"
-
-if [[ "${FEDORA_VERSION}" -gt 32 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
-  capture_effect "apparition"
-  capture_effect "doom"
-fi
-
-if [[ "${FEDORA_VERSION}" -gt 33 ]] || [[ "${FEDORA_VERSION}" == "rawhide" ]]; then
-  capture_effect "trex"
-  capture_effect "broken-glass"
-  capture_effect "matrix"
-  capture_effect "snap"
-fi
 
 echo "All reference images generated successfully."
