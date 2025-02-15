@@ -1031,12 +1031,6 @@ SPDX-License-Identifier: CC0-1.0
       <description>The time the RGBWarp effect takes.</description>
     </key>
 
-    <key name="rgbwarp-wavesize" type="d">
-      <default>1.0</default>
-      <summary>RGBWarp Width</summary>
-      <description>Width of the effect.</description>
-    </key>
-
     <key name="rgbwarp-brightness" type="d">
       <default>1.0</default>
       <summary>RGBWarp Brightness</summary>
