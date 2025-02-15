@@ -16,6 +16,7 @@
 
 import Gio from 'gi://Gio';
 import Shell from 'gi://Shell';
+import Cogl from 'gi://Cogl';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import Meta from 'gi://Meta';
@@ -189,7 +190,7 @@ export var Shader = GObject.registerClass({
     const declarations = code.substr(0, match.index);
     const main         = match[1];
 
-    this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
+    this.add_glsl_snippet(Cogl.SnippetHook ? Cogl.SnippetHook.FRAGMENT : Shell.SnippetHook.FRAGMENT, declarations, main, true);
   }
 
   // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
