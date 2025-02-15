@@ -168,6 +168,7 @@ generate "pixel-wheel" "Pixel Wheel [Burn-My-Windows]" "Pixelate the window and 
 generate "pixel-wipe"  "Pixel Wipe [Burn-My-Windows]"  "Pixelate the window and hide the pixels radially, starting from the pointer position"
 generate "portal"      "Portal [Burn-My-Windows]"      "Transfer your windows to other locations in space and time"
 generate "rgbwarp"     "RGB Warp [Burn-My-Windows]"    "Red Blue and Green go bye bye"
+generate "team-rocket" "Team Rocket [Burn-My-Windows]"    "... is blasting off again!"
 generate "tv"          "TV Effect [Burn-My-Windows]"   "Make windows close like turning off a TV"
 generate "tv-glitch"   "TV Glitch [Burn-My-Windows]"   "Make your windows close like a very glitchy old-school TV"
 generate "wisps"       "Wisps [Burn-My-Windows]"       "Let your windows be carried away to the realm of dreams by these little fairies"
