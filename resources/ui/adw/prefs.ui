@@ -63,8 +63,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <child>
               <object class="AdwPreferencesGroup">
                 <property name="title" translatable="yes">Effect Profile Constraints</property>
-                <property name="description" translatable="yes">Define when the current effect
-                  settings should be used.</property>
+                <property name="description" translatable="yes">Define when the current effect settings should be used.</property>
 
                 <child>
                   <object class="AdwActionRow">
@@ -182,8 +181,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 <child>
                   <object class="AdwActionRow">
                     <property name="title" translatable="yes">High Priority</property>
-                    <property name="subtitle" translatable="yes">Use this profile even if there are
-                      better matching profiles.</property>
+                    <property name="subtitle" translatable="yes">Use this profile even if there are better matching profiles.</property>
                     <property name="subtitle-lines">1</property>
                     <property name="activatable-widget">profile-high-priority</property>
                     <child>
