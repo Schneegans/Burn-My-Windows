@@ -154,6 +154,7 @@ generate_impl() {
 }
 
 # Now run the above method for all supported effects.
+generate "aura-glow"   "Aura Glow [Burn-My-Windows]"        "A radiant edge-lit animation"
 generate "doom"        "Doom [Burn-My-Windows]"        "Melt your windows"
 generate "energize-a"  "Energize A [Burn-My-Windows]"  "Beam your windows away"
 generate "energize-b"  "Energize B [Burn-My-Windows]"  "Using different transporter technology results in an alternative visual effect"
