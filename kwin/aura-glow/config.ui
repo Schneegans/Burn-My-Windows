@@ -1,204 +1,210 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
 <ui version="4.0">
- <class>BMWConfigForm</class>
- <widget class="QWidget" name="BMWConfigForm">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>562</width>
-    <height>353</height>
-   </rect>
-  </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Animation Time [ms]</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
+    <class>BMWConfigForm</class>
+    <widget class="QWidget" name="BMWConfigForm">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>562</width>
+                <height>353</height>
+            </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+                <widget class="QLabel" name="label">
+                    <property name="text">
+                        <string>Animation Time [ms]</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="0" column="1">
+                <widget class="QSpinBox" name="kcfg_Duration">
+                    <property name="minimum">
+                        <number>100</number>
+                    </property>
+                    <property name="maximum">
+                        <number>9999</number>
+                    </property>
+                    <property name="singleStep">
+                        <number>100</number>
+                    </property>
+                </widget>
+            </item>
+            <item row="1" column="1">
+                <widget class="QCheckBox" name="kcfg_RandomColor">
+                    <property name="text">
+                        <string>Random Color</string>
+                    </property>
+                </widget>
+            </item>
+            <item row="2" column="0">
+                <widget class="QLabel" name="label_3">
+                    <property name="text">
+                        <string>Start Hue</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="2" column="1">
+                <widget class="QDoubleSpinBox" name="kcfg_StartHue">
+                    <property name="minimum">
+                        <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                        <double>1.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                        <double>0.100000000000000</double>
+                    </property>
+                    <property name="value">
+                        <double>0.500000000000000</double>
+                    </property>
+                </widget>
+            </item>
+            <item row="3" column="0">
+                <widget class="QLabel" name="label_6">
+                    <property name="text">
+                        <string>Speed</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="3" column="1">
+                <widget class="QDoubleSpinBox" name="kcfg_Speed">
+                    <property name="minimum">
+                        <double>-5.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                        <double>5.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                        <double>0.100000000000000</double>
+                    </property>
+                    <property name="value">
+                        <double>1.000000000000000</double>
+                    </property>
+                </widget>
+            </item>
+            <item row="4" column="0">
+                <widget class="QLabel" name="label_4">
+                    <property name="text">
+                        <string>Saturation</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="4" column="1">
+                <widget class="QDoubleSpinBox" name="kcfg_Saturation">
+                    <property name="minimum">
+                        <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                        <double>1.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                        <double>0.100000000000000</double>
+                    </property>
+                    <property name="value">
+                        <double>1.000000000000000</double>
+                    </property>
+                </widget>
+            </item>
+            <item row="5" column="0">
+                <widget class="QLabel" name="label_4">
+                    <property name="text">
+                        <string>Edge Size</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="5" column="1">
+                <widget class="QDoubleSpinBox" name="kcfg_EdgeSize">
+                    <property name="minimum">
+                        <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                        <double>1.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                        <double>0.100000000000000</double>
+                    </property>
+                    <property name="value">
+                        <double>1.000000000000000</double>
+                    </property>
+                </widget>
+            </item>
+            <item row="6" column="0">
+                <widget class="QLabel" name="label_5">
+                    <property name="text">
+                        <string>Edge Hardness</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="6" column="1">
+                <widget class="QDoubleSpinBox" name="kcfg_EdgeHardness">
+                    <property name="minimum">
+                        <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                        <double>1.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                        <double>0.100000000000000</double>
+                    </property>
+                    <property name="value">
+                        <double>1.000000000000000</double>
+                    </property>
+                </widget>
+            </item>
+            <item row="7" column="0">
+                <widget class="QLabel" name="label_7">
+                    <property name="text">
+                        <string>Blur Amount</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="7" column="1">
+                <widget class="QDoubleSpinBox" name="kcfg_BlurAmount">
+                    <property name="minimum">
+                        <double>0.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                        <double>30.000000000000000</double>
+                    </property>
+                    <property name="singleStep">
+                        <double>1.000000000000000</double>
+                    </property>
+                    <property name="value">
+                        <double>1.000000000000000</double>
+                    </property>
+                </widget>
+            </item>
+        </layout>
     </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QSpinBox" name="kcfg_Duration">
-     <property name="minimum">
-      <number>100</number>
-     </property>
-     <property name="maximum">
-      <number>9999</number>
-     </property>
-     <property name="singleStep">
-      <number>100</number>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QCheckBox" name="kcfg_RandomColor">
-     <property name="text">
-      <string>Random Color</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Start Hue</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_StartHue">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>1.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.100000000000000</double>
-     </property>
-     <property name="value">
-      <double>0.500000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_6">
-     <property name="text">
-      <string>Speed</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_Speed">
-     <property name="minimum">
-      <double>-5.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>5.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.100000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Saturation</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_Saturation">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>1.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.100000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Edge Size</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_EdgeSize">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>1.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.100000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_5">
-     <property name="text">
-      <string>Edge Hardness</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_EdgeHardness">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>1.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>0.100000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>Blur Amount</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QDoubleSpinBox" name="kcfg_BlurAmount">
-     <property name="minimum">
-      <double>0.000000000000000</double>
-     </property>
-     <property name="maximum">
-      <double>30.000000000000000</double>
-     </property>
-     <property name="singleStep">
-      <double>1.000000000000000</double>
-     </property>
-     <property name="value">
-      <double>1.000000000000000</double>
-     </property>
-    </widget>
-   </item>
-  </layout>
- </widget>
- <resources/>
- <connections/>
+    <resources />
+    <connections />
 </ui>
