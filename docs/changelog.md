@@ -11,6 +11,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### New Features
 
+- **Support for GNOME 48!** The extension has been updated to work with GNOME 48.
 - **New Effect: Aura Glow!** This effect adds a glowing aura to your windows. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
 - **New Effect: Mushroom!** This overly ridiculous effect is inspired by the animation of Super Mario when he eats a mushroom. Thanks again to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
 - **New Effect: RGB Warp!** This effect warps the colors of your windows separating the color channels. Thanks once more to [@jgarza9788](https://github.com/jgarza9788) for this contribution!

@@ -16,6 +16,7 @@
 
 import Gio from 'gi://Gio';
 import Shell from 'gi://Shell';
+import Cogl from 'gi://Cogl';
 import GObject from 'gi://GObject';
 import Clutter from 'gi://Clutter';
 import Meta from 'gi://Meta';
@@ -115,8 +116,14 @@ export var Shader = GObject.registerClass({
     this._timeline.set_duration(duration);
     this._timeline.start();
 
-    // Make sure that no fullscreen window is drawn over our animations.
-    Meta.disable_unredirect_for_display(global.display);
+    // Make sure that no fullscreen window is drawn over our animations. Since GNOME 48
+    // this is a "global" method.
+    if (Meta.disable_unredirect_for_display) {
+      Meta.disable_unredirect_for_display(global.display);
+    } else {
+      global.compositor.disable_unredirect();
+    }
+
     global.begin_work();
 
     // Reset progress value.
@@ -156,8 +163,13 @@ export var Shader = GObject.registerClass({
       return;
     }
 
-    // Restore unredirecting behavior for fullscreen windows.
-    Meta.enable_unredirect_for_display(global.display);
+    // Restore unredirecting behavior for fullscreen windows. Since GNOME 48 this is a
+    // "global" method.
+    if (Meta.disable_unredirect_for_display) {
+      Meta.enable_unredirect_for_display(global.display);
+    } else {
+      global.compositor.enable_unredirect();
+    }
     global.end_work();
 
     this.emit('end-animation');
@@ -178,7 +190,9 @@ export var Shader = GObject.registerClass({
     const declarations = code.substr(0, match.index);
     const main         = match[1];
 
-    this.add_glsl_snippet(Shell.SnippetHook.FRAGMENT, declarations, main, true);
+    this.add_glsl_snippet(
+      Cogl.SnippetHook ? Cogl.SnippetHook.FRAGMENT : Shell.SnippetHook.FRAGMENT,
+      declarations, main, true);
   }
 
   // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
