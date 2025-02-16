@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-15 16:48+0100\n"
-"PO-Revision-Date: 2024-11-03 08:20+0000\n"
-"Last-Translator: Simon Schneegans <code@simonschneegans.de>\n"
+"PO-Revision-Date: 2025-02-16 18:22+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.10\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -69,7 +69,7 @@ msgstr "Weihnachtsgrüße"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Nuklear ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
@@ -97,7 +97,7 @@ msgstr "Matrix"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "Pilz"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
@@ -109,23 +109,23 @@ msgstr ""
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "Rot, weiß und blau 🇺🇸"
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "Regenbogen 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
-msgstr ""
+msgstr "Cattuccino 😺"
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "Dracula 🦇"
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "Funkeln ✨"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
@@ -472,19 +472,19 @@ msgstr "Pixelgröße"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "Helligkeit"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "Rote Geschwindigkeit"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "Grüne Geschwindigkeit"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "Blaue Geschwindigkeit"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
@@ -508,7 +508,7 @@ msgstr "Blitzfarbe"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "Zufällige Farbe"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Color Hue"
@@ -516,19 +516,19 @@ msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:103
 msgid "Color Speed"
-msgstr ""
+msgstr "Farbgeschwindigkeit"
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Color Saturation"
-msgstr ""
+msgstr "Farbsättigung"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "Kantengröße"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Kantenhärte"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
@@ -633,7 +633,7 @@ msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "Fenster drehen"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
