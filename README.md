@@ -70,7 +70,7 @@ Below is a table which summarizes the current availability for all effects.
 </tr>
 <tr><td></td>                        <td>3.36</td> <td>3.38</td><td>40-44</td><td>45+</td><td>5.25.0+</td></tr>
 <tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
-<tr><td>Aura Glow</td>               <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Aura Glow</td>               <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Doom</td>                    <td>  </td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Energize A</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
@@ -88,9 +88,9 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Pixel Wheel</td>             <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
-<tr><td>RGB Warp</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>RGB Warp</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
-<tr><td>TeamRocket</td>              <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>TeamRocket</td>              <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
