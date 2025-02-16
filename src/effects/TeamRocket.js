@@ -39,22 +39,24 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uWT          = shader.get_uniform_location('uWT');
-      shader._uXpos        = shader.get_uniform_location('uXpos');
-      shader._uYpos        = shader.get_uniform_location('uYpos');
-      shader._uWinRot      = shader.get_uniform_location('uWinRot');
-      shader._uSparkleRot  = shader.get_uniform_location('uSparkleRot');
-      shader._uSparkleSize = shader.get_uniform_location('uSparkleSize');
+      shader._uAnimationSplit = shader.get_uniform_location('uAnimationSplit');
+      shader._uHorizontalSparklePosition =
+        shader.get_uniform_location('uHorizontalSparklePosition');
+      shader._uVerticalSparklePosition =
+        shader.get_uniform_location('uVerticalSparklePosition');
+      shader._uWindowRotation = shader.get_uniform_location('uWindowRotation');
+      shader._uSparkleRot     = shader.get_uniform_location('uSparkleRot');
+      shader._uSparkleSize    = shader.get_uniform_location('uSparkleSize');
 
       shader._uSeed = shader.get_uniform_location('uSeed');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         // clang-format off
-        shader.set_uniform_float(shader._uWT,          1, [settings.get_double('team-rocket-window-time')]);
-        shader.set_uniform_float(shader._uXpos,        1, [settings.get_double('team-rocket-x')]);
-        shader.set_uniform_float(shader._uYpos,        1, [settings.get_double('team-rocket-y')]);
-        shader.set_uniform_float(shader._uWinRot,      1, [settings.get_boolean('team-rocket-win-rot')]);
+        shader.set_uniform_float(shader._uAnimationSplit,            1, [settings.get_double('team-rocket-animation-split')]);
+        shader.set_uniform_float(shader._uHorizontalSparklePosition, 1, [settings.get_double('team-rocket-horizontal-sparkle-position')]);
+        shader.set_uniform_float(shader._uVerticalSparklePosition,   1, [settings.get_double('team-rocket-vertical-sparkle-position')]);
+        shader.set_uniform_float(shader._uWindowRotation,            1, [settings.get_boolean('team-rocket-window-rotation')]);
         shader.set_uniform_float(shader._uSparkleRot,  1, [settings.get_double('team-rocket-sparkle-rot')]);
         shader.set_uniform_float(shader._uSparkleSize, 1, [settings.get_double('team-rocket-sparkle-size')]);
         // clang-format on
@@ -93,12 +95,10 @@ export default class Effect {
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
     dialog.bindAdjustment('team-rocket-animation-time');
-    dialog.bindAdjustment('team-rocket-window-time');
-    dialog.bindAdjustment('team-rocket-x');
-    dialog.bindAdjustment('team-rocket-y');
-
-    dialog.bindSwitch('team-rocket-win-rot');
-
+    dialog.bindAdjustment('team-rocket-animation-split');
+    dialog.bindAdjustment('team-rocket-horizontal-sparkle-position');
+    dialog.bindAdjustment('team-rocket-vertical-sparkle-position');
+    dialog.bindSwitch('team-rocket-window-rotation');
     dialog.bindAdjustment('team-rocket-sparkle-rot');
     dialog.bindAdjustment('team-rocket-sparkle-size');
   }

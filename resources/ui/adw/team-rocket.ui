@@ -63,7 +63,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
 
             <property name="adjustment">
-              <object class="GtkAdjustment" id="team-rocket-window-time">
+              <object class="GtkAdjustment" id="team-rocket-animation-split">
                 <property name="upper">0.8</property>
                 <property name="lower">0.2</property>
                 <property name="step-increment">0.01</property>
@@ -74,7 +74,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </child>
 
         <child>
-          <object class="GtkButton" id="reset-team-rocket-window-time">
+          <object class="GtkButton" id="reset-team-rocket-animation-split">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -89,14 +89,14 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Rotate Window</property>
-        <property name="activatable-widget">team-rocket-win-rot</property>
+        <property name="activatable-widget">team-rocket-window-rotation</property>
         <child>
-          <object class="GtkSwitch" id="team-rocket-win-rot">
+          <object class="GtkSwitch" id="team-rocket-window-rotation">
             <property name="valign">center</property>
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="reset-team-rocket-win-rot">
+          <object class="GtkButton" id="reset-team-rocket-window-rotation">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -122,7 +122,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
 
             <property name="adjustment">
-              <object class="GtkAdjustment" id="team-rocket-x">
+              <object class="GtkAdjustment" id="team-rocket-horizontal-sparkle-position">
                 <property name="upper">1.0</property>
                 <property name="lower">-1.0</property>
                 <property name="step-increment">0.01</property>
@@ -133,7 +133,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </child>
 
         <child>
-          <object class="GtkButton" id="reset-team-rocket-x">
+          <object class="GtkButton" id="reset-team-rocket-horizontal-sparkle-position">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -159,7 +159,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <property name="width-request">300</property>
 
             <property name="adjustment">
-              <object class="GtkAdjustment" id="team-rocket-y">
+              <object class="GtkAdjustment" id="team-rocket-vertical-sparkle-position">
                 <property name="upper">1.0</property>
                 <property name="lower">-1.0</property>
                 <property name="step-increment">0.01</property>
@@ -170,7 +170,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         </child>
 
         <child>
-          <object class="GtkButton" id="reset-team-rocket-y">
+          <object class="GtkButton" id="reset-team-rocket-vertical-sparkle-position">
             <property name="icon-name">edit-clear-symbolic</property>
             <property name="valign">center</property>
             <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
@@ -187,7 +187,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
 
         <property name="title" translatable="yes">Sparkle Size</property>
-        <!-- <property name="subtitle" translatable="yes"></property> -->
 
         <child>
           <object class="GtkScale">
@@ -225,7 +224,6 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
 
         <property name="title" translatable="yes">Sparkle Rotation</property>
-        <!-- <property name="subtitle" translatable="yes"></property> -->
 
         <child>
           <object class="GtkScale">

@@ -31,13 +31,13 @@
 // void setOutputColor(vec4 outColor)
 
 // window time ... how we split the time between the window and the sparkle/star
-uniform float uWT;
-uniform float uXpos;         // the Xposition of the star
-uniform float uYpos;         // the Yposition of the star
-uniform float uSparkleRot;   // the rotation of the star
-uniform float uSparkleSize;  // the size of the star
-uniform bool uWinRot;        // window rotation... but it's more of a warp
-uniform vec2 uSeed;          // and random numbers
+uniform float uAnimationSplit;
+uniform float uHorizontalSparklePosition;  // the Xposition of the star
+uniform float uVerticalSparklePosition;    // the Yposition of the star
+uniform float uSparkleRot;                 // the rotation of the star
+uniform float uSparkleSize;                // the size of the star
+uniform bool uWindowRotation;              // window rotation... but it's more of a warp
+uniform vec2 uSeed;                        // and random numbers
 
 // Used to scale the window.
 vec2 scaleUV(vec2 uv, vec2 scale, vec2 centerOffset) {
@@ -106,16 +106,18 @@ void main() {
   float progress = uForOpening ? 1.0 - uProgress : uProgress;
 
   // Scale progress ... the first half of the animation.
-  float scalep = remap(progress, 0.0, uWT + 0.1, 0.0, 1.0);
+  float scalep = remap(progress, 0.0, uAnimationSplit + 0.1, 0.0, 1.0);
   scalep       = easeOutQuad(scalep);
 
   // Sparkle progress ... the second half of the animation.
-  float sparkp = remap(progress, uWT - 0.1, 1.0, 0.0, 1.0);
+  float sparkp = remap(progress, uAnimationSplit - 0.1, 1.0, 0.0, 1.0);
   sparkp       = easeInOutSine(sparkp);
 
   // This is the offset of the window... don't let them go too far each way.
-  vec2 offset      = vec2(uXpos, uYpos * -1.0) * 0.20;
-  vec2 scaleOffset = mix(vec2(0.0), vec2(uXpos, uYpos * -1.0) * 0.50, scalep);
+  vec2 offset = vec2(uHorizontalSparklePosition, uVerticalSparklePosition * -1.0) * 0.20;
+  vec2 scaleOffset =
+    mix(vec2(0.0),
+        vec2(uHorizontalSparklePosition, uVerticalSparklePosition * -1.0) * 0.50, scalep);
 
   // the UV for this function
   float aspect = uSize.x / uSize.y;
@@ -129,7 +131,7 @@ void main() {
 
   // Rotation and if we are gonna rotate or not.
   vec3 rot = vec3(0.0);
-  if (uWinRot) {
+  if (uWindowRotation) {
     rot = hash32(uSeed);
     rot *= 2.0;
     rot -= 1.0;
