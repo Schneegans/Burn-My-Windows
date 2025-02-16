@@ -979,19 +979,19 @@ SPDX-License-Identifier: CC0-1.0
       <description>Ramdomize the color offset</description>
     </key>
 
-    <key name="aura-glow-color-offset" type="d">
+    <key name="aura-glow-start-hue" type="d">
       <default>0.0</default>
       <summary>Aura Glow Color Offset</summary>
       <description>Changes the inital color of the glow</description>
     </key>
 
-    <key name="aura-glow-color-speed" type="d">
+    <key name="aura-glow-speed" type="d">
       <default>2.5</default>
       <summary>Aura Glow Color Speed</summary>
       <description>The Speed at which the color changes</description>
     </key>
 
-    <key name="aura-glow-color-saturation" type="d">
+    <key name="aura-glow-saturation" type="d">
       <default>0.75</default>
       <summary>Aura Glow Color Saturation</summary>
       <description>Amount of color in the effect</description>
@@ -1029,12 +1029,6 @@ SPDX-License-Identifier: CC0-1.0
       <default>750</default>
       <summary>RGBWarp Animation Time</summary>
       <description>The time the RGBWarp effect takes.</description>
-    </key>
-
-    <key name="rgbwarp-wavesize" type="d">
-      <default>1.0</default>
-      <summary>RGBWarp Width</summary>
-      <description>Width of the effect.</description>
     </key>
 
     <key name="rgbwarp-brightness" type="d">
@@ -1077,25 +1071,25 @@ SPDX-License-Identifier: CC0-1.0
       <description>The time the Team Rocket effect takes.</description>
     </key>
 
-    <key name="team-rocket-window-time" type="d">
+    <key name="team-rocket-animation-split" type="d">
       <default>0.5</default>
       <summary>Window vs Sparkle split</summary>
       <description>Window vs Sparkle split</description>
     </key>
 
-    <key name="team-rocket-x" type="d">
+    <key name="team-rocket-horizontal-sparkle-position" type="d">
       <default>0.0</default>
       <summary>Team Rocket X</summary>
       <description>X position</description>
     </key>
 
-    <key name="team-rocket-y" type="d">
+    <key name="team-rocket-vertical-sparkle-position" type="d">
       <default>0.5</default>
       <summary>Team Rocket Y</summary>
       <description>Y position</description>
     </key>
 
-    <key name="team-rocket-win-rot" type="b">
+    <key name="team-rocket-window-rotation" type="b">
       <default>true</default>
       <summary>Rotate the Window</summary>
       <description>Rotate the Window</description>

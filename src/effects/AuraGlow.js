@@ -40,22 +40,22 @@ export default class Effect {
   constructor() {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
-      shader._uColorSpeed        = shader.get_uniform_location('uColorSpeed');
-      shader._uRandomColorOffset = shader.get_uniform_location('uRandomColorOffset');
-      shader._uColorOffset       = shader.get_uniform_location('uColorOffset');
-      shader._uColorSaturation   = shader.get_uniform_location('uColorSaturation');
-      shader._uEdgeSize          = shader.get_uniform_location('uEdgeSize');
-      shader._uEdgeHardness      = shader.get_uniform_location('uEdgeHardness');
-      shader._uBlur              = shader.get_uniform_location('uBlur');
-      shader._uSeed              = shader.get_uniform_location('uSeed');
+      shader._uSpeed        = shader.get_uniform_location('uSpeed');
+      shader._uRandomColor  = shader.get_uniform_location('uRandomColor');
+      shader._uStartHue     = shader.get_uniform_location('uStartHue');
+      shader._uSaturation   = shader.get_uniform_location('uSaturation');
+      shader._uEdgeSize     = shader.get_uniform_location('uEdgeSize');
+      shader._uEdgeHardness = shader.get_uniform_location('uEdgeHardness');
+      shader._uBlur         = shader.get_uniform_location('uBlur');
+      shader._uSeed         = shader.get_uniform_location('uSeed');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         // clang-format off
-        shader.set_uniform_float(shader._uColorSpeed,        1, [settings.get_double('aura-glow-color-speed')]);
-        shader.set_uniform_float(shader._uRandomColorOffset, 1, [settings.get_boolean('aura-glow-random-color')]);
-        shader.set_uniform_float(shader._uColorOffset,       1, [settings.get_double('aura-glow-color-offset')]);
-        shader.set_uniform_float(shader._uColorSaturation,   1, [settings.get_double('aura-glow-color-saturation')]);
+        shader.set_uniform_float(shader._uSpeed,        1, [settings.get_double('aura-glow-speed')]);
+        shader.set_uniform_float(shader._uRandomColor, 1, [settings.get_boolean('aura-glow-random-color')]);
+        shader.set_uniform_float(shader._uStartHue,       1, [settings.get_double('aura-glow-start-hue')]);
+        shader.set_uniform_float(shader._uSaturation,   1, [settings.get_double('aura-glow-saturation')]);
         shader.set_uniform_float(shader._uEdgeSize,          1, [settings.get_double('aura-glow-edge-size')]);
         shader.set_uniform_float(shader._uEdgeHardness,      1, [settings.get_double('aura-glow-edge-hardness')]);
         shader.set_uniform_float(shader._uBlur,              1, [settings.get_double('aura-glow-blur')]);
@@ -95,19 +95,17 @@ export default class Effect {
   // binds all user interface elements to the respective settings keys of the profile.
   static bindPreferences(dialog) {
     dialog.bindAdjustment('aura-glow-animation-time');
-    dialog.bindAdjustment('aura-glow-color-speed');
+    dialog.bindAdjustment('aura-glow-speed');
     dialog.bindSwitch('aura-glow-random-color');
-    dialog.bindAdjustment('aura-glow-color-offset');
-    dialog.bindAdjustment('aura-glow-color-saturation');
+    dialog.bindAdjustment('aura-glow-start-hue');
+    dialog.bindAdjustment('aura-glow-saturation');
     dialog.bindAdjustment('aura-glow-edge-size');
     dialog.bindAdjustment('aura-glow-edge-hardness');
     dialog.bindAdjustment('aura-glow-blur');
 
     // enable and disable the one slider
     function enableDisablePref(dialog, state) {
-      dialog.getBuilder()
-        .get_object('aura-glow-color-offset-scale')
-        .set_sensitive(!state);
+      dialog.getBuilder().get_object('aura-glow-start-hue-slider').set_sensitive(!state);
     }
 
     const switchWidget = dialog.getBuilder().get_object('aura-glow-random-color');

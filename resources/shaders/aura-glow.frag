@@ -31,10 +31,10 @@
 // vec4 getInputColor(vec2 coords)
 // void setOutputColor(vec4 outColor)
 
-uniform float uColorSpeed;
-uniform bool uRandomColorOffset;
-uniform float uColorOffset;
-uniform float uColorSaturation;
+uniform float uSpeed;
+uniform bool uRandomColor;
+uniform float uStartHue;
+uniform float uSaturation;
 uniform float uBlur;
 uniform vec2 uSeed;
 uniform float uEdgeSize;
@@ -72,8 +72,8 @@ void main() {
   gradient += simplex2D((iTexCoord + uSeed)) * 0.5;
 
   // This mask is used for the color overlay.
-  float glowMask = (progress - gradient) / mix(uEdgeSize, 0.5, progress);
-  glowMask       = 1.0 - clamp(glowMask - progress, 0.0, 1.0);
+  float glowMask = (progress - gradient) / (uEdgeSize + 0.1);
+  glowMask       = 1.0 - clamp(glowMask, 0.0, 1.0);
 
   // Quickly fade out the glow mask at the end of the animation.
   glowMask *= easeOutSine(min(1.0, (1.0 - progress) * 4.0));
@@ -90,10 +90,10 @@ void main() {
   }
   glowMask *= windowColor.a;
 
-  vec3 glowColor    = cos(progress * uColorSpeed + uv.xyx + vec3(0, 2, 4)).xyz;
-  float colorOffset = (uRandomColorOffset) ? hash12(uSeed) : uColorOffset;
+  vec3 glowColor    = cos(progress * uSpeed + uv.xyx + vec3(0, 2, 4)).xyz;
+  float colorOffset = (uRandomColor) ? hash12(uSeed) : uStartHue;
   glowColor         = offsetHue(glowColor, colorOffset + 0.1);
-  glowColor         = clamp(glowColor * uColorSaturation, vec3(0.0), vec3(1.0));
+  glowColor         = clamp(glowColor * uSaturation, vec3(0.0), vec3(1.0));
 
   windowColor.rgb += glowColor * glowMask;
 
