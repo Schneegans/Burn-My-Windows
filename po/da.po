@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-15 16:48+0100\n"
+"POT-Creation-Date: 2025-02-17 20:23+0100\n"
 "PO-Revision-Date: 2024-12-14 08:00+0000\n"
 "Last-Translator: symegac <97731141+symegac@users.noreply.github.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -156,7 +156,7 @@ msgstr ""
 msgid "Snap of Disintegration"
 msgstr "Opløsningsknips"
 
-#: src/effects/TeamRocket.js:87
+#: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
 msgstr ""
 
@@ -379,7 +379,7 @@ msgstr "Animationstid [ms]"
 #: resources/ui/adw/fire.ui:199 resources/ui/adw/team-rocket.ui:42
 #: resources/ui/adw/team-rocket.ui:80 resources/ui/adw/team-rocket.ui:102
 #: resources/ui/adw/team-rocket.ui:139 resources/ui/adw/team-rocket.ui:176
-#: resources/ui/adw/team-rocket.ui:215 resources/ui/adw/team-rocket.ui:253
+#: resources/ui/adw/team-rocket.ui:214 resources/ui/adw/team-rocket.ui:251
 #: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
 #: resources/ui/adw/snap.ui:36 resources/ui/adw/snap.ui:69
 #: resources/ui/adw/snap.ui:94 resources/ui/adw/focus.ui:50
@@ -430,7 +430,7 @@ msgid "Strength"
 msgstr "Styrke"
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
-#: resources/ui/adw/fire.ui:96
+#: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
 msgid "Speed"
 msgstr "Hastighed"
 
@@ -513,15 +513,11 @@ msgid "Random Color"
 msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:69
-msgid "Start Color Hue"
-msgstr ""
-
-#: resources/ui/adw/aura-glow.ui:103
-msgid "Color Speed"
+msgid "Start Hue"
 msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
-msgid "Color Saturation"
+msgid "Saturation"
 msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:169
@@ -649,7 +645,7 @@ msgstr ""
 msgid "Sparkle Size"
 msgstr ""
 
-#: resources/ui/adw/team-rocket.ui:227
+#: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
 msgstr ""
 

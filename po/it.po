@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-15 16:48+0100\n"
+"POT-Creation-Date: 2025-02-17 20:23+0100\n"
 "PO-Revision-Date: 2025-02-16 18:22+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -155,7 +155,7 @@ msgstr ""
 msgid "Snap of Disintegration"
 msgstr "Scatto di disintegrazione"
 
-#: src/effects/TeamRocket.js:87
+#: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
 msgstr ""
 
@@ -378,7 +378,7 @@ msgstr "Tempo animazione [ms]"
 #: resources/ui/adw/fire.ui:199 resources/ui/adw/team-rocket.ui:42
 #: resources/ui/adw/team-rocket.ui:80 resources/ui/adw/team-rocket.ui:102
 #: resources/ui/adw/team-rocket.ui:139 resources/ui/adw/team-rocket.ui:176
-#: resources/ui/adw/team-rocket.ui:215 resources/ui/adw/team-rocket.ui:253
+#: resources/ui/adw/team-rocket.ui:214 resources/ui/adw/team-rocket.ui:251
 #: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
 #: resources/ui/adw/snap.ui:36 resources/ui/adw/snap.ui:69
 #: resources/ui/adw/snap.ui:94 resources/ui/adw/focus.ui:50
@@ -429,7 +429,7 @@ msgid "Strength"
 msgstr "Forza"
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
-#: resources/ui/adw/fire.ui:96
+#: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
 msgid "Speed"
 msgstr "Velocità"
 
@@ -511,16 +511,12 @@ msgid "Random Color"
 msgstr "Colore casuale"
 
 #: resources/ui/adw/aura-glow.ui:69
-msgid "Start Color Hue"
-msgstr "Avvia tonalità colore"
-
-#: resources/ui/adw/aura-glow.ui:103
-msgid "Color Speed"
-msgstr "Velocità del colore"
+msgid "Start Hue"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
-msgid "Color Saturation"
-msgstr "Saturazione del colore"
+msgid "Saturation"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
@@ -646,7 +642,7 @@ msgstr ""
 msgid "Sparkle Size"
 msgstr ""
 
-#: resources/ui/adw/team-rocket.ui:227
+#: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
 msgstr ""
 
@@ -774,6 +770,15 @@ msgstr ""
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
 msgstr "Rumore"
+
+#~ msgid "Start Color Hue"
+#~ msgstr "Avvia tonalità colore"
+
+#~ msgid "Color Speed"
+#~ msgstr "Velocità del colore"
+
+#~ msgid "Color Saturation"
+#~ msgstr "Saturazione del colore"
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "Sponsor d'oro"
