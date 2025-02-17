@@ -322,7 +322,7 @@ export default class Effect {
         // selections.
         const menu      = Gio.Menu.new();
         const group     = Gio.SimpleActionGroup.new();
-        const groupName = 'presets';
+        const groupName = 'mushroom-presets';
 
         // Iterate over the presets to populate the menu.
         presets.forEach((preset, i) => {

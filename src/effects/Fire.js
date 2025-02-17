@@ -211,7 +211,7 @@ export default class Effect {
 
       const menu      = Gio.Menu.new();
       const group     = Gio.SimpleActionGroup.new();
-      const groupName = 'presets';
+      const groupName = 'fire-presets';
 
       // Add all presets.
       presets.forEach((preset, i) => {
