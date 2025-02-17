@@ -82,21 +82,16 @@ export default class Effect {
         }
 
         // clang-format off
-
-        shader.set_uniform_float(shader._uScaleStyle,        1, [settings.get_double('mushroom-scale-style')]);
-
-        shader.set_uniform_float(shader._uSparkCount,              1, [settings.get_int('mushroom-spark-count')]);
-        shader.set_uniform_float(shader._uSparkColor,             4, utils.parseColor(settings.get_string('mushroom-spark-color')));
-        shader.set_uniform_float(shader._uSparkRotation,          1, [settings.get_double('mushroom-spark-rotation')]);
-
-        shader.set_uniform_float(shader._uRaysColor,            4, utils.parseColor(settings.get_string('mushroom-rays-color')));
-
-        shader.set_uniform_float(shader._uRingCount,                1, [settings.get_int('mushroom-ring-count')]);
-        shader.set_uniform_float(shader._uRingRotation,         1, [settings.get_double('mushroom-ring-rotation')]);
-        shader.set_uniform_float(shader._uStarCount,          1, [settings.get_int('mushroom-star-count')]);
+        shader.set_uniform_float(shader._uScaleStyle,    1, [settings.get_double('mushroom-scale-style')]);
+        shader.set_uniform_float(shader._uSparkCount,    1, [settings.get_int('mushroom-spark-count')]);
+        shader.set_uniform_float(shader._uSparkColor,    4, utils.parseColor(settings.get_string('mushroom-spark-color')));
+        shader.set_uniform_float(shader._uSparkRotation, 1, [settings.get_double('mushroom-spark-rotation')]);
+        shader.set_uniform_float(shader._uRaysColor,     4, utils.parseColor(settings.get_string('mushroom-rays-color')));
+        shader.set_uniform_float(shader._uRingCount,     1, [settings.get_int('mushroom-ring-count')]);
+        shader.set_uniform_float(shader._uRingRotation,  1, [settings.get_double('mushroom-ring-rotation')]);
+        shader.set_uniform_float(shader._uStarCount,     1, [settings.get_int('mushroom-star-count')]);
 
         shader.set_uniform_float(shader._uSeed,  2, [Math.random(), Math.random()]);
-
         // clang-format on
       });
     });
