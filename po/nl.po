@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2024-12-10 19:19+0000\n"
+"PO-Revision-Date: 2025-02-18 08:17+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -25,7 +25,7 @@ msgstr "Verschijning"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr ""
+msgstr "Aura-gloed"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -69,7 +69,7 @@ msgstr "Kerstmanvuur"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Nucleair ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
@@ -97,11 +97,11 @@ msgstr "Matrix"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "Paddenstoel"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8-bits loodgieter"
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
@@ -109,11 +109,11 @@ msgstr ""
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "Rood, wit en blauw 🇺🇸"
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "Regenboog 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
@@ -121,11 +121,11 @@ msgstr ""
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "Dracula 🦇"
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "Sprankeling ✨"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
@@ -149,7 +149,7 @@ msgstr "Portaal"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB-vervorming"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
@@ -157,7 +157,7 @@ msgstr "Uiteenvallen"
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr ""
+msgstr "Team Rocket"
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -471,7 +471,7 @@ msgstr "Pixelgrootte"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "Helderheid"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
@@ -507,23 +507,23 @@ msgstr "Flitskleur"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "Willekeurige kleur"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr ""
+msgstr "Start­tint"
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Verzadiging"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "Rand­grootte"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Rand­hardheid"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
