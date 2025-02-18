@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-03 09:13+0100\n"
+"POT-Creation-Date: 2025-02-17 20:23+0100\n"
 "PO-Revision-Date: 2022-10-03 20:18+0000\n"
 "Last-Translator: phlostically <phlostically@mailinator.com>\n"
 "Language-Team: Esperanto <https://hosted.weblate.org/projects/burn-my-"
@@ -22,6 +22,10 @@ msgstr ""
 #: src/effects/Apparition.js:80
 msgid "Apparition"
 msgstr "Apero de fantomo"
+
+#: src/effects/AuraGlow.js:89
+msgid "Aura Glow"
+msgstr ""
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -63,6 +67,10 @@ msgstr "Malvarma vento"
 msgid "Santa is Coming"
 msgstr "Kristnasko venas"
 
+#: src/effects/Fire.js:201
+msgid "Nuclear ☢️"
+msgstr ""
+
 #: src/effects/Focus.js:76
 msgid "Focus"
 msgstr ""
@@ -87,6 +95,38 @@ msgstr "Forbruligi"
 msgid "Matrix"
 msgstr "Matrico"
 
+#: src/effects/Mushroom.js:124
+msgid "Mushroom"
+msgstr ""
+
+#: src/effects/Mushroom.js:204
+msgid "8Bit Plumber"
+msgstr ""
+
+#: src/effects/Mushroom.js:221
+msgid "New Bros 2 🍄"
+msgstr ""
+
+#: src/effects/Mushroom.js:239
+msgid "Red White and Blue 🇺🇸"
+msgstr ""
+
+#: src/effects/Mushroom.js:256
+msgid "Rainbow 🌈"
+msgstr ""
+
+#: src/effects/Mushroom.js:273
+msgid "Cattuccino 😺"
+msgstr ""
+
+#: src/effects/Mushroom.js:291
+msgid "Dracula 🦇"
+msgstr ""
+
+#: src/effects/Mushroom.js:308
+msgid "Sparkle ✨"
+msgstr ""
+
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
 msgstr ""
@@ -107,9 +147,17 @@ msgstr "Bildera viŝo"
 msgid "Portal"
 msgstr ""
 
+#: src/effects/RGBWarp.js:77
+msgid "RGB Warp"
+msgstr ""
+
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
 msgstr "Fingroklako de malintegriĝo"
+
+#: src/effects/TeamRocket.js:89
+msgid "Team Rocket"
+msgstr ""
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -127,103 +175,103 @@ msgstr ""
 msgid "Wisps"
 msgstr "Vaglumo"
 
-#: prefs.js:236
+#: prefs.js:256
 msgid "Preview this effect"
 msgstr ""
 
-#: prefs.js:313
+#: prefs.js:333
 msgid "Burn-My-Windows has been updated!"
 msgstr ""
 
-#: prefs.js:314 resources/ui/common/menus.ui:17
+#: prefs.js:334 resources/ui/common/menus.ui:17
 msgid "View Changelog"
 msgstr "Vidi historion de ŝanĝoj"
 
-#: prefs.js:496
+#: prefs.js:516
 msgid "Delete this Profile?"
 msgstr ""
 
-#: prefs.js:497
+#: prefs.js:517
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 
-#: prefs.js:500
+#: prefs.js:520
 msgid "Cancel"
 msgstr ""
 
-#: prefs.js:505
+#: prefs.js:525
 msgid "Delete"
 msgstr ""
 
-#: prefs.js:737 resources/ui/adw/prefs.ui:103
+#: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
 msgstr ""
 
-#: prefs.js:738 resources/ui/adw/prefs.ui:104
+#: prefs.js:758 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
 msgstr ""
 
-#: prefs.js:739 resources/ui/adw/prefs.ui:118
+#: prefs.js:759 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
 msgstr ""
 
-#: prefs.js:740 resources/ui/adw/prefs.ui:119
+#: prefs.js:760 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
 msgstr ""
 
-#: prefs.js:741 resources/ui/adw/prefs.ui:133
+#: prefs.js:761 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
 msgstr ""
 
-#: prefs.js:742 resources/ui/adw/prefs.ui:134
+#: prefs.js:762 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
 msgstr ""
 
-#: prefs.js:743 resources/ui/adw/prefs.ui:148
+#: prefs.js:763 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
 msgstr ""
 
-#: prefs.js:744 resources/ui/adw/prefs.ui:149
+#: prefs.js:764 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
 msgstr ""
 
-#: prefs.js:745 resources/ui/adw/prefs.ui:163
+#: prefs.js:765 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
 msgstr ""
 
-#: prefs.js:746 resources/ui/adw/prefs.ui:164
+#: prefs.js:766 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
 msgstr ""
 
-#: prefs.js:747 resources/ui/adw/prefs.ui:165
+#: prefs.js:767 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
 msgstr ""
 
-#: prefs.js:748 resources/ui/adw/prefs.ui:166
+#: prefs.js:768 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
 msgstr ""
 
-#: prefs.js:749 resources/ui/adw/prefs.ui:167
+#: prefs.js:769 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
 msgstr ""
 
-#: prefs.js:754 resources/ui/adw/prefs.ui:183
+#: prefs.js:774 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
 msgstr ""
 
-#: prefs.js:760
+#: prefs.js:780
 msgid "Standard Profile"
 msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:840
+#: prefs.js:860
 #, javascript-format
 msgid "Preview for %s"
 msgstr "Antaŭrigardi efekton %s"
 
-#: prefs.js:859
+#: prefs.js:879
 msgid "Close this Window to Preview the Effect!"
 msgstr "Fermu ĉi tiun fenestron por antaŭrigardi la efekton!"
 
@@ -269,14 +317,16 @@ msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/doom.ui:14 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/trex.ui:14 resources/ui/adw/wisps.ui:14
+#: resources/ui/adw/doom.ui:14 resources/ui/adw/rgbwarp.ui:17
+#: resources/ui/adw/paint-brush.ui:14 resources/ui/adw/trex.ui:14
+#: resources/ui/adw/wisps.ui:14 resources/ui/adw/aura-glow.ui:13
 #: resources/ui/adw/energize-b.ui:15 resources/ui/adw/pixel-wheel.ui:14
 #: resources/ui/adw/glide.ui:14 resources/ui/adw/apparition.ui:15
 #: resources/ui/adw/portal.ui:14 resources/ui/adw/incinerate.ui:14
 #: resources/ui/adw/hexagon.ui:14 resources/ui/adw/fire.ui:30
-#: resources/ui/adw/pixel-wipe.ui:14 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
+#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/snap.ui:14 resources/ui/adw/focus.ui:35
+#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/energize-a.ui:14
 #: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
 msgid "Animation Time [ms]"
 msgstr "Daŭro de efekto [ms]"
@@ -293,34 +343,49 @@ msgstr "Daŭro de efekto [ms]"
 #: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
 #: resources/ui/adw/matrix.ui:185 resources/ui/adw/doom.ui:36
 #: resources/ui/adw/doom.ui:69 resources/ui/adw/doom.ui:102
-#: resources/ui/adw/doom.ui:135 resources/ui/adw/paint-brush.ui:36
-#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:110 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
-#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/glide.ui:36
-#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
-#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
-#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
-#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
-#: resources/ui/adw/apparition.ui:169 resources/ui/adw/portal.ui:36
-#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
-#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
-#: resources/ui/adw/incinerate.ui:36 resources/ui/adw/incinerate.ui:69
-#: resources/ui/adw/incinerate.ui:102 resources/ui/adw/incinerate.ui:125
-#: resources/ui/adw/incinerate.ui:150 resources/ui/adw/hexagon.ui:36
-#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
-#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
-#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/fire.ui:52
-#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
-#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:199
+#: resources/ui/adw/doom.ui:135 resources/ui/adw/rgbwarp.ui:42
+#: resources/ui/adw/rgbwarp.ui:81 resources/ui/adw/rgbwarp.ui:118
+#: resources/ui/adw/rgbwarp.ui:155 resources/ui/adw/rgbwarp.ui:192
+#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
+#: resources/ui/adw/trex.ui:36 resources/ui/adw/trex.ui:69
+#: resources/ui/adw/trex.ui:102 resources/ui/adw/trex.ui:135
+#: resources/ui/adw/trex.ui:160 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/aura-glow.ui:35 resources/ui/adw/aura-glow.ui:58
+#: resources/ui/adw/aura-glow.ui:92 resources/ui/adw/aura-glow.ui:125
+#: resources/ui/adw/aura-glow.ui:158 resources/ui/adw/aura-glow.ui:191
+#: resources/ui/adw/aura-glow.ui:224 resources/ui/adw/aura-glow.ui:257
+#: resources/ui/adw/energize-b.ui:37 resources/ui/adw/energize-b.ui:70
+#: resources/ui/adw/energize-b.ui:95 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
+#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
+#: resources/ui/adw/glide.ui:168 resources/ui/adw/apparition.ui:37
+#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
+#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
+#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
+#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
+#: resources/ui/adw/portal.ui:160 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
+#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
+#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:199 resources/ui/adw/team-rocket.ui:42
+#: resources/ui/adw/team-rocket.ui:80 resources/ui/adw/team-rocket.ui:102
+#: resources/ui/adw/team-rocket.ui:139 resources/ui/adw/team-rocket.ui:176
+#: resources/ui/adw/team-rocket.ui:214 resources/ui/adw/team-rocket.ui:251
 #: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
 #: resources/ui/adw/snap.ui:36 resources/ui/adw/snap.ui:69
 #: resources/ui/adw/snap.ui:94 resources/ui/adw/focus.ui:50
 #: resources/ui/adw/focus.ui:76 resources/ui/adw/focus.ui:102
+#: resources/ui/adw/mushroom.ui:42 resources/ui/adw/mushroom.ui:99
+#: resources/ui/adw/mushroom.ui:137 resources/ui/adw/mushroom.ui:175
+#: resources/ui/adw/mushroom.ui:209 resources/ui/adw/mushroom.ui:243
+#: resources/ui/adw/mushroom.ui:281 resources/ui/adw/mushroom.ui:319
+#: resources/ui/adw/mushroom.ui:357 resources/ui/adw/mushroom.ui:427
 #: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
 #: resources/ui/adw/energize-a.ui:94 resources/ui/adw/pixelate.ui:36
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
@@ -361,7 +426,7 @@ msgid "Strength"
 msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
-#: resources/ui/adw/fire.ui:96
+#: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
 msgid "Speed"
 msgstr "Rapido"
 
@@ -402,6 +467,22 @@ msgstr "Vertikala skalo"
 msgid "Pixel Size"
 msgstr "Grando de bildero"
 
+#: resources/ui/adw/rgbwarp.ui:55
+msgid "Brightness"
+msgstr ""
+
+#: resources/ui/adw/rgbwarp.ui:93
+msgid "Red Speed"
+msgstr ""
+
+#: resources/ui/adw/rgbwarp.ui:130
+msgid "Green Speed"
+msgstr ""
+
+#: resources/ui/adw/rgbwarp.ui:167
+msgid "Blue Speed"
+msgstr ""
+
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
 msgstr ""
@@ -421,6 +502,30 @@ msgstr "Efekto de deformado"
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
 msgstr "Koloro de ekbrilo"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:136
+msgid "Saturation"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:169
+msgid "Edge Size"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:202
+msgid "Edge Hardness"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr ""
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
@@ -498,7 +603,7 @@ msgstr "Vi eble volas ŝalti ĉi tion por malhelaj etosoj."
 msgid "Presets"
 msgstr "Antaŭagordoj"
 
-#: resources/ui/adw/fire.ui:19
+#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
 msgid "Choose a Preset"
 msgstr "Elekti antaŭagordon"
 
@@ -515,8 +620,28 @@ msgstr ""
 msgid "Gradient"
 msgstr "Gradiento"
 
-#: resources/ui/adw/focus.ui:61
-msgid "Blur Amount"
+#: resources/ui/adw/team-rocket.ui:54
+msgid "Animation Split"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:91
+msgid "Rotate Window"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:114
+msgid "Horizontal Sparkle Position"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:151
+msgid "Vertical Sparkle Position"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:189
+msgid "Sparkle Size"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:226
+msgid "Sparkle Rotation"
 msgstr ""
 
 #: resources/ui/adw/focus.ui:87
@@ -591,6 +716,50 @@ msgstr ""
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
 msgstr ""
 
 #: resources/ui/adw/pixelate.ui:47

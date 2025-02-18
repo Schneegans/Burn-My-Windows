@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-03 09:13+0100\n"
+"POT-Creation-Date: 2025-02-17 20:23+0100\n"
 "PO-Revision-Date: 2024-12-12 21:00+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -22,6 +22,10 @@ msgstr ""
 #: src/effects/Apparition.js:80
 msgid "Apparition"
 msgstr "தோற்றம்"
+
+#: src/effects/AuraGlow.js:89
+msgid "Aura Glow"
+msgstr ""
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -63,6 +67,10 @@ msgstr "குளிர் காற்று"
 msgid "Santa is Coming"
 msgstr "சாண்டா வருகிறார்"
 
+#: src/effects/Fire.js:201
+msgid "Nuclear ☢️"
+msgstr ""
+
 #: src/effects/Focus.js:76
 msgid "Focus"
 msgstr "குவி"
@@ -87,6 +95,38 @@ msgstr "எரியும்"
 msgid "Matrix"
 msgstr "அணி"
 
+#: src/effects/Mushroom.js:124
+msgid "Mushroom"
+msgstr ""
+
+#: src/effects/Mushroom.js:204
+msgid "8Bit Plumber"
+msgstr ""
+
+#: src/effects/Mushroom.js:221
+msgid "New Bros 2 🍄"
+msgstr ""
+
+#: src/effects/Mushroom.js:239
+msgid "Red White and Blue 🇺🇸"
+msgstr ""
+
+#: src/effects/Mushroom.js:256
+msgid "Rainbow 🌈"
+msgstr ""
+
+#: src/effects/Mushroom.js:273
+msgid "Cattuccino 😺"
+msgstr ""
+
+#: src/effects/Mushroom.js:291
+msgid "Dracula 🦇"
+msgstr ""
+
+#: src/effects/Mushroom.js:308
+msgid "Sparkle ✨"
+msgstr ""
+
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
 msgstr "Paint மின்தொடி"
@@ -107,9 +147,17 @@ msgstr "படப்புள்ளி துடைப்பது"
 msgid "Portal"
 msgstr "போர்டல்"
 
+#: src/effects/RGBWarp.js:77
+msgid "RGB Warp"
+msgstr ""
+
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
 msgstr "சிதைவின் நொறுக்குதல்"
+
+#: src/effects/TeamRocket.js:89
+msgid "Team Rocket"
+msgstr ""
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -127,104 +175,104 @@ msgstr "டிவி தடுமாற்றம்"
 msgid "Wisps"
 msgstr "விருப்பங்கள்"
 
-#: prefs.js:236
+#: prefs.js:256
 msgid "Preview this effect"
 msgstr "இந்த விளைவை முன்னோட்டமிடுங்கள்"
 
-#: prefs.js:313
+#: prefs.js:333
 msgid "Burn-My-Windows has been updated!"
 msgstr "பர்ன்-மை-விண்டோச் புதுப்பிக்கப்பட்டுள்ளது!"
 
-#: prefs.js:314 resources/ui/common/menus.ui:17
+#: prefs.js:334 resources/ui/common/menus.ui:17
 msgid "View Changelog"
 msgstr "சேஞ்ச்லாக் காண்க"
 
-#: prefs.js:496
+#: prefs.js:516
 msgid "Delete this Profile?"
 msgstr "இந்த சுயவிவரத்தை நீக்கவா?"
 
-#: prefs.js:497
+#: prefs.js:517
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 "அதன் அனைத்து விளைவு அமைப்புகளுடன் தற்போதைய விளைவு சுயவிவரம் நிரந்தரமாக இழக்கப்படும்."
 
-#: prefs.js:500
+#: prefs.js:520
 msgid "Cancel"
 msgstr "ரத்துசெய்"
 
-#: prefs.js:505
+#: prefs.js:525
 msgid "Delete"
 msgstr "நீக்கு"
 
-#: prefs.js:737 resources/ui/adw/prefs.ui:103
+#: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
 msgstr "சன்னல்களைத் திறக்கிறது"
 
-#: prefs.js:738 resources/ui/adw/prefs.ui:104
+#: prefs.js:758 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
 msgstr "சன்னல்களை மூடுவது"
 
-#: prefs.js:739 resources/ui/adw/prefs.ui:118
+#: prefs.js:759 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
 msgstr "சாதாரண சாளரங்கள்"
 
-#: prefs.js:740 resources/ui/adw/prefs.ui:119
+#: prefs.js:760 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
 msgstr "உரையாடல் சாளரங்கள்"
 
-#: prefs.js:741 resources/ui/adw/prefs.ui:133
+#: prefs.js:761 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
 msgstr "இயல்புநிலை வண்ணத் திட்டம்"
 
-#: prefs.js:742 resources/ui/adw/prefs.ui:134
+#: prefs.js:762 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
 msgstr "இருண்ட வண்ண திட்டம்"
 
-#: prefs.js:743 resources/ui/adw/prefs.ui:148
+#: prefs.js:763 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
 msgstr "பேட்டரியில்"
 
-#: prefs.js:744 resources/ui/adw/prefs.ui:149
+#: prefs.js:764 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
 msgstr "செருகப்பட்டது"
 
-#: prefs.js:745 resources/ui/adw/prefs.ui:163
+#: prefs.js:765 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
 msgstr "பவர்-சேவர் பயன்முறை"
 
-#: prefs.js:746 resources/ui/adw/prefs.ui:164
+#: prefs.js:766 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
 msgstr "சீரான பயன்முறை"
 
-#: prefs.js:747 resources/ui/adw/prefs.ui:165
+#: prefs.js:767 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
 msgstr "செயல்திறன் பயன்முறை"
 
-#: prefs.js:748 resources/ui/adw/prefs.ui:166
+#: prefs.js:768 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
 msgstr "பவர் சேவர் அல்லது சீரான"
 
-#: prefs.js:749 resources/ui/adw/prefs.ui:167
+#: prefs.js:769 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
 msgstr "சீரான அல்லது செயல்திறன்"
 
-#: prefs.js:754 resources/ui/adw/prefs.ui:183
+#: prefs.js:774 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
 msgstr "அதிக முன்னுரிமை"
 
-#: prefs.js:760
+#: prefs.js:780
 msgid "Standard Profile"
 msgstr "நிலையான சுயவிவரம்"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:840
+#: prefs.js:860
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s க்கான முன்னோட்டம்"
 
-#: prefs.js:859
+#: prefs.js:879
 msgid "Close this Window to Preview the Effect!"
 msgstr "விளைவை முன்னோட்டமிட இந்த சாளரத்தை மூடு!"
 
@@ -270,14 +318,16 @@ msgstr "புதிய சுயவிவரத்தைச் சேர்க�
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/doom.ui:14 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/trex.ui:14 resources/ui/adw/wisps.ui:14
+#: resources/ui/adw/doom.ui:14 resources/ui/adw/rgbwarp.ui:17
+#: resources/ui/adw/paint-brush.ui:14 resources/ui/adw/trex.ui:14
+#: resources/ui/adw/wisps.ui:14 resources/ui/adw/aura-glow.ui:13
 #: resources/ui/adw/energize-b.ui:15 resources/ui/adw/pixel-wheel.ui:14
 #: resources/ui/adw/glide.ui:14 resources/ui/adw/apparition.ui:15
 #: resources/ui/adw/portal.ui:14 resources/ui/adw/incinerate.ui:14
 #: resources/ui/adw/hexagon.ui:14 resources/ui/adw/fire.ui:30
-#: resources/ui/adw/pixel-wipe.ui:14 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
+#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/snap.ui:14 resources/ui/adw/focus.ui:35
+#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/energize-a.ui:14
 #: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
 msgid "Animation Time [ms]"
 msgstr "அனிமேசன் நேரம் [எம்.எச்]"
@@ -294,34 +344,49 @@ msgstr "அனிமேசன் நேரம் [எம்.எச்]"
 #: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
 #: resources/ui/adw/matrix.ui:185 resources/ui/adw/doom.ui:36
 #: resources/ui/adw/doom.ui:69 resources/ui/adw/doom.ui:102
-#: resources/ui/adw/doom.ui:135 resources/ui/adw/paint-brush.ui:36
-#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:110 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
-#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/glide.ui:36
-#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
-#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
-#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
-#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
-#: resources/ui/adw/apparition.ui:169 resources/ui/adw/portal.ui:36
-#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
-#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
-#: resources/ui/adw/incinerate.ui:36 resources/ui/adw/incinerate.ui:69
-#: resources/ui/adw/incinerate.ui:102 resources/ui/adw/incinerate.ui:125
-#: resources/ui/adw/incinerate.ui:150 resources/ui/adw/hexagon.ui:36
-#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
-#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
-#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/fire.ui:52
-#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
-#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:199
+#: resources/ui/adw/doom.ui:135 resources/ui/adw/rgbwarp.ui:42
+#: resources/ui/adw/rgbwarp.ui:81 resources/ui/adw/rgbwarp.ui:118
+#: resources/ui/adw/rgbwarp.ui:155 resources/ui/adw/rgbwarp.ui:192
+#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
+#: resources/ui/adw/trex.ui:36 resources/ui/adw/trex.ui:69
+#: resources/ui/adw/trex.ui:102 resources/ui/adw/trex.ui:135
+#: resources/ui/adw/trex.ui:160 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/aura-glow.ui:35 resources/ui/adw/aura-glow.ui:58
+#: resources/ui/adw/aura-glow.ui:92 resources/ui/adw/aura-glow.ui:125
+#: resources/ui/adw/aura-glow.ui:158 resources/ui/adw/aura-glow.ui:191
+#: resources/ui/adw/aura-glow.ui:224 resources/ui/adw/aura-glow.ui:257
+#: resources/ui/adw/energize-b.ui:37 resources/ui/adw/energize-b.ui:70
+#: resources/ui/adw/energize-b.ui:95 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
+#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
+#: resources/ui/adw/glide.ui:168 resources/ui/adw/apparition.ui:37
+#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
+#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
+#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
+#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
+#: resources/ui/adw/portal.ui:160 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
+#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
+#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:199 resources/ui/adw/team-rocket.ui:42
+#: resources/ui/adw/team-rocket.ui:80 resources/ui/adw/team-rocket.ui:102
+#: resources/ui/adw/team-rocket.ui:139 resources/ui/adw/team-rocket.ui:176
+#: resources/ui/adw/team-rocket.ui:214 resources/ui/adw/team-rocket.ui:251
 #: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
 #: resources/ui/adw/snap.ui:36 resources/ui/adw/snap.ui:69
 #: resources/ui/adw/snap.ui:94 resources/ui/adw/focus.ui:50
 #: resources/ui/adw/focus.ui:76 resources/ui/adw/focus.ui:102
+#: resources/ui/adw/mushroom.ui:42 resources/ui/adw/mushroom.ui:99
+#: resources/ui/adw/mushroom.ui:137 resources/ui/adw/mushroom.ui:175
+#: resources/ui/adw/mushroom.ui:209 resources/ui/adw/mushroom.ui:243
+#: resources/ui/adw/mushroom.ui:281 resources/ui/adw/mushroom.ui:319
+#: resources/ui/adw/mushroom.ui:357 resources/ui/adw/mushroom.ui:427
 #: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
 #: resources/ui/adw/energize-a.ui:94 resources/ui/adw/pixelate.ui:36
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
@@ -362,7 +427,7 @@ msgid "Strength"
 msgstr "வலிமை"
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
-#: resources/ui/adw/fire.ui:96
+#: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
 msgid "Speed"
 msgstr "வேகம்"
 
@@ -403,6 +468,22 @@ msgstr "செங்குத்து அளவு"
 msgid "Pixel Size"
 msgstr "படப்புள்ளி அளவு"
 
+#: resources/ui/adw/rgbwarp.ui:55
+msgid "Brightness"
+msgstr ""
+
+#: resources/ui/adw/rgbwarp.ui:93
+msgid "Red Speed"
+msgstr ""
+
+#: resources/ui/adw/rgbwarp.ui:130
+msgid "Green Speed"
+msgstr ""
+
+#: resources/ui/adw/rgbwarp.ui:167
+msgid "Blue Speed"
+msgstr ""
+
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
 msgstr "தூரிகை அளவு"
@@ -422,6 +503,30 @@ msgstr "வார்ப் விளைவு"
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
 msgstr "ஃபிளாச் நிறம்"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:136
+msgid "Saturation"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:169
+msgid "Edge Size"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:202
+msgid "Edge Hardness"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "மங்கலான தொகை"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
@@ -499,7 +604,7 @@ msgstr "இருண்ட சாளர கருப்பொருள்கள�
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
-#: resources/ui/adw/fire.ui:19
+#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
 msgid "Choose a Preset"
 msgstr "முன்னமைவைத் தேர்வுசெய்க"
 
@@ -516,9 +621,29 @@ msgstr ""
 msgid "Gradient"
 msgstr "சரிவு"
 
-#: resources/ui/adw/focus.ui:61
-msgid "Blur Amount"
-msgstr "மங்கலான தொகை"
+#: resources/ui/adw/team-rocket.ui:54
+msgid "Animation Split"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:91
+msgid "Rotate Window"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:114
+msgid "Horizontal Sparkle Position"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:151
+msgid "Vertical Sparkle Position"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:189
+msgid "Sparkle Size"
+msgstr ""
+
+#: resources/ui/adw/team-rocket.ui:226
+msgid "Sparkle Rotation"
+msgstr ""
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
@@ -530,8 +655,7 @@ msgstr "விளைவு சுயவிவரக் கட்டுப்ப�
 
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
-"தற்போதைய விளைவு அமைப்புகள் எப்போது பயன்படுத்தப்பட வேண்டும் என்பதை வரையறுக்கவும்."
+msgstr "தற்போதைய விளைவு அமைப்புகள் எப்போது பயன்படுத்தப்பட வேண்டும் என்பதை வரையறுக்கவும்."
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
@@ -569,8 +693,7 @@ msgstr "மேம்பட்ட சுயவிவர விருப்பங�
 
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
-"சிறந்த பொருந்தக்கூடிய சுயவிவரங்கள் இருந்தாலும் இந்த சுயவிவரத்தைப் பயன்படுத்தவும்."
+msgstr "சிறந்த பொருந்தக்கூடிய சுயவிவரங்கள் இருந்தாலும் இந்த சுயவிவரத்தைப் பயன்படுத்தவும்."
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
@@ -595,6 +718,50 @@ msgstr "அனைத்தையும் இயக்கு"
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
 msgstr "அனைத்தையும் முடக்கு"
+
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr ""
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
