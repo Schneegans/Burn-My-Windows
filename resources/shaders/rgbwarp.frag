@@ -68,7 +68,7 @@ void main() {
     vec4(colorR.r, colorG.g, colorB.b, (colorR.a + colorG.a + colorB.a) / 3.0);
   oColor.rgb *= mix(1.0, uBrightness, FadeInOut(progress, 4));
 
-  oColor.a *= getRelativeEdgeMask(0.1);
+  oColor.a *= getAbsoluteEdgeMask(30.0, 1.0);
 
   setOutputColor(oColor);
 }
