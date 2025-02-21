@@ -5,11 +5,13 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
-## [unreleased]
+## [Burn My Windows 45](https://github.com/schneegans/Burn-My-Windows/releases/tag/v45)
 
-**Release Date:** TBD
+**Release Date:** 2025-02-21
 
 #### New Features
+
+<a href="https://youtu.be/DmFNHnOakpY"><img align="right" src ="pics/bmw45.jpg" /></a>
 
 - **Support for GNOME 48!** The extension has been updated to work with GNOME 48.
 - **New Effect: Aura Glow!** This effect adds a glowing aura to your windows. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
