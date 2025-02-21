@@ -40,7 +40,7 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt-get update -q
-          sudo apt-get install gettext clang-format
+          sudo apt-get install gettext clang-format libglib2.0-dev
       - name: Create Release
         run: |
           ./kwin/build.sh

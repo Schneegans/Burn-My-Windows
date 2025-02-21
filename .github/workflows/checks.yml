@@ -77,7 +77,7 @@ jobs:
 
   build:
     name: Run Tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     if: >
       github.event_name == 'pull_request' ||
       ( contains(github.ref, 'main') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
@@ -96,7 +96,7 @@ jobs:
       - name: Download Dependencies
         run: |
           sudo apt update -qq
-          sudo apt install gettext imagemagick -qq
+          sudo apt install gettext imagemagick libglib2.0-dev -qq
       - name: Build Burn-My-Windows
         run: make
       - name: Test Burn-My-Windows
