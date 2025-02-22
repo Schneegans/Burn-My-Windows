@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2024-02-02 09:01+0000\n"
-"Last-Translator: aerowolf <aerowolf@tom.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"burn-my-windows/core/zh_Hans/>\n"
+"PO-Revision-Date: 2025-02-22 03:03+0000\n"
+"Last-Translator: Cassian <prismarine@epicraft.top>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/burn-my-windows/core/zh_Hans/>\n"
 "Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -73,7 +73,7 @@ msgstr ""
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "聚焦"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -97,7 +97,7 @@ msgstr "黑客帝国"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "蘑菇"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
@@ -113,7 +113,7 @@ msgstr ""
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "彩虹 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
@@ -717,8 +717,9 @@ msgid "Disable All"
 msgstr ""
 
 #: resources/ui/adw/mushroom.ui:55
+#, fuzzy
 msgid "Effect Presets"
-msgstr ""
+msgstr "效果预设"
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
