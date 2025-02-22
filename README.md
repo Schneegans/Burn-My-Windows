@@ -196,6 +196,7 @@ Here are links to all effects which are currently available in the KDE store:
 
 | Plasma 5                                       | Plasma 6                                       |
 | ---------------------------------------------- | ---------------------------------------------- |
+| [Aura Glow](https://store.kde.org/p/2263064)   | [Aura Glow](https://store.kde.org/p/2263065)   |
 | [Doom](https://store.kde.org/p/1898739)        | [Doom](https://store.kde.org/p/2133831)        |
 | [Energize A](https://store.kde.org/p/1884310)  | [Energize A](https://store.kde.org/p/2133829)  |
 | [Energize B](https://store.kde.org/p/1884311)  | [Energize B](https://store.kde.org/p/2133828)  |
@@ -209,8 +210,10 @@ Here are links to all effects which are currently available in the KDE store:
 | [Pixel Wheel](https://store.kde.org/p/1898746) | [Pixel Wheel](https://store.kde.org/p/2133833) |
 | [Pixel Wipe](https://store.kde.org/p/1898748)  | [Pixel Wipe](https://store.kde.org/p/2133834)  |
 | [Portal](https://store.kde.org/p/1959879)      | [Portal](https://store.kde.org/p/2133842)      |
+| [Team Rocket](https://store.kde.org/p/2263069) | [Team Rocket](https://store.kde.org/p/2263070) |
 | [TV-Effect](https://store.kde.org/p/1884312)   | [TV-Effect](https://store.kde.org/p/2133825)   |
 | [TV-Glitch](https://store.kde.org/p/1982142)   | [TV-Glitch](https://store.kde.org/p/2133819)   |
+| [RGB Warp](https://store.kde.org/p/2263071)    | [RGB Warp](https://store.kde.org/p/2263073)    |
 | [Wisps](https://store.kde.org/p/1884313)       | [Wisps](https://store.kde.org/p/2133824)       |
 
 You can also directly get the effects from within your system settings.
