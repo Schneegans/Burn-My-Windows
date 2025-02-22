@@ -77,7 +77,7 @@ jobs:
 
   build:
     name: Run Tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     if: >
       github.event_name == 'pull_request' ||
       ( contains(github.ref, 'main') && !contains(github.event.head_commit.message, '[no-ci]') ) ||
