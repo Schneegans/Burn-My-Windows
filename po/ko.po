@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2023-08-20 15:51+0000\n"
+"PO-Revision-Date: 2025-02-24 22:09+0000\n"
 "Last-Translator: Seong-ho Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ko/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.10.2-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -25,7 +25,7 @@ msgstr "혼령"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr ""
+msgstr "아우라 섬광"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -69,11 +69,11 @@ msgstr "산타의 방문"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "원자핵 ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "포커스"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -97,35 +97,35 @@ msgstr "매트릭스"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "버섯"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8비트 마리오"
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
-msgstr ""
+msgstr "새 브로 2 🍄"
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "적백청 🇺🇸"
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "무지개 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
-msgstr ""
+msgstr "캐투치노 😺"
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "드라큘라 🦇"
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "반짝임 ✨"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
@@ -149,7 +149,7 @@ msgstr "차원 관문"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB 워프"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
@@ -157,7 +157,7 @@ msgstr "해체 영상"
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr ""
+msgstr "팀 로켓"
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -285,7 +285,7 @@ msgstr "일치하는 배경 보기"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "명예의전당 헌액자 보기"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -468,19 +468,19 @@ msgstr "픽셀 크기"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "밝기"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "적색 속도"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "녹색 속도"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "청색 속도"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
@@ -504,27 +504,27 @@ msgstr "번쩍임 색상"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "임의 색상"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr ""
+msgstr "시작 색상"
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "채도"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "가장자리 광채 크기"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "가장자리 광채 경도"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "흐림 처리량"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
@@ -620,31 +620,31 @@ msgstr "그레디언트"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
-msgstr ""
+msgstr "애니메이션 갈라짐"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "창 회전"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "수평 반짝임 위치"
 
 #: resources/ui/adw/team-rocket.ui:151
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "수직 반짝임 위치"
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
-msgstr ""
+msgstr "반짝임 크기"
 
 #: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "반짝임 회전각"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "흐림처리 화질"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -706,59 +706,59 @@ msgstr "여러 항목을 선택하면 그 중 하나를 임의로 선택합니�
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "검색..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "모두 활성"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "모두 비활성"
 
 #: resources/ui/adw/mushroom.ui:55
 msgid "Effect Presets"
-msgstr ""
+msgstr "효과 사전 설정"
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr ""
+msgstr "규모 변화 방식"
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
-msgstr ""
+msgstr "8비트 --- 부드럽게"
 
 #: resources/ui/adw/mushroom.ui:112
 msgid "Spark Count"
-msgstr ""
+msgstr "불꽃 갯수"
 
 #: resources/ui/adw/mushroom.ui:150
 msgid "Spark Rotation"
-msgstr ""
+msgstr "불꽃 회전각"
 
 #: resources/ui/adw/mushroom.ui:188
 msgid "Spark Color"
-msgstr ""
+msgstr "불꽃 색상"
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
-msgstr ""
+msgstr "광선 색상"
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
-msgstr ""
+msgstr "별 고리 갯수"
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "별 고리 회전각"
 
 #: resources/ui/adw/mushroom.ui:332
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "고리당 별 갯수"
 
 #: resources/ui/adw/mushroom.ui:370
 msgid "Star Gradient"
-msgstr ""
+msgstr "별 그레디언트 색상"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
