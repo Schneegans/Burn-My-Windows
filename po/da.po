@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2024-12-14 08:00+0000\n"
+"PO-Revision-Date: 2025-02-27 16:01+0000\n"
 "Last-Translator: symegac <97731141+symegac@users.noreply.github.com>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/da/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-rc\n"
+"X-Generator: Weblate 5.10.2-dev\n"
 
 #: src/effects/Apparition.js:80
 #, fuzzy
@@ -26,7 +26,7 @@ msgstr "Åndesyn"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr ""
+msgstr "Auraglød"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -69,8 +69,9 @@ msgid "Santa is Coming"
 msgstr "Julemanden kommer"
 
 #: src/effects/Fire.js:201
+#, fuzzy
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Atomisk ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
@@ -98,35 +99,36 @@ msgstr "Matrix"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "Svamp"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8Bit-blikkenslager"
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
-msgstr ""
+msgstr "New Bros 2 🍄"
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "Rød, hvid og blå 🇺🇸"
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "Regnbue 🌈"
 
 #: src/effects/Mushroom.js:273
+#, fuzzy
 msgid "Cattuccino 😺"
-msgstr ""
+msgstr "Kattuccino 😺"
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "Dracula 🦇"
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "Glimt ✨"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
@@ -149,8 +151,9 @@ msgid "Portal"
 msgstr "Portal"
 
 #: src/effects/RGBWarp.js:77
+#, fuzzy
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB-forvrængning"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
@@ -158,7 +161,7 @@ msgstr "Opløsningsknips"
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr ""
+msgstr "Team Rocket"
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -474,19 +477,19 @@ msgstr "Pixelstørrelse"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "Lysstyrke"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "Rød hastighed"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "Grøn hastighed"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "Blå hastighed"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
@@ -510,23 +513,23 @@ msgstr "Blitzfarve"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "Tilfældig farve"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr ""
+msgstr "Startkulør"
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Farvemætning"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "Kantstørrelse"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Kanthårdhed"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
@@ -626,28 +629,29 @@ msgid "Gradient"
 msgstr "Farveforløb"
 
 #: resources/ui/adw/team-rocket.ui:54
+#, fuzzy
 msgid "Animation Split"
-msgstr ""
+msgstr "Animationssplit"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "Roter vindue"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "Vandret glimtposition"
 
 #: resources/ui/adw/team-rocket.ui:151
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "Lodret glimtposition"
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Glimtstørrelse"
 
 #: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Glimtrotation"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
@@ -669,7 +673,6 @@ msgstr "Applikation"
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
-#, fuzzy
 msgid "Any"
 msgstr "Hvilken som helst"
 
@@ -727,47 +730,47 @@ msgstr "Deaktiver alle"
 
 #: resources/ui/adw/mushroom.ui:55
 msgid "Effect Presets"
-msgstr ""
+msgstr "Effektforudindstillinger"
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr ""
+msgstr "Skaleringsstil"
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
-msgstr ""
+msgstr "8Bit --- Blød"
 
 #: resources/ui/adw/mushroom.ui:112
 msgid "Spark Count"
-msgstr ""
+msgstr "Glimtantal"
 
 #: resources/ui/adw/mushroom.ui:150
 msgid "Spark Rotation"
-msgstr ""
+msgstr "Glimtrotation"
 
 #: resources/ui/adw/mushroom.ui:188
 msgid "Spark Color"
-msgstr ""
+msgstr "Glimtfarve"
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
-msgstr ""
+msgstr "Strålefarve"
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
-msgstr ""
+msgstr "Antal stjerneringe"
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "Stjerneringsrotation"
 
 #: resources/ui/adw/mushroom.ui:332
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "Antal stjerner pr. ring"
 
 #: resources/ui/adw/mushroom.ui:370
 msgid "Star Gradient"
-msgstr ""
+msgstr "Stjernefarveforløb"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
