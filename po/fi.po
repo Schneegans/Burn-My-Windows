@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2024-07-28 19:09+0000\n"
-"Last-Translator: \"Tinde (Joke)\" <jouko.tiilikainen@gmail.com>\n"
+"PO-Revision-Date: 2025-02-27 16:01+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fi/>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.10.2-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -25,7 +25,7 @@ msgstr "Ilmestys"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr ""
+msgstr "Auran hehku"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -37,11 +37,11 @@ msgstr ""
 
 #: src/effects/EnergizeA.js:74
 msgid "Energize A"
-msgstr ""
+msgstr "Energisoi A"
 
 #: src/effects/EnergizeB.js:75
 msgid "Energize B"
-msgstr ""
+msgstr "Energisoi B"
 
 #: src/effects/Fire.js:96
 msgid "Fire"
@@ -69,7 +69,7 @@ msgstr "Pukki saapuu"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Ydinvoima ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
@@ -89,7 +89,7 @@ msgstr "Kuusikulmio"
 
 #: src/effects/Incinerate.js:126
 msgid "Incinerate"
-msgstr ""
+msgstr "Polta"
 
 #: src/effects/Matrix.js:109
 msgid "Matrix"
@@ -97,15 +97,15 @@ msgstr "Matriisi"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "Sieni"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8-bittinen putkimies"
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
-msgstr ""
+msgstr "Uusi Bros 2 🍄"
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
@@ -113,7 +113,7 @@ msgstr ""
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "Sateenkaari 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
@@ -121,35 +121,35 @@ msgstr ""
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "Dracula 🦇"
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "Kuohu ✨"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
-msgstr ""
+msgstr "Sivellin"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "Pikseloi"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Pikselipyörä"
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Pikselipyyhintä"
 
 #: src/effects/Portal.js:82
 msgid "Portal"
-msgstr ""
+msgstr "Portaali"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB-vääristymä"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
@@ -157,7 +157,7 @@ msgstr "Hajoamisen napsahdus"
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr ""
+msgstr "Rakettijoukkue"
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -169,7 +169,7 @@ msgstr "TV-tehoste"
 
 #: src/effects/TVGlitch.js:81
 msgid "TV Glitch"
-msgstr ""
+msgstr "TV-häiriö"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
@@ -177,11 +177,11 @@ msgstr "Häiveet"
 
 #: prefs.js:256
 msgid "Preview this effect"
-msgstr ""
+msgstr "Esikatsele tätä tehostetta"
 
 #: prefs.js:333
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows on päivitetty!"
 
 #: prefs.js:334 resources/ui/common/menus.ui:17
 msgid "View Changelog"
@@ -189,21 +189,21 @@ msgstr "Näytä muutosloki"
 
 #: prefs.js:516
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Poistetaanko tämä profiili?"
 
 #: prefs.js:517
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
-msgstr ""
+msgstr "Nykyinen tehosteprofiili kaikkine tehosteasetuksineen katoaa pysyvästi."
 
 #: prefs.js:520
 msgid "Cancel"
-msgstr ""
+msgstr "Peruuta"
 
 #: prefs.js:525
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
@@ -219,51 +219,51 @@ msgstr "Normaalit ikkunat"
 
 #: prefs.js:760 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Valintaikkunat"
 
 #: prefs.js:761 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Oletusvärimalli"
 
 #: prefs.js:762 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Tumma värimalli"
 
 #: prefs.js:763 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "Akulla"
 
 #: prefs.js:764 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Kytketty"
 
 #: prefs.js:765 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Virransäästötila"
 
 #: prefs.js:766 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Tasapainoinen tila"
 
 #: prefs.js:767 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Suorituskykytila"
 
 #: prefs.js:768 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Virransäästö tai tasapainotettu"
 
 #: prefs.js:769 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Tasapainotettu tai Suorituskyky"
 
 #: prefs.js:774 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Korkea prioriteetti"
 
 #: prefs.js:780
 msgid "Standard Profile"
-msgstr ""
+msgstr "Vakioprofiili"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:860
@@ -281,11 +281,11 @@ msgstr "Käy verkkosivulla"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Katso vastaavia taustakuvia"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "Katso Maineensalin lahjoittajat"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -305,7 +305,7 @@ msgstr "Käännä"
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Avaa tehosteprofiilihakemisto"
 
 #: resources/ui/common/menus.ui:70
 msgid "About Burn-My-Windows"
@@ -313,7 +313,7 @@ msgstr "Tietoja - Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Lisää uusi profiili..."
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
@@ -408,7 +408,7 @@ msgstr "Painovoima"
 
 #: resources/ui/adw/broken-glass.ui:114
 msgid "Blow Force"
-msgstr ""
+msgstr "Puhallusvoima"
 
 #: resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
@@ -423,7 +423,7 @@ msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Vahvuus"
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
 #: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
@@ -456,36 +456,36 @@ msgstr "Vihjeen väri"
 
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Vaaka-asteikko"
 
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Pystysuora-asteikko"
 
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "Pikselin koko"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "Kirkkaus"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "Punainen nopeus"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "Vihreä nopeus"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "Sininen nopeus"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "Siveltimen koko"
 
 #: resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
@@ -497,15 +497,15 @@ msgstr "Kynnenraapaisujen määrä"
 
 #: resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "Vääntymistehoste"
 
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "Salaman väri"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "Satunnainen väri"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
@@ -513,19 +513,19 @@ msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Kylläisyys"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "Reunan koko"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Reunan kovuus"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "Sumennuksen määrä"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
@@ -537,27 +537,27 @@ msgstr ""
 
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Kallistus"
 
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Vaihto"
 
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "Pyörteen intensiteetti"
 
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "Ravistelun intensiteetti"
 
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "Imun intensiteetti"
 
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Pyörimisnopeus"
 
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
