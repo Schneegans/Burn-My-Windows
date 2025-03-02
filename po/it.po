@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2025-02-16 18:22+0000\n"
+"PO-Revision-Date: 2025-03-02 16:20+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/it/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10\n"
+"X-Generator: Weblate 5.10.3-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -516,7 +516,7 @@ msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Saturazione"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
@@ -524,7 +524,7 @@ msgstr "Dimensioni del bordo"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Durezza del bordo"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
