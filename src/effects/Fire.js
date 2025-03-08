@@ -139,7 +139,7 @@ export default class Effect {
     }
 
     // enables and disables the color buttons
-    function EnableDisableColorButtons(dialog, state) {
+    function enableDisableColorButtons(dialog, state) {
 
       for (let i = 1; i <= 5; i++) {
         dialog.getBuilder().get_object('fire-color-' + i).set_sensitive(!state);
@@ -151,7 +151,7 @@ export default class Effect {
       // Connect to the "state-set" signal to update preferences dynamically based on
       // the switch state.
       switchWidget.connect('state-set', (widget, state) => {
-        EnableDisableColorButtons(dialog,
+        enableDisableColorButtons(dialog,
                                   state);  // Update sensitivity when the state changes.
       });
 
@@ -159,7 +159,7 @@ export default class Effect {
       // switch.
       const initialState =
         switchWidget.get_active();  // Get the current state of the switch.
-      EnableDisableColorButtons(dialog, initialState);
+      enableDisableColorButtons(dialog, initialState);
     } else {
       // Log an error if the switch widget is not found in the UI.
       log('Error: \'fire-random-color\' switch widget not found.');
