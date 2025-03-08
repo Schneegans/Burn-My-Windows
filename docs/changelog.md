@@ -5,6 +5,14 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [unreleased]
+
+**Release Date:** TBD
+
+#### Bug Fixes
+
+- Fixed an issue introduced by the GNOME 48 Beta release which caused some effects to break (Broken Glass, Matrix, Paint Brush, Snap of Disintegration, T-Rex Attack).
+
 ## [Burn My Windows 45](https://github.com/schneegans/Burn-My-Windows/releases/tag/v45)
 
 **Release Date:** 2025-02-21

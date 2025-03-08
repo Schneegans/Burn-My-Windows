@@ -20,8 +20,6 @@ import * as utils from '../utils.js';
 // preferences process. They are used only in the creator function of the ShaderFactory
 // which is only called within GNOME Shell's process.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
-const St            = await utils.importInShellOnly('gi://St');
-const GdkPixbuf     = await utils.importInShellOnly('gi://GdkPixbuf');
 const Cogl          = await utils.importInShellOnly('gi://Cogl');
 
 const _ = await utils.importGettext();
@@ -45,11 +43,7 @@ export default class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._brushTexture) {
-        const brushData    = GdkPixbuf.Pixbuf.new_from_resource('/img/brush.png');
-        this._brushTexture = new St.ImageContent();
-        this._brushTexture.set_data(brushData.get_pixels(),
-                                    Cogl.PixelFormat.RGBA_8888_PRE, brushData.width,
-                                    brushData.height, brushData.rowstride);
+        this._brushTexture = utils.getImageResource('/img/brush.png', true);
       }
 
       // Store uniform locations of newly created shaders.
