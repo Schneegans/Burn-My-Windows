@@ -242,6 +242,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>The size of the fire.</description>
     </key>
 
+    <key name="fire-random-color" type="b">
+      <default>false</default>
+      <summary>use a random color for the fire</summary>
+      <description>use a random color of the fire</description>
+    </key>
+    
     <key name="fire-3d-noise" type="b">
       <default>false</default>
       <summary>Fire 3D Noise</summary>
