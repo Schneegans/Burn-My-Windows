@@ -21,9 +21,9 @@ import GLib from 'gi://GLib';
 // as in the GNOME Shell process. Some modules are only available or required in one of
 // these processes.
 const GdkPixbuf = await importInShellOnly('gi://GdkPixbuf');
-const Clutter = await importInShellOnly('gi://Clutter');
-const Cogl    = await importInShellOnly('gi://Cogl');
-const St    = await importInShellOnly('gi://St');
+const Clutter   = await importInShellOnly('gi://Clutter');
+const Cogl      = await importInShellOnly('gi://Cogl');
+const St        = await importInShellOnly('gi://St');
 
 // We import the Config module. This is done differently in the GNOME Shell process and in
 // the preferences process.
@@ -121,23 +121,19 @@ export function getStringResource(path) {
 
 // Reads the contents of an image file contained in the global resources archive. The data
 // is returned as a St.ImageContent.
-export function getImageResource(path, premultiplied=false) {
+export function getImageResource(path, premultiplied = false) {
   const data    = GdkPixbuf.Pixbuf.new_from_resource(path);
   const texture = St.ImageContent.new_with_preferred_size(data.width, data.height);
-  const format = data.has_alpha ? (premultiplied ? Cogl.PixelFormat.RGBA_8888_PRE : Cogl.PixelFormat.RGBA_8888) : Cogl.PixelFormat.RGB_888;
+  const format  = data.has_alpha ?
+     (premultiplied ? Cogl.PixelFormat.RGBA_8888_PRE : Cogl.PixelFormat.RGBA_8888) :
+     Cogl.PixelFormat.RGB_888;
 
   // https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/44b84e458a22046fedb85701ea25ad08ecc0d43f
   if (shellVersionIsAtLeast(48, 'beta')) {
-  texture.set_data(
-    global.stage.context.get_backend().get_cogl_context(),
-    data.get_pixels(),
-    format,
-    data.width, data.height, data.rowstride);
+    texture.set_data(global.stage.context.get_backend().get_cogl_context(),
+                     data.get_pixels(), format, data.width, data.height, data.rowstride);
   } else {
-    texture.set_data(
-      data.get_pixels(),
-      format,
-      data.width, data.height, data.rowstride);
+    texture.set_data(data.get_pixels(), format, data.width, data.height, data.rowstride);
   }
 
   return texture;

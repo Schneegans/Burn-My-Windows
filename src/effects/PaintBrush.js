@@ -43,7 +43,7 @@ export default class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._brushTexture) {
-         this._brushTexture = utils.getImageResource('/img/brush.png', true);
+        this._brushTexture = utils.getImageResource('/img/brush.png', true);
       }
 
       // Store uniform locations of newly created shaders.

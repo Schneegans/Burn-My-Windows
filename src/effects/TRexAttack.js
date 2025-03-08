@@ -43,7 +43,7 @@ export default class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._clawTexture) {
-         this._clawTexture = utils.getImageResource('/img/claws.png');
+        this._clawTexture = utils.getImageResource('/img/claws.png');
       }
 
       // Store uniform locations of newly created shaders.

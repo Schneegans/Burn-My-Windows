@@ -53,7 +53,7 @@ export default class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._shardTexture) {
-         this._shardTexture = utils.getImageResource('/img/shards.png');
+        this._shardTexture = utils.getImageResource('/img/shards.png');
       }
 
       // Store all uniform locations.

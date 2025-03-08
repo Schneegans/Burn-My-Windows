@@ -47,7 +47,7 @@ export default class Effect {
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Create the texture in the first call.
       if (!this._dustTexture) {
-          this._dustTexture = utils.getImageResource('/img/dust.png');
+        this._dustTexture = utils.getImageResource('/img/dust.png');
       }
 
       // Store uniform locations of newly created shaders.
