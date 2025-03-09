@@ -22,8 +22,6 @@ uniform vec4 uGradient2;
 uniform vec4 uGradient3;
 uniform vec4 uGradient4;
 uniform vec4 uGradient5;
-
-//new
 uniform bool uRandomColor;
 uniform float uSeed;
 
@@ -33,37 +31,7 @@ const float FADE_WIDTH = 0.1;
 const float HIDE_TIME  = 0.4;
 
 // This maps the input value from [0..1] to a color from the gradient.
-vec4 getFireColor(float v) {
-  float steps[5];
-  steps[0] = 0.0;
-  steps[1] = 0.2;
-  steps[2] = 0.35;
-  steps[3] = 0.5;
-  steps[4] = 0.8;
-
-  vec4 colors[5];
-  colors[0] = uGradient1;
-  colors[1] = uGradient2;
-  colors[2] = uGradient3;
-  colors[3] = uGradient4;
-  colors[4] = uGradient5;
-
-  if (v < steps[0]) {
-    return colors[0];
-  }
-
-  for (int i = 0; i < 4; ++i) {
-    if (v <= steps[i + 1]) {
-      return mix(colors[i], colors[i + 1],
-                 vec4(v - steps[i]) / (steps[i + 1] - steps[i]));
-    }
-  }
-
-  return colors[4];
-}
-
-vec4 getFireColorV2(float v, vec4 c0, vec4 c1, vec4 c2, vec4 c3, vec4 c4) 
-{
+vec4 getFireColor(float v, vec4 c0, vec4 c1, vec4 c2, vec4 c3, vec4 c4) {
   float steps[5];
   steps[0] = 0.0;
   steps[1] = 0.2;
@@ -149,26 +117,23 @@ void main() {
 
   // Map noise value to color.
   vec4 fire = vec4(0.0);
-  
-  if (uRandomColor)
-  {
-    vec3 baseColor0 = offsetHue(vec3(1.0,0.0,0.0), hash11(uSeed));
+
+  if (uRandomColor) {
+    vec3 baseColor0 = offsetHue(vec3(1.0, 0.0, 0.0), hash11(uSeed));
     vec3 baseColor1 = offsetHue(baseColor0, 0.1);
     vec3 baseColor2 = offsetHue(baseColor1, 0.1);
 
-    //hardcoding alpha values
-    vec4 c0 = vec4(baseColor0,0.0);
-    vec4 c1 = vec4(baseColor0,0.3);
-    vec4 c2 = vec4(baseColor1,0.6);
-    vec4 c3 = vec4(baseColor1,0.9);
-    vec4 c4 = vec4(baseColor2,1.0);
+    // Hardcoding some alpha values.
+    vec4 c0 = vec4(baseColor0, 0.0);
+    vec4 c1 = vec4(baseColor0, 0.3);
+    vec4 c2 = vec4(baseColor1, 0.6);
+    vec4 c3 = vec4(baseColor1, 0.9);
+    vec4 c4 = vec4(baseColor2, 1.0);
 
-
-    fire = getFireColorV2(noise,c0,c1,c2,c3,c4);
-  }
-  else
-  {
-    fire = getFireColor(noise);
+    fire = getFireColor(noise, c0, c1, c2, c3, c4);
+  } else {
+    fire =
+      getFireColor(noise, uGradient1, uGradient2, uGradient3, uGradient4, uGradient5);
   }
 
   // Get the window texture.
