@@ -9,6 +9,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 **Release Date:** TBD
 
+#### New Features
+
+- Added an option to choose a random color for the Fire effect each time a window is closed or opened. Thanks to [@jgarza9788](https://github.com/jgarza9788) for this contribution!
+
 #### Bug Fixes
 
 - Fixed an issue introduced by the GNOME 48 Beta release which caused some effects to break (Broken Glass, Matrix, Paint Brush, Snap of Disintegration, T-Rex Attack).
