@@ -125,8 +125,8 @@ void main() {
 
     // Hardcoding some alpha values.
     vec4 c0 = vec4(baseColor0, 0.0);
-    vec4 c1 = vec4(baseColor0, 0.3);
-    vec4 c2 = vec4(baseColor1, 0.6);
+    vec4 c1 = vec4(baseColor0, 0.5);
+    vec4 c2 = vec4(baseColor1, 0.8);
     vec4 c3 = vec4(baseColor1, 0.9);
     vec4 c4 = vec4(baseColor2, 1.0);
 
