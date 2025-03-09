@@ -12,6 +12,8 @@
 // SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
 // SPDX-License-Identifier: GPL-3.0-or-later
 
+// modified by Justin Garza <JGarza9788@gmail.com>
+
 'use strict';
 
 import Gio from 'gi://Gio';
@@ -58,6 +60,9 @@ export default class Effect {
       shader._uScale         = shader.get_uniform_location('uScale');
       shader._uMovementSpeed = shader.get_uniform_location('uMovementSpeed');
 
+      shader._uRandomColor = shader.get_uniform_location('uRandomColor');
+      shader._uSeed        = shader.get_uniform_location('uSeed');
+
       // And update all uniforms at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         for (let i = 1; i <= 5; i++) {
@@ -68,6 +73,8 @@ export default class Effect {
 
         // clang-format off
         shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('fire-3d-noise')]);
+        shader.set_uniform_float(shader._uRandomColor,   1, [settings.get_boolean('fire-random-color')]);
+        shader.set_uniform_float(shader._uSeed,          1, [Math.random()]);
         shader.set_uniform_float(shader._uScale,         1, [settings.get_double('fire-scale')]);
         shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('fire-movement-speed')]);
         // clang-format on
@@ -107,6 +114,7 @@ export default class Effect {
     dialog.bindAdjustment('fire-movement-speed');
     dialog.bindAdjustment('fire-scale');
     dialog.bindSwitch('fire-3d-noise');
+    dialog.bindSwitch('fire-random-color');
     dialog.bindColorButton('fire-color-1');
     dialog.bindColorButton('fire-color-2');
     dialog.bindColorButton('fire-color-3');
@@ -128,6 +136,33 @@ export default class Effect {
 
       // Initialize the fire-preset dropdown.
       Effect._createFirePresets(dialog);
+    }
+
+    // enables and disables the color buttons
+    function enableDisableColorButtons(dialog, state) {
+
+      for (let i = 1; i <= 5; i++) {
+        dialog.getBuilder().get_object('fire-color-' + i).set_sensitive(!state);
+      }
+    }
+
+    const switchWidget = dialog.getBuilder().get_object('fire-random-color');
+    if (switchWidget) {
+      // Connect to the "state-set" signal to update preferences dynamically based on
+      // the switch state.
+      switchWidget.connect('state-set', (widget, state) => {
+        enableDisableColorButtons(dialog,
+                                  state);  // Update sensitivity when the state changes.
+      });
+
+      // Manually call the update function on startup, using the initial state of the
+      // switch.
+      const initialState =
+        switchWidget.get_active();  // Get the current state of the switch.
+      enableDisableColorButtons(dialog, initialState);
+    } else {
+      // Log an error if the switch widget is not found in the UI.
+      log('Error: \'fire-random-color\' switch widget not found.');
     }
   }
 
