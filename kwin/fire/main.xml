@@ -36,5 +36,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <entry name="3DNoise" type="Bool">
       <default>false</default>
     </entry>
+    <entry name="RandomColor" type="Bool">
+      <default>false</default>
+    </entry>
   </group>
 </kcfg>

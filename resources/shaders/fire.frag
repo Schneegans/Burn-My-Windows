@@ -22,6 +22,8 @@ uniform vec4 uGradient2;
 uniform vec4 uGradient3;
 uniform vec4 uGradient4;
 uniform vec4 uGradient5;
+uniform bool uRandomColor;
+uniform float uSeed;
 
 // These may be configurable in the future.
 const float EDGE_FADE  = 70.0;
@@ -29,7 +31,7 @@ const float FADE_WIDTH = 0.1;
 const float HIDE_TIME  = 0.4;
 
 // This maps the input value from [0..1] to a color from the gradient.
-vec4 getFireColor(float v) {
+vec4 getFireColor(float v, vec4 c0, vec4 c1, vec4 c2, vec4 c3, vec4 c4) {
   float steps[5];
   steps[0] = 0.0;
   steps[1] = 0.2;
@@ -38,11 +40,11 @@ vec4 getFireColor(float v) {
   steps[4] = 0.8;
 
   vec4 colors[5];
-  colors[0] = uGradient1;
-  colors[1] = uGradient2;
-  colors[2] = uGradient3;
-  colors[3] = uGradient4;
-  colors[4] = uGradient5;
+  colors[0] = c0;
+  colors[1] = c1;
+  colors[2] = c2;
+  colors[3] = c3;
+  colors[4] = c4;
 
   if (v < steps[0]) {
     return colors[0];
@@ -114,7 +116,25 @@ void main() {
   noise *= effectMask.y;
 
   // Map noise value to color.
-  vec4 fire = getFireColor(noise);
+  vec4 fire = vec4(0.0);
+
+  if (uRandomColor) {
+    vec3 baseColor0 = offsetHue(vec3(1.0, 0.0, 0.0), hash11(uSeed));
+    vec3 baseColor1 = offsetHue(baseColor0, 0.1);
+    vec3 baseColor2 = offsetHue(baseColor1, 0.1);
+
+    // Hardcoding some alpha values.
+    vec4 c0 = vec4(baseColor0, 0.0);
+    vec4 c1 = vec4(baseColor0, 0.5);
+    vec4 c2 = vec4(baseColor1, 0.8);
+    vec4 c3 = vec4(baseColor1, 0.9);
+    vec4 c4 = vec4(baseColor2, 1.0);
+
+    fire = getFireColor(noise, c0, c1, c2, c3, c4);
+  } else {
+    fire =
+      getFireColor(noise, uGradient1, uGradient2, uGradient3, uGradient4, uGradient5);
+  }
 
   // Get the window texture.
   vec4 oColor = getInputColor(iTexCoord.st);
