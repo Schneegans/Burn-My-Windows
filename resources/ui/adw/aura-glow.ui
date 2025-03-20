@@ -67,7 +67,16 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwActionRow" id="aura-glow-action-row">
         <property name="title" translatable="yes">Start Hue</property>
-
+        <child>
+          <object class="GtkDrawingArea" id="aura-glow-hue-preview">
+            <property name="valign">3</property>
+            <property name="halign">2</property>
+            <property name="hexpand">true</property>
+            <property name="vexpand">true</property>
+            <property name="height-request">16</property>
+            <property name="width-request">16</property>
+          </object>
+        </child>
         <child>
           <object class="GtkScale" id="aura-glow-start-hue-slider">
             <property name="valign">center</property>
@@ -135,7 +144,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Saturation</property>
         <child>
-          <object class="GtkScale">
+          <object class="GtkScale" id="aura-glow-saturation-slider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
