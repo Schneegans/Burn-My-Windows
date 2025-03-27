@@ -103,6 +103,31 @@ export default class Effect {
     dialog.bindAdjustment('aura-glow-edge-hardness');
     dialog.bindAdjustment('aura-glow-blur');
 
+    dialog.getBuilder()
+      .get_object('aura-glow-hue-preview')
+      .set_draw_func((area, cairo) => {
+        const hueScale = dialog.getBuilder().get_object('aura-glow-start-hue-slider');
+        const satScale = dialog.getBuilder().get_object('aura-glow-saturation-slider');
+        const color    = utils.hsvToRgb(hueScale.get_value(), satScale.get_value(), 1);
+        const height   = area.get_allocated_height();
+        const width    = area.get_allocated_width();
+        cairo.setSourceRGB(color.r, color.g, color.b);
+        cairo.arc(width / 2, height / 2, width / 2, 0.0, 2 * Math.PI);
+        cairo.fill();
+    });
+
+    function redrawHuePreview() {
+      dialog.getBuilder().get_object('aura-glow-hue-preview').queue_draw();
+    }
+
+    dialog.getBuilder()
+      .get_object('aura-glow-start-hue-slider')
+      .connect('value-changed', redrawHuePreview);
+
+    dialog.getBuilder()
+      .get_object('aura-glow-saturation-slider')
+      .connect('value-changed', redrawHuePreview);
+
     // enable and disable the one slider
     function enableDisablePref(dialog, state) {
       dialog.getBuilder().get_object('aura-glow-start-hue-slider').set_sensitive(!state);
