@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2025-04-18 12:04+0000\n"
+"PO-Revision-Date: 2025-04-23 22:01+0000\n"
 "Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
@@ -623,28 +623,33 @@ msgid "Gradient"
 msgstr "Degradado"
 
 #: resources/ui/adw/team-rocket.ui:54
+#, fuzzy
 msgid "Animation Split"
-msgstr ""
+msgstr "Desglosar Animación"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
 msgstr "Rotar Ventana"
 
 #: resources/ui/adw/team-rocket.ui:114
+#, fuzzy
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "Posición Horizontal Brillante"
 
 #: resources/ui/adw/team-rocket.ui:151
+#, fuzzy
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "Posición Vertical Brillante"
 
 #: resources/ui/adw/team-rocket.ui:189
+#, fuzzy
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Tamaño Brillante"
 
 #: resources/ui/adw/team-rocket.ui:226
+#, fuzzy
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Rotación Brillante"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
