@@ -8,13 +8,16 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-05-26 11:01+0000\n"
+"Last-Translator: ButterflyOfFire <boffire@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Kabyle <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/kab/>\n"
 "Language: kab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -42,7 +45,7 @@ msgstr ""
 
 #: src/effects/Fire.js:96
 msgid "Fire"
-msgstr ""
+msgstr "Times"
 
 #: src/effects/Fire.js:150
 msgid "Default Fire"
@@ -200,7 +203,7 @@ msgstr ""
 
 #: prefs.js:525
 msgid "Delete"
-msgstr ""
+msgstr "Kkes"
 
 #: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
@@ -286,7 +289,7 @@ msgstr ""
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
-msgstr ""
+msgstr "Mudd tawsa"
 
 #: resources/ui/common/menus.ui:50
 msgid "Report a Bug"
@@ -298,7 +301,7 @@ msgstr ""
 
 #: resources/ui/common/menus.ui:58
 msgid "Translate"
-msgstr ""
+msgstr "Suqel"
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
@@ -310,7 +313,7 @@ msgstr ""
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Rnu amaɣnu amaynut…"
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
@@ -432,7 +435,7 @@ msgstr ""
 #: resources/ui/adw/snap.ui:80 resources/ui/adw/energize-a.ui:80
 #: resources/ui/adw/tv.ui:47
 msgid "Color"
-msgstr ""
+msgstr "Ini"
 
 #: resources/ui/adw/matrix.ui:80 resources/ui/adw/apparition.ui:48
 msgid "Randomness"
@@ -653,7 +656,7 @@ msgstr ""
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Asnas"
 
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
@@ -691,7 +694,7 @@ msgstr ""
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Kkes amaɣnu-a…"
 
 #: resources/ui/adw/prefs.ui:223
 msgid "Effect Selection"
@@ -703,7 +706,7 @@ msgstr ""
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "Nadi..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
