@@ -1,321 +1,319 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Simon Schneegans
-# This file is distributed under the same license as the Burn-My-Windows package.
+# This file is distributed under the same license as the burn-my-windows package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Burn-My-Windows\n"
+"Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2025-05-12 09:03+0000\n"
-"Last-Translator: Sergey Ponomarev <stokito@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/burn-my-windows/"
-"core/ru/>\n"
-"Language: ru\n"
+"PO-Revision-Date: 2025-05-26 11:01+0000\n"
+"Last-Translator: ButterflyOfFire <boffire@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Kabyle <https://hosted.weblate.org/projects/burn-my-windows/"
+"core/kab/>\n"
+"Language: kab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.12-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
-msgstr "Привидение"
+msgstr ""
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr "Сияние ауры"
+msgstr ""
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr "Разбитое стекло"
+msgstr ""
 
 #: src/effects/Doom.js:87
 msgid "Doom"
-msgstr "Фатум"
+msgstr ""
 
 #: src/effects/EnergizeA.js:74
 msgid "Energize A"
-msgstr "Энергия А"
+msgstr ""
 
 #: src/effects/EnergizeB.js:75
 msgid "Energize B"
-msgstr "Энергия Б"
+msgstr ""
 
 #: src/effects/Fire.js:96
 msgid "Fire"
-msgstr "Огонь"
+msgstr "Times"
 
 #: src/effects/Fire.js:150
 msgid "Default Fire"
-msgstr "Обычный огонь"
+msgstr ""
 
 #: src/effects/Fire.js:160
 msgid "Hell Fire"
-msgstr "Адское пламя"
+msgstr ""
 
 #: src/effects/Fire.js:170
 msgid "Dark and Smutty"
-msgstr "Тёмный и грязный"
+msgstr ""
 
 #: src/effects/Fire.js:180
 msgid "Cold Breeze"
-msgstr "Холодный бриз"
+msgstr ""
 
 #: src/effects/Fire.js:190
 msgid "Santa is Coming"
-msgstr "Дед Мороз идёт"
+msgstr ""
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr "Ядерный ☢️"
+msgstr ""
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr "Фокус"
+msgstr ""
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr "Скольжение"
+msgstr ""
 
 #: src/effects/Glitch.js:80
 msgid "Glitch"
-msgstr "Глюк"
+msgstr ""
 
 #: src/effects/Hexagon.js:83
 msgid "Hexagon"
-msgstr "Шестиугольник"
+msgstr ""
 
 #: src/effects/Incinerate.js:126
 msgid "Incinerate"
-msgstr "Сжигание"
+msgstr ""
 
 #: src/effects/Matrix.js:109
 msgid "Matrix"
-msgstr "Матрица"
+msgstr ""
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr "Гриб"
+msgstr ""
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
-msgstr "8-битный Сантехник"
+msgstr ""
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
-msgstr "Новый Bros 2 🍄"
+msgstr ""
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr "Красно-бело-синий 🇷🇺"
+msgstr ""
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr "Радуга 🌈"
+msgstr ""
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
-msgstr "Котучино 😺"
+msgstr ""
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr "Дракула 🦇"
+msgstr ""
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr "Блеск ✨"
+msgstr ""
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
-msgstr "Малярная кисть"
+msgstr ""
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr "Пикселяция"
+msgstr ""
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Пиксельное колесо"
+msgstr ""
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "Вытирание пикселями"
+msgstr ""
 
 #: src/effects/Portal.js:82
 msgid "Portal"
-msgstr "Портал"
+msgstr ""
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr "Деформация RGB"
+msgstr ""
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
-msgstr "Щелчок распада"
+msgstr ""
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr "Команда Ракета"
+msgstr ""
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
-msgstr "Атака тираннозавра"
+msgstr ""
 
 #: src/effects/TVEffect.js:73
 msgid "TV Effect"
-msgstr "Эффект ТВ"
+msgstr ""
 
 #: src/effects/TVGlitch.js:81
 msgid "TV Glitch"
-msgstr "ТВ Глюк"
+msgstr ""
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
-msgstr "Огоньки"
+msgstr ""
 
 #: prefs.js:256
 msgid "Preview this effect"
-msgstr "Предпросмотр этого эффекта"
+msgstr ""
 
 #: prefs.js:333
 msgid "Burn-My-Windows has been updated!"
-msgstr "Burn-My-Windows получил обновление!"
+msgstr ""
 
 #: prefs.js:334 resources/ui/common/menus.ui:17
 msgid "View Changelog"
-msgstr "Просмотреть список изменений"
+msgstr ""
 
 #: prefs.js:516
 msgid "Delete this Profile?"
-msgstr "Удалить этот профиль?"
+msgstr ""
 
 #: prefs.js:517
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
-"Текущий профиль эффектов со всеми его настройками будет безвозвратно удалён."
 
 #: prefs.js:520
 msgid "Cancel"
-msgstr "Отменить"
+msgstr ""
 
 #: prefs.js:525
 msgid "Delete"
-msgstr "Удалить"
+msgstr "Kkes"
 
 #: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr "Открытие окон"
+msgstr ""
 
 #: prefs.js:758 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr "Закрытие окон"
+msgstr ""
 
 #: prefs.js:759 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr "Обычные окна"
+msgstr ""
 
 #: prefs.js:760 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr "Диалоговые окна"
+msgstr ""
 
 #: prefs.js:761 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr "Цветовая схема по умолчанию"
+msgstr ""
 
 #: prefs.js:762 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr "Тёмная цветовая схема"
+msgstr ""
 
 #: prefs.js:763 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr "На батарее"
+msgstr ""
 
 #: prefs.js:764 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr "На зарядке"
+msgstr ""
 
 #: prefs.js:765 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr "Энергосберегающий режим"
+msgstr ""
 
 #: prefs.js:766 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr "Сбалансированный режим"
+msgstr ""
 
 #: prefs.js:767 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr "Производительный режим"
+msgstr ""
 
 #: prefs.js:768 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr "Энергосберегающий или сбалансированный режим"
+msgstr ""
 
 #: prefs.js:769 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr "Сбалансированный или производительный режим"
+msgstr ""
 
 #: prefs.js:774 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr "Высокий приоритет"
+msgstr ""
 
 #: prefs.js:780
 msgid "Standard Profile"
-msgstr "Профиль по умолчанию"
+msgstr ""
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:860
 #, javascript-format
 msgid "Preview for %s"
-msgstr "Предпросмотр для %s"
+msgstr ""
 
 #: prefs.js:879
 msgid "Close this Window to Preview the Effect!"
-msgstr "Закройте это окно для предпросмотра эффекта!"
+msgstr ""
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
-msgstr "Посетить домашнюю страницу"
+msgstr ""
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr "Посмотреть подходящие обои"
+msgstr ""
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr "Посетить Зал славы дарцов"
+msgstr ""
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
-msgstr "Пожертвовать"
+msgstr "Mudd tawsa"
 
 #: resources/ui/common/menus.ui:50
 msgid "Report a Bug"
-msgstr "Сообщить об ошибке"
+msgstr ""
 
 #: resources/ui/common/menus.ui:54
 msgid "Create an Effect"
-msgstr "Создать эффект"
+msgstr ""
 
 #: resources/ui/common/menus.ui:58
 msgid "Translate"
-msgstr "Перевести"
+msgstr "Suqel"
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
-msgstr "Открыть каталог профилей эффектов"
+msgstr ""
 
 #: resources/ui/common/menus.ui:70
 msgid "About Burn-My-Windows"
-msgstr "О Burn-My-Windows"
+msgstr ""
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr "Добавить новый профиль..."
+msgstr "Rnu amaɣnu amaynut…"
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
@@ -331,7 +329,7 @@ msgstr "Добавить новый профиль..."
 #: resources/ui/adw/mushroom.ui:17 resources/ui/adw/energize-a.ui:14
 #: resources/ui/adw/pixelate.ui:14 resources/ui/adw/tv.ui:14
 msgid "Animation Time [ms]"
-msgstr "Время анимации [мс]"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
 #: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
@@ -393,7 +391,7 @@ msgstr "Время анимации [мс]"
 #: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
 #: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
 msgid "Reset to Default Value"
-msgstr "Сброс на значение по умолчанию"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/tv-glitch.ui:47
 #: resources/ui/adw/glitch.ui:47 resources/ui/adw/matrix.ui:47
@@ -402,36 +400,34 @@ msgstr "Сброс на значение по умолчанию"
 #: resources/ui/adw/hexagon.ui:47 resources/ui/adw/fire.ui:63
 #: resources/ui/adw/snap.ui:47 resources/ui/adw/energize-a.ui:47
 msgid "Scale"
-msgstr "Масштаб"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:81
 msgid "Gravity"
-msgstr "Гравитация"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:114
 msgid "Blow Force"
-msgstr "Сила удара"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr "Разбить от положения курсора"
+msgstr ""
 
 #: resources/ui/adw/broken-glass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
 msgstr ""
-"Осколки разлетятся в стороны от того места, где находился курсор мыши при "
-"закрытии окна."
 
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr "Сила"
+msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
 #: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
 msgid "Speed"
-msgstr "Скорость"
+msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
 #: resources/ui/adw/wisps.ui:80 resources/ui/adw/energize-b.ui:81
@@ -439,392 +435,331 @@ msgstr "Скорость"
 #: resources/ui/adw/snap.ui:80 resources/ui/adw/energize-a.ui:80
 #: resources/ui/adw/tv.ui:47
 msgid "Color"
-msgstr "Цвет"
+msgstr "Ini"
 
 #: resources/ui/adw/matrix.ui:80 resources/ui/adw/apparition.ui:48
 msgid "Randomness"
-msgstr "Случайность"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr "Вертикальное превышение"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:146
 msgid "Trail Color"
-msgstr "Цвет следа"
+msgstr ""
 
 #: resources/ui/adw/matrix.ui:171
 msgid "Tip Color"
-msgstr "Цвет наконечника"
+msgstr ""
 
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr "Горизонтальный масштаб"
+msgstr ""
 
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr "Вертикальный масштаб"
+msgstr ""
 
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr "Размер пикселя"
+msgstr ""
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr "Яркость"
+msgstr ""
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr "Скорость красного"
+msgstr ""
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr "Скорость зелёного"
+msgstr ""
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr "Скорость синего"
+msgstr ""
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr "Размер кисти"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr "Масштаб царапин когтями"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr "Количество царапин когтями"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr "Эффект искривления"
+msgstr ""
 
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr "Цвет вспышки"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr "Случайный цвет"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr "Запустить Hue"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr "Насыщенность"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr "Размер края"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr "Твёрдость края"
+msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr "Уровень размытия"
+msgstr ""
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr "Количество спиц"
+msgstr ""
 
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr "Хлюпанье"
+msgstr ""
 
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr "Наклон"
+msgstr ""
 
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr "Сдвиг"
+msgstr ""
 
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr "Интенсивность завихрений"
+msgstr ""
 
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr "Интенсивность встряски"
+msgstr ""
 
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr "Интенсивность всасывания"
+msgstr ""
 
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr "Скорость вращения"
+msgstr ""
 
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr "Завихрение"
+msgstr ""
 
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr "Подробности"
+msgstr ""
 
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr "Турбулентность"
+msgstr ""
 
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr "Начинать от курсора"
+msgstr ""
 
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr "Если отключено, будет выбрано случайное местоположение."
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr "Ширина линии сетки"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr "Цвет линии"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr "Цвет свечения"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr "Аддитивное смешивание"
+msgstr ""
 
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr "Возможно, вы захотите включить это для тёмной темы окон."
+msgstr ""
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
-msgstr "Предустановки"
+msgstr ""
 
 #: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
 msgid "Choose a Preset"
-msgstr "Выбрать предустановку"
+msgstr ""
 
 #: resources/ui/adw/fire.ui:129
 msgid "3D Noise"
-msgstr "3D Шум"
+msgstr ""
 
 #: resources/ui/adw/fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Создает более динамичный огонь, но требует большей мощности GPU."
+msgstr ""
 
 #: resources/ui/adw/fire.ui:152
 msgid "Gradient"
-msgstr "Градиент"
+msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
-msgstr "Разделение анимации"
+msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr "Провернуть окно"
+msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
-msgstr "Горизонтальное положение блеска"
+msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:151
 msgid "Vertical Sparkle Position"
-msgstr "Вертикальное положение блеска"
+msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
-msgstr "Размер блеска"
+msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
-msgstr "Поворот блеска"
+msgstr ""
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr "Качество размытия"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr "Ограничения профиля эффектов"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr "Определяет, когда текущие параметры эффектов должны быть использованы."
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr "Приложение"
+msgstr "Asnas"
 
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr "Любой"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr "Тип анимации"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr "Тип окна"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr "Цветовая схема"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr "Режим питания"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr "Профиль питания"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr "Дополнительные параметры профиля"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr "Использовать этот профиль, даже если есть более подходящие профили."
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr "Удалить этот профиль..."
+msgstr "Kkes amaɣnu-a…"
 
 #: resources/ui/adw/prefs.ui:223
 msgid "Effect Selection"
-msgstr "Выбор эффекта"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:224
 msgid "If multiple are selected, one is chosen randomly."
-msgstr "Если выбрано несколько, то один выбирается случайно."
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr "Поиск..."
+msgstr "Nadi..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr "Включить все"
+msgstr ""
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr "Выключить все"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:55
 msgid "Effect Presets"
-msgstr "Предустановки эффектов"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr "Стиль масштабирования"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
-msgstr "8 битный --- Плавный"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:112
 msgid "Spark Count"
-msgstr "Количество блесков"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:150
 msgid "Spark Rotation"
-msgstr "Поворот искры"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:188
 msgid "Spark Color"
-msgstr "Цвет блеска"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
-msgstr "Цвет лучей"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
-msgstr "Количество звёздных колец"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
-msgstr "Поворот звёздных колец"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:332
 msgid "Stars Count Per Ring"
-msgstr "Количество звёзд на кольцо"
+msgstr ""
 
 #: resources/ui/adw/mushroom.ui:370
 msgid "Star Gradient"
-msgstr "Градиент звёзд"
+msgstr ""
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr "Шум"
-
-#~ msgid "Gold Sponsors"
-#~ msgstr "Золотые спонсоры"
-
-#~ msgid "Silver Sponsors"
-#~ msgstr "Серебряные спонсоры"
-
-#~ msgid "Bronze Sponsors"
-#~ msgstr "Бронзовые спонсоры"
-
-#~ msgid "Past Sponsors"
-#~ msgstr "Прошлые спонсоры"
-
-#~ msgid "Effect Settings"
-#~ msgstr "Параметры эффектов"
-
-#~ msgid "Effects"
-#~ msgstr "Эффекты"
-
-#~ msgid "Use this effect when opening windows"
-#~ msgstr "Использовать этот эффект при открытии окон"
-
-#~ msgid "Use this effect when closing windows"
-#~ msgstr "Использовать этот эффект при закрытии окон"
-
-#~ msgid "General Options"
-#~ msgstr "Общие параметры"
-
-#~ msgid "Welcome to Burn-My-Windows!"
-#~ msgstr "Добро пожаловать в Burn-My-Windows!"
-
-#~ msgid "If you like this extension, recommend it to your friends :)"
-#~ msgstr ""
-#~ "Если вам нравится это расширение, порекомендуйте его своим друзьям :)"
-
-#~ msgid "Open Window Animation"
-#~ msgstr "Анимация открытия окна"
-
-#~ msgid "Choose Effects"
-#~ msgstr "Выберите эффекты"
-
-#~ msgid "Close Window Animation"
-#~ msgstr "Анимация закрытия окна"
-
-#~ msgid "Also Add Effects to Dialogs"
-#~ msgstr "Также добавить эффекты к диалогам"
-
-#~ msgid "Disable on Battery Power"
-#~ msgstr "Отключать при питании от батареи"
-
-#~ msgid "Disable in Power-Save Mode"
-#~ msgstr "Отключить в режиме энергосбережения"
-
-#~ msgid "Preview this Effect"
-#~ msgstr "Предпросмотр этого эффекта"
-
-#~ msgid "Effect Options"
-#~ msgstr "Параметры эффекта"
-
-#~ msgid "Go Back"
-#~ msgstr "Назад"
+msgstr ""

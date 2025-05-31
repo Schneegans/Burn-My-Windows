@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2024-11-04 15:05+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2025-04-23 22:01+0000\n"
+"Last-Translator: Francisco Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.11.1-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -69,7 +69,7 @@ msgstr "Viene Papá Noel"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Nuclear ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
@@ -472,19 +472,19 @@ msgstr "Tamaño del píxel"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "Brillo"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "Vel. Roja"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "Vel. Verde"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "Vel. Azul"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
@@ -516,11 +516,11 @@ msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Saturación"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "Tamaño del borde"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
@@ -623,28 +623,33 @@ msgid "Gradient"
 msgstr "Degradado"
 
 #: resources/ui/adw/team-rocket.ui:54
+#, fuzzy
 msgid "Animation Split"
-msgstr ""
+msgstr "Desglosar Animación"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "Rotar Ventana"
 
 #: resources/ui/adw/team-rocket.ui:114
+#, fuzzy
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "Posición Horizontal Brillante"
 
 #: resources/ui/adw/team-rocket.ui:151
+#, fuzzy
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "Posición Vertical Brillante"
 
 #: resources/ui/adw/team-rocket.ui:189
+#, fuzzy
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Tamaño Brillante"
 
 #: resources/ui/adw/team-rocket.ui:226
+#, fuzzy
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Rotación Brillante"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
@@ -726,7 +731,7 @@ msgstr ""
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr ""
+msgstr "Estilo de escalado"
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
