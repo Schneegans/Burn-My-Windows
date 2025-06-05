@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2025-02-18 08:17+0000\n"
+"PO-Revision-Date: 2025-06-05 20:21+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.1-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -105,7 +105,7 @@ msgstr "8-bits loodgieter"
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
-msgstr ""
+msgstr "New Bros 2 🍄"
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
@@ -117,7 +117,7 @@ msgstr "Regenboog 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
-msgstr ""
+msgstr "Cattuccino 😺"
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
@@ -475,15 +475,15 @@ msgstr "Helderheid"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "Rode snelheid"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "Groene snelheid"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "Blauwe snelheid"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
@@ -623,11 +623,11 @@ msgstr "Verloop"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
-msgstr ""
+msgstr "Animatie­splitsing"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "Venster draaien"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
