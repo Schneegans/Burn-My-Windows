@@ -132,12 +132,12 @@ export var Shader = GObject.registerClass({
 
     // This is not necessarily symmetric, but I haven't figured out a way to
     // get the actual values...
-    const padding      = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
+    const padding    = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
     let isFullscreen = actor.meta_window.fullscreen;
 
     // is_maximized has been added in GNOME 49.
-    if ( actor.meta_window.is_maximized) {
-      isFullscreen |= actor.meta_window.is_maximized(); 
+    if (actor.meta_window.is_maximized) {
+      isFullscreen |= actor.meta_window.is_maximized();
     } else {
       isFullscreen |= actor.meta_window.get_maximized() === Meta.MaximizeFlags.BOTH;
     }
