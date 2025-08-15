@@ -9,7 +9,7 @@
   },
   "gettext-domain": "burn-my-windows",
   "settings-schema": "org.gnome.shell.extensions.burn-my-windows",
-  "shell-version": ["45", "46", "47", "48"],
+  "shell-version": ["45", "46", "47", "48", "49"],
   "url": "https://github.com/Schneegans/Burn-My-Windows",
   "version": 46
 }
