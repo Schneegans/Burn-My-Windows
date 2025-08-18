@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2023-01-31 11:35+0000\n"
-"Last-Translator: Ryan Y <ryuichi.ya220@gmail.com>\n"
+"PO-Revision-Date: 2025-08-19 04:01+0000\n"
+"Last-Translator: rainy_sunset <rainy_sunset@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/ja/>\n"
 "Language: ja\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -129,7 +130,7 @@ msgstr ""
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
-msgstr ""
+msgstr "ペイントブラシ"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
@@ -189,21 +190,21 @@ msgstr "変更ログを見る"
 
 #: prefs.js:516
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "このプロファイルを削除しますか？"
 
 #: prefs.js:517
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
-msgstr ""
+msgstr "すべてのエフェクト設定を含む現在のエフェクトプロファイルは永久に失われます。"
 
 #: prefs.js:520
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: prefs.js:525
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
