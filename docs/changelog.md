@@ -5,14 +5,18 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
-## [unreleased]
+## [Burn My Windows 47](https://github.com/schneegans/Burn-My-Windows/releases/tag/v47)
 
-**Release Date:** TBD
+**Release Date:** 2025-08-25
 
 #### New Features
 
 - Ported the extension to GNOME 49.
 - Added a color preview widget to the preferences of the Aura Glow effect. Thanks to [@lstrsrt](https://github.com/lstrsrt) for this contribution!
+
+#### Other Changes
+
+- Many translations have been updated. Thanks to all the translators!
 
 ## [Burn My Windows 46](https://github.com/schneegans/Burn-My-Windows/releases/tag/v46)
 
