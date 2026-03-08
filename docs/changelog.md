@@ -5,6 +5,18 @@ SPDX-License-Identifier: CC-BY-4.0
 
 # Changelog of the Burn-My-Windows Extension
 
+## [unreleased]
+
+**Release Date:** TBD
+
+#### New Features
+
+- Added support for GNOME 50.
+
+#### Other Changes
+
+- Many translations have been updated. Thanks to all the translators!
+
 ## [Burn My Windows 47](https://github.com/schneegans/Burn-My-Windows/releases/tag/v47)
 
 **Release Date:** 2025-08-25
@@ -268,7 +280,6 @@ SPDX-License-Identifier: CC-BY-4.0
 #### New Features
 
 - **Effect Profiles:** It is now possible to create _effect profiles_. Each profile contains a different set of effect settings. You can choose for each profile under which circumstances it will be used. Currently, these constraints are supported:
-
   - Application name
   - Animation type (open close)
   - Window type (normal, dialog)
@@ -277,7 +288,6 @@ SPDX-License-Identifier: CC-BY-4.0
   - Power profile (power saver, balanced, performance)
 
   This allows for a very detailed configuration of the extension. For instance, you can now...
-
   - ... exclude specific applications from BMW effects
   - ... select effects per-application
   - ... use different configurations of the same effect for opening or closing windows
