@@ -1,0 +1,178 @@
+// SPDX-FileCopyrightText: Vlad Zahorodnii <vlad.zahorodnii@kde.org>, Martin Flöser <mgraesslin@kde.org>, Simon Schneegans <code@simonschneegans.de>
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+"use strict";
+
+const blacklist = [
+    // The logout screen has to be animated only by the logout effect.
+    "ksmserver ksmserver",
+    "ksmserver-logout-greeter ksmserver-logout-greeter",
+
+    // KDE Plasma splash screen has to be animated only by the login effect.
+    "ksplashqml ksplashqml",
+
+    // All the tooltips of IntelliJ IDEs use the same window class as their main window.
+    // This results in many awkward animations, so we have to blacklist them all.
+    // See https://github.com/Schneegans/Burn-My-Windows/issues/284 for details.
+    "jetbrains-studio jetbrains-studio", "jetbrains-aqua jetbrains-aqua", 
+    "jetbrains-clion jetbrains-clion", "jetbrains-datagrip jetbrains-datagrip",
+    "jetbrains-dataspell jetbrains-dataspell", "jetbrains-goland jetbrains-goland",
+    "jetbrains-idea jetbrains-idea", "jetbrains-idea-ce jetbrains-idea-ce",
+    "jetbrains-phpstorm jetbrains-phpstorm", "jetbrains-pycharm jetbrains-pycharm", 
+    "jetbrains-pycharm-ce jetbrains-pycharm-ce", "jetbrains-rider jetbrains-rider",
+    "jetbrains-rubymine jetbrains-rubymine", "jetbrains-webstorm jetbrains-webstorm"
+];
+
+class %EFFECT_CLASS% {
+    constructor() {
+        effect.configChanged.connect(this.loadConfig.bind(this));
+        effect.animationEnded.connect(this.cleanupForcedRoles.bind(this));
+        effects.windowAdded.connect(this.slotWindowAdded.bind(this));
+        effects.windowDataChanged.connect(this.slotWindowDataChanged.bind(this));
+
+        this.shader = effect.addFragmentShader(Effect.MapTexture, "%SHADER_NAME%.frag");
+
+        this.loadConfig();
+    }
+
+    // A small helper which can be used to read a hex color string (e.g. #ff3244) from the
+    // settings. This method will return an array of four floating point values
+    // [r, g, b, a]. If the settings key only refers to an rgb value, the alpha component
+    // will be set to 1.0.
+    readRGBAConfig(key) {
+        const color = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})?([a-f\d]{2})?$/i
+                        .exec(effect.readConfig(key, '#ffffff'))
+                        .slice(1)
+                        .filter(x => x !== undefined)
+                        .map(x => parseInt(x, 16) / 255);
+        return color.length == 3 ? [color[0], color[1], color[2], 1.0] :
+                                [color[1], color[2], color[3], color[0]];
+    }
+
+    // A small helper which can be used to read a hex color string (e.g. #ff3244) from the
+    // settings. This method will return an array of three floating point values [r, g, b]
+    // regardless of whether the settings key actually refers to an argb hex string.
+    readRGBConfig(key) {
+        const color = this.readRGBAConfig(key);
+        color.pop();
+        return color;
+    }
+
+    // This is called when the effect is loaded and whenever the settings of the effect
+    // are changed by the user.
+    loadConfig() {
+        this.duration = animationTime(effect.readConfig('Duration', 1000));
+
+        %ON_SETTINGS_CHANGE%
+    }
+
+    static shouldAnimateWindow(window) {
+
+        // We don't want to animate most of plasmashell's windows, yet, some
+        // of them we want to, for example, Task Manager Settings window.
+        // The problem is that all those window share single window class.
+        // So, the only way to decide whether a window should be animated is
+        // to use a heuristic: if a window has decoration, then it's most
+        // likely a dialog or a settings window so we have to animate it.
+        if (window.windowClass == "plasmashell plasmashell"
+                || window.windowClass == "plasmashell org.kde.plasmashell") {
+            return window.hasDecoration;
+        }
+
+        // This is primarily to avoid animating the AltTab popup.
+        // See https://github.com/Schneegans/Burn-My-Windows/issues/384 for details.
+        if (!window.hasDecoration && window.onAllDesktops) {
+            return false
+        }
+
+        if (blacklist.indexOf(window.windowClass) != -1) {
+            return false;
+        }
+
+        if (window.hasDecoration) {
+            return true;
+        }
+
+        // Don't animate combobox popups, tooltips, popup menus, etc.
+        if (window.popupWindow) {
+            return false;
+        }
+
+        // Dont't animate the outline and the screenlocker as it looks bad.
+        if (window.lockScreen || window.outline) {
+            return false;
+        }
+
+        // Override-redirect windows are usually used for user interface
+        // concepts that are not expected to be animated by this effect.
+        if (!window.managed) {
+            return false;
+        }
+
+        return window.normalWindow || window.dialog;
+    }
+
+    setupForcedRoles(window) {
+        window.setData(Effect.WindowForceBackgroundContrastRole, true);
+        window.setData(Effect.WindowForceBlurRole, true);
+    }
+
+    cleanupForcedRoles(window) {
+        window.setData(Effect.WindowForceBackgroundContrastRole, null);
+        window.setData(Effect.WindowForceBlurRole, null);
+    }
+
+    slotWindowAdded(window) {
+        if (effects.hasActiveFullScreenEffect) {
+            return;
+        }
+        if (!%EFFECT_CLASS%.shouldAnimateWindow(window)) {
+            return;
+        }
+        if (!window.visible) {
+            return;
+        }
+        if (effect.isGrabbed(window, Effect.WindowAddedGrabRole)) {
+            return;
+        }
+        this.setupForcedRoles(window);
+
+        effect.setUniform(this.shader, 'uForOpening', 1.0);
+        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
+
+        %ON_ANIMATION_BEGIN%
+
+        window.bmwInAnimation = animate({
+            window: window,
+            curve: QEasingCurve.Linear,
+            duration: this.duration,
+            animations: [
+                {
+                    type: Effect.ShaderUniform,
+                    fragmentShader: this.shader,
+                    uniform: "uProgress",
+                    from: 0.0,
+                    to: 1.0
+                }
+            ]
+        });
+    }
+
+    slotWindowDataChanged(window, role) {
+        if (role == Effect.WindowAddedGrabRole) {
+            if (window.bmwInAnimation && effect.isGrabbed(window, role)) {
+                cancel(window.bmwInAnimation);
+                delete window.bmwInAnimation;
+                this.cleanupForcedRoles(window);
+            }
+        } else if (role == Effect.WindowClosedGrabRole) {
+            if (window.bmwOutAnimation && effect.isGrabbed(window, role)) {
+                cancel(window.bmwOutAnimation);
+                delete window.bmwOutAnimation;
+                this.cleanupForcedRoles(window);
+            }
+        }
+    }
+}
+
+new %EFFECT_CLASS%();

@@ -11,7 +11,7 @@
 #                                  |__/                                                  #
 # -------------------------------------------------------------------------------------- #
 
-# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>
+# SPDX-FileCopyrightText: Simon Schneegans <code@simonschneegans.de>, redmie <43269604+redmie@users.noreply.github.com>
 # SPDX-License-Identifier: MIT
 
 # This scripts takes the shaders of Burn-My-Windows as well as some other input files from
@@ -42,9 +42,12 @@ done
 # $1: The nick of the effect (e.g. "energize-a")
 # $2: The name of the effect (e.g. "Energize A")
 # $3: A short description of the effect (e.g. "Beam your windows away")
+# $4: open/close keyword
 generate() {
-  generate_impl "$1" "$2" "$3" "kwin5"
-  generate_impl "$1" "$2" "$3" "kwin6"
+  generate_impl "$1" "$2" "$3" "kwin5" open
+  generate_impl "$1" "$2" "$3" "kwin5" close
+  generate_impl "$1" "$2" "$3" "kwin6" open
+  generate_impl "$1" "$2" "$3" "kwin6" close
 }
 
 # This method is called twice for each effect. The parameters are as follows:
@@ -52,10 +55,11 @@ generate() {
 # $2: The name of the effect (e.g. "Energize A")
 # $3: A short description of the effect (e.g. "Beam your windows away")
 # #4: Either "kwin5" or "kwin6".
+# #5: Either "open" or "close".
 generate_impl() {
 
   # We use the nick for the effect's directory name by replacing dashes with underscoares.
-  DIR_NAME="${4}_effect_$(echo "$1" | tr '-' '_')"
+  DIR_NAME="${4}_effect_${5}_$(echo "$1" | tr '-' '_')"
 
   # We transform the nick to CamelCase for the JavaScript class name.
   EFFECT_CLASS="BurnMyWindows$(sed -r 's/(^|-)(\w)/\U\2/g' <<<"$1")Effect"
@@ -96,7 +100,7 @@ generate_impl() {
     ON_ANIMATION_BEGIN=$(tr '/' '\f' < "$1/onAnimationBegin.js")
   fi
 
-  cp main.js.in "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
+  cp ${5}_main.js.in "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   perl -pi -e "s/%ON_SETTINGS_CHANGE%/$ON_SETTINGS_CHANGE/g;" "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   perl -pi -e "s/%ON_ANIMATION_BEGIN%/$ON_ANIMATION_BEGIN/g;" "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
   perl -pi -e "s/%EFFECT_CLASS%/$EFFECT_CLASS/g;"             "$BUILD_DIR/$DIR_NAME/contents/code/main.js"
@@ -109,6 +113,8 @@ generate_impl() {
   perl -pi -e "s/%NAME%/$2/g;"            "$BUILD_DIR/$DIR_NAME/metadata.json"
   perl -pi -e "s/%DESCRIPTION%/$3/g;"     "$BUILD_DIR/$DIR_NAME/metadata.json"
   perl -pi -e "s/%DIR_NAME%/$DIR_NAME/g;" "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%OPENCLOSE%/$5/g;"      "$BUILD_DIR/$DIR_NAME/metadata.json"
+  perl -pi -e "s/%OPENCLOSE_CAP%/${5^}/g;" "$BUILD_DIR/$DIR_NAME/metadata.json"
 
   # Now create the two required shader files. We prepend the common.glsl to each shader.
   # We also define KWIN and KWIN_LEGACY. The code in common.glsl takes some different
