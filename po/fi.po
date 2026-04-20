@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2026-02-15 12:09+0000\n"
-"Last-Translator: \"Tinde (Joke)\" <jouko.tiilikainen@gmail.com>\n"
+"PO-Revision-Date: 2026-04-21 11:09+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fi/>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -32,7 +32,6 @@ msgid "Broken Glass"
 msgstr "Rikkoutunut lasi"
 
 #: src/effects/Doom.js:87
-#, fuzzy
 msgid "Doom"
 msgstr "Doom"
 
@@ -529,7 +528,6 @@ msgid "Blur Amount"
 msgstr "Sumennuksen määrä"
 
 #: resources/ui/adw/pixel-wheel.ui:47
-#, fuzzy
 msgid "Spoke Count"
 msgstr "Puolojen lukumäärä"
 
@@ -575,7 +573,7 @@ msgstr "Turbulenssi"
 
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Aloita osoittimesta"
 
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
@@ -610,9 +608,8 @@ msgid "Choose a Preset"
 msgstr "Valitse esiasetus"
 
 #: resources/ui/adw/fire.ui:129
-#, fuzzy
 msgid "3D Noise"
-msgstr "3D Noise"
+msgstr "Kolmiulotteinen kohina"
 
 #: resources/ui/adw/fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
@@ -631,14 +628,12 @@ msgid "Rotate Window"
 msgstr "Kierrä ikkunaa"
 
 #: resources/ui/adw/team-rocket.ui:114
-#, fuzzy
 msgid "Horizontal Sparkle Position"
 msgstr "Vaakasuora kimallusasento"
 
 #: resources/ui/adw/team-rocket.ui:151
-#, fuzzy
 msgid "Vertical Sparkle Position"
-msgstr "Vertical Sparkle Position"
+msgstr "Pystysuora kimallusasento"
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
@@ -748,28 +743,24 @@ msgid "Spark Color"
 msgstr "Kipinän väri"
 
 #: resources/ui/adw/mushroom.ui:222
-#, fuzzy
 msgid "Rays Color"
-msgstr "Rays Color"
+msgstr "Säteiden väri"
 
 #: resources/ui/adw/mushroom.ui:256
-#, fuzzy
 msgid "Star Rings Count"
-msgstr "Star Rings Count"
+msgstr "Tähtirenkaiden määrä"
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
 msgstr "Tähtirinkuloiden kierto"
 
 #: resources/ui/adw/mushroom.ui:332
-#, fuzzy
 msgid "Stars Count Per Ring"
-msgstr "Stars Count Per Ring"
+msgstr "Tähtien määrä rengasta kohden"
 
 #: resources/ui/adw/mushroom.ui:370
-#, fuzzy
 msgid "Star Gradient"
-msgstr "Star Gradient"
+msgstr "Tähtigradientti"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
