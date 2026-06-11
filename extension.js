@@ -144,6 +144,9 @@ export default class BurnMyWindows extends Extension {
     }
 
     // We will monkey-patch these methods. Let's store the original ones.
+    if (!Main.wm || typeof Main.wm._shouldAnimateActor !== 'function') {
+      throw new Error('Burn-My-Windows: WindowManager not ready, skipping monkey-patch');
+    }
     this._origShouldAnimateActor    = Main.wm._shouldAnimateActor;
     this._origWaitForOverviewToHide = Main.wm._waitForOverviewToHide;
     this._origAddWindowClone        = Workspace.prototype._addWindowClone;
@@ -351,8 +354,12 @@ export default class BurnMyWindows extends Extension {
     Workspace.prototype._addWindowClone = this._origAddWindowClone;
     Workspace.prototype._windowRemoved  = this._origWindowRemoved;
     Workspace.prototype._doRemoveWindow = this._origDoRemoveWindow;
-    Main.wm._shouldAnimateActor         = this._origShouldAnimateActor;
-    Main.wm._waitForOverviewToHide      = this._origWaitForOverviewToHide;
+    if (typeof this._origShouldAnimateActor === 'function') {
+      Main.wm._shouldAnimateActor = this._origShouldAnimateActor;
+    }
+    if (typeof this._origWaitForOverviewToHide === 'function') {
+      Main.wm._waitForOverviewToHide = this._origWaitForOverviewToHide;
+    }
 
     WindowPreview.prototype._deleteAll = this._origDeleteAll;
     WindowPreview.prototype._restack   = this._origRestack;
