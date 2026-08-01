@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2026-07-22 21:01+0000\n"
+"PO-Revision-Date: 2026-08-02 10:01+0000\n"
 "Last-Translator: numerfolt <numerfolt@users.noreply.hosted.weblate.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
@@ -21,15 +21,15 @@ msgstr ""
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
-msgstr "Apparieren"
+msgstr "Geistererscheinung"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr "Aura Glow"
+msgstr "Auraglühen"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr "Glassplitter"
+msgstr "Zerbrochenes Glas"
 
 #: src/effects/Doom.js:87
 msgid "Doom"
