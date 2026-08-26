@@ -69,7 +69,7 @@ export default class Effect {
 
         // Bind the brush texture.
         pipeline.set_layer_texture(1, this._brushTexture.get_texture());
-        pipeline.set_uniform_1i(shader._uBrushTexture, 1);
+        shader.setUniform1i(shader._uBrushTexture, 1);
       });
     });
   }
