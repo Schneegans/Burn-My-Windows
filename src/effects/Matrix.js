@@ -75,7 +75,7 @@ export default class Effect {
 
         // Bind the font texture.
         pipeline.set_layer_texture(1, this._fontTexture.get_texture());
-        pipeline.set_uniform_1i(shader._uFontTexture, 1);
+        shader.setUniform1i(shader._uFontTexture, 1);
       });
     });
   }

@@ -105,7 +105,7 @@ export default class Effect {
         // Bind the shard texture.
         pipeline.set_layer_texture(1, this._shardTexture.get_texture());
         pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
-        pipeline.set_uniform_1i(shader._uShardTexture, 1);
+        shader.setUniform1i(shader._uShardTexture, 1);
       });
     });
   }

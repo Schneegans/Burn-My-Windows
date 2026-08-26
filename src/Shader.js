@@ -27,16 +27,13 @@ import * as utils from './utils.js';
 // This is the base class for all shaders of Burn-My-Windows. It automagically loads    //
 // the shader's source code from the resource file resources/shaders/<nick>.glsl and    //
 // ensures that some standard uniforms are always updated.                              //
-// Using Shell.GLSLEffect as a base class has some benefits and some drawbacks. The     //
-// main benefit when compared to Clutter.ShaderEffect is that setting uniforms of types //
-// vec2, vec3 or vec4 is supported via the API (with Clutter.ShaderEffect the GJS       //
-// binding does not work properly). However, there are two drawbacks: On the one hand,  //
-// the shader source code is cached statically - this means if we want to have a        //
-// different shader, we have to derive a new class. Therefore, each effect has to       //
-// derive its own class from the class below. This is encapsulated in the               //
-// ShaderFactory, however it is some really awkward code. The other drawback is the     //
-// hard-coded use of straight alpha (as opposed to premultiplied). This makes the       //
-// shaders a bit more complicated than required.                                        //
+// Since GNOME 51, Shell.GLSLEffect has been removed from gnome-shell. On newer         //
+// versions, we therefore use Clutter.ShaderEffect instead. It provides similar         //
+// functionality: The GLSL snippet is cached per class (not per instance) and float     //
+// uniforms can be set. The main difference is that uniforms are addressed by name      //
+// instead of by location. To keep the rest of the code base unchanged,                 //
+// get_uniform_location() returns the uniform's name as an opaque handle in this case,  //
+// which is understood by set_uniform_float() and setUniform1i().                       //
 //                                                                                      //
 // The Shader fires three signals:                                                      //
 //   * begin-animation:    This is called each time a new animation is started. It can  //
@@ -44,11 +41,13 @@ import * as utils from './utils.js';
 //                         animation.                                                   //
 //   * update-animation:   This is called at each frame during the animation. It can be //
 //                         used to set uniforms which change during the animation.      //
-//   * end-animation:      This is called when the animation is stopped. This can be    //
-//                         used to clean up any resources.
+//   * end-animation:      This is called when the animation is stopped. It can be      //
+//                         used to clean up any resources.                              //
 //////////////////////////////////////////////////////////////////////////////////////////
 
-export var Shader = GObject.registerClass({
+const _useShaderEffect = !Shell.GLSLEffect;
+
+const _annotations = {
   Signals: {
     'begin-animation': {
       param_types: [
@@ -59,49 +58,69 @@ export var Shader = GObject.registerClass({
     'update-animation': {param_types: [GObject.TYPE_DOUBLE]},
     'end-animation': {}
   }
-},
+};
 
-                                          class Shader extends Shell.GLSLEffect {
-  // --------------------------------------------
-  // The constructor automagically loads the shader's source code (in
-  // vfunc_build_pipeline()) from the resource file resources/shaders/<nick>.glsl
-  // resolving any #includes in this file.
-  _init(nick) {
-    this._nick = nick;
+// This is called from vfunc_paint_target() on both backends. It emits the update-
+// animation signal, sets the blend mode of the pipeline and writes the progress uniform.
+function _paintTarget(self) {
+  self.emit('update-animation', self._progress);
 
-    // This will call vfunc_build_pipeline().
-    super._init();
+  // Starting with GNOME 44.2, the alpha channel is not written to by default. We need
+  // to undo this. It is a pity that we have to do this here, as it is not really
+  // required to be done each frame. But it's the only place where we can do it.
+  // https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2650
+  self.get_pipeline().set_blend(
+    'RGBA = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))');
 
-    // These will be updated during the animation.
-    this._progress = 0;
-    this._time     = 0;
+  self.set_uniform_float(self._uProgress, 1, [self._progress]);
+}
 
-    // Store standard uniform locations.
-    this._uForOpening   = this.get_uniform_location('uForOpening');
-    this._uIsFullscreen = this.get_uniform_location('uIsFullscreen');
-    this._uProgress     = this.get_uniform_location('uProgress');
-    this._uDuration     = this.get_uniform_location('uDuration');
-    this._uSize         = this.get_uniform_location('uSize');
-    this._uPadding      = this.get_uniform_location('uPadding');
+// Splits the given GLSL source code into the declarations (everything before "void main")
+// and the body of the main function.
+function _splitShaderCode(code) {
+  // Match anything between the curly brackets of "void main() {...}".
+  const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
+  const match = regex.exec(code);
 
-    // Create a timeline to drive the animation.
-    this._timeline = new Clutter.Timeline();
+  return [code.substr(0, match.index), match[1]];
+}
 
-    // Call updateAnimation() once a frame.
-    this._timeline.connect('new-frame', (t) => {
-      if (this._testMode) {
-        this.updateAnimation(0.5);
-      } else {
-        this.updateAnimation(t.get_progress());
-      }
-    });
+// This is called from the constructor of both backends after super._init() has been
+// called. It sets up the standard uniforms and the timeline which drives the animation.
+function _initRest(self) {
+  // These will be updated during the animation.
+  self._progress = 0;
+  self._time     = 0;
 
-    // Clean up if the animation finished or was interrupted.
-    this._timeline.connect('stopped', (t, finished) => {
-      this.endAnimation();
-    });
-  }
+  // Store standard uniform locations.
+  self._uForOpening   = self.get_uniform_location('uForOpening');
+  self._uIsFullscreen = self.get_uniform_location('uIsFullscreen');
+  self._uProgress     = self.get_uniform_location('uProgress');
+  self._uDuration     = self.get_uniform_location('uDuration');
+  self._uSize         = self.get_uniform_location('uSize');
+  self._uPadding      = self.get_uniform_location('uPadding');
 
+  // Create a timeline to drive the animation.
+  self._timeline = new Clutter.Timeline();
+
+  // Call updateAnimation() once a frame.
+  self._timeline.connect('new-frame', (t) => {
+    if (self._testMode) {
+      self.updateAnimation(0.5);
+    } else {
+      self.updateAnimation(t.get_progress());
+    }
+  });
+
+  // Clean up if the animation finished or was interrupted.
+  self._timeline.connect('stopped', (t, finished) => {
+    self.endAnimation();
+  });
+}
+
+// The methods shared by both backends. They are added to the prototype of the class
+// below before it is registered with GObject.
+const _methods = {
   // This is called once each time the shader is used.
   beginAnimation(settings, forOpening, testMode, duration, actor) {
     if (this._timeline.is_playing()) {
@@ -149,7 +168,7 @@ export var Shader = GObject.registerClass({
     this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
 
     this.emit('begin-animation', settings, forOpening, testMode, actor);
-  }
+  },
 
   // This is called at each frame during the animation.
   updateAnimation(progress) {
@@ -159,7 +178,7 @@ export var Shader = GObject.registerClass({
     this._progress = progress;
 
     this.queue_repaint();
-  }
+  },
 
   // This will stop any running animation and emit the end-animation signal.
   endAnimation() {
@@ -179,43 +198,19 @@ export var Shader = GObject.registerClass({
     global.end_work();
 
     this.emit('end-animation');
-  }
+  },
 
-  // This is called by the constructor. This means, it's only called when the
-  // effect is used for the first time.
-  vfunc_build_pipeline() {
-    // Shell.GLSLEffect requires the declarations and the main source code as separate
-    // strings. As it's more convenient to store the in one GLSL file, we use a regex
-    // here to split the source code in two parts.
-    const code = this._loadShaderResource(`/shaders/${this._nick}.frag`);
-
-    // Match anything between the curly brackets of "void main() {...}".
-    const regex = RegExp('void main *\\(\\) *\\{([\\S\\s]+)\\}');
-    const match = regex.exec(code);
-
-    const declarations = code.substr(0, match.index);
-    const main         = match[1];
-
-    this.add_glsl_snippet(
-      Cogl.SnippetHook ? Cogl.SnippetHook.FRAGMENT : Shell.SnippetHook.FRAGMENT,
-      declarations, main, true);
-  }
-
-  // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
-  // the handler. This could still be null if called from the updateAnimation() above.
-  vfunc_paint_target(...params) {
-    this.emit('update-animation', this._progress);
-
-    // Starting with GNOME 44.2, the alpha channel is not written to by default. We need
-    // to undo this. It is a pity that we have to do this here, as it is not really
-    // required to be done each frame. But it's the only place where we can do it.
-    // https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2650
-    this.get_pipeline().set_blend(
-      'RGBA = ADD (SRC_COLOR * (SRC_COLOR[A]), DST_COLOR * (1-SRC_COLOR[A]))');
-
-    this.set_uniform_float(this._uProgress, 1, [this._progress]);
-    super.vfunc_paint_target(...params);
-  }
+  // Sets an integer uniform on the pipeline. This is used by some effects to bind texture
+  // samplers. On newer versions, where uniforms are addressed by name, the location has
+  // to be looked up first.
+  setUniform1i(handle, value) {
+    if (_useShaderEffect) {
+      const pipeline = this.get_pipeline();
+      pipeline.set_uniform_1i(pipeline.get_uniform_location(handle), value);
+    } else {
+      this.get_pipeline().set_uniform_1i(handle, value);
+    }
+  },
 
   // --------------------------------------------------------------------- private stuff
 
@@ -228,4 +223,97 @@ export var Shader = GObject.registerClass({
     // Add a trailing newline. Else the GLSL compiler complains...
     return common + '\n' + code + '\n';
   }
-});
+};
+
+// On newer versions, uniforms are addressed by name. We return the name as an opaque
+// handle which is understood by set_uniform_float() and setUniform1i().
+if (_useShaderEffect) {
+  _methods.get_uniform_location = function(name) {
+    return name;
+  };
+}
+
+let Shader;
+if (_useShaderEffect) {
+  class ShaderImpl extends Clutter.ShaderEffect {
+    // The GLSL snippet (see vfunc_get_static_snippet()) is created lazily when the
+    // effect is used for the first time.
+    _init(nick) {
+      this._nick = nick;
+
+      super._init();
+
+      _initRest(this);
+    }
+
+    // This is called once per class (not per instance) to create the GLSL snippet which
+    // is then shared by all instances of this class.
+    vfunc_get_static_snippet() {
+      const code = this._loadShaderResource(`/shaders/${this._nick}.frag`);
+      const [declarations, main] = _splitShaderCode(code);
+
+      const snippet = Cogl.Snippet.new(Cogl.SnippetHook.FRAGMENT, declarations, null);
+      snippet.set_replace(main);
+      return snippet;
+    }
+
+    // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
+    // the handlers. This could still be null if called from the updateAnimation() above.
+    vfunc_paint_target(...params) {
+      _paintTarget(this);
+      super.vfunc_paint_target(...params);
+    }
+
+    // Clutter.ShaderEffect.set_uniform_float() ignores the component count and derives
+    // the uniform's size from the length of the values array. Since parseColor() returns
+    // four values, vec3 uniforms would be uploaded with four components, which is an
+    // invalid glUniform4fv() call. The uniform would then be left at its default value
+    // (typically black). We therefore cut the array to the declared size.
+    set_uniform_float(name, n_components, values) {
+      super.set_uniform_float(name, n_components, values.slice(0, n_components));
+    }
+  }
+
+  Object.assign(ShaderImpl.prototype, _methods);
+  Shader = GObject.registerClass(_annotations, ShaderImpl);
+} else {
+  class ShaderImpl extends Shell.GLSLEffect {
+    // The constructor automagically loads the shader's source code (in
+    // vfunc_build_pipeline()) from the resource file resources/shaders/<nick>.glsl
+    // resolving any #includes in this file.
+    _init(nick) {
+      this._nick = nick;
+
+      // This will call vfunc_build_pipeline().
+      super._init();
+
+      _initRest(this);
+    }
+
+    // This is called by the constructor. This means, it's only called when the
+    // effect is used for the first time.
+    vfunc_build_pipeline() {
+      // Shell.GLSLEffect requires the declarations and the main source code as separate
+      // strings. As it's more convenient to store the in one GLSL file, we use a regex
+      // here to split the source code in two parts.
+      const code = this._loadShaderResource(`/shaders/${this._nick}.frag`);
+      const [declarations, main] = _splitShaderCode(code);
+
+      this.add_glsl_snippet(
+        Cogl.SnippetHook ? Cogl.SnippetHook.FRAGMENT : Shell.SnippetHook.FRAGMENT,
+        declarations, main, true);
+    }
+
+    // We use this vfunc to trigger the update as it allows calling this.get_pipeline() in
+    // the handlers. This could still be null if called from the updateAnimation() above.
+    vfunc_paint_target(...params) {
+      _paintTarget(this);
+      super.vfunc_paint_target(...params);
+    }
+  }
+
+  Object.assign(ShaderImpl.prototype, _methods);
+  Shader = GObject.registerClass(_annotations, ShaderImpl);
+}
+
+export {Shader};

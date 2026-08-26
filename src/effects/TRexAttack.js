@@ -78,7 +78,7 @@ export default class Effect {
 
         // Bind the claw texture.
         pipeline.set_layer_texture(1, this._clawTexture.get_texture());
-        pipeline.set_uniform_1i(shader._uClawTexture, 1);
+        shader.setUniform1i(shader._uClawTexture, 1);
       });
     });
   }

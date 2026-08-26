@@ -79,7 +79,7 @@ export default class Effect {
         // Bind the dust texture.
         pipeline.set_layer_texture(1, this._dustTexture.get_texture());
         pipeline.set_layer_wrap_mode(1, Cogl.PipelineWrapMode.REPEAT);
-        pipeline.set_uniform_1i(shader._uDustTexture, 1);
+        shader.setUniform1i(shader._uDustTexture, 1);
       });
     });
   }
