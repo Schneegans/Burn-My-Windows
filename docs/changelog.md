@@ -13,6 +13,10 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - Added support for GNOME 51. Thanks to [@tristantarrant](https://github.com/tristantarrant) for this contribution!
 
+#### Other Changes
+
+- Many translations have been updated. Thanks to all the translators!
+
 ## [Burn My Windows 48](https://github.com/schneegans/Burn-My-Windows/releases/tag/v48)
 
 **Release Date:** 2026-03-15
