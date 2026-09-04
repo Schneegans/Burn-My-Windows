@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2025-02-27 16:01+0000\n"
-"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
+"PO-Revision-Date: 2026-08-02 10:01+0000\n"
+"Last-Translator: numerfolt <numerfolt@users.noreply.hosted.weblate.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/de/>\n"
 "Language: de\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.2-dev\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
-msgstr "Apparieren"
+msgstr "Geistererscheinung"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr "Aura Glow"
+msgstr "Auraglühen"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
-msgstr "Glassplitter"
+msgstr "Zerbrochenes Glas"
 
 #: src/effects/Doom.js:87
 msgid "Doom"
@@ -149,7 +149,7 @@ msgstr "Portal"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB-Verzerrung"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
@@ -512,7 +512,7 @@ msgstr "Zufällige Farbe"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr ""
+msgstr "Start-Farbton"
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
@@ -625,7 +625,7 @@ msgstr "Farbverlauf"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
-msgstr ""
+msgstr "Animations-Teilung"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
@@ -633,19 +633,19 @@ msgstr "Fenster drehen"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "Horizontale Funkel-Position"
 
 #: resources/ui/adw/team-rocket.ui:151
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "Vertikale Funkel-Position"
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Funkeln-Größe"
 
 #: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Funkeln-Rotation"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
@@ -729,23 +729,23 @@ msgstr "Effekteinstellungen"
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr ""
+msgstr "Stil-Skalierung"
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
-msgstr ""
+msgstr "8 Bit --- Weich"
 
 #: resources/ui/adw/mushroom.ui:112
 msgid "Spark Count"
-msgstr ""
+msgstr "Funkel-Anzahl"
 
 #: resources/ui/adw/mushroom.ui:150
 msgid "Spark Rotation"
-msgstr ""
+msgstr "Funkel-Rotation"
 
 #: resources/ui/adw/mushroom.ui:188
 msgid "Spark Color"
-msgstr ""
+msgstr "Funkel-Farbe"
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
@@ -753,19 +753,19 @@ msgstr "Farbstrahlen"
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
-msgstr ""
+msgstr "Anzahl Sternringe"
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "Rotation Sternringe"
 
 #: resources/ui/adw/mushroom.ui:332
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "Sterne pro Ring"
 
 #: resources/ui/adw/mushroom.ui:370
 msgid "Star Gradient"
-msgstr ""
+msgstr "Stern-Verlauf"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"

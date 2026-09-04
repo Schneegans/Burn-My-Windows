@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2023-08-20 15:51+0000\n"
-"Last-Translator: Brice Laurencin <brice.laurencin@gmail.com>\n"
+"PO-Revision-Date: 2026-06-20 22:01+0000\n"
+"Last-Translator: \"Camille (CamilleUwUYT)\" <crecalice@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 2026.7.dev0\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -69,11 +69,11 @@ msgstr "Le Père Noël arrive"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Nucléaire ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "Concentration"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
@@ -97,7 +97,7 @@ msgstr "Matrix"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "Champignon"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
@@ -109,11 +109,11 @@ msgstr ""
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "Rouge Blanc et Bleu 🇺🇸"
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "Arc-en-ciel 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
@@ -507,7 +507,7 @@ msgstr "Couleur du flash"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "Couleur aléatoire"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
@@ -515,7 +515,7 @@ msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Saturation"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
@@ -527,7 +527,7 @@ msgstr ""
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "Niveau de flou"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
@@ -629,7 +629,7 @@ msgstr ""
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "Pivoter la fenêtre"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
@@ -649,7 +649,7 @@ msgstr ""
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "Qualité du flou"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -712,15 +712,15 @@ msgstr "Si plusieurs effets sont sélectionnés, un est choisi au hasard."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "Rechercher..."
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "Tout activer"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "Tout désactiver"
 
 #: resources/ui/adw/mushroom.ui:55
 msgid "Effect Presets"
