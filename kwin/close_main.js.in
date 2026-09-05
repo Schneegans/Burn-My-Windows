@@ -27,7 +27,6 @@ class %EFFECT_CLASS% {
     constructor() {
         effect.configChanged.connect(this.loadConfig.bind(this));
         effect.animationEnded.connect(this.cleanupForcedRoles.bind(this));
-        effects.windowAdded.connect(this.slotWindowAdded.bind(this));
         effects.windowClosed.connect(this.slotWindowClosed.bind(this));
         effects.windowDataChanged.connect(this.slotWindowDataChanged.bind(this));
 
@@ -121,42 +120,6 @@ class %EFFECT_CLASS% {
     cleanupForcedRoles(window) {
         window.setData(Effect.WindowForceBackgroundContrastRole, null);
         window.setData(Effect.WindowForceBlurRole, null);
-    }
-
-    slotWindowAdded(window) {
-        if (effects.hasActiveFullScreenEffect) {
-            return;
-        }
-        if (!%EFFECT_CLASS%.shouldAnimateWindow(window)) {
-            return;
-        }
-        if (!window.visible) {
-            return;
-        }
-        if (effect.isGrabbed(window, Effect.WindowAddedGrabRole)) {
-            return;
-        }
-        this.setupForcedRoles(window);
-
-        effect.setUniform(this.shader, 'uForOpening', 1.0);
-        effect.setUniform(this.shader, 'uIsFullscreen', window.fullScreen ? 1.0 : 0.0);
-
-        %ON_ANIMATION_BEGIN%
-
-        window.bmwInAnimation = animate({
-            window: window,
-            curve: QEasingCurve.Linear,
-            duration: this.duration,
-            animations: [
-                {
-                    type: Effect.ShaderUniform,
-                    fragmentShader: this.shader,
-                    uniform: "uProgress",
-                    from: 0.0,
-                    to: 1.0
-                }
-            ]
-        });
     }
 
     slotWindowClosed(window) {

@@ -4,7 +4,7 @@
      "Name": "%NAME%",
      "Description": "%DESCRIPTION%",
      "Icon": "preferences-system-windows-effect-%ICON%",
-     "Category": "Window Open/Close Animation",
+     "Category": "Window %OPENCLOSE_CAP% Animation",
      "Authors": [ 
         { "Name": "Simon Schneegans", "Email": "code@simonschneegans.de" },
         { "Name": "Martin Flöser", "Email": "mgraesslin@kde.org" },
@@ -24,7 +24,7 @@
   "X-KDE-Ordering": "60",
   "X-KDE-PluginKeyword": "%DIR_NAME%",
   "X-KWin-Config-TranslationDomain": "burn-my-windows",
-  "X-KWin-Exclusive-Category": "toplevel-open-close-animation",
+  "X-KWin-Exclusive-Category": "%OPENCLOSE%-animation",
   "X-Plasma-API": "javascript",
   "X-Plasma-MainScript": "code/main.js"
 }
