@@ -188,7 +188,7 @@ You can either download the effects from the KDE store (a), download a stable ve
 > You need at least KWin 5.25.0 for the Burn-My-Windows effects.
 
 > [!NOTE]
-> If the color picker widgets in the effect settings do not work for you, you may have to install a package called `libkf5widgetsaddons-dev` (Kubuntu, KDE Neon, ...) or `kf5-kwidgetsaddons-devel`, `kwidgetsaddons-devel` (Fedora, OpenSuse, ...).
+> If the color picker widgets in the effect settings do not work for you, you may have to install a package called `libkf6widgetsaddons-dev` (Kubuntu, KDE Neon, ...) or `kf6-kwidgetsaddons-devel`, `kwidgetsaddons-devel` (Fedora, OpenSuse, ...). If you are still on Plasma 5, the package will have a `kf5` prefix instead of `kf6`.
 
 ### a) Download from the KDE Store
 
