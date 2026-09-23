@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-17 20:23+0100\n"
-"PO-Revision-Date: 2024-02-23 09:01+0000\n"
-"Last-Translator: Kristoffer Grundström <swedishsailfishosuser@tutanota.com>\n"
+"PO-Revision-Date: 2026-09-19 17:57+0000\n"
+"Last-Translator: Daniel Nylander <yeagersthlm@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sv/>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -25,7 +25,7 @@ msgstr "Uppenbarelse"
 
 #: src/effects/AuraGlow.js:89
 msgid "Aura Glow"
-msgstr ""
+msgstr "Auralyster"
 
 #: src/effects/BrokenGlass.js:138
 msgid "Broken Glass"
@@ -33,7 +33,7 @@ msgstr "Trasigt glas"
 
 #: src/effects/Doom.js:87
 msgid "Doom"
-msgstr ""
+msgstr "Doom"
 
 #: src/effects/EnergizeA.js:74
 msgid "Energize A"
@@ -69,19 +69,19 @@ msgstr "Jultomten kommer"
 
 #: src/effects/Fire.js:201
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "Nukleär ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "Fokus"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "Glid"
 
 #: src/effects/Glitch.js:80
 msgid "Glitch"
-msgstr ""
+msgstr "Glitch"
 
 #: src/effects/Hexagon.js:83
 msgid "Hexagon"
@@ -97,59 +97,59 @@ msgstr "Matris"
 
 #: src/effects/Mushroom.js:124
 msgid "Mushroom"
-msgstr ""
+msgstr "Svamp"
 
 #: src/effects/Mushroom.js:204
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "8-bitars rörmokare"
 
 #: src/effects/Mushroom.js:221
 msgid "New Bros 2 🍄"
-msgstr ""
+msgstr "New Bros 2 🍄"
 
 #: src/effects/Mushroom.js:239
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "Rött, vitt och blått 🇺🇸"
 
 #: src/effects/Mushroom.js:256
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "Regnbåge 🌈"
 
 #: src/effects/Mushroom.js:273
 msgid "Cattuccino 😺"
-msgstr ""
+msgstr "Cattuccino 😺"
 
 #: src/effects/Mushroom.js:291
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "Dracula 🦇"
 
 #: src/effects/Mushroom.js:308
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "Glitter ✨"
 
 #: src/effects/PaintBrush.js:101
 msgid "Paint Brush"
-msgstr ""
+msgstr "Målarpensel"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "Pixelera"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "Pixelhjul"
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "Pixelavtorkning"
 
 #: src/effects/Portal.js:82
 msgid "Portal"
-msgstr ""
+msgstr "Portal"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr ""
+msgstr "RGB-förvrängning"
 
 #: src/effects/SnapOfDisintegration.js:110
 msgid "Snap of Disintegration"
@@ -157,7 +157,7 @@ msgstr "Sönderfallsknäppning"
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr ""
+msgstr "Team Rocket"
 
 #: src/effects/TRexAttack.js:109
 msgid "T-Rex Attack"
@@ -169,7 +169,7 @@ msgstr "TV-effekt"
 
 #: src/effects/TVGlitch.js:81
 msgid "TV Glitch"
-msgstr ""
+msgstr "TV-glitch"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
@@ -177,11 +177,11 @@ msgstr "Feer"
 
 #: prefs.js:256
 msgid "Preview this effect"
-msgstr ""
+msgstr "Förhandsvisa den här effekten"
 
 #: prefs.js:333
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows har uppdaterats!"
 
 #: prefs.js:334 resources/ui/common/menus.ui:17
 msgid "View Changelog"
@@ -189,21 +189,23 @@ msgstr "Visa ändringslogg"
 
 #: prefs.js:516
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "Ta bort den här profilen?"
 
 #: prefs.js:517
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
+"Den aktuella effektprofilen med alla effektinställningar försvinner "
+"permanent."
 
 #: prefs.js:520
 msgid "Cancel"
-msgstr ""
+msgstr "Avbryt"
 
 #: prefs.js:525
 msgid "Delete"
-msgstr ""
+msgstr "Ta bort"
 
 #: prefs.js:757 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
@@ -211,7 +213,7 @@ msgstr "Öppnar fönster"
 
 #: prefs.js:758 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "Fönster som stängs"
 
 #: prefs.js:759 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
@@ -219,51 +221,51 @@ msgstr "Normala fönster"
 
 #: prefs.js:760 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "Dialogfönster"
 
 #: prefs.js:761 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "Standardfärgschema"
 
 #: prefs.js:762 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "Mörkt färgschema"
 
 #: prefs.js:763 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "På batteri"
 
 #: prefs.js:764 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "Ansluten till ström"
 
 #: prefs.js:765 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "Energisparläge"
 
 #: prefs.js:766 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "Balanserat läge"
 
 #: prefs.js:767 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "Prestandaläge"
 
 #: prefs.js:768 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "Energispar- eller balanserat läge"
 
 #: prefs.js:769 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "Balanserat läge eller prestandaläge"
 
 #: prefs.js:774 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "Hög prioritet"
 
 #: prefs.js:780
 msgid "Standard Profile"
-msgstr ""
+msgstr "Standardprofil"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:860
@@ -281,11 +283,11 @@ msgstr "Besök hemsida"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "Visa matchande bakgrundsbilder"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "Visa givarnas ära-hall"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -305,7 +307,7 @@ msgstr "Översätt"
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "Öppna katalogen för effektprofiler"
 
 #: resources/ui/common/menus.ui:70
 msgid "About Burn-My-Windows"
@@ -313,7 +315,7 @@ msgstr "Om Bränn-mitt-Windows"
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr ""
+msgstr "Lägg till ny profil…"
 
 #: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/tv-glitch.ui:14
 #: resources/ui/adw/glitch.ui:14 resources/ui/adw/matrix.ui:14
@@ -424,7 +426,7 @@ msgstr ""
 
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "Styrka"
 
 #: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/glitch.ui:113
 #: resources/ui/adw/aura-glow.ui:103 resources/ui/adw/fire.ui:96
@@ -457,36 +459,36 @@ msgstr "Färg på dricksen"
 
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "Horisontell skala"
 
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "Vertikal skala"
 
 #: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
 msgid "Pixel Size"
-msgstr ""
+msgstr "Pixelstorlek"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "Ljusstyrka"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "Röd hastighet"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "Grön hastighet"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "Blå hastighet"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "Penselstorlek"
 
 #: resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
@@ -506,43 +508,43 @@ msgstr "Färg för bränningen"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "Slumpmässig färg"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr ""
+msgstr "Startnyans"
 
 #: resources/ui/adw/aura-glow.ui:136
 msgid "Saturation"
-msgstr ""
+msgstr "Mättnad"
 
 #: resources/ui/adw/aura-glow.ui:169
 msgid "Edge Size"
-msgstr ""
+msgstr "Kantstorlek"
 
 #: resources/ui/adw/aura-glow.ui:202
 msgid "Edge Hardness"
-msgstr ""
+msgstr "Kanthårdhet"
 
 #: resources/ui/adw/aura-glow.ui:235 resources/ui/adw/focus.ui:61
 msgid "Blur Amount"
-msgstr ""
+msgstr "Oskärpemängd"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "Antal ekrar"
 
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "Kläm ihop"
 
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "Luta"
 
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "Förskjutning"
 
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
@@ -558,15 +560,15 @@ msgstr "Sugningens intensitet"
 
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "Rotationshastighet"
 
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "Virvlande"
 
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "Detaljer"
 
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
@@ -574,11 +576,11 @@ msgstr "Turbulens"
 
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "Starta vid pekaren"
 
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "Om den är avstängd väljs en slumpmässig plats."
 
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
@@ -622,85 +624,85 @@ msgstr "Gradient"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
-msgstr ""
+msgstr "Delning av animering"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "Rotera fönster"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "Horisontell glitterposition"
 
 #: resources/ui/adw/team-rocket.ui:151
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "Vertikal glitterposition"
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
-msgstr ""
+msgstr "Glitterstorlek"
 
 #: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "Glitterrotation"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "Oskärpekvalitet"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "Begränsningar för effektprofil"
 
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "Ange när de aktuella effektinställningarna ska användas."
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "Program"
 
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "Alla"
 
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "Animeringstyp"
 
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "Fönstertyp"
 
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "Färgschema"
 
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "Energiläge"
 
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "Energiprofil"
 
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "Avancerade profilalternativ"
 
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "Använd den här profilen även om det finns profiler som passar bättre."
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "Ta bort den här profilen…"
 
 #: resources/ui/adw/prefs.ui:223
 msgid "Effect Selection"
-msgstr ""
+msgstr "Effektval"
 
 #: resources/ui/adw/prefs.ui:224
 msgid "If multiple are selected, one is chosen randomly."
@@ -708,63 +710,63 @@ msgstr "Om flera val är gjorda så väljs ett slumpvist."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "Sök…"
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "Aktivera alla"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "Inaktivera alla"
 
 #: resources/ui/adw/mushroom.ui:55
 msgid "Effect Presets"
-msgstr ""
+msgstr "Effektförinställningar"
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr ""
+msgstr "Skalningsstil"
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
-msgstr ""
+msgstr "8-bitars --- jämn"
 
 #: resources/ui/adw/mushroom.ui:112
 msgid "Spark Count"
-msgstr ""
+msgstr "Antal gnistor"
 
 #: resources/ui/adw/mushroom.ui:150
 msgid "Spark Rotation"
-msgstr ""
+msgstr "Gnistrotation"
 
 #: resources/ui/adw/mushroom.ui:188
 msgid "Spark Color"
-msgstr ""
+msgstr "Gnistfärg"
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
-msgstr ""
+msgstr "Strålfärg"
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
-msgstr ""
+msgstr "Antal stjärnringar"
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "Rotation av stjärnring"
 
 #: resources/ui/adw/mushroom.ui:332
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "Antal stjärnor per ring"
 
 #: resources/ui/adw/mushroom.ui:370
 msgid "Star Gradient"
-msgstr ""
+msgstr "Stjärntonning"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "Brus"
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "Guldsponsorer"
