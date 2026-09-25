@@ -15,6 +15,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Other Changes
 
+- The KWin version now blacklists [Kando](https://github.com/Kando-menu/kando) so that the menu does not get animated.
 - Many translations have been updated. Thanks to all the translators!
 
 ## [Burn My Windows 48](https://github.com/schneegans/Burn-My-Windows/releases/tag/v48)
