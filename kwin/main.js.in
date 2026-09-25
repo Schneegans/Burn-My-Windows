@@ -20,7 +20,10 @@ const classBlacklist = [
     "jetbrains-idea jetbrains-idea", "jetbrains-idea-ce jetbrains-idea-ce",
     "jetbrains-phpstorm jetbrains-phpstorm", "jetbrains-pycharm jetbrains-pycharm", 
     "jetbrains-pycharm-ce jetbrains-pycharm-ce", "jetbrains-rider jetbrains-rider",
-    "jetbrains-rubymine jetbrains-rubymine", "jetbrains-webstorm jetbrains-webstorm"
+    "jetbrains-rubymine jetbrains-rubymine", "jetbrains-webstorm jetbrains-webstorm",
+
+    // Spectacle (KDE screenshot tool) should not be animated.
+    "spectacle org.kde.spectacle"
 ];
 
 const nameBlacklist = [

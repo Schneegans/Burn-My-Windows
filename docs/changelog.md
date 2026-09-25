@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Other Changes
 
 - The KWin version now blacklists [Kando](https://github.com/Kando-menu/kando) so that the menu does not get animated.
+- Also Spectacle (KDE screenshot tool) is now blacklisted so that it does not get animated.
 - Many translations have been updated. Thanks to all the translators!
 
 #### Bug Fixes
