@@ -398,10 +398,16 @@ SPDX-License-Identifier: CC0-1.0
       <description>The number of discrete animation steps. Zero gives a smooth animation.</description>
     </key>
 
+    <key name="materialize-use-accent-color" type="b">
+      <default>true</default>
+      <summary>Materialize Use Accent Color</summary>
+      <description>Use the system accent color for the panel instead of the custom color.</description>
+    </key>
+
     <key name="materialize-color" type="s">
       <default>"rgba(130, 190, 60, 0.85)"</default>
       <summary>Materialize Color</summary>
-      <description>The color of the panel before the window content appears.</description>
+      <description>The color of the panel before the window content appears. Only used if the system accent color is disabled.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

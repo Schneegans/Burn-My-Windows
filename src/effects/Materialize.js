@@ -21,7 +21,42 @@ import * as utils from '../utils.js';
 // only uses the static metadata of the effect.
 const ShaderFactory = await utils.importInShellOnly('./ShaderFactory.js');
 
+const Gio = await utils.importInShellOnly('gi://Gio');
+
 const _ = await utils.importGettext();
+
+// These are the accent colors of libadwaita. GNOME only stores the name of the selected
+// accent color, so we have to map it to the actual color ourselves.
+const ACCENT_COLORS = {
+  blue: 'rgb(53, 132, 228)',
+  teal: 'rgb(33, 144, 164)',
+  green: 'rgb(58, 148, 74)',
+  yellow: 'rgb(200, 136, 0)',
+  orange: 'rgb(237, 91, 0)',
+  red: 'rgb(230, 45, 66)',
+  pink: 'rgb(213, 97, 153)',
+  purple: 'rgb(145, 65, 172)',
+  slate: 'rgb(111, 131, 150)',
+};
+
+// The accent color is fully opaque. This is how strongly it tints the panel.
+const ACCENT_TINT = 0.85;
+
+// Returns the system accent color as [r, g, b, a], or null if the system does not
+// support accent colors (GNOME Shell < 47).
+function getAccentColor(interfaceSettings) {
+  if (!interfaceSettings) {
+    return null;
+  }
+
+  const color = ACCENT_COLORS[interfaceSettings.get_string('accent-color')];
+  if (!color) {
+    return null;
+  }
+
+  const [r, g, b] = utils.parseColor(color);
+  return [r, g, b, ACCENT_TINT];
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // This effect is inspired by the computer interfaces seen in The Matrix Resurrections. //
@@ -39,6 +74,14 @@ export default class Effect {
   // GLSL file in resources/shaders/<nick>.glsl. The callback will be called for each
   // newly created shader instance.
   constructor() {
+    // The accent-color key was added in GNOME 47. On older versions, the custom color is
+    // used instead.
+    const schema =
+      Gio.SettingsSchemaSource.get_default().lookup('org.gnome.desktop.interface', true);
+    if (schema?.has_key('accent-color')) {
+      this._interfaceSettings = new Gio.Settings({settings_schema: schema});
+    }
+
     this.shaderFactory = new ShaderFactory(Effect.getNick(), (shader) => {
       // Store uniform locations of newly created shaders.
       shader._uColor      = shader.get_uniform_location('uColor');
@@ -47,8 +90,16 @@ export default class Effect {
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
+        let color = null;
+        if (settings.get_boolean('materialize-use-accent-color')) {
+          color = getAccentColor(this._interfaceSettings);
+        }
+        if (!color) {
+          color = utils.parseColor(settings.get_string('materialize-color'));
+        }
+
         // clang-format off
-        shader.set_uniform_float(shader._uColor,      4, utils.parseColor(settings.get_string('materialize-color')));
+        shader.set_uniform_float(shader._uColor,      4, color);
         shader.set_uniform_float(shader._uStartScale, 1, [settings.get_double('materialize-start-scale')]);
         shader.set_uniform_float(shader._uSteps,      1, [settings.get_int('materialize-steps')]);
         // clang-format on
@@ -85,7 +136,16 @@ export default class Effect {
     dialog.bindAdjustment('materialize-animation-time');
     dialog.bindAdjustment('materialize-start-scale');
     dialog.bindAdjustment('materialize-steps');
+    dialog.bindSwitch('materialize-use-accent-color');
     dialog.bindColorButton('materialize-color');
+
+    // The custom color is only used if the accent color is disabled.
+    const colorRow     = dialog.getBuilder().get_object('materialize-color-row');
+    const accentSwitch = dialog.getBuilder().get_object('materialize-use-accent-color');
+    colorRow.set_sensitive(!accentSwitch.get_active());
+    accentSwitch.connect('notify::active', () => {
+      colorRow.set_sensitive(!accentSwitch.get_active());
+    });
   }
 
   // ---------------------------------------------------------------- API for extension.js
