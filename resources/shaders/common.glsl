@@ -53,8 +53,9 @@ uniform int textureHeight;
 in vec2 texcoord0;
 out vec4 fragColor;
 
-vec2 uSize     = vec2(textureWidth, textureHeight);
-vec2 iTexCoord = vec2(texcoord0.x, 1.0 - texcoord0.y);
+// Using defines here as OpenGL ES forbids non-constant global initializers.
+#define uSize vec2(textureWidth, textureHeight)
+#define iTexCoord vec2(texcoord0.x, 1.0 - texcoord0.y)
 float uPadding = 0.0;
 
 vec4 getInputColor(vec2 coords) {

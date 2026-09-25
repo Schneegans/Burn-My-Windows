@@ -18,6 +18,10 @@ SPDX-License-Identifier: CC-BY-4.0
 - The KWin version now blacklists [Kando](https://github.com/Kando-menu/kando) so that the menu does not get animated.
 - Many translations have been updated. Thanks to all the translators!
 
+#### Bug Fixes
+
+- Fixed an issue where the shaders would fail to load on KWin with OpenGL ES.
+
 ## [Burn My Windows 48](https://github.com/schneegans/Burn-My-Windows/releases/tag/v48)
 
 **Release Date:** 2026-03-15
