@@ -371,7 +371,41 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-    <!-- TV Effect Options                                                             -->
+    <!-- Materialize Effect Options                                                    -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="materialize-enable-effect" type="b">
+      <default>false</default>
+      <summary>Materialize Enable Effect</summary>
+      <description>Use the Materialize effect.</description>
+    </key>
+
+    <key name="materialize-animation-time" type="i">
+      <default>250</default>
+      <summary>Materialize Animation Time</summary>
+      <description>The time the Materialize effect takes.</description>
+    </key>
+
+    <key name="materialize-start-scale" type="d">
+      <default>0.6</default>
+      <summary>Materialize Start Scale</summary>
+      <description>The initial size of the panel relative to the window.</description>
+    </key>
+
+    <key name="materialize-steps" type="i">
+      <default>4</default>
+      <summary>Materialize Steps</summary>
+      <description>The number of discrete animation steps. Zero gives a smooth animation.</description>
+    </key>
+
+    <key name="materialize-color" type="s">
+      <default>"rgba(130, 190, 60, 0.85)"</default>
+      <summary>Materialize Color</summary>
+      <description>The color of the panel before the window content appears.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- TV Effect Options                                                           -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
     <key name="tv-enable-effect" type="b">

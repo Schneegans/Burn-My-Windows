@@ -35,6 +35,7 @@ import Glide from './src/effects/Glide.js';
 import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
+import Materialize from './src/effects/Materialize.js';
 import Matrix from './src/effects/Matrix.js';
 import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
@@ -83,7 +84,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       Pixelate,   PixelWheel, PixelWipe,
       Portal,     RGBWarp,    SnapOfDisintegration,
       TeamRocket, TRexAttack, TVEffect,
-      TVGlitch,   Wisps,
+      TVGlitch,   Wisps,      Materialize,
     ];
 
 
