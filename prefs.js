@@ -24,6 +24,7 @@ import * as utils from './src/utils.js';
 import {ProfileManager} from './src/ProfileManager.js';
 
 import Apparition from './src/effects/Apparition.js';
+import BlackHole from './src/effects/BlackHole.js';
 import AuraGlow from './src/effects/AuraGlow.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
 import Doom from './src/effects/Doom.js';
@@ -83,7 +84,7 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
       Pixelate,   PixelWheel, PixelWipe,
       Portal,     RGBWarp,    SnapOfDisintegration,
       TeamRocket, TRexAttack, TVEffect,
-      TVGlitch,   Wisps,
+      TVGlitch,   Wisps,      BlackHole,
     ];
 
 

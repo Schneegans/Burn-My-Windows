@@ -100,6 +100,24 @@ SPDX-License-Identifier: CC0-1.0
       <description>The amount of suction of the apparition effect.</description>
     </key>
 
+    <key name="black-hole-enable-effect" type="b">
+      <default>false</default>
+      <summary>Black Hole Enable Effect</summary>
+      <description>Use the Black Hole effect.</description>
+    </key>
+
+    <key name="black-hole-animation-time" type="i">
+      <default>1500</default>
+      <summary>Black Hole Animation Time</summary>
+      <description>The time the Black Hole effect takes.</description>
+    </key>
+
+    <key name="black-hole-width" type="d">
+      <default>0.1</default>
+      <summary>Black Hole Width</summary>
+      <description>Width parameter for the black hole.</description>
+    </key>
+
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Pixelate Options                                                              -->

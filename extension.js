@@ -23,6 +23,7 @@ import {WindowPicker} from './src/WindowPicker.js';
 import * as utils from './src/utils.js';
 
 import Apparition from './src/effects/Apparition.js';
+import BlackHole from './src/effects/BlackHole.js';
 import AuraGlow from './src/effects/AuraGlow.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
 import Doom from './src/effects/Doom.js';
@@ -80,7 +81,7 @@ export default class BurnMyWindows extends Extension {
       new Matrix(),     new PaintBrush(), new Pixelate(),    new PixelWheel(),
       new PixelWipe(),  new Portal(),     new RGBWarp(),     new SnapOfDisintegration(),
       new TeamRocket(), new TRexAttack(), new TVEffect(),    new TVGlitch(),
-      new Wisps(),      new Mushroom()
+      new Wisps(),      new Mushroom(), new BlackHole()
     ];
 
     // Load all of our resources.
@@ -123,7 +124,6 @@ export default class BurnMyWindows extends Extension {
     // Enable the window-picking D-Bus API for the preferences dialog.
     this._windowPicker = new WindowPicker();
     this._windowPicker.export();
-
     // We will use extensionThis to refer to the extension inside the patched methods.
     const extensionThis = this;
 
