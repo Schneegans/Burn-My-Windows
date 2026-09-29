@@ -137,18 +137,27 @@ export default class BurnMyWindows extends Extension {
     // as power-profiles-daemon may not be running yet (it is started after
     // multi-user.target). In this case, creating the proxy synchronously would block
     // GNOME Shell until the service is activated, or until the D-Bus activation times
-    // out after 25 seconds. See issue #575.
+    // out after 25 seconds. See issue #575. While the proxy is pending, the current power
+    // profile is unknown, which is considered in _chooseEffect().
     const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
       utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
-    this._powerProfilesCancellable = new Gio.Cancellable();
+    const cancellable              = new Gio.Cancellable();
+    this._powerProfilesCancellable = cancellable;
+    this._powerProfilesPending     = true;
     new PowerProfilesProxy(Gio.DBus.system, 'net.hadess.PowerProfiles',
                            '/net/hadess/PowerProfiles', (proxy, error) => {
-                             // Maybe the service is masked or the extension got disabled
-                             // in the meantime...
+                             // The extension got disabled in the meantime.
+                             if (cancellable.is_cancelled()) {
+                               return;
+                             }
+
+                             this._powerProfilesPending = false;
+
+                             // Maybe the service is masked...
                              if (!error) {
                                this._powerProfilesProxy = proxy;
                              }
-                           }, this._powerProfilesCancellable);
+                           }, cancellable);
 
     // We will monkey-patch these methods. Let's store the original ones.
     this._origShouldAnimateActor    = Main.wm._shouldAnimateActor;
@@ -499,7 +508,14 @@ export default class BurnMyWindows extends Extension {
             (profileColorScheme == 2 && colorScheme == 'prefer-dark');
         }
 
-        // Finally, we may also have to check the power profile.
+        // Finally, we may also have to check the power profile. While the power-profiles
+        // proxy is still pending, the current power profile is unknown. Hence, profiles
+        // which depend on it cannot match. If the service is not available at all, the
+        // power profile is ignored.
+        if (matches && profilePowerProfile != 0 && this._powerProfilesPending) {
+          matches = false;
+        }
+
         if (matches && profilePowerProfile != 0 && this._powerProfilesProxy) {
           const powerProfile = this._powerProfilesProxy.ActiveProfile;
 
