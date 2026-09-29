@@ -133,15 +133,22 @@ export default class BurnMyWindows extends Extension {
     this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
                                         '/org/freedesktop/UPower');
 
-    // This is used to get the current power profile.
-    try {
-      const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
-      this._powerProfilesProxy = new PowerProfilesProxy(
-        Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
-    } catch (e) {
-      // Maybe the service is masked...
-    }
+    // This is used to get the current power profile. The proxy is created asynchronously,
+    // as power-profiles-daemon may not be running yet (it is started after
+    // multi-user.target). In this case, creating the proxy synchronously would block
+    // GNOME Shell until the service is activated, or until the D-Bus activation times
+    // out after 25 seconds. See issue #575.
+    const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
+      utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+    this._powerProfilesCancellable = new Gio.Cancellable();
+    new PowerProfilesProxy(Gio.DBus.system, 'net.hadess.PowerProfiles',
+                           '/net/hadess/PowerProfiles', (proxy, error) => {
+                             // Maybe the service is masked or the extension got disabled
+                             // in the meantime...
+                             if (!error) {
+                               this._powerProfilesProxy = proxy;
+                             }
+                           }, this._powerProfilesCancellable);
 
     // We will monkey-patch these methods. Let's store the original ones.
     this._origShouldAnimateActor    = Main.wm._shouldAnimateActor;
@@ -346,6 +353,10 @@ export default class BurnMyWindows extends Extension {
     this._windowPicker.unexport();
 
     global.window_manager.disconnect(this._killEffectsSignal);
+
+    // Abort the creation of the power-profiles proxy if it is still pending.
+    this._powerProfilesCancellable.cancel();
+    this._powerProfilesProxy = null;
 
     // Restore the original window-open and window-close animations.
     Workspace.prototype._addWindowClone = this._origAddWindowClone;
