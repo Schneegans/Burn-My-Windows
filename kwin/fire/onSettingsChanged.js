@@ -11,6 +11,8 @@ effect.setUniform(this.shader, 'uScale', effect.readConfig('Scale', 1.0));
 effect.setUniform(this.shader, 'uMovementSpeed', effect.readConfig('MovementSpeed', 1.0));
 effect.setUniform(this.shader, 'u3DNoise',effect.readConfig('3DNoise', true) ? 1.0 : 0.0);
 effect.setUniform(this.shader, 'uRandomColor', effect.readConfig('RandomColor', true) ? 1.0 : 0.0);
+effect.setUniform(this.shader, 'uClosingBottomToTop', effect.readConfig('ClosingBottomToTop', false) ? 1.0 : 0.0);
+effect.setUniform(this.shader, 'uOpeningBottomToTop', effect.readConfig('OpeningBottomToTop', false) ? 1.0 : 0.0);
 effect.setUniform(this.shader, 'uGradient1', this.readRGBAConfig('Gradient1'));
 effect.setUniform(this.shader, 'uGradient2', this.readRGBAConfig('Gradient2'));
 effect.setUniform(this.shader, 'uGradient3', this.readRGBAConfig('Gradient3'));
