@@ -12,6 +12,7 @@ SPDX-License-Identifier: CC-BY-4.0
 #### New Features
 
 - **New Effect: Materialize!** Windows pop up as a flat, tinted panel which grows to full size in a few stuttering steps before the actual window content appears. It is inspired by the computer screens in The Matrix Resurrections and uses the system accent color by default. Thanks to [@eboye](https://github.com/eboye) for this contribution!
+- The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)
 
