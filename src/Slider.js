@@ -47,8 +47,17 @@ class Slider extends Gtk.Box {
 
     this.spacing = 6;
 
+    // The slider below expands to fill this box. Without this, the expansion would be
+    // propagated to this box, which would then fill all space next to the row's title.
+    // So rows with shorter titles would get longer sliders.
+    this.hexpand = false;
+
     // The spin button is placed on the left, where the Gtk.Scale used to draw its value.
-    this._spinButton = new Gtk.SpinButton({valign: Gtk.Align.CENTER});
+    // By default, its width depends on the range of the adjustment, so the sliders would
+    // not be aligned. Hence we use a fixed width which fits the longest value currently
+    // used (e.g. "10.00"). If a slider with longer values is added, this has to be
+    // increased.
+    this._spinButton = new Gtk.SpinButton({valign: Gtk.Align.CENTER, width_chars: 5});
     this.append(this._spinButton);
 
     // The slider rounds its values to the given number of digits, but typed values are
