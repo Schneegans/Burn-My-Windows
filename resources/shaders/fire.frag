@@ -24,6 +24,8 @@ uniform vec4 uGradient4;
 uniform vec4 uGradient5;
 uniform bool uRandomColor;
 uniform float uSeed;
+uniform bool uClosingBottomToTop;
+uniform bool uOpeningBottomToTop;
 
 // These may be configurable in the future.
 const float EDGE_FADE  = 70.0;
@@ -62,7 +64,8 @@ vec4 getFireColor(float v, vec4 c0, vec4 c1, vec4 c2, vec4 c3, vec4 c4) {
 
 // This method requires the uniforms from standardUniforms() to be available.
 // It returns two values: The first is an alpha value which can be used for the window
-// texture. This gradually dissolves the window from top to bottom. The second can be used
+// texture. This gradually dissolves the window from top to bottom (or from bottom to top,
+// if configured so for the current animation type). The second can be used
 // to mask any effect, it will be most opaque where the window is currently fading and
 // gradually dissolve to zero over time.
 // hideTime:      A value in [0..1]. It determines the percentage of the animation which
@@ -76,14 +79,21 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
   float burnProgress      = clamp(progress / hideTime, 0.0, 1.0);
   float afterBurnProgress = clamp((progress - hideTime) / (1.0 - hideTime), 0.0, 1.0);
 
-  // Gradient from top to bottom.
-  float t = iTexCoord.t * (1.0 - fadeWidth);
+  // Gradient from top to bottom. All masks below are based on this, so flipping it makes
+  // the window burn from bottom to top.
+  bool bottomToTop = uForOpening ? uOpeningBottomToTop : uClosingBottomToTop;
+  float y          = bottomToTop ? 1.0 - iTexCoord.t : iTexCoord.t;
+  float t          = y * (1.0 - fadeWidth);
 
   // Visible part of the window. Gradually dissolves towards the bottom.
   float windowMask = 1.0 - clamp((burnProgress - t) / fadeWidth, 0.0, 1.0);
 
-  // Gradient from top burning window.
-  float effectMask = clamp(t * (1.0 - windowMask) / burnProgress, 0.0, 1.0);
+  // Gradient from top burning window. The fire is most intense at the burning edge and
+  // fades towards the top of the window. If the window burns from bottom to top, simply
+  // flipping this would make the flames point downwards. So in this case, the fire is
+  // most intense at the bottom of the window and fades towards the burning edge.
+  float fireGradient = bottomToTop ? burnProgress - t : t;
+  float effectMask   = clamp(fireGradient * (1.0 - windowMask) / burnProgress, 0.0, 1.0);
 
   // Fade-out when the window burned down.
   if (progress > hideTime) {
