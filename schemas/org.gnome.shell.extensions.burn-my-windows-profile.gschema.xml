@@ -254,6 +254,18 @@ SPDX-License-Identifier: CC0-1.0
       <description>Use a 3D noise for the fire.</description>
     </key>
 
+    <key name="fire-closing-bottom-to-top" type="b">
+      <default>false</default>
+      <summary>Burn closing windows from bottom to top</summary>
+      <description>If enabled, closing windows burn from bottom to top instead of from top to bottom.</description>
+    </key>
+
+    <key name="fire-opening-bottom-to-top" type="b">
+      <default>false</default>
+      <summary>Burn opening windows from bottom to top</summary>
+      <description>If enabled, opening windows are revealed from bottom to top instead of from top to bottom.</description>
+    </key>
+
     <key name="fire-color-1" type="s">
       <default>"rgba(76, 51, 25, 0.0)"</default>
       <summary>Fire Color 1</summary>
