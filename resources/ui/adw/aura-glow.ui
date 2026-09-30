@@ -12,11 +12,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">0</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-animation-time">
@@ -80,9 +78,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <child>
           <object class="GtkScale" id="aura-glow-start-hue-slider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-start-hue">
@@ -111,11 +107,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Speed</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-speed">
@@ -146,9 +140,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <child>
           <object class="GtkScale" id="aura-glow-saturation-slider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-saturation">
@@ -177,11 +169,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Edge Size</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-edge-size">
@@ -210,11 +200,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Edge Hardness</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-edge-hardness">
@@ -243,11 +231,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Blur Amount</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="aura-glow-blur">

@@ -13,11 +13,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">0</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="matrix-animation-time">
@@ -46,11 +44,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Scale</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">0</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="matrix-scale">
@@ -79,11 +75,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Randomness</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="matrix-randomness">
@@ -112,11 +106,9 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Vertical Overshooting</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
-            <property name="draw-value">1</property>
             <property name="digits">2</property>
-            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="matrix-overshoot">
