@@ -41,6 +41,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **Glitch** <br> This effect applies some intentional graphics issues to your windows.                                                                                             | <img src ="docs/pics/glitch.gif" />                                                   |
 | **Hexagon** <br> With glowing lines and hexagon-shaped tiles, this effect looks very sci-fi.                                                                                      | <img src ="docs/pics/hexagon.gif" />                                                  |
 | **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect.                                                                                              | <img src ="docs/pics/incinerate.gif" />                                               |
+| **Materialize** <br> Windows pop up as a flat, tinted panel before materializing, like the computer screens in The Matrix Resurrections. Uses the system accent color by default. | <img src ="docs/pics/materialize.gif" />                                              |
 | **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.                                                                             | <img src ="docs/pics/matrix.gif" />                                                   |
 | **Mushroom** <br> Inspired by your favorite italian plumber!                                                                                                                      | <img src ="docs/pics/mushroom.gif" />                                                 |
 | **Paint Brush** <br> Paint or erase your windows with a thick paint brush.                                                                                                        | <img src ="docs/pics/paint-brush.gif" />                                              |
@@ -81,6 +82,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Glitch</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Materialize</td>             <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Mushroom</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>

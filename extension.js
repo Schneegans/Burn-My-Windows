@@ -34,6 +34,7 @@ import Glide from './src/effects/Glide.js';
 import Glitch from './src/effects/Glitch.js';
 import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
+import Materialize from './src/effects/Materialize.js';
 import Matrix from './src/effects/Matrix.js';
 import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
@@ -74,13 +75,20 @@ export default class BurnMyWindows extends Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new Apparition(), new AuraGlow(),   new BrokenGlass(), new Doom(),
-      new EnergizeA(),  new EnergizeB(),  new Fire(),        new Focus(),
-      new Glide(),      new Glitch(),     new Hexagon(),     new Incinerate(),
-      new Matrix(),     new PaintBrush(), new Pixelate(),    new PixelWheel(),
-      new PixelWipe(),  new Portal(),     new RGBWarp(),     new SnapOfDisintegration(),
-      new TeamRocket(), new TRexAttack(), new TVEffect(),    new TVGlitch(),
-      new Wisps(),      new Mushroom()
+      new Apparition(),  new AuraGlow(),
+      new BrokenGlass(), new Doom(),
+      new EnergizeA(),   new EnergizeB(),
+      new Fire(),        new Focus(),
+      new Glide(),       new Glitch(),
+      new Hexagon(),     new Incinerate(),
+      new Materialize(), new Matrix(),
+      new Mushroom(),    new PaintBrush(),
+      new Pixelate(),    new PixelWheel(),
+      new PixelWipe(),   new Portal(),
+      new RGBWarp(),     new SnapOfDisintegration(),
+      new TeamRocket(),  new TRexAttack(),
+      new TVEffect(),    new TVGlitch(),
+      new Wisps()
     ];
 
     // Load all of our resources.
