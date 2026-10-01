@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-29 21:10+0200\n"
-"PO-Revision-Date: 2026-09-19 17:57+0000\n"
-"Last-Translator: Daniel Nylander <yeagersthlm@gmail.com>\n"
+"PO-Revision-Date: 2026-10-01 14:51+0000\n"
+"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sv/>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.10\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -93,7 +93,7 @@ msgstr "Bränna"
 
 #: src/effects/Materialize.js:128
 msgid "Materialize"
-msgstr ""
+msgstr "Materialisera"
 
 #: src/effects/Matrix.js:101
 msgid "Matrix"
@@ -551,7 +551,7 @@ msgstr "Skapar en mer dynamisk eld, men kräver mer GPU-kraft."
 
 #: resources/ui/adw/fire.ui:152
 msgid "Use Random Color"
-msgstr ""
+msgstr "Använd slumpmässig färg"
 
 #: resources/ui/adw/fire.ui:174
 msgid "Gradient"
@@ -658,19 +658,19 @@ msgstr "Brus"
 
 #: resources/ui/adw/materialize.ui:47
 msgid "Start Scale"
-msgstr ""
+msgstr "Startskala"
 
 #: resources/ui/adw/materialize.ui:80
 msgid "Steps"
-msgstr ""
+msgstr "Steg"
 
 #: resources/ui/adw/materialize.ui:81
 msgid "Zero gives a smooth animation."
-msgstr ""
+msgstr "Noll ger en mjuk animering."
 
 #: resources/ui/adw/materialize.ui:114
 msgid "Use System Accent Color"
-msgstr ""
+msgstr "Använd systemets accentfärg"
 
 #: resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
