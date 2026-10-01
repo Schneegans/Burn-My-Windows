@@ -141,15 +141,31 @@ export default class BurnMyWindows extends Extension {
     this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
                                         '/org/freedesktop/UPower');
 
-    // This is used to get the current power profile.
-    try {
-      const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
-      this._powerProfilesProxy = new PowerProfilesProxy(
-        Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
-    } catch (e) {
-      // Maybe the service is masked...
-    }
+    // This is used to get the current power profile. The proxy is created asynchronously,
+    // as power-profiles-daemon may not be running yet (it is started after
+    // multi-user.target). In this case, creating the proxy synchronously would block
+    // GNOME Shell until the service is activated, or until the D-Bus activation times
+    // out after 25 seconds. See issue #575. While the proxy is pending, the current power
+    // profile is unknown, which is considered in _chooseEffect().
+    const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
+      utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+    const cancellable              = new Gio.Cancellable();
+    this._powerProfilesCancellable = cancellable;
+    this._powerProfilesPending     = true;
+    new PowerProfilesProxy(Gio.DBus.system, 'net.hadess.PowerProfiles',
+                           '/net/hadess/PowerProfiles', (proxy, error) => {
+                             // The extension got disabled in the meantime.
+                             if (cancellable.is_cancelled()) {
+                               return;
+                             }
+
+                             this._powerProfilesPending = false;
+
+                             // Maybe the service is masked...
+                             if (!error) {
+                               this._powerProfilesProxy = proxy;
+                             }
+                           }, cancellable);
 
     // We will monkey-patch these methods. Let's store the original ones.
     this._origShouldAnimateActor    = Main.wm._shouldAnimateActor;
@@ -355,6 +371,10 @@ export default class BurnMyWindows extends Extension {
 
     global.window_manager.disconnect(this._killEffectsSignal);
 
+    // Abort the creation of the power-profiles proxy if it is still pending.
+    this._powerProfilesCancellable.cancel();
+    this._powerProfilesProxy = null;
+
     // Restore the original window-open and window-close animations.
     Workspace.prototype._addWindowClone = this._origAddWindowClone;
     Workspace.prototype._windowRemoved  = this._origWindowRemoved;
@@ -496,7 +516,14 @@ export default class BurnMyWindows extends Extension {
             (profileColorScheme == 2 && colorScheme == 'prefer-dark');
         }
 
-        // Finally, we may also have to check the power profile.
+        // Finally, we may also have to check the power profile. While the power-profiles
+        // proxy is still pending, the current power profile is unknown. Hence, profiles
+        // which depend on it cannot match. If the service is not available at all, the
+        // power profile is ignored.
+        if (matches && profilePowerProfile != 0 && this._powerProfilesPending) {
+          matches = false;
+        }
+
         if (matches && profilePowerProfile != 0 && this._powerProfilesProxy) {
           const powerProfile = this._powerProfilesProxy.ActiveProfile;
 
