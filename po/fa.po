@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-29 21:10+0200\n"
-"PO-Revision-Date: 2026-10-01 14:51+0000\n"
+"PO-Revision-Date: 2026-10-03 11:48+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/fa/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.10\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -93,7 +93,7 @@ msgstr "سوزاندن"
 
 #: src/effects/Materialize.js:128
 msgid "Materialize"
-msgstr ""
+msgstr "صورت گرفتن"
 
 #: src/effects/Matrix.js:101
 msgid "Matrix"
