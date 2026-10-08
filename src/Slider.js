@@ -32,10 +32,12 @@ class Slider extends Gtk.Scale {
     super(params);
 
     // This is the text field which is shown on top of the value while it is edited. It
-    // is hidden the rest of the time. It uses tabular digits, like the value itself. It
+    // is hidden the rest of the time. It is a normal Gtk.Entry, so that it is obvious
+    // that the value is being edited. It uses tabular digits, like the value itself. It
     // is given the size of the value later on, so it should not ask for more space than
-    // that by itself. This is why the number of characters is so small.
-    this._entry = new Gtk.Text({visible: false, width_chars: 1});
+    // that by itself. This is why the number of characters is so small. The text is
+    // centered, as the text field is as wide as the longest possible value.
+    this._entry = new Gtk.Entry({visible: false, width_chars: 1, xalign: 0.5});
     this._entry.add_css_class('numeric');
     this._entry.set_parent(this);
 
@@ -49,8 +51,10 @@ class Slider extends Gtk.Scale {
 
     // Pressing Escape discards the typed value. We return true in this case, so that the
     // key press is not handled any further. Else, it would also close the preferences
-    // dialog.
-    const keys = new Gtk.EventControllerKey();
+    // dialog. The key presses go to the text inside the Gtk.Entry, so we have to look at
+    // them on their way there.
+    const keys =
+      new Gtk.EventControllerKey({propagation_phase: Gtk.PropagationPhase.CAPTURE});
     keys.connect('key-pressed', (controller, keyval) => {
       if (keyval === Gdk.KEY_Escape) {
         this._stopEditing(false);
@@ -64,22 +68,27 @@ class Slider extends Gtk.Scale {
     // Gtk.Scale, so that clicking on the value does not move the slider.
     const click = new Gtk.GestureClick({propagation_phase: Gtk.PropagationPhase.CAPTURE});
     click.connect('pressed', (gesture, n, x, y) => {
-      const value = this._getValueLabel();
-      if (this._entry.visible || !value) {
-        return;
-      }
-
       // Only clicks on the value itself start the editing. Clicks on the slider are left
-      // to the Gtk.Scale. The given coordinates are relative to this widget, so they have
-      // to be translated to the coordinate system of the value first.
-      const [, valueX, valueY] = this.translate_coordinates(value, x, y);
-      if (value.contains(valueX, valueY)) {
+      // to the Gtk.Scale.
+      const value = this._getValueAt(x, y);
+      if (value && !this._entry.visible) {
         // Claiming the click prevents the Gtk.Scale from handling it as well.
         gesture.set_state(Gtk.EventSequenceState.CLAIMED);
         this._startEditing(value);
       }
     });
     this.add_controller(click);
+
+    // As a hint that the value can be edited, the pointer becomes a text cursor while it
+    // is above the value. Everywhere else, the normal pointer is shown.
+    const motion       = new Gtk.EventControllerMotion();
+    const updateCursor = (x, y) => {
+      this.set_cursor_from_name(this._getValueAt(x, y) ? 'text' : null);
+    };
+    motion.connect('enter', (controller, x, y) => updateCursor(x, y));
+    motion.connect('motion', (controller, x, y) => updateCursor(x, y));
+    motion.connect('leave', () => this.set_cursor_from_name(null));
+    this.add_controller(motion);
   }
 
   // ----------------------------------------------------------------- GTK virtual methods
@@ -99,12 +108,19 @@ class Slider extends Gtk.Scale {
       const [minWidth]  = this._entry.measure(Gtk.Orientation.HORIZONTAL, -1);
       const [minHeight] = this._entry.measure(Gtk.Orientation.VERTICAL, -1);
 
-      // The text field covers the value. If it has to be taller than the value, it is
-      // centered vertically on it.
+      // The Gtk.Entry draws a frame with some padding around its text. We want its text
+      // to stay exactly where the value was, so the frame has to stick out by the width
+      // of the padding on both sides. The padding is the difference between the minimum
+      // widths of the Gtk.Entry and of the text inside of it.
+      const [textMinWidth] =
+        this._entry.get_first_child().measure(Gtk.Orientation.HORIZONTAL, -1);
+      const padding = Math.round((minWidth - textMinWidth) / 2);
+
+      // If the text field is taller than the value, it is centered vertically on it.
       const allocation  = new Gdk.Rectangle();
-      allocation.width  = Math.max(minWidth, bounds.get_width());
+      allocation.width  = Math.max(minWidth, bounds.get_width() + 2 * padding);
       allocation.height = Math.max(minHeight, bounds.get_height());
-      allocation.x      = bounds.get_x();
+      allocation.x      = bounds.get_x() - padding;
       allocation.y      = bounds.get_y() + (bounds.get_height() - allocation.height) / 2;
       this._entry.size_allocate(allocation, -1);
     }
@@ -129,6 +145,19 @@ class Slider extends Gtk.Scale {
   }
 
   // ----------------------------------------------------------------------- private stuff
+
+  // Returns the value label if the given point is on top of it, else null. The point has
+  // to be given in the coordinate system of this widget, so it has to be translated to
+  // the one of the value first.
+  _getValueAt(x, y) {
+    const value = this._getValueLabel();
+    if (!value) {
+      return null;
+    }
+
+    const [, valueX, valueY] = this.translate_coordinates(value, x, y);
+    return value.contains(valueX, valueY) ? value : null;
+  }
 
   // Returns the label which the Gtk.Scale uses to draw its value. It is documented to
   // have the CSS name "value". It only exists if the value is drawn at all.
