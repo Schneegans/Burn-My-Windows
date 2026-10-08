@@ -12,7 +12,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -78,7 +78,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
           </object>
         </child>
         <child>
-          <object class="GtkScale" id="aura-glow-start-hue-slider">
+          <object class="BurnMyWindowsSlider" id="aura-glow-start-hue-slider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -111,7 +111,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Speed</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -144,7 +144,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Saturation</property>
         <child>
-          <object class="GtkScale" id="aura-glow-saturation-slider">
+          <object class="BurnMyWindowsSlider" id="aura-glow-saturation-slider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -177,7 +177,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Edge Size</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -210,7 +210,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Edge Hardness</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -243,7 +243,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Blur Amount</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>

@@ -17,7 +17,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
           
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property> 
             <property name="digits">0</property> 
@@ -74,7 +74,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="subtitle" translatable="yes">8Bit --- Smooth</property>
         
         <child>
-          <object class="GtkScale" id="mushroom-scale-style-scale">
+          <object class="BurnMyWindowsSlider" id="mushroom-scale-style-scale">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -112,7 +112,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Spark Count</property>
         
         <child>
-          <object class="GtkScale" id="mushroom-spark-count-scale">
+          <object class="BurnMyWindowsSlider" id="mushroom-spark-count-scale">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -150,7 +150,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Spark Rotation</property>
         
         <child>
-          <object class="GtkScale" >
+          <object class="BurnMyWindowsSlider" >
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -256,7 +256,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Star Rings Count</property>
         
         <child>
-          <object class="GtkScale" id="mushroom-ring-count-scale">
+          <object class="BurnMyWindowsSlider" id="mushroom-ring-count-scale">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -294,7 +294,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Star Ring Rotation</property>
         
         <child>
-          <object class="GtkScale" id="mushroom-ring-rotation-scale">
+          <object class="BurnMyWindowsSlider" id="mushroom-ring-rotation-scale">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -332,7 +332,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Stars Count Per Ring</property>
         
         <child>
-          <object class="GtkScale" id="mushroom-star-count-scale">
+          <object class="BurnMyWindowsSlider" id="mushroom-star-count-scale">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
