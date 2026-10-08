@@ -14,9 +14,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="BurnMyWindowsSlider">
+          <object class="GtkScale">
             <property name="valign">center</property>
+            <property name="draw-value">1</property>
             <property name="digits">0</property>
+            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="apparition-animation-time">
@@ -45,9 +47,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Randomness</property>
         <child>
-          <object class="BurnMyWindowsSlider">
+          <object class="GtkScale">
             <property name="valign">center</property>
+            <property name="draw-value">1</property>
             <property name="digits">2</property>
+            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="apparition-randomness">
@@ -76,9 +80,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Twirl Intensity</property>
         <child>
-          <object class="BurnMyWindowsSlider">
+          <object class="GtkScale">
             <property name="valign">center</property>
+            <property name="draw-value">1</property>
             <property name="digits">1</property>
+            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="apparition-twirl-intensity">
@@ -107,9 +113,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Shake Intensity</property>
         <child>
-          <object class="BurnMyWindowsSlider">
+          <object class="GtkScale">
             <property name="valign">center</property>
+            <property name="draw-value">1</property>
             <property name="digits">1</property>
+            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="apparition-shake-intensity">
@@ -138,9 +146,11 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Suction Intensity</property>
         <child>
-          <object class="BurnMyWindowsSlider">
+          <object class="GtkScale">
             <property name="valign">center</property>
+            <property name="draw-value">1</property>
             <property name="digits">2</property>
+            <property name="value-pos">left</property>
             <property name="width-request">300</property>
             <property name="adjustment">
               <object class="GtkAdjustment" id="apparition-suction-intensity">
