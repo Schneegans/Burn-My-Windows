@@ -89,11 +89,10 @@ vec2 effectMask(float hideTime, float fadeWidth, float edgeFadeWidth) {
   float windowMask = 1.0 - clamp((burnProgress - t) / fadeWidth, 0.0, 1.0);
 
   // Gradient from top burning window. The fire is most intense at the burning edge and
-  // fades towards the top of the window. If the window burns from bottom to top, simply
-  // flipping this would make the flames point downwards. So in this case, the fire is
-  // most intense at the bottom of the window and fades towards the burning edge.
-  float fireGradient = bottomToTop ? burnProgress - t : t;
-  float effectMask   = clamp(fireGradient * (1.0 - windowMask) / burnProgress, 0.0, 1.0);
+  // fades away from it. As t is flipped if the window burns from bottom to top, this is
+  // true in both directions. This way, the fire always stays connected to the window.
+  // The flames still move upwards in both cases, see main() below.
+  float effectMask = clamp(t * (1.0 - windowMask) / burnProgress, 0.0, 1.0);
 
   // Fade-out when the window burned down.
   if (progress > hideTime) {
