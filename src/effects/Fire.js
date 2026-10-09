@@ -63,6 +63,11 @@ export default class Effect {
       shader._uRandomColor = shader.get_uniform_location('uRandomColor');
       shader._uSeed        = shader.get_uniform_location('uSeed');
 
+      // These determine whether the window burns from bottom to top instead of from top
+      // to bottom. This can be configured separately for opening and closing windows.
+      shader._uClosingBottomToTop = shader.get_uniform_location('uClosingBottomToTop');
+      shader._uOpeningBottomToTop = shader.get_uniform_location('uOpeningBottomToTop');
+
       // And update all uniforms at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
         for (let i = 1; i <= 5; i++) {
@@ -72,11 +77,13 @@ export default class Effect {
         }
 
         // clang-format off
-        shader.set_uniform_float(shader._u3DNoise,       1, [settings.get_boolean('fire-3d-noise')]);
-        shader.set_uniform_float(shader._uRandomColor,   1, [settings.get_boolean('fire-random-color')]);
-        shader.set_uniform_float(shader._uSeed,          1, [Math.random()]);
-        shader.set_uniform_float(shader._uScale,         1, [settings.get_double('fire-scale')]);
-        shader.set_uniform_float(shader._uMovementSpeed, 1, [settings.get_double('fire-movement-speed')]);
+        shader.set_uniform_float(shader._u3DNoise,            1, [settings.get_boolean('fire-3d-noise')]);
+        shader.set_uniform_float(shader._uRandomColor,        1, [settings.get_boolean('fire-random-color')]);
+        shader.set_uniform_float(shader._uSeed,               1, [Math.random()]);
+        shader.set_uniform_float(shader._uScale,              1, [settings.get_double('fire-scale')]);
+        shader.set_uniform_float(shader._uMovementSpeed,      1, [settings.get_double('fire-movement-speed')]);
+        shader.set_uniform_float(shader._uClosingBottomToTop, 1, [settings.get_boolean('fire-closing-bottom-to-top')]);
+        shader.set_uniform_float(shader._uOpeningBottomToTop, 1, [settings.get_boolean('fire-opening-bottom-to-top')]);
         // clang-format on
       });
     });
@@ -115,6 +122,8 @@ export default class Effect {
     dialog.bindAdjustment('fire-scale');
     dialog.bindSwitch('fire-3d-noise');
     dialog.bindSwitch('fire-random-color');
+    dialog.bindSwitch('fire-closing-bottom-to-top');
+    dialog.bindSwitch('fire-opening-bottom-to-top');
     dialog.bindColorButton('fire-color-1');
     dialog.bindColorButton('fire-color-2');
     dialog.bindColorButton('fire-color-3');

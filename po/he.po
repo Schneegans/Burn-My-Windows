@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-29 21:10+0200\n"
-"PO-Revision-Date: 2022-07-02 21:20+0000\n"
-"Last-Translator: יהודה אליסף <hvusvvnkl12345@gmail.com>\n"
+"PO-Revision-Date: 2026-10-04 13:51+0000\n"
+"Last-Translator: Ido Greenfeld <idogreenfeld@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/he/>\n"
 "Language: he\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
-"X-Generator: Weblate 4.13.1-dev\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -26,7 +26,7 @@ msgstr "הופעה פתאומית"
 
 #: src/effects/AuraGlow.js:93
 msgid "Aura Glow"
-msgstr ""
+msgstr "הילה זוהרת"
 
 #: src/effects/BrokenGlass.js:132
 msgid "Broken Glass"
@@ -34,7 +34,7 @@ msgstr "זכוכית נשברת"
 
 #: src/effects/Doom.js:87
 msgid "Doom"
-msgstr ""
+msgstr "אבדון"
 
 #: src/effects/EnergizeA.js:74
 msgid "Energize A"
@@ -50,7 +50,7 @@ msgstr "להבות"
 
 #: src/effects/Fire.js:185
 msgid "Default Fire"
-msgstr "להבות - defalut"
+msgstr "להבות (ברירת מחדל)"
 
 #: src/effects/Fire.js:195
 msgid "Hell Fire"
@@ -58,7 +58,7 @@ msgstr "אש הגיהנום"
 
 #: src/effects/Fire.js:205
 msgid "Dark and Smutty"
-msgstr "אפלה"
+msgstr "אפל ומפויח"
 
 #: src/effects/Fire.js:215
 msgid "Cold Breeze"
@@ -66,23 +66,23 @@ msgstr "רוח קרה"
 
 #: src/effects/Fire.js:225
 msgid "Santa is Coming"
-msgstr "סנטה קלאוס"
+msgstr "סנטה בדרך"
 
 #: src/effects/Fire.js:236
 msgid "Nuclear ☢️"
-msgstr ""
+msgstr "גרעיני ☢️"
 
 #: src/effects/Focus.js:76
 msgid "Focus"
-msgstr ""
+msgstr "פוקוס"
 
 #: src/effects/Glide.js:78
 msgid "Glide"
-msgstr ""
+msgstr "דאייה"
 
 #: src/effects/Glitch.js:80
 msgid "Glitch"
-msgstr ""
+msgstr "תקלה"
 
 #: src/effects/Hexagon.js:83
 msgid "Hexagon"
@@ -94,7 +94,7 @@ msgstr "בעירה"
 
 #: src/effects/Materialize.js:128
 msgid "Materialize"
-msgstr ""
+msgstr "התגשמות"
 
 #: src/effects/Matrix.js:101
 msgid "Matrix"
@@ -102,59 +102,59 @@ msgstr "מטריקס"
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
-msgstr ""
+msgstr "פטרייה"
 
 #: src/effects/Mushroom.js:199
 msgid "8Bit Plumber"
-msgstr ""
+msgstr "שרברב 8 ביט"
 
 #: src/effects/Mushroom.js:216
 msgid "New Bros 2 🍄"
-msgstr ""
+msgstr "אחים חדשים 2 🍄"
 
 #: src/effects/Mushroom.js:234
 msgid "Red White and Blue 🇺🇸"
-msgstr ""
+msgstr "אדום לבן וכחול 🇺🇸"
 
 #: src/effects/Mushroom.js:251
 msgid "Rainbow 🌈"
-msgstr ""
+msgstr "קשת 🌈"
 
 #: src/effects/Mushroom.js:268
 msgid "Cattuccino 😺"
-msgstr ""
+msgstr "קטפוצ'ינו 😺"
 
 #: src/effects/Mushroom.js:286
 msgid "Dracula 🦇"
-msgstr ""
+msgstr "דרקולה 🦇"
 
 #: src/effects/Mushroom.js:303
 msgid "Sparkle ✨"
-msgstr ""
+msgstr "ניצנוץ ✨"
 
 #: src/effects/PaintBrush.js:95
 msgid "Paint Brush"
-msgstr ""
+msgstr "מברשת ציור"
 
 #: src/effects/Pixelate.js:74
 msgid "Pixelate"
-msgstr ""
+msgstr "פיקסול"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr ""
+msgstr "גלגל פיקסלים"
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr ""
+msgstr "מחיקה פיקסלית"
 
 #: src/effects/Portal.js:82
 msgid "Portal"
-msgstr ""
+msgstr "פורטל"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr ""
+msgstr "עיוות RGB"
 
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
@@ -162,7 +162,7 @@ msgstr "התפוררות"
 
 #: src/effects/TeamRocket.js:89
 msgid "Team Rocket"
-msgstr ""
+msgstr "צוות רוקט"
 
 #: src/effects/TRexAttack.js:104
 msgid "T-Rex Attack"
@@ -170,23 +170,23 @@ msgstr "תקיפת טירקס"
 
 #: src/effects/TVEffect.js:73
 msgid "TV Effect"
-msgstr "טלוויזיה"
+msgstr "אפקט טלוויזיה"
 
 #: src/effects/TVGlitch.js:81
 msgid "TV Glitch"
-msgstr ""
+msgstr "תקלת טלוויזיה"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
-msgstr "קרצוף"
+msgstr "שובלי אור"
 
 #: prefs.js:262
 msgid "Preview this effect"
-msgstr ""
+msgstr "תצוגה מקדימה של אפקט זה"
 
 #: prefs.js:339
 msgid "Burn-My-Windows has been updated!"
-msgstr ""
+msgstr "Burn-My-Windows התעדכנה!"
 
 #: prefs.js:340 resources/ui/common/menus.ui:17
 msgid "View Changelog"
@@ -194,81 +194,81 @@ msgstr "צפייה בשינויים"
 
 #: prefs.js:522
 msgid "Delete this Profile?"
-msgstr ""
+msgstr "למחוק את הפרופיל?"
 
 #: prefs.js:523
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
-msgstr ""
+msgstr "פרופיל אפקט זה וכל ההגדרות שלו יימחקו לצמיתות."
 
 #: prefs.js:526
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: prefs.js:531
 msgid "Delete"
-msgstr ""
+msgstr "מחיקה"
 
 #: prefs.js:763 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
-msgstr ""
+msgstr "חלונות נפתחים"
 
 #: prefs.js:764 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
-msgstr ""
+msgstr "חלונות נסגרים"
 
 #: prefs.js:765 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
-msgstr ""
+msgstr "חלונות רגילים"
 
 #: prefs.js:766 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
-msgstr ""
+msgstr "חלונות דו־שיח"
 
 #: prefs.js:767 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
-msgstr ""
+msgstr "ערכת צבעים כברירת מחדל"
 
 #: prefs.js:768 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
-msgstr ""
+msgstr "ערכת צבעים כהה"
 
 #: prefs.js:769 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
-msgstr ""
+msgstr "במצב סוללה"
 
 #: prefs.js:770 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
-msgstr ""
+msgstr "מחובר לחשמל"
 
 #: prefs.js:771 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
-msgstr ""
+msgstr "מצב חיסכון בחשמל"
 
 #: prefs.js:772 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
-msgstr ""
+msgstr "מצב מאוזן"
 
 #: prefs.js:773 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
-msgstr ""
+msgstr "מצב ביצועים"
 
 #: prefs.js:774 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
-msgstr ""
+msgstr "חיסכון בחשמל או מאוזן"
 
 #: prefs.js:775 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
-msgstr ""
+msgstr "מאוזן או ביצועים"
 
 #: prefs.js:780 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
-msgstr ""
+msgstr "עדיפות גבוהה"
 
 #: prefs.js:786
 msgid "Standard Profile"
-msgstr ""
+msgstr "פרופיל רגיל"
 
 #. Translators: %s will be replaced by the effect's name.
 #: prefs.js:866
@@ -278,7 +278,7 @@ msgstr "תצוגה מקדימה: %s"
 
 #: prefs.js:885
 msgid "Close this Window to Preview the Effect!"
-msgstr "סגור את החלון כדי לצפות בתצוגה המקדימה!"
+msgstr "יש לסגור את החלון כדי לצפות בתצוגה המקדימה!"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
@@ -286,11 +286,11 @@ msgstr "לדף הבית"
 
 #: resources/ui/common/menus.ui:21
 msgid "View Matching Wallpapers"
-msgstr ""
+msgstr "צפייה בתמונות רקע תואמות"
 
 #: resources/ui/common/menus.ui:25
 msgid "View Donors Hall-of-Fame"
-msgstr ""
+msgstr "צפייה בהיכל התהילה של התורמים"
 
 #: resources/ui/common/menus.ui:31
 msgid "Donate"
@@ -310,7 +310,7 @@ msgstr "תרגום"
 
 #: resources/ui/common/menus.ui:64
 msgid "Open Effect-Profile Directory"
-msgstr ""
+msgstr "פתיחת תיקיית פרופילי האפקטים"
 
 #: resources/ui/common/menus.ui:70
 msgid "About Burn-My-Windows"
@@ -318,7 +318,7 @@ msgstr "אודות Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr ""
+msgstr "הוספת פרופיל חדש…"
 
 #: resources/ui/adw/portal.ui:14 resources/ui/adw/snap.ui:14
 #: resources/ui/adw/mushroom.ui:17 resources/ui/adw/rgbwarp.ui:17
@@ -404,15 +404,15 @@ msgstr "איפוס"
 
 #: resources/ui/adw/portal.ui:47
 msgid "Rotation Speed"
-msgstr ""
+msgstr "מהירות סיבוב"
 
 #: resources/ui/adw/portal.ui:80
 msgid "Whirling"
-msgstr ""
+msgstr "סחרור"
 
 #: resources/ui/adw/portal.ui:113
 msgid "Details"
-msgstr ""
+msgstr "רמת פירוט"
 
 #: resources/ui/adw/portal.ui:146 resources/ui/adw/snap.ui:80
 #: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
@@ -420,7 +420,7 @@ msgstr ""
 #: resources/ui/adw/incinerate.ui:136 resources/ui/adw/wisps.ui:80
 #: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
 msgid "Color"
-msgstr ""
+msgstr "צבע"
 
 #: resources/ui/adw/snap.ui:47 resources/ui/adw/hexagon.ui:47
 #: resources/ui/adw/fire.ui:63 resources/ui/adw/tv-glitch.ui:47
@@ -429,71 +429,71 @@ msgstr ""
 #: resources/ui/adw/incinerate.ui:47 resources/ui/adw/wisps.ui:47
 #: resources/ui/adw/energize-a.ui:47 resources/ui/adw/energize-b.ui:48
 msgid "Scale"
-msgstr "שינוי גודל"
+msgstr "קנה מידה"
 
 #: resources/ui/adw/mushroom.ui:55
 msgid "Effect Presets"
-msgstr ""
+msgstr "הגדרות מוכנות לאפקט"
 
 #: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
 msgid "Choose a Preset"
-msgstr ""
+msgstr "בחירת הגדרה מוכנה"
 
 #: resources/ui/adw/mushroom.ui:73
 msgid "Scale Style"
-msgstr ""
+msgstr "סגנון שינוי גודל"
 
 #: resources/ui/adw/mushroom.ui:74
 msgid "8Bit --- Smooth"
-msgstr ""
+msgstr "8 ביט --- חלק"
 
 #: resources/ui/adw/mushroom.ui:112
 msgid "Spark Count"
-msgstr ""
+msgstr "מספר ניצוצות"
 
 #: resources/ui/adw/mushroom.ui:150
 msgid "Spark Rotation"
-msgstr ""
+msgstr "סיבוב ניצוצות"
 
 #: resources/ui/adw/mushroom.ui:188
 msgid "Spark Color"
-msgstr ""
+msgstr "צבע ניצוצות"
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
-msgstr ""
+msgstr "צבע קרניים"
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
-msgstr ""
+msgstr "מספר טבעות כוכבים"
 
 #: resources/ui/adw/mushroom.ui:294
 msgid "Star Ring Rotation"
-msgstr ""
+msgstr "סיבוב טבעות הכוכבים"
 
 #: resources/ui/adw/mushroom.ui:332
 msgid "Stars Count Per Ring"
-msgstr ""
+msgstr "מספר כוכבים בכל טבעת"
 
 #: resources/ui/adw/mushroom.ui:370
 msgid "Star Gradient"
-msgstr ""
+msgstr "מעבר צבעי הכוכבים"
 
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
-msgstr ""
+msgstr "בהירות"
 
 #: resources/ui/adw/rgbwarp.ui:93
 msgid "Red Speed"
-msgstr ""
+msgstr "מהירות אדום"
 
 #: resources/ui/adw/rgbwarp.ui:130
 msgid "Green Speed"
-msgstr ""
+msgstr "מהירות ירוק"
 
 #: resources/ui/adw/rgbwarp.ui:167
 msgid "Blue Speed"
-msgstr ""
+msgstr "מהירות כחול"
 
 #: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
 msgid "Randomness"
@@ -501,297 +501,297 @@ msgstr "אקראיות"
 
 #: resources/ui/adw/apparition.ui:81
 msgid "Twirl Intensity"
-msgstr ""
+msgstr "עוצמת סחרור"
 
 #: resources/ui/adw/apparition.ui:114
 msgid "Shake Intensity"
-msgstr ""
+msgstr "עוצמת רעידה"
 
 #: resources/ui/adw/apparition.ui:147
 msgid "Suction Intensity"
-msgstr ""
+msgstr "עוצמת שאיבה"
 
 #: resources/ui/adw/hexagon.ui:80
 msgid "Mesh Line Width"
-msgstr ""
+msgstr "עובי קווי הרשת"
 
 #: resources/ui/adw/hexagon.ui:113
 msgid "Line Color"
-msgstr ""
+msgstr "צבע קו"
 
 #: resources/ui/adw/hexagon.ui:138
 msgid "Glow Color"
-msgstr ""
+msgstr "צבע הזוהר"
 
 #: resources/ui/adw/hexagon.ui:163
 msgid "Additive Blending"
-msgstr ""
+msgstr "מיזוג חיבורי"
 
 #: resources/ui/adw/hexagon.ui:164
 msgid "You may want to enable this for dark window themes."
-msgstr ""
+msgstr "מומלץ להפעיל זאת בערכות נושא כהות לחלונות."
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
-msgstr ""
+msgstr "הגדרות מוכנות"
 
 #: resources/ui/adw/fire.ui:96 resources/ui/adw/tv-glitch.ui:113
 #: resources/ui/adw/glitch.ui:113 resources/ui/adw/aura-glow.ui:112
 msgid "Speed"
-msgstr ""
+msgstr "מהירות"
 
 #: resources/ui/adw/fire.ui:129
 msgid "3D Noise"
-msgstr ""
+msgstr "רעש תלת־ממדי"
 
 #: resources/ui/adw/fire.ui:130
 msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr ""
+msgstr "יוצר אש דינמית יותר, אך דורש יותר כוח עיבוד גרפי."
 
 #: resources/ui/adw/fire.ui:152
 msgid "Use Random Color"
-msgstr ""
+msgstr "שימוש בצבע אקראי"
 
 #: resources/ui/adw/fire.ui:174
 msgid "Gradient"
-msgstr ""
+msgstr "מעבר צבעים"
 
 #: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
 msgid "Strength"
-msgstr ""
+msgstr "עוצמה"
 
 #: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixel-wheel.ui:80
 #: resources/ui/adw/pixelate.ui:80 resources/ui/adw/doom.ui:113
 msgid "Pixel Size"
-msgstr ""
+msgstr "גודל פיקסל"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
-msgstr ""
+msgstr "תנאים לפרופיל האפקט"
 
 #: resources/ui/adw/prefs.ui:66
 msgid "Define when the current effect settings should be used."
-msgstr ""
+msgstr "הגדרת המצבים שבהם ייעשה שימוש בהגדרות האפקט הנוכחיות."
 
 #: resources/ui/adw/prefs.ui:70
 msgid "Application"
-msgstr ""
+msgstr "יישום"
 
 #: resources/ui/adw/prefs.ui:81 resources/ui/adw/prefs.ui:102
 #: resources/ui/adw/prefs.ui:117 resources/ui/adw/prefs.ui:132
 #: resources/ui/adw/prefs.ui:147 resources/ui/adw/prefs.ui:162
 msgid "Any"
-msgstr ""
+msgstr "הכול"
 
 #: resources/ui/adw/prefs.ui:98
 msgid "Animation Type"
-msgstr ""
+msgstr "סוג אנימציה"
 
 #: resources/ui/adw/prefs.ui:113
 msgid "Window Type"
-msgstr ""
+msgstr "סוג חלון"
 
 #: resources/ui/adw/prefs.ui:128
 msgid "Color Scheme"
-msgstr ""
+msgstr "ערכת צבעים"
 
 #: resources/ui/adw/prefs.ui:143
 msgid "Power Mode"
-msgstr ""
+msgstr "מצב צריכת חשמל"
 
 #: resources/ui/adw/prefs.ui:158
 msgid "Power Profile"
-msgstr ""
+msgstr "פרופיל צריכת חשמל"
 
 #: resources/ui/adw/prefs.ui:179
 msgid "Advanced Profile Options"
-msgstr ""
+msgstr "אפשרויות פרופיל מתקדמות"
 
 #: resources/ui/adw/prefs.ui:184
 msgid "Use this profile even if there are better matching profiles."
-msgstr ""
+msgstr "שימוש בפרופיל זה גם אם יש פרופילים מתאימים יותר."
 
 #: resources/ui/adw/prefs.ui:204
 msgid "Delete this Profile..."
-msgstr ""
+msgstr "מחיקת פרופיל זה…"
 
 #: resources/ui/adw/prefs.ui:223
 msgid "Effect Selection"
-msgstr ""
+msgstr "בחירת אפקטים"
 
 #: resources/ui/adw/prefs.ui:224
 msgid "If multiple are selected, one is chosen randomly."
-msgstr ""
+msgstr "אם נבחרו כמה אפקטים, אחד מהם ייבחר באקראי."
 
 #: resources/ui/adw/prefs.ui:235
 msgid "Search..."
-msgstr ""
+msgstr "חיפוש…"
 
 #: resources/ui/adw/prefs.ui:250
 msgid "Enable All"
-msgstr ""
+msgstr "הפעלת הכול"
 
 #: resources/ui/adw/prefs.ui:256
 msgid "Disable All"
-msgstr ""
+msgstr "השבתת הכול"
 
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
-msgstr ""
+msgstr "מעיכה"
 
 #: resources/ui/adw/glide.ui:113
 msgid "Tilt"
-msgstr ""
+msgstr "הטיה"
 
 #: resources/ui/adw/glide.ui:146
 msgid "Shift"
-msgstr ""
+msgstr "הזזה"
 
 #: resources/ui/adw/pixel-wheel.ui:47
 msgid "Spoke Count"
-msgstr ""
+msgstr "מספר חישורים"
 
 #: resources/ui/adw/pixelate.ui:47
 msgid "Noise"
-msgstr ""
+msgstr "רעש"
 
 #: resources/ui/adw/materialize.ui:47
 msgid "Start Scale"
-msgstr ""
+msgstr "קנה מידה התחלתי"
 
 #: resources/ui/adw/materialize.ui:80
 msgid "Steps"
-msgstr ""
+msgstr "שלבים"
 
 #: resources/ui/adw/materialize.ui:81
 msgid "Zero gives a smooth animation."
-msgstr ""
+msgstr "אפס יוצר אנימציה חלקה."
 
 #: resources/ui/adw/materialize.ui:114
 msgid "Use System Accent Color"
-msgstr ""
+msgstr "שימוש בצבע ההדגשה של המערכת"
 
 #: resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
-msgstr ""
+msgstr "חריגה אנכית"
 
 #: resources/ui/adw/matrix.ui:146
 msgid "Trail Color"
-msgstr ""
+msgstr "צבע השובל"
 
 #: resources/ui/adw/matrix.ui:171
 msgid "Tip Color"
-msgstr ""
+msgstr "צבע הקצה"
 
 #: resources/ui/adw/broken-glass.ui:81
 msgid "Gravity"
-msgstr ""
+msgstr "כוח משיכה"
 
 #: resources/ui/adw/broken-glass.ui:114
 msgid "Blow Force"
-msgstr ""
+msgstr "עוצמת הפיצוץ"
 
 #: resources/ui/adw/broken-glass.ui:147
 msgid "Shatter From Pointer Location"
-msgstr ""
+msgstr "ניפוץ ממיקום הסמן"
 
 #: resources/ui/adw/broken-glass.ui:148
 msgid ""
 "The shards will fly away from where your mouse pointer was when closing the "
 "window."
-msgstr ""
+msgstr "הרסיסים יעופו מהמקום שבו היה סמן העכבר בעת סגירת החלון."
 
 #: resources/ui/adw/incinerate.ui:80
 msgid "Turbulence"
-msgstr ""
+msgstr "מערבולות"
 
 #: resources/ui/adw/incinerate.ui:113
 msgid "Start at Pointer"
-msgstr ""
+msgstr "התחלה במיקום הסמן"
 
 #: resources/ui/adw/incinerate.ui:114
 msgid "If disabled, a random location will be chosen."
-msgstr ""
+msgstr "אם האפשרות מושבתת, ייבחר מיקום אקראי."
 
 #: resources/ui/adw/doom.ui:47
 msgid "Horizontal Scale"
-msgstr ""
+msgstr "קנה מידה אופקי"
 
 #: resources/ui/adw/doom.ui:80
 msgid "Vertical Scale"
-msgstr ""
+msgstr "קנה מידה אנכי"
 
 #: resources/ui/adw/trex.ui:47
 msgid "Claw Scratch Scale"
-msgstr ""
+msgstr "גודל שריטות הטפרים"
 
 #: resources/ui/adw/trex.ui:80
 msgid "Claw Scratch Count"
-msgstr ""
+msgstr "מספר שריטות הטפרים"
 
 #: resources/ui/adw/trex.ui:113
 msgid "Warp Effect"
-msgstr ""
+msgstr "אפקט עיוות"
 
 #: resources/ui/adw/trex.ui:146
 msgid "Flash Color"
-msgstr ""
+msgstr "צבע הבזק"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
-msgstr ""
+msgstr "חלוקת האנימציה"
 
 #: resources/ui/adw/team-rocket.ui:91
 msgid "Rotate Window"
-msgstr ""
+msgstr "סיבוב החלון"
 
 #: resources/ui/adw/team-rocket.ui:114
 msgid "Horizontal Sparkle Position"
-msgstr ""
+msgstr "מיקום אופקי של הניצנוץ"
 
 #: resources/ui/adw/team-rocket.ui:151
 msgid "Vertical Sparkle Position"
-msgstr ""
+msgstr "מיקום אנכי של הניצנוץ"
 
 #: resources/ui/adw/team-rocket.ui:189
 msgid "Sparkle Size"
-msgstr ""
+msgstr "גודל הניצנוץ"
 
 #: resources/ui/adw/team-rocket.ui:226
 msgid "Sparkle Rotation"
-msgstr ""
+msgstr "סיבוב הניצנוץ"
 
 #: resources/ui/adw/focus.ui:61 resources/ui/adw/aura-glow.ui:244
 msgid "Blur Amount"
-msgstr ""
+msgstr "מידת טשטוש"
 
 #: resources/ui/adw/focus.ui:87
 msgid "Blur Quality"
-msgstr ""
+msgstr "איכות טשטוש"
 
 #: resources/ui/adw/paint-brush.ui:47
 msgid "Brush Size"
-msgstr ""
+msgstr "גודל מברשת"
 
 #: resources/ui/adw/aura-glow.ui:47
 msgid "Random Color"
-msgstr ""
+msgstr "צבע אקראי"
 
 #: resources/ui/adw/aura-glow.ui:69
 msgid "Start Hue"
-msgstr ""
+msgstr "גוון התחלתי"
 
 #: resources/ui/adw/aura-glow.ui:145
 msgid "Saturation"
-msgstr ""
+msgstr "רוויה"
 
 #: resources/ui/adw/aura-glow.ui:178
 msgid "Edge Size"
-msgstr ""
+msgstr "גודל הקצה"
 
 #: resources/ui/adw/aura-glow.ui:211
 msgid "Edge Hardness"
-msgstr ""
+msgstr "חדות הקצה"
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "תורמים ראשיים"
