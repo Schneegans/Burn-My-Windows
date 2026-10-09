@@ -67,8 +67,8 @@ export async function fromVersion26() {
       r = r.trim();
 
       // There were some inconsistencies in the key names. The update fixes them.
-      r.replace('flame-', 'fire-');
-      r.replace('claw-', 'trex-');
+      r = r.replaceAll('flame-', 'fire-');
+      r = r.replaceAll('claw-', 'trex-');
 
       // Find all effects which were used for openeing and closing. This first extracts
       // all lines which end in "-open-effect=true" and then remove this suffix from the
