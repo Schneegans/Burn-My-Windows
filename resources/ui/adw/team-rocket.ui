@@ -17,7 +17,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
 
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -55,7 +55,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="subtitle" translatable="yes"></property>
 
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -114,7 +114,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Horizontal Sparkle Position</property>
 
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -151,7 +151,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Vertical Sparkle Position</property>
 
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -189,7 +189,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Sparkle Size</property>
 
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -226,7 +226,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
         <property name="title" translatable="yes">Sparkle Rotation</property>
 
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
