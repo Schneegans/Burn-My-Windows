@@ -18,6 +18,11 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - When migrating settings from version 26 or older, customized Fire (`flame-*`) and T-Rex Attack (`claw-*`) settings were dropped instead of being renamed to their new `fire-*` and `trex-*` keys.
 
+#### Bug Fixes
+
+- Fixed an issue where GNOME Shell could freeze for up to 25 seconds after login if `power-profiles-daemon` was not running yet. Thanks to [@dogcom0228](https://github.com/dogcom0228) for the fix!
+
+
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)
 
 **Release Date:** 2026-09-26
