@@ -1166,6 +1166,134 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
 
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Morph Effect Options                                                          -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="morph-enable-effect" type="b">
+      <default>false</default>
+      <summary>Morph Enable Effect</summary>
+      <description>Use the morph effect.</description>
+    </key>
+
+    <key name="morph-animation-time" type="i">
+      <default>1500</default>
+      <summary>Morph Animation Time</summary>
+      <description>The time the morph effect takes.</description>
+    </key>
+
+    <key name="morph-style" type="i">
+      <default>0</default>
+      <range min="0" max="1" />
+      <summary>Morph Style</summary>
+      <description>0: liquid flow, the area swirls into the window. 1: melt, each image flows along its own edges.</description>
+    </key>
+
+    <key name="morph-strength" type="d">
+      <default>1.0</default>
+      <summary>Morph Strength</summary>
+      <description>How far things move during the morph. 1 is the default; 0 is a plain dissolve.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Aperture Panels Effect Options                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="aperture-panels-enable-effect" type="b">
+      <default>false</default>
+      <summary>Aperture Panels Enable Effect</summary>
+      <description>Use the aperture panels effect.</description>
+    </key>
+
+    <key name="aperture-panels-animation-time" type="i">
+      <default>2000</default>
+      <summary>Aperture Panels Animation Time</summary>
+      <description>The time the aperture panels effect takes.</description>
+    </key>
+
+    <key name="aperture-panels-panel-size" type="i">
+      <default>88</default>
+      <summary>Aperture Panels Panel Size</summary>
+      <description>The approximate size of the panels in pixels.</description>
+    </key>
+
+    <key name="aperture-panels-wave-shape" type="i">
+      <default>4</default>
+      <range min="0" max="5" />
+      <summary>Aperture Panels Wave Shape</summary>
+      <description>0: diagonal, 1: arc from a corner, 2: wavy diagonal, 3: organic diagonal, 4: ripple from the center, 5: random.</description>
+    </key>
+
+    <key name="aperture-panels-flip-axis" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Aperture Panels Flip Axis</summary>
+      <description>0: vertical, 1: horizontal, 2: random.</description>
+    </key>
+
+    <key name="aperture-panels-backdrop" type="i">
+      <default>0</default>
+      <range min="0" max="1" />
+      <summary>Aperture Panels Backdrop</summary>
+      <description>0: the wallpaper stays in place, 1: the wallpaper flips with the panels, revealing a black void.</description>
+    </key>
+
+    <key name="aperture-panels-border-style" type="i">
+      <default>4</default>
+      <range min="0" max="4" />
+      <summary>Aperture Panels Border Style</summary>
+      <description>0: none, 1: while flipping, 2: ahead of the wave, 3: behind the wave, 4: ahead of and behind the wave.</description>
+    </key>
+
+    <key name="aperture-panels-border-color" type="s">
+      <default>"rgba(0, 0, 0, 0.4)"</default>
+      <summary>Aperture Panels Border Color</summary>
+      <description>The color of the panel outlines.</description>
+    </key>
+
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Wormhole Effect Options                                                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="wormhole-enable-effect" type="b">
+      <default>false</default>
+      <summary>Wormhole Enable Effect</summary>
+      <description>Use the wormhole effect.</description>
+    </key>
+
+    <key name="wormhole-animation-time" type="i">
+      <default>2000</default>
+      <summary>Wormhole Animation Time</summary>
+      <description>The time the wormhole effect takes.</description>
+    </key>
+
+    <key name="wormhole-void-size" type="d">
+      <default>0.65</default>
+      <summary>Wormhole Void Size</summary>
+      <description>The size of the dark void at the bottom of the tunnel.</description>
+    </key>
+
+    <key name="wormhole-tunnel-depth" type="d">
+      <default>1.0</default>
+      <summary>Wormhole Tunnel Depth</summary>
+      <description>How deep the tunnel goes.</description>
+    </key>
+
+    <key name="wormhole-funnel-size" type="d">
+      <default>1.35</default>
+      <summary>Wormhole Funnel Size</summary>
+      <description>The size of the funnel relative to the window.</description>
+    </key>
+
+    <key name="wormhole-bounce" type="d">
+      <default>0.5</default>
+      <summary>Wormhole Bounce</summary>
+      <description>How much the desktop bounces when the effect lands (0 = no bounce).</description>
+    </key>
+
   </schema>
 
 </schemalist>
