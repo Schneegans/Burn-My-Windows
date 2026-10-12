@@ -100,6 +100,15 @@ function _initRest(self) {
   self._uSize         = self.get_uniform_location('uSize');
   self._uPadding      = self.get_uniform_location('uPadding');
 
+  // Only used by layered effects (see LayeredEffect.js).
+  self._uLayer     = self.get_uniform_location('uLayer');
+  self._uLayerSize = self.get_uniform_location('uLayerSize');
+  self._uTexRect   = self.get_uniform_location('uTexRect');
+
+  // Shaders animating in lock-step with this one (see beginFollowing()).
+  self._followers = [];
+  self._leader    = null;
+
   // Create a timeline to drive the animation.
   self._timeline = new Clutter.Timeline();
 
@@ -149,6 +158,39 @@ const _methods = {
     this._progress = 0;
     this._testMode = testMode;
 
+    this._setStandardUniforms(forOpening, duration, actor);
+
+    this.emit('begin-animation', settings, forOpening, testMode, actor);
+  },
+
+  // For effects that draw on more than one actor (see LayeredEffect.js): makes this
+  // shader animate in lock-step with `leader`, whose animation is started as usual with
+  // beginAnimation(). This shader gets the same standard uniforms and its own
+  // 'begin-animation' signal, but no timeline of its own: every progress update of the
+  // leader is passed on to it. Call stopFollowing() when the leader's animation ends.
+  beginFollowing(leader, settings, forOpening, testMode, duration, actor) {
+    this.stopFollowing();
+    this._leader = leader;
+    leader._followers.push(this);
+
+    this._progress = testMode ? 0.5 : 0;
+    this._testMode = testMode;
+
+    this._setStandardUniforms(forOpening, duration, actor);
+
+    this.emit('begin-animation', settings, forOpening, testMode, actor);
+  },
+
+  stopFollowing() {
+    if (this._leader) {
+      const i = this._leader._followers.indexOf(this);
+      if (i >= 0) this._leader._followers.splice(i, 1);
+      this._leader = null;
+    }
+  },
+
+  // The uniforms every shader gets at the start of an animation.
+  _setStandardUniforms(forOpening, duration, actor) {
     // This is not necessarily symmetric, but I haven't figured out a way to
     // get the actual values...
     const padding    = (actor.width - actor.meta_window.get_frame_rect().width) / 2;
@@ -166,8 +208,6 @@ const _methods = {
     this.set_uniform_float(this._uIsFullscreen, 1, [isFullscreen]);
     this.set_uniform_float(this._uDuration, 1, [duration * 0.001]);
     this.set_uniform_float(this._uSize, 2, [actor.width, actor.height]);
-
-    this.emit('begin-animation', settings, forOpening, testMode, actor);
   },
 
   // This is called at each frame during the animation.
@@ -178,6 +218,10 @@ const _methods = {
     this._progress = progress;
 
     this.queue_repaint();
+
+    for (const follower of this._followers) {
+      follower.updateAnimation(progress);
+    }
   },
 
   // This will stop any running animation and emit the end-animation signal.
@@ -210,6 +254,47 @@ const _methods = {
     } else {
       this.get_pipeline().set_uniform_1i(handle, value);
     }
+  },
+
+  // Where this effect's offscreen texture lies relative to the top-left corner of the
+  // actor it is attached to, as [x, y, width, height] in that actor's coordinates, or
+  // null before the first paint. `width` and `height` are the actor's size; its paint
+  // volume must be its allocation (clip_to_allocation, as for the layers of
+  // LayeredEffect.js).
+  //
+  // Only the size of the target is used. Its position is wherever the actor was painted
+  // first this frame, which can be a clone of it inside another offscreen effect. The
+  // origin follows from the actor's own size instead, the way Clutter pads the box
+  // (_clutter_actor_box_enlarge_for_effects).
+  //
+  // texPadding: 'enlarged' (stock Clutter: x2' = ceil(x2 + 0.75), x1' = x2' - width, so
+  // most of the 3px is on the left / top), 'centred' (padded evenly), or anything else
+  // for no padding offset.
+  getTextureRect(width, height, texPadding) {
+    let w, h;
+    try {
+      if (this.get_target_rect) {
+        const [ok, r] = this.get_target_rect();
+        if (!ok) return null;
+        w = r.get_width();
+        h = r.get_height();
+      } else {
+        const [ok, tw, th] = this.get_target_size();
+        if (!ok) return null;
+        w = tw;
+        h = th;
+      }
+    } catch (e) {
+      return null;
+    }
+    if (!(w > 0 && h > 0)) return null;
+    if (texPadding === 'centred') {
+      return [-(w - width) / 2, -(h - height) / 2, w, h];
+    }
+    if (texPadding === 'enlarged') {
+      return [Math.ceil(width + 0.75) - w, Math.ceil(height + 0.75) - h, w, h];
+    }
+    return [0, 0, w, h];
   },
 
   // --------------------------------------------------------------------- private stuff

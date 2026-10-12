@@ -152,6 +152,22 @@ vec4 getInputColor(vec2 coords) {
 
 void setOutputColor(vec4 outColor) { cogl_color_out = outColor; }
 
+// Layered effects (see src/LayeredEffect.js): the effect hides the window and draws on
+// actors of its own, the "layers", which all have the same size and position. Set by
+// LayeredEffect.js; unused (and optimized away) in other effects.
+uniform float uLayer;      // 0 = surface (what's behind the window), 1 = the window
+uniform vec2  uLayerSize;  // the layer actor's size in pixels
+uniform vec4  uTexRect;    // this layer's offscreen texture, in layer pixels: x, y, w, h
+
+// The current fragment's position in the layer, in pixels.
+vec2 getLayerPx() { return uTexRect.xy + iTexCoord.st * uTexRect.zw; }
+
+// This layer's colour at pixel position p (layer coordinates), clamped to the layer.
+vec4 getLayerColor(vec2 p) {
+  p = clamp(p, vec2(0.5), uLayerSize - 0.5);
+  return getInputColor((p - uTexRect.xy) / uTexRect.zw);
+}
+
 #endif  // -------------------------------------------------------------------------------
 
 // A simple blur function

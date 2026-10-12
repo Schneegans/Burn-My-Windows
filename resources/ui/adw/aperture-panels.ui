@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Kevin Langman <klangman@gmail.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+
+  <object class="AdwExpanderRow" id="aperture-panels-prefs">
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Animation Time [ms]</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="aperture-panels-animation-time">
+                <property name="upper">10000</property>
+                <property name="lower">500</property>
+                <property name="step-increment">10</property>
+                <property name="page-increment">100</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-animation-time">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Panel Size [px]</property>
+        <property name="subtitle" translatable="yes">Adjusted a little so that a whole number of panels fits the window exactly.</property>
+        <child>
+          <object class="GtkScale">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="aperture-panels-panel-size">
+                <property name="upper">200</property>
+                <property name="lower">16</property>
+                <property name="step-increment">1</property>
+                <property name="page-increment">10</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-panel-size">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwComboRow" id="aperture-panels-wave-shape">
+        <property name="title" translatable="yes">Wave Shape</property>
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">Diagonal</item>
+              <item translatable="yes">Arc from a Corner</item>
+              <item translatable="yes">Wavy Diagonal</item>
+              <item translatable="yes">Organic Diagonal</item>
+              <item translatable="yes">Ripple from the Center</item>
+              <item translatable="yes">Random</item>
+            </items>
+          </object>
+        </property>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-wave-shape">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwComboRow" id="aperture-panels-flip-axis">
+        <property name="title" translatable="yes">Flip Axis</property>
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">Vertical</item>
+              <item translatable="yes">Horizontal</item>
+              <item translatable="yes">Random</item>
+            </items>
+          </object>
+        </property>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-flip-axis">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwComboRow" id="aperture-panels-backdrop">
+        <property name="title" translatable="yes">Backdrop</property>
+        <property name="subtitle" translatable="yes">What is seen behind the panels as they turn.</property>
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">Wallpaper</item>
+              <item translatable="yes">Black Void</item>
+            </items>
+          </object>
+        </property>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-backdrop">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwComboRow" id="aperture-panels-border-style">
+        <property name="title" translatable="yes">Border Style</property>
+        <property name="model">
+          <object class="GtkStringList">
+            <items>
+              <item translatable="yes">None</item>
+              <item translatable="yes">While Flipping</item>
+              <item translatable="yes">Ahead of the Wave</item>
+              <item translatable="yes">Behind the Wave</item>
+              <item translatable="yes">Ahead of and Behind the Wave</item>
+            </items>
+          </object>
+        </property>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-border-style">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Border Color</property>
+        <child>
+          <object class="GtkColorButton" id="aperture-panels-border-color">
+            <property name="use_alpha">1</property>
+            <property name="show_editor">1</property>
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-aperture-panels-border-color">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </object>
+
+</interface>
