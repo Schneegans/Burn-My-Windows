@@ -11,7 +11,8 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### New Features
 
-- **New Effect: Materialize!** Windows pop up as a flat, tinted panel which grows to full size in a few stuttering steps before the actual window content appears. It is inspired by the computer screens in The Matrix Resurrections and uses the system accent color by default. Thanks to [@eboye](https://github.com/eboye) for this contribution!
+- **Three new effects: Aperture Panels, Morph, and Wormhole!** These new effects use a new effect-layering system that allows the effect to incorporate the wallpaper and / or the windows behind it. Thanks to [@klangman](https://github.com/klangman) for this porting this from [CinnamonBurnMyWindows](https://github.com/klangman/CinnamonBurnMyWindows) to Burn My Windows!
+- **One more new effect: Materialize!** Windows pop up as a flat, tinted panel which grows to full size in a few stuttering steps before the actual window content appears. It is inspired by the computer screens in The Matrix Resurrections and uses the system accent color by default. Thanks to [@eboye](https://github.com/eboye) for this contribution!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 
@@ -22,7 +23,6 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Bug Fixes
 
 - Fixed an issue where GNOME Shell could freeze for up to 25 seconds after login if `power-profiles-daemon` was not running yet. Thanks to [@dogcom0228](https://github.com/dogcom0228) for the fix!
-
 
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)
 
