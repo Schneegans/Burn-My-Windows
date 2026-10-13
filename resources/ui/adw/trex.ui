@@ -13,7 +13,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -46,7 +46,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Claw Scratch Scale</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">1</property>
@@ -79,7 +79,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Claw Scratch Count</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -112,7 +112,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Warp Effect</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>

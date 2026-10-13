@@ -23,6 +23,9 @@ import Adw from 'gi://Adw';
 import * as utils from './src/utils.js';
 import {ProfileManager} from './src/ProfileManager.js';
 
+// This registers the BurnMyWindowsSlider widget, which is used in the ui files.
+import './src/Slider.js';
+
 import AperturePanels from './src/effects/AperturePanels.js';
 import Apparition from './src/effects/Apparition.js';
 import AuraGlow from './src/effects/AuraGlow.js';
