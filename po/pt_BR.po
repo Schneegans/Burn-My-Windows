@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:10+0200\n"
+"POT-Creation-Date: 2026-09-30 22:29+0300\n"
 "PO-Revision-Date: 2026-06-01 08:01+0000\n"
 "Last-Translator: Cristian Pavan <cristianpavan@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/burn-"
@@ -43,31 +43,31 @@ msgstr "Energizar A"
 msgid "Energize B"
 msgstr "Energizar B"
 
-#: src/effects/Fire.js:103
+#: src/effects/Fire.js:108
 msgid "Fire"
 msgstr "Fogo"
 
-#: src/effects/Fire.js:185
+#: src/effects/Fire.js:192
 msgid "Default Fire"
 msgstr "Fogo Padrão"
 
-#: src/effects/Fire.js:195
+#: src/effects/Fire.js:202
 msgid "Hell Fire"
 msgstr "Fogo Do Inferno"
 
-#: src/effects/Fire.js:205
+#: src/effects/Fire.js:212
 msgid "Dark and Smutty"
 msgstr "Escuro e Enferrujado"
 
-#: src/effects/Fire.js:215
+#: src/effects/Fire.js:222
 msgid "Cold Breeze"
 msgstr "Brisa Fria"
 
-#: src/effects/Fire.js:225
+#: src/effects/Fire.js:232
 msgid "Santa is Coming"
 msgstr "O Papai Noel está Chegando"
 
-#: src/effects/Fire.js:236
+#: src/effects/Fire.js:243
 msgid "Nuclear ☢️"
 msgstr "Nuclear ☢️"
 
@@ -281,291 +281,6 @@ msgstr "Visualização para %s"
 msgid "Close this Window to Preview the Effect!"
 msgstr "Feche essa Janela para Visualizar o Efeito!"
 
-#: resources/ui/common/menus.ui:13
-msgid "Visit Homepage"
-msgstr "Visite a Homepage"
-
-#: resources/ui/common/menus.ui:21
-msgid "View Matching Wallpapers"
-msgstr "Ver Papéis de Parede Correspondentes"
-
-#: resources/ui/common/menus.ui:25
-msgid "View Donors Hall-of-Fame"
-msgstr "Ver Hall-da-Fama de Doadores"
-
-#: resources/ui/common/menus.ui:31
-msgid "Donate"
-msgstr "Doe"
-
-#: resources/ui/common/menus.ui:50
-msgid "Report a Bug"
-msgstr "Reportar um Erro"
-
-#: resources/ui/common/menus.ui:54
-msgid "Create an Effect"
-msgstr "Criar um Efeito"
-
-#: resources/ui/common/menus.ui:58
-msgid "Translate"
-msgstr "Traduzir"
-
-#: resources/ui/common/menus.ui:64
-msgid "Open Effect-Profile Directory"
-msgstr "Abrir Diretório Effect-Profile"
-
-#: resources/ui/common/menus.ui:70
-msgid "About Burn-My-Windows"
-msgstr "Sobre o Burn-My-Windows"
-
-#: resources/ui/common/menus.ui:81
-msgid "Add New Profile..."
-msgstr "Adicionar Novo Perfil..."
-
-#: resources/ui/adw/portal.ui:14 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/rgbwarp.ui:17
-#: resources/ui/adw/apparition.ui:15 resources/ui/adw/hexagon.ui:14
-#: resources/ui/adw/fire.ui:30 resources/ui/adw/tv-glitch.ui:14
-#: resources/ui/adw/pixel-wipe.ui:14 resources/ui/adw/glitch.ui:14
-#: resources/ui/adw/glide.ui:14 resources/ui/adw/pixel-wheel.ui:14
-#: resources/ui/adw/tv.ui:14 resources/ui/adw/pixelate.ui:14
-#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/incinerate.ui:14
-#: resources/ui/adw/doom.ui:14 resources/ui/adw/wisps.ui:14
-#: resources/ui/adw/trex.ui:14 resources/ui/adw/team-rocket.ui:17
-#: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
-#: resources/ui/adw/energize-b.ui:15 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/aura-glow.ui:13
-msgid "Animation Time [ms]"
-msgstr "Período de Animação [ms]"
-
-#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
-#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
-#: resources/ui/adw/portal.ui:160 resources/ui/adw/snap.ui:36
-#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
-#: resources/ui/adw/mushroom.ui:42 resources/ui/adw/mushroom.ui:99
-#: resources/ui/adw/mushroom.ui:137 resources/ui/adw/mushroom.ui:175
-#: resources/ui/adw/mushroom.ui:209 resources/ui/adw/mushroom.ui:243
-#: resources/ui/adw/mushroom.ui:281 resources/ui/adw/mushroom.ui:319
-#: resources/ui/adw/mushroom.ui:357 resources/ui/adw/mushroom.ui:427
-#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
-#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
-#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/apparition.ui:37
-#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
-#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
-#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
-#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
-#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
-#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
-#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
-#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:221
-#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
-#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
-#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/pixel-wipe.ui:36
-#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/glitch.ui:36
-#: resources/ui/adw/glitch.ui:69 resources/ui/adw/glitch.ui:102
-#: resources/ui/adw/glitch.ui:135 resources/ui/adw/glitch.ui:160
-#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
-#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
-#: resources/ui/adw/glide.ui:168 resources/ui/adw/pixel-wheel.ui:36
-#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
-#: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
-#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
-#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/materialize.ui:36
-#: resources/ui/adw/materialize.ui:69 resources/ui/adw/materialize.ui:103
-#: resources/ui/adw/materialize.ui:125 resources/ui/adw/materialize.ui:150
-#: resources/ui/adw/matrix.ui:36 resources/ui/adw/matrix.ui:69
-#: resources/ui/adw/matrix.ui:102 resources/ui/adw/matrix.ui:135
-#: resources/ui/adw/matrix.ui:160 resources/ui/adw/matrix.ui:185
-#: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
-#: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
-#: resources/ui/adw/broken-glass.ui:159 resources/ui/adw/incinerate.ui:36
-#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
-#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
-#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
-#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
-#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:110 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
-#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
-#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
-#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/focus.ui:50
-#: resources/ui/adw/focus.ui:76 resources/ui/adw/focus.ui:102
-#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
-#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
-#: resources/ui/adw/aura-glow.ui:35 resources/ui/adw/aura-glow.ui:58
-#: resources/ui/adw/aura-glow.ui:101 resources/ui/adw/aura-glow.ui:134
-#: resources/ui/adw/aura-glow.ui:167 resources/ui/adw/aura-glow.ui:200
-#: resources/ui/adw/aura-glow.ui:233 resources/ui/adw/aura-glow.ui:266
-msgid "Reset to Default Value"
-msgstr "Resetar para os Valores Padrões"
-
-#: resources/ui/adw/portal.ui:47
-msgid "Rotation Speed"
-msgstr "Velocidade de Rotação"
-
-#: resources/ui/adw/portal.ui:80
-msgid "Whirling"
-msgstr "Girando"
-
-#: resources/ui/adw/portal.ui:113
-msgid "Details"
-msgstr "Detalhes"
-
-#: resources/ui/adw/portal.ui:146 resources/ui/adw/snap.ui:80
-#: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
-#: resources/ui/adw/tv.ui:47 resources/ui/adw/materialize.ui:136
-#: resources/ui/adw/incinerate.ui:136 resources/ui/adw/wisps.ui:80
-#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
-msgid "Color"
-msgstr "Cor"
-
-#: resources/ui/adw/snap.ui:47 resources/ui/adw/hexagon.ui:47
-#: resources/ui/adw/fire.ui:63 resources/ui/adw/tv-glitch.ui:47
-#: resources/ui/adw/glitch.ui:47 resources/ui/adw/glide.ui:47
-#: resources/ui/adw/matrix.ui:47 resources/ui/adw/broken-glass.ui:48
-#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/wisps.ui:47
-#: resources/ui/adw/energize-a.ui:47 resources/ui/adw/energize-b.ui:48
-msgid "Scale"
-msgstr "Escala"
-
-#: resources/ui/adw/mushroom.ui:55
-msgid "Effect Presets"
-msgstr "Predefinições de Efeitos"
-
-#: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
-msgid "Choose a Preset"
-msgstr "Escolha uma Predefinição"
-
-#: resources/ui/adw/mushroom.ui:73
-msgid "Scale Style"
-msgstr "Estilo de Escala"
-
-#: resources/ui/adw/mushroom.ui:74
-msgid "8Bit --- Smooth"
-msgstr "8Bit --- Smooth"
-
-#: resources/ui/adw/mushroom.ui:112
-msgid "Spark Count"
-msgstr "Quantidade de Faíscas"
-
-#: resources/ui/adw/mushroom.ui:150
-msgid "Spark Rotation"
-msgstr "Rotação das Faíscas"
-
-#: resources/ui/adw/mushroom.ui:188
-msgid "Spark Color"
-msgstr "Cor das Faíscas"
-
-#: resources/ui/adw/mushroom.ui:222
-msgid "Rays Color"
-msgstr "Cor dos Raios"
-
-#: resources/ui/adw/mushroom.ui:256
-msgid "Star Rings Count"
-msgstr "Quantidade de Anéis Estelares"
-
-#: resources/ui/adw/mushroom.ui:294
-msgid "Star Ring Rotation"
-msgstr "Rotação dos Anéis Estelares"
-
-#: resources/ui/adw/mushroom.ui:332
-msgid "Stars Count Per Ring"
-msgstr "Quantidade de Estrelas por Anel"
-
-#: resources/ui/adw/mushroom.ui:370
-msgid "Star Gradient"
-msgstr "Gradiente de Estrelas"
-
-#: resources/ui/adw/rgbwarp.ui:55
-msgid "Brightness"
-msgstr "Brilho"
-
-#: resources/ui/adw/rgbwarp.ui:93
-msgid "Red Speed"
-msgstr "Velocidade Vermelha"
-
-#: resources/ui/adw/rgbwarp.ui:130
-msgid "Green Speed"
-msgstr "Velocidade Verde"
-
-#: resources/ui/adw/rgbwarp.ui:167
-msgid "Blue Speed"
-msgstr "Velocidade Azul"
-
-#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
-msgid "Randomness"
-msgstr "Aleatoriedade"
-
-#: resources/ui/adw/apparition.ui:81
-msgid "Twirl Intensity"
-msgstr "Intensidade do Giro"
-
-#: resources/ui/adw/apparition.ui:114
-msgid "Shake Intensity"
-msgstr "Intensidade da Agitação"
-
-#: resources/ui/adw/apparition.ui:147
-msgid "Suction Intensity"
-msgstr "Intensidade da Sucção"
-
-#: resources/ui/adw/hexagon.ui:80
-msgid "Mesh Line Width"
-msgstr "Largura da Linha de Malha"
-
-#: resources/ui/adw/hexagon.ui:113
-msgid "Line Color"
-msgstr "Cor da Linha"
-
-#: resources/ui/adw/hexagon.ui:138
-msgid "Glow Color"
-msgstr "Cor do Brilho"
-
-#: resources/ui/adw/hexagon.ui:163
-msgid "Additive Blending"
-msgstr "Mistura de Aditivos"
-
-#: resources/ui/adw/hexagon.ui:164
-msgid "You may want to enable this for dark window themes."
-msgstr "Você pode querer habilitar isso para temas de janelas escuras."
-
-#: resources/ui/adw/fire.ui:14
-msgid "Presets"
-msgstr "Predefinições"
-
-#: resources/ui/adw/fire.ui:96 resources/ui/adw/tv-glitch.ui:113
-#: resources/ui/adw/glitch.ui:113 resources/ui/adw/aura-glow.ui:112
-msgid "Speed"
-msgstr "Velocidade"
-
-#: resources/ui/adw/fire.ui:129
-msgid "3D Noise"
-msgstr "Ruído 3D"
-
-#: resources/ui/adw/fire.ui:130
-msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Cria um fogo mais dinâmico, mas requer mais potência da GPU."
-
-#: resources/ui/adw/fire.ui:152
-msgid "Use Random Color"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:174
-msgid "Gradient"
-msgstr "Gradiente"
-
-#: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
-msgid "Strength"
-msgstr "Força"
-
-#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixel-wheel.ui:80
-#: resources/ui/adw/pixelate.ui:80 resources/ui/adw/doom.ui:113
-msgid "Pixel Size"
-msgstr "Tamanho do Pixel"
-
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
 msgstr "Restrições do Perfil de Efeito"
@@ -636,6 +351,220 @@ msgstr "Ativar Todos"
 msgid "Disable All"
 msgstr "Desativar Todos"
 
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/fire.ui:30 resources/ui/adw/focus.ui:35
+#: resources/ui/adw/glide.ui:14 resources/ui/adw/glitch.ui:14
+#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/incinerate.ui:14
+#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
+#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/paint-brush.ui:14
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/portal.ui:14
+#: resources/ui/adw/rgbwarp.ui:17 resources/ui/adw/snap.ui:14
+#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/trex.ui:14
+#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/tv.ui:14
+#: resources/ui/adw/wisps.ui:14
+msgid "Animation Time [ms]"
+msgstr "Período de Animação [ms]"
+
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
+#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
+#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
+#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
+#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:185
+#: resources/ui/adw/fire.ui:207 resources/ui/adw/fire.ui:265
+#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
+#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
+#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
+#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
+#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
+#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
+#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
+#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
+#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
+#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
+#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
+#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
+#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
+#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
+#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
+#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
+#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+msgid "Reset to Default Value"
+msgstr "Resetar para os Valores Padrões"
+
+#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
+msgid "Randomness"
+msgstr "Aleatoriedade"
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "Intensidade do Giro"
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "Intensidade da Agitação"
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "Intensidade da Sucção"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr "Cor Aleatória"
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr "Matiz Inicial"
+
+#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/fire.ui:96
+#: resources/ui/adw/glitch.ui:113 resources/ui/adw/tv-glitch.ui:113
+msgid "Speed"
+msgstr "Velocidade"
+
+#: resources/ui/adw/aura-glow.ui:145
+msgid "Saturation"
+msgstr "Saturação"
+
+#: resources/ui/adw/aura-glow.ui:178
+msgid "Edge Size"
+msgstr "Tamanho da Borda"
+
+#: resources/ui/adw/aura-glow.ui:211
+msgid "Edge Hardness"
+msgstr "Dureza da Borda"
+
+#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "Quantidade de Desfoque"
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/fire.ui:63
+#: resources/ui/adw/glide.ui:47 resources/ui/adw/glitch.ui:47
+#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/incinerate.ui:47
+#: resources/ui/adw/matrix.ui:47 resources/ui/adw/snap.ui:47
+#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/wisps.ui:47
+msgid "Scale"
+msgstr "Escala"
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "Gravidade"
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "Força do Golpe"
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "Quebrar Partindo do Ponteiro do Mouse"
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+"Os fragmentos voarão para longe de onde estava o ponteiro do mouse ao fechar "
+"a janela."
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "Escala Horizontal"
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "Escala Vertical"
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
+#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
+msgid "Pixel Size"
+msgstr "Tamanho do Pixel"
+
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
+msgid "Color"
+msgstr "Cor"
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "Predefinições"
+
+#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
+msgid "Choose a Preset"
+msgstr "Escolha uma Predefinição"
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "Ruído 3D"
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Cria um fogo mais dinâmico, mas requer mais potência da GPU."
+
+#: resources/ui/adw/fire.ui:152
+msgid "Use Random Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:174
+msgid "Burn Closing Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:196
+msgid "Burn Opening Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:218
+msgid "Gradient"
+msgstr "Gradiente"
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr "Qualidade do Desfoque"
+
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
 msgstr "Achatamento"
@@ -648,13 +577,41 @@ msgstr "Inclinação"
 msgid "Shift"
 msgstr "Turno"
 
-#: resources/ui/adw/pixel-wheel.ui:47
-msgid "Spoke Count"
-msgstr "Contagem de Raios"
+#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
+msgid "Strength"
+msgstr "Força"
 
-#: resources/ui/adw/pixelate.ui:47
-msgid "Noise"
-msgstr "Ruído"
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "Largura da Linha de Malha"
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "Cor da Linha"
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "Cor do Brilho"
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "Mistura de Aditivos"
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "Você pode querer habilitar isso para temas de janelas escuras."
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "Turbulência"
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "Começar no Ponteiro"
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "Se desativado, um local aleatório será escolhido."
 
 #: resources/ui/adw/materialize.ui:47
 msgid "Start Scale"
@@ -684,61 +641,89 @@ msgstr "Cor da Trilha"
 msgid "Tip Color"
 msgstr "Cor da Ponta"
 
-#: resources/ui/adw/broken-glass.ui:81
-msgid "Gravity"
-msgstr "Gravidade"
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr "Predefinições de Efeitos"
 
-#: resources/ui/adw/broken-glass.ui:114
-msgid "Blow Force"
-msgstr "Força do Golpe"
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr "Estilo de Escala"
 
-#: resources/ui/adw/broken-glass.ui:147
-msgid "Shatter From Pointer Location"
-msgstr "Quebrar Partindo do Ponteiro do Mouse"
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr "8Bit --- Smooth"
 
-#: resources/ui/adw/broken-glass.ui:148
-msgid ""
-"The shards will fly away from where your mouse pointer was when closing the "
-"window."
-msgstr ""
-"Os fragmentos voarão para longe de onde estava o ponteiro do mouse ao fechar "
-"a janela."
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr "Quantidade de Faíscas"
 
-#: resources/ui/adw/incinerate.ui:80
-msgid "Turbulence"
-msgstr "Turbulência"
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr "Rotação das Faíscas"
 
-#: resources/ui/adw/incinerate.ui:113
-msgid "Start at Pointer"
-msgstr "Começar no Ponteiro"
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr "Cor das Faíscas"
 
-#: resources/ui/adw/incinerate.ui:114
-msgid "If disabled, a random location will be chosen."
-msgstr "Se desativado, um local aleatório será escolhido."
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr "Cor dos Raios"
 
-#: resources/ui/adw/doom.ui:47
-msgid "Horizontal Scale"
-msgstr "Escala Horizontal"
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr "Quantidade de Anéis Estelares"
 
-#: resources/ui/adw/doom.ui:80
-msgid "Vertical Scale"
-msgstr "Escala Vertical"
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr "Rotação dos Anéis Estelares"
 
-#: resources/ui/adw/trex.ui:47
-msgid "Claw Scratch Scale"
-msgstr "Escala do Arranhão da Garra"
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr "Quantidade de Estrelas por Anel"
 
-#: resources/ui/adw/trex.ui:80
-msgid "Claw Scratch Count"
-msgstr "Total de Arranhões de Garra"
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr "Gradiente de Estrelas"
 
-#: resources/ui/adw/trex.ui:113
-msgid "Warp Effect"
-msgstr "Efeito de Deformação"
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "Tamanho do Pincel"
 
-#: resources/ui/adw/trex.ui:146
-msgid "Flash Color"
-msgstr "Cor do Flash"
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "Contagem de Raios"
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "Ruído"
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "Velocidade de Rotação"
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "Girando"
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "Detalhes"
+
+#: resources/ui/adw/rgbwarp.ui:55
+msgid "Brightness"
+msgstr "Brilho"
+
+#: resources/ui/adw/rgbwarp.ui:93
+msgid "Red Speed"
+msgstr "Velocidade Vermelha"
+
+#: resources/ui/adw/rgbwarp.ui:130
+msgid "Green Speed"
+msgstr "Velocidade Verde"
+
+#: resources/ui/adw/rgbwarp.ui:167
+msgid "Blue Speed"
+msgstr "Velocidade Azul"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
@@ -764,37 +749,61 @@ msgstr "Tamanho do Brilho"
 msgid "Sparkle Rotation"
 msgstr "Rotação do Brilho"
 
-#: resources/ui/adw/focus.ui:61 resources/ui/adw/aura-glow.ui:244
-msgid "Blur Amount"
-msgstr "Quantidade de Desfoque"
+#: resources/ui/adw/trex.ui:47
+msgid "Claw Scratch Scale"
+msgstr "Escala do Arranhão da Garra"
 
-#: resources/ui/adw/focus.ui:87
-msgid "Blur Quality"
-msgstr "Qualidade do Desfoque"
+#: resources/ui/adw/trex.ui:80
+msgid "Claw Scratch Count"
+msgstr "Total de Arranhões de Garra"
 
-#: resources/ui/adw/paint-brush.ui:47
-msgid "Brush Size"
-msgstr "Tamanho do Pincel"
+#: resources/ui/adw/trex.ui:113
+msgid "Warp Effect"
+msgstr "Efeito de Deformação"
 
-#: resources/ui/adw/aura-glow.ui:47
-msgid "Random Color"
-msgstr "Cor Aleatória"
+#: resources/ui/adw/trex.ui:146
+msgid "Flash Color"
+msgstr "Cor do Flash"
 
-#: resources/ui/adw/aura-glow.ui:69
-msgid "Start Hue"
-msgstr "Matiz Inicial"
+#: resources/ui/common/menus.ui:13
+msgid "Visit Homepage"
+msgstr "Visite a Homepage"
 
-#: resources/ui/adw/aura-glow.ui:145
-msgid "Saturation"
-msgstr "Saturação"
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr "Ver Papéis de Parede Correspondentes"
 
-#: resources/ui/adw/aura-glow.ui:178
-msgid "Edge Size"
-msgstr "Tamanho da Borda"
+#: resources/ui/common/menus.ui:25
+msgid "View Donors Hall-of-Fame"
+msgstr "Ver Hall-da-Fama de Doadores"
 
-#: resources/ui/adw/aura-glow.ui:211
-msgid "Edge Hardness"
-msgstr "Dureza da Borda"
+#: resources/ui/common/menus.ui:31
+msgid "Donate"
+msgstr "Doe"
+
+#: resources/ui/common/menus.ui:50
+msgid "Report a Bug"
+msgstr "Reportar um Erro"
+
+#: resources/ui/common/menus.ui:54
+msgid "Create an Effect"
+msgstr "Criar um Efeito"
+
+#: resources/ui/common/menus.ui:58
+msgid "Translate"
+msgstr "Traduzir"
+
+#: resources/ui/common/menus.ui:64
+msgid "Open Effect-Profile Directory"
+msgstr "Abrir Diretório Effect-Profile"
+
+#: resources/ui/common/menus.ui:70
+msgid "About Burn-My-Windows"
+msgstr "Sobre o Burn-My-Windows"
+
+#: resources/ui/common/menus.ui:81
+msgid "Add New Profile..."
+msgstr "Adicionar Novo Perfil..."
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "Patrocinadores Ouro"

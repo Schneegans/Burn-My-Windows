@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:10+0200\n"
+"POT-Creation-Date: 2026-09-30 22:29+0300\n"
 "PO-Revision-Date: 2026-10-04 13:51+0000\n"
 "Last-Translator: Ido Greenfeld <idogreenfeld@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -44,31 +44,31 @@ msgstr "אנרגיה 1"
 msgid "Energize B"
 msgstr "אנרגיה 2"
 
-#: src/effects/Fire.js:103
+#: src/effects/Fire.js:108
 msgid "Fire"
 msgstr "להבות"
 
-#: src/effects/Fire.js:185
+#: src/effects/Fire.js:192
 msgid "Default Fire"
 msgstr "להבות (ברירת מחדל)"
 
-#: src/effects/Fire.js:195
+#: src/effects/Fire.js:202
 msgid "Hell Fire"
 msgstr "אש הגיהנום"
 
-#: src/effects/Fire.js:205
+#: src/effects/Fire.js:212
 msgid "Dark and Smutty"
 msgstr "אפל ומפויח"
 
-#: src/effects/Fire.js:215
+#: src/effects/Fire.js:222
 msgid "Cold Breeze"
 msgstr "רוח קרה"
 
-#: src/effects/Fire.js:225
+#: src/effects/Fire.js:232
 msgid "Santa is Coming"
 msgstr "סנטה בדרך"
 
-#: src/effects/Fire.js:236
+#: src/effects/Fire.js:243
 msgid "Nuclear ☢️"
 msgstr "גרעיני ☢️"
 
@@ -280,291 +280,6 @@ msgstr "תצוגה מקדימה: %s"
 msgid "Close this Window to Preview the Effect!"
 msgstr "יש לסגור את החלון כדי לצפות בתצוגה המקדימה!"
 
-#: resources/ui/common/menus.ui:13
-msgid "Visit Homepage"
-msgstr "לדף הבית"
-
-#: resources/ui/common/menus.ui:21
-msgid "View Matching Wallpapers"
-msgstr "צפייה בתמונות רקע תואמות"
-
-#: resources/ui/common/menus.ui:25
-msgid "View Donors Hall-of-Fame"
-msgstr "צפייה בהיכל התהילה של התורמים"
-
-#: resources/ui/common/menus.ui:31
-msgid "Donate"
-msgstr "תרומה"
-
-#: resources/ui/common/menus.ui:50
-msgid "Report a Bug"
-msgstr "דיווח על שגיאה"
-
-#: resources/ui/common/menus.ui:54
-msgid "Create an Effect"
-msgstr "יצירת אפקט חדש"
-
-#: resources/ui/common/menus.ui:58
-msgid "Translate"
-msgstr "תרגום"
-
-#: resources/ui/common/menus.ui:64
-msgid "Open Effect-Profile Directory"
-msgstr "פתיחת תיקיית פרופילי האפקטים"
-
-#: resources/ui/common/menus.ui:70
-msgid "About Burn-My-Windows"
-msgstr "אודות Burn-My-Windows"
-
-#: resources/ui/common/menus.ui:81
-msgid "Add New Profile..."
-msgstr "הוספת פרופיל חדש…"
-
-#: resources/ui/adw/portal.ui:14 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/rgbwarp.ui:17
-#: resources/ui/adw/apparition.ui:15 resources/ui/adw/hexagon.ui:14
-#: resources/ui/adw/fire.ui:30 resources/ui/adw/tv-glitch.ui:14
-#: resources/ui/adw/pixel-wipe.ui:14 resources/ui/adw/glitch.ui:14
-#: resources/ui/adw/glide.ui:14 resources/ui/adw/pixel-wheel.ui:14
-#: resources/ui/adw/tv.ui:14 resources/ui/adw/pixelate.ui:14
-#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/incinerate.ui:14
-#: resources/ui/adw/doom.ui:14 resources/ui/adw/wisps.ui:14
-#: resources/ui/adw/trex.ui:14 resources/ui/adw/team-rocket.ui:17
-#: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
-#: resources/ui/adw/energize-b.ui:15 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/aura-glow.ui:13
-msgid "Animation Time [ms]"
-msgstr "משך האנימציה (מילישניות)"
-
-#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
-#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
-#: resources/ui/adw/portal.ui:160 resources/ui/adw/snap.ui:36
-#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
-#: resources/ui/adw/mushroom.ui:42 resources/ui/adw/mushroom.ui:99
-#: resources/ui/adw/mushroom.ui:137 resources/ui/adw/mushroom.ui:175
-#: resources/ui/adw/mushroom.ui:209 resources/ui/adw/mushroom.ui:243
-#: resources/ui/adw/mushroom.ui:281 resources/ui/adw/mushroom.ui:319
-#: resources/ui/adw/mushroom.ui:357 resources/ui/adw/mushroom.ui:427
-#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
-#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
-#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/apparition.ui:37
-#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
-#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
-#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
-#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
-#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
-#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
-#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
-#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:221
-#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
-#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
-#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/pixel-wipe.ui:36
-#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/glitch.ui:36
-#: resources/ui/adw/glitch.ui:69 resources/ui/adw/glitch.ui:102
-#: resources/ui/adw/glitch.ui:135 resources/ui/adw/glitch.ui:160
-#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
-#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
-#: resources/ui/adw/glide.ui:168 resources/ui/adw/pixel-wheel.ui:36
-#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
-#: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
-#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
-#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/materialize.ui:36
-#: resources/ui/adw/materialize.ui:69 resources/ui/adw/materialize.ui:103
-#: resources/ui/adw/materialize.ui:125 resources/ui/adw/materialize.ui:150
-#: resources/ui/adw/matrix.ui:36 resources/ui/adw/matrix.ui:69
-#: resources/ui/adw/matrix.ui:102 resources/ui/adw/matrix.ui:135
-#: resources/ui/adw/matrix.ui:160 resources/ui/adw/matrix.ui:185
-#: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
-#: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
-#: resources/ui/adw/broken-glass.ui:159 resources/ui/adw/incinerate.ui:36
-#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
-#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
-#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
-#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
-#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:110 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
-#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
-#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
-#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/focus.ui:50
-#: resources/ui/adw/focus.ui:76 resources/ui/adw/focus.ui:102
-#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
-#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
-#: resources/ui/adw/aura-glow.ui:35 resources/ui/adw/aura-glow.ui:58
-#: resources/ui/adw/aura-glow.ui:101 resources/ui/adw/aura-glow.ui:134
-#: resources/ui/adw/aura-glow.ui:167 resources/ui/adw/aura-glow.ui:200
-#: resources/ui/adw/aura-glow.ui:233 resources/ui/adw/aura-glow.ui:266
-msgid "Reset to Default Value"
-msgstr "איפוס"
-
-#: resources/ui/adw/portal.ui:47
-msgid "Rotation Speed"
-msgstr "מהירות סיבוב"
-
-#: resources/ui/adw/portal.ui:80
-msgid "Whirling"
-msgstr "סחרור"
-
-#: resources/ui/adw/portal.ui:113
-msgid "Details"
-msgstr "רמת פירוט"
-
-#: resources/ui/adw/portal.ui:146 resources/ui/adw/snap.ui:80
-#: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
-#: resources/ui/adw/tv.ui:47 resources/ui/adw/materialize.ui:136
-#: resources/ui/adw/incinerate.ui:136 resources/ui/adw/wisps.ui:80
-#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
-msgid "Color"
-msgstr "צבע"
-
-#: resources/ui/adw/snap.ui:47 resources/ui/adw/hexagon.ui:47
-#: resources/ui/adw/fire.ui:63 resources/ui/adw/tv-glitch.ui:47
-#: resources/ui/adw/glitch.ui:47 resources/ui/adw/glide.ui:47
-#: resources/ui/adw/matrix.ui:47 resources/ui/adw/broken-glass.ui:48
-#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/wisps.ui:47
-#: resources/ui/adw/energize-a.ui:47 resources/ui/adw/energize-b.ui:48
-msgid "Scale"
-msgstr "קנה מידה"
-
-#: resources/ui/adw/mushroom.ui:55
-msgid "Effect Presets"
-msgstr "הגדרות מוכנות לאפקט"
-
-#: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
-msgid "Choose a Preset"
-msgstr "בחירת הגדרה מוכנה"
-
-#: resources/ui/adw/mushroom.ui:73
-msgid "Scale Style"
-msgstr "סגנון שינוי גודל"
-
-#: resources/ui/adw/mushroom.ui:74
-msgid "8Bit --- Smooth"
-msgstr "8 ביט --- חלק"
-
-#: resources/ui/adw/mushroom.ui:112
-msgid "Spark Count"
-msgstr "מספר ניצוצות"
-
-#: resources/ui/adw/mushroom.ui:150
-msgid "Spark Rotation"
-msgstr "סיבוב ניצוצות"
-
-#: resources/ui/adw/mushroom.ui:188
-msgid "Spark Color"
-msgstr "צבע ניצוצות"
-
-#: resources/ui/adw/mushroom.ui:222
-msgid "Rays Color"
-msgstr "צבע קרניים"
-
-#: resources/ui/adw/mushroom.ui:256
-msgid "Star Rings Count"
-msgstr "מספר טבעות כוכבים"
-
-#: resources/ui/adw/mushroom.ui:294
-msgid "Star Ring Rotation"
-msgstr "סיבוב טבעות הכוכבים"
-
-#: resources/ui/adw/mushroom.ui:332
-msgid "Stars Count Per Ring"
-msgstr "מספר כוכבים בכל טבעת"
-
-#: resources/ui/adw/mushroom.ui:370
-msgid "Star Gradient"
-msgstr "מעבר צבעי הכוכבים"
-
-#: resources/ui/adw/rgbwarp.ui:55
-msgid "Brightness"
-msgstr "בהירות"
-
-#: resources/ui/adw/rgbwarp.ui:93
-msgid "Red Speed"
-msgstr "מהירות אדום"
-
-#: resources/ui/adw/rgbwarp.ui:130
-msgid "Green Speed"
-msgstr "מהירות ירוק"
-
-#: resources/ui/adw/rgbwarp.ui:167
-msgid "Blue Speed"
-msgstr "מהירות כחול"
-
-#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
-msgid "Randomness"
-msgstr "אקראיות"
-
-#: resources/ui/adw/apparition.ui:81
-msgid "Twirl Intensity"
-msgstr "עוצמת סחרור"
-
-#: resources/ui/adw/apparition.ui:114
-msgid "Shake Intensity"
-msgstr "עוצמת רעידה"
-
-#: resources/ui/adw/apparition.ui:147
-msgid "Suction Intensity"
-msgstr "עוצמת שאיבה"
-
-#: resources/ui/adw/hexagon.ui:80
-msgid "Mesh Line Width"
-msgstr "עובי קווי הרשת"
-
-#: resources/ui/adw/hexagon.ui:113
-msgid "Line Color"
-msgstr "צבע קו"
-
-#: resources/ui/adw/hexagon.ui:138
-msgid "Glow Color"
-msgstr "צבע הזוהר"
-
-#: resources/ui/adw/hexagon.ui:163
-msgid "Additive Blending"
-msgstr "מיזוג חיבורי"
-
-#: resources/ui/adw/hexagon.ui:164
-msgid "You may want to enable this for dark window themes."
-msgstr "מומלץ להפעיל זאת בערכות נושא כהות לחלונות."
-
-#: resources/ui/adw/fire.ui:14
-msgid "Presets"
-msgstr "הגדרות מוכנות"
-
-#: resources/ui/adw/fire.ui:96 resources/ui/adw/tv-glitch.ui:113
-#: resources/ui/adw/glitch.ui:113 resources/ui/adw/aura-glow.ui:112
-msgid "Speed"
-msgstr "מהירות"
-
-#: resources/ui/adw/fire.ui:129
-msgid "3D Noise"
-msgstr "רעש תלת־ממדי"
-
-#: resources/ui/adw/fire.ui:130
-msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "יוצר אש דינמית יותר, אך דורש יותר כוח עיבוד גרפי."
-
-#: resources/ui/adw/fire.ui:152
-msgid "Use Random Color"
-msgstr "שימוש בצבע אקראי"
-
-#: resources/ui/adw/fire.ui:174
-msgid "Gradient"
-msgstr "מעבר צבעים"
-
-#: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
-msgid "Strength"
-msgstr "עוצמה"
-
-#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixel-wheel.ui:80
-#: resources/ui/adw/pixelate.ui:80 resources/ui/adw/doom.ui:113
-msgid "Pixel Size"
-msgstr "גודל פיקסל"
-
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
 msgstr "תנאים לפרופיל האפקט"
@@ -635,6 +350,218 @@ msgstr "הפעלת הכול"
 msgid "Disable All"
 msgstr "השבתת הכול"
 
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/fire.ui:30 resources/ui/adw/focus.ui:35
+#: resources/ui/adw/glide.ui:14 resources/ui/adw/glitch.ui:14
+#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/incinerate.ui:14
+#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
+#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/paint-brush.ui:14
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/portal.ui:14
+#: resources/ui/adw/rgbwarp.ui:17 resources/ui/adw/snap.ui:14
+#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/trex.ui:14
+#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/tv.ui:14
+#: resources/ui/adw/wisps.ui:14
+msgid "Animation Time [ms]"
+msgstr "משך האנימציה (מילישניות)"
+
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
+#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
+#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
+#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
+#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:185
+#: resources/ui/adw/fire.ui:207 resources/ui/adw/fire.ui:265
+#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
+#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
+#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
+#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
+#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
+#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
+#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
+#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
+#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
+#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
+#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
+#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
+#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
+#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
+#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
+#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
+#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+msgid "Reset to Default Value"
+msgstr "איפוס"
+
+#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
+msgid "Randomness"
+msgstr "אקראיות"
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "עוצמת סחרור"
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "עוצמת רעידה"
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "עוצמת שאיבה"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr "צבע אקראי"
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr "גוון התחלתי"
+
+#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/fire.ui:96
+#: resources/ui/adw/glitch.ui:113 resources/ui/adw/tv-glitch.ui:113
+msgid "Speed"
+msgstr "מהירות"
+
+#: resources/ui/adw/aura-glow.ui:145
+msgid "Saturation"
+msgstr "רוויה"
+
+#: resources/ui/adw/aura-glow.ui:178
+msgid "Edge Size"
+msgstr "גודל הקצה"
+
+#: resources/ui/adw/aura-glow.ui:211
+msgid "Edge Hardness"
+msgstr "חדות הקצה"
+
+#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "מידת טשטוש"
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/fire.ui:63
+#: resources/ui/adw/glide.ui:47 resources/ui/adw/glitch.ui:47
+#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/incinerate.ui:47
+#: resources/ui/adw/matrix.ui:47 resources/ui/adw/snap.ui:47
+#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/wisps.ui:47
+msgid "Scale"
+msgstr "קנה מידה"
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "כוח משיכה"
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "עוצמת הפיצוץ"
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "ניפוץ ממיקום הסמן"
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr "הרסיסים יעופו מהמקום שבו היה סמן העכבר בעת סגירת החלון."
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "קנה מידה אופקי"
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "קנה מידה אנכי"
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
+#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
+msgid "Pixel Size"
+msgstr "גודל פיקסל"
+
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
+msgid "Color"
+msgstr "צבע"
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "הגדרות מוכנות"
+
+#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
+msgid "Choose a Preset"
+msgstr "בחירת הגדרה מוכנה"
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "רעש תלת־ממדי"
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "יוצר אש דינמית יותר, אך דורש יותר כוח עיבוד גרפי."
+
+#: resources/ui/adw/fire.ui:152
+msgid "Use Random Color"
+msgstr "שימוש בצבע אקראי"
+
+#: resources/ui/adw/fire.ui:174
+msgid "Burn Closing Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:196
+msgid "Burn Opening Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:218
+msgid "Gradient"
+msgstr "מעבר צבעים"
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr "איכות טשטוש"
+
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
 msgstr "מעיכה"
@@ -647,13 +574,41 @@ msgstr "הטיה"
 msgid "Shift"
 msgstr "הזזה"
 
-#: resources/ui/adw/pixel-wheel.ui:47
-msgid "Spoke Count"
-msgstr "מספר חישורים"
+#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
+msgid "Strength"
+msgstr "עוצמה"
 
-#: resources/ui/adw/pixelate.ui:47
-msgid "Noise"
-msgstr "רעש"
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "עובי קווי הרשת"
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "צבע קו"
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "צבע הזוהר"
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "מיזוג חיבורי"
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "מומלץ להפעיל זאת בערכות נושא כהות לחלונות."
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "מערבולות"
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "התחלה במיקום הסמן"
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "אם האפשרות מושבתת, ייבחר מיקום אקראי."
 
 #: resources/ui/adw/materialize.ui:47
 msgid "Start Scale"
@@ -683,59 +638,89 @@ msgstr "צבע השובל"
 msgid "Tip Color"
 msgstr "צבע הקצה"
 
-#: resources/ui/adw/broken-glass.ui:81
-msgid "Gravity"
-msgstr "כוח משיכה"
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr "הגדרות מוכנות לאפקט"
 
-#: resources/ui/adw/broken-glass.ui:114
-msgid "Blow Force"
-msgstr "עוצמת הפיצוץ"
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr "סגנון שינוי גודל"
 
-#: resources/ui/adw/broken-glass.ui:147
-msgid "Shatter From Pointer Location"
-msgstr "ניפוץ ממיקום הסמן"
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr "8 ביט --- חלק"
 
-#: resources/ui/adw/broken-glass.ui:148
-msgid ""
-"The shards will fly away from where your mouse pointer was when closing the "
-"window."
-msgstr "הרסיסים יעופו מהמקום שבו היה סמן העכבר בעת סגירת החלון."
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr "מספר ניצוצות"
 
-#: resources/ui/adw/incinerate.ui:80
-msgid "Turbulence"
-msgstr "מערבולות"
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr "סיבוב ניצוצות"
 
-#: resources/ui/adw/incinerate.ui:113
-msgid "Start at Pointer"
-msgstr "התחלה במיקום הסמן"
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr "צבע ניצוצות"
 
-#: resources/ui/adw/incinerate.ui:114
-msgid "If disabled, a random location will be chosen."
-msgstr "אם האפשרות מושבתת, ייבחר מיקום אקראי."
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr "צבע קרניים"
 
-#: resources/ui/adw/doom.ui:47
-msgid "Horizontal Scale"
-msgstr "קנה מידה אופקי"
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr "מספר טבעות כוכבים"
 
-#: resources/ui/adw/doom.ui:80
-msgid "Vertical Scale"
-msgstr "קנה מידה אנכי"
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr "סיבוב טבעות הכוכבים"
 
-#: resources/ui/adw/trex.ui:47
-msgid "Claw Scratch Scale"
-msgstr "גודל שריטות הטפרים"
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr "מספר כוכבים בכל טבעת"
 
-#: resources/ui/adw/trex.ui:80
-msgid "Claw Scratch Count"
-msgstr "מספר שריטות הטפרים"
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr "מעבר צבעי הכוכבים"
 
-#: resources/ui/adw/trex.ui:113
-msgid "Warp Effect"
-msgstr "אפקט עיוות"
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "גודל מברשת"
 
-#: resources/ui/adw/trex.ui:146
-msgid "Flash Color"
-msgstr "צבע הבזק"
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "מספר חישורים"
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "רעש"
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "מהירות סיבוב"
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "סחרור"
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "רמת פירוט"
+
+#: resources/ui/adw/rgbwarp.ui:55
+msgid "Brightness"
+msgstr "בהירות"
+
+#: resources/ui/adw/rgbwarp.ui:93
+msgid "Red Speed"
+msgstr "מהירות אדום"
+
+#: resources/ui/adw/rgbwarp.ui:130
+msgid "Green Speed"
+msgstr "מהירות ירוק"
+
+#: resources/ui/adw/rgbwarp.ui:167
+msgid "Blue Speed"
+msgstr "מהירות כחול"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
@@ -761,37 +746,61 @@ msgstr "גודל הניצנוץ"
 msgid "Sparkle Rotation"
 msgstr "סיבוב הניצנוץ"
 
-#: resources/ui/adw/focus.ui:61 resources/ui/adw/aura-glow.ui:244
-msgid "Blur Amount"
-msgstr "מידת טשטוש"
+#: resources/ui/adw/trex.ui:47
+msgid "Claw Scratch Scale"
+msgstr "גודל שריטות הטפרים"
 
-#: resources/ui/adw/focus.ui:87
-msgid "Blur Quality"
-msgstr "איכות טשטוש"
+#: resources/ui/adw/trex.ui:80
+msgid "Claw Scratch Count"
+msgstr "מספר שריטות הטפרים"
 
-#: resources/ui/adw/paint-brush.ui:47
-msgid "Brush Size"
-msgstr "גודל מברשת"
+#: resources/ui/adw/trex.ui:113
+msgid "Warp Effect"
+msgstr "אפקט עיוות"
 
-#: resources/ui/adw/aura-glow.ui:47
-msgid "Random Color"
-msgstr "צבע אקראי"
+#: resources/ui/adw/trex.ui:146
+msgid "Flash Color"
+msgstr "צבע הבזק"
 
-#: resources/ui/adw/aura-glow.ui:69
-msgid "Start Hue"
-msgstr "גוון התחלתי"
+#: resources/ui/common/menus.ui:13
+msgid "Visit Homepage"
+msgstr "לדף הבית"
 
-#: resources/ui/adw/aura-glow.ui:145
-msgid "Saturation"
-msgstr "רוויה"
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr "צפייה בתמונות רקע תואמות"
 
-#: resources/ui/adw/aura-glow.ui:178
-msgid "Edge Size"
-msgstr "גודל הקצה"
+#: resources/ui/common/menus.ui:25
+msgid "View Donors Hall-of-Fame"
+msgstr "צפייה בהיכל התהילה של התורמים"
 
-#: resources/ui/adw/aura-glow.ui:211
-msgid "Edge Hardness"
-msgstr "חדות הקצה"
+#: resources/ui/common/menus.ui:31
+msgid "Donate"
+msgstr "תרומה"
+
+#: resources/ui/common/menus.ui:50
+msgid "Report a Bug"
+msgstr "דיווח על שגיאה"
+
+#: resources/ui/common/menus.ui:54
+msgid "Create an Effect"
+msgstr "יצירת אפקט חדש"
+
+#: resources/ui/common/menus.ui:58
+msgid "Translate"
+msgstr "תרגום"
+
+#: resources/ui/common/menus.ui:64
+msgid "Open Effect-Profile Directory"
+msgstr "פתיחת תיקיית פרופילי האפקטים"
+
+#: resources/ui/common/menus.ui:70
+msgid "About Burn-My-Windows"
+msgstr "אודות Burn-My-Windows"
+
+#: resources/ui/common/menus.ui:81
+msgid "Add New Profile..."
+msgstr "הוספת פרופיל חדש…"
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "תורמים ראשיים"

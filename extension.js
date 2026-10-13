@@ -22,6 +22,7 @@ import {ProfileManager} from './src/ProfileManager.js';
 import {WindowPicker} from './src/WindowPicker.js';
 import * as utils from './src/utils.js';
 
+import AperturePanels from './src/effects/AperturePanels.js';
 import Apparition from './src/effects/Apparition.js';
 import AuraGlow from './src/effects/AuraGlow.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
@@ -36,6 +37,7 @@ import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
 import Materialize from './src/effects/Materialize.js';
 import Matrix from './src/effects/Matrix.js';
+import Morph from './src/effects/Morph.js';
 import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
 import Pixelate from './src/effects/Pixelate.js';
@@ -49,6 +51,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
+import Wormhole from './src/effects/Wormhole.js';
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 import {Workspace} from 'resource:///org/gnome/shell/ui/workspace.js';
@@ -75,20 +78,16 @@ export default class BurnMyWindows extends Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new Apparition(),  new AuraGlow(),
-      new BrokenGlass(), new Doom(),
-      new EnergizeA(),   new EnergizeB(),
-      new Fire(),        new Focus(),
-      new Glide(),       new Glitch(),
-      new Hexagon(),     new Incinerate(),
-      new Materialize(), new Matrix(),
-      new Mushroom(),    new PaintBrush(),
-      new Pixelate(),    new PixelWheel(),
-      new PixelWipe(),   new Portal(),
-      new RGBWarp(),     new SnapOfDisintegration(),
-      new TeamRocket(),  new TRexAttack(),
-      new TVEffect(),    new TVGlitch(),
-      new Wisps()
+      new AperturePanels(), new Apparition(),  new AuraGlow(),
+      new BrokenGlass(),    new Doom(),        new EnergizeA(),
+      new EnergizeB(),      new Fire(),        new Focus(),
+      new Glide(),          new Glitch(),      new Hexagon(),
+      new Incinerate(),     new Materialize(), new Matrix(),
+      new Morph(),          new Mushroom(),    new PaintBrush(),
+      new Pixelate(),       new PixelWheel(),  new PixelWipe(),
+      new Portal(),         new RGBWarp(),     new SnapOfDisintegration(),
+      new TeamRocket(),     new TRexAttack(),  new TVEffect(),
+      new TVGlitch(),       new Wisps(),       new Wormhole()
     ];
 
     // Load all of our resources.
@@ -141,15 +140,31 @@ export default class BurnMyWindows extends Extension {
     this._upowerProxy = new UPowerProxy(Gio.DBus.system, 'org.freedesktop.UPower',
                                         '/org/freedesktop/UPower');
 
-    // This is used to get the current power profile.
-    try {
-      const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
-        utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
-      this._powerProfilesProxy = new PowerProfilesProxy(
-        Gio.DBus.system, 'net.hadess.PowerProfiles', '/net/hadess/PowerProfiles');
-    } catch (e) {
-      // Maybe the service is masked...
-    }
+    // This is used to get the current power profile. The proxy is created asynchronously,
+    // as power-profiles-daemon may not be running yet (it is started after
+    // multi-user.target). In this case, creating the proxy synchronously would block
+    // GNOME Shell until the service is activated, or until the D-Bus activation times
+    // out after 25 seconds. See issue #575. While the proxy is pending, the current power
+    // profile is unknown, which is considered in _chooseEffect().
+    const PowerProfilesProxy = Gio.DBusProxy.makeProxyWrapper(
+      utils.getStringResource('/interfaces/net.hadess.PowerProfiles.xml'));
+    const cancellable              = new Gio.Cancellable();
+    this._powerProfilesCancellable = cancellable;
+    this._powerProfilesPending     = true;
+    new PowerProfilesProxy(Gio.DBus.system, 'net.hadess.PowerProfiles',
+                           '/net/hadess/PowerProfiles', (proxy, error) => {
+                             // The extension got disabled in the meantime.
+                             if (cancellable.is_cancelled()) {
+                               return;
+                             }
+
+                             this._powerProfilesPending = false;
+
+                             // Maybe the service is masked...
+                             if (!error) {
+                               this._powerProfilesProxy = proxy;
+                             }
+                           }, cancellable);
 
     // We will monkey-patch these methods. Let's store the original ones.
     this._origShouldAnimateActor    = Main.wm._shouldAnimateActor;
@@ -235,7 +250,7 @@ export default class BurnMyWindows extends Extension {
     // Make sure to remove any effects if requested by the window manager.
     this._killEffectsSignal =
       global.window_manager.connect('kill-window-effects', (wm, actor) => {
-        const shader = actor.get_effect('burn-my-windows-effect');
+        const shader = extensionThis._getShader(actor);
         if (shader) {
           shader.endAnimation();
         }
@@ -354,6 +369,10 @@ export default class BurnMyWindows extends Extension {
     this._windowPicker.unexport();
 
     global.window_manager.disconnect(this._killEffectsSignal);
+
+    // Abort the creation of the power-profiles proxy if it is still pending.
+    this._powerProfilesCancellable.cancel();
+    this._powerProfilesProxy = null;
 
     // Restore the original window-open and window-close animations.
     Workspace.prototype._addWindowClone = this._origAddWindowClone;
@@ -496,7 +515,14 @@ export default class BurnMyWindows extends Extension {
             (profileColorScheme == 2 && colorScheme == 'prefer-dark');
         }
 
-        // Finally, we may also have to check the power profile.
+        // Finally, we may also have to check the power profile. While the power-profiles
+        // proxy is still pending, the current power profile is unknown. Hence, profiles
+        // which depend on it cannot match. If the service is not available at all, the
+        // power profile is ignored.
+        if (matches && profilePowerProfile != 0 && this._powerProfilesPending) {
+          matches = false;
+        }
+
         if (matches && profilePowerProfile != 0 && this._powerProfilesProxy) {
           const powerProfile = this._powerProfilesProxy.ActiveProfile;
 
@@ -518,8 +544,14 @@ export default class BurnMyWindows extends Extension {
       // If we found a matching profile, choose a random effect from it.
       if (profile) {
 
-        // Create a list of all enabled effects of this profile.
-        const enabled = this._ALL_EFFECTS.filter(effect => {
+        // Create a list of all enabled effects of this profile. Layered effects (see
+        // src/LayeredEffect.js) draw above the window group, which is hidden by the
+        // overview, so they are not used while the overview is shown.
+        const inOverview = Main.overview.visible;
+        const enabled    = this._ALL_EFFECTS.filter(effect => {
+          if (inOverview && typeof effect.createLayers === 'function') {
+            return false;
+          }
           return profile.settings.get_boolean(
             `${effect.constructor.getNick()}-enable-effect`);
         });
@@ -546,7 +578,7 @@ export default class BurnMyWindows extends Extension {
     // There is the weird case where an animation is already ongoing. This happens when a
     // window is closed which has been created before the session was started (e.g. when
     // GNOME Shell has been restarted in the meantime).
-    const oldShader = actor.get_effect('burn-my-windows-effect');
+    const oldShader = this._getShader(actor);
     if (oldShader) {
       oldShader.endAnimation();
     }
@@ -562,25 +594,45 @@ export default class BurnMyWindows extends Extension {
     const actorScale =
       effect.constructor.getActorScale(profile.settings, forOpening, actor);
 
+    // Layered effects (see src/LayeredEffect.js) draw on more than just the window. They
+    // hide the window and build their own actors in createLayers() (below), so the window
+    // is not scaled for them.
+    const layered = typeof effect.createLayers === 'function';
+
     // All scaling is relative to the window's center.
     actor.set_pivot_point(0.5, 0.5);
     actor.opacity = 255;
-    actor.scale_x = actorScale.x;
-    actor.scale_y = actorScale.y;
+    actor.scale_x = layered ? 1.0 : actorScale.x;
+    actor.scale_y = layered ? 1.0 : actorScale.y;
 
     // If we are in the overview, we have to enlarge the window's clone as well. We also
     // disable the clone's overlay (e.g. its icon, name, and close button) during the
     // animation.
-    if (actor._bmwOverviewClone) {
+    if (actor._bmwOverviewClone && !layered) {
       actor._bmwOverviewClone.overlayEnabled = false;
       actor._bmwOverviewCloneContainer.set_pivot_point(0.5, 0.5);
       actor._bmwOverviewCloneContainer.scale_x = actorScale.x;
       actor._bmwOverviewCloneContainer.scale_y = actorScale.y;
     }
 
-    // Now add a cool shader to our window actor!
-    const shader = effect.shaderFactory.getShader();
-    actor.add_effect_with_name('burn-my-windows-effect', shader);
+    // To make things deterministic during testing, we set the effect duration to 8
+    // seconds.
+    const duration = testMode ?
+      8000 :
+      profile.settings.get_int(effect.constructor.getNick() + '-animation-time');
+
+    // Now add a cool shader to our window actor! Layered effects hide the window, stack
+    // their own actors over it and tell us which one gets the shader. They follow the
+    // window on their own and clean up in layers.destroy().
+    const shader    = effect.shaderFactory.getShader();
+    let layers      = null;
+    let paintTarget = actor;
+    if (layered) {
+      layers = effect.createLayers(
+        actor, shader, {settings: profile.settings, forOpening, testMode, duration});
+      paintTarget = layers.paintTarget;
+    }
+    paintTarget.add_effect_with_name('burn-my-windows-effect', shader);
 
     // At the end of the animation, we restore the scale of the overview clone (if any)
     // and call the methods which would have been called by the original ease() calls at
@@ -588,7 +640,7 @@ export default class BurnMyWindows extends Extension {
     const endID = shader.connect('end-animation', () => {
       shader.disconnect(endID);
 
-      if (actor._bmwOverviewClone) {
+      if (actor._bmwOverviewClone && !layered) {
         actor._bmwOverviewClone.overlayEnabled   = true;
         actor._bmwOverviewCloneContainer.scale_x = 1.0;
         actor._bmwOverviewCloneContainer.scale_y = 1.0;
@@ -599,7 +651,10 @@ export default class BurnMyWindows extends Extension {
       actor.scale_y = 1.0;
 
       // Remove the shader and mark it being re-usable for future animations.
-      actor.remove_effect(shader);
+      paintTarget.remove_effect(shader);
+      if (layers) {
+        layers.destroy();
+      }
       shader.returnToFactory();
 
       // Finally, once the animation is done or interrupted, we call the methods which
@@ -612,12 +667,6 @@ export default class BurnMyWindows extends Extension {
         Main.wm._destroyWindowDone(global.window_manager, actor);
       }
     });
-
-    // To make things deterministic during testing, we set the effect duration to 8
-    // seconds.
-    const duration = testMode ?
-      8000 :
-      profile.settings.get_int(effect.constructor.getNick() + '-animation-time');
 
     // Finally start the animation!
     shader.beginAnimation(profile.settings, forOpening, testMode, duration, actor);
@@ -632,8 +681,16 @@ export default class BurnMyWindows extends Extension {
     }
 
     const actor  = workspace._windows[index]._windowActor;
-    const shader = actor.get_effect('burn-my-windows-effect');
+    const shader = this._getShader(actor);
 
     return shader == null;
+  }
+
+  // Returns the shader of an ongoing animation of the given window actor, or null. For
+  // layered effects (see src/LayeredEffect.js), it is not on the window actor itself but
+  // on actor._bmwEffectContainer.
+  _getShader(actor) {
+    const target = actor._bmwEffectContainer || actor;
+    return target.get_effect('burn-my-windows-effect');
   }
 }

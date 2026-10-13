@@ -15,6 +15,15 @@ SPDX-License-Identifier: CC-BY-4.0
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 
+#### Bug Fixes
+
+- When migrating settings from version 26 or older, customized Fire (`flame-*`) and T-Rex Attack (`claw-*`) settings were dropped instead of being renamed to their new `fire-*` and `trex-*` keys.
+
+#### Bug Fixes
+
+- Fixed an issue where GNOME Shell could freeze for up to 25 seconds after login if `power-profiles-daemon` was not running yet. Thanks to [@dogcom0228](https://github.com/dogcom0228) for the fix!
+
+
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)
 
 **Release Date:** 2026-09-26

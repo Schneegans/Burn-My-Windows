@@ -26,6 +26,7 @@ import {ProfileManager} from './src/ProfileManager.js';
 // This registers the BurnMyWindowsSlider widget, which is used in the ui files.
 import './src/Slider.js';
 
+import AperturePanels from './src/effects/AperturePanels.js';
 import Apparition from './src/effects/Apparition.js';
 import AuraGlow from './src/effects/AuraGlow.js';
 import BrokenGlass from './src/effects/BrokenGlass.js';
@@ -40,6 +41,7 @@ import Hexagon from './src/effects/Hexagon.js';
 import Incinerate from './src/effects/Incinerate.js';
 import Materialize from './src/effects/Materialize.js';
 import Matrix from './src/effects/Matrix.js';
+import Morph from './src/effects/Morph.js';
 import Mushroom from './src/effects/Mushroom.js';
 import PaintBrush from './src/effects/PaintBrush.js';
 import Pixelate from './src/effects/Pixelate.js';
@@ -53,6 +55,7 @@ import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
 import Wisps from './src/effects/Wisps.js';
+import Wormhole from './src/effects/Wormhole.js';
 
 
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
@@ -79,20 +82,11 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      Apparition,  AuraGlow,
-      BrokenGlass, Doom,
-      EnergizeA,   EnergizeB,
-      Fire,        Focus,
-      Glide,       Glitch,
-      Hexagon,     Incinerate,
-      Materialize, Matrix,
-      Mushroom,    PaintBrush,
-      Pixelate,    PixelWheel,
-      PixelWipe,   Portal,
-      RGBWarp,     SnapOfDisintegration,
-      TeamRocket,  TRexAttack,
-      TVEffect,    TVGlitch,
-      Wisps,
+      AperturePanels, Apparition,  AuraGlow,  BrokenGlass, Doom,     EnergizeA,
+      EnergizeB,      Fire,        Focus,     Glide,       Glitch,   Hexagon,
+      Incinerate,     Materialize, Matrix,    Morph,       Mushroom, PaintBrush,
+      Pixelate,       PixelWheel,  PixelWipe, Portal,      RGBWarp,  SnapOfDisintegration,
+      TeamRocket,     TRexAttack,  TVEffect,  TVGlitch,    Wisps,    Wormhole,
     ];
 
 

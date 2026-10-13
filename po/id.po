@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-29 21:10+0200\n"
+"POT-Creation-Date: 2026-09-30 22:29+0300\n"
 "PO-Revision-Date: 2025-11-23 13:51+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/burn-my-"
@@ -43,31 +43,31 @@ msgstr "Memberdayakan A"
 msgid "Energize B"
 msgstr "Memberdayakan B"
 
-#: src/effects/Fire.js:103
+#: src/effects/Fire.js:108
 msgid "Fire"
 msgstr "Api"
 
-#: src/effects/Fire.js:185
+#: src/effects/Fire.js:192
 msgid "Default Fire"
 msgstr "Api (Bawaan)"
 
-#: src/effects/Fire.js:195
+#: src/effects/Fire.js:202
 msgid "Hell Fire"
 msgstr "Api Amat Panas"
 
-#: src/effects/Fire.js:205
+#: src/effects/Fire.js:212
 msgid "Dark and Smutty"
 msgstr "Redup"
 
-#: src/effects/Fire.js:215
+#: src/effects/Fire.js:222
 msgid "Cold Breeze"
 msgstr "Angin Sejuk"
 
-#: src/effects/Fire.js:225
+#: src/effects/Fire.js:232
 msgid "Santa is Coming"
 msgstr "Sinterklas Datang"
 
-#: src/effects/Fire.js:236
+#: src/effects/Fire.js:243
 msgid "Nuclear ☢️"
 msgstr "Nuklir ☢️"
 
@@ -281,291 +281,6 @@ msgstr "Pratinjau %s"
 msgid "Close this Window to Preview the Effect!"
 msgstr "Tutup jendela ini untuk melihat efeknya!"
 
-#: resources/ui/common/menus.ui:13
-msgid "Visit Homepage"
-msgstr "Buka Website"
-
-#: resources/ui/common/menus.ui:21
-msgid "View Matching Wallpapers"
-msgstr "Lihat wallpaper yang cocok"
-
-#: resources/ui/common/menus.ui:25
-msgid "View Donors Hall-of-Fame"
-msgstr "Lihat Hall-of-Fame Donatur"
-
-#: resources/ui/common/menus.ui:31
-msgid "Donate"
-msgstr "Donasi"
-
-#: resources/ui/common/menus.ui:50
-msgid "Report a Bug"
-msgstr "Laporkan Bug"
-
-#: resources/ui/common/menus.ui:54
-msgid "Create an Effect"
-msgstr "Buat Efek"
-
-#: resources/ui/common/menus.ui:58
-msgid "Translate"
-msgstr "Terjemahkan"
-
-#: resources/ui/common/menus.ui:64
-msgid "Open Effect-Profile Directory"
-msgstr "Buka Direktori Efek-Profil"
-
-#: resources/ui/common/menus.ui:70
-msgid "About Burn-My-Windows"
-msgstr "Tentang Burn-My-Windows"
-
-#: resources/ui/common/menus.ui:81
-msgid "Add New Profile..."
-msgstr "Tambah Profil Baru..."
-
-#: resources/ui/adw/portal.ui:14 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/rgbwarp.ui:17
-#: resources/ui/adw/apparition.ui:15 resources/ui/adw/hexagon.ui:14
-#: resources/ui/adw/fire.ui:30 resources/ui/adw/tv-glitch.ui:14
-#: resources/ui/adw/pixel-wipe.ui:14 resources/ui/adw/glitch.ui:14
-#: resources/ui/adw/glide.ui:14 resources/ui/adw/pixel-wheel.ui:14
-#: resources/ui/adw/tv.ui:14 resources/ui/adw/pixelate.ui:14
-#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/incinerate.ui:14
-#: resources/ui/adw/doom.ui:14 resources/ui/adw/wisps.ui:14
-#: resources/ui/adw/trex.ui:14 resources/ui/adw/team-rocket.ui:17
-#: resources/ui/adw/focus.ui:35 resources/ui/adw/energize-a.ui:14
-#: resources/ui/adw/energize-b.ui:15 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/aura-glow.ui:13
-msgid "Animation Time [ms]"
-msgstr "Panjang Animasi [milidetik]"
-
-#: resources/ui/adw/portal.ui:36 resources/ui/adw/portal.ui:69
-#: resources/ui/adw/portal.ui:102 resources/ui/adw/portal.ui:135
-#: resources/ui/adw/portal.ui:160 resources/ui/adw/snap.ui:36
-#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
-#: resources/ui/adw/mushroom.ui:42 resources/ui/adw/mushroom.ui:99
-#: resources/ui/adw/mushroom.ui:137 resources/ui/adw/mushroom.ui:175
-#: resources/ui/adw/mushroom.ui:209 resources/ui/adw/mushroom.ui:243
-#: resources/ui/adw/mushroom.ui:281 resources/ui/adw/mushroom.ui:319
-#: resources/ui/adw/mushroom.ui:357 resources/ui/adw/mushroom.ui:427
-#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
-#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
-#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/apparition.ui:37
-#: resources/ui/adw/apparition.ui:70 resources/ui/adw/apparition.ui:103
-#: resources/ui/adw/apparition.ui:136 resources/ui/adw/apparition.ui:169
-#: resources/ui/adw/hexagon.ui:36 resources/ui/adw/hexagon.ui:69
-#: resources/ui/adw/hexagon.ui:102 resources/ui/adw/hexagon.ui:127
-#: resources/ui/adw/hexagon.ui:152 resources/ui/adw/hexagon.ui:175
-#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
-#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
-#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:221
-#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
-#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
-#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/pixel-wipe.ui:36
-#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/glitch.ui:36
-#: resources/ui/adw/glitch.ui:69 resources/ui/adw/glitch.ui:102
-#: resources/ui/adw/glitch.ui:135 resources/ui/adw/glitch.ui:160
-#: resources/ui/adw/glide.ui:36 resources/ui/adw/glide.ui:69
-#: resources/ui/adw/glide.ui:102 resources/ui/adw/glide.ui:135
-#: resources/ui/adw/glide.ui:168 resources/ui/adw/pixel-wheel.ui:36
-#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
-#: resources/ui/adw/tv.ui:36 resources/ui/adw/tv.ui:61
-#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
-#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/materialize.ui:36
-#: resources/ui/adw/materialize.ui:69 resources/ui/adw/materialize.ui:103
-#: resources/ui/adw/materialize.ui:125 resources/ui/adw/materialize.ui:150
-#: resources/ui/adw/matrix.ui:36 resources/ui/adw/matrix.ui:69
-#: resources/ui/adw/matrix.ui:102 resources/ui/adw/matrix.ui:135
-#: resources/ui/adw/matrix.ui:160 resources/ui/adw/matrix.ui:185
-#: resources/ui/adw/broken-glass.ui:37 resources/ui/adw/broken-glass.ui:70
-#: resources/ui/adw/broken-glass.ui:103 resources/ui/adw/broken-glass.ui:136
-#: resources/ui/adw/broken-glass.ui:159 resources/ui/adw/incinerate.ui:36
-#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
-#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
-#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
-#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
-#: resources/ui/adw/wisps.ui:36 resources/ui/adw/wisps.ui:69
-#: resources/ui/adw/wisps.ui:110 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
-#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
-#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
-#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/focus.ui:50
-#: resources/ui/adw/focus.ui:76 resources/ui/adw/focus.ui:102
-#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
-#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/paint-brush.ui:36 resources/ui/adw/paint-brush.ui:69
-#: resources/ui/adw/aura-glow.ui:35 resources/ui/adw/aura-glow.ui:58
-#: resources/ui/adw/aura-glow.ui:101 resources/ui/adw/aura-glow.ui:134
-#: resources/ui/adw/aura-glow.ui:167 resources/ui/adw/aura-glow.ui:200
-#: resources/ui/adw/aura-glow.ui:233 resources/ui/adw/aura-glow.ui:266
-msgid "Reset to Default Value"
-msgstr "Kembalikan ke Pengaturan Awal"
-
-#: resources/ui/adw/portal.ui:47
-msgid "Rotation Speed"
-msgstr "Kecepatan Rotasi"
-
-#: resources/ui/adw/portal.ui:80
-msgid "Whirling"
-msgstr "Berputar"
-
-#: resources/ui/adw/portal.ui:113
-msgid "Details"
-msgstr "Detil"
-
-#: resources/ui/adw/portal.ui:146 resources/ui/adw/snap.ui:80
-#: resources/ui/adw/tv-glitch.ui:146 resources/ui/adw/glitch.ui:146
-#: resources/ui/adw/tv.ui:47 resources/ui/adw/materialize.ui:136
-#: resources/ui/adw/incinerate.ui:136 resources/ui/adw/wisps.ui:80
-#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
-msgid "Color"
-msgstr "Warna"
-
-#: resources/ui/adw/snap.ui:47 resources/ui/adw/hexagon.ui:47
-#: resources/ui/adw/fire.ui:63 resources/ui/adw/tv-glitch.ui:47
-#: resources/ui/adw/glitch.ui:47 resources/ui/adw/glide.ui:47
-#: resources/ui/adw/matrix.ui:47 resources/ui/adw/broken-glass.ui:48
-#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/wisps.ui:47
-#: resources/ui/adw/energize-a.ui:47 resources/ui/adw/energize-b.ui:48
-msgid "Scale"
-msgstr "Skala"
-
-#: resources/ui/adw/mushroom.ui:55
-msgid "Effect Presets"
-msgstr "Preset Efek"
-
-#: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
-msgid "Choose a Preset"
-msgstr "Pilih Preset"
-
-#: resources/ui/adw/mushroom.ui:73
-msgid "Scale Style"
-msgstr "Gaya Skala"
-
-#: resources/ui/adw/mushroom.ui:74
-msgid "8Bit --- Smooth"
-msgstr "8Bit --- Halus"
-
-#: resources/ui/adw/mushroom.ui:112
-msgid "Spark Count"
-msgstr "Jumlah Kilat"
-
-#: resources/ui/adw/mushroom.ui:150
-msgid "Spark Rotation"
-msgstr "Rotasi Kilat"
-
-#: resources/ui/adw/mushroom.ui:188
-msgid "Spark Color"
-msgstr "Warna Kilat"
-
-#: resources/ui/adw/mushroom.ui:222
-msgid "Rays Color"
-msgstr "Warna Sinar"
-
-#: resources/ui/adw/mushroom.ui:256
-msgid "Star Rings Count"
-msgstr "Jumlah Cincin Bintang"
-
-#: resources/ui/adw/mushroom.ui:294
-msgid "Star Ring Rotation"
-msgstr "Rotasi Cincin Bintang"
-
-#: resources/ui/adw/mushroom.ui:332
-msgid "Stars Count Per Ring"
-msgstr "Jumlah Bintang per Cincin"
-
-#: resources/ui/adw/mushroom.ui:370
-msgid "Star Gradient"
-msgstr "Gradasi Bintang"
-
-#: resources/ui/adw/rgbwarp.ui:55
-msgid "Brightness"
-msgstr "Kecerahan"
-
-#: resources/ui/adw/rgbwarp.ui:93
-msgid "Red Speed"
-msgstr "Kecepatan Merah"
-
-#: resources/ui/adw/rgbwarp.ui:130
-msgid "Green Speed"
-msgstr "Kecepatan Hijau"
-
-#: resources/ui/adw/rgbwarp.ui:167
-msgid "Blue Speed"
-msgstr "Kecepatan Biru"
-
-#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
-msgid "Randomness"
-msgstr "Keserampangan"
-
-#: resources/ui/adw/apparition.ui:81
-msgid "Twirl Intensity"
-msgstr "Intensitas Putaran"
-
-#: resources/ui/adw/apparition.ui:114
-msgid "Shake Intensity"
-msgstr "Intensitas Goyang"
-
-#: resources/ui/adw/apparition.ui:147
-msgid "Suction Intensity"
-msgstr "Intensitas Hisap"
-
-#: resources/ui/adw/hexagon.ui:80
-msgid "Mesh Line Width"
-msgstr "Lebar Garis Mesh"
-
-#: resources/ui/adw/hexagon.ui:113
-msgid "Line Color"
-msgstr "Warna Garis"
-
-#: resources/ui/adw/hexagon.ui:138
-msgid "Glow Color"
-msgstr "Warna Cahaya"
-
-#: resources/ui/adw/hexagon.ui:163
-msgid "Additive Blending"
-msgstr "Pencampuran Aditif"
-
-#: resources/ui/adw/hexagon.ui:164
-msgid "You may want to enable this for dark window themes."
-msgstr "Anda mungkin ingin mengaktifkan ini untuk tema jendela gelap."
-
-#: resources/ui/adw/fire.ui:14
-msgid "Presets"
-msgstr "Preset"
-
-#: resources/ui/adw/fire.ui:96 resources/ui/adw/tv-glitch.ui:113
-#: resources/ui/adw/glitch.ui:113 resources/ui/adw/aura-glow.ui:112
-msgid "Speed"
-msgstr "Kecepatan"
-
-#: resources/ui/adw/fire.ui:129
-msgid "3D Noise"
-msgstr "Kebisingan 3D"
-
-#: resources/ui/adw/fire.ui:130
-msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Menciptakan api lebih dinamis tapi membutuhkan tenaga GPU lebih."
-
-#: resources/ui/adw/fire.ui:152
-msgid "Use Random Color"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:174
-msgid "Gradient"
-msgstr "Gradien"
-
-#: resources/ui/adw/tv-glitch.ui:80 resources/ui/adw/glitch.ui:80
-msgid "Strength"
-msgstr "Kekuatan"
-
-#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixel-wheel.ui:80
-#: resources/ui/adw/pixelate.ui:80 resources/ui/adw/doom.ui:113
-msgid "Pixel Size"
-msgstr "Ukuran Piksel"
-
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
 msgstr "Batasan Profil Efek"
@@ -636,6 +351,220 @@ msgstr "Aktifkan Semua"
 msgid "Disable All"
 msgstr "Nonaktifkan Semua"
 
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/fire.ui:30 resources/ui/adw/focus.ui:35
+#: resources/ui/adw/glide.ui:14 resources/ui/adw/glitch.ui:14
+#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/incinerate.ui:14
+#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
+#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/paint-brush.ui:14
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/portal.ui:14
+#: resources/ui/adw/rgbwarp.ui:17 resources/ui/adw/snap.ui:14
+#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/trex.ui:14
+#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/tv.ui:14
+#: resources/ui/adw/wisps.ui:14
+msgid "Animation Time [ms]"
+msgstr "Panjang Animasi [milidetik]"
+
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
+#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
+#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
+#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
+#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
+#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
+#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:185
+#: resources/ui/adw/fire.ui:207 resources/ui/adw/fire.ui:265
+#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
+#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
+#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
+#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
+#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
+#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
+#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
+#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
+#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixel-wheel.ui:36
+#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
+#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
+#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
+#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
+#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
+#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
+#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
+#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
+#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
+#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+msgid "Reset to Default Value"
+msgstr "Kembalikan ke Pengaturan Awal"
+
+#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
+msgid "Randomness"
+msgstr "Keserampangan"
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "Intensitas Putaran"
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "Intensitas Goyang"
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "Intensitas Hisap"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr "Warna Acak"
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr "Hue Awal"
+
+#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/fire.ui:96
+#: resources/ui/adw/glitch.ui:113 resources/ui/adw/tv-glitch.ui:113
+msgid "Speed"
+msgstr "Kecepatan"
+
+#: resources/ui/adw/aura-glow.ui:145
+msgid "Saturation"
+msgstr "Saturasi"
+
+#: resources/ui/adw/aura-glow.ui:178
+msgid "Edge Size"
+msgstr "Ukuran Tepi"
+
+#: resources/ui/adw/aura-glow.ui:211
+msgid "Edge Hardness"
+msgstr "Kekerasan Tepi"
+
+#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "Tingkat Blur"
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/fire.ui:63
+#: resources/ui/adw/glide.ui:47 resources/ui/adw/glitch.ui:47
+#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/incinerate.ui:47
+#: resources/ui/adw/matrix.ui:47 resources/ui/adw/snap.ui:47
+#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/wisps.ui:47
+msgid "Scale"
+msgstr "Skala"
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "Gravitasi"
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "Kekuatan Pecahan"
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "Pecahkan dari Lokasi Pointer"
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+"Pecahan kaca akan terbang menjauh dari lokasi pointer anda saat menutup "
+"jendela."
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "Skala Horizontal"
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "Skala Vertikal"
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
+#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
+msgid "Pixel Size"
+msgstr "Ukuran Piksel"
+
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
+msgid "Color"
+msgstr "Warna"
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "Preset"
+
+#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
+msgid "Choose a Preset"
+msgstr "Pilih Preset"
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "Kebisingan 3D"
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Menciptakan api lebih dinamis tapi membutuhkan tenaga GPU lebih."
+
+#: resources/ui/adw/fire.ui:152
+msgid "Use Random Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:174
+msgid "Burn Closing Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:196
+msgid "Burn Opening Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:218
+msgid "Gradient"
+msgstr "Gradien"
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr "Kualitas Blur"
+
 #: resources/ui/adw/glide.ui:80
 msgid "Squish"
 msgstr "Penyet"
@@ -648,13 +577,41 @@ msgstr "Miring"
 msgid "Shift"
 msgstr "Pindah"
 
-#: resources/ui/adw/pixel-wheel.ui:47
-msgid "Spoke Count"
-msgstr "Jumlah Spoke"
+#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
+msgid "Strength"
+msgstr "Kekuatan"
 
-#: resources/ui/adw/pixelate.ui:47
-msgid "Noise"
-msgstr "Kebisingan"
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "Lebar Garis Mesh"
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "Warna Garis"
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "Warna Cahaya"
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "Pencampuran Aditif"
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "Anda mungkin ingin mengaktifkan ini untuk tema jendela gelap."
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "Pergolakan"
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "Bakar dari Lokasi Pointer"
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "Jiki dimatikan, akan terpilih lokasi secara acak."
 
 #: resources/ui/adw/materialize.ui:47
 msgid "Start Scale"
@@ -684,61 +641,89 @@ msgstr "Warna Jejak"
 msgid "Tip Color"
 msgstr "Warna Ujung"
 
-#: resources/ui/adw/broken-glass.ui:81
-msgid "Gravity"
-msgstr "Gravitasi"
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr "Preset Efek"
 
-#: resources/ui/adw/broken-glass.ui:114
-msgid "Blow Force"
-msgstr "Kekuatan Pecahan"
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr "Gaya Skala"
 
-#: resources/ui/adw/broken-glass.ui:147
-msgid "Shatter From Pointer Location"
-msgstr "Pecahkan dari Lokasi Pointer"
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr "8Bit --- Halus"
 
-#: resources/ui/adw/broken-glass.ui:148
-msgid ""
-"The shards will fly away from where your mouse pointer was when closing the "
-"window."
-msgstr ""
-"Pecahan kaca akan terbang menjauh dari lokasi pointer anda saat menutup "
-"jendela."
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr "Jumlah Kilat"
 
-#: resources/ui/adw/incinerate.ui:80
-msgid "Turbulence"
-msgstr "Pergolakan"
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr "Rotasi Kilat"
 
-#: resources/ui/adw/incinerate.ui:113
-msgid "Start at Pointer"
-msgstr "Bakar dari Lokasi Pointer"
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr "Warna Kilat"
 
-#: resources/ui/adw/incinerate.ui:114
-msgid "If disabled, a random location will be chosen."
-msgstr "Jiki dimatikan, akan terpilih lokasi secara acak."
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr "Warna Sinar"
 
-#: resources/ui/adw/doom.ui:47
-msgid "Horizontal Scale"
-msgstr "Skala Horizontal"
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr "Jumlah Cincin Bintang"
 
-#: resources/ui/adw/doom.ui:80
-msgid "Vertical Scale"
-msgstr "Skala Vertikal"
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr "Rotasi Cincin Bintang"
 
-#: resources/ui/adw/trex.ui:47
-msgid "Claw Scratch Scale"
-msgstr "Skala Cakar"
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr "Jumlah Bintang per Cincin"
 
-#: resources/ui/adw/trex.ui:80
-msgid "Claw Scratch Count"
-msgstr "Jumlah Cakar"
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr "Gradasi Bintang"
 
-#: resources/ui/adw/trex.ui:113
-msgid "Warp Effect"
-msgstr "Efek Distorsi"
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "Ukuran Kuas"
 
-#: resources/ui/adw/trex.ui:146
-msgid "Flash Color"
-msgstr "Warna"
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "Jumlah Spoke"
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "Kebisingan"
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "Kecepatan Rotasi"
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "Berputar"
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "Detil"
+
+#: resources/ui/adw/rgbwarp.ui:55
+msgid "Brightness"
+msgstr "Kecerahan"
+
+#: resources/ui/adw/rgbwarp.ui:93
+msgid "Red Speed"
+msgstr "Kecepatan Merah"
+
+#: resources/ui/adw/rgbwarp.ui:130
+msgid "Green Speed"
+msgstr "Kecepatan Hijau"
+
+#: resources/ui/adw/rgbwarp.ui:167
+msgid "Blue Speed"
+msgstr "Kecepatan Biru"
 
 #: resources/ui/adw/team-rocket.ui:54
 msgid "Animation Split"
@@ -764,37 +749,61 @@ msgstr "Ukuran Kilat"
 msgid "Sparkle Rotation"
 msgstr "Rotasi Kilat"
 
-#: resources/ui/adw/focus.ui:61 resources/ui/adw/aura-glow.ui:244
-msgid "Blur Amount"
-msgstr "Tingkat Blur"
+#: resources/ui/adw/trex.ui:47
+msgid "Claw Scratch Scale"
+msgstr "Skala Cakar"
 
-#: resources/ui/adw/focus.ui:87
-msgid "Blur Quality"
-msgstr "Kualitas Blur"
+#: resources/ui/adw/trex.ui:80
+msgid "Claw Scratch Count"
+msgstr "Jumlah Cakar"
 
-#: resources/ui/adw/paint-brush.ui:47
-msgid "Brush Size"
-msgstr "Ukuran Kuas"
+#: resources/ui/adw/trex.ui:113
+msgid "Warp Effect"
+msgstr "Efek Distorsi"
 
-#: resources/ui/adw/aura-glow.ui:47
-msgid "Random Color"
-msgstr "Warna Acak"
+#: resources/ui/adw/trex.ui:146
+msgid "Flash Color"
+msgstr "Warna"
 
-#: resources/ui/adw/aura-glow.ui:69
-msgid "Start Hue"
-msgstr "Hue Awal"
+#: resources/ui/common/menus.ui:13
+msgid "Visit Homepage"
+msgstr "Buka Website"
 
-#: resources/ui/adw/aura-glow.ui:145
-msgid "Saturation"
-msgstr "Saturasi"
+#: resources/ui/common/menus.ui:21
+msgid "View Matching Wallpapers"
+msgstr "Lihat wallpaper yang cocok"
 
-#: resources/ui/adw/aura-glow.ui:178
-msgid "Edge Size"
-msgstr "Ukuran Tepi"
+#: resources/ui/common/menus.ui:25
+msgid "View Donors Hall-of-Fame"
+msgstr "Lihat Hall-of-Fame Donatur"
 
-#: resources/ui/adw/aura-glow.ui:211
-msgid "Edge Hardness"
-msgstr "Kekerasan Tepi"
+#: resources/ui/common/menus.ui:31
+msgid "Donate"
+msgstr "Donasi"
+
+#: resources/ui/common/menus.ui:50
+msgid "Report a Bug"
+msgstr "Laporkan Bug"
+
+#: resources/ui/common/menus.ui:54
+msgid "Create an Effect"
+msgstr "Buat Efek"
+
+#: resources/ui/common/menus.ui:58
+msgid "Translate"
+msgstr "Terjemahkan"
+
+#: resources/ui/common/menus.ui:64
+msgid "Open Effect-Profile Directory"
+msgstr "Buka Direktori Efek-Profil"
+
+#: resources/ui/common/menus.ui:70
+msgid "About Burn-My-Windows"
+msgstr "Tentang Burn-My-Windows"
+
+#: resources/ui/common/menus.ui:81
+msgid "Add New Profile..."
+msgstr "Tambah Profil Baru..."
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "Sponsor Emas"
