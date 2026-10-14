@@ -29,6 +29,7 @@ This extension is not only more useless than the cube, but it is also much more 
 
 | Effect                                                                                                                                                                            | Preview                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Aperture Panels** <br> The cake is a lie!                                                                                                                                       | <img src ="docs/pics/aperture-panels.gif" />                                          |
 | **Apparition** <br> This effect hides your windows by violently sucking them into the void of magic!                                                                              | <img src ="docs/pics/apparition.gif" />                                               |
 | **Aura Glow** <br> A radiant edge-lit animation                                                                                                                                   | <img src ="docs/pics/aura-glow.gif" />                                                |
 | **Broken Glass** <br> Shatter your windows into a shower sharp shards! This effect can be configured so that the shards fly away from your mouse pointer position!                | <img src ="docs/pics/broken-glass.gif" />                                             |
@@ -43,6 +44,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **Incinerate** <br> A less snappy but definitely more fancy take on the fire effect.                                                                                              | <img src ="docs/pics/incinerate.gif" />                                               |
 | **Materialize** <br> Windows pop up as a flat, tinted panel before materializing, like the computer screens in The Matrix Resurrections. Uses the system accent color by default. | <img src ="docs/pics/materialize.gif" />                                              |
 | **Matrix** <br> Turn your windows into a shower of green letters! The color is actually configurable.                                                                             | <img src ="docs/pics/matrix.gif" />                                                   |
+| **Morph** <br> Melt your windows slowly into existence.                                                                                                                           | <img src ="docs/pics/morph.gif" />                                                    |
 | **Mushroom** <br> Inspired by your favorite italian plumber!                                                                                                                      | <img src ="docs/pics/mushroom.gif" />                                                 |
 | **Paint Brush** <br> Paint or erase your windows with a thick paint brush.                                                                                                        | <img src ="docs/pics/paint-brush.gif" />                                              |
 | **Pixelate** <br> Pixelate your windows and randomly hide pixels until the entire window is gone.                                                                                 | <img src ="docs/pics/pixelate.gif" />                                                 |
@@ -56,6 +58,7 @@ This extension is not only more useless than the cube, but it is also much more 
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
 | **TV Glitch** <br> This effect combines the Glitch and the TV Effect.                                                                                                             | <img src ="docs/pics/tv-glitch.gif" />                                                |
 | **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies!                                                                                   | <img src ="docs/pics/wisps.gif" />                                                    |
+| **Wormhole** <br> This effect creates a wormhole through which your windows are sucked away.                                                                                      | <img src ="docs/pics/wormhole.gif" />                                                 |
 | **Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md) |
 
 ## ✅ Supported Versions
@@ -70,6 +73,7 @@ Below is a table which summarizes the current availability for all effects.
 <td colspan="1"><strong>KWin</strong></td>
 </tr>
 <tr><td></td>                        <td>3.36</td> <td>3.38</td><td>40-44</td><td>45+</td><td>5.25.0+</td></tr>
+<tr><td>Aperture Panels</td>         <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Apparition</td>              <td>  </td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Aura Glow</td>               <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Broken Glass</td>            <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
@@ -82,8 +86,9 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Glitch</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Hexagon</td>                 <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Incinerate</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
-<tr><td>Materialize</td>             <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Materialize</td>             <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Matrix</td>                  <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
+<tr><td>Morph</td>                   <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Mushroom</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Paint Brush</td>             <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Pixelate</td>                <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
@@ -97,6 +102,7 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Wormhole</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 </table>
 
 ## 💞 Show that you love Burn-My-Windows!
