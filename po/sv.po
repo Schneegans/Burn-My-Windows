@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-30 22:29+0300\n"
-"PO-Revision-Date: 2026-10-01 14:51+0000\n"
-"Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
+"PO-Revision-Date: 2026-10-15 09:51+0000\n"
+"Last-Translator: bittin1ddc447d824349b2 "
+"<bittin1ddc447d824349b2@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/sv/>\n"
 "Language: sv\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.10\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -551,11 +552,11 @@ msgstr "Använd slumpmässig färg"
 
 #: resources/ui/adw/fire.ui:174
 msgid "Burn Closing Windows from Bottom to Top"
-msgstr ""
+msgstr "Bränn stängning av fönster nerifrån och upp"
 
 #: resources/ui/adw/fire.ui:196
 msgid "Burn Opening Windows from Bottom to Top"
-msgstr ""
+msgstr "Bränn öppningsbara fönster från botten till toppen"
 
 #: resources/ui/adw/fire.ui:218
 msgid "Gradient"
