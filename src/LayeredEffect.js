@@ -19,6 +19,7 @@ import Cogl from 'gi://Cogl';
 import GObject from 'gi://GObject';
 import Meta from 'gi://Meta';
 
+import * as Background from 'resource:///org/gnome/shell/ui/background.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -297,6 +298,7 @@ export default class LayeredEffect {
   //   desktopOnWall: true: the wallpaper goes on the wall (it stays put while the
   //                  surface animates). Implies wall. Otherwise it is part of the
   //                  surface.
+  //   noWallpaper:   true: the wallpaper is not drawn at all.
   //   opaqueSurface: true: the surface is black under its contents, so nothing the
   //                  effect reveals ever shows the real screen through it.
   //   geometry(frame, actor, stageW, stageH):
@@ -349,6 +351,25 @@ export default class LayeredEffect {
     };
     const frozen = ctx.forOpening ? null : readWindow();
 
+    // Our own wallpaper actors, positioned in stage coordinates. Mutter clips the shell's
+    // background actors to the area not covered by opaque windows, so cloning those
+    // leaves holes wherever a window is on top.
+    const wallpaper        = new Clutter.Actor({reactive: false});
+    const bgManagers       = [];
+    let wallpaperAvailable = false;
+    if (!opts.noWallpaper) {
+      try {
+        for (let i = 0; i < Main.layoutManager.monitors.length; i++) {
+          bgManagers.push(new Background.BackgroundManager(
+            {container: wallpaper, monitorIndex: i, vignette: false}));
+        }
+        wallpaperAvailable = true;
+      } catch (e) {
+        bgManagers.forEach(m => m.destroy());
+        bgManagers.length = 0;
+      }
+    }
+
     // Where the layers go: the window, its shadow and whatever the effect asks for,
     // trimmed to the screen (Clutter never renders anything off-screen into an effect's
     // texture). Not the paint volume: it's unreliable at map time and would make the
@@ -392,6 +413,7 @@ export default class LayeredEffect {
     const populate = (g) => {
       group.set_position(g.ox, g.oy);
       group.set_size(g.OW, g.OH);
+      if (wallpaper.get_parent()) wallpaper.get_parent().remove_child(wallpaper);
       for (const layer of layers) {
         layer.destroy_all_children();
         layer.set_size(g.OW, g.OH);
@@ -400,9 +422,14 @@ export default class LayeredEffect {
       // Bottom to top: the wallpaper, then the windows behind. Which windows are below /
       // above is decided by the stack tracker (it knows about windows raised while this
       // one closes).
-      const desk       = opts.desktopOnWall ? wall : surface;
-      const background = Main.layoutManager._backgroundGroup;
-      if (background) addClone(desk, background, g.ox, g.oy);
+      const desk = opts.desktopOnWall ? wall : surface;
+      if (wallpaperAvailable) {
+        wallpaper.set_position(-g.ox, -g.oy);
+        desk.add_child(wallpaper);
+      } else if (!opts.noWallpaper) {
+        const background = Main.layoutManager._backgroundGroup;
+        if (background) addClone(desk, background, g.ox, g.oy);
+      }
 
       const area      = {x: g.ox, y: g.oy, width: g.OW, height: g.OH};
       const behind    = stack.windowsNear(area, false);
@@ -511,6 +538,8 @@ export default class LayeredEffect {
         surfaceShader.stopFollowing();
         surface.remove_effect(surfaceShader);
         surfaceShader.returnToFactory();
+        bgManagers.forEach(m => m.destroy());
+        wallpaper.destroy();
         group.destroy();  // also destroys the layers and clones
       }
     };

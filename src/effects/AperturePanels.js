@@ -41,10 +41,11 @@ const _ = await utils.importGettext();
 // Values of the aperture-panels-wave-shape, -flip-axis and -backdrop settings (wave
 // shapes 0-4 are described in aperture-panels.frag). More tunables live at the top of
 // resources/shaders/aperture-panels.frag.
-const WAVE_SHAPE_RANDOM   = 5;
-const FLIP_AXIS_VERTICAL  = 0;
-const FLIP_AXIS_RANDOM    = 2;
-const BACKDROP_BLACK_VOID = 1;
+const WAVE_SHAPE_RANDOM    = 5;
+const FLIP_AXIS_VERTICAL   = 0;
+const FLIP_AXIS_RANDOM     = 2;
+const BACKDROP_BLACK_VOID  = 1;
+const BACKDROP_TRANSPARENT = 2;
 
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
@@ -83,6 +84,9 @@ export default class Effect {
     // wall is black.
     const blackVoid =
       settings.get_int('aperture-panels-backdrop') === BACKDROP_BLACK_VOID;
+    // "Transparent": no wall and no wallpaper; the real screen shows through the gaps.
+    const transparent =
+      settings.get_int('aperture-panels-backdrop') === BACKDROP_TRANSPARENT;
 
     // The user's settings, read once: both shaders must get the same values, including
     // the same pick for the "Random" options.
@@ -100,8 +104,9 @@ export default class Effect {
 
     return LayeredEffect.create(actor, shader, ctx, {
       factory: this.shaderFactory,
-      wall: true,  // shows through the gaps between the turning panels
-      desktopOnWall: !blackVoid,
+      wall: !transparent,  // shows through the gaps between the turning panels
+      desktopOnWall: !blackVoid && !transparent,
+      noWallpaper: transparent,
 
       // A grid over the visible window only, with a panel size that divides it exactly.
       geometry: (frame) => {
