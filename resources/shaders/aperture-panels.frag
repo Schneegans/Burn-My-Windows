@@ -201,8 +201,13 @@ void main() {
       if (local > 0.5) u = -u;  // the back face is not mirrored
       vec2 m  = gVertical ? vec2(u, v) : vec2(v, u);
       panelUV = m / uCell + 0.5;
-      onPanel = dist - u * sT > 0.0 && all(greaterThanEqual(panelUV, vec2(0.0))) &&
-                all(lessThanEqual(panelUV, vec2(1.0)));
+
+      // The inverse projection loses a little precision (the panel centre is subtracted
+      // again), so a pixel on a shared edge can land just outside [0, 1] and leave a gap.
+      const float EPS = 0.002;
+      onPanel = dist - u * sT > 0.0 && all(greaterThanEqual(panelUV, vec2(-EPS))) &&
+                all(lessThanEqual(panelUV, vec2(1.0 + EPS)));
+      panelUV = clamp(panelUV, 0.0, 1.0);
     }
 
     // front: the windows behind, on every panel. Under a turned panel they only show
