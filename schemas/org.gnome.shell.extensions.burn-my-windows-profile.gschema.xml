@@ -247,7 +247,7 @@ SPDX-License-Identifier: CC0-1.0
       <summary>use a random color for the fire</summary>
       <description>use a random color of the fire</description>
     </key>
-    
+
     <key name="fire-3d-noise" type="b">
       <default>false</default>
       <summary>Fire 3D Noise</summary>
@@ -1166,7 +1166,6 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
 
-
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Morph Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -1235,9 +1234,9 @@ SPDX-License-Identifier: CC0-1.0
 
     <key name="aperture-panels-backdrop" type="i">
       <default>0</default>
-      <range min="0" max="1" />
+      <range min="0" max="2" />
       <summary>Aperture Panels Backdrop</summary>
-      <description>0: the wallpaper stays in place, 1: the wallpaper flips with the panels, revealing a black void.</description>
+      <description>0: the wallpaper stays in place, 1: the wallpaper flips with the panels, revealing a black void, 2: nothing is drawn behind the panels.</description>
     </key>
 
     <key name="aperture-panels-border-style" type="i">

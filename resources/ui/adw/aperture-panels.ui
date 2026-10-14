@@ -138,6 +138,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
             <items>
               <item translatable="yes">Wallpaper</item>
               <item translatable="yes">Black Void</item>
+              <item translatable="yes">Transparent</item>
             </items>
           </object>
         </property>

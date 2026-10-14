@@ -66,7 +66,9 @@ const float BORDER_TRAIL  = 0.15;
 const float BORDER_PX     = 1.0;   // line width drawn by each panel (neighbours add up to ~2px)
 const float EDGE_SHADE    = 0.4;   // brightness of a panel seen edge-on (1 = no shading)
 
-const float PI            = 3.14159265;
+const float PERSPECTIVE = 2.5;  // camera distance in window sizes; larger = subtler 3D
+
+const float PI = 3.14159265;
 
 // Animation progress: 0 = everything behind the window showing, 1 = the window showing.
 // Opening runs 0 -> 1, closing 1 -> 0. Set at the start of main().
@@ -172,17 +174,41 @@ void main() {
     float local  = cellProgress(cell);
     float squash = abs(cos(local * PI));
 
-    // Squash the cell around its centre to fake the rotation: sideways for a vertical
-    // axis, up/down for a horizontal one. panelUV is the position on the panel itself.
-    vec2 panelUV = cellUV;
-    if (gVertical) {
-      panelUV.x = (cellUV.x - 0.5) / max(squash, 0.001) + 0.5;
-    } else {
-      panelUV.y = (cellUV.y - 0.5) / max(squash, 0.001) + 0.5;
+    // Rotate the panel around its centre axis and project it with the vanishing point in
+    // the middle of the window. We invert the projection: from the screen position, find
+    // the position on the panel itself (panelUV). a = across the rotation axis, b = along
+    // it.
+    float theta = local * PI;
+    float cT    = cos(theta);
+    float sT    = sin(theta);
+    float dist  = PERSPECTIVE * max(uFrame.z, uFrame.w);  // camera distance
+
+    vec2 centre =
+      (cell + 0.5) * uCell - uFrame.zw * 0.5;       // panel centre from window centre
+    vec2 screen = centre + (cellUV - 0.5) * uCell;  // fragment from window centre
+    if (!gVertical) {
+      centre = centre.yx;
+      screen = screen.yx;
     }
 
-    bool onPanel = all(greaterThanEqual(panelUV, vec2(0.0))) &&
-                   all(lessThanEqual(panelUV, vec2(1.0)));
+    bool onPanel = false;
+    vec2 panelUV = cellUV;
+    float den    = dist * cT + screen.x * sT;
+    if (abs(den) > 0.001) {
+      float u = dist * (screen.x - centre.x) / den;
+      float s = dist / (dist - u * sT);
+      float v = screen.y / s - centre.y;
+      if (local > 0.5) u = -u;  // the back face is not mirrored
+      vec2 m  = gVertical ? vec2(u, v) : vec2(v, u);
+      panelUV = m / uCell + 0.5;
+
+      // The inverse projection loses a little precision (the panel centre is subtracted
+      // again), so a pixel on a shared edge can land just outside [0, 1] and leave a gap.
+      const float EPS = 0.002;
+      onPanel = dist - u * sT > 0.0 && all(greaterThanEqual(panelUV, vec2(-EPS))) &&
+                all(lessThanEqual(panelUV, vec2(1.0 + EPS)));
+      panelUV = clamp(panelUV, 0.0, 1.0);
+    }
 
     // front: the windows behind, on every panel. Under a turned panel they only show
     // through the window's transparent bits (rounded corners), which keeps the final frame
