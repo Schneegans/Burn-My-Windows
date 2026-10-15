@@ -313,7 +313,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Animation Time [ms]</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">0</property>
@@ -339,7 +339,7 @@ SPDX-License-Identifier: GPL-3.0-or-later
       <object class="AdwActionRow">
         <property name="title" translatable="yes">Fade Width</property>
         <child>
-          <object class="GtkScale">
+          <object class="BurnMyWindowsSlider">
             <property name="valign">center</property>
             <property name="draw-value">1</property>
             <property name="digits">2</property>
@@ -395,38 +395,44 @@ That's it!
 If you have any questions, feel free to [ask them on the discussions board](https://github.com/Schneegans/Burn-My-Windows/discussions).
 If you are happy with your effect, submit a pull request, and it may get included in the next version!
 
-
 ## Install Dependencies (if needed)
+
 the list below might not be 100% correct, please pull request if changes need to be made
 
 ### **Ubuntu**
+
 ```bash
 sudo apt install make gettext libglib2.0-dev-bin clang-format
 ```
 
 ### **Fedora/RHEL**
+
 ```bash
 sudo dnf install make gettext glib2-devel clang-format
 ```
 
 ### **Arch Linux**
+
 ```bash
 sudo pacman -S base-devel gettext glib2 clang-format
 ```
 
 ### **openSUSE**
+
 ```bash
 sudo zypper install make gettext-tools glib2-devel clang-format
 ```
 
 ### **Alpine Linux**
+
 For minimal distributions like Alpine:
+
 ```bash
 sudo apk add build-base gettext-dev glib-dev clang-format
 ```
 
 ### **Gentoo**
+
 ```bash
 sudo emerge --ask sys-devel/make sys-devel/gettext dev-libs/glib clang-format
 ```
-
