@@ -124,7 +124,10 @@ export function addWindowClone(layer, wa, ox, oy) {
 }
 
 // Keeps track of which windows are above and below `actor` while its clone layers are
-// built, and says when that changed (takeDirty(), checked once a frame).
+// built, and says when that changed (takeDirty(), checked once a frame). That includes
+// the windows near the area last asked about (windowsNear()) moving, resizing, showing
+// or hiding, or moving into or out of it: their clones are placed once, when the layers
+// are built, so the layers must be rebuilt then.
 // - Normally that's simply the order of the window actors.
 // - But while a window disappears (close, `disappearing`), Mutter keeps its actor where
 //   it was until the animation ends, even above windows raised meanwhile. So a window
@@ -148,6 +151,7 @@ export function createStackTracker(actor, disappearing) {
   const handlers = [];         // [object, handler id]
   let watching   = false;
   let lastSig    = null;
+  let lastRect   = null;  // the area of the last windowsNear() call
 
   const BUTTONS = Clutter.ModifierType.BUTTON1_MASK | Clutter.ModifierType.BUTTON2_MASK |
     Clutter.ModifierType.BUTTON3_MASK;
@@ -215,14 +219,31 @@ export function createStackTracker(actor, disappearing) {
     return {others, onTop};
   };
 
-  // Which windows are above / below, as a string, to notice changes.
+  // Whether window actor `wa` is close enough to `rect` for its shadow to reach into it.
+  const isNear = (wa, rect) => {
+    const M = SHADOW_MARGIN;
+    return wa.x - M < rect.x + rect.width && wa.x + wa.width + M > rect.x &&
+      wa.y - M < rect.y + rect.height && wa.y + wa.height + M > rect.y;
+  };
+
+  // Which windows are above / below, plus where the windows near lastRect are, as a
+  // string, to notice changes. Windows elsewhere on the screen can move freely without
+  // causing a rebuild.
   const signature = () => {
     const {others, onTop} = orderOf();
     const id = (a) => {
       if (!ids.has(a)) ids.set(a, ids.size + 1);
       return ids.get(a);
     };
-    return others.map(a => (onTop.has(a) ? '+' : '-') + id(a)).join(',');
+    return others
+      .map(a => {
+        let s = (onTop.has(a) ? '+' : '-') + id(a);
+        if (lastRect && a.visible && isNear(a, lastRect)) {
+          s += `@${a.x},${a.y},${a.width}x${a.height}`;
+        }
+        return s;
+      })
+      .join(',');
   };
   // The layers are built right after this with the same order.
   lastSig = signature();
@@ -239,8 +260,9 @@ export function createStackTracker(actor, disappearing) {
       buttonWasDown = down;
     },
 
-    // True when the windows above / below changed since the last call (or since the
-    // tracker was created). Checked every frame rather than on 'restacked'.
+    // True when the windows above / below, or the place of the windows near the layers,
+    // changed since the last call (or since the layers were last built). Checked every
+    // frame rather than on 'restacked' / 'position-changed'.
     takeDirty: () => {
       const sig     = signature();
       const changed = sig !== lastSig;
@@ -248,13 +270,14 @@ export function createStackTracker(actor, disappearing) {
       return changed;
     },
 
+    // Called while (re)building the layers, so what it returns is what they now show:
+    // from here on, changes are measured against that.
     windowsNear: (rect, above) => {
+      lastRect = {x: rect.x, y: rect.y, width: rect.width, height: rect.height};
+      lastSig  = signature();
       const {others, onTop} = orderOf();
-      const M               = SHADOW_MARGIN;
-      return others.filter(
-        wa => onTop.has(wa) === above && wa.visible && wa.x - M < rect.x + rect.width &&
-          wa.x + wa.width + M > rect.x && wa.y - M < rect.y + rect.height &&
-          wa.y + wa.height + M > rect.y);
+      return others.filter(wa => onTop.has(wa) === above && wa.visible &&
+                             isNear(wa, lastRect));
     },
 
     destroy: () => {
