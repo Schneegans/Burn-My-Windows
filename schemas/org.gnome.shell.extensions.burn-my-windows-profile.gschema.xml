@@ -732,6 +732,40 @@ SPDX-License-Identifier: CC0-1.0
 
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Venetian Blinds Effect Options                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="venetian-blinds-enable-effect" type="b">
+      <default>false</default>
+      <summary>Venetian Blinds Enable Effect</summary>
+      <description>Use the Venetian Blinds effect.</description>
+    </key>
+
+    <key name="venetian-blinds-animation-time" type="i">
+      <default>700</default>
+      <summary>Venetian Blinds Animation Time</summary>
+      <description>The time the Venetian Blinds effect takes.</description>
+    </key>
+
+    <key name="venetian-blinds-slats" type="i">
+      <default>9</default>
+      <summary>Venetian Blinds Slats</summary>
+      <description>The number of slats the window is split into.</description>
+    </key>
+
+    <key name="venetian-blinds-delay" type="d">
+      <default>0.4</default>
+      <summary>Venetian Blinds Delay</summary>
+      <description>How much later the last slat starts to turn than the first one, relative to the animation time.</description>
+    </key>
+
+    <key name="venetian-blinds-perspective" type="b">
+      <default>false</default>
+      <summary>Venetian Blinds Perspective</summary>
+      <description>Draw the turning slats with perspective.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Wisps Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
