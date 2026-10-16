@@ -49,6 +49,7 @@ import PixelWheel from './src/effects/PixelWheel.js';
 import PixelWipe from './src/effects/PixelWipe.js';
 import Portal from './src/effects/Portal.js';
 import RGBWarp from './src/effects/RGBWarp.js';
+import Shredder from './src/effects/Shredder.js';
 import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
 import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
@@ -83,14 +84,13 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
 
     // New effects must be registered here and in extension.js.
     this._ALL_EFFECTS = [
-      AperturePanels, Apparition,  AuraGlow,  BrokenGlass,
-      Doom,           EnergizeA,   EnergizeB, Fire,
-      Focus,          Glide,       Glitch,    Hexagon,
-      Incinerate,     Materialize, Matrix,    Morph,
-      Mushroom,       PaintBrush,  Pixelate,  PixelWheel,
-      PixelWipe,      Portal,      RGBWarp,   SnapOfDisintegration,
-      TeamRocket,     TRexAttack,  TVEffect,  TVGlitch,
-      VenetianBlinds, Wisps,       Wormhole,
+      AperturePanels, Apparition, AuraGlow,   BrokenGlass, Doom,
+      EnergizeA,      EnergizeB,  Fire,       Focus,       Glide,
+      Glitch,         Hexagon,    Incinerate, Materialize, Matrix,
+      Morph,          Mushroom,   PaintBrush, Pixelate,    PixelWheel,
+      PixelWipe,      Portal,     RGBWarp,    Shredder,    SnapOfDisintegration,
+      TeamRocket,     TRexAttack, TVEffect,   TVGlitch,    VenetianBlinds,
+      Wisps,          Wormhole,
     ];
 
 

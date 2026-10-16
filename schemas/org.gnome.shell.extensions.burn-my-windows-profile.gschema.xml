@@ -886,6 +886,40 @@ SPDX-License-Identifier: CC0-1.0
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Shredder Effect Options                                                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="shredder-enable-effect" type="b">
+      <default>false</default>
+      <summary>Shredder Enable Effect</summary>
+      <description>Use the Shredder effect.</description>
+    </key>
+
+    <key name="shredder-animation-time" type="i">
+      <default>600</default>
+      <summary>Shredder Animation Time</summary>
+      <description>The time the Shredder effect takes.</description>
+    </key>
+
+    <key name="shredder-strips" type="i">
+      <default>20</default>
+      <summary>Shredder Strips</summary>
+      <description>The number of strips the window is cut into.</description>
+    </key>
+
+    <key name="shredder-randomness" type="d">
+      <default>0.7</default>
+      <summary>Shredder Randomness</summary>
+      <description>How much the strips differ in when they start to fall.</description>
+    </key>
+
+    <key name="shredder-rough-edges" type="b">
+      <default>true</default>
+      <summary>Shredder Rough Edges</summary>
+      <description>Give the strips jagged edges like torn paper.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Snap of Disintegration Effect Options                                         -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
