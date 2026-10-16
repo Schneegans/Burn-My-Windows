@@ -48,6 +48,8 @@ uniform float uBorderStyle;  // 0 = none, 1 = while flipping, 2 = ahead of the w
                              // 3 = behind the wave, 4 = ahead of and behind the wave
 uniform vec4  uBorderColor;  // straight alpha
 uniform float uBlackVoid;    // 1 = "Black Void" backdrop: front paints the gaps opaque black
+uniform float uShowCake;     // 1 = Easter egg: a cake on the backdrop ("The cake is a lie!")
+uniform vec2  uCakePos;      // random 0..1 per axis: where the cake sits, kept fully inside the window
 
 // ---- Tunables (candidates for user settings) ----
 
@@ -69,6 +71,12 @@ const float EDGE_SHADE    = 0.4;   // brightness of a panel seen edge-on (1 = no
 const float PERSPECTIVE = 2.5;  // camera distance in window sizes; larger = subtler 3D
 
 const float PI = 3.14159265;
+
+// Easter egg ("The cake is a lie!"), when uShowCake is set: a CAKE_PX cake at a random spot
+// (uCakePos) on the backdrop, peeking through the gaps between the turning panels; only on
+// windows at least CAKE_MIN_SCALE times its size in each direction.
+const float CAKE_PX        = 128.0;
+const float CAKE_MIN_SCALE = 3.0;
 
 // Animation progress: 0 = everything behind the window showing, 1 = the window showing.
 // Opening runs 0 -> 1, closing 1 -> 0. Set at the start of main().
@@ -139,6 +147,60 @@ float cellBorder(vec2 cell) {
   float fadeIn  = smoothstep(t.x - max(gBorderLead, 0.001), t.x, gProgress);
   float fadeOut = smoothstep(t.y, t.y + max(gBorderTrail, 0.001), gProgress);
   return gBorder ? fadeIn * (1.0 - fadeOut) : 0.0;
+}
+
+// Signed distance from p to a rounded rectangle centred on the origin, with half-size b
+// and corner radius r: negative inside, zero on the edge and positive outside. The cake
+// is built entirely from these and from circles.
+float sdRoundBox(vec2 p, vec2 b, float r) {
+  vec2 d = abs(p) - b + r;
+  return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0) - r;
+}
+
+// The cake, in straight alpha. p: centred on the cake, y up, the cake fits in [-0.8, 0.8].
+// aa: the size of one pixel in those units. t: time in seconds (for the candle flame).
+vec4 drawCake(vec2 p, float aa, float t) {
+  vec3  col = vec3(0.0);
+  float a   = 0.0;
+
+  // Paints one shape over what was painted before. d is the shape's signed distance; the
+  // smoothstep turns it into a coverage that fades over about one pixel at the edge, so
+  // the shapes are anti-aliased. The cake is painted back to front: plate first, flame
+  // last.
+  #define CAKE_LAYER(d, c) { float m = smoothstep(aa, -aa, d); col = mix(col, c, m); a = max(a, m); }
+
+  vec3 sponge  = vec3(0.26, 0.13, 0.07);
+  vec3 filling = vec3(0.45, 0.26, 0.15);  // chocolate mousse
+  vec3 icing   = vec3(0.17, 0.08, 0.04);  // dark chocolate glaze
+  vec3 cream   = vec3(0.98, 0.95, 0.90);  // whipped cream under the cherries
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, -0.58), vec2(0.78, 0.04), 0.04), vec3(0.78, 0.80, 0.82)); // plate
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, -0.26), vec2(0.56, 0.29), 0.06), sponge);                  // sponge
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, -0.26), vec2(0.56, 0.03), 0.02), filling);                // filling
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0,  0.06), vec2(0.58, 0.07), 0.07), icing);                  // glaze
+  // Glaze drips running down the sponge, each with a pseudo-random length (the usual
+  // sin-hash), so the cake always looks the same.
+  for (int i = 0; i < 6; i++) {                                                                  // drips
+    float x   = -0.45 + float(i) * 0.18;
+    float len = 0.04 + 0.05 * fract(sin(float(i) * 12.9898) * 43758.5453);
+    CAKE_LAYER(sdRoundBox(p - vec2(x, -0.02 - len * 0.5), vec2(0.035, len), 0.035), icing);
+  }
+  CAKE_LAYER(sdRoundBox(p - vec2(-0.12, 0.10), vec2(0.30, 0.012), 0.012), vec3(0.42, 0.25, 0.15)); // glaze shine
+  // Two pairs of cherries, each on a dollop of cream, leaving room for the candle between.
+  for (int i = 0; i < 4; i++) {                                                                  // cherries
+    float x = (i < 2) ? -0.42 + float(i) * 0.2 : 0.22 + float(i - 2) * 0.2;
+    CAKE_LAYER(length(p - vec2(x, 0.15)) - 0.06, cream);
+    CAKE_LAYER(length(p - vec2(x, 0.21)) - 0.055, vec3(0.70, 0.05, 0.08));
+  }
+  // A candle with diagonal red and white stripes and a flickering flame on top. The flame
+  // is a circle, stretched upwards above its centre, which wobbles from side to side.
+  vec3 stripe = mix(vec3(1.0), vec3(0.85, 0.15, 0.2), step(0.5, fract((p.y + p.x) * 14.0)));
+  CAKE_LAYER(sdRoundBox(p - vec2(0.0, 0.30), vec2(0.03, 0.17), 0.01), stripe);                  // candle
+  vec2  fp    = p - vec2(0.01 * sin(t * 31.0), 0.56);                                            // flame
+  float flame = length(fp * vec2(1.0, 0.55 + 0.15 * step(0.0, fp.y))) - 0.045;
+  CAKE_LAYER(flame, mix(vec3(1.0, 0.55, 0.1), vec3(1.0, 0.95, 0.6), smoothstep(0.0, -0.04, flame)));
+
+  #undef CAKE_LAYER
+  return vec4(col, a);
 }
 
 void main() {
@@ -236,9 +298,25 @@ void main() {
       }
 
       oColor = panel;
-    } else if (!back && uBlackVoid > 0.5) {
-      // A gap between turning panels: the black void (the wallpaper is on the panels).
-      oColor = vec4(0.0, 0.0, 0.0, 1.0);
+    } else if (!back) {
+      // A gap between turning panels: the black void (the wallpaper is on the panels), or
+      // transparent so the wall shows through.
+      if (uBlackVoid > 0.5) {
+        oColor = vec4(0.0, 0.0, 0.0, 1.0);
+      }
+
+      // Easter egg: the cake sits on the backdrop, so it only peeks through the gaps.
+      if (uShowCake > 0.5 && all(greaterThanEqual(uFrame.zw, vec2(CAKE_PX * CAKE_MIN_SCALE)))) {
+        // uCakePos picks the cake's centre so that the whole cake stays inside the window.
+        // q is converted to the cake's own units (see drawCake()), with y pointing up.
+        vec2 centre = CAKE_PX * 0.5 + uCakePos * (uFrame.zw - CAKE_PX);
+        vec2 c      = (q - centre) / (CAKE_PX * 0.5) * 0.8;  // cake units, see drawCake()
+        c.y    = -c.y;
+        // Only pixels near the cake are drawn, which keeps the cost low elsewhere.
+        if (all(lessThanEqual(abs(c), vec2(0.82)))) {
+          oColor = alphaOver(oColor, drawCake(c, 0.8 / (CAKE_PX * 0.5), uProgress * uDuration));
+        }
+      }
     }
   }
 

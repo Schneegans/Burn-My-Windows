@@ -47,6 +47,12 @@ const FLIP_AXIS_RANDOM     = 2;
 const BACKDROP_BLACK_VOID  = 1;
 const BACKDROP_TRANSPARENT = 2;
 
+// Easter egg ("The cake is a lie!"): chance (0..1) that a cake appears on the backdrop,
+// in the gaps between the turning panels. The shader only draws it on windows at least
+// three times the cake's size in each direction (see CAKE_PX in aperture-panels.frag).
+// The mystery "🎁" switch (aperture-panels-easter-egg) turns it off.
+const CAKE_CHANCE = 0.05;
+
 // The effect class can be used to get some metadata (like the effect's name or supported
 // GNOME Shell versions), to initialize the respective page of the settings dialog, as
 // well as to create the actual shader for the effect.
@@ -66,6 +72,8 @@ export default class Effect {
       shader._uBorderStyle  = shader.get_uniform_location('uBorderStyle');
       shader._uBorderColor  = shader.get_uniform_location('uBorderColor');
       shader._uBlackVoid    = shader.get_uniform_location('uBlackVoid');
+      shader._uShowCake     = shader.get_uniform_location('uShowCake');
+      shader._uCakePos      = shader.get_uniform_location('uCakePos');
     });
   }
 
@@ -102,6 +110,11 @@ export default class Effect {
     const borderColor =
       utils.parseColor(settings.get_string('aperture-panels-border-color'));
 
+    // The cake never shows up in test mode, so that the tests stay deterministic.
+    const showCake = !ctx.testMode &&
+      settings.get_boolean('aperture-panels-easter-egg') && Math.random() < CAKE_CHANCE;
+    const cakePos = [Math.random(), Math.random()];  // where in the window, see uCakePos
+
     return LayeredEffect.create(actor, shader, ctx, {
       factory: this.shaderFactory,
       wall: !transparent,  // shows through the gaps between the turning panels
@@ -122,6 +135,8 @@ export default class Effect {
         s.set_uniform_float(s._uBorderStyle, 1, [borderStyle]);
         s.set_uniform_float(s._uBorderColor, 4, borderColor);
         s.set_uniform_float(s._uBlackVoid, 1, [blackVoid ? 1 : 0]);
+        s.set_uniform_float(s._uShowCake, 1, [showCake ? 1 : 0]);
+        s.set_uniform_float(s._uCakePos, 2, cakePos);
       },
 
       onGeometry: (s, g) => {
@@ -165,6 +180,7 @@ export default class Effect {
     dialog.bindComboRow('aperture-panels-backdrop');
     dialog.bindComboRow('aperture-panels-border-style');
     dialog.bindColorButton('aperture-panels-border-color');
+    dialog.bindSwitch('aperture-panels-easter-egg');
   }
 
   // ---------------------------------------------------------------- API for extension.js
