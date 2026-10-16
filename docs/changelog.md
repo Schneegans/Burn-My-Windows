@@ -13,6 +13,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 - **Three new effects: Aperture Panels, Morph, and Wormhole!** These new effects use a new effect-layering system that allows the effect to incorporate the wallpaper and / or the windows behind it. Thanks to [@klangman](https://github.com/klangman) for this porting this from [CinnamonBurnMyWindows](https://github.com/klangman/CinnamonBurnMyWindows) to Burn My Windows!
 - **One more new effect: Materialize!** Windows pop up as a flat, tinted panel which grows to full size in a few stuttering steps before the actual window content appears. It is inspired by the computer screens in The Matrix Resurrections and uses the system accent color by default. Thanks to [@eboye](https://github.com/eboye) for this contribution!
+- **Two more new effects: Venetian Blinds and Shredder!** Venetian Blinds splits the window into slats which turn shut one after another, and Shredder cuts it into strips which fall away. The number of slats or strips and the timing are configurable. Thanks to [@idogrf](https://github.com/idogrf) for these contributions!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 
