@@ -1252,6 +1252,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>The color of the panel outlines.</description>
     </key>
 
+    <key name="aperture-panels-easter-egg" type="b">
+      <default>true</default>
+      <summary>Aperture Panels Easter Egg</summary>
+      <description>Allows a rare surprise to appear behind the panels.</description>
+    </key>
+
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Wormhole Effect Options                                                       -->
