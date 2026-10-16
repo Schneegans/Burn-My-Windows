@@ -52,11 +52,13 @@ This extension is not only more useless than the cube, but it is also much more 
 | **Pixel Wipe** <br> This effect pixelates the window and hides the pixels radially, starting from the pointer position.                                                           | <img src ="docs/pics/pixel-wipe.gif" />                                               |
 | **Portal** <br> This ridiculous effect teleports your windows from and to alternative dimensions. It may resemble the portal from a well-known cartoon series...                  | <img src ="docs/pics/portal.gif" />                                                   |
 | **RGB Warp** <br> Red Blue and Green go bye bye.                                                                                                                                  | <img src ="docs/pics/rgbwarp.gif" />                                                  |
+| **Shredder** <br> The window is cut into strips which fall away one after another, like paper in a shredder.                                                                      | <img src ="docs/pics/shredder.gif" />                                                 |
 | **Snap of Disintegration** <br> Dissolve your windows into a cloud of dust.                                                                                                       | <img src ="docs/pics/snap.gif" />                                                     |
 | **TeamRocket** <br> ... is blasting off again!                                                                                                                                    | <img src ="docs/pics/teamrocket.gif" />                                               |
 | **T-Rex Attack** <br> Destroy your windows with a series of violent slashes!                                                                                                      | <img src ="docs/pics/trex.gif" />                                                     |
 | **TV Effect** <br> This is a very simple effect to demonstrate that this extension could also be used in a more professional environment.                                         | <img src ="docs/pics/tv.gif" />                                                       |
 | **TV Glitch** <br> This effect combines the Glitch and the TV Effect.                                                                                                             | <img src ="docs/pics/tv-glitch.gif" />                                                |
+| **Venetian Blinds** <br> The window splits into slats which turn shut one after another, like a venetian blind.                                                                   | <img src ="docs/pics/venetian-blinds.gif" />                                          |
 | **Wisps** <br> Let your windows be carried away to the realm of dreams by these little fairies!                                                                                   | <img src ="docs/pics/wisps.gif" />                                                    |
 | **Wormhole** <br> This effect creates a wormhole through which your windows are sucked away.                                                                                      | <img src ="docs/pics/wormhole.gif" />                                                 |
 | **Your Effect!** <br> The extension is very modular and with a bit of creativity and GLSL knowledge, [you can easily create your own effects](docs/how-to-create-new-effects.md). | [![Create your own effects](docs/pics/custom.jpg)](docs/how-to-create-new-effects.md) |
@@ -96,11 +98,13 @@ Below is a table which summarizes the current availability for all effects.
 <tr><td>Pixel Wipe</td>              <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Portal</td>                  <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>RGB Warp</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Shredder</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Snap of Disintegration</td>  <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>TeamRocket</td>              <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>T-Rex Attack</td>            <td>  </td>   <td>  </td>  <td>✅</td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>TV Effect</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>TV Glitch</td>               <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
+<tr><td>Venetian Blinds</td>         <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 <tr><td>Wisps</td>                   <td>✅</td>   <td>✅</td>  <td>✅</td>   <td>✅</td> <td>✅</td>     </tr>
 <tr><td>Wormhole</td>                <td>  </td>   <td>  </td>  <td>  </td>   <td>✅</td> <td>  </td>     </tr>
 </table>
