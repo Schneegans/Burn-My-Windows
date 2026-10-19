@@ -765,6 +765,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>Draw the turning slats with perspective.</description>
     </key>
 
+    <key name="venetian-blinds-pull-up" type="b">
+      <default>false</default>
+      <summary>Venetian Blinds Pull Up</summary>
+      <description>Pull the blind up, so that the slats fold at the top of the window.</description>
+    </key>
+
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Wisps Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

@@ -44,6 +44,7 @@ export default class Effect {
       shader._uSlats       = shader.get_uniform_location('uSlats');
       shader._uDelay       = shader.get_uniform_location('uDelay');
       shader._uPerspective = shader.get_uniform_location('uPerspective');
+      shader._uPullUp      = shader.get_uniform_location('uPullUp');
 
       // Write all uniform values at the start of each animation.
       shader.connect('begin-animation', (shader, settings) => {
@@ -51,6 +52,7 @@ export default class Effect {
         shader.set_uniform_float(shader._uSlats,       1, [settings.get_int('venetian-blinds-slats')]);
         shader.set_uniform_float(shader._uDelay,       1, [settings.get_double('venetian-blinds-delay')]);
         shader.set_uniform_float(shader._uPerspective, 1, [settings.get_boolean('venetian-blinds-perspective')]);
+        shader.set_uniform_float(shader._uPullUp,      1, [settings.get_boolean('venetian-blinds-pull-up')]);
         // clang-format on
       });
     });
@@ -86,6 +88,7 @@ export default class Effect {
     dialog.bindAdjustment('venetian-blinds-slats');
     dialog.bindAdjustment('venetian-blinds-delay');
     dialog.bindSwitch('venetian-blinds-perspective');
+    dialog.bindSwitch('venetian-blinds-pull-up');
   }
 
   // ---------------------------------------------------------------- API for extension.js

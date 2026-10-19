@@ -130,6 +130,28 @@ SPDX-License-Identifier: GPL-3.0-or-later
       </object>
     </child>
 
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Pull Up</property>
+        <property name="activatable-widget">venetian-blinds-pull-up</property>
+        <child>
+          <object class="GtkSwitch" id="venetian-blinds-pull-up">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-venetian-blinds-pull-up">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
   </object>
 
 </interface>
