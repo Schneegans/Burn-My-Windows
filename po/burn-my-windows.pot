@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 12:48+0300\n"
+"POT-Creation-Date: 2026-10-19 13:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,7 +185,7 @@ msgstr ""
 msgid "TV Glitch"
 msgstr ""
 
-#: src/effects/VenetianBlinds.js:77
+#: src/effects/VenetianBlinds.js:79
 msgid "Venetian Blinds"
 msgstr ""
 
@@ -312,7 +312,7 @@ msgstr ""
 #: resources/ui/adw/tv.ui:14 resources/ui/adw/wisps.ui:14
 #: resources/ui/adw/aperture-panels.ui:14 resources/ui/adw/fire.ui:30
 #: resources/ui/adw/morph.ui:14 resources/ui/adw/wormhole.ui:14
-#: resources/ui/adw/venetian-blinds.ui:14 resources/ui/adw/shredder.ui:14
+#: resources/ui/adw/shredder.ui:14 resources/ui/adw/venetian-blinds.ui:14
 msgid "Animation Time [ms]"
 msgstr ""
 
@@ -389,12 +389,13 @@ msgstr ""
 #: resources/ui/adw/morph.ui:61 resources/ui/adw/morph.ui:94
 #: resources/ui/adw/wormhole.ui:36 resources/ui/adw/wormhole.ui:69
 #: resources/ui/adw/wormhole.ui:102 resources/ui/adw/wormhole.ui:135
-#: resources/ui/adw/wormhole.ui:169 resources/ui/adw/venetian-blinds.ui:36
+#: resources/ui/adw/wormhole.ui:169 resources/ui/adw/shredder.ui:36
+#: resources/ui/adw/shredder.ui:69 resources/ui/adw/shredder.ui:102
+#: resources/ui/adw/shredder.ui:124 resources/ui/adw/venetian-blinds.ui:36
 #: resources/ui/adw/venetian-blinds.ui:69
 #: resources/ui/adw/venetian-blinds.ui:102
-#: resources/ui/adw/venetian-blinds.ui:124 resources/ui/adw/shredder.ui:36
-#: resources/ui/adw/shredder.ui:69 resources/ui/adw/shredder.ui:102
-#: resources/ui/adw/shredder.ui:124
+#: resources/ui/adw/venetian-blinds.ui:124
+#: resources/ui/adw/venetian-blinds.ui:146
 msgid "Reset to Default Value"
 msgstr ""
 
@@ -935,6 +936,14 @@ msgstr ""
 msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
 msgstr ""
 
+#: resources/ui/adw/shredder.ui:47
+msgid "Number of Strips"
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:113
+msgid "Rough Edges"
+msgstr ""
+
 #: resources/ui/adw/venetian-blinds.ui:47
 msgid "Number of Slats"
 msgstr ""
@@ -947,12 +956,8 @@ msgstr ""
 msgid "Perspective"
 msgstr ""
 
-#: resources/ui/adw/shredder.ui:47
-msgid "Number of Strips"
-msgstr ""
-
-#: resources/ui/adw/shredder.ui:113
-msgid "Rough Edges"
+#: resources/ui/adw/venetian-blinds.ui:135
+msgid "Pull Up"
 msgstr ""
 
 #: resources/ui/common/menus.ui:13
