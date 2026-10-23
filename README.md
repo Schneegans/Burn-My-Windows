@@ -227,6 +227,8 @@ Here are links to all effects which are currently available in the KDE store:
 You can also directly get the effects from within your system settings.
 Just go to your System Settings, then "Workspace Behavior", and "Desktop Effects". Then click on "Get new Desktop Effects...".
 
+After installing, if you are on Plasma 6.x.x, the effects might not appear under "Desktop Effects", but instead under "Animations". Then you can select the effect you want in "Window open/close".
+
 ### b) Downloading a Stable Release
 
 Execute this command to download the latest stable release:
@@ -251,7 +253,9 @@ tar -xf burn_my_windows_kwin5.tar.gz -C ~/.local/share/kwin/effects
 tar -xf burn_my_windows_kwin6.tar.gz -C ~/.local/share/kwin/effects
 ```
 
-Then select the desired effects in the system settings under "Desktop Effects".
+Then select the desired effects in the system settings under "Desktop Effects". 
+
+If you are on Plasma 6.x.x, the effects might not appear under "Desktop Effects", but instead under "Animations". Then you can select the effect you want in "Window open/close".
 
 ### c) Cloning the Latest Version with `git`
 
@@ -277,6 +281,8 @@ tar -xf kwin/burn_my_windows_kwin6.tar.gz -C ~/.local/share/kwin/effects
 
 That's it!
 You can now select the desired effects in the system settings under "Desktop Effects".
+
+If you are on Plasma 6.x.x, the effects might not appear under "Desktop Effects", but instead under "Animations". Then you can select the effect you want in "Window open/close".
 
 ## :octocat: I want to contribute!
 
