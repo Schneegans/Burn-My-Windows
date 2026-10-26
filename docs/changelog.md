@@ -15,6 +15,7 @@ SPDX-License-Identifier: CC-BY-4.0
 - **One more new effect: Materialize!** Windows pop up as a flat, tinted panel which grows to full size in a few stuttering steps before the actual window content appears. It is inspired by the computer screens in The Matrix Resurrections and uses the system accent color by default. Thanks to [@eboye](https://github.com/eboye) for this contribution!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
+- **Effects can now be applied to minimizing and restoring windows as well!** The "Animation Type" setting of each effect profile now also supports "Minimizing Windows" and "Restoring Windows", so all existing effects can be used when a window is sent to or brought back from the taskbar. This implements the long-requested feature [#83](https://github.com/Schneegans/Burn-My-Windows/issues/83).
 
 #### Bug Fixes
 
