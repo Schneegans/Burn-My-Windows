@@ -732,6 +732,46 @@ SPDX-License-Identifier: CC0-1.0
 
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Venetian Blinds Effect Options                                                -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="venetian-blinds-enable-effect" type="b">
+      <default>false</default>
+      <summary>Venetian Blinds Enable Effect</summary>
+      <description>Use the Venetian Blinds effect.</description>
+    </key>
+
+    <key name="venetian-blinds-animation-time" type="i">
+      <default>700</default>
+      <summary>Venetian Blinds Animation Time</summary>
+      <description>The time the Venetian Blinds effect takes.</description>
+    </key>
+
+    <key name="venetian-blinds-slats" type="i">
+      <default>9</default>
+      <summary>Venetian Blinds Slats</summary>
+      <description>The number of slats the window is split into.</description>
+    </key>
+
+    <key name="venetian-blinds-delay" type="d">
+      <default>0.4</default>
+      <summary>Venetian Blinds Delay</summary>
+      <description>How much later the last slat starts to turn than the first one, relative to the animation time.</description>
+    </key>
+
+    <key name="venetian-blinds-perspective" type="b">
+      <default>false</default>
+      <summary>Venetian Blinds Perspective</summary>
+      <description>Draw the turning slats with perspective.</description>
+    </key>
+
+    <key name="venetian-blinds-pull-up" type="b">
+      <default>false</default>
+      <summary>Venetian Blinds Pull Up</summary>
+      <description>Pull the blind up, so that the slats fold at the top of the window.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <!-- Wisps Effect Options                                                          -->
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
@@ -849,6 +889,40 @@ SPDX-License-Identifier: CC0-1.0
       <default>15.0</default>
       <summary>Portal Details</summary>
       <description>The amount of details in the portal.</description>
+    </key>
+
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+    <!-- Shredder Effect Options                                                       -->
+    <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+    <key name="shredder-enable-effect" type="b">
+      <default>false</default>
+      <summary>Shredder Enable Effect</summary>
+      <description>Use the Shredder effect.</description>
+    </key>
+
+    <key name="shredder-animation-time" type="i">
+      <default>600</default>
+      <summary>Shredder Animation Time</summary>
+      <description>The time the Shredder effect takes.</description>
+    </key>
+
+    <key name="shredder-strips" type="i">
+      <default>20</default>
+      <summary>Shredder Strips</summary>
+      <description>The number of strips the window is cut into.</description>
+    </key>
+
+    <key name="shredder-randomness" type="d">
+      <default>0.7</default>
+      <summary>Shredder Randomness</summary>
+      <description>How much the strips differ in when they start to fall.</description>
+    </key>
+
+    <key name="shredder-rough-edges" type="b">
+      <default>true</default>
+      <summary>Shredder Rough Edges</summary>
+      <description>Give the strips jagged edges like torn paper.</description>
     </key>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->

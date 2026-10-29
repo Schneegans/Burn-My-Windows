@@ -45,11 +45,13 @@ import PixelWheel from './src/effects/PixelWheel.js';
 import PixelWipe from './src/effects/PixelWipe.js';
 import Portal from './src/effects/Portal.js';
 import RGBWarp from './src/effects/RGBWarp.js';
+import Shredder from './src/effects/Shredder.js';
 import SnapOfDisintegration from './src/effects/SnapOfDisintegration.js';
 import TeamRocket from './src/effects/TeamRocket.js';
 import TRexAttack from './src/effects/TRexAttack.js';
 import TVEffect from './src/effects/TVEffect.js';
 import TVGlitch from './src/effects/TVGlitch.js';
+import VenetianBlinds from './src/effects/VenetianBlinds.js';
 import Wisps from './src/effects/Wisps.js';
 import Wormhole from './src/effects/Wormhole.js';
 
@@ -78,16 +80,38 @@ export default class BurnMyWindows extends Extension {
 
     // New effects must be registered here and in prefs.js.
     this._ALL_EFFECTS = [
-      new AperturePanels(), new Apparition(),  new AuraGlow(),
-      new BrokenGlass(),    new Doom(),        new EnergizeA(),
-      new EnergizeB(),      new Fire(),        new Focus(),
-      new Glide(),          new Glitch(),      new Hexagon(),
-      new Incinerate(),     new Materialize(), new Matrix(),
-      new Morph(),          new Mushroom(),    new PaintBrush(),
-      new Pixelate(),       new PixelWheel(),  new PixelWipe(),
-      new Portal(),         new RGBWarp(),     new SnapOfDisintegration(),
-      new TeamRocket(),     new TRexAttack(),  new TVEffect(),
-      new TVGlitch(),       new Wisps(),       new Wormhole()
+      new AperturePanels(),
+      new Apparition(),
+      new AuraGlow(),
+      new BrokenGlass(),
+      new Doom(),
+      new EnergizeA(),
+      new EnergizeB(),
+      new Fire(),
+      new Focus(),
+      new Glide(),
+      new Glitch(),
+      new Hexagon(),
+      new Incinerate(),
+      new Materialize(),
+      new Matrix(),
+      new Morph(),
+      new Mushroom(),
+      new PaintBrush(),
+      new Pixelate(),
+      new PixelWheel(),
+      new PixelWipe(),
+      new Portal(),
+      new RGBWarp(),
+      new Shredder(),
+      new SnapOfDisintegration(),
+      new TeamRocket(),
+      new TRexAttack(),
+      new TVEffect(),
+      new TVGlitch(),
+      new VenetianBlinds(),
+      new Wisps(),
+      new Wormhole()
     ];
 
     // Load all of our resources.
