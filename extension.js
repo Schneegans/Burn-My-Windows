@@ -21,6 +21,7 @@ import {fromVersion26} from './src/migrate.js';
 import {ProfileManager} from './src/ProfileManager.js';
 import {WindowPicker} from './src/WindowPicker.js';
 import * as utils from './src/utils.js';
+import ShaderFactory from './src/ShaderFactory.js';
 
 import AperturePanels from './src/effects/AperturePanels.js';
 import Apparition from './src/effects/Apparition.js';
@@ -385,6 +386,7 @@ export default class BurnMyWindows extends Extension {
 
     // Free all effect resources.
     this._ALL_EFFECTS = [];
+    ShaderFactory.freeAll();
 
     // Unregister our resources.
     Gio.resources_unregister(this._resources);
