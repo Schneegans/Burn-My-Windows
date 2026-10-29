@@ -23,6 +23,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Bug Fixes
 
+- Fixed a memory leak which occurred when opening or closing windows after the session was locked at least once. Thanks to [@conradax](https://github.com/conradax) for this fix!
 - Fixed an issue where GNOME Shell could freeze for up to 25 seconds after login if `power-profiles-daemon` was not running yet. Thanks to [@dogcom0228](https://github.com/dogcom0228) for the fix!
 
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)
