@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 22:29+0300\n"
+"POT-Creation-Date: 2026-10-19 13:18+0300\n"
 "PO-Revision-Date: 2025-03-27 12:12+0000\n"
 "Last-Translator: wen han <1751749967@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.11-dev\n"
+
+#: src/effects/AperturePanels.js:153
+msgid "Aperture Panels"
+msgstr ""
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -43,31 +47,31 @@ msgstr "碎片融解A"
 msgid "Energize B"
 msgstr "碎片融解B"
 
-#: src/effects/Fire.js:108
+#: src/effects/Fire.js:110
 msgid "Fire"
 msgstr "烈火燃烧"
 
-#: src/effects/Fire.js:192
+#: src/effects/Fire.js:194
 msgid "Default Fire"
 msgstr "默认烈火燃烧效果"
 
-#: src/effects/Fire.js:202
+#: src/effects/Fire.js:204
 msgid "Hell Fire"
 msgstr "地狱之火"
 
-#: src/effects/Fire.js:212
+#: src/effects/Fire.js:214
 msgid "Dark and Smutty"
 msgstr "暗黑之火"
 
-#: src/effects/Fire.js:222
+#: src/effects/Fire.js:224
 msgid "Cold Breeze"
 msgstr "冰火之舞"
 
-#: src/effects/Fire.js:232
+#: src/effects/Fire.js:234
 msgid "Santa is Coming"
 msgstr "圣诞来临"
 
-#: src/effects/Fire.js:243
+#: src/effects/Fire.js:245
 msgid "Nuclear ☢️"
 msgstr "核能迸发"
 
@@ -98,6 +102,10 @@ msgstr ""
 #: src/effects/Matrix.js:101
 msgid "Matrix"
 msgstr "黑客帝国"
+
+#: src/effects/Morph.js:118
+msgid "Morph"
+msgstr ""
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -155,6 +163,10 @@ msgstr "传送门"
 msgid "RGB Warp"
 msgstr "炫彩跃迁"
 
+#: src/effects/Shredder.js:84
+msgid "Shredder"
+msgstr ""
+
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
 msgstr "碎片掉落"
@@ -175,109 +187,466 @@ msgstr "电视效果"
 msgid "TV Glitch"
 msgstr "电视故障"
 
+#: src/effects/VenetianBlinds.js:79
+msgid "Venetian Blinds"
+msgstr ""
+
 #: src/effects/Wisps.js:85
 msgid "Wisps"
 msgstr "精灵飞散"
 
-#: prefs.js:262
+#: src/effects/Wormhole.js:132
+msgid "Wormhole"
+msgstr ""
+
+#: prefs.js:263
 msgid "Preview this effect"
 msgstr "预览此效果"
 
-#: prefs.js:339
+#: prefs.js:340
 msgid "Burn-My-Windows has been updated!"
 msgstr "Burn-My-Windows已更新！"
 
-#: prefs.js:340 resources/ui/common/menus.ui:17
+#: prefs.js:341 resources/ui/common/menus.ui:17
 msgid "View Changelog"
 msgstr "查看更新日志"
 
-#: prefs.js:522
+#: prefs.js:523
 msgid "Delete this Profile?"
 msgstr "删除此配置吗？"
 
-#: prefs.js:523
+#: prefs.js:524
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr "当前效果配置文件设置的所有效果都将永久丢失。"
 
-#: prefs.js:526
+#: prefs.js:527
 msgid "Cancel"
 msgstr "取消"
 
-#: prefs.js:531
+#: prefs.js:532
 msgid "Delete"
 msgstr "删除"
 
-#: prefs.js:763 resources/ui/adw/prefs.ui:103
+#: prefs.js:764 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
 msgstr "打开窗口"
 
-#: prefs.js:764 resources/ui/adw/prefs.ui:104
+#: prefs.js:765 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
 msgstr "关闭窗口"
 
-#: prefs.js:765 resources/ui/adw/prefs.ui:118
+#: prefs.js:766 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
 msgstr "常规窗口"
 
-#: prefs.js:766 resources/ui/adw/prefs.ui:119
+#: prefs.js:767 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
 msgstr "对话窗口"
 
-#: prefs.js:767 resources/ui/adw/prefs.ui:133
+#: prefs.js:768 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
 msgstr "默认色彩方案"
 
-#: prefs.js:768 resources/ui/adw/prefs.ui:134
+#: prefs.js:769 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
 msgstr "暗色色彩方案"
 
-#: prefs.js:769 resources/ui/adw/prefs.ui:148
+#: prefs.js:770 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
 msgstr "使用电池时"
 
-#: prefs.js:770 resources/ui/adw/prefs.ui:149
+#: prefs.js:771 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
 msgstr "插入电源时"
 
-#: prefs.js:771 resources/ui/adw/prefs.ui:163
+#: prefs.js:772 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
 msgstr "节电模式"
 
-#: prefs.js:772 resources/ui/adw/prefs.ui:164
+#: prefs.js:773 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
 msgstr "平衡模式"
 
-#: prefs.js:773 resources/ui/adw/prefs.ui:165
+#: prefs.js:774 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
 msgstr "性能模式"
 
-#: prefs.js:774 resources/ui/adw/prefs.ui:166
+#: prefs.js:775 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
 msgstr "节电或平衡"
 
-#: prefs.js:775 resources/ui/adw/prefs.ui:167
+#: prefs.js:776 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
 msgstr "平衡或性能"
 
-#: prefs.js:780 resources/ui/adw/prefs.ui:183
+#: prefs.js:781 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
 msgstr "高优先级"
 
-#: prefs.js:786
+#: prefs.js:787
 msgid "Standard Profile"
 msgstr "标准参数"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:866
+#: prefs.js:867
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s 的预览"
 
-#: prefs.js:885
+#: prefs.js:886
 msgid "Close this Window to Preview the Effect!"
 msgstr "关闭此窗，预览效果!"
+
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/focus.ui:35 resources/ui/adw/glide.ui:14
+#: resources/ui/adw/glitch.ui:14 resources/ui/adw/hexagon.ui:14
+#: resources/ui/adw/incinerate.ui:14 resources/ui/adw/materialize.ui:14
+#: resources/ui/adw/matrix.ui:14 resources/ui/adw/mushroom.ui:17
+#: resources/ui/adw/paint-brush.ui:14 resources/ui/adw/pixelate.ui:14
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/portal.ui:14 resources/ui/adw/rgbwarp.ui:17
+#: resources/ui/adw/snap.ui:14 resources/ui/adw/team-rocket.ui:17
+#: resources/ui/adw/trex.ui:14 resources/ui/adw/tv-glitch.ui:14
+#: resources/ui/adw/tv.ui:14 resources/ui/adw/wisps.ui:14
+#: resources/ui/adw/aperture-panels.ui:14 resources/ui/adw/fire.ui:30
+#: resources/ui/adw/morph.ui:14 resources/ui/adw/wormhole.ui:14
+#: resources/ui/adw/shredder.ui:14 resources/ui/adw/venetian-blinds.ui:14
+msgid "Animation Time [ms]"
+msgstr "动画时间 [毫秒]"
+
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
+#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
+#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
+#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
+#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
+#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
+#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
+#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
+#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
+#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
+#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
+#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
+#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixelate.ui:36
+#: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
+#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
+#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/pixel-wipe.ui:36
+#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
+#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
+#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
+#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
+#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
+#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
+#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/aperture-panels.ui:36
+#: resources/ui/adw/aperture-panels.ui:70
+#: resources/ui/adw/aperture-panels.ui:98
+#: resources/ui/adw/aperture-panels.ui:123
+#: resources/ui/adw/aperture-panels.ui:149
+#: resources/ui/adw/aperture-panels.ui:176
+#: resources/ui/adw/aperture-panels.ui:199 resources/ui/adw/fire.ui:52
+#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
+#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:163
+#: resources/ui/adw/fire.ui:185 resources/ui/adw/fire.ui:207
+#: resources/ui/adw/fire.ui:265 resources/ui/adw/morph.ui:36
+#: resources/ui/adw/morph.ui:61 resources/ui/adw/morph.ui:94
+#: resources/ui/adw/wormhole.ui:36 resources/ui/adw/wormhole.ui:69
+#: resources/ui/adw/wormhole.ui:102 resources/ui/adw/wormhole.ui:135
+#: resources/ui/adw/wormhole.ui:169 resources/ui/adw/shredder.ui:36
+#: resources/ui/adw/shredder.ui:69 resources/ui/adw/shredder.ui:102
+#: resources/ui/adw/shredder.ui:124 resources/ui/adw/venetian-blinds.ui:36
+#: resources/ui/adw/venetian-blinds.ui:69
+#: resources/ui/adw/venetian-blinds.ui:102
+#: resources/ui/adw/venetian-blinds.ui:124
+#: resources/ui/adw/venetian-blinds.ui:146
+msgid "Reset to Default Value"
+msgstr "重置为默认值"
+
+#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
+#: resources/ui/adw/shredder.ui:80
+msgid "Randomness"
+msgstr "随机值"
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "扭曲力度"
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "晃动力度"
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "吃力力度"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr "随机颜色"
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr "起始色相"
+
+#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/glitch.ui:113
+#: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/fire.ui:96
+msgid "Speed"
+msgstr "速度"
+
+#: resources/ui/adw/aura-glow.ui:145
+msgid "Saturation"
+msgstr "饱和度"
+
+#: resources/ui/adw/aura-glow.ui:178
+msgid "Edge Size"
+msgstr "边缘大小"
+
+#: resources/ui/adw/aura-glow.ui:211
+msgid "Edge Hardness"
+msgstr "边缘硬度"
+
+#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "模糊量"
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/glide.ui:47
+#: resources/ui/adw/glitch.ui:47 resources/ui/adw/hexagon.ui:47
+#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/matrix.ui:47
+#: resources/ui/adw/snap.ui:47 resources/ui/adw/tv-glitch.ui:47
+#: resources/ui/adw/wisps.ui:47 resources/ui/adw/fire.ui:63
+msgid "Scale"
+msgstr "比例"
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "重力"
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "弹拉力度"
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "从光标位置破碎"
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr "窗口破碎效果将会从光标位置开始。"
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "水平比例"
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "垂直比例"
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixelate.ui:80
+#: resources/ui/adw/pixel-wheel.ui:80 resources/ui/adw/pixel-wipe.ui:47
+msgid "Pixel Size"
+msgstr "像素大小"
+
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
+msgid "Color"
+msgstr "颜色"
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr "模糊质量"
+
+#: resources/ui/adw/glide.ui:80
+msgid "Squish"
+msgstr "压碎程度"
+
+#: resources/ui/adw/glide.ui:113
+msgid "Tilt"
+msgstr "倾斜"
+
+#: resources/ui/adw/glide.ui:146
+msgid "Shift"
+msgstr "变幻"
+
+#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
+#: resources/ui/adw/morph.ui:72
+msgid "Strength"
+msgstr "强度"
+
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "网格线宽"
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "线条颜色"
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "光晕颜色"
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "叠加融合"
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "在暗黑窗口主题中，您可能需要此特效。"
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "扰动"
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "从光标位置开始"
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "如果禁用，将从随机位置开始。"
+
+#: resources/ui/adw/materialize.ui:47
+msgid "Start Scale"
+msgstr ""
+
+#: resources/ui/adw/materialize.ui:80
+msgid "Steps"
+msgstr ""
+
+#: resources/ui/adw/materialize.ui:81
+msgid "Zero gives a smooth animation."
+msgstr ""
+
+#: resources/ui/adw/materialize.ui:114
+msgid "Use System Accent Color"
+msgstr ""
+
+#: resources/ui/adw/matrix.ui:113
+msgid "Vertical Overshooting"
+msgstr "紧身冲击"
+
+#: resources/ui/adw/matrix.ui:146
+msgid "Trail Color"
+msgstr "尾迹颜色"
+
+#: resources/ui/adw/matrix.ui:171
+msgid "Tip Color"
+msgstr "提示颜色"
+
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr "效果预设"
+
+#: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
+msgid "Choose a Preset"
+msgstr "选预设配置"
+
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr "缩放样式"
+
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr "8Bit --- 平滑"
+
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr "火花数量"
+
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr "火花旋转"
+
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr "火花颜色"
+
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr "射线颜色"
+
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr "星环数量"
+
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr "星环旋转"
+
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr "每环星数"
+
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr "星星渐变"
+
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "笔刷大小"
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "噪点"
+
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "辐条数量"
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "旋转速度"
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "回旋"
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "细节"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -349,362 +718,6 @@ msgstr "启用全部"
 msgid "Disable All"
 msgstr "禁用全部"
 
-#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
-#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
-#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
-#: resources/ui/adw/fire.ui:30 resources/ui/adw/focus.ui:35
-#: resources/ui/adw/glide.ui:14 resources/ui/adw/glitch.ui:14
-#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/incinerate.ui:14
-#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
-#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/portal.ui:14
-#: resources/ui/adw/rgbwarp.ui:17 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/trex.ui:14
-#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/tv.ui:14
-#: resources/ui/adw/wisps.ui:14
-msgid "Animation Time [ms]"
-msgstr "动画时间 [毫秒]"
-
-#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
-#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
-#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
-#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
-#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
-#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
-#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
-#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
-#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
-#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
-#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
-#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
-#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
-#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
-#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:185
-#: resources/ui/adw/fire.ui:207 resources/ui/adw/fire.ui:265
-#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
-#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
-#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
-#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
-#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
-#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
-#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
-#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
-#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
-#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
-#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
-#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
-#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
-#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
-#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
-#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
-#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
-#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
-#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
-#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
-#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
-#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
-#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
-#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixel-wheel.ui:36
-#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
-#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
-#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
-#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/portal.ui:36
-#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
-#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
-#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
-#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
-#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
-#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
-#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
-#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
-#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
-#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
-#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
-#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
-#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
-#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
-msgid "Reset to Default Value"
-msgstr "重置为默认值"
-
-#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
-msgid "Randomness"
-msgstr "随机值"
-
-#: resources/ui/adw/apparition.ui:81
-msgid "Twirl Intensity"
-msgstr "扭曲力度"
-
-#: resources/ui/adw/apparition.ui:114
-msgid "Shake Intensity"
-msgstr "晃动力度"
-
-#: resources/ui/adw/apparition.ui:147
-msgid "Suction Intensity"
-msgstr "吃力力度"
-
-#: resources/ui/adw/aura-glow.ui:47
-msgid "Random Color"
-msgstr "随机颜色"
-
-#: resources/ui/adw/aura-glow.ui:69
-msgid "Start Hue"
-msgstr "起始色相"
-
-#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/fire.ui:96
-#: resources/ui/adw/glitch.ui:113 resources/ui/adw/tv-glitch.ui:113
-msgid "Speed"
-msgstr "速度"
-
-#: resources/ui/adw/aura-glow.ui:145
-msgid "Saturation"
-msgstr "饱和度"
-
-#: resources/ui/adw/aura-glow.ui:178
-msgid "Edge Size"
-msgstr "边缘大小"
-
-#: resources/ui/adw/aura-glow.ui:211
-msgid "Edge Hardness"
-msgstr "边缘硬度"
-
-#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
-msgid "Blur Amount"
-msgstr "模糊量"
-
-#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
-#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/fire.ui:63
-#: resources/ui/adw/glide.ui:47 resources/ui/adw/glitch.ui:47
-#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/incinerate.ui:47
-#: resources/ui/adw/matrix.ui:47 resources/ui/adw/snap.ui:47
-#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/wisps.ui:47
-msgid "Scale"
-msgstr "比例"
-
-#: resources/ui/adw/broken-glass.ui:81
-msgid "Gravity"
-msgstr "重力"
-
-#: resources/ui/adw/broken-glass.ui:114
-msgid "Blow Force"
-msgstr "弹拉力度"
-
-#: resources/ui/adw/broken-glass.ui:147
-msgid "Shatter From Pointer Location"
-msgstr "从光标位置破碎"
-
-#: resources/ui/adw/broken-glass.ui:148
-msgid ""
-"The shards will fly away from where your mouse pointer was when closing the "
-"window."
-msgstr "窗口破碎效果将会从光标位置开始。"
-
-#: resources/ui/adw/doom.ui:47
-msgid "Horizontal Scale"
-msgstr "水平比例"
-
-#: resources/ui/adw/doom.ui:80
-msgid "Vertical Scale"
-msgstr "垂直比例"
-
-#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
-#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
-msgid "Pixel Size"
-msgstr "像素大小"
-
-#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
-#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
-#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
-#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
-#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
-msgid "Color"
-msgstr "颜色"
-
-#: resources/ui/adw/fire.ui:14
-msgid "Presets"
-msgstr "预设"
-
-#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
-msgid "Choose a Preset"
-msgstr "选预设配置"
-
-#: resources/ui/adw/fire.ui:129
-msgid "3D Noise"
-msgstr "3D噪点"
-
-#: resources/ui/adw/fire.ui:130
-msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "创建更多动态火焰，但更耗费显卡资源。"
-
-#: resources/ui/adw/fire.ui:152
-msgid "Use Random Color"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:174
-msgid "Burn Closing Windows from Bottom to Top"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:196
-msgid "Burn Opening Windows from Bottom to Top"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:218
-msgid "Gradient"
-msgstr "渐变色"
-
-#: resources/ui/adw/focus.ui:87
-msgid "Blur Quality"
-msgstr "模糊质量"
-
-#: resources/ui/adw/glide.ui:80
-msgid "Squish"
-msgstr "压碎程度"
-
-#: resources/ui/adw/glide.ui:113
-msgid "Tilt"
-msgstr "倾斜"
-
-#: resources/ui/adw/glide.ui:146
-msgid "Shift"
-msgstr "变幻"
-
-#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
-msgid "Strength"
-msgstr "强度"
-
-#: resources/ui/adw/hexagon.ui:80
-msgid "Mesh Line Width"
-msgstr "网格线宽"
-
-#: resources/ui/adw/hexagon.ui:113
-msgid "Line Color"
-msgstr "线条颜色"
-
-#: resources/ui/adw/hexagon.ui:138
-msgid "Glow Color"
-msgstr "光晕颜色"
-
-#: resources/ui/adw/hexagon.ui:163
-msgid "Additive Blending"
-msgstr "叠加融合"
-
-#: resources/ui/adw/hexagon.ui:164
-msgid "You may want to enable this for dark window themes."
-msgstr "在暗黑窗口主题中，您可能需要此特效。"
-
-#: resources/ui/adw/incinerate.ui:80
-msgid "Turbulence"
-msgstr "扰动"
-
-#: resources/ui/adw/incinerate.ui:113
-msgid "Start at Pointer"
-msgstr "从光标位置开始"
-
-#: resources/ui/adw/incinerate.ui:114
-msgid "If disabled, a random location will be chosen."
-msgstr "如果禁用，将从随机位置开始。"
-
-#: resources/ui/adw/materialize.ui:47
-msgid "Start Scale"
-msgstr ""
-
-#: resources/ui/adw/materialize.ui:80
-msgid "Steps"
-msgstr ""
-
-#: resources/ui/adw/materialize.ui:81
-msgid "Zero gives a smooth animation."
-msgstr ""
-
-#: resources/ui/adw/materialize.ui:114
-msgid "Use System Accent Color"
-msgstr ""
-
-#: resources/ui/adw/matrix.ui:113
-msgid "Vertical Overshooting"
-msgstr "紧身冲击"
-
-#: resources/ui/adw/matrix.ui:146
-msgid "Trail Color"
-msgstr "尾迹颜色"
-
-#: resources/ui/adw/matrix.ui:171
-msgid "Tip Color"
-msgstr "提示颜色"
-
-#: resources/ui/adw/mushroom.ui:55
-msgid "Effect Presets"
-msgstr "效果预设"
-
-#: resources/ui/adw/mushroom.ui:73
-msgid "Scale Style"
-msgstr "缩放样式"
-
-#: resources/ui/adw/mushroom.ui:74
-msgid "8Bit --- Smooth"
-msgstr "8Bit --- 平滑"
-
-#: resources/ui/adw/mushroom.ui:112
-msgid "Spark Count"
-msgstr "火花数量"
-
-#: resources/ui/adw/mushroom.ui:150
-msgid "Spark Rotation"
-msgstr "火花旋转"
-
-#: resources/ui/adw/mushroom.ui:188
-msgid "Spark Color"
-msgstr "火花颜色"
-
-#: resources/ui/adw/mushroom.ui:222
-msgid "Rays Color"
-msgstr "射线颜色"
-
-#: resources/ui/adw/mushroom.ui:256
-msgid "Star Rings Count"
-msgstr "星环数量"
-
-#: resources/ui/adw/mushroom.ui:294
-msgid "Star Ring Rotation"
-msgstr "星环旋转"
-
-#: resources/ui/adw/mushroom.ui:332
-msgid "Stars Count Per Ring"
-msgstr "每环星数"
-
-#: resources/ui/adw/mushroom.ui:370
-msgid "Star Gradient"
-msgstr "星星渐变"
-
-#: resources/ui/adw/paint-brush.ui:47
-msgid "Brush Size"
-msgstr "笔刷大小"
-
-#: resources/ui/adw/pixel-wheel.ui:47
-msgid "Spoke Count"
-msgstr "辐条数量"
-
-#: resources/ui/adw/pixelate.ui:47
-msgid "Noise"
-msgstr "噪点"
-
-#: resources/ui/adw/portal.ui:47
-msgid "Rotation Speed"
-msgstr "旋转速度"
-
-#: resources/ui/adw/portal.ui:80
-msgid "Whirling"
-msgstr "回旋"
-
-#: resources/ui/adw/portal.ui:113
-msgid "Details"
-msgstr "细节"
-
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
 msgstr "亮度"
@@ -761,6 +774,194 @@ msgstr "扭曲效果"
 msgid "Flash Color"
 msgstr "边缘颜色"
 
+#: resources/ui/adw/aperture-panels.ui:47
+msgid "Panel Size [px]"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:48
+msgid ""
+"Adjusted a little so that a whole number of panels fits the window exactly."
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:81
+msgid "Wave Shape"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:85
+msgid "Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:86
+msgid "Arc from a Corner"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:87
+msgid "Wavy Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:88
+msgid "Organic Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:89
+msgid "Ripple from the Center"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:90
+#: resources/ui/adw/aperture-panels.ui:115
+msgid "Random"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:109
+msgid "Flip Axis"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:113
+msgid "Vertical"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:114
+msgid "Horizontal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:134
+msgid "Backdrop"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:135
+msgid "What is seen behind the panels as they turn."
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:139
+msgid "Wallpaper"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:140
+msgid "Black Void"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:141
+msgid "Transparent"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:160
+msgid "Border Style"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:164
+msgid "None"
+msgstr "无"
+
+#: resources/ui/adw/aperture-panels.ui:165
+msgid "While Flipping"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:166
+msgid "Ahead of the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:167
+msgid "Behind the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:168
+msgid "Ahead of and Behind the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:187
+msgid "Border Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "预设"
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "3D噪点"
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "创建更多动态火焰，但更耗费显卡资源。"
+
+#: resources/ui/adw/fire.ui:152
+msgid "Use Random Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:174
+msgid "Burn Closing Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:196
+msgid "Burn Opening Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:218
+msgid "Gradient"
+msgstr "渐变色"
+
+#: resources/ui/adw/morph.ui:47
+msgid "Style"
+msgstr ""
+
+#: resources/ui/adw/morph.ui:48
+msgid ""
+"Liquid flow swirls the area into the window. Melt makes each image flow "
+"along its own edges."
+msgstr ""
+
+#: resources/ui/adw/morph.ui:52
+msgid "Liquid Flow"
+msgstr ""
+
+#: resources/ui/adw/morph.ui:53
+msgid "Melt"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:47
+msgid "Void Size"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:80
+msgid "Tunnel Depth"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:113
+msgid "Funnel Size"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:146
+msgid "Bounce"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:147
+msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:47
+msgid "Number of Strips"
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:113
+msgid "Rough Edges"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:47
+msgid "Number of Slats"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:80
+msgid "Delay"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:113
+msgid "Perspective"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:135
+msgid "Pull Up"
+msgstr ""
+
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
 msgstr "访问主页"
@@ -815,9 +1016,6 @@ msgstr "新建配置…"
 
 #~ msgid "All"
 #~ msgstr "全部"
-
-#~ msgid "None"
-#~ msgstr "无"
 
 #~ msgid "Effect Settings"
 #~ msgstr "效果设置"

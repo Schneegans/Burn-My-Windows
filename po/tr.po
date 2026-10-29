@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 22:29+0300\n"
+"POT-Creation-Date: 2026-10-19 13:18+0300\n"
 "PO-Revision-Date: 2026-10-01 14:51+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2026.10\n"
+
+#: src/effects/AperturePanels.js:153
+msgid "Aperture Panels"
+msgstr ""
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -43,31 +47,31 @@ msgstr "Enerji A"
 msgid "Energize B"
 msgstr "Enerji B"
 
-#: src/effects/Fire.js:108
+#: src/effects/Fire.js:110
 msgid "Fire"
 msgstr "Ateş"
 
-#: src/effects/Fire.js:192
+#: src/effects/Fire.js:194
 msgid "Default Fire"
 msgstr "Öntanımlı Ateş"
 
-#: src/effects/Fire.js:202
+#: src/effects/Fire.js:204
 msgid "Hell Fire"
 msgstr "Cehennem Ateşi"
 
-#: src/effects/Fire.js:212
+#: src/effects/Fire.js:214
 msgid "Dark and Smutty"
 msgstr "Karanlık ve Kirli"
 
-#: src/effects/Fire.js:222
+#: src/effects/Fire.js:224
 msgid "Cold Breeze"
 msgstr "Soğuk Esinti"
 
-#: src/effects/Fire.js:232
+#: src/effects/Fire.js:234
 msgid "Santa is Coming"
 msgstr "Noel Baba Geliyor"
 
-#: src/effects/Fire.js:243
+#: src/effects/Fire.js:245
 msgid "Nuclear ☢️"
 msgstr "Nükleer ☢️"
 
@@ -98,6 +102,10 @@ msgstr "Gerçekleştir"
 #: src/effects/Matrix.js:101
 msgid "Matrix"
 msgstr "Matrix"
+
+#: src/effects/Morph.js:118
+msgid "Morph"
+msgstr ""
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -155,6 +163,10 @@ msgstr "Portal"
 msgid "RGB Warp"
 msgstr "RGB Bük"
 
+#: src/effects/Shredder.js:84
+msgid "Shredder"
+msgstr ""
+
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
 msgstr "Parçalanma Anı"
@@ -175,110 +187,469 @@ msgstr "TV Etkisi"
 msgid "TV Glitch"
 msgstr "TV Bozukluğu"
 
+#: src/effects/VenetianBlinds.js:79
+msgid "Venetian Blinds"
+msgstr ""
+
 #: src/effects/Wisps.js:85
 msgid "Wisps"
 msgstr "Sihir"
 
-#: prefs.js:262
+#: src/effects/Wormhole.js:132
+msgid "Wormhole"
+msgstr ""
+
+#: prefs.js:263
 msgid "Preview this effect"
 msgstr "Bu etkiyi önizle"
 
-#: prefs.js:339
+#: prefs.js:340
 msgid "Burn-My-Windows has been updated!"
 msgstr "Burn-My-Windows güncellendi!"
 
-#: prefs.js:340 resources/ui/common/menus.ui:17
+#: prefs.js:341 resources/ui/common/menus.ui:17
 msgid "View Changelog"
 msgstr "Değişim Günlüğü"
 
-#: prefs.js:522
+#: prefs.js:523
 msgid "Delete this Profile?"
 msgstr "Bu Profil Silinsin Mi?"
 
-#: prefs.js:523
+#: prefs.js:524
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr ""
 "Tüm etki ayarlarıyla birlikte var olan etki profili kalıcı olarak kaybolacak."
 
-#: prefs.js:526
+#: prefs.js:527
 msgid "Cancel"
 msgstr "İptal"
 
-#: prefs.js:531
+#: prefs.js:532
 msgid "Delete"
 msgstr "Sil"
 
-#: prefs.js:763 resources/ui/adw/prefs.ui:103
+#: prefs.js:764 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
 msgstr "Pencerelerin Açılması"
 
-#: prefs.js:764 resources/ui/adw/prefs.ui:104
+#: prefs.js:765 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
 msgstr "Pencerelerin Kapanması"
 
-#: prefs.js:765 resources/ui/adw/prefs.ui:118
+#: prefs.js:766 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
 msgstr "Normal Pencereler"
 
-#: prefs.js:766 resources/ui/adw/prefs.ui:119
+#: prefs.js:767 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
 msgstr "İletişim Kutusu Pencereleri"
 
-#: prefs.js:767 resources/ui/adw/prefs.ui:133
+#: prefs.js:768 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
 msgstr "Öntanımlı Renk Şeması"
 
-#: prefs.js:768 resources/ui/adw/prefs.ui:134
+#: prefs.js:769 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
 msgstr "Koyu Renk Şeması"
 
-#: prefs.js:769 resources/ui/adw/prefs.ui:148
+#: prefs.js:770 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
 msgstr "Pilde"
 
-#: prefs.js:770 resources/ui/adw/prefs.ui:149
+#: prefs.js:771 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
 msgstr "Fişe Takılı"
 
-#: prefs.js:771 resources/ui/adw/prefs.ui:163
+#: prefs.js:772 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
 msgstr "Güç Tutumu Kipi"
 
-#: prefs.js:772 resources/ui/adw/prefs.ui:164
+#: prefs.js:773 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
 msgstr "Dengeli Kip"
 
-#: prefs.js:773 resources/ui/adw/prefs.ui:165
+#: prefs.js:774 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
 msgstr "Performans Kipi"
 
-#: prefs.js:774 resources/ui/adw/prefs.ui:166
+#: prefs.js:775 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
 msgstr "Güç Tutumu veya Dengeli"
 
-#: prefs.js:775 resources/ui/adw/prefs.ui:167
+#: prefs.js:776 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
 msgstr "Dengeli veya Performans"
 
-#: prefs.js:780 resources/ui/adw/prefs.ui:183
+#: prefs.js:781 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
 msgstr "Yüksek Öncelik"
 
-#: prefs.js:786
+#: prefs.js:787
 msgid "Standard Profile"
 msgstr "Standart Profil"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:866
+#: prefs.js:867
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s Ön İzleme"
 
-#: prefs.js:885
+#: prefs.js:886
 msgid "Close this Window to Preview the Effect!"
 msgstr "Etkiyi Ön İzlemek İçin Bu Pencereyi Kapatın!"
+
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/focus.ui:35 resources/ui/adw/glide.ui:14
+#: resources/ui/adw/glitch.ui:14 resources/ui/adw/hexagon.ui:14
+#: resources/ui/adw/incinerate.ui:14 resources/ui/adw/materialize.ui:14
+#: resources/ui/adw/matrix.ui:14 resources/ui/adw/mushroom.ui:17
+#: resources/ui/adw/paint-brush.ui:14 resources/ui/adw/pixelate.ui:14
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/portal.ui:14 resources/ui/adw/rgbwarp.ui:17
+#: resources/ui/adw/snap.ui:14 resources/ui/adw/team-rocket.ui:17
+#: resources/ui/adw/trex.ui:14 resources/ui/adw/tv-glitch.ui:14
+#: resources/ui/adw/tv.ui:14 resources/ui/adw/wisps.ui:14
+#: resources/ui/adw/aperture-panels.ui:14 resources/ui/adw/fire.ui:30
+#: resources/ui/adw/morph.ui:14 resources/ui/adw/wormhole.ui:14
+#: resources/ui/adw/shredder.ui:14 resources/ui/adw/venetian-blinds.ui:14
+msgid "Animation Time [ms]"
+msgstr "Canlandırma Süresi [ms]"
+
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
+#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
+#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
+#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
+#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
+#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
+#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
+#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
+#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
+#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
+#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
+#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
+#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixelate.ui:36
+#: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
+#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
+#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/pixel-wipe.ui:36
+#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
+#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
+#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
+#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
+#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
+#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
+#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/aperture-panels.ui:36
+#: resources/ui/adw/aperture-panels.ui:70
+#: resources/ui/adw/aperture-panels.ui:98
+#: resources/ui/adw/aperture-panels.ui:123
+#: resources/ui/adw/aperture-panels.ui:149
+#: resources/ui/adw/aperture-panels.ui:176
+#: resources/ui/adw/aperture-panels.ui:199 resources/ui/adw/fire.ui:52
+#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
+#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:163
+#: resources/ui/adw/fire.ui:185 resources/ui/adw/fire.ui:207
+#: resources/ui/adw/fire.ui:265 resources/ui/adw/morph.ui:36
+#: resources/ui/adw/morph.ui:61 resources/ui/adw/morph.ui:94
+#: resources/ui/adw/wormhole.ui:36 resources/ui/adw/wormhole.ui:69
+#: resources/ui/adw/wormhole.ui:102 resources/ui/adw/wormhole.ui:135
+#: resources/ui/adw/wormhole.ui:169 resources/ui/adw/shredder.ui:36
+#: resources/ui/adw/shredder.ui:69 resources/ui/adw/shredder.ui:102
+#: resources/ui/adw/shredder.ui:124 resources/ui/adw/venetian-blinds.ui:36
+#: resources/ui/adw/venetian-blinds.ui:69
+#: resources/ui/adw/venetian-blinds.ui:102
+#: resources/ui/adw/venetian-blinds.ui:124
+#: resources/ui/adw/venetian-blinds.ui:146
+msgid "Reset to Default Value"
+msgstr "Öntanımlı Değere Sıfırla"
+
+#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
+#: resources/ui/adw/shredder.ui:80
+msgid "Randomness"
+msgstr "Rastgelelik"
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "Burgu Gücü"
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "Sarsıntı Gücü"
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "Emme Gücü"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr "Rastgele Renk"
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr "Başlangıç Renk Tonu"
+
+#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/glitch.ui:113
+#: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/fire.ui:96
+msgid "Speed"
+msgstr "Hız"
+
+#: resources/ui/adw/aura-glow.ui:145
+msgid "Saturation"
+msgstr "Doygunluk"
+
+#: resources/ui/adw/aura-glow.ui:178
+msgid "Edge Size"
+msgstr "Kenar Boyutu"
+
+#: resources/ui/adw/aura-glow.ui:211
+msgid "Edge Hardness"
+msgstr "Kenar Sertliği"
+
+#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "Bulanıklaştırma Miktarı"
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/glide.ui:47
+#: resources/ui/adw/glitch.ui:47 resources/ui/adw/hexagon.ui:47
+#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/matrix.ui:47
+#: resources/ui/adw/snap.ui:47 resources/ui/adw/tv-glitch.ui:47
+#: resources/ui/adw/wisps.ui:47 resources/ui/adw/fire.ui:63
+msgid "Scale"
+msgstr "Ölçek"
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "Yer Çekimi"
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "Darbe Kuvveti"
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "İşaretçi Konumundan Parçalanma"
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+"Parçalar, pencereyi kapatırken fare işaretçinizin bulunduğu yerden uzağa "
+"uçacaktır."
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "Yatay Ölçek"
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "Dikey Ölçek"
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixelate.ui:80
+#: resources/ui/adw/pixel-wheel.ui:80 resources/ui/adw/pixel-wipe.ui:47
+msgid "Pixel Size"
+msgstr "Piksel Boyutu"
+
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
+msgid "Color"
+msgstr "Renk"
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr "Bulanıklaştırma Kalitesi"
+
+#: resources/ui/adw/glide.ui:80
+msgid "Squish"
+msgstr "Ezmek"
+
+#: resources/ui/adw/glide.ui:113
+msgid "Tilt"
+msgstr "Eğim"
+
+#: resources/ui/adw/glide.ui:146
+msgid "Shift"
+msgstr "Kayma"
+
+#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
+#: resources/ui/adw/morph.ui:72
+msgid "Strength"
+msgstr "Güç"
+
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "Mesh Çizgi Genişliği"
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "Çizgi rengi"
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "Işıltı Rengi"
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "Eklemeli Karıştırma"
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "Bunu koyu temalı pencereler için etkinleştirmek isteyebilirsiniz."
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "Türbülans"
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "İmleçte Başla"
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "Devre dışı ise rastgele bir konum seçilir."
+
+#: resources/ui/adw/materialize.ui:47
+msgid "Start Scale"
+msgstr "Başlangıç Ölçeği"
+
+#: resources/ui/adw/materialize.ui:80
+msgid "Steps"
+msgstr "Adımlar"
+
+#: resources/ui/adw/materialize.ui:81
+msgid "Zero gives a smooth animation."
+msgstr "Sıfır, pürüzsüz bir canlandırma sağlar."
+
+#: resources/ui/adw/materialize.ui:114
+msgid "Use System Accent Color"
+msgstr "Sistem Vurgu Rengini Kullan"
+
+#: resources/ui/adw/matrix.ui:113
+msgid "Vertical Overshooting"
+msgstr "Dikey Taşma"
+
+#: resources/ui/adw/matrix.ui:146
+msgid "Trail Color"
+msgstr "İz Rengi"
+
+#: resources/ui/adw/matrix.ui:171
+msgid "Tip Color"
+msgstr "Yazı Rengi"
+
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr "Etki Önayarları"
+
+#: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
+msgid "Choose a Preset"
+msgstr "Bir Şablon Seçin"
+
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr "Ölçek Biçemi"
+
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr "8Bit --- Pürüzsüz"
+
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr "Parıltı Sayısı"
+
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr "Parıltı Döndürme"
+
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr "Parıltı Rengi"
+
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr "Işın Rengi"
+
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr "Yıldız Halka Sayısı"
+
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr "Yıldız Halka Döndürme"
+
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr "Halkadaki Yıldız Sayısı"
+
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr "Yıldız Gradyanı"
+
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "Fırça Boyutu"
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "Gürültü"
+
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "Parmak Sayısı"
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "Dönüş Hızı"
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "Dönme"
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "Ayrıntılar"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -350,364 +721,6 @@ msgstr "Tümünü Etkinleştir"
 msgid "Disable All"
 msgstr "Tümünü Devre Dışı Bırak"
 
-#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
-#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
-#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
-#: resources/ui/adw/fire.ui:30 resources/ui/adw/focus.ui:35
-#: resources/ui/adw/glide.ui:14 resources/ui/adw/glitch.ui:14
-#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/incinerate.ui:14
-#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
-#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/portal.ui:14
-#: resources/ui/adw/rgbwarp.ui:17 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/trex.ui:14
-#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/tv.ui:14
-#: resources/ui/adw/wisps.ui:14
-msgid "Animation Time [ms]"
-msgstr "Canlandırma Süresi [ms]"
-
-#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
-#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
-#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
-#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
-#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
-#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
-#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
-#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
-#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
-#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
-#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
-#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
-#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
-#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
-#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:185
-#: resources/ui/adw/fire.ui:207 resources/ui/adw/fire.ui:265
-#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
-#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
-#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
-#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
-#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
-#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
-#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
-#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
-#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
-#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
-#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
-#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
-#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
-#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
-#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
-#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
-#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
-#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
-#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
-#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
-#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
-#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
-#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
-#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixel-wheel.ui:36
-#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
-#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
-#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
-#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/portal.ui:36
-#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
-#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
-#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
-#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
-#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
-#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
-#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
-#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
-#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
-#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
-#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
-#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
-#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
-#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
-msgid "Reset to Default Value"
-msgstr "Öntanımlı Değere Sıfırla"
-
-#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
-msgid "Randomness"
-msgstr "Rastgelelik"
-
-#: resources/ui/adw/apparition.ui:81
-msgid "Twirl Intensity"
-msgstr "Burgu Gücü"
-
-#: resources/ui/adw/apparition.ui:114
-msgid "Shake Intensity"
-msgstr "Sarsıntı Gücü"
-
-#: resources/ui/adw/apparition.ui:147
-msgid "Suction Intensity"
-msgstr "Emme Gücü"
-
-#: resources/ui/adw/aura-glow.ui:47
-msgid "Random Color"
-msgstr "Rastgele Renk"
-
-#: resources/ui/adw/aura-glow.ui:69
-msgid "Start Hue"
-msgstr "Başlangıç Renk Tonu"
-
-#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/fire.ui:96
-#: resources/ui/adw/glitch.ui:113 resources/ui/adw/tv-glitch.ui:113
-msgid "Speed"
-msgstr "Hız"
-
-#: resources/ui/adw/aura-glow.ui:145
-msgid "Saturation"
-msgstr "Doygunluk"
-
-#: resources/ui/adw/aura-glow.ui:178
-msgid "Edge Size"
-msgstr "Kenar Boyutu"
-
-#: resources/ui/adw/aura-glow.ui:211
-msgid "Edge Hardness"
-msgstr "Kenar Sertliği"
-
-#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
-msgid "Blur Amount"
-msgstr "Bulanıklaştırma Miktarı"
-
-#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
-#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/fire.ui:63
-#: resources/ui/adw/glide.ui:47 resources/ui/adw/glitch.ui:47
-#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/incinerate.ui:47
-#: resources/ui/adw/matrix.ui:47 resources/ui/adw/snap.ui:47
-#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/wisps.ui:47
-msgid "Scale"
-msgstr "Ölçek"
-
-#: resources/ui/adw/broken-glass.ui:81
-msgid "Gravity"
-msgstr "Yer Çekimi"
-
-#: resources/ui/adw/broken-glass.ui:114
-msgid "Blow Force"
-msgstr "Darbe Kuvveti"
-
-#: resources/ui/adw/broken-glass.ui:147
-msgid "Shatter From Pointer Location"
-msgstr "İşaretçi Konumundan Parçalanma"
-
-#: resources/ui/adw/broken-glass.ui:148
-msgid ""
-"The shards will fly away from where your mouse pointer was when closing the "
-"window."
-msgstr ""
-"Parçalar, pencereyi kapatırken fare işaretçinizin bulunduğu yerden uzağa "
-"uçacaktır."
-
-#: resources/ui/adw/doom.ui:47
-msgid "Horizontal Scale"
-msgstr "Yatay Ölçek"
-
-#: resources/ui/adw/doom.ui:80
-msgid "Vertical Scale"
-msgstr "Dikey Ölçek"
-
-#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
-#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
-msgid "Pixel Size"
-msgstr "Piksel Boyutu"
-
-#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
-#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
-#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
-#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
-#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
-msgid "Color"
-msgstr "Renk"
-
-#: resources/ui/adw/fire.ui:14
-msgid "Presets"
-msgstr "Şablon"
-
-#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
-msgid "Choose a Preset"
-msgstr "Bir Şablon Seçin"
-
-#: resources/ui/adw/fire.ui:129
-msgid "3D Noise"
-msgstr "3D Gürültü"
-
-#: resources/ui/adw/fire.ui:130
-msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Daha dinamik bir ateş oluşturur ancak daha fazla GPU gücü gerektirir."
-
-#: resources/ui/adw/fire.ui:152
-msgid "Use Random Color"
-msgstr "Rastgele Renk Kullan"
-
-#: resources/ui/adw/fire.ui:174
-msgid "Burn Closing Windows from Bottom to Top"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:196
-msgid "Burn Opening Windows from Bottom to Top"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:218
-msgid "Gradient"
-msgstr "Gradyan"
-
-#: resources/ui/adw/focus.ui:87
-msgid "Blur Quality"
-msgstr "Bulanıklaştırma Kalitesi"
-
-#: resources/ui/adw/glide.ui:80
-msgid "Squish"
-msgstr "Ezmek"
-
-#: resources/ui/adw/glide.ui:113
-msgid "Tilt"
-msgstr "Eğim"
-
-#: resources/ui/adw/glide.ui:146
-msgid "Shift"
-msgstr "Kayma"
-
-#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
-msgid "Strength"
-msgstr "Güç"
-
-#: resources/ui/adw/hexagon.ui:80
-msgid "Mesh Line Width"
-msgstr "Mesh Çizgi Genişliği"
-
-#: resources/ui/adw/hexagon.ui:113
-msgid "Line Color"
-msgstr "Çizgi rengi"
-
-#: resources/ui/adw/hexagon.ui:138
-msgid "Glow Color"
-msgstr "Işıltı Rengi"
-
-#: resources/ui/adw/hexagon.ui:163
-msgid "Additive Blending"
-msgstr "Eklemeli Karıştırma"
-
-#: resources/ui/adw/hexagon.ui:164
-msgid "You may want to enable this for dark window themes."
-msgstr "Bunu koyu temalı pencereler için etkinleştirmek isteyebilirsiniz."
-
-#: resources/ui/adw/incinerate.ui:80
-msgid "Turbulence"
-msgstr "Türbülans"
-
-#: resources/ui/adw/incinerate.ui:113
-msgid "Start at Pointer"
-msgstr "İmleçte Başla"
-
-#: resources/ui/adw/incinerate.ui:114
-msgid "If disabled, a random location will be chosen."
-msgstr "Devre dışı ise rastgele bir konum seçilir."
-
-#: resources/ui/adw/materialize.ui:47
-msgid "Start Scale"
-msgstr "Başlangıç Ölçeği"
-
-#: resources/ui/adw/materialize.ui:80
-msgid "Steps"
-msgstr "Adımlar"
-
-#: resources/ui/adw/materialize.ui:81
-msgid "Zero gives a smooth animation."
-msgstr "Sıfır, pürüzsüz bir canlandırma sağlar."
-
-#: resources/ui/adw/materialize.ui:114
-msgid "Use System Accent Color"
-msgstr "Sistem Vurgu Rengini Kullan"
-
-#: resources/ui/adw/matrix.ui:113
-msgid "Vertical Overshooting"
-msgstr "Dikey Taşma"
-
-#: resources/ui/adw/matrix.ui:146
-msgid "Trail Color"
-msgstr "İz Rengi"
-
-#: resources/ui/adw/matrix.ui:171
-msgid "Tip Color"
-msgstr "Yazı Rengi"
-
-#: resources/ui/adw/mushroom.ui:55
-msgid "Effect Presets"
-msgstr "Etki Önayarları"
-
-#: resources/ui/adw/mushroom.ui:73
-msgid "Scale Style"
-msgstr "Ölçek Biçemi"
-
-#: resources/ui/adw/mushroom.ui:74
-msgid "8Bit --- Smooth"
-msgstr "8Bit --- Pürüzsüz"
-
-#: resources/ui/adw/mushroom.ui:112
-msgid "Spark Count"
-msgstr "Parıltı Sayısı"
-
-#: resources/ui/adw/mushroom.ui:150
-msgid "Spark Rotation"
-msgstr "Parıltı Döndürme"
-
-#: resources/ui/adw/mushroom.ui:188
-msgid "Spark Color"
-msgstr "Parıltı Rengi"
-
-#: resources/ui/adw/mushroom.ui:222
-msgid "Rays Color"
-msgstr "Işın Rengi"
-
-#: resources/ui/adw/mushroom.ui:256
-msgid "Star Rings Count"
-msgstr "Yıldız Halka Sayısı"
-
-#: resources/ui/adw/mushroom.ui:294
-msgid "Star Ring Rotation"
-msgstr "Yıldız Halka Döndürme"
-
-#: resources/ui/adw/mushroom.ui:332
-msgid "Stars Count Per Ring"
-msgstr "Halkadaki Yıldız Sayısı"
-
-#: resources/ui/adw/mushroom.ui:370
-msgid "Star Gradient"
-msgstr "Yıldız Gradyanı"
-
-#: resources/ui/adw/paint-brush.ui:47
-msgid "Brush Size"
-msgstr "Fırça Boyutu"
-
-#: resources/ui/adw/pixel-wheel.ui:47
-msgid "Spoke Count"
-msgstr "Parmak Sayısı"
-
-#: resources/ui/adw/pixelate.ui:47
-msgid "Noise"
-msgstr "Gürültü"
-
-#: resources/ui/adw/portal.ui:47
-msgid "Rotation Speed"
-msgstr "Dönüş Hızı"
-
-#: resources/ui/adw/portal.ui:80
-msgid "Whirling"
-msgstr "Dönme"
-
-#: resources/ui/adw/portal.ui:113
-msgid "Details"
-msgstr "Ayrıntılar"
-
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
 msgstr "Parlaklık"
@@ -764,6 +777,194 @@ msgstr "Bükme Etkisi"
 msgid "Flash Color"
 msgstr "Flaş Rengi"
 
+#: resources/ui/adw/aperture-panels.ui:47
+msgid "Panel Size [px]"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:48
+msgid ""
+"Adjusted a little so that a whole number of panels fits the window exactly."
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:81
+msgid "Wave Shape"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:85
+msgid "Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:86
+msgid "Arc from a Corner"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:87
+msgid "Wavy Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:88
+msgid "Organic Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:89
+msgid "Ripple from the Center"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:90
+#: resources/ui/adw/aperture-panels.ui:115
+msgid "Random"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:109
+msgid "Flip Axis"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:113
+msgid "Vertical"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:114
+msgid "Horizontal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:134
+msgid "Backdrop"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:135
+msgid "What is seen behind the panels as they turn."
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:139
+msgid "Wallpaper"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:140
+msgid "Black Void"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:141
+msgid "Transparent"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:160
+msgid "Border Style"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:164
+msgid "None"
+msgstr "Hiç"
+
+#: resources/ui/adw/aperture-panels.ui:165
+msgid "While Flipping"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:166
+msgid "Ahead of the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:167
+msgid "Behind the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:168
+msgid "Ahead of and Behind the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:187
+msgid "Border Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "Şablon"
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "3D Gürültü"
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Daha dinamik bir ateş oluşturur ancak daha fazla GPU gücü gerektirir."
+
+#: resources/ui/adw/fire.ui:152
+msgid "Use Random Color"
+msgstr "Rastgele Renk Kullan"
+
+#: resources/ui/adw/fire.ui:174
+msgid "Burn Closing Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:196
+msgid "Burn Opening Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:218
+msgid "Gradient"
+msgstr "Gradyan"
+
+#: resources/ui/adw/morph.ui:47
+msgid "Style"
+msgstr ""
+
+#: resources/ui/adw/morph.ui:48
+msgid ""
+"Liquid flow swirls the area into the window. Melt makes each image flow "
+"along its own edges."
+msgstr ""
+
+#: resources/ui/adw/morph.ui:52
+msgid "Liquid Flow"
+msgstr ""
+
+#: resources/ui/adw/morph.ui:53
+msgid "Melt"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:47
+msgid "Void Size"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:80
+msgid "Tunnel Depth"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:113
+msgid "Funnel Size"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:146
+msgid "Bounce"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:147
+msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:47
+msgid "Number of Strips"
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:113
+msgid "Rough Edges"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:47
+msgid "Number of Slats"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:80
+msgid "Delay"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:113
+msgid "Perspective"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:135
+msgid "Pull Up"
+msgstr ""
+
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
 msgstr "Ana Sayfaya Git"
@@ -818,9 +1019,6 @@ msgstr "Yeni Profil Ekle..."
 
 #~ msgid "All"
 #~ msgstr "Tümü"
-
-#~ msgid "None"
-#~ msgstr "Hiç"
 
 #~ msgid "Effect Settings"
 #~ msgstr "Etki Ayarları"
