@@ -1258,9 +1258,9 @@ SPDX-License-Identifier: CC0-1.0
 
     <key name="morph-style" type="i">
       <default>0</default>
-      <range min="0" max="1" />
+      <range min="0" max="2" />
       <summary>Morph Style</summary>
-      <description>0: liquid flow, the area swirls into the window. 1: melt, each image flows along its own edges.</description>
+      <description>0: liquid flow, the area swirls into the window. 1: melt, each image flows along its own edges. 2: pixelate, the area turns into blocks that change colour one by one into the window's, then sharpen.</description>
     </key>
 
     <key name="morph-strength" type="d">
