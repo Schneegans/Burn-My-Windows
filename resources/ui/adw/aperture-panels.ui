@@ -139,6 +139,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
               <item translatable="yes">Wallpaper</item>
               <item translatable="yes">Black Void</item>
               <item translatable="yes">Transparent</item>
+              <item translatable="yes">Star Field</item>
+              <item translatable="yes">Nebula</item>
             </items>
           </object>
         </property>
