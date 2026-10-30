@@ -1308,9 +1308,9 @@ SPDX-License-Identifier: CC0-1.0
 
     <key name="aperture-panels-backdrop" type="i">
       <default>0</default>
-      <range min="0" max="2" />
+      <range min="0" max="4" />
       <summary>Aperture Panels Backdrop</summary>
-      <description>0: the wallpaper stays in place, 1: the wallpaper flips with the panels, revealing a black void, 2: nothing is drawn behind the panels.</description>
+      <description>0: the wallpaper stays in place, 1: the wallpaper flips with the panels, revealing a black void, 2: nothing is drawn behind the panels, 3: like 1, with twinkling stars in the void, 4: like 3, with a colourful nebula behind the stars.</description>
     </key>
 
     <key name="aperture-panels-border-style" type="i">
