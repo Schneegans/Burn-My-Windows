@@ -681,7 +681,10 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     };
 
     updateProfileButtonMenuIfChanged('profile-app');
-    updateProfileButtonMenuIfChanged('profile-animation-type');
+    updateProfileButtonMenuIfChanged('profile-opening-animation');
+    updateProfileButtonMenuIfChanged('profile-closing-animation');
+    updateProfileButtonMenuIfChanged('profile-minimizing-animation');
+    updateProfileButtonMenuIfChanged('profile-restoring-animation');
     updateProfileButtonMenuIfChanged('profile-window-type');
     updateProfileButtonMenuIfChanged('profile-color-scheme');
     updateProfileButtonMenuIfChanged('profile-power-mode');
@@ -689,7 +692,10 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
     updateProfileButtonMenuIfChanged('profile-high-priority');
 
     this.bindEntry('profile-app');
-    this.bindComboRow('profile-animation-type');
+    this.bindSwitch('profile-opening-animation');
+    this.bindSwitch('profile-closing-animation');
+    this.bindSwitch('profile-minimizing-animation');
+    this.bindSwitch('profile-restoring-animation');
     this.bindComboRow('profile-window-type');
     this.bindComboRow('profile-color-scheme');
     this.bindComboRow('profile-power-mode');
@@ -756,11 +762,30 @@ GitHub: <a href='https://github.com/sponsors/schneegans'>https://github.com/spon
       }
     };
 
+    // The animation type is stored as four switches. If all of them are enabled, the
+    // profile applies to all animations and gets no name component (this was the old
+    // "Any" behavior). If none of them is enabled, the profile never applies.
+    const animationTypes = [];
+    if (settings.get_boolean('profile-opening-animation')) {
+      animationTypes.push(_('Opening Windows'));
+    }
+    if (settings.get_boolean('profile-closing-animation')) {
+      animationTypes.push(_('Closing Windows'));
+    }
+    if (settings.get_boolean('profile-minimizing-animation')) {
+      animationTypes.push(_('Minimizing Windows'));
+    }
+    if (settings.get_boolean('profile-restoring-animation')) {
+      animationTypes.push(_('Restoring Windows'));
+    }
+
+    if (animationTypes.length > 0 && animationTypes.length < 4) {
+      items.push(animationTypes.join(' · '));
+    } else if (animationTypes.length == 0) {
+      items.push(_('No Animation Types'));
+    }
+
     // clang-format off
-    addComponent('profile-animation-type', [_('Opening Windows'),
-                                            _('Closing Windows'),
-                                            _('Minimizing Windows'),
-                                            _('Restoring Windows')]);
     addComponent('profile-window-type',    [_('Normal Windows'),
                                             _('Dialog Windows')]);
     addComponent('profile-color-scheme',   [_('Default Color Scheme'),

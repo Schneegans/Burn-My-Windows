@@ -17,7 +17,7 @@
 import Gio from 'gi://Gio';
 import Meta from 'gi://Meta';
 
-import {fromVersion26} from './src/migrate.js';
+import {fromVersion26, migrateProfileAnimationTypes} from './src/migrate.js';
 import {ProfileManager} from './src/ProfileManager.js';
 import {WindowPicker} from './src/WindowPicker.js';
 import * as utils from './src/utils.js';
@@ -106,12 +106,17 @@ export default class BurnMyWindows extends Extension {
       if (lastVersion <= 26) {
         // If the profile migration fails for some reason, the callback will create a
         // default profile instead.
-        fromVersion26().finally(() => {
+        fromVersion26(this.metadata).finally(() => {
           this._loadProfiles();
           this._settings.set_int('last-extension-version', this.metadata.version);
         });
       } else {
-        this._loadProfiles();
+        // Profiles created before version 50 stored their animation type as a single
+        // integer instead of four switches. Convert those settings.
+        migrateProfileAnimationTypes(this.metadata).finally(() => {
+          this._loadProfiles();
+          this._settings.set_int('last-extension-version', this.metadata.version);
+        });
       }
 
     } else {
@@ -207,8 +212,9 @@ export default class BurnMyWindows extends Extension {
       // are only interested in window opening, closing, minimizing and restoring now.
       if (forClosing || forOpening || forMinimizing || forRestoring) {
 
-        // The numbers match the indices of the "profile-animation-type" Gtk.StringList
-        // defined in resources/ui/adw/prefs.ui.
+        // The numbers match the order of the animation switches defined in
+        // resources/ui/adw/prefs.ui: 1 = opening, 2 = closing, 3 = minimizing,
+        // 4 = restoring.
         const animationType = forOpening ? 1 : forClosing ? 2 : forMinimizing ? 3 : 4;
 
         // If there is an applicable effect profile, we intercept the ease() method to
@@ -426,7 +432,10 @@ export default class BurnMyWindows extends Extension {
     this._profiles.forEach(p => {
       p.priority = profileManager.getProfilePriority(p.settings);
       p.settings.connect('changed::profile-app', () => updatePriority(p));
-      p.settings.connect('changed::profile-animation-type', () => updatePriority(p));
+      p.settings.connect('changed::profile-opening-animation', () => updatePriority(p));
+      p.settings.connect('changed::profile-closing-animation', () => updatePriority(p));
+      p.settings.connect('changed::profile-minimizing-animation', () => updatePriority(p));
+      p.settings.connect('changed::profile-restoring-animation', () => updatePriority(p));
       p.settings.connect('changed::profile-window-type', () => updatePriority(p));
       p.settings.connect('changed::profile-color-scheme', () => updatePriority(p));
       p.settings.connect('changed::profile-power-mode', () => updatePriority(p));
@@ -482,7 +491,7 @@ export default class BurnMyWindows extends Extension {
     // effect.
     else {
 
-      // The animationType is already one of the indices used in the Gtk.StringLists
+      // The windowType and powerMode numbers match the indices of the Gtk.StringLists
       // defined in the UI files (e.g. resources/ui/adw/prefs.ui).
       const windowType  = isNormalWindow ? 1 : 2;
       const powerMode     = this._upowerProxy.OnBattery ? 1 : 2;
@@ -490,8 +499,15 @@ export default class BurnMyWindows extends Extension {
       // Get the first profile whose constraints match the circumstances. The list is
       // sorted by priority, so we are good to take the first match.
       profile = this._profiles.find(p => {
-        const profileApp           = p.settings.get_string('profile-app');
-        const profileAnimationType = p.settings.get_int('profile-animation-type');
+        const profileApp          = p.settings.get_string('profile-app');
+        // The animationType is 1 for opening, 2 for closing, 3 for minimizing and 4 for
+        // restoring windows, so the indices here match directly.
+        const profileAnimationTypes = [
+          p.settings.get_boolean('profile-opening-animation'),
+          p.settings.get_boolean('profile-closing-animation'),
+          p.settings.get_boolean('profile-minimizing-animation'),
+          p.settings.get_boolean('profile-restoring-animation'),
+        ];
         const profileWindowType    = p.settings.get_int('profile-window-type');
         const profilePowerMode     = p.settings.get_int('profile-power-mode');
         const profileColorScheme   = p.settings.get_int('profile-color-scheme');
@@ -500,7 +516,7 @@ export default class BurnMyWindows extends Extension {
         // First we check whether the animation type, window type, and power mode are
         // matching.
         let matches =
-          (profileAnimationType == 0 || profileAnimationType == animationType) &&
+          (profileAnimationTypes[animationType - 1]) &&
           (profileWindowType == 0 || profileWindowType == windowType) &&
           (profilePowerMode == 0 || profilePowerMode == powerMode);
 

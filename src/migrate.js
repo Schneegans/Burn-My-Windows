@@ -14,13 +14,80 @@
 
 'use strict';
 
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+
 import {ProfileManager} from './ProfileManager.js';
 import * as utils from './utils.js';
+
+// Versions before 50 stored the animation type of a profile as a single integer key
+// ("profile-animation-type") which could only select one animation or all of them. Now
+// there are four switches which allow any combination. This method converts all existing
+// profiles: "Any" becomes all switches enabled, a single animation type becomes only that
+// switch enabled.
+export async function migrateProfileAnimationTypes(metadata) {
+  const profileManager = new ProfileManager(metadata);
+
+  profileManager.getProfiles().forEach(profile => {
+    const file = Gio.File.new_for_path(profile.path);
+    const [exists, bytes] = GLib.file_get_contents(profile.path);
+
+    if (!exists) {
+      return;
+    }
+
+    // GLib returns the contents as a byte array, so convert it to a string.
+    const contents = new TextDecoder().decode(bytes);
+
+    const match = contents.match(/^profile-animation-type=(\d+)/m);
+
+    // If the key is not present, the old default was "Any" which equals the new default
+    // of all four switches being enabled. Hence, nothing has to be done.
+    if (!match) {
+      return;
+    }
+
+    const animationType = parseInt(match[1], 10);
+
+    utils.debug('Migrating profile-animation-type=' + animationType + ' of ' +
+                profile.path);
+
+    // The old values were: 0 = Any, 1 = Opening, 2 = Closing, 3 = Minimizing,
+    // 4 = Restoring.
+    const enabled = {
+      opening: animationType == 0 || animationType == 1,
+      closing: animationType == 0 || animationType == 2,
+      minimizing: animationType == 0 || animationType == 3,
+      restoring: animationType == 0 || animationType == 4,
+    };
+
+    const lines = contents.split('\n')
+                          .filter(line => line != '' &&
+                                          !line.startsWith('profile-animation-type='));
+
+    lines.push(`profile-opening-animation=${enabled.opening}`);
+    lines.push(`profile-closing-animation=${enabled.closing}`);
+    lines.push(`profile-minimizing-animation=${enabled.minimizing}`);
+    lines.push(`profile-restoring-animation=${enabled.restoring}`);
+
+    file.replace_contents(lines.join('\n') + '\n', null, false,
+                         Gio.FileCreateFlags.REPLACE_DESTINATION, null);
+  });
+}
+
+// Adds the four animation switches to a list of profile lines. The animation types
+// are: opening, closing, minimizing and restoring.
+function addAnimationTypes(lines, opening, closing, minimizing, restoring) {
+  lines.push(`profile-opening-animation=${opening}`);
+  lines.push(`profile-closing-animation=${closing}`);
+  lines.push(`profile-minimizing-animation=${minimizing}`);
+  lines.push(`profile-restoring-animation=${restoring}`);
+}
 
 // Migrating from pre-27 versions is pretty involved. Before, all settings were stored in
 // the standard Gio.Settings backend. Now, there are effect profiles. Depending on the
 // settings one or two profiles may be required.
-export async function fromVersion26() {
+export async function fromVersion26(metadata) {
   return utils
     .executeCommand(['dconf', 'dump', '/org/gnome/shell/extensions/burn-my-windows/'])
     .catch(r => utils.debug('Failed to get old settings for effect migration: ' + r))
@@ -34,7 +101,7 @@ export async function fromVersion26() {
       utils.debug('Starting Burn-My-Windows profile migration (old version <= 26)!');
 
       // We use this to write the new profiles.
-      const profileManager = new ProfileManager();
+      const profileManager = new ProfileManager(metadata);
 
       // The default value of this was false, so not-present is equal to false.
       const destroyDialogs = r.includes('destroy-dialogs=true');
@@ -148,8 +215,8 @@ export async function fromVersion26() {
 
       } else if (closeEffects.length == 0) {
 
-        // This profile is only for window openeing.
-        profileLines.push('profile-animation-type=1')
+        // This profile is only for window opening.
+        addAnimationTypes(profileLines, true, false, false, false);
 
         // Add all relevant effects.
         openEffects.forEach(e => profileLines.push(e + '-enable-effect=true'));
@@ -171,7 +238,7 @@ export async function fromVersion26() {
       } else if (openEffects.length == 0) {
 
         // This profile is only for window closing.
-        profileLines.push('profile-animation-type=2')
+        addAnimationTypes(profileLines, false, true, false, false);
 
         // Add all relevant effects.
         closeEffects.forEach(e => profileLines.push(e + '-enable-effect=true'));
@@ -193,8 +260,10 @@ export async function fromVersion26() {
 
       } else {
 
-        const openProfileLines  = [...profileLines, 'profile-animation-type=1'];
-        const closeProfileLines = [...profileLines, 'profile-animation-type=2'];
+        const openProfileLines  = [...profileLines];
+        const closeProfileLines = [...profileLines];
+        addAnimationTypes(openProfileLines, true, false, false, false);
+        addAnimationTypes(closeProfileLines, false, true, false, false);
 
         // Add all relevant effects.
         openEffects.forEach(e => openProfileLines.push(e + '-enable-effect=true'));
