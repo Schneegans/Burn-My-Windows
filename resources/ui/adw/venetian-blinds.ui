@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: Ido Greenfeld <15867904+idogrf@users.noreply.github.com>
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<interface domain="burn-my-windows">
+
+  <object class="AdwExpanderRow" id="venetian-blinds-prefs">
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Animation Time [ms]</property>
+        <child>
+          <object class="BurnMyWindowsSlider">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="venetian-blinds-animation-time">
+                <property name="upper">3000</property>
+                <property name="lower">100</property>
+                <property name="step-increment">1</property>
+                <property name="page-increment">100</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-venetian-blinds-animation-time">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Number of Slats</property>
+        <child>
+          <object class="BurnMyWindowsSlider">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">0</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="venetian-blinds-slats">
+                <property name="upper">15</property>
+                <property name="lower">2</property>
+                <property name="step-increment">1</property>
+                <property name="page-increment">5</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-venetian-blinds-slats">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Delay</property>
+        <child>
+          <object class="BurnMyWindowsSlider">
+            <property name="valign">center</property>
+            <property name="draw-value">1</property>
+            <property name="digits">2</property>
+            <property name="value-pos">left</property>
+            <property name="width-request">300</property>
+            <property name="adjustment">
+              <object class="GtkAdjustment" id="venetian-blinds-delay">
+                <property name="upper">0.7</property>
+                <property name="lower">0</property>
+                <property name="step-increment">0.01</property>
+                <property name="page-increment">0.1</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-venetian-blinds-delay">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Perspective</property>
+        <property name="activatable-widget">venetian-blinds-perspective</property>
+        <child>
+          <object class="GtkSwitch" id="venetian-blinds-perspective">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-venetian-blinds-perspective">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwActionRow">
+        <property name="title" translatable="yes">Pull Up</property>
+        <property name="activatable-widget">venetian-blinds-pull-up</property>
+        <child>
+          <object class="GtkSwitch" id="venetian-blinds-pull-up">
+            <property name="valign">center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="reset-venetian-blinds-pull-up">
+            <property name="icon-name">edit-clear-symbolic</property>
+            <property name="valign">center</property>
+            <property name="tooltip-text" translatable="yes">Reset to Default Value</property>
+            <style>
+              <class name="flat" />
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+
+  </object>
+
+</interface>

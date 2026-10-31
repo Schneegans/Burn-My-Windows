@@ -30,9 +30,10 @@ const _ = await utils.importGettext();
 // opens and what was behind it when it closes.                                         //
 //                                                                                      //
 // Uses the standard layers of LayeredEffect.js, with a wall:                           //
-//   wall    = the wallpaper (no shader); black with the "Black Void" backdrop          //
-//   surface = the panels' front: the windows behind (uLayer = 0), and the wallpaper   //
-//             with the "Black Void" backdrop                                           //
+//   wall    = the wallpaper (no shader); black with the "Black Void" / "Star Field"    //
+//             backdrops (the shader paints the gaps then)                              //
+//   surface = the panels' front: the windows behind (uLayer = 0), and the wallpaper    //
+//             with the "Black Void" / "Star Field" backdrops                           //
 //   window  = the panels' back: a clone of the window itself (uLayer = 1)              //
 //   above   = clones of the windows above the window (no shader)                       //
 // See resources/shaders/aperture-panels.frag.                                          //
@@ -46,6 +47,8 @@ const FLIP_AXIS_VERTICAL   = 0;
 const FLIP_AXIS_RANDOM     = 2;
 const BACKDROP_BLACK_VOID  = 1;
 const BACKDROP_TRANSPARENT = 2;
+const BACKDROP_STAR_FIELD  = 3;
+const BACKDROP_NEBULA      = 4;
 
 // Easter egg ("The cake is a lie!"): chance (0..1) that a cake appears on the backdrop,
 // in the gaps between the turning panels. The shader only draws it on windows at least
@@ -74,6 +77,10 @@ export default class Effect {
       shader._uBlackVoid    = shader.get_uniform_location('uBlackVoid');
       shader._uShowCake     = shader.get_uniform_location('uShowCake');
       shader._uCakePos      = shader.get_uniform_location('uCakePos');
+      shader._uStarField    = shader.get_uniform_location('uStarField');
+      shader._uNebula       = shader.get_uniform_location('uNebula');
+      shader._uStarSeed     = shader.get_uniform_location('uStarSeed');
+      shader._uScreenOrigin = shader.get_uniform_location('uScreenOrigin');
     });
   }
 
@@ -89,12 +96,17 @@ export default class Effect {
     // Backdrop: what shows behind the panels as they turn. "Wallpaper": the wallpaper
     // stays on the wall and only the windows behind are painted on the panels. "Black
     // Void": the wallpaper is painted on the panels too, so it flips with them and the
-    // wall is black.
-    const blackVoid =
-      settings.get_int('aperture-panels-backdrop') === BACKDROP_BLACK_VOID;
+    // wall is black. "Star Field": like "Black Void", with stars in the void (drawn by
+    // the shader). "Nebula": the star field with a colourful nebula behind the stars.
     // "Transparent": no wall and no wallpaper; the real screen shows through the gaps.
-    const transparent =
-      settings.get_int('aperture-panels-backdrop') === BACKDROP_TRANSPARENT;
+    const backdrop    = settings.get_int('aperture-panels-backdrop');
+    const nebula      = backdrop === BACKDROP_NEBULA;
+    const starField   = backdrop === BACKDROP_STAR_FIELD || nebula;
+    const blackVoid   = backdrop === BACKDROP_BLACK_VOID || starField;
+    const transparent = backdrop === BACKDROP_TRANSPARENT;
+
+    // A different sky for each animation (but always the same one in test mode).
+    const starSeed = ctx.testMode ? 0.5 : Math.random();
 
     // The user's settings, read once: both shaders must get the same values, including
     // the same pick for the "Random" options.
@@ -137,12 +149,18 @@ export default class Effect {
         s.set_uniform_float(s._uBlackVoid, 1, [blackVoid ? 1 : 0]);
         s.set_uniform_float(s._uShowCake, 1, [showCake ? 1 : 0]);
         s.set_uniform_float(s._uCakePos, 2, cakePos);
+        s.set_uniform_float(s._uStarField, 1, [starField ? 1 : 0]);
+        s.set_uniform_float(s._uNebula, 1, [nebula ? 1 : 0]);
+        s.set_uniform_float(s._uStarSeed, 1, [starSeed]);
       },
 
       onGeometry: (s, g) => {
         s.set_uniform_float(s._uFrame, 4,
                             [g.frame.x, g.frame.y, g.frame.width, g.frame.height]);
         s.set_uniform_float(s._uCell, 2, [g.cellW, g.cellH]);
+        // The layers' top-left on the screen: the stars are fixed to the screen, so they
+        // don't move if the layers are re-placed while a window opens.
+        s.set_uniform_float(s._uScreenOrigin, 2, [g.ox, g.oy]);
       }
     });
   }

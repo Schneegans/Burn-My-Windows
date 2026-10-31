@@ -14,6 +14,7 @@ SPDX-License-Identifier: CC-BY-4.0
 - **Effect profiles can now combine animation types!** The "Animation Type" setting of a profile is no longer limited to a single animation or "Any": you can now enable any combination of opening, closing, minimizing and restoring windows using four switches. Existing profiles are migrated automatically ("Any" becomes all switches enabled).
 - **Three new effects: Aperture Panels, Morph, and Wormhole!** These new effects use a new effect-layering system that allows the effect to incorporate the wallpaper and / or the windows behind it. Thanks to [@klangman](https://github.com/klangman) for this porting this from [CinnamonBurnMyWindows](https://github.com/klangman/CinnamonBurnMyWindows) to Burn My Windows!
 - **One more new effect: Materialize!** Windows pop up as a flat, tinted panel which grows to full size in a few stuttering steps before the actual window content appears. It is inspired by the computer screens in The Matrix Resurrections and uses the system accent color by default. Thanks to [@eboye](https://github.com/eboye) for this contribution!
+- **Two more new effects: Venetian Blinds and Shredder!** Venetian Blinds splits the window into slats which turn shut one after another, and Shredder cuts it into strips which fall away. The number of slats or strips and the timing are configurable. Thanks to [@idogrf](https://github.com/idogrf) for these contributions!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - **Effects can now be applied to minimizing and restoring windows as well!** The "Animation Type" setting of each effect profile now also supports "Minimizing Windows" and "Restoring Windows", so all existing effects can be used when a window is sent to or brought back from the taskbar. This implements the long-requested feature [#83](https://github.com/Schneegans/Burn-My-Windows/issues/83).
@@ -24,6 +25,7 @@ SPDX-License-Identifier: CC-BY-4.0
 
 #### Bug Fixes
 
+- Fixed a memory leak which occurred when opening or closing windows after the session was locked at least once. Thanks to [@conradax](https://github.com/conradax) for this fix!
 - Fixed an issue where GNOME Shell could freeze for up to 25 seconds after login if `power-profiles-daemon` was not running yet. Thanks to [@dogcom0228](https://github.com/dogcom0228) for the fix!
 
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)

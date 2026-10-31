@@ -288,11 +288,28 @@ const _methods = {
       return null;
     }
     if (!(w > 0 && h > 0)) return null;
+
+    // The texture is in framebuffer (physical) pixels, the layer in stage (logical)
+    // pixels. They differ by the actor's resource scale, e.g. on Wayland with display
+    // scaling (on X11 the stage is physical and the scale is 1).
+    const actor = this.get_actor();
+    let scale   = actor && actor.get_resource_scale ? actor.get_resource_scale() : 1;
+    if (Array.isArray(scale)) scale = scale[1];  // GNOME 3.36 / 3.38: [ok, scale]
+    if (!(scale > 0)) scale = 1;
+    w /= scale;
+    h /= scale;
+
     if (texPadding === 'centred') {
       return [-(w - width) / 2, -(h - height) / 2, w, h];
     }
     if (texPadding === 'enlarged') {
-      return [Math.ceil(width + 0.75) - w, Math.ceil(height + 0.75) - h, w, h];
+      // Clutter pads to round(size) + 3 logical px, then scales and rounds up. With a
+      // fractional scale the rounding remainder is on the right / bottom, so the origin
+      // doesn't depend on the texture size.
+      return [
+        Math.ceil(width + 0.75) - Math.round(width) - 3,
+        Math.ceil(height + 0.75) - Math.round(height) - 3, w, h
+      ];
     }
     return [0, 0, w, h];
   },

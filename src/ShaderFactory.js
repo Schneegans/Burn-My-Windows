@@ -24,14 +24,22 @@ import {Shader} from './Shader.js';
 // possible in order to avoid memory leaks.                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// The free shaders are stored in this module-global cache which is shared by all
+// ShaderFactory instances. This is required because GNOME Shell disables and re-enables
+// all extensions whenever the screen is locked and unlocked: Each of these cycles
+// creates new ShaderFactory instances, while the GObject classes below are registered
+// only once per shell session and are never unregistered. If the free shaders were owned
+// by the factory instances, then the registered classes would keep the factories of the
+// very first enable() alive forever and all shaders created after a lock/unlock cycle
+// would be returned to these leaked factories, where they could never be re-used. This
+// would leak GPU memory with every window animation.
+const _freeShaders = new Map();
+
 export default class ShaderFactory {
 
   // Creates a new ShaderFactory. Requires the nick of the effect and a callback function
   // which will be called whenever a new shader is created.
   constructor(nick, setupFunc) {
-    // The _freeShaders array contains previously created shaders which are not currently
-    // in use.
-    this._freeShaders = [];
 
     // The nick of the effect is required when creating new shaders as it's part of the
     // GLSL source code file name.
@@ -43,6 +51,12 @@ export default class ShaderFactory {
 
   // ---------------------------------------------------------------- API for extension.js
 
+  // Drops all currently unused shaders of all effects so that they can be garbage
+  // collected. This should be called when the extension is disabled.
+  static freeAll() {
+    _freeShaders.clear();
+  }
+
   // This is called from extension.js whenever a window is opened or closed. It returns an
   // instance of the shader class, trying to reuse previously created shaders. If a new
   // shader instance is required, it calls creates a new one and calls the setupFunc
@@ -50,8 +64,14 @@ export default class ShaderFactory {
   getShader() {
     let shader;
 
+    // The array of this effect's shaders which are currently not in use.
+    if (!_freeShaders.has(this._nick)) {
+      _freeShaders.set(this._nick, []);
+    }
+    const freeShaders = _freeShaders.get(this._nick);
+
     // If there are currently no free shaders, we have to create a new one.
-    if (this._freeShaders.length == 0) {
+    if (freeShaders.length == 0) {
 
       // Since Shell.GLSLEffect caches the shader source per class (not per instance), we
       // have to derive a new shader type for each effect. The type name contains the nick
@@ -60,16 +80,19 @@ export default class ShaderFactory {
 
       // Only try to register the new type once.
       if (GObject.type_from_name(typeName) == null) {
-        const outerThis = this;
+        const nick = this._nick;
         GObject.registerClass({GTypeName: typeName}, class ShaderImp extends Shader {
           // This will actually load the GLSL source code from the resources.
           _init() {
-            super._init(outerThis._nick);
+            super._init(nick);
           }
 
           // This can be called to mark this instance to be re-usable.
           returnToFactory() {
-            outerThis._freeShaders.push(this);
+            if (!_freeShaders.has(nick)) {
+              _freeShaders.set(nick, []);
+            }
+            _freeShaders.get(nick).push(this);
           }
         });
       }
@@ -86,7 +109,7 @@ export default class ShaderFactory {
       this._setupFunc(shader);
 
     } else {
-      shader = this._freeShaders.pop();
+      shader = freeShaders.pop();
     }
 
     return shader;

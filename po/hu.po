@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-30 22:29+0300\n"
+"POT-Creation-Date: 2026-10-19 13:18+0300\n"
 "PO-Revision-Date: 2024-12-30 20:06+0000\n"
 "Last-Translator: atomkapa atomkapa <atomkapa@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/burn-my-"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.10-dev\n"
+
+#: src/effects/AperturePanels.js:153
+msgid "Aperture Panels"
+msgstr ""
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -43,31 +47,31 @@ msgstr "Energiát! A"
 msgid "Energize B"
 msgstr "Energiát! B"
 
-#: src/effects/Fire.js:108
+#: src/effects/Fire.js:110
 msgid "Fire"
 msgstr "Tűz"
 
-#: src/effects/Fire.js:192
+#: src/effects/Fire.js:194
 msgid "Default Fire"
 msgstr "Alapértelmezett tűz"
 
-#: src/effects/Fire.js:202
+#: src/effects/Fire.js:204
 msgid "Hell Fire"
 msgstr "Pokoli tűz"
 
-#: src/effects/Fire.js:212
+#: src/effects/Fire.js:214
 msgid "Dark and Smutty"
 msgstr "Sötét és kormos tűz"
 
-#: src/effects/Fire.js:222
+#: src/effects/Fire.js:224
 msgid "Cold Breeze"
 msgstr "Fagyos szellő"
 
-#: src/effects/Fire.js:232
+#: src/effects/Fire.js:234
 msgid "Santa is Coming"
 msgstr "Télapó itt van"
 
-#: src/effects/Fire.js:243
+#: src/effects/Fire.js:245
 msgid "Nuclear ☢️"
 msgstr ""
 
@@ -98,6 +102,10 @@ msgstr ""
 #: src/effects/Matrix.js:101
 msgid "Matrix"
 msgstr "Mátrix"
+
+#: src/effects/Morph.js:118
+msgid "Morph"
+msgstr ""
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -155,6 +163,10 @@ msgstr "Portál"
 msgid "RGB Warp"
 msgstr ""
 
+#: src/effects/Shredder.js:84
+msgid "Shredder"
+msgstr ""
+
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
 msgstr "Thanos csettintése"
@@ -175,109 +187,468 @@ msgstr "Tévé hatás"
 msgid "TV Glitch"
 msgstr "Tévé hiba"
 
+#: src/effects/VenetianBlinds.js:79
+msgid "Venetian Blinds"
+msgstr ""
+
 #: src/effects/Wisps.js:85
 msgid "Wisps"
 msgstr "Szálak"
 
-#: prefs.js:262
+#: src/effects/Wormhole.js:132
+msgid "Wormhole"
+msgstr ""
+
+#: prefs.js:263
 msgid "Preview this effect"
 msgstr "Előnézet"
 
-#: prefs.js:339
+#: prefs.js:340
 msgid "Burn-My-Windows has been updated!"
 msgstr "A Burn-My-Windows frissült!"
 
-#: prefs.js:340 resources/ui/common/menus.ui:17
+#: prefs.js:341 resources/ui/common/menus.ui:17
 msgid "View Changelog"
 msgstr "Változási napló megtekintése"
 
-#: prefs.js:522
+#: prefs.js:523
 msgid "Delete this Profile?"
 msgstr "Biztosan törli a profilt?"
 
-#: prefs.js:523
+#: prefs.js:524
 msgid ""
 "The current effect profile with all its effect settings will be permanently "
 "lost."
 msgstr "A jelenlegi profil minden beállítással együtt örökre elveszik."
 
-#: prefs.js:526
+#: prefs.js:527
 msgid "Cancel"
 msgstr "Mégse"
 
-#: prefs.js:531
+#: prefs.js:532
 msgid "Delete"
 msgstr "Törlés"
 
-#: prefs.js:763 resources/ui/adw/prefs.ui:103
+#: prefs.js:764 resources/ui/adw/prefs.ui:103
 msgid "Opening Windows"
 msgstr "Ablakok megnyitása"
 
-#: prefs.js:764 resources/ui/adw/prefs.ui:104
+#: prefs.js:765 resources/ui/adw/prefs.ui:104
 msgid "Closing Windows"
 msgstr "Ablakok bezárása"
 
-#: prefs.js:765 resources/ui/adw/prefs.ui:118
+#: prefs.js:766 resources/ui/adw/prefs.ui:118
 msgid "Normal Windows"
 msgstr "Normál ablakok"
 
-#: prefs.js:766 resources/ui/adw/prefs.ui:119
+#: prefs.js:767 resources/ui/adw/prefs.ui:119
 msgid "Dialog Windows"
 msgstr "Párbeszédablakok"
 
-#: prefs.js:767 resources/ui/adw/prefs.ui:133
+#: prefs.js:768 resources/ui/adw/prefs.ui:133
 msgid "Default Color Scheme"
 msgstr "Alapértelmezett téma"
 
-#: prefs.js:768 resources/ui/adw/prefs.ui:134
+#: prefs.js:769 resources/ui/adw/prefs.ui:134
 msgid "Dark Color Scheme"
 msgstr "Sötét téma"
 
-#: prefs.js:769 resources/ui/adw/prefs.ui:148
+#: prefs.js:770 resources/ui/adw/prefs.ui:148
 msgid "On Battery"
 msgstr "Akkumulátoron"
 
-#: prefs.js:770 resources/ui/adw/prefs.ui:149
+#: prefs.js:771 resources/ui/adw/prefs.ui:149
 msgid "Plugged In"
 msgstr "Csatlakoztatva"
 
-#: prefs.js:771 resources/ui/adw/prefs.ui:163
+#: prefs.js:772 resources/ui/adw/prefs.ui:163
 msgid "Power-Saver Mode"
 msgstr "Energiatakarékos üzemmód"
 
-#: prefs.js:772 resources/ui/adw/prefs.ui:164
+#: prefs.js:773 resources/ui/adw/prefs.ui:164
 msgid "Balanced Mode"
 msgstr "Kiegyensúlyozott üzemmód"
 
-#: prefs.js:773 resources/ui/adw/prefs.ui:165
+#: prefs.js:774 resources/ui/adw/prefs.ui:165
 msgid "Performance Mode"
 msgstr "Teljesítmény üzemmód"
 
-#: prefs.js:774 resources/ui/adw/prefs.ui:166
+#: prefs.js:775 resources/ui/adw/prefs.ui:166
 msgid "Power Saver or Balanced"
 msgstr "Enerigiatakarékos vagy kiegyensúlyozott üzemmód"
 
-#: prefs.js:775 resources/ui/adw/prefs.ui:167
+#: prefs.js:776 resources/ui/adw/prefs.ui:167
 msgid "Balanced or Performance"
 msgstr "Kiegyensúlyozott vagy teljesítmény üzemmód"
 
-#: prefs.js:780 resources/ui/adw/prefs.ui:183
+#: prefs.js:781 resources/ui/adw/prefs.ui:183
 msgid "High Priority"
 msgstr "Magas Prioritás"
 
-#: prefs.js:786
+#: prefs.js:787
 msgid "Standard Profile"
 msgstr "Alapértelmezett Profil"
 
 #. Translators: %s will be replaced by the effect's name.
-#: prefs.js:866
+#: prefs.js:867
 #, javascript-format
 msgid "Preview for %s"
 msgstr "%s előnézete"
 
-#: prefs.js:885
+#: prefs.js:886
 msgid "Close this Window to Preview the Effect!"
 msgstr "Zárja be ezt az ablakot hogy előnézze ezt a hatást!"
+
+#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
+#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
+#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
+#: resources/ui/adw/focus.ui:35 resources/ui/adw/glide.ui:14
+#: resources/ui/adw/glitch.ui:14 resources/ui/adw/hexagon.ui:14
+#: resources/ui/adw/incinerate.ui:14 resources/ui/adw/materialize.ui:14
+#: resources/ui/adw/matrix.ui:14 resources/ui/adw/mushroom.ui:17
+#: resources/ui/adw/paint-brush.ui:14 resources/ui/adw/pixelate.ui:14
+#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
+#: resources/ui/adw/portal.ui:14 resources/ui/adw/rgbwarp.ui:17
+#: resources/ui/adw/snap.ui:14 resources/ui/adw/team-rocket.ui:17
+#: resources/ui/adw/trex.ui:14 resources/ui/adw/tv-glitch.ui:14
+#: resources/ui/adw/tv.ui:14 resources/ui/adw/wisps.ui:14
+#: resources/ui/adw/aperture-panels.ui:14 resources/ui/adw/fire.ui:30
+#: resources/ui/adw/morph.ui:14 resources/ui/adw/wormhole.ui:14
+#: resources/ui/adw/shredder.ui:14 resources/ui/adw/venetian-blinds.ui:14
+msgid "Animation Time [ms]"
+msgstr "Animáció időtartama [ms]"
+
+#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
+#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
+#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
+#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
+#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
+#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
+#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
+#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
+#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
+#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
+#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
+#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
+#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
+#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
+#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
+#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
+#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
+#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
+#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
+#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
+#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
+#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
+#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
+#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
+#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
+#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
+#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
+#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
+#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
+#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
+#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
+#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
+#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
+#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
+#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
+#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
+#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
+#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixelate.ui:36
+#: resources/ui/adw/pixelate.ui:69 resources/ui/adw/pixelate.ui:102
+#: resources/ui/adw/pixel-wheel.ui:36 resources/ui/adw/pixel-wheel.ui:69
+#: resources/ui/adw/pixel-wheel.ui:102 resources/ui/adw/pixel-wipe.ui:36
+#: resources/ui/adw/pixel-wipe.ui:69 resources/ui/adw/portal.ui:36
+#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
+#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
+#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
+#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
+#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
+#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
+#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
+#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
+#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
+#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
+#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
+#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
+#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
+#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
+#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
+#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
+#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
+#: resources/ui/adw/aperture-panels.ui:36
+#: resources/ui/adw/aperture-panels.ui:70
+#: resources/ui/adw/aperture-panels.ui:98
+#: resources/ui/adw/aperture-panels.ui:123
+#: resources/ui/adw/aperture-panels.ui:149
+#: resources/ui/adw/aperture-panels.ui:176
+#: resources/ui/adw/aperture-panels.ui:199 resources/ui/adw/fire.ui:52
+#: resources/ui/adw/fire.ui:85 resources/ui/adw/fire.ui:118
+#: resources/ui/adw/fire.ui:141 resources/ui/adw/fire.ui:163
+#: resources/ui/adw/fire.ui:185 resources/ui/adw/fire.ui:207
+#: resources/ui/adw/fire.ui:265 resources/ui/adw/morph.ui:36
+#: resources/ui/adw/morph.ui:61 resources/ui/adw/morph.ui:94
+#: resources/ui/adw/wormhole.ui:36 resources/ui/adw/wormhole.ui:69
+#: resources/ui/adw/wormhole.ui:102 resources/ui/adw/wormhole.ui:135
+#: resources/ui/adw/wormhole.ui:169 resources/ui/adw/shredder.ui:36
+#: resources/ui/adw/shredder.ui:69 resources/ui/adw/shredder.ui:102
+#: resources/ui/adw/shredder.ui:124 resources/ui/adw/venetian-blinds.ui:36
+#: resources/ui/adw/venetian-blinds.ui:69
+#: resources/ui/adw/venetian-blinds.ui:102
+#: resources/ui/adw/venetian-blinds.ui:124
+#: resources/ui/adw/venetian-blinds.ui:146
+msgid "Reset to Default Value"
+msgstr "Visszaállítás az alapértelmezett értékre"
+
+#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
+#: resources/ui/adw/shredder.ui:80
+msgid "Randomness"
+msgstr "Véletlenszerűség"
+
+#: resources/ui/adw/apparition.ui:81
+msgid "Twirl Intensity"
+msgstr "Pörgés intenzitása"
+
+#: resources/ui/adw/apparition.ui:114
+msgid "Shake Intensity"
+msgstr "Rázkódás intenzitása"
+
+#: resources/ui/adw/apparition.ui:147
+msgid "Suction Intensity"
+msgstr "Szívóerő Intenzitása"
+
+#: resources/ui/adw/aura-glow.ui:47
+msgid "Random Color"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:69
+msgid "Start Hue"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/glitch.ui:113
+#: resources/ui/adw/tv-glitch.ui:113 resources/ui/adw/fire.ui:96
+msgid "Speed"
+msgstr "Gyorsaság"
+
+#: resources/ui/adw/aura-glow.ui:145
+msgid "Saturation"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:178
+msgid "Edge Size"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:211
+msgid "Edge Hardness"
+msgstr ""
+
+#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
+msgid "Blur Amount"
+msgstr "Homályosítás mértéke"
+
+#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
+#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/glide.ui:47
+#: resources/ui/adw/glitch.ui:47 resources/ui/adw/hexagon.ui:47
+#: resources/ui/adw/incinerate.ui:47 resources/ui/adw/matrix.ui:47
+#: resources/ui/adw/snap.ui:47 resources/ui/adw/tv-glitch.ui:47
+#: resources/ui/adw/wisps.ui:47 resources/ui/adw/fire.ui:63
+msgid "Scale"
+msgstr "Skála"
+
+#: resources/ui/adw/broken-glass.ui:81
+msgid "Gravity"
+msgstr "Gravitáció"
+
+#: resources/ui/adw/broken-glass.ui:114
+msgid "Blow Force"
+msgstr "Fúvóerő"
+
+#: resources/ui/adw/broken-glass.ui:147
+msgid "Shatter From Pointer Location"
+msgstr "Összetörés a mutató pozíciójáról"
+
+#: resources/ui/adw/broken-glass.ui:148
+msgid ""
+"The shards will fly away from where your mouse pointer was when closing the "
+"window."
+msgstr ""
+"A szilánkok onnan fognak elrepülni, ahol a mutató tartózkodott az ablak "
+"bezárásakor."
+
+#: resources/ui/adw/doom.ui:47
+msgid "Horizontal Scale"
+msgstr "Vízszintes skála"
+
+#: resources/ui/adw/doom.ui:80
+msgid "Vertical Scale"
+msgstr "Függőleges skála"
+
+#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixelate.ui:80
+#: resources/ui/adw/pixel-wheel.ui:80 resources/ui/adw/pixel-wipe.ui:47
+msgid "Pixel Size"
+msgstr "Pixelméret"
+
+#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
+#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
+#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
+#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
+#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
+msgid "Color"
+msgstr "Szín"
+
+#: resources/ui/adw/focus.ui:87
+msgid "Blur Quality"
+msgstr "Homályosítás minősége"
+
+#: resources/ui/adw/glide.ui:80
+msgid "Squish"
+msgstr "Összenyomás"
+
+#: resources/ui/adw/glide.ui:113
+msgid "Tilt"
+msgstr "Billenés"
+
+#: resources/ui/adw/glide.ui:146
+msgid "Shift"
+msgstr "Elmozdítás"
+
+#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
+#: resources/ui/adw/morph.ui:72
+msgid "Strength"
+msgstr "Erő"
+
+#: resources/ui/adw/hexagon.ui:80
+msgid "Mesh Line Width"
+msgstr "Körvonal Vastagsága"
+
+#: resources/ui/adw/hexagon.ui:113
+msgid "Line Color"
+msgstr "Vonal színe"
+
+#: resources/ui/adw/hexagon.ui:138
+msgid "Glow Color"
+msgstr "Világítás színe"
+
+#: resources/ui/adw/hexagon.ui:163
+msgid "Additive Blending"
+msgstr "Beolvadó Színek"
+
+#: resources/ui/adw/hexagon.ui:164
+msgid "You may want to enable this for dark window themes."
+msgstr "Sötét témájú ablakokhoz ajánlott."
+
+#: resources/ui/adw/incinerate.ui:80
+msgid "Turbulence"
+msgstr "Turbulencia"
+
+#: resources/ui/adw/incinerate.ui:113
+msgid "Start at Pointer"
+msgstr "Kezdés a mutatónál"
+
+#: resources/ui/adw/incinerate.ui:114
+msgid "If disabled, a random location will be chosen."
+msgstr "Ha ki van kapcsolva, egy véletlenszerű hely lesz választva."
+
+#: resources/ui/adw/materialize.ui:47
+msgid "Start Scale"
+msgstr ""
+
+#: resources/ui/adw/materialize.ui:80
+msgid "Steps"
+msgstr ""
+
+#: resources/ui/adw/materialize.ui:81
+msgid "Zero gives a smooth animation."
+msgstr ""
+
+#: resources/ui/adw/materialize.ui:114
+msgid "Use System Accent Color"
+msgstr ""
+
+#: resources/ui/adw/matrix.ui:113
+msgid "Vertical Overshooting"
+msgstr "Függőleges túlcsúszás"
+
+#: resources/ui/adw/matrix.ui:146
+msgid "Trail Color"
+msgstr "Nyom színe"
+
+#: resources/ui/adw/matrix.ui:171
+msgid "Tip Color"
+msgstr "Csúcs színe"
+
+#: resources/ui/adw/mushroom.ui:55
+msgid "Effect Presets"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:61 resources/ui/adw/fire.ui:19
+msgid "Choose a Preset"
+msgstr "Válassz egy sablont"
+
+#: resources/ui/adw/mushroom.ui:73
+msgid "Scale Style"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:74
+msgid "8Bit --- Smooth"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:112
+msgid "Spark Count"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:150
+msgid "Spark Rotation"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:188
+msgid "Spark Color"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:222
+msgid "Rays Color"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:256
+msgid "Star Rings Count"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:294
+msgid "Star Ring Rotation"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:332
+msgid "Stars Count Per Ring"
+msgstr ""
+
+#: resources/ui/adw/mushroom.ui:370
+msgid "Star Gradient"
+msgstr ""
+
+#: resources/ui/adw/paint-brush.ui:47
+msgid "Brush Size"
+msgstr "Ecset mérete"
+
+#: resources/ui/adw/pixelate.ui:47
+msgid "Noise"
+msgstr "Zaj"
+
+#: resources/ui/adw/pixel-wheel.ui:47
+msgid "Spoke Count"
+msgstr "Sugár száma"
+
+#: resources/ui/adw/portal.ui:47
+msgid "Rotation Speed"
+msgstr "Forgás sebessége"
+
+#: resources/ui/adw/portal.ui:80
+msgid "Whirling"
+msgstr "Örvénylés"
+
+#: resources/ui/adw/portal.ui:113
+msgid "Details"
+msgstr "Részletesség"
 
 #: resources/ui/adw/prefs.ui:65
 msgid "Effect Profile Constraints"
@@ -352,364 +723,6 @@ msgstr "Összes bekapcsolása"
 msgid "Disable All"
 msgstr "Összes kikapcsolása"
 
-#: resources/ui/adw/apparition.ui:15 resources/ui/adw/aura-glow.ui:13
-#: resources/ui/adw/broken-glass.ui:15 resources/ui/adw/doom.ui:14
-#: resources/ui/adw/energize-a.ui:14 resources/ui/adw/energize-b.ui:15
-#: resources/ui/adw/fire.ui:30 resources/ui/adw/focus.ui:35
-#: resources/ui/adw/glide.ui:14 resources/ui/adw/glitch.ui:14
-#: resources/ui/adw/hexagon.ui:14 resources/ui/adw/incinerate.ui:14
-#: resources/ui/adw/materialize.ui:14 resources/ui/adw/matrix.ui:14
-#: resources/ui/adw/mushroom.ui:17 resources/ui/adw/paint-brush.ui:14
-#: resources/ui/adw/pixel-wheel.ui:14 resources/ui/adw/pixel-wipe.ui:14
-#: resources/ui/adw/pixelate.ui:14 resources/ui/adw/portal.ui:14
-#: resources/ui/adw/rgbwarp.ui:17 resources/ui/adw/snap.ui:14
-#: resources/ui/adw/team-rocket.ui:17 resources/ui/adw/trex.ui:14
-#: resources/ui/adw/tv-glitch.ui:14 resources/ui/adw/tv.ui:14
-#: resources/ui/adw/wisps.ui:14
-msgid "Animation Time [ms]"
-msgstr "Animáció időtartama [ms]"
-
-#: resources/ui/adw/apparition.ui:37 resources/ui/adw/apparition.ui:70
-#: resources/ui/adw/apparition.ui:103 resources/ui/adw/apparition.ui:136
-#: resources/ui/adw/apparition.ui:169 resources/ui/adw/aura-glow.ui:35
-#: resources/ui/adw/aura-glow.ui:58 resources/ui/adw/aura-glow.ui:101
-#: resources/ui/adw/aura-glow.ui:134 resources/ui/adw/aura-glow.ui:167
-#: resources/ui/adw/aura-glow.ui:200 resources/ui/adw/aura-glow.ui:233
-#: resources/ui/adw/aura-glow.ui:266 resources/ui/adw/broken-glass.ui:37
-#: resources/ui/adw/broken-glass.ui:70 resources/ui/adw/broken-glass.ui:103
-#: resources/ui/adw/broken-glass.ui:136 resources/ui/adw/broken-glass.ui:159
-#: resources/ui/adw/doom.ui:36 resources/ui/adw/doom.ui:69
-#: resources/ui/adw/doom.ui:102 resources/ui/adw/doom.ui:135
-#: resources/ui/adw/energize-a.ui:36 resources/ui/adw/energize-a.ui:69
-#: resources/ui/adw/energize-a.ui:94 resources/ui/adw/energize-b.ui:37
-#: resources/ui/adw/energize-b.ui:70 resources/ui/adw/energize-b.ui:95
-#: resources/ui/adw/fire.ui:52 resources/ui/adw/fire.ui:85
-#: resources/ui/adw/fire.ui:118 resources/ui/adw/fire.ui:141
-#: resources/ui/adw/fire.ui:163 resources/ui/adw/fire.ui:185
-#: resources/ui/adw/fire.ui:207 resources/ui/adw/fire.ui:265
-#: resources/ui/adw/focus.ui:50 resources/ui/adw/focus.ui:76
-#: resources/ui/adw/focus.ui:102 resources/ui/adw/glide.ui:36
-#: resources/ui/adw/glide.ui:69 resources/ui/adw/glide.ui:102
-#: resources/ui/adw/glide.ui:135 resources/ui/adw/glide.ui:168
-#: resources/ui/adw/glitch.ui:36 resources/ui/adw/glitch.ui:69
-#: resources/ui/adw/glitch.ui:102 resources/ui/adw/glitch.ui:135
-#: resources/ui/adw/glitch.ui:160 resources/ui/adw/hexagon.ui:36
-#: resources/ui/adw/hexagon.ui:69 resources/ui/adw/hexagon.ui:102
-#: resources/ui/adw/hexagon.ui:127 resources/ui/adw/hexagon.ui:152
-#: resources/ui/adw/hexagon.ui:175 resources/ui/adw/incinerate.ui:36
-#: resources/ui/adw/incinerate.ui:69 resources/ui/adw/incinerate.ui:102
-#: resources/ui/adw/incinerate.ui:125 resources/ui/adw/incinerate.ui:150
-#: resources/ui/adw/materialize.ui:36 resources/ui/adw/materialize.ui:69
-#: resources/ui/adw/materialize.ui:103 resources/ui/adw/materialize.ui:125
-#: resources/ui/adw/materialize.ui:150 resources/ui/adw/matrix.ui:36
-#: resources/ui/adw/matrix.ui:69 resources/ui/adw/matrix.ui:102
-#: resources/ui/adw/matrix.ui:135 resources/ui/adw/matrix.ui:160
-#: resources/ui/adw/matrix.ui:185 resources/ui/adw/mushroom.ui:42
-#: resources/ui/adw/mushroom.ui:99 resources/ui/adw/mushroom.ui:137
-#: resources/ui/adw/mushroom.ui:175 resources/ui/adw/mushroom.ui:209
-#: resources/ui/adw/mushroom.ui:243 resources/ui/adw/mushroom.ui:281
-#: resources/ui/adw/mushroom.ui:319 resources/ui/adw/mushroom.ui:357
-#: resources/ui/adw/mushroom.ui:427 resources/ui/adw/paint-brush.ui:36
-#: resources/ui/adw/paint-brush.ui:69 resources/ui/adw/pixel-wheel.ui:36
-#: resources/ui/adw/pixel-wheel.ui:69 resources/ui/adw/pixel-wheel.ui:102
-#: resources/ui/adw/pixel-wipe.ui:36 resources/ui/adw/pixel-wipe.ui:69
-#: resources/ui/adw/pixelate.ui:36 resources/ui/adw/pixelate.ui:69
-#: resources/ui/adw/pixelate.ui:102 resources/ui/adw/portal.ui:36
-#: resources/ui/adw/portal.ui:69 resources/ui/adw/portal.ui:102
-#: resources/ui/adw/portal.ui:135 resources/ui/adw/portal.ui:160
-#: resources/ui/adw/rgbwarp.ui:42 resources/ui/adw/rgbwarp.ui:81
-#: resources/ui/adw/rgbwarp.ui:118 resources/ui/adw/rgbwarp.ui:155
-#: resources/ui/adw/rgbwarp.ui:192 resources/ui/adw/snap.ui:36
-#: resources/ui/adw/snap.ui:69 resources/ui/adw/snap.ui:94
-#: resources/ui/adw/team-rocket.ui:42 resources/ui/adw/team-rocket.ui:80
-#: resources/ui/adw/team-rocket.ui:102 resources/ui/adw/team-rocket.ui:139
-#: resources/ui/adw/team-rocket.ui:176 resources/ui/adw/team-rocket.ui:214
-#: resources/ui/adw/team-rocket.ui:251 resources/ui/adw/trex.ui:36
-#: resources/ui/adw/trex.ui:69 resources/ui/adw/trex.ui:102
-#: resources/ui/adw/trex.ui:135 resources/ui/adw/trex.ui:160
-#: resources/ui/adw/tv-glitch.ui:36 resources/ui/adw/tv-glitch.ui:69
-#: resources/ui/adw/tv-glitch.ui:102 resources/ui/adw/tv-glitch.ui:135
-#: resources/ui/adw/tv-glitch.ui:160 resources/ui/adw/tv.ui:36
-#: resources/ui/adw/tv.ui:61 resources/ui/adw/wisps.ui:36
-#: resources/ui/adw/wisps.ui:69 resources/ui/adw/wisps.ui:110
-msgid "Reset to Default Value"
-msgstr "Visszaállítás az alapértelmezett értékre"
-
-#: resources/ui/adw/apparition.ui:48 resources/ui/adw/matrix.ui:80
-msgid "Randomness"
-msgstr "Véletlenszerűség"
-
-#: resources/ui/adw/apparition.ui:81
-msgid "Twirl Intensity"
-msgstr "Pörgés intenzitása"
-
-#: resources/ui/adw/apparition.ui:114
-msgid "Shake Intensity"
-msgstr "Rázkódás intenzitása"
-
-#: resources/ui/adw/apparition.ui:147
-msgid "Suction Intensity"
-msgstr "Szívóerő Intenzitása"
-
-#: resources/ui/adw/aura-glow.ui:47
-msgid "Random Color"
-msgstr ""
-
-#: resources/ui/adw/aura-glow.ui:69
-msgid "Start Hue"
-msgstr ""
-
-#: resources/ui/adw/aura-glow.ui:112 resources/ui/adw/fire.ui:96
-#: resources/ui/adw/glitch.ui:113 resources/ui/adw/tv-glitch.ui:113
-msgid "Speed"
-msgstr "Gyorsaság"
-
-#: resources/ui/adw/aura-glow.ui:145
-msgid "Saturation"
-msgstr ""
-
-#: resources/ui/adw/aura-glow.ui:178
-msgid "Edge Size"
-msgstr ""
-
-#: resources/ui/adw/aura-glow.ui:211
-msgid "Edge Hardness"
-msgstr ""
-
-#: resources/ui/adw/aura-glow.ui:244 resources/ui/adw/focus.ui:61
-msgid "Blur Amount"
-msgstr "Homályosítás mértéke"
-
-#: resources/ui/adw/broken-glass.ui:48 resources/ui/adw/energize-a.ui:47
-#: resources/ui/adw/energize-b.ui:48 resources/ui/adw/fire.ui:63
-#: resources/ui/adw/glide.ui:47 resources/ui/adw/glitch.ui:47
-#: resources/ui/adw/hexagon.ui:47 resources/ui/adw/incinerate.ui:47
-#: resources/ui/adw/matrix.ui:47 resources/ui/adw/snap.ui:47
-#: resources/ui/adw/tv-glitch.ui:47 resources/ui/adw/wisps.ui:47
-msgid "Scale"
-msgstr "Skála"
-
-#: resources/ui/adw/broken-glass.ui:81
-msgid "Gravity"
-msgstr "Gravitáció"
-
-#: resources/ui/adw/broken-glass.ui:114
-msgid "Blow Force"
-msgstr "Fúvóerő"
-
-#: resources/ui/adw/broken-glass.ui:147
-msgid "Shatter From Pointer Location"
-msgstr "Összetörés a mutató pozíciójáról"
-
-#: resources/ui/adw/broken-glass.ui:148
-msgid ""
-"The shards will fly away from where your mouse pointer was when closing the "
-"window."
-msgstr ""
-"A szilánkok onnan fognak elrepülni, ahol a mutató tartózkodott az ablak "
-"bezárásakor."
-
-#: resources/ui/adw/doom.ui:47
-msgid "Horizontal Scale"
-msgstr "Vízszintes skála"
-
-#: resources/ui/adw/doom.ui:80
-msgid "Vertical Scale"
-msgstr "Függőleges skála"
-
-#: resources/ui/adw/doom.ui:113 resources/ui/adw/pixel-wheel.ui:80
-#: resources/ui/adw/pixel-wipe.ui:47 resources/ui/adw/pixelate.ui:80
-msgid "Pixel Size"
-msgstr "Pixelméret"
-
-#: resources/ui/adw/energize-a.ui:80 resources/ui/adw/energize-b.ui:81
-#: resources/ui/adw/glitch.ui:146 resources/ui/adw/incinerate.ui:136
-#: resources/ui/adw/materialize.ui:136 resources/ui/adw/portal.ui:146
-#: resources/ui/adw/snap.ui:80 resources/ui/adw/tv-glitch.ui:146
-#: resources/ui/adw/tv.ui:47 resources/ui/adw/wisps.ui:80
-msgid "Color"
-msgstr "Szín"
-
-#: resources/ui/adw/fire.ui:14
-msgid "Presets"
-msgstr "Sablonok"
-
-#: resources/ui/adw/fire.ui:19 resources/ui/adw/mushroom.ui:61
-msgid "Choose a Preset"
-msgstr "Válassz egy sablont"
-
-#: resources/ui/adw/fire.ui:129
-msgid "3D Noise"
-msgstr "3D zaj"
-
-#: resources/ui/adw/fire.ui:130
-msgid "Creates a more dynamic fire but requires more GPU power."
-msgstr "Egy dinamikusabb tüzet készít, de több GPU erőt igényel."
-
-#: resources/ui/adw/fire.ui:152
-msgid "Use Random Color"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:174
-msgid "Burn Closing Windows from Bottom to Top"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:196
-msgid "Burn Opening Windows from Bottom to Top"
-msgstr ""
-
-#: resources/ui/adw/fire.ui:218
-msgid "Gradient"
-msgstr "Árnyalatok"
-
-#: resources/ui/adw/focus.ui:87
-msgid "Blur Quality"
-msgstr "Homályosítás minősége"
-
-#: resources/ui/adw/glide.ui:80
-msgid "Squish"
-msgstr "Összenyomás"
-
-#: resources/ui/adw/glide.ui:113
-msgid "Tilt"
-msgstr "Billenés"
-
-#: resources/ui/adw/glide.ui:146
-msgid "Shift"
-msgstr "Elmozdítás"
-
-#: resources/ui/adw/glitch.ui:80 resources/ui/adw/tv-glitch.ui:80
-msgid "Strength"
-msgstr "Erő"
-
-#: resources/ui/adw/hexagon.ui:80
-msgid "Mesh Line Width"
-msgstr "Körvonal Vastagsága"
-
-#: resources/ui/adw/hexagon.ui:113
-msgid "Line Color"
-msgstr "Vonal színe"
-
-#: resources/ui/adw/hexagon.ui:138
-msgid "Glow Color"
-msgstr "Világítás színe"
-
-#: resources/ui/adw/hexagon.ui:163
-msgid "Additive Blending"
-msgstr "Beolvadó Színek"
-
-#: resources/ui/adw/hexagon.ui:164
-msgid "You may want to enable this for dark window themes."
-msgstr "Sötét témájú ablakokhoz ajánlott."
-
-#: resources/ui/adw/incinerate.ui:80
-msgid "Turbulence"
-msgstr "Turbulencia"
-
-#: resources/ui/adw/incinerate.ui:113
-msgid "Start at Pointer"
-msgstr "Kezdés a mutatónál"
-
-#: resources/ui/adw/incinerate.ui:114
-msgid "If disabled, a random location will be chosen."
-msgstr "Ha ki van kapcsolva, egy véletlenszerű hely lesz választva."
-
-#: resources/ui/adw/materialize.ui:47
-msgid "Start Scale"
-msgstr ""
-
-#: resources/ui/adw/materialize.ui:80
-msgid "Steps"
-msgstr ""
-
-#: resources/ui/adw/materialize.ui:81
-msgid "Zero gives a smooth animation."
-msgstr ""
-
-#: resources/ui/adw/materialize.ui:114
-msgid "Use System Accent Color"
-msgstr ""
-
-#: resources/ui/adw/matrix.ui:113
-msgid "Vertical Overshooting"
-msgstr "Függőleges túlcsúszás"
-
-#: resources/ui/adw/matrix.ui:146
-msgid "Trail Color"
-msgstr "Nyom színe"
-
-#: resources/ui/adw/matrix.ui:171
-msgid "Tip Color"
-msgstr "Csúcs színe"
-
-#: resources/ui/adw/mushroom.ui:55
-msgid "Effect Presets"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:73
-msgid "Scale Style"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:74
-msgid "8Bit --- Smooth"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:112
-msgid "Spark Count"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:150
-msgid "Spark Rotation"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:188
-msgid "Spark Color"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:222
-msgid "Rays Color"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:256
-msgid "Star Rings Count"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:294
-msgid "Star Ring Rotation"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:332
-msgid "Stars Count Per Ring"
-msgstr ""
-
-#: resources/ui/adw/mushroom.ui:370
-msgid "Star Gradient"
-msgstr ""
-
-#: resources/ui/adw/paint-brush.ui:47
-msgid "Brush Size"
-msgstr "Ecset mérete"
-
-#: resources/ui/adw/pixel-wheel.ui:47
-msgid "Spoke Count"
-msgstr "Sugár száma"
-
-#: resources/ui/adw/pixelate.ui:47
-msgid "Noise"
-msgstr "Zaj"
-
-#: resources/ui/adw/portal.ui:47
-msgid "Rotation Speed"
-msgstr "Forgás sebessége"
-
-#: resources/ui/adw/portal.ui:80
-msgid "Whirling"
-msgstr "Örvénylés"
-
-#: resources/ui/adw/portal.ui:113
-msgid "Details"
-msgstr "Részletesség"
-
 #: resources/ui/adw/rgbwarp.ui:55
 msgid "Brightness"
 msgstr ""
@@ -766,6 +779,194 @@ msgstr "Eltorzító hatás"
 msgid "Flash Color"
 msgstr "Villanás színe"
 
+#: resources/ui/adw/aperture-panels.ui:47
+msgid "Panel Size [px]"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:48
+msgid ""
+"Adjusted a little so that a whole number of panels fits the window exactly."
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:81
+msgid "Wave Shape"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:85
+msgid "Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:86
+msgid "Arc from a Corner"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:87
+msgid "Wavy Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:88
+msgid "Organic Diagonal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:89
+msgid "Ripple from the Center"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:90
+#: resources/ui/adw/aperture-panels.ui:115
+msgid "Random"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:109
+msgid "Flip Axis"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:113
+msgid "Vertical"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:114
+msgid "Horizontal"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:134
+msgid "Backdrop"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:135
+msgid "What is seen behind the panels as they turn."
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:139
+msgid "Wallpaper"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:140
+msgid "Black Void"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:141
+msgid "Transparent"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:160
+msgid "Border Style"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:164
+msgid "None"
+msgstr "Egyik sem"
+
+#: resources/ui/adw/aperture-panels.ui:165
+msgid "While Flipping"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:166
+msgid "Ahead of the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:167
+msgid "Behind the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:168
+msgid "Ahead of and Behind the Wave"
+msgstr ""
+
+#: resources/ui/adw/aperture-panels.ui:187
+msgid "Border Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:14
+msgid "Presets"
+msgstr "Sablonok"
+
+#: resources/ui/adw/fire.ui:129
+msgid "3D Noise"
+msgstr "3D zaj"
+
+#: resources/ui/adw/fire.ui:130
+msgid "Creates a more dynamic fire but requires more GPU power."
+msgstr "Egy dinamikusabb tüzet készít, de több GPU erőt igényel."
+
+#: resources/ui/adw/fire.ui:152
+msgid "Use Random Color"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:174
+msgid "Burn Closing Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:196
+msgid "Burn Opening Windows from Bottom to Top"
+msgstr ""
+
+#: resources/ui/adw/fire.ui:218
+msgid "Gradient"
+msgstr "Árnyalatok"
+
+#: resources/ui/adw/morph.ui:47
+msgid "Style"
+msgstr ""
+
+#: resources/ui/adw/morph.ui:48
+msgid ""
+"Liquid flow swirls the area into the window. Melt makes each image flow "
+"along its own edges."
+msgstr ""
+
+#: resources/ui/adw/morph.ui:52
+msgid "Liquid Flow"
+msgstr ""
+
+#: resources/ui/adw/morph.ui:53
+msgid "Melt"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:47
+msgid "Void Size"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:80
+msgid "Tunnel Depth"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:113
+msgid "Funnel Size"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:146
+msgid "Bounce"
+msgstr ""
+
+#: resources/ui/adw/wormhole.ui:147
+msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:47
+msgid "Number of Strips"
+msgstr ""
+
+#: resources/ui/adw/shredder.ui:113
+msgid "Rough Edges"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:47
+msgid "Number of Slats"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:80
+msgid "Delay"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:113
+msgid "Perspective"
+msgstr ""
+
+#: resources/ui/adw/venetian-blinds.ui:135
+msgid "Pull Up"
+msgstr ""
+
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
 msgstr "Honlap meglátogatása"
@@ -820,9 +1021,6 @@ msgstr "Új Profil Hozzáadása..."
 
 #~ msgid "All"
 #~ msgstr "Mind"
-
-#~ msgid "None"
-#~ msgstr "Egyik sem"
 
 #~ msgid "Effects"
 #~ msgstr "Hatások"
