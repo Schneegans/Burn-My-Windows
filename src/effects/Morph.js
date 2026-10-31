@@ -27,7 +27,8 @@ const _ = await utils.importGettext();
 //////////////////////////////////////////////////////////////////////////////////////////
 // Morph: the area where the window appears morphs into the window. Both are warped     //
 // (by a shared procedural "liquid flow" field, or each along the edges of its own      //
-// image for "melt") and cross-dissolved. Shader: resources/shaders/morph.frag.         //
+// image for "melt") and cross-dissolved, or for "pixelate" both coarsen into the same  //
+// grid of blocks that dissolve one by one. Shader: resources/shaders/morph.frag.       //
 // Uses the standard layers of LayeredEffect.js:                                        //
 //   surface = wallpaper and the windows behind, flattened by the offscreen effect and  //
 //             warped as one image (a following shader, uLayer 0)                       //

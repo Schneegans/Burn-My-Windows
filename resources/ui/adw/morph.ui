@@ -45,12 +45,13 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwComboRow" id="morph-style">
         <property name="title" translatable="yes">Style</property>
-        <property name="subtitle" translatable="yes">Liquid flow swirls the area into the window. Melt makes each image flow along its own edges.</property>
+        <property name="subtitle" translatable="yes">Liquid flow swirls the area into the window. Melt makes each image flow along its own edges. Pixelate turns the area into blocks that change color one by one into the window, then sharpen.</property>
         <property name="model">
           <object class="GtkStringList">
             <items>
               <item translatable="yes">Liquid Flow</item>
               <item translatable="yes">Melt</item>
+              <item translatable="yes">Pixelate</item>
             </items>
           </object>
         </property>
