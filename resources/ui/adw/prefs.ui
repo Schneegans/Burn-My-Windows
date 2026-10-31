@@ -102,6 +102,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
                           <item translatable="yes">Any</item>
                           <item translatable="yes">Opening Windows</item>
                           <item translatable="yes">Closing Windows</item>
+                          <item translatable="yes">Minimizing Windows</item>
+                          <item translatable="yes">Restoring Windows</item>
                         </items>
                       </object>
                     </property>

@@ -63,12 +63,13 @@ import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
-// This extensions modifies the window-close and window-open animations with all kinds  //
-// of effects. The effects are implemented using GLSL shaders which are applied to the  //
-// window's Clutter.Actor. The extension is actually very simple, much of the           //
-// complexity comes from the fact that GNOME Shell usually does not show an animation   //
-// when a window is closed in the overview. Several methods need to be monkey-patched   //
-// to get this working. For more details, read the other comments in this file...       //
+// This extensions modifies the window-open, window-close, window-minimize and         //
+// window-restore animations with all kinds of effects. The effects are implemented    //
+// using GLSL shaders which are applied to the window's Clutter.Actor. The extension   //
+// is actually very simple, much of the complexity comes from the fact that GNOME      //
+// Shell usually does not show an animation when a window is closed in the overview.   //
+// Several methods need to be monkey-patched to get this working. For more details,    //
+// read the other comments in this file...                                             //
 //////////////////////////////////////////////////////////////////////////////////////////
 
 export default class BurnMyWindows extends Extension {
@@ -221,17 +222,23 @@ export default class BurnMyWindows extends Extension {
     // was called by either _mapWindow or _destroyWindow. If so, we return true. Let's see
     // if this breaks stuff left and right...
     Main.wm._shouldAnimateActor = function(actor, types) {
-      const stack      = (new Error()).stack;
-      const forClosing = stack.includes('_destroyWindow@');
-      const forOpening = stack.includes('_mapWindow@');
+      const stack          = (new Error()).stack;
+      const forClosing     = stack.includes('_destroyWindow@');
+      const forOpening     = stack.includes('_mapWindow@');
+      const forMinimizing  = stack.includes('_minimizeWindow@');
+      const forRestoring   = stack.includes('_unminimizeWindow@');
 
-      // This is also called in other cases, for instance when minimizing windows. We are
-      // only interested in window opening and window closing for now.
-      if (forClosing || forOpening) {
+      // This is also called in other cases, for instance when a window is resized. We
+      // are only interested in window opening, closing, minimizing and restoring now.
+      if (forClosing || forOpening || forMinimizing || forRestoring) {
+
+        // The numbers match the indices of the "profile-animation-type" Gtk.StringList
+        // defined in resources/ui/adw/prefs.ui.
+        const animationType = forOpening ? 1 : forClosing ? 2 : forMinimizing ? 3 : 4;
 
         // If there is an applicable effect profile, we intercept the ease() method to
         // setup our own effect.
-        const chosenEffect = extensionThis._chooseEffect(actor, forOpening);
+        const chosenEffect = extensionThis._chooseEffect(actor, animationType);
 
         if (chosenEffect) {
           // Store the original ease() method of the actor.
@@ -245,20 +252,25 @@ export default class BurnMyWindows extends Extension {
             // _mapWindow() method is called asynchronously, the window is not yet visible
             // when the resize happens. Hence, our ease-override is called for the resize
             // animation instead of the window-open or window-close animation. This is not
-            // what we want. So we check again whether the ease() call is for the
-            // window-open or window-close animation. If not, we just call the original
-            // ease() method. See also:
+            // what we want. So we check again whether the ease() call is for one of the
+            // animations we support. If not, we just call the original ease() method. See
+            // also:
             // https://github.com/Schneegans/Burn-My-Windows/issues/335
-            const stack      = (new Error()).stack;
-            const forClosing = stack.includes('_destroyWindow@');
-            const forOpening = stack.includes('_mapWindow@');
+            const stack          = (new Error()).stack;
+            const forClosing     = stack.includes('_destroyWindow@');
+            const forOpening     = stack.includes('_mapWindow@');
+            const forMinimizing  = stack.includes('_minimizeWindow@');
+            const forRestoring   = stack.includes('_unminimizeWindow@');
 
-            if (forClosing || forOpening) {
+            if (forClosing || forOpening || forMinimizing || forRestoring) {
+              const animationType =
+                forOpening ? 1 : forClosing ? 2 : forMinimizing ? 3 : 4;
+
               // Quickly restore the original behavior. Nobody noticed, I guess :D
               actor.ease = orig;
 
               // And then create the effect!
-              extensionThis._setupEffect(actor, forOpening, chosenEffect.effect,
+              extensionThis._setupEffect(actor, animationType, chosenEffect.effect,
                                          chosenEffect.profile);
             } else {
               orig.apply(this, params);
@@ -454,8 +466,9 @@ export default class BurnMyWindows extends Extension {
 
   // This method selects an effect profile matching the current circumstances. Then a
   // random effect from its enabled effects will be selected. It returns null if no
-  // profile is currently applicable.
-  _chooseEffect(actor, forOpening) {
+  // profile is currently applicable. The animationType is 1 for opening, 2 for closing,
+  // 3 for minimizing and 4 for restoring windows.
+  _chooseEffect(actor, animationType) {
 
     // For now, we only add effects to normal windows and dialog windows.
     const isNormalWindow = actor.meta_window.window_type == Meta.WindowType.NORMAL;
@@ -486,7 +499,7 @@ export default class BurnMyWindows extends Extension {
       profile = this._profiles.find(p => p.path == activeProfile);
 
       // Only preview the effect until the preview window is closed.
-      if (!profile || !forOpening) {
+      if (!profile || animationType != 1) {
         this._settings.set_string('preview-effect', '');
       }
     }
@@ -495,10 +508,9 @@ export default class BurnMyWindows extends Extension {
     // effect.
     else {
 
-      // These numbers match the indices in the Gtk.StringLists defined in the UI files
-      // (e.g. resources/ui/adw/prefs.ui).
-      const animationType = forOpening ? 1 : 2;
-      const windowType    = isNormalWindow ? 1 : 2;
+      // The animationType is already one of the indices used in the Gtk.StringLists
+      // defined in the UI files (e.g. resources/ui/adw/prefs.ui).
+      const windowType  = isNormalWindow ? 1 : 2;
       const powerMode     = this._upowerProxy.OnBattery ? 1 : 2;
 
       // Get the first profile whose constraints match the circumstances. The list is
@@ -598,8 +610,13 @@ export default class BurnMyWindows extends Extension {
   }
 
   // This method adds the given effect using the settings from the given profile to the
-  // given actor.
-  _setupEffect(actor, forOpening, effect, profile) {
+  // given actor. The animationType is 1 for opening, 2 for closing, 3 for minimizing and
+  // 4 for restoring windows.
+  _setupEffect(actor, animationType, effect, profile) {
+
+    // For the shaders, restoring a window behaves like opening it (the window fades in)
+    // and minimizing behaves like closing it (the window fades out).
+    const forOpening = animationType == 1 || animationType == 4;
 
     // There is the weird case where an animation is already ongoing. This happens when a
     // window is closed which has been created before the session was started (e.g. when
@@ -612,6 +629,15 @@ export default class BurnMyWindows extends Extension {
     // If we are currently performing integration test, all animations are set to a fixed
     // duration and show a fixed frame from the middle of the animation.
     const testMode = this._settings.get_boolean('test-mode');
+
+    // When restoring a minimized window, GNOME Shell has already moved the actor to the
+    // position of the taskbar icon and scaled it down before calling ease(). As we
+    // intercept that ease() call, we have to put the actor back to its normal position
+    // first.
+    if (animationType == 4) {
+      const rect = actor.meta_window.get_buffer_rect();
+      actor.set_position(rect.x, rect.y);
+    }
 
     // The following is used to tweak the ongoing transitions of a window actor. Usually
     // windows are faded in / out scaled up / down slightly by GNOME Shell. Here, we tweak
@@ -686,11 +712,15 @@ export default class BurnMyWindows extends Extension {
       // Finally, once the animation is done or interrupted, we call the methods which
       // should have been called by the original ease() methods.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
-      if (forOpening) {
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558
+      if (animationType == 1) {
         Main.wm._mapWindowDone(global.window_manager, actor);
-      } else {
+      } else if (animationType == 2) {
         Main.wm._destroyWindowDone(global.window_manager, actor);
+      } else if (animationType == 3) {
+        Main.wm._minimizeWindowDone(global.window_manager, actor);
+      } else {
+        Main.wm._unminimizeWindowDone(global.window_manager, actor);
       }
     });
 

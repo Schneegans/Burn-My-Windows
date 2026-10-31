@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 - **Two more new effects: Venetian Blinds and Shredder!** Venetian Blinds splits the window into slats which turn shut one after another, and Shredder cuts it into strips which fall away. The number of slats or strips and the timing are configurable. Thanks to [@idogrf](https://github.com/idogrf) for these contributions!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
+- **Effects can now be applied to minimizing and restoring windows as well!** The "Animation Type" setting of each effect profile now also supports "Minimizing Windows" and "Restoring Windows", so all existing effects can be used when a window is sent to or brought back from the taskbar. This implements the long-requested feature [#83](https://github.com/Schneegans/Burn-My-Windows/issues/83).
 
 #### Bug Fixes
 
