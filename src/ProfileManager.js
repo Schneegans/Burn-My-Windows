@@ -136,7 +136,13 @@ export class ProfileManager {
 
     // Each other setting which is not set to its default value increases the priority by
     // one.
-    if (settings.get_int('profile-animation-type') > 0) ++priority;
+    // If the profile is restricted to a subset of the animation types, it is more
+    // specific than one which matches all of them.
+    const matchesAllAnimationTypes = settings.get_boolean('profile-opening-animation') &&
+      settings.get_boolean('profile-closing-animation') &&
+      settings.get_boolean('profile-minimizing-animation') &&
+      settings.get_boolean('profile-restoring-animation');
+    if (!matchesAllAnimationTypes) ++priority;
     if (settings.get_int('profile-window-type') > 0) ++priority;
     if (settings.get_int('profile-color-scheme') > 0) ++priority;
     if (settings.get_int('profile-power-mode') > 0) ++priority;

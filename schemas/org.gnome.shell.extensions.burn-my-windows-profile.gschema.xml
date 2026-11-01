@@ -19,11 +19,28 @@ SPDX-License-Identifier: CC0-1.0
       <description>The application name for which the current effect settings should be used.</description>
     </key>
 
-    <key name="profile-animation-type" type="i">
-      <default>0</default>
-      <range min="0" max="2" />
-      <summary>Profile Animation Type</summary>
-      <description>The animation types for which the current effect settings should be used.</description>
+    <key name="profile-opening-animation" type="b">
+      <default>true</default>
+      <summary>Profile Opening Animation</summary>
+      <description>Use the current effect settings when a window is opened.</description>
+    </key>
+
+    <key name="profile-closing-animation" type="b">
+      <default>true</default>
+      <summary>Profile Closing Animation</summary>
+      <description>Use the current effect settings when a window is closed.</description>
+    </key>
+
+    <key name="profile-minimizing-animation" type="b">
+      <default>true</default>
+      <summary>Profile Minimizing Animation</summary>
+      <description>Use the current effect settings when a window is minimized.</description>
+    </key>
+
+    <key name="profile-restoring-animation" type="b">
+      <default>true</default>
+      <summary>Profile Restoring Animation</summary>
+      <description>Use the current effect settings when a window is restored from the taskbar.</description>
     </key>
 
     <key name="profile-window-type" type="i">

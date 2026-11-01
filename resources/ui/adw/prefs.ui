@@ -94,17 +94,62 @@ SPDX-License-Identifier: GPL-3.0-or-later
                 </child>
 
                 <child>
-                  <object class="AdwComboRow" id="profile-animation-type">
+                  <object class="AdwPreferencesGroup">
                     <property name="title" translatable="yes">Animation Type</property>
-                    <property name="model">
-                      <object class="GtkStringList">
-                        <items>
-                          <item translatable="yes">Any</item>
-                          <item translatable="yes">Opening Windows</item>
-                          <item translatable="yes">Closing Windows</item>
-                        </items>
+                    <child>
+                      <object class="AdwActionRow">
+                        <child>
+                          <object class="GtkBox">
+                            <property name="valign">center</property>
+                            <property name="spacing">12</property>
+
+                            <child>
+                              <object class="GtkSwitch" id="profile-opening-animation">
+                                <property name="valign">center</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Opening</property>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkSwitch" id="profile-closing-animation">
+                                <property name="valign">center</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Closing</property>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkSwitch" id="profile-minimizing-animation">
+                                <property name="valign">center</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Minimizing</property>
+                              </object>
+                            </child>
+
+                            <child>
+                              <object class="GtkSwitch" id="profile-restoring-animation">
+                                <property name="valign">center</property>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Restoring</property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
                       </object>
-                    </property>
+                    </child>
                   </object>
                 </child>
 
