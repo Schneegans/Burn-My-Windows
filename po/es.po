@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Burn-My-Windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-19 13:18+0300\n"
-"PO-Revision-Date: 2026-01-03 23:01+0000\n"
-"Last-Translator: Reyzer <reyzervt@gmail.com>\n"
+"PO-Revision-Date: 2026-11-03 19:51+0000\n"
+"Last-Translator: fserrador <fserrador@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/es/>\n"
 "Language: es\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 2026.11.1.dev0\n"
 
 #: src/effects/AperturePanels.js:153
 msgid "Aperture Panels"
-msgstr ""
+msgstr "Paneles de Apertura"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -97,7 +97,7 @@ msgstr "Incinerar"
 
 #: src/effects/Materialize.js:128
 msgid "Materialize"
-msgstr ""
+msgstr "Materializar"
 
 #: src/effects/Matrix.js:101
 msgid "Matrix"
@@ -105,7 +105,7 @@ msgstr "Matrix"
 
 #: src/effects/Morph.js:118
 msgid "Morph"
-msgstr ""
+msgstr "Morfosis"
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -113,11 +113,11 @@ msgstr "Champiñon"
 
 #: src/effects/Mushroom.js:199
 msgid "8Bit Plumber"
-msgstr "Plumber de 8Bits"
+msgstr "Fontanero de 8-Bit"
 
 #: src/effects/Mushroom.js:216
 msgid "New Bros 2 🍄"
-msgstr "New Bros 2 🍄"
+msgstr "Hermano 2 nuevo 🍄"
 
 #: src/effects/Mushroom.js:234
 msgid "Red White and Blue 🇺🇸"
@@ -133,7 +133,7 @@ msgstr "Gattuchinno 😺"
 
 #: src/effects/Mushroom.js:286
 msgid "Dracula 🦇"
-msgstr "Dracula 🦇"
+msgstr "Drácula 🦇"
 
 #: src/effects/Mushroom.js:303
 msgid "Sparkle ✨"
@@ -149,11 +149,11 @@ msgstr "Pixelado"
 
 #: src/effects/PixelWheel.js:74
 msgid "Pixel Wheel"
-msgstr "Rueda de píxeles"
+msgstr "Rueda de pixel"
 
 #: src/effects/PixelWipe.js:100
 msgid "Pixel Wipe"
-msgstr "Limpieza de píxeles"
+msgstr "Purga de pixel"
 
 #: src/effects/Portal.js:82
 msgid "Portal"
@@ -161,11 +161,11 @@ msgstr "Portal"
 
 #: src/effects/RGBWarp.js:77
 msgid "RGB Warp"
-msgstr "Warp RGB"
+msgstr "Sesgo RGB"
 
 #: src/effects/Shredder.js:84
 msgid "Shredder"
-msgstr ""
+msgstr "Desfibradora"
 
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
@@ -189,7 +189,7 @@ msgstr "Fallos visuales de la televisión"
 
 #: src/effects/VenetianBlinds.js:79
 msgid "Venetian Blinds"
-msgstr ""
+msgstr "Persianas venecianas"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
@@ -197,7 +197,7 @@ msgstr "Chispas"
 
 #: src/effects/Wormhole.js:132
 msgid "Wormhole"
-msgstr ""
+msgstr "Agujero de gusano"
 
 #: prefs.js:263
 msgid "Preview this effect"
@@ -554,19 +554,19 @@ msgstr "Si se desactiva, se elegirá una posición aleatoria."
 
 #: resources/ui/adw/materialize.ui:47
 msgid "Start Scale"
-msgstr ""
+msgstr "Escala inicial"
 
 #: resources/ui/adw/materialize.ui:80
 msgid "Steps"
-msgstr ""
+msgstr "Pasos"
 
 #: resources/ui/adw/materialize.ui:81
 msgid "Zero gives a smooth animation."
-msgstr ""
+msgstr "Cero proporciona una animación fluida."
 
 #: resources/ui/adw/materialize.ui:114
 msgid "Use System Accent Color"
-msgstr ""
+msgstr "Utilice el color de acento del sistema"
 
 #: resources/ui/adw/matrix.ui:113
 msgid "Vertical Overshooting"
@@ -610,7 +610,7 @@ msgstr "Color del Destello"
 
 #: resources/ui/adw/mushroom.ui:222
 msgid "Rays Color"
-msgstr "Color de los Rayos"
+msgstr "Color de Rayos"
 
 #: resources/ui/adw/mushroom.ui:256
 msgid "Star Rings Count"
@@ -780,77 +780,79 @@ msgstr "Color del flash"
 
 #: resources/ui/adw/aperture-panels.ui:47
 msgid "Panel Size [px]"
-msgstr ""
+msgstr "Tamaño del panel [px]"
 
 #: resources/ui/adw/aperture-panels.ui:48
 msgid ""
 "Adjusted a little so that a whole number of panels fits the window exactly."
 msgstr ""
+"Se ajustó ligeramente para que un número entero de paneles encajara "
+"perfectamente en la ventana."
 
 #: resources/ui/adw/aperture-panels.ui:81
 msgid "Wave Shape"
-msgstr ""
+msgstr "Forma de onda"
 
 #: resources/ui/adw/aperture-panels.ui:85
 msgid "Diagonal"
-msgstr ""
+msgstr "Diagonal"
 
 #: resources/ui/adw/aperture-panels.ui:86
 msgid "Arc from a Corner"
-msgstr ""
+msgstr "Arco desde una esquina"
 
 #: resources/ui/adw/aperture-panels.ui:87
 msgid "Wavy Diagonal"
-msgstr ""
+msgstr "Diagonal ondulado"
 
 #: resources/ui/adw/aperture-panels.ui:88
 msgid "Organic Diagonal"
-msgstr ""
+msgstr "Diagonal orgánico"
 
 #: resources/ui/adw/aperture-panels.ui:89
 msgid "Ripple from the Center"
-msgstr ""
+msgstr "Ondulación desde el centro"
 
 #: resources/ui/adw/aperture-panels.ui:90
 #: resources/ui/adw/aperture-panels.ui:115
 msgid "Random"
-msgstr ""
+msgstr "Aleatorio"
 
 #: resources/ui/adw/aperture-panels.ui:109
 msgid "Flip Axis"
-msgstr ""
+msgstr "Invertir eje"
 
 #: resources/ui/adw/aperture-panels.ui:113
 msgid "Vertical"
-msgstr ""
+msgstr "Vertical"
 
 #: resources/ui/adw/aperture-panels.ui:114
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontal"
 
 #: resources/ui/adw/aperture-panels.ui:134
 msgid "Backdrop"
-msgstr ""
+msgstr "Telón de foro"
 
 #: resources/ui/adw/aperture-panels.ui:135
 msgid "What is seen behind the panels as they turn."
-msgstr ""
+msgstr "Lo que se ve detrás de los paneles al girar."
 
 #: resources/ui/adw/aperture-panels.ui:139
 msgid "Wallpaper"
-msgstr ""
+msgstr "Papel pintado"
 
 #: resources/ui/adw/aperture-panels.ui:140
 msgid "Black Void"
-msgstr ""
+msgstr "Vacío Negro"
 
 #: resources/ui/adw/aperture-panels.ui:141
 msgid "Transparent"
-msgstr ""
+msgstr "Transparente"
 
 #: resources/ui/adw/aperture-panels.ui:160
 msgid "Border Style"
-msgstr ""
+msgstr "Estilo de borde"
 
 #: resources/ui/adw/aperture-panels.ui:164
 msgid "None"
@@ -858,23 +860,23 @@ msgstr "Ninguno"
 
 #: resources/ui/adw/aperture-panels.ui:165
 msgid "While Flipping"
-msgstr ""
+msgstr "Mientras voltea"
 
 #: resources/ui/adw/aperture-panels.ui:166
 msgid "Ahead of the Wave"
-msgstr ""
+msgstr "Adelantándose a la ola"
 
 #: resources/ui/adw/aperture-panels.ui:167
 msgid "Behind the Wave"
-msgstr ""
+msgstr "Detrás de la ola"
 
 #: resources/ui/adw/aperture-panels.ui:168
 msgid "Ahead of and Behind the Wave"
-msgstr ""
+msgstr "Por delante y por detrás de la ola"
 
 #: resources/ui/adw/aperture-panels.ui:187
 msgid "Border Color"
-msgstr ""
+msgstr "Color del borde"
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
@@ -890,81 +892,84 @@ msgstr "Crea un fuego más dinámico pero requiere más potencia de la GPU."
 
 #: resources/ui/adw/fire.ui:152
 msgid "Use Random Color"
-msgstr ""
+msgstr "Usar color aleatorio"
 
 #: resources/ui/adw/fire.ui:174
 msgid "Burn Closing Windows from Bottom to Top"
-msgstr ""
+msgstr "Quemar ventanas cerrándolas de abajo hacia arriba"
 
 #: resources/ui/adw/fire.ui:196
 msgid "Burn Opening Windows from Bottom to Top"
-msgstr ""
+msgstr "Quemar ventanas abriéndolas de abajo hacia arriba"
 
 #: resources/ui/adw/fire.ui:218
 msgid "Gradient"
-msgstr "Degradado"
+msgstr "Gradiente"
 
 #: resources/ui/adw/morph.ui:47
 msgid "Style"
-msgstr ""
+msgstr "Estilo"
 
 #: resources/ui/adw/morph.ui:48
 msgid ""
 "Liquid flow swirls the area into the window. Melt makes each image flow "
 "along its own edges."
 msgstr ""
+"El flujo líquido arremolina la zona hacia la ventana. El efecto de fusión "
+"hace que cada imagen fluya a lo largo de sus propios bordes."
 
 #: resources/ui/adw/morph.ui:52
 msgid "Liquid Flow"
-msgstr ""
+msgstr "Flujo de líquido"
 
 #: resources/ui/adw/morph.ui:53
 msgid "Melt"
-msgstr ""
+msgstr "Derretir"
 
 #: resources/ui/adw/wormhole.ui:47
 msgid "Void Size"
-msgstr ""
+msgstr "Tamaño del vacío"
 
 #: resources/ui/adw/wormhole.ui:80
 msgid "Tunnel Depth"
-msgstr ""
+msgstr "Profundidad del túnel"
 
 #: resources/ui/adw/wormhole.ui:113
 msgid "Funnel Size"
-msgstr ""
+msgstr "Tamaño del embudo"
 
 #: resources/ui/adw/wormhole.ui:146
 msgid "Bounce"
-msgstr ""
+msgstr "Rebote"
 
 #: resources/ui/adw/wormhole.ui:147
 msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
 msgstr ""
+"Cuánto rebota el escritorio cuando se aplica el efecto (0 = sin rebote)."
 
 #: resources/ui/adw/shredder.ui:47
 msgid "Number of Strips"
-msgstr ""
+msgstr "Número de tiras"
 
 #: resources/ui/adw/shredder.ui:113
 msgid "Rough Edges"
-msgstr ""
+msgstr "Bordes ásperos"
 
 #: resources/ui/adw/venetian-blinds.ui:47
 msgid "Number of Slats"
-msgstr ""
+msgstr "Número de listones"
 
 #: resources/ui/adw/venetian-blinds.ui:80
 msgid "Delay"
-msgstr ""
+msgstr "Retraso"
 
 #: resources/ui/adw/venetian-blinds.ui:113
 msgid "Perspective"
-msgstr ""
+msgstr "Perspectiva"
 
 #: resources/ui/adw/venetian-blinds.ui:135
 msgid "Pull Up"
-msgstr ""
+msgstr "Levantar"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
@@ -984,7 +989,7 @@ msgstr "Donar"
 
 #: resources/ui/common/menus.ui:50
 msgid "Report a Bug"
-msgstr "Informar de un error"
+msgstr "Informe de un fallo"
 
 #: resources/ui/common/menus.ui:54
 msgid "Create an Effect"
@@ -1004,7 +1009,7 @@ msgstr "Acerca de Burn-My-Windows"
 
 #: resources/ui/common/menus.ui:81
 msgid "Add New Profile..."
-msgstr "Añadir nuevo perfil..."
+msgstr "Añadir perfil nuevo..."
 
 #~ msgid "Gold Sponsors"
 #~ msgstr "Patrocinadores Oro"
