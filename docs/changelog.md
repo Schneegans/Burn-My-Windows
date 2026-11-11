@@ -16,6 +16,7 @@ SPDX-License-Identifier: CC-BY-4.0
 - **Two more new effects: Venetian Blinds and Shredder!** Venetian Blinds splits the window into slats which turn shut one after another, and Shredder cuts it into strips which fall away. The number of slats or strips and the timing are configurable. Thanks to [@idogrf](https://github.com/idogrf) for these contributions!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
+- The KWin version now allows configuring each effect to trigger on window open only, close only, or both.
 
 #### Bug Fixes
 

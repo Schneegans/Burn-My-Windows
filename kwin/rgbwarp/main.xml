@@ -23,5 +23,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <entry name="SpeedB" type="Double">
       <default>0.8</default>
     </entry>
+      <entry name="ApplyEffectsOn" type="Int">
+      <default>2</default>
+    </entry>
   </group>
 </kcfg>
