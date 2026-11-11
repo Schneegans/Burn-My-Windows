@@ -72,6 +72,7 @@ class %EFFECT_CLASS% {
     // are changed by the user.
     loadConfig() {
         this.duration = animationTime(effect.readConfig('Duration', 1000));
+        this.applyEffectsOn = effect.readConfig('ApplyEffectsOn', 2);
 
         %ON_SETTINGS_CHANGE%
     }
@@ -137,6 +138,9 @@ class %EFFECT_CLASS% {
     }
 
     slotWindowAdded(window) {
+        if (this.applyEffectsOn === 1) {
+            return;
+        }
         if (effects.hasActiveFullScreenEffect) {
             return;
         }
@@ -173,6 +177,9 @@ class %EFFECT_CLASS% {
     }
 
     slotWindowClosed(window) {
+        if (this.applyEffectsOn === 0) {
+            return;
+        }
         if (effects.hasActiveFullScreenEffect) {
             return;
         }

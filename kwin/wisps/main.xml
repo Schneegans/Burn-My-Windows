@@ -23,5 +23,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <entry name="Color3" type="Color">
       <default>#64c8ff</default>
     </entry>
+      <entry name="ApplyEffectsOn" type="Int">
+      <default>2</default>
+    </entry>
   </group>
 </kcfg>
