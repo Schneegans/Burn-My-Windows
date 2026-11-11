@@ -141,7 +141,41 @@ SPDX-License-Identifier: GPL-3.0-or-later
      </property>
     </widget>
    </item>
-  </layout>
+  
+            <item row="5" column="0">
+                <widget class="QLabel" name="label_ApplyEffectsOn">
+                    <property name="text">
+                        <string>Apply effects on</string>
+                    </property>
+                    <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                    </property>
+                </widget>
+            </item>
+            <item row="5" column="1">
+                <widget class="QComboBox" name="kcfg_ApplyEffectsOn">
+                                        <property name="currentIndex">
+                        <number>2</number>
+                    </property>
+<item>
+                        <property name="text">
+                            <string>Open only</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Close only</string>
+                        </property>
+                    </item>
+                    <item>
+                        <property name="text">
+                            <string>Open and Close</string>
+                        </property>
+                    </item>
+                </widget>
+            </item>
+
+        </layout>
  </widget>
  <resources/>
  <connections/>

@@ -32,5 +32,8 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <entry name="BlurAmount" type="Double">
       <default>15.0</default>
     </entry>
+      <entry name="ApplyEffectsOn" type="Int">
+      <default>2</default>
+    </entry>
   </group>
 </kcfg>
