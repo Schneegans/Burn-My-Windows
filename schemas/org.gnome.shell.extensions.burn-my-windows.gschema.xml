@@ -25,6 +25,12 @@ SPDX-License-Identifier: CC0-1.0
       <description>The effect with this nick will be used for the next window animation.</description>
     </key>
 
+    <key name="animate-minimize" type="b">
+      <default>false</default>
+      <summary>Animate Minimizing and Restoring</summary>
+      <description>If set to true, the selected effects are also used when windows are minimized (like closing) and restored (like opening).</description>
+    </key>
+
     <key name="test-mode" type="b">
       <default>false</default>
       <summary>Test Mode</summary>

@@ -71,6 +71,28 @@ import {Extension} from 'resource:///org/gnome/shell/extensions/extension.js';
 // to get this working. For more details, read the other comments in this file...       //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// Determines which kind of window animation a stack trace belongs to. Minimizing is
+// treated like closing and restoring like opening, but only if the user enabled
+// 'animate-minimize'. The returned 'kind' is later used to call the matching *Done()
+// method of the window manager.
+function getAnimationKind(stack, settings) {
+  if (stack.includes('_destroyWindow@')) {
+    return {kind: 'close', forOpening: false, forClosing: true};
+  }
+  if (stack.includes('_mapWindow@')) {
+    return {kind: 'open', forOpening: true, forClosing: false};
+  }
+  if (settings.get_boolean('animate-minimize')) {
+    if (stack.includes('_minimizeWindow@')) {
+      return {kind: 'minimize', forOpening: false, forClosing: true};
+    }
+    if (stack.includes('_unminimizeWindow@')) {
+      return {kind: 'unminimize', forOpening: true, forClosing: false};
+    }
+  }
+  return {kind: null, forOpening: false, forClosing: false};
+}
+
 export default class BurnMyWindows extends Extension {
 
   // ------------------------------------------------------------------------ public stuff
@@ -221,12 +243,12 @@ export default class BurnMyWindows extends Extension {
     // was called by either _mapWindow or _destroyWindow. If so, we return true. Let's see
     // if this breaks stuff left and right...
     Main.wm._shouldAnimateActor = function(actor, types) {
-      const stack      = (new Error()).stack;
-      const forClosing = stack.includes('_destroyWindow@');
-      const forOpening = stack.includes('_mapWindow@');
+      const stack = (new Error()).stack;
+      const {forOpening, forClosing} = getAnimationKind(stack, extensionThis._settings);
 
-      // This is also called in other cases, for instance when minimizing windows. We are
-      // only interested in window opening and window closing for now.
+      // This is also called in other cases, for instance when moving windows. We are
+      // only interested in window opening and closing (and, if enabled, minimizing and
+      // restoring) for now.
       if (forClosing || forOpening) {
 
         // If there is an applicable effect profile, we intercept the ease() method to
@@ -249,9 +271,9 @@ export default class BurnMyWindows extends Extension {
             // window-open or window-close animation. If not, we just call the original
             // ease() method. See also:
             // https://github.com/Schneegans/Burn-My-Windows/issues/335
-            const stack      = (new Error()).stack;
-            const forClosing = stack.includes('_destroyWindow@');
-            const forOpening = stack.includes('_mapWindow@');
+            const stack = (new Error()).stack;
+            const {kind, forOpening, forClosing} =
+              getAnimationKind(stack, extensionThis._settings);
 
             if (forClosing || forOpening) {
               // Quickly restore the original behavior. Nobody noticed, I guess :D
@@ -259,7 +281,7 @@ export default class BurnMyWindows extends Extension {
 
               // And then create the effect!
               extensionThis._setupEffect(actor, forOpening, chosenEffect.effect,
-                                         chosenEffect.profile);
+                                         chosenEffect.profile, kind);
             } else {
               orig.apply(this, params);
             }
@@ -599,7 +621,7 @@ export default class BurnMyWindows extends Extension {
 
   // This method adds the given effect using the settings from the given profile to the
   // given actor.
-  _setupEffect(actor, forOpening, effect, profile) {
+  _setupEffect(actor, forOpening, effect, profile, kind) {
 
     // There is the weird case where an animation is already ongoing. This happens when a
     // window is closed which has been created before the session was started (e.g. when
@@ -687,7 +709,11 @@ export default class BurnMyWindows extends Extension {
       // should have been called by the original ease() methods.
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1487
       // https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/ui/windowManager.js#L1558.
-      if (forOpening) {
+      if (kind === 'unminimize') {
+        Main.wm._unminimizeWindowDone(global.window_manager, actor);
+      } else if (kind === 'minimize') {
+        Main.wm._minimizeWindowDone(global.window_manager, actor);
+      } else if (forOpening) {
         Main.wm._mapWindowDone(global.window_manager, actor);
       } else {
         Main.wm._destroyWindowDone(global.window_manager, actor);

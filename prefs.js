@@ -181,6 +181,10 @@ export default class BurnMyWindowsPreferences extends ExtensionPreferences {
     // This is our top-level widget which we will return later.
     this._widget = this._builder.get_object('general-prefs');
 
+    // Bind the switch which enables the effects for minimizing and restoring windows.
+    this._settings.bind('animate-minimize', this._builder.get_object('animate-minimize'),
+                        'active', Gio.SettingsBindFlags.DEFAULT);
+
     // Add the functionality to the choose-all and choose-none buttons.
     this._builder.get_object('choose-all-effects-button').connect('clicked', () => {
       this._ALL_EFFECTS.forEach(effect => {

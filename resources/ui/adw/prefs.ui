@@ -220,6 +220,27 @@ SPDX-License-Identifier: GPL-3.0-or-later
     <child>
       <object class="AdwPreferencesGroup">
         <property name="margin-top">10</property>
+
+        <child>
+          <object class="AdwActionRow">
+            <property name="title" translatable="yes">Minimize and Restore</property>
+            <property name="subtitle" translatable="yes">Also use the effects when windows are minimized or restored.</property>
+            <property name="subtitle-lines">1</property>
+            <property name="activatable-widget">animate-minimize</property>
+            <child>
+              <object class="GtkSwitch" id="animate-minimize">
+                <property name="valign">center</property>
+              </object>
+            </child>
+          </object>
+        </child>
+
+      </object>
+    </child>
+
+    <child>
+      <object class="AdwPreferencesGroup">
+        <property name="margin-top">10</property>
         <property name="title" translatable="yes">Effect Selection</property>
         <property name="description" translatable="yes">If multiple are selected, one is chosen randomly.</property>
 
