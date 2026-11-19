@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-19 13:18+0300\n"
-"PO-Revision-Date: 2026-10-15 09:51+0000\n"
+"PO-Revision-Date: 2026-11-19 23:00+0000\n"
 "Last-Translator: bittin1ddc447d824349b2 "
 "<bittin1ddc447d824349b2@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/burn-my-windows/"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #: src/effects/AperturePanels.js:153
 msgid "Aperture Panels"
-msgstr ""
+msgstr "Bländarpaneler"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -106,7 +106,7 @@ msgstr "Matris"
 
 #: src/effects/Morph.js:118
 msgid "Morph"
-msgstr ""
+msgstr "Morphing"
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -166,7 +166,7 @@ msgstr "RGB-förvrängning"
 
 #: src/effects/Shredder.js:84
 msgid "Shredder"
-msgstr ""
+msgstr "Dokumentförstörare"
 
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
@@ -190,7 +190,7 @@ msgstr "TV-glitch"
 
 #: src/effects/VenetianBlinds.js:79
 msgid "Venetian Blinds"
-msgstr ""
+msgstr "Persienner"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
@@ -198,7 +198,7 @@ msgstr "Feer"
 
 #: src/effects/Wormhole.js:132
 msgid "Wormhole"
-msgstr ""
+msgstr "Maskhål"
 
 #: prefs.js:263
 msgid "Preview this effect"
@@ -781,101 +781,102 @@ msgstr "Färg för bränningen"
 
 #: resources/ui/adw/aperture-panels.ui:47
 msgid "Panel Size [px]"
-msgstr ""
+msgstr "Panel storlek [px]"
 
 #: resources/ui/adw/aperture-panels.ui:48
 msgid ""
 "Adjusted a little so that a whole number of panels fits the window exactly."
 msgstr ""
+"Justerades lite så att ett helt antal paneler får plats exakt i fönstret."
 
 #: resources/ui/adw/aperture-panels.ui:81
 msgid "Wave Shape"
-msgstr ""
+msgstr "Vågform"
 
 #: resources/ui/adw/aperture-panels.ui:85
 msgid "Diagonal"
-msgstr ""
+msgstr "Diagonal"
 
 #: resources/ui/adw/aperture-panels.ui:86
 msgid "Arc from a Corner"
-msgstr ""
+msgstr "Båge från ett hörn"
 
 #: resources/ui/adw/aperture-panels.ui:87
 msgid "Wavy Diagonal"
-msgstr ""
+msgstr "Vågformad diagonal"
 
 #: resources/ui/adw/aperture-panels.ui:88
 msgid "Organic Diagonal"
-msgstr ""
+msgstr "Organisk diagonal"
 
 #: resources/ui/adw/aperture-panels.ui:89
 msgid "Ripple from the Center"
-msgstr ""
+msgstr "Rippel från mitten"
 
 #: resources/ui/adw/aperture-panels.ui:90
 #: resources/ui/adw/aperture-panels.ui:115
 msgid "Random"
-msgstr ""
+msgstr "Slumpmässig"
 
 #: resources/ui/adw/aperture-panels.ui:109
 msgid "Flip Axis"
-msgstr ""
+msgstr "Vänd axel"
 
 #: resources/ui/adw/aperture-panels.ui:113
 msgid "Vertical"
-msgstr ""
+msgstr "Vertikal"
 
 #: resources/ui/adw/aperture-panels.ui:114
 msgid "Horizontal"
-msgstr ""
+msgstr "Horisontell"
 
 #: resources/ui/adw/aperture-panels.ui:134
 msgid "Backdrop"
-msgstr ""
+msgstr "Bakgrund"
 
 #: resources/ui/adw/aperture-panels.ui:135
 msgid "What is seen behind the panels as they turn."
-msgstr ""
+msgstr "Vad som syns bakom panelerna när de vrids."
 
 #: resources/ui/adw/aperture-panels.ui:139
 msgid "Wallpaper"
-msgstr ""
+msgstr "Bakgrundsbild"
 
 #: resources/ui/adw/aperture-panels.ui:140
 msgid "Black Void"
-msgstr ""
+msgstr "Svart tomrum"
 
 #: resources/ui/adw/aperture-panels.ui:141
 msgid "Transparent"
-msgstr ""
+msgstr "Transparent"
 
 #: resources/ui/adw/aperture-panels.ui:160
 msgid "Border Style"
-msgstr ""
+msgstr "Kantstil"
 
 #: resources/ui/adw/aperture-panels.ui:164
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: resources/ui/adw/aperture-panels.ui:165
 msgid "While Flipping"
-msgstr ""
+msgstr "Medan man vänder"
 
 #: resources/ui/adw/aperture-panels.ui:166
 msgid "Ahead of the Wave"
-msgstr ""
+msgstr "Framför vågen"
 
 #: resources/ui/adw/aperture-panels.ui:167
 msgid "Behind the Wave"
-msgstr ""
+msgstr "Bakom vågen"
 
 #: resources/ui/adw/aperture-panels.ui:168
 msgid "Ahead of and Behind the Wave"
-msgstr ""
+msgstr "Framför och bakom vågen"
 
 #: resources/ui/adw/aperture-panels.ui:187
 msgid "Border Color"
-msgstr ""
+msgstr "Kantfärg"
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
@@ -907,65 +908,67 @@ msgstr "Gradient"
 
 #: resources/ui/adw/morph.ui:47
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: resources/ui/adw/morph.ui:48
 msgid ""
 "Liquid flow swirls the area into the window. Melt makes each image flow "
 "along its own edges."
 msgstr ""
+"Vätskeflöde virvlar in området mot fönstret. Smälter och får varje bild att "
+"flyta längs sina egna kanter."
 
 #: resources/ui/adw/morph.ui:52
 msgid "Liquid Flow"
-msgstr ""
+msgstr "Vätskeflöde"
 
 #: resources/ui/adw/morph.ui:53
 msgid "Melt"
-msgstr ""
+msgstr "Smälta"
 
 #: resources/ui/adw/wormhole.ui:47
 msgid "Void Size"
-msgstr ""
+msgstr "Tomrumsstorlek"
 
 #: resources/ui/adw/wormhole.ui:80
 msgid "Tunnel Depth"
-msgstr ""
+msgstr "Tunneldjup"
 
 #: resources/ui/adw/wormhole.ui:113
 msgid "Funnel Size"
-msgstr ""
+msgstr "Trattstorlek"
 
 #: resources/ui/adw/wormhole.ui:146
 msgid "Bounce"
-msgstr ""
+msgstr "Studsa"
 
 #: resources/ui/adw/wormhole.ui:147
 msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
-msgstr ""
+msgstr "Hur mycket skrivbordet studsar när effekten landar (0 = ingen studs)."
 
 #: resources/ui/adw/shredder.ui:47
 msgid "Number of Strips"
-msgstr ""
+msgstr "Antal remsor"
 
 #: resources/ui/adw/shredder.ui:113
 msgid "Rough Edges"
-msgstr ""
+msgstr "Grova kanter"
 
 #: resources/ui/adw/venetian-blinds.ui:47
 msgid "Number of Slats"
-msgstr ""
+msgstr "Antal ribbor"
 
 #: resources/ui/adw/venetian-blinds.ui:80
 msgid "Delay"
-msgstr ""
+msgstr "Fördröjning"
 
 #: resources/ui/adw/venetian-blinds.ui:113
 msgid "Perspective"
-msgstr ""
+msgstr "Perspektiv"
 
 #: resources/ui/adw/venetian-blinds.ui:135
 msgid "Pull Up"
-msgstr ""
+msgstr "Dra upp"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"
