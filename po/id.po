@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-19 13:18+0300\n"
-"PO-Revision-Date: 2026-10-20 19:50+0000\n"
+"PO-Revision-Date: 2026-11-07 01:20+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/burn-my-"
 "windows/core/id/>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: src/effects/AperturePanels.js:153
 msgid "Aperture Panels"
-msgstr ""
+msgstr "Panel Bukaan"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -105,7 +105,7 @@ msgstr "Matriks"
 
 #: src/effects/Morph.js:118
 msgid "Morph"
-msgstr ""
+msgstr "Perubahan Bentuk"
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -165,7 +165,7 @@ msgstr "RGB Warp"
 
 #: src/effects/Shredder.js:84
 msgid "Shredder"
-msgstr ""
+msgstr "Penghancur"
 
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
@@ -189,7 +189,7 @@ msgstr "Glitch TV"
 
 #: src/effects/VenetianBlinds.js:79
 msgid "Venetian Blinds"
-msgstr ""
+msgstr "Tirai Venesia"
 
 #: src/effects/Wisps.js:85
 msgid "Wisps"
@@ -197,7 +197,7 @@ msgstr "Cahaya"
 
 #: src/effects/Wormhole.js:132
 msgid "Wormhole"
-msgstr ""
+msgstr "Lubang Cacing"
 
 #: prefs.js:263
 msgid "Preview this effect"
@@ -780,77 +780,79 @@ msgstr "Warna"
 
 #: resources/ui/adw/aperture-panels.ui:47
 msgid "Panel Size [px]"
-msgstr ""
+msgstr "Ukuran Panel [px]"
 
 #: resources/ui/adw/aperture-panels.ui:48
 msgid ""
 "Adjusted a little so that a whole number of panels fits the window exactly."
 msgstr ""
+"Disesuaikan sedikit agar panel dalam jumlah bulat dapat mengisi jendela "
+"dengan tepat."
 
 #: resources/ui/adw/aperture-panels.ui:81
 msgid "Wave Shape"
-msgstr ""
+msgstr "Bentuk Gelombang"
 
 #: resources/ui/adw/aperture-panels.ui:85
 msgid "Diagonal"
-msgstr ""
+msgstr "Diagonal"
 
 #: resources/ui/adw/aperture-panels.ui:86
 msgid "Arc from a Corner"
-msgstr ""
+msgstr "Busur dari Sudut"
 
 #: resources/ui/adw/aperture-panels.ui:87
 msgid "Wavy Diagonal"
-msgstr ""
+msgstr "Diagonal Bergelombang"
 
 #: resources/ui/adw/aperture-panels.ui:88
 msgid "Organic Diagonal"
-msgstr ""
+msgstr "Diagonal Organik"
 
 #: resources/ui/adw/aperture-panels.ui:89
 msgid "Ripple from the Center"
-msgstr ""
+msgstr "Riak dari Tengah"
 
 #: resources/ui/adw/aperture-panels.ui:90
 #: resources/ui/adw/aperture-panels.ui:115
 msgid "Random"
-msgstr ""
+msgstr "Acak"
 
 #: resources/ui/adw/aperture-panels.ui:109
 msgid "Flip Axis"
-msgstr ""
+msgstr "Sumbu Pembalikan"
 
 #: resources/ui/adw/aperture-panels.ui:113
 msgid "Vertical"
-msgstr ""
+msgstr "Vertikal"
 
 #: resources/ui/adw/aperture-panels.ui:114
 msgid "Horizontal"
-msgstr ""
+msgstr "Horizontal"
 
 #: resources/ui/adw/aperture-panels.ui:134
 msgid "Backdrop"
-msgstr ""
+msgstr "Latar Belakang"
 
 #: resources/ui/adw/aperture-panels.ui:135
 msgid "What is seen behind the panels as they turn."
-msgstr ""
+msgstr "Tampilan di belakang panel saat panel berputar."
 
 #: resources/ui/adw/aperture-panels.ui:139
 msgid "Wallpaper"
-msgstr ""
+msgstr "Wallpaper"
 
 #: resources/ui/adw/aperture-panels.ui:140
 msgid "Black Void"
-msgstr ""
+msgstr "Ruang Hitam"
 
 #: resources/ui/adw/aperture-panels.ui:141
 msgid "Transparent"
-msgstr ""
+msgstr "Transparan"
 
 #: resources/ui/adw/aperture-panels.ui:160
 msgid "Border Style"
-msgstr ""
+msgstr "Gaya Tepi"
 
 #: resources/ui/adw/aperture-panels.ui:164
 msgid "None"
@@ -858,23 +860,23 @@ msgstr "Tidak ada"
 
 #: resources/ui/adw/aperture-panels.ui:165
 msgid "While Flipping"
-msgstr ""
+msgstr "Saat Membalik"
 
 #: resources/ui/adw/aperture-panels.ui:166
 msgid "Ahead of the Wave"
-msgstr ""
+msgstr "Di Depan Gelombang"
 
 #: resources/ui/adw/aperture-panels.ui:167
 msgid "Behind the Wave"
-msgstr ""
+msgstr "Di Belakang Gelombang"
 
 #: resources/ui/adw/aperture-panels.ui:168
 msgid "Ahead of and Behind the Wave"
-msgstr ""
+msgstr "Di Depan dan di Belakang Gelombang"
 
 #: resources/ui/adw/aperture-panels.ui:187
 msgid "Border Color"
-msgstr ""
+msgstr "Warna Tepi"
 
 #: resources/ui/adw/fire.ui:14
 msgid "Presets"
@@ -906,65 +908,67 @@ msgstr "Gradien"
 
 #: resources/ui/adw/morph.ui:47
 msgid "Style"
-msgstr ""
+msgstr "Gaya"
 
 #: resources/ui/adw/morph.ui:48
 msgid ""
 "Liquid flow swirls the area into the window. Melt makes each image flow "
 "along its own edges."
 msgstr ""
+"Aliran cair memutar area hingga masuk ke dalam jendela. Efek leleh membuat "
+"setiap gambar mengalir mengikuti tepinya sendiri."
 
 #: resources/ui/adw/morph.ui:52
 msgid "Liquid Flow"
-msgstr ""
+msgstr "Aliran Cair"
 
 #: resources/ui/adw/morph.ui:53
 msgid "Melt"
-msgstr ""
+msgstr "Leleh"
 
 #: resources/ui/adw/wormhole.ui:47
 msgid "Void Size"
-msgstr ""
+msgstr "Ukuran Ruang Kosong"
 
 #: resources/ui/adw/wormhole.ui:80
 msgid "Tunnel Depth"
-msgstr ""
+msgstr "Kedalaman Terowongan"
 
 #: resources/ui/adw/wormhole.ui:113
 msgid "Funnel Size"
-msgstr ""
+msgstr "Ukuran Corong"
 
 #: resources/ui/adw/wormhole.ui:146
 msgid "Bounce"
-msgstr ""
+msgstr "Pantulan"
 
 #: resources/ui/adw/wormhole.ui:147
 msgid "How much the desktop bounces when the effect lands (0 = no bounce)."
-msgstr ""
+msgstr "Besarnya pantulan desktop saat efek mendarat (0 = tanpa pantulan)."
 
 #: resources/ui/adw/shredder.ui:47
 msgid "Number of Strips"
-msgstr ""
+msgstr "Jumlah Potongan"
 
 #: resources/ui/adw/shredder.ui:113
 msgid "Rough Edges"
-msgstr ""
+msgstr "Tepi Kasar"
 
 #: resources/ui/adw/venetian-blinds.ui:47
 msgid "Number of Slats"
-msgstr ""
+msgstr "Jumlah Bilah"
 
 #: resources/ui/adw/venetian-blinds.ui:80
 msgid "Delay"
-msgstr ""
+msgstr "Jeda"
 
 #: resources/ui/adw/venetian-blinds.ui:113
 msgid "Perspective"
-msgstr ""
+msgstr "Perspektif"
 
 #: resources/ui/adw/venetian-blinds.ui:135
 msgid "Pull Up"
-msgstr ""
+msgstr "Tarik ke Atas"
 
 #: resources/ui/common/menus.ui:13
 msgid "Visit Homepage"

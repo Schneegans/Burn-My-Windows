@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: burn-my-windows\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-19 13:18+0300\n"
-"PO-Revision-Date: 2025-11-30 14:00+0000\n"
-"Last-Translator: Marazm Mamazm <brutdewelopment@gmail.com>\n"
+"PO-Revision-Date: 2026-11-03 19:51+0000\n"
+"Last-Translator: frytek13 <frytek13@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/burn-my-windows/"
 "core/pl/>\n"
 "Language: pl\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.11.1.dev0\n"
 
 #: src/effects/AperturePanels.js:153
 msgid "Aperture Panels"
-msgstr ""
+msgstr "Panele Sczeliny"
 
 #: src/effects/Apparition.js:80
 msgid "Apparition"
@@ -98,7 +98,7 @@ msgstr "Spopielenie"
 
 #: src/effects/Materialize.js:128
 msgid "Materialize"
-msgstr ""
+msgstr "Zmaterializuj"
 
 #: src/effects/Matrix.js:101
 msgid "Matrix"
@@ -106,7 +106,7 @@ msgstr "Matrix"
 
 #: src/effects/Morph.js:118
 msgid "Morph"
-msgstr ""
+msgstr "Przekształć"
 
 #: src/effects/Mushroom.js:119
 msgid "Mushroom"
@@ -166,7 +166,7 @@ msgstr "Zniekształcenie RGB"
 
 #: src/effects/Shredder.js:84
 msgid "Shredder"
-msgstr ""
+msgstr "Rozdrabniacz"
 
 #: src/effects/SnapOfDisintegration.js:105
 msgid "Snap of Disintegration"
