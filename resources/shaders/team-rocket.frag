@@ -149,11 +149,11 @@ void main() {
   // Get the sparkle.
   float size = mix(25.0, 50.0, uSparkleSize);
   float sparkle =
-    getSpark(uv, offset + vec2(0.5 * aspect, 0.5), fadeInOut(sparkp, 2) * uSparkleSize,
-             fadeInOut(sparkp, 2) * size, sparkp * TAU * float(uSparkleRot));
+    getSpark(uv, offset + vec2(0.5 * aspect, 0.5), fadeInOut(sparkp, 2.0) * uSparkleSize,
+             fadeInOut(sparkp, 2.0) * size, sparkp * TAU * float(uSparkleRot));
   // Fade out at the edges.
-  sparkle *= fadeInOut(iTexCoord.t, 8);
-  sparkle *= fadeInOut(iTexCoord.s, 8);
+  sparkle *= fadeInOut(iTexCoord.t, 8.0);
+  sparkle *= fadeInOut(iTexCoord.s, 8.0);
 
   // Combine the final color.
   vec4 oColor = getInputColor(uv2);

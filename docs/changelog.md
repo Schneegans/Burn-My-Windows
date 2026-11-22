@@ -16,10 +16,11 @@ SPDX-License-Identifier: CC-BY-4.0
 - **Two more new effects: Venetian Blinds and Shredder!** Venetian Blinds splits the window into slats which turn shut one after another, and Shredder cuts it into strips which fall away. The number of slats or strips and the timing are configurable. Thanks to [@idogrf](https://github.com/idogrf) for these contributions!
 - The values of the sliders in the preferences dialog can now be typed in directly. Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
 - The Fire effect can now burn windows from bottom to top. This can be configured separately for opening and closing windows. This fixes [#558](https://github.com/Schneegans/Burn-My-Windows/issues/558). Thanks to [@idogrf](https://github.com/idogrf) for this contribution!
-- The KWin version now allows configuring each effect to trigger on window open only, close only, or both.
+- The KWin version now allows configuring each effect to trigger on window open only, close only, or both. Thanks to [@fileoffset](https://github.com/fileoffset) for this contribution!
 
 #### Bug Fixes
 
+- Fixed an issue which caused the RGB-Warp effect and the Team Rocket effect to not work on certain KDE setups.
 - When migrating settings from version 26 or older, customized Fire (`flame-*`) and T-Rex Attack (`claw-*`) settings were dropped instead of being renamed to their new `fire-*` and `trex-*` keys.
 
 #### Bug Fixes
