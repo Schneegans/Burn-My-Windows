@@ -21,12 +21,9 @@ SPDX-License-Identifier: CC-BY-4.0
 #### Bug Fixes
 
 - Fixed an issue which caused the RGB-Warp effect and the Team Rocket effect to not work on certain KDE setups.
-- When migrating settings from version 26 or older, customized Fire (`flame-*`) and T-Rex Attack (`claw-*`) settings were dropped instead of being renamed to their new `fire-*` and `trex-*` keys.
-
-#### Bug Fixes
-
 - Fixed a memory leak which occurred when opening or closing windows after the session was locked at least once. Thanks to [@conradax](https://github.com/conradax) for this fix!
 - Fixed an issue where GNOME Shell could freeze for up to 25 seconds after login if `power-profiles-daemon` was not running yet. Thanks to [@dogcom0228](https://github.com/dogcom0228) for the fix!
+- When migrating settings from version 26 or older, customized Fire (`flame-*`) and T-Rex Attack (`claw-*`) settings were dropped instead of being renamed to their new `fire-*` and `trex-*` keys.
 
 ## [Burn My Windows 49](https://github.com/schneegans/Burn-My-Windows/releases/tag/v49)
 
